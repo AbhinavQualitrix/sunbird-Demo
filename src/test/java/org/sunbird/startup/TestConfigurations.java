@@ -47,7 +47,7 @@ public class TestConfigurations
 				System.out.println("strCurrentPath:: " + strCurrentPath);
 				
 				System.out.println("Before Reading AppConfig");
-				APPCONFIG.load(new FileInputStream("./Application.config"));
+				APPCONFIG.load(new FileInputStream("./application.config"));
 				System.out.println("After Reading AppConfig");
 			}  catch (FileNotFoundException e) {
 				System.out.println("FileNotFoundException");

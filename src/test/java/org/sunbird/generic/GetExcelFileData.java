@@ -107,7 +107,7 @@ public class GetExcelFileData extends TestConfigurations {
 		System.out.println("callingscript = " + callingTestScript);
 		
 		if (callingTestScript.toLowerCase().startsWith("testdatasheet") == true) 
-			testDataPath = "./TestData/TestDataSheet.xls";/*testExcelDataPath*/
+			testDataPath = "./testData/testDataSheet.xls";/*testExcelDataPath*/
 		else{
 			System.out.println("Test Data Path: "+testDataPath+"Not Found");
 			}

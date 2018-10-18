@@ -520,160 +520,120 @@ public class GenericFunctions extends BaseTest{
 	    }
 	    return flag;
 	}
-	public static void handleAlert() {
-        Alert alert = driver.switchTo().alert();
-        alert.accept();
-    }
-	public static void captureScreenshotOnValidation(){
-		  try
-		  {
-		   GenericFunctions.waitWebDriver(1500);
-		   String base64Screenshot = "data:image/png;base64,"+((TakesScreenshot)driver).getScreenshotAs(OutputType.BASE64);
-		   ExtentTestManager.getTest().log(LogStatus.INFO,"CONTENT VALIDATED",ExtentTestManager.getTest().addBase64ScreenShot(base64Screenshot));
-		  }
-		  catch(Exception e)
-		  {
-		   System.out.println("Method: waitWebDriver :: exception =  " + e.getMessage());
-		  }
-		 }
-	 public static void scrollTillEndOfPage(){
-	     
-	    	  ((JavascriptExecutor) driver).executeScript("window.scrollTo(0,document.body.scrollHeight )");  
-	      
-		 
-	    }
-	public static void takeScreenshotOnValidation(String screenShotvariable){
-		  try
-		  {
-		   GenericFunctions.waitWebDriver(1500);
-		   /*EventFiringWebDriver eDriver = new EventFiringWebDriver(driver);
-		   File srcFile = eDriver.getScreenshotAs(OutputType.FILE);
-		   String screenShotName = screenShotvariable + GenericFunctions.testDataIncrementer("./TestData/screenShot.txt").toString();
-		   File dstFile = new File("./Screenshot/" + screenShotName + ".jpg");
-		   FileUtils.copyFile(srcFile,dstFile);*/
-		   
-		   
-		  }
-		  catch(Exception e)
-		  {
-		   System.out.println("Method: waitWebDriver :: exception =  " + e.getMessage());
-		  }
-		 }
-	public static void compareTwoImages(){
-		  try
-		  {
-		   GenericFunctions.waitWebDriver(1500);
-		   BufferedImage expectedImage=ImageIO.read(new File("./ScreenShot/ + img1.png"));
-		   Screenshot myScreenshot = new AShot().takeScreenshot(driver);	   
-		   BufferedImage actualImage=myScreenshot.getImage();
-		   ImageDiffer imgDiff = new ImageDiffer();
-		   ImageDiff diff = imgDiff.makeDiff(expectedImage, actualImage);
-		   //int status = diff.hashCode();
-		   //System.out.println(status);
-		   
-		   Assert.assertTrue(diff.hasDiff());
-		   //BufferedImage DiffImage = diff.getDiffImage();
-		   
-		   //String base64Screenshot = imgToBase64String(DiffImage,"png");//"data:image/png;base64,"+((TakesScreenshot)driver).getScreenshotAs(OutputType.BASE64);
-		   //ExtentTestManager.getTest().log(LogStatus.INFO,"CONTENT VALIDATED",ExtentTestManager.getTest().addBase64ScreenShot(base64Screenshot));
-		  
-		   
-		   System.out.println("Images are Same");
-		    
-		  }
-		  catch(Exception e)
-		  {
-		   System.out.println("Method: waitWebDriver :: exception =  " + e.getMessage());
-		  }
-	
-		 }
-	public static void compareImages(String img2,String screenShotvariable) {
-		{ 
-	        BufferedImage imgA = null; 
-	        BufferedImage imgB = null; 
-	  
-	        try
-	        { 
-	        	String screenShotName = screenShotvariable + GenericFunctions.readFromNotepad("./TestData/screenShot.txt").toString();
-	        	System.out.println(screenShotName);
-	            File fileA = new File("./Screenshot/" + img2 + ".jpg"); 
-	            File fileB = new File("./Screenshot/" + screenShotName + ".jpg"); 
-	  
-	            imgA = ImageIO.read(fileA); 
-	            imgB = ImageIO.read(fileB); 
-	        } 
-	        catch (IOException e) 
-	        { 
-	            System.out.println(e); 
-	        } 
-	        int width1 = imgA.getWidth(); 
-	        int width2 = imgB.getWidth(); 
-	        int height1 = imgA.getHeight(); 
-	        int height2 = imgB.getHeight(); 
-	  
-	        if ((width1 != width2) || (height1 != height2)) 
-	            System.out.println("Error: Images dimensions"+ 
-	                                             " mismatch"); 
-	        else
-	        { 
-	            long difference = 0; 
-	            for (int y = 0; y < height1; y++) 
-	            { 
-	                for (int x = 0; x < width1; x++) 
-	                { 
-	                    int rgbA = imgA.getRGB(x, y); 
-	                    int rgbB = imgB.getRGB(x, y); 
-	                    int redA = (rgbA >> 16) & 0xff; 
-	                    int greenA = (rgbA >> 8) & 0xff; 
-	                    int blueA = (rgbA) & 0xff; 
-	                    int redB = (rgbB >> 16) & 0xff; 
-	                    int greenB = (rgbB >> 8) & 0xff; 
-	                    int blueB = (rgbB) & 0xff; 
-	                    difference += Math.abs(redA - redB); 
-	                    difference += Math.abs(greenA - greenB); 
-	                    difference += Math.abs(blueA - blueB); 
-	                } 
-	            } 
-	  
-	            // Total number of red pixels = width * height 
-	            // Total number of blue pixels = width * height 
-	            // Total number of green pixels = width * height 
-	            // So total number of pixels = width * height * 3 
-	            double total_pixels = width1 * height1 * 3; 
-	  
-	            // Normalizing the value of different pixels 
-	            // for accuracy(average pixels per color 
-	            // component) 
-	            double avg_different_pixels = difference / 
-	                                          total_pixels; 
-	  
-	            // There are 255 values of pixels in total 
-	            double percentage = (avg_different_pixels / 
-	                                            255) * 100; 
-	  
-	            System.out.println("Difference Percentage-->" + 
-	                                                percentage); 
-	        } 
-	    } 
-	 
+	/**
+	 * Purpose: assertIfAllElementsExists method is check if list of all elements exist on web page
+	 */
+	public static boolean assertIfAllElementsExists(WebDriver mDriver, List<WebElement> locator) throws Exception {
+		boolean bElementFound = false;
+		try	{		
 
+			for (WebElement opt : locator)
+			{
+				boolean value = opt.isDisplayed();
+				if(value==true){
+					Assert.assertTrue(true);
+					log.info(value+" found as related to Dial Code searched");
+				}
+			}	
+
+		} catch(Exception e){
+			log.error("Method: assertIfElementExists :: Exception occured for locator = " + locator + " exception is = "+ e.getMessage());
+			Assert.assertTrue(false,"***Method: assertIfElementExists: Exception occured for locator= " + e.getMessage());
+		}
+		log.info("Method: assertIfElementExists for locator = " + locator  + " status = " + bElementFound);	
+		return bElementFound;
 	}
-	
-	public static String imgToBase64String(final RenderedImage img, final String formatName)
-	{
-	  final ByteArrayOutputStream os = new ByteArrayOutputStream();
 
-	  try
-	  {
-	    ImageIO.write(img, formatName, os);
-	    return Base64.getEncoder().encodeToString(os.toByteArray());
-	  }
-	  catch (final IOException ioe)
-	  {
-	    throw new UncheckedIOException(ioe);
-	  }
+	/**
+	 * Purpose: assertElementValue method is used to check for element value
+	 */
+	public static boolean assertElementValue(WebDriver mDriver, String identifyBy, WebElement locator, String expectedValue) {
+		String actualElementValue = "";
+		actualElementValue =  getValue(mDriver, identifyBy, locator);
+		expectedValue = expectedValue.trim();
+
+		log.info("Method: assertElementValue :: actualElementValue = " + actualElementValue 
+				+ " expectedValue = " + expectedValue);
+
+		if (expectedValue.equals(actualElementValue) == true)
+			return true;
+		else
+			return false;
 	}
-	
 
-	
+	/**
+	 * Purpose: assertElementValueByWebElement method is used to check for web element value
+	 */
+	public static boolean assertElementValueByWebElement(WebDriver mDriver, String identifyBy, WebElement locator, String expectedValue) {
+		String actualElementValue = "";
+		actualElementValue =  getValueFromWebElement(mDriver, identifyBy, locator);
+		expectedValue = expectedValue.trim();
+
+		log.info("Method: assertElementValue :: actualElementValue = " + actualElementValue 
+				+ " expectedValue = " + expectedValue);
+
+		if (expectedValue.equals(actualElementValue) == true)
+			return true;
+		else
+			return false;
+	}
+
+	/**
+	 * Purpose: getValue method is used to fetch value from webelement
+	 */
+	public static String getValue(WebDriver mDriver, String identifyBy, WebElement locator) {
+		boolean assertElementExists = false;
+		String value = "";
+
+		try	{
+			//assertElementExists = assertIfElementExists(mDriver, identifyBy, locator);
+			log.info("Method: getValue :: assertElementExists = " + assertElementExists + " for xpath = " + locator);
+			if (assertElementExists==true) {	
+				if (identifyBy.equalsIgnoreCase("xpath")) 
+					value = locator.getText();
+				else if (identifyBy.equalsIgnoreCase("id")) 
+					value = locator.getText();
+				else if (identifyBy.equalsIgnoreCase("name")) 
+					value = locator.getText();
+				else if (identifyBy.equalsIgnoreCase("css")) 
+					value = locator.getText();
+			}
+		} catch(Exception e) {
+			log.error("Method: getValue :: Exception occured for locator = " + locator + "exception = "+ e.getMessage());
+			// e.printStackTrace();
+		}
+		log.info("Method: getValue :: value of element = " + value);
+		//System.out.println("Method: getValue :: value of element = " + value); 
+		return value.trim();
+	}
+
+
+	/**
+	 * Purpose: getValue method is used to fetch value from webelement
+	 */
+	public static String getValueFromWebElement(WebDriver mDriver, String identifyBy, WebElement locator) {
+		boolean assertElementExists = false;
+		String value = "";
+
+		try	{
+
+			log.info("Method: getValue :: assertElementExists = " + assertElementExists + " for xpath = " + locator);
+			if (assertElementExists==true) {	
+				if (identifyBy.equalsIgnoreCase("xpath")) 
+					value = locator.getText();
+				else if (identifyBy.equalsIgnoreCase("id")) 
+					value = locator.getText();
+				else if (identifyBy.equalsIgnoreCase("name")) 
+					value = locator.getText();
+				else if (identifyBy.equalsIgnoreCase("css")) 
+					value = locator.getText();
+			}
+		} catch(Exception e) {
+			log.error("Method: getValue :: Exception occured for locator = " + locator + "exception = "+ e.getMessage());
+			// e.printStackTrace();
+		}
+		log.info("Method: getValue :: value of element = " + value);
+		
+		return value.trim();
+	}
 }
