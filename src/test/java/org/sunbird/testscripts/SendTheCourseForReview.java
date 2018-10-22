@@ -21,13 +21,13 @@ public class SendTheCourseForReview extends BaseTest
 		SignUpPageObj signupObj = new SignUpPageObj();
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 		 
-		//Login as content creator
+		//Step 1:Login as content creator
 		signupObj.userLogin(CREATOR);
 		
-		//create a course
+		//Step 2:create a course
 		creatorUserPageObj.createResource(objListOFTestDataForSunbird);
 		
-		//Submit the course for review 
+		//Step 3:Submit the course for review 
 		creatorUserPageObj.saveAndSendCourseForReview(objListOFTestDataForSunbird);
 	}
 

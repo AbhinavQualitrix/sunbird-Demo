@@ -38,19 +38,15 @@ public class CheckSuborgMentorInvitingOrgMember extends BaseTest
 
 
 		//Step1: Login as sub org member.
-
 		SignUpPageObj creatorLogin = new SignUpPageObj();
 		creatorLogin.userLogin(MENTOR);
 
-
 		//Step2: Navigate to course and search the course created by other user.
-		
 		CreateMentorPageObj createMentorPageObj =new CreateMentorPageObj();
 		createMentorPageObj.createInviteOnlyBatchForSuborg();
 		GenericFunctions.waitWebDriver(1000);
 		
 		//Step3: Logout as mentor
-		
 		GenericFunctions.waitWebDriver(1000);
 		creatorLogin.userLogout();
 

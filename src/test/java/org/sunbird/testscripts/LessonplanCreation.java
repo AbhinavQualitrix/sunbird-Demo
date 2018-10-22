@@ -23,30 +23,41 @@ public class LessonplanCreation extends BaseTest
 		SignUpPageObj signupObj = new SignUpPageObj();
 		signupObj.userLogin(CREATOR);
 
-		//Step 2 and 3: Go to workspace , create a lesson plan
+		//Step 2 : Go to workspace , create a lesson plan
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 		creatorUserPageObj.createLessonPlan();
 		
-		//Step 4: Submit the lesson plan for Review
+		//Step 3: Submit the lesson plan for Review
 		creatorUserPageObj.saveAndPublishLesson();
 		
-		//Logout as Creator
+		//Step 4: Logout as Creator
 		signupObj.userLogout();
 		
 		//Step 5:Logout as Reviewer
 		signupObj.userLogin(REVIEWER);
 		
-		//Step 6,7 and 8:Go to Workspace, Publish and 
+		//Step 6:Go to Workspace, Publish and 
 		creatorUserPageObj.goToWorkspace("lessonplan");
-		
 		GenericFunctions.waitWebDriver(2000);
 		
-		//reject the lesson plan from the existing list
+		//Step 7: reject the lesson plan from the existing list
 		creatorUserPageObj.rejectTheContent("LESSONA");
 	
-		//Logout as Reviewer
+		//Step 8: Logout as Reviewer
 		signupObj.userLogout();
 		
+		//Step 9: Login as Creator
+		signupObj.userLogin(CREATOR);
+
+		//Step 10: Navigate to WorkSpace
+		creatorUserPageObj.navigateToWorkspace(PUBLISHED);
+
+		//Step 11: Delete the Created item
+		creatorUserPageObj.deleteCreatedItems();
+
+		//Step 12: Logout as Creator
+		signupObj.userLogout();
+
 	}
 
 

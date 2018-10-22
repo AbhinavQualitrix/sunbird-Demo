@@ -37,62 +37,66 @@ public class EditContentAndSendForReview extends BaseTest
 
 		//Step 3:Create new Course
 		creatorUserPageObj.createCourse(objListOFTestDataForSunbird);
-		
 		GenericFunctions.waitWebDriver(2000);
 		
 		//Step 4:Save and Send for Review
 		creatorUserPageObj.saveAndSendCourseForReview(objListOFTestDataForSunbird);
-
 		GenericFunctions.waitWebDriver(2000);
 		GenericFunctions.refreshWebPage();
 		
-		//Step 4a:Check for course in review submissions 
+		//Step 5:Check for course in review submissions 
 		creatorUserPageObj.reviewInSubmissions(COURSE,objListOFTestDataForSunbird);
-
 		GenericFunctions.waitWebDriver(3000);
 		
-		//Logout as Creator
+		//Step 6: Logout as Creator
 		signupObj.userLogout();
 		
-		
-		//Step 5:Login as Reviewer
+		//Step 7:Login as Reviewer
 		signupObj.userLogin(REVIEWER);
 		
-		//Step 6 and 7:Login as reviewer and Reject the Content -Course 	
+		//Step 8:Reject the Content -Course 	
 		creatorUserPageObj.rejectTheContent(COURSE);
-		
 		GenericFunctions.waitWebDriver(2000);
 		
-		//Logout as Reviewer again 
+		//Step 9: Logout as Reviewer again 
 		signupObj.userLogout();
 		
-		//Step 8:Login As Creator
+		//Step 10:Login As Creator
 		signupObj.userLogin(CREATOR);
 		
-		//Step 9,10 and 11:Go to Drafts, Edit and Re submit the content for review
+		//Step 11:Go to Drafts, Edit and Re submit the content for review
 		creatorUserPageObj.editAndSubmitContent();
-		
 		//wait for 2 sec
 		GenericFunctions.waitWebDriver(2000);
 		
-		//Logout as Creator after Resubmitting the content for Review
+		//Step 12: Logout as Creator after Resubmitting the content for Review
 		signupObj.userLogout();
 		
-		//Step 12:Login as Reviewer , 
+		//Step 13:Login as Reviewer , 
 		signupObj.userLogin(REVIEWER);
 		
-		//Step 13:Navigation to Up for review and then publish the content
+		//Step 14:Navigation to Up for review and then publish the content
 		creatorUserPageObj.searchInUpForReview(COURSE, objListOFTestDataForSunbird);
-		
 		GenericFunctions.waitWebDriver(2000);
 		
-		//Step 14:Go to up for review and publish the content
+		//Step 15:Go to up for review and publish the content
 		creatorUserPageObj.publishAndSearch(COURSE,objListOFTestDataForSunbird);
-		
 		//wait for 2 sec
 		GenericFunctions.waitWebDriver(2000);
 		
-		//Logout as Reviewer
+		//Step 16: Logout as Reviewer
+		signupObj.userLogout();
+		
+		//Step 17: Login as Creator
+		signupObj.userLogin(CREATOR);
+
+		//Step 18: Navigate to WorkSpace
+		creatorUserPageObj.navigateToWorkspace(PUBLISHED);
+
+		//Step 19: Delete the Created item
+		creatorUserPageObj.deleteCreatedItems();
+
+		//Step 20: Logout as Creator
 		signupObj.userLogout();
 	}
 

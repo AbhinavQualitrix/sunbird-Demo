@@ -42,14 +42,11 @@ public class CourseCreation extends BaseTest
 		
 		//Step4: Save and Send for Review
 		creatorUserPageObj.saveAndSendCourseForReview(objListOFTestDataForSunbird);
-		
 		GenericFunctions.waitWebDriver(2000);
-		
 		GenericFunctions.refreshWebPage();
 	
 		//Step5: Check for course in review submissions 
 		creatorUserPageObj.reviewInSubmissions(COURSE,objListOFTestDataForSunbird);
-		
 		GenericFunctions.waitWebDriver(3000);
 
 		//Step6: Logout as Creator
@@ -57,32 +54,31 @@ public class CourseCreation extends BaseTest
 		
 		//Step7: Login as Reviewer
 		creatorLogin.userLogin(REVIEWER);
-		//Step8: Search the course which was submitted for review
 		
+		//Step8: Search the course which was submitted for review
 		GenericFunctions.waitWebDriver(2000);
 		creatorUserPageObj.searchInUpForReview(COURSE,objListOFTestDataForSunbird);
 		
-		//Publish the Course
+		//Step9: Publish the Course
 		creatorUserPageObj.publishAndSearch(COURSE,objListOFTestDataForSunbird);
-		
 		GenericFunctions.waitWebDriver(2000);
 		
-		//Reject the course
+		//Step10: Reject the course
 		creatorUserPageObj.rejectTheContent("COURSEAC");
 		
-		//Step9: Logout as Reviewer
+		//Step11: Logout as Reviewer
 		creatorLogin.userLogout();
 		
-		//Step22: Login as Creator
+		//Step12: Login as Creator
 		creatorLogin.userLogin(CREATOR);
 
-		//Step23: Navigate to WorkSpace
+		//Step13: Navigate to WorkSpace
 		creatorUserPageObj.navigateToWorkspace(PUBLISHED);
 
-		//Step24: Delete the Created item
+		//Step14: Delete the Created item
 		creatorUserPageObj.deleteCreatedItems();
 
-		//Step25: Logout as Creator
+		//Step15: Logout as Creator
 		creatorLogin.userLogout();
 		
 	}

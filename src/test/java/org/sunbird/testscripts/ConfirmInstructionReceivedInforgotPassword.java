@@ -24,7 +24,7 @@ public class ConfirmInstructionReceivedInforgotPassword extends BaseTest
 	
 		GenericFunctions.waitWebDriver(3000);
 		
-		//Step 1,2,3 and 4: To verify Forgot Password
+		//Step 1: To verify Forgot Password
 		//and confirm the instructions received
 		publicUser.forgotPassword();
 	}

@@ -34,13 +34,19 @@ public class UnlinkDailcode extends BaseTest
 		//Step 2:Navigate to workspace to Create a book
 		creatorUserPageObj.navigateToWorkspace(BOOK);
 
-		//Step 3,4,5 and 6:Create a Book
+		//Step 3:Create a Book
 		creatorUserPageObj.createBook(objListOFTestDataForSunbird);
 
-		//Step 7,8 and 9:Save the book and the message
+		//Step 4:Save the book and the message
 		creatorUserPageObj.removeDailCodeAndCheckMessage();
+		
+		//Step 5: Navigate to WorkSpace
+		creatorUserPageObj.navigateToWorkspace(PUBLISHED);
 
-		//Logout as Creator
+		//Step 6: Delete the Created item
+		creatorUserPageObj.deleteCreatedItems();
+
+		//Step 7: Logout as Creator
 		signupObj.userLogout();
 
 	}

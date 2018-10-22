@@ -24,11 +24,11 @@ public class SearchInLibraryUsingFilter extends BaseTest
 		//Step 1 : Login in as Public user
 		userLogin.userLogin(PUBLICUSER1);
 		
-		//Step 2 and 3: Click on library
+		//Step 2 : Click on library
 		//Click on filters
 		publicUser.librarysearchFilter();
 		
-		//Logout as Public user
+		//Step 3 :Logout as Public user
 		userLogin.userLogout();
 	}
 

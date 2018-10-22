@@ -15,41 +15,36 @@ public class DiscardAsFlagReviewer extends BaseTest
 		SignUpPageObj signUpPageObj = new SignUpPageObj();
 		FlagReviewerPageObj flagReviewer = new FlagReviewerPageObj();
 		
-		//Login as Public user
+		//Step1: Login as Public user
 		signUpPageObj.userLogin(PUBLICUSER1);
 		
-		//search a course, a content and flag them
+		//Step2: search a course, a content and flag them
 		String courseName=flagReviewer.flagCourseContent();
 		System.out.println("course flagged: "+courseName);
-
 		GenericFunctions.waitWebDriver(2000);
-		
 		String contentName=flagReviewer.genericContentSearch();
 		System.out.println("content flagged: "+contentName);
-		
 		GenericFunctions.waitWebDriver(2000);
-		//Logout as public user
+		
+		//Step3: Logout as public user
 		signUpPageObj.userLogout();
 		
-		
-		//Login as Flag reviewer
+		//Step4: Login as Flag reviewer
 		signUpPageObj.userLogin(FLAGREVIEWER);
 		
-		//Discard the flag of course 
+		//Step5: Discard the flag of course 
 		flagReviewer.acceptDiscardFlag(DISCARD);
 		GenericFunctions.waitWebDriver(2000);
 		GenericFunctions.refreshWebPage();
-		//Discard the flag of content
+		
+		//Step6: Discard the flag of content
 		flagReviewer.acceptDiscardFlag(DISCARD);
-		//String courseName="CourseAC0062";
 		
-		//Check the course in Courses
+		//Step7: Check the course in Courses
 		String checkedCourse=flagReviewer.checkCourseInCourses(courseName);
-		//String contentName="2303";
 		
-		//Check content in Library
+		//Step8: Check content in Library
 		String checkedContent=flagReviewer.checkContentInLib();
-		
 		if(courseName.equalsIgnoreCase(checkedCourse)&&contentName.equalsIgnoreCase(checkedContent))
 		{
 			System.out.println("Course is correctly flagged, Discarded and checked");
@@ -60,7 +55,7 @@ public class DiscardAsFlagReviewer extends BaseTest
 			System.out.println("Course/Content is not Correctly flagged,Discarded and checked");
 		}
 		
-		//Logout as flag reviewer
+		//Step9: Logout as flag reviewer
 		signUpPageObj.userLogout();
 		
 		

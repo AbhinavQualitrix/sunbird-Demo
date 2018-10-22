@@ -63,16 +63,16 @@ public class BookCreation extends BaseTest
 		//Step 11: Logout as reviewer
 		signupObj.userLogout();
 		
-		//Step22: Login as Creator
+		//Step12: Login as Creator
 		signupObj.userLogin(CREATOR);
 
-		//Step23: Navigate to WorkSpace
+		//Step13: Navigate to WorkSpace
 		creatorUserPageObj.navigateToWorkspace(PUBLISHED);
 
-		//Step24: Delete the Created item
+		//Step14: Delete the Created item
 		creatorUserPageObj.deleteCreatedItems();
 
-		//Step25: Logout as Creator
+		//Step15: Logout as Creator
 		signupObj.userLogout();
 	}
 

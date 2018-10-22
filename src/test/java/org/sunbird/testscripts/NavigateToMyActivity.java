@@ -31,12 +31,11 @@ public class NavigateToMyActivity extends BaseTest{
 		//Step1: Login as Creator
 		creatorLogin.userLogin(CREATOR);
 		
-		//Step2,3 and 4: Navigate to My Activity		
+		//Step2: Navigate to My Activity		
 		creatorUserPageObj.navigateToMyActivity();
-		
 		GenericFunctions.waitWebDriver(15000);
 		
-		//Logout as Creator
+		//Step 3: Logout as Creator
 		creatorLogin.userLogout();
 		
 	}

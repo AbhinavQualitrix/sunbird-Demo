@@ -35,13 +35,25 @@ public class DialCodeLink extends BaseTest
 		//Step 2:Navigate to workspace to Create a book
 		creatorUserPageObj.navigateToWorkspace(BOOK);
 		
-		//Step 3,4:Create a Book
+		//Step 3:Create a Book
 		creatorUserPageObj.createBook(objListOFTestDataForSunbird);
 		
-		//Step 5,6 and 7:Save the book and check the sucessful message
+		//Step 4:Save the book and check the sucessful message
 		creatorUserPageObj.saveBookAndCheckMessage();
 		
-		//Logout as Creator
+		//Step 5: Logout as Creator
+		signupObj.userLogout();
+		
+		//Step 6: Login as Creator
+		signupObj.userLogin(CREATOR);
+
+		//Step 7: Navigate to WorkSpace
+		creatorUserPageObj.navigateToWorkspace(PUBLISHED);
+
+		//Step 8: Delete the Created item
+		creatorUserPageObj.deleteCreatedItems();
+
+		//Step 9: Logout as Creator
 		signupObj.userLogout();
 	}
 	

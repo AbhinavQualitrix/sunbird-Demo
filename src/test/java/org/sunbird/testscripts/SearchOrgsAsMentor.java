@@ -28,7 +28,7 @@ public class SearchOrgsAsMentor extends BaseTest
 		//Step 2:Search for a particular Organization	
 		publicUser.searchOrgs();
 		
-		//Logout as Public user
+		//Step 3:Logout as Public user
 		userLogin.userLogout();
 
 	}

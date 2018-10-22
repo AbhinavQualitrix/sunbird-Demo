@@ -38,14 +38,12 @@ public class SearchAndDownloadOrgFile extends BaseTest {
 		SignUpPageObj creatorLogin = new SignUpPageObj();
 		creatorLogin.userLogin(ADMIN);
 
-		
 		//Step2: Navigate to profile and search the org and download
 		
 		CreatorUserPageObj cretorUserPageObj =new CreatorUserPageObj();
 		cretorUserPageObj.navigateToProfileAndSearchOrg();
 		GenericFunctions.waitWebDriver(1000);
 		System.out.println("Download is done");
-		
 		
 		//Step3: check the download
 		

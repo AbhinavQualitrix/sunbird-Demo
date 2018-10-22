@@ -24,12 +24,12 @@ public class SearchInLibrary  extends BaseTest
 		//Step 1: Login as Mentor
 		userLogin.userLogin(MENTOR);
 		
-		//Step 1a,2,3,4 and 5:
+		//Step 2: search in library
 		//Search for book, Resource, Upload content
 		//Collection and lesson plan
 		publicUser.librarySearch();
 		
-		//Logout as Public user
+		//Step 3:Logout as Public user
 		userLogin.userLogout();
 				
 	}	

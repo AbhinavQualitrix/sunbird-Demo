@@ -22,12 +22,12 @@ public class RootUsersProviderAndExtID extends BaseTest
 		SignUpPageObj adminLogin = new SignUpPageObj();
 		adminLogin.userLogin(ADMIN);
 		
-		//Step 2,3,4 and 5: Go to profile
+		//Step 2: Go to profile
 		//and Upload user for roor org with provider and external ID
 		UploadOrgObj adminUpload= new UploadOrgObj();
 		adminUpload.rootAndSubOrgUserExternalAndProvider(UPLOAD_USERS_ROOT_ORG);
 		
-		//Logout as Admin
+		//Step 3: Logout as Admin
 		adminLogin.userLogout();
 	}
 

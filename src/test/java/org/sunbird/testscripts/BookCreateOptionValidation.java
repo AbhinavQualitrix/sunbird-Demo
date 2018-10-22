@@ -26,11 +26,11 @@ public class BookCreateOptionValidation extends BaseTest
 		signupObj.userLogin(A_CONTENT_CREATOR);
 
 		//Step 2:Go to workspace
-		//3. Click on create
-		//4. Verify book option is not displaying.
+		// Click on create
+		// Verify book option is not displaying.
 		creatorUserPageObj.verifyNoBookOptionPresent();
 		
-		//Logout as Content creator
+		//Step3: Logout as Content creator
 		signupObj.userLogout();
 		
 		

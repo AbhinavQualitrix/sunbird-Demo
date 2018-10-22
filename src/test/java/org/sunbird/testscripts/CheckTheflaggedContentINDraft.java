@@ -27,10 +27,10 @@ public class CheckTheflaggedContentINDraft extends BaseTest
 		//Step 1: Login as content creator
 		signUpPageObj.userLogin(CREATOR);
 		
-		//Navigate to workspace
+		//Step 2: Navigate to workspace
 		creatorUserPageObj.navigateToWorkspace(RESOURCE);
 		
-		//Create new Course
+		//Step 3: Create new Course
 		creatorUserPageObj.createResource(objListOFTestDataForSunbird);
 		
 		//Step 4:Save and send resource for review
@@ -38,84 +38,78 @@ public class CheckTheflaggedContentINDraft extends BaseTest
 		GenericFunctions.waitWebDriver(2000);
 		GenericFunctions.refreshWebPage();
 		
-		//Step 4a:Check for course in review submissions 
+		//Step 5:Check for course in review submissions 
 		creatorUserPageObj.reviewInSubmissions(RESOURCE,objListOFTestDataForSunbird);
-		
 		GenericFunctions.waitWebDriver(3000);
 		
-		//Logout as Creator
+		//Step 6: Logout as Creator
 		signUpPageObj.userLogout();
 		
-		
-		//Step 5:Login as Reviewer
+		//Step 7:Login as Reviewer
 		signUpPageObj.userLogin(REVIEWER);
 		
-		//Step 6:Search the course which was submitted for review
+		//Step 8:Search the course which was submitted for review
 		GenericFunctions.waitWebDriver(2000);
 		String resourceToSearch=creatorUserPageObj.searchInUpForReview(RESOURCE,objListOFTestDataForSunbird);
 		
 		//Step 7:publish the resource and search it
 		creatorUserPageObj.resourcePublishAndSearch(objListOFTestDataForSunbird);
 		
-		//creatorUserPageObj.resourcePublishAndSearch(objListOFTestDataForSunbird);
-		
-		//logout as Reviewer
+		//Step 8: logout as Reviewer
 		signUpPageObj.userLogout();	
 		
 		
-		//Step 8:	String resourceToSearch ="Automation ResourceR0024";
+		//Step 9:	String resourceToSearch ="Automation ResourceR0024";
 		//Now Login As Public user
 		signUpPageObj.userLogin(PUBLICUSER1);
 		
-		//Step 8b:Search the resource and flag it
+		//Step 10:Search the resource and flag it
 		flagReviewer.searchAndFlagResource(resourceToSearch);
 		
-		//Logout as public user
+		//Step 11: Logout as public user
 		signUpPageObj.userLogout();
 		
-		
-		//Step 9:Login as Flag reviewer
+		//Step 12:Login as Flag reviewer
 		signUpPageObj.userLogin(FLAGREVIEWER);
 		
-		//Step 10:Open the content - Accept the flag
+		//Step 13:Open the content - Accept the flag
 		flagReviewer.acceptDiscardBlue(ACCEPT);
 		GenericFunctions.waitWebDriver(2000);
 		GenericFunctions.refreshWebPage();
 		
-		//Logout as Flag reviewer
+		//Step 14: Logout as Flag reviewer
 		signUpPageObj.userLogout();
 		
-		//STEP 11:Login as Content creator
+		//Step 15:Login as Content creator
 		signUpPageObj.userLogin(CREATOR);
 		
-		//Step 12:Go to the Drafts,open the content, 
-		//Step 13:Edit the content and again submit for review 
+		//Go to the Drafts,open the content, 
+		//Step 16:Edit the content and again submit for review 
 		flagReviewer.editAndSubmitContent();
 		GenericFunctions.waitWebDriver(3000);	
 		
-		//Logout as Content Creator
+		//Step 17: Logout as Content Creator
 		signUpPageObj.userLogout();
 		GenericFunctions.waitWebDriver(3000);
 		
-		//STEP 14:Login as Flag reviewer
+		//Step 18:Login as Flag reviewer
 		signUpPageObj.userLogin(FLAGREVIEWER);
 		
-		//STEP 14a and 15:Go to Up for review and reject the content
+		//Step 19 : Go to Up for review and reject the content
 		String contentToCheckDrafts=flagReviewer.publishRequestChanges(REQUESTCHANGES);
 		GenericFunctions.waitWebDriver(3000);
 		GenericFunctions.refreshWebPage();
 		
-		//Logout as FlagReviewer
+		//Step 20: Logout as FlagReviewer
 		signUpPageObj.userLogout();
 		
-		
-		//STEP 16:Login As Content Creator to again in Drafts-STEP 16
+		//Step 21: Login As Content Creator to again in Drafts-STEP 16
 		signUpPageObj.userLogin(CREATOR);
 		
-		//STEP 16A:Go to drafts and check for content
+		//Step 22: Go to drafts and check for content
 		flagReviewer.recheckInDrafts(contentToCheckDrafts);
 		
-		//Logout as Creator
+		//Step 23:  Logout as Creator
 		signUpPageObj.userLogout();
 	}
 

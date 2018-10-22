@@ -31,9 +31,7 @@ public class SkillEndorsement extends BaseTest
 		
 		//Step 3 : Logout as Public user
 		userLogin.userLogout();
-		
 		GenericFunctions.waitWebDriver(2000);
-		//String username= "Test firstname  Test lastname";
 		
 		//Step 4 : Login as Creator
 		userLogin.userLogin(CREATOR);
@@ -43,7 +41,7 @@ public class SkillEndorsement extends BaseTest
 		//Search for a profile and Endorse the skill 
 		publicUser.skillEndorsement(username);
 		
-		//Logout as Public user
+		//Step 6:Logout as Public user
 		userLogin.userLogout();
 	}
 	

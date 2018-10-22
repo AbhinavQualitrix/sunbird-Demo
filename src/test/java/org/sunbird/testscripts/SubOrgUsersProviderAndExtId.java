@@ -25,11 +25,11 @@ public class SubOrgUsersProviderAndExtId extends BaseTest
 		//Step1: Admin Login
 		adminLogin.userLogin(ADMIN);
 		
-		//Step 2,3,4 and 5: Go to profile
+		//Step 2: Go to profile
 		//and Upload users for Sub org with provider and external ID
 		adminUpload.rootAndSubOrgUserExternalAndProvider(UPLOAD_USERS_SUB_ORG);
 		
-		//Logout as Admin
+		//Step 3:Logout as Admin
 		adminLogin.userLogout();
 	}
 

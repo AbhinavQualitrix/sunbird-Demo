@@ -25,25 +25,36 @@ public class UploadEpubContent extends BaseTest
 		//Step 1:Login as content creator
 		signupObj.userLogin(CREATOR);
 		
-		//Step 2,3 and 4:Navigate to workspace and upload content type-EPUB
+		//Step 2:Navigate to workspace and upload content type-EPUB
 		creatorUserPageObj.uploadContentMp4(EPUB);
 		creatorUserPageObj.uploadContentMp4(EPUB);
 		
-		//Logout as creator
+		//Step 3: Logout as creator
 		signupObj.userLogout();
 			
-		//Step 5:Login as Reviewer
+		//Step 4:Login as Reviewer
 		signupObj.userLogin(REVIEWER);
 		
-		//Step 6 and 7:Go to workspace and publish the content-epub
+		//Step 5:Go to workspace and publish the content-epub
 		creatorUserPageObj.goToWorkspace("epub");
-		
 		GenericFunctions.waitWebDriver(2000);
 		
-		//reject the upload type -EPUB
+		//Step 6:reject the upload type -EPUB
 		creatorUserPageObj.rejectTheUploads(EPUB);
 		
-		//Logout as Reviewer
+		//Step 7: Logout as Reviewer
+		signupObj.userLogout();
+		
+		//Step 8: Login as Creator
+		signupObj.userLogin(CREATOR);
+
+		//Step 9: Navigate to WorkSpace
+		creatorUserPageObj.navigateToWorkspace(PUBLISHED);
+
+		//Step 10: Delete the Created item
+		creatorUserPageObj.deleteCreatedItems();
+
+		//Step 11: Logout as Creator
 		signupObj.userLogout();
 	}
 

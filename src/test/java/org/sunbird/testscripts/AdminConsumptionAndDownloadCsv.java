@@ -24,12 +24,12 @@ public class AdminConsumptionAndDownloadCsv extends BaseTest
 		//Step1: Login as Admin
 		adminLogin.userLogin(ADMIN);
 
-		//Step 2,3,4 and 5: Click on admin dashboard.
+		//Step 2: Click on admin dashboard.
 		//Apply filter, check stats 
 		//Download the CSV
 		adminUpload.adminCreationConsumption(FILTER_CONSUMPTION);
 
-		//Logout as Admin
+		//Step3: Logout as Admin
 		adminLogin.userLogout();
 	}
 

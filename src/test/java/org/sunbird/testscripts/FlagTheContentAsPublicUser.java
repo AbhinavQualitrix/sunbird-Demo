@@ -24,10 +24,10 @@ public class FlagTheContentAsPublicUser extends BaseTest
 		//Step 1:Login as Public user
 		userLogin.userLogin(PUBLICUSER1);
 		
-		//Step
+		//Step 2 :Flag the content
 		publicUser.contentFlag();
 		
-		//Logout as Public user
+		//Step 3: Logout as Public user
 		userLogin.userLogout();
 
 

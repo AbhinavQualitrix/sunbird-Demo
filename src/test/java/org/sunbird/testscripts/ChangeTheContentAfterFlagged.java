@@ -19,92 +19,86 @@ public class ChangeTheContentAfterFlagged extends BaseTest
 	{
 		List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-		
 		SignUpPageObj signUpPageObj = new SignUpPageObj();
 		FlagReviewerPageObj flagReviewer = new FlagReviewerPageObj();
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 		
-		//Login as content creator
+		//Step1: Login as content creator
 		signUpPageObj.userLogin(CREATOR);
 		
-		//Navigate to workspace	
+		//Step2: Navigate to workspace	
 		creatorUserPageObj.navigateToWorkspace(RESOURCE);
 		
-		//Create new Course
+		//Step3: Create new Course
 		creatorUserPageObj.createResource(objListOFTestDataForSunbird);
 		
-		//Save and send resource for review
+		//Step4: Save and send resource for review
 		creatorUserPageObj.saveAndSendResouceForReview();
 		GenericFunctions.waitWebDriver(2000);
 		GenericFunctions.refreshWebPage();
 		
-		// Check for course in review submissions 
+		//Step5:  Check for course in review submissions 
 		creatorUserPageObj.reviewInSubmissions(RESOURCE,objListOFTestDataForSunbird);
-		
 		GenericFunctions.waitWebDriver(3000);
 		
-		//Logout as Creator
+		//Step6: Logout as Creator
 		signUpPageObj.userLogout();
 		
 		
-		//Login as Reviewer
+		//Step7: Login as Reviewer
 		signUpPageObj.userLogin(REVIEWER);
 		
-		//Search the course which was submitted for review
+		//Step8: Search the course which was submitted for review
 		GenericFunctions.waitWebDriver(2000);
 		String resourceToSearch=creatorUserPageObj.searchInUpForReview(RESOURCE,objListOFTestDataForSunbird);
 		
-		//publish the resource and search it
+		//Step9: publish the resource and search it
 		creatorUserPageObj.resourcePublishAndSearch(objListOFTestDataForSunbird);
 		
-		//creatorUserPageObj.resourcePublishAndSearch(objListOFTestDataForSunbird);
-		
-		//logout as Reviewer
+		//Step10: logout as Reviewer
 		signUpPageObj.userLogout();	
 		
-		
 		//String resourceToSearch ="Automation ResourceR0024";
-		//Now Login As Public user
+		//Step11: Now Login As Public user
 		signUpPageObj.userLogin(PUBLICUSER1);
 		
-		//Search the resource and flag it
+		//Step12: Search the resource and flag it
 		flagReviewer.searchAndFlagResource(resourceToSearch);
 		
-		//Logout as public user
+		//Step13: Logout as public user
 		signUpPageObj.userLogout();
 		
-		
-		//Login as Flag reviewer
+		//Step14: Login as Flag reviewer
 		signUpPageObj.userLogin(FLAGREVIEWER);
 		
-		//Open the content - Accept the flag
+		//Step15: Open the content - Accept the flag
 		flagReviewer.acceptDiscardBlue(ACCEPT);
 		GenericFunctions.waitWebDriver(2000);
 		GenericFunctions.refreshWebPage();
 		
-		//Logout as Flag reviewer
+		//Step16: Logout as Flag reviewer
 		signUpPageObj.userLogout();
 		
-		//Login as Content creator
+		//Step17: Login as Content creator
 		signUpPageObj.userLogin(CREATOR);
 		
 		//Go to the Drafts,open the content, 
-		//Edit the content and again submit for review 
+		//Step18: Edit the content and again submit for review 
 		flagReviewer.editAndSubmitContent();
 		GenericFunctions.waitWebDriver(3000);
 		GenericFunctions.refreshWebPage();
 		GenericFunctions.waitWebDriver(3000);	
 		
-		//Logout as Content Creator
+		//Step19: Logout as Content Creator
 		signUpPageObj.userLogout();
 		
-		//Login as Flag reviewer
+		//Step20: Login as Flag reviewer
 		signUpPageObj.userLogin(FLAGREVIEWER);
 		
-		//Publish the content
+		//Step21: Publish the content
 		flagReviewer.publishRequestChanges(PUBLISH);
 		
-		//Logout as FlagReviewer
+		//Step22: Logout as FlagReviewer
 		signUpPageObj.userLogout();
 		
 	}

@@ -41,46 +41,30 @@ public class ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor extends Bas
 		
 		
 		//Step1: Login as Mentor
-		
 		userLogin.userLogin(MENTOR);
 		
-		
 		//Step2: Navigate to WorkSpace
-		
 		creatorUserPageObj.navigateToWorkspace(COURSE);
 		
-		
 		//Step3: Create new Course
-		
 		creatorUserPageObj.createCourse(objListOFTestDataForSunbird);
 		
-		
-		//Step4: Save and Send for Review
-		
+		//Step4: Save and Send for Review	
 		creatorUserPageObj.saveAndSendCourseForReview(objListOFTestDataForSunbird);
 		GenericFunctions.refreshWebPage();
-	
 		
 		//Step5: Check for course in review submissions 
 		creatorUserPageObj.reviewInSubmissions(COURSE,objListOFTestDataForSunbird);
-		
-
-		
+	
 		//Step6: Logout as Mentor
-		
 		userLogin.userLogout();
 		
-		
 		//Step7: Login as Reviewer
-		
 		userLogin.userLogin(REVIEWER);
 		
-		
 		//Step8: Search the course which was submitted for review
-		
 		GenericFunctions.waitWebDriver(2000);
 		creatorUserPageObj.searchInUpForReview(COURSE,objListOFTestDataForSunbird);
-		
 		
 		//Step9:Publish the Course
 		
@@ -91,57 +75,38 @@ public class ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor extends Bas
 		GenericFunctions.refreshWebPage();
 		userLogin.userLogout();	
 		
-		
 		//Step11:Login as Mentor
-		
 		userLogin.userLogin(MENTOR);
 		
-		
 		//Step12:Search the course created by same user
-		
 		createMentorPageObj.navigateToCourseAndSearchForOpenBatch(courseName);
-		
 		
 		//Sttep13:create invite only batch
-		
 		createMentorPageObj.createOpenBatch();
 		
-		
 		//Step14:Logout as Mentor
-		
 		userLogin.userLogout();	
 		
-		
 		//Step15:Login as Public user
-		
 		userLogin.userLogin(PUBLICUSER1);
 		
-		
 		//Step16:Search for the course
-		
 		createMentorPageObj.navigateToCourseAndSearchForOpenBatch(courseName);
 		
-		
 		//Step17:Enroll for the open batch
-		
 		createMentorPageObj.enrollForOpenBatchN();
 		
-		
 		//Step18:Logout as public user
-		
 		userLogin.userLogout();	
 		
 		//Step19:Login as Mentor
-		
 		userLogin.userLogin(MENTOR);
 		
 		//Step20:Search the course and check the stats
-		
 		createMentorPageObj.navigateToCourseAndSearchForOpenBatch(courseName);
 		createMentorPageObj.viewCourseStats();
 		
 		//Step21: Logout as mentor
-	
 		GenericFunctions.refreshWebPage();
 		userLogin.userLogout();
 		

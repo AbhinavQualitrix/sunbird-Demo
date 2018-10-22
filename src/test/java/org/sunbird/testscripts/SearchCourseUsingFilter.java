@@ -30,10 +30,10 @@ public class SearchCourseUsingFilter extends BaseTest
 		//Step 1:Login as Public user
 		userLogin.userLogin(PUBLICUSER1);
 		
-		//Step 2 and 3:Course search with filter
+		//Step 2 :Course search with filter
 		publicUser.courseSearchFilter();
 		
-		//Logout as Public user
+		//Step 3:Logout as Public user
 		userLogin.userLogout();
 	}
 	

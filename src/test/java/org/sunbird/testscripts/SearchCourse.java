@@ -24,11 +24,11 @@ public class SearchCourse extends BaseTest
 		//Step 1 : Login into Application as Public user	
 		userLogin.userLogin(PUBLICUSER1);
 
-		//Step 2 and 3 : Click on courses
+		//Step 2 : Click on courses
 		//Search for course
 		publicUser.courseSearch();
 		
-		//Logout as Public user
+		//Step 3:Logout as Public user
 		userLogin.userLogout();
 	
 	}

@@ -47,20 +47,15 @@ public class UpdateBatchAsInvitedMentor extends BaseTest
 		
 		creatorLogin.userLogin(MENTOR);
 		
-		
 		//Step2: search for the course created by other user and create invite only batch
 		
 		String courseName=createMentorPageObj.createInviteOnlyBatch();
 		System.out.println(courseName);
-		GenericFunctions.waitWebDriver(2000);
-		//GenericFunctions.refreshWebPage();
-		GenericFunctions.waitWebDriver(1000);
+		GenericFunctions.waitWebDriver(3000);
 		
 		//Step3: Logout as mentor
 		
-		GenericFunctions.waitWebDriver(2000);
-		//GenericFunctions.refreshWebPage();
-		GenericFunctions.waitWebDriver(1000);
+		GenericFunctions.waitWebDriver(3000);
 		creatorLogin.userLogout();
 		
 		
@@ -100,8 +95,7 @@ public class UpdateBatchAsInvitedMentor extends BaseTest
 		//Step10: Login as invited member  
 		
 		creatorLogin.userLogin(PUBLICUSER1);
-				
-				
+					
 		//Step11: Search for the particular course 
 				
 		createMentorPageObj.navigateToCourseAndSearch(courseName);
@@ -118,9 +112,7 @@ public class UpdateBatchAsInvitedMentor extends BaseTest
 		
 		//Step12: Logout as mentor
 		
-		GenericFunctions.waitWebDriver(2000);
-		//GenericFunctions.refreshWebPage();
-		GenericFunctions.waitWebDriver(1000);
+		GenericFunctions.waitWebDriver(3000);
 		creatorLogin.userLogout();
 		
 	}

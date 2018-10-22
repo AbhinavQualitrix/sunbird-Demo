@@ -25,8 +25,6 @@ public class ResourceCreation extends BaseTest {
 	{
 		List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-		
-		
 		SignUpPageObj creatorLogin = new SignUpPageObj();
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 		
@@ -37,24 +35,18 @@ public class ResourceCreation extends BaseTest {
 		creatorUserPageObj.navigateToWorkspace(RESOURCE);
 		
 		//Step3: Create new Resource
-		
-		//creatorUserPageObj.createResource(objListOFTestDataForSunbird);
 		creatorUserPageObj.resourceName();
 		
-		//Step3a: Add Audio for the resource.
+		//Step4: Add Audio for the resource.
 		creatorUserPageObj.addAudio();
-		
-		//creatorUserPageObj.saveAndSendResouceForReview();
 		creatorUserPageObj.sendResourceForReview();
 		
 		//Wait for 2 seconds and refresh the web page
 		GenericFunctions.waitWebDriver(2000);
-		
 		GenericFunctions.refreshWebPage();
 			
 		//Step5: Check for course in review submissions 
 		creatorUserPageObj.reviewInSubmissions(RESOURCE,objListOFTestDataForSunbird);
-		
 		GenericFunctions.waitWebDriver(3000);
 
 		//Step6: Logout as Creator
@@ -65,9 +57,9 @@ public class ResourceCreation extends BaseTest {
 		
 		//Step8: Search the course which was submitted for review
 		GenericFunctions.waitWebDriver(2000);
-		
 		String resourceToReject = creatorUserPageObj.searchInUpForReview(RESOURCE,objListOFTestDataForSunbird);
 		System.out.println(resourceToReject);
+		
 		//Step 9:publish the resource and search it
 		creatorUserPageObj.resourcePublishAndSearch(objListOFTestDataForSunbird);
 		

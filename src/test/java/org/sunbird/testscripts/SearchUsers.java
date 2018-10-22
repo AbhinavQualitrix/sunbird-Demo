@@ -27,7 +27,7 @@ public class SearchUsers extends BaseTest
 		//Step 2 : Search for users
 		publicUser.userSearch();
 		
-		//Logout as Public user
+		//Step 3:Logout as Public user
 		userLogin.userLogout();
 	}
 

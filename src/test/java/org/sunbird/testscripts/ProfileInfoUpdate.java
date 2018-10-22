@@ -28,7 +28,7 @@ public class ProfileInfoUpdate extends BaseTest
 		//Step 2: Profile - all information update	
 		publicUser.profileInformationUpdate();
 		
-		//Logout as Public user
+		//Step 3: Logout as Public user
 		userLogin.userLogout();
 		
 	}

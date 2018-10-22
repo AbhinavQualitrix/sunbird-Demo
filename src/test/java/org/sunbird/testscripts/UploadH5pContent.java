@@ -45,6 +45,18 @@ public class UploadH5pContent  extends BaseTest
 		
 		//Logout as Reviewer
 		signupObj.userLogout();
+		
+		//Step12: Login as Creator
+		signupObj.userLogin(CREATOR);
+
+		//Step13: Navigate to WorkSpace
+		creatorUserPageObj.navigateToWorkspace(PUBLISHED);
+
+		//Step14: Delete the Created item
+		creatorUserPageObj.deleteCreatedItems();
+
+		//Step15: Logout as Creator
+		signupObj.userLogout();
 	}
 
 }

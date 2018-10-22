@@ -25,7 +25,6 @@ public class CheckInReviewSubmission extends BaseTest
 	{
 		List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-		
 		SignUpPageObj signupObj = new SignUpPageObj();
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 		
@@ -37,14 +36,11 @@ public class CheckInReviewSubmission extends BaseTest
 		
 		//Step 3:Create a Course
 		creatorUserPageObj.createCourse(objListOFTestDataForSunbird);
-		
 		GenericFunctions.waitWebDriver(2000);
 		
 		//Step 4:Save and submit the coursed for Review
 		creatorUserPageObj.saveAndSendCourseForReview(objListOFTestDataForSunbird);
-		
 		GenericFunctions.waitWebDriver(2000);
-		
 		GenericFunctions.refreshWebPage();
 		
 		//Step 5:Check the course in review submissions
@@ -52,10 +48,9 @@ public class CheckInReviewSubmission extends BaseTest
 		
 		//Step 6:Click the course and check for Non editable layout
 		creatorUserPageObj.clickInReviewSubmission();
-		
 		GenericFunctions.waitWebDriver(2000);
 		
-		//Logout as creator
+		//Step 7: Logout as creator
 		signupObj.userLogout();
 	}
 

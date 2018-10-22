@@ -38,25 +38,24 @@ public class CollectionCreation extends BaseTest
 		
 		//Step5:Go to workspace and publish the content-h5p
 		creatorUserPageObj.goToWorkspace("collection");
-		
 		GenericFunctions.waitWebDriver(2000);
 		
 		//Step6:Reject the Collection
 		creatorUserPageObj.rejectTheContent(COLLECTION);
 		
-		//StepLogout as Reviewer
+		//Step7:Logout as Reviewer
 		signupObj.userLogout();
 		
-		//Step7: Login as Creator
+		//Step8: Login as Creator
 		signupObj.userLogin(CREATOR);
 
-		//Step8: Navigate to WorkSpace
+		//Step9: Navigate to WorkSpace
 		creatorUserPageObj.navigateToWorkspace(PUBLISHED);
 
-		//Step9: Delete the Created item
+		//Step10: Delete the Created item
 		creatorUserPageObj.deleteCreatedItems();
 
-		//Step10: Logout as Creator
+		//Step11: Logout as Creator
 		signupObj.userLogout();
 	}
 

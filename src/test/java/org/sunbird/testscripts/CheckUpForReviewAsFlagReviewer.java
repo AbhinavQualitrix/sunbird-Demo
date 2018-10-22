@@ -11,11 +11,11 @@ public class CheckUpForReviewAsFlagReviewer extends BaseTest
 	@Test(priority=1)
 	public void checkUpForReviewAsFlagReviewer() throws Exception
 	{
-		//Login as creator
+		//Step1: Login as creator
 		SignUpPageObj creatorObj = new SignUpPageObj();	
 		creatorObj.userLogin(FLAGREVIEWER);
 		
-		//Search for a course and content flag them
+		//Step2: Search for a course and content flag them
 		FlagReviewerPageObj flagReviewer = new FlagReviewerPageObj();
 		flagReviewer.flagged_UpforReview();
 	}
