@@ -107,7 +107,7 @@ public class GetExcelFileData extends TestConfigurations {
 		System.out.println("callingscript = " + callingTestScript);
 		
 		if (callingTestScript.toLowerCase().startsWith("testdatasheet") == true) 
-			testDataPath = "/home/ops/.jenkins/workspace/testDataSheet.xls";/*testExcelDataPath*/
+			testDataPath = testExcelDataPath;
 		else{
 			System.out.println("Test Data Path: "+testDataPath+"Not Found");
 			}
