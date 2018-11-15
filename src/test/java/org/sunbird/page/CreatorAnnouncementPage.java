@@ -16,6 +16,13 @@ public class CreatorAnnouncementPage {
 		
 	}
 	
+	
+	//Added on 22-Oct0-2018
+	@FindBy(xpath="//*[@class='close icon']")
+	public WebElement CloseAnnouncementPopup;
+	
+	
+	
 	//oct 12 v1.11.0
 	@FindBy(xpath="(//a[text()='Announcement dashboard'])[2]")
 	public WebElement announcement_Dashboard;
@@ -50,7 +57,10 @@ public class CreatorAnnouncementPage {
 	@FindBy(xpath="//input[@placeholder='Enter web url (starting with http or https)']")
 	public WebElement enterUrl;
 	
-	@FindBy(xpath="(//span[text()='UPLOAD ATTACHMENT'])[8]")
+	
+	//Updated on 22-Oct-2018
+		@FindBy(xpath="(//label[.='UPLOAD ATTACHMENT']/..//span[.='UPLOAD ATTACHMENT'])[2]")
+	//@FindBy(xpath="(//span[text()='UPLOAD ATTACHMENT'])[8]")
 	public WebElement uploadDocument;
 	
 	@FindBy(xpath="//button[contains(text(),'SELECT RECIPIENTS')]")
@@ -98,7 +108,7 @@ public class CreatorAnnouncementPage {
 	@FindBy(xpath="//a[text()='Workspace']")
 	public WebElement workspaceInDropDown;
 	
-	@FindBy(xpath="//a[text()='My Activity']")
+	@FindBy(xpath="(//a[text()='My Activity'])[2]")
 	public WebElement myActivityInDropdown;
 	
 	@FindBy(xpath="//td[@class=\"cursor-pointer red-text-color-sunbird\"]")

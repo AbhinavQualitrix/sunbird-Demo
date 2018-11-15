@@ -75,7 +75,7 @@ public class CreateMentorPage {
 	@FindBy(xpath="//div[contains(text(),'DOWNLOAD')]")
 	public WebElement downloadButton;
 	
-	@FindBy(xpath="//i[@class='dropdown icon']")
+	@FindBy(xpath="(//i[@class='dropdown icon'])[2]")
 	public WebElement searchDropDown;
 	
 	
@@ -122,7 +122,9 @@ public class CreateMentorPage {
 	@FindBy(xpath="//strong[contains(text(),'Roles updated successfully')]")
 	public WebElement successfulMessage ;
 	
-	@FindBy(xpath="//i[@class='write icon float-ContentRight cursor-pointer']")
+	//Updated on Oct 23 2018
+	//@FindBy(xpath="//i[@class='write icon float-ContentRight cursor-pointer']")
+	@FindBy(xpath="//i[@class='icon float-ContentRight cursor-pointer write']")
 	public WebElement editBatch;
 	
 	@FindBy(xpath="//button[text()='Update']")
@@ -184,7 +186,7 @@ public class CreateMentorPage {
 	@FindBy(xpath="//button[@class='fluid blue right floated  ui button courseHeaderButton margin-top-0']")
 	public WebElement resumeCourse;
 	
-	@FindBy(xpath="//span[text()='Organisations']")
+	@FindBy(xpath="(//span[text()='Organisations'])[2]")
 	public WebElement searchDropDownOrg;
 	
 	@FindBy(xpath="//span[text()='Courses']")

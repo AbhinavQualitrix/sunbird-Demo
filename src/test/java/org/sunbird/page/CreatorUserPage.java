@@ -647,6 +647,18 @@ public class CreatorUserPage {
 
 	 @FindBy(xpath="(//i[@class='trash large icon'])[1]")
 	 public WebElement deleteButton ;
+	 
+	 
+	 //Added on OCT 23 2018
+	 //@FindBy(xpath="(//*[@id='dropdown-menu-list-header'])[2]//following::a[@href='/profile']")
+	 @FindBy(xpath="(.//a[contains(text(),'Profile')])[2]")
+	 public WebElement profileIconProfile;
+	  
+	 @FindBy(xpath="//a[@href='/workspace/content/uploaded/1']")
+	 public WebElement allUploads;
+	 
+	 @FindBy(xpath="//a[@href='/workspace/content/limited-publish/1']")
+	 public WebElement limitedPublishing;
 }
 
 

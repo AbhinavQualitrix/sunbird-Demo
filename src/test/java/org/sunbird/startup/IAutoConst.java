@@ -36,7 +36,7 @@ public interface IAutoConst {
 	String APP_URL="https://staging.open-sunbird.org/";
 	String AUTO_APP_URL="http://qatestautomation.centralus.cloudapp.azure.com";
 
-	
+
 	//Upload documents name
 	String IMAGE="images1.jpg";
 	String UPLOAD_ROOT_ORG="Test_Data_Sample_Organizations-1.csv";
@@ -59,7 +59,7 @@ public interface IAutoConst {
 	String EXP_DESIGNATION="Test Designation";
 	String EXP_ORG="Test Organization";
 	String AUDIO="SampleAudio_0.4mb.mp3";
-	
+
 	String[] ADDRESS=new String[]{"Test #15","Test Vasanthnagar","Test Bangalore","Test Karnataka","Test India","Test 560035"};
 	String ENDORSE_USER="TestFlagReviewer  N";
 	String BOOK="book";
@@ -93,15 +93,15 @@ public interface IAutoConst {
 	String UPLOAD_H5P="fill-in-the-blanks-837.h5p";
 	String PDF="PDF";
 	String UPLOAD_PDF="samplepdf.pdf";
-	
+
 	//added for announcement page
 	String UPLOAD_MP4_URL="https://drive.google.com/file/d/16O6wbBoAum6NXdqTSXVZxh1SUAQNV1ok/view?usp=sharing";
-	
+
 	//Added for Test case 13
 	String [] REVIEW_COMMENTS={"Inappropriate course","Empty Course","Duplicate Course","Not Suitable for Children"};
-	
+
 	//Added for announcement
-	
+
 	String DESCRIPTION="DESCRIPTION";
 	String ENTERURL="ENTERURL";
 	String UPLOADDOCUMENT="UPLOADDOCUMENT";
@@ -119,4 +119,12 @@ public interface IAutoConst {
 	String DRAFTS="drafts";
 	String PUBLISHED="published";
 	String ALLMYCONTENT="allMyContent";
+
+	String AUDIO_UPLOAD="school_chale_hum.mp3";
+
+	//Added for Audio Upload Regression Test case 79
+	String VIDEO_UPLOAD="https://goo.gl/uw2hGe";
+
+	//Merged from Ajith - 25/09/2018
+	String HINDI_LABEL="डायल कोड दर्ज करें ";
 }

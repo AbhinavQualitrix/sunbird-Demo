@@ -51,18 +51,19 @@ public class CreateMentorPageObj extends BaseTest{
 	{
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify navigate to My Activity in drop down menu");
-			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitForElementToAppear(createUserPage.profileIconDropdown);
 			createUserPage.profileIconDropdown.click();
 			GenericFunctions.waitWebDriver(1000);
 			createAnnouncementPage.myActivityInDropdown.click();	
-			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitForElementToAppear(createMentorPage.searchCourseDropdown);
 			createMentorPage.searchCourseDropdown.click();
 			GenericFunctions.waitWebDriver(1000);
 			createMentorPage.firstCourseDropdownitem.click();
+			GenericFunctions.waitForElementToAppear(createMentorPage.rightArrowIcon);
 			createMentorPage.rightArrowIcon.click();
 			GenericFunctions.waitWebDriver(1000);
 			createMentorPage.leftArrowIcon.click();
-
+			ExtentTestManager.getTest().log(LogStatus.PASS, "Course Mentor Dashboard is verified");
 		}
 		catch(Exception e)
 		{
@@ -82,12 +83,13 @@ public class CreateMentorPageObj extends BaseTest{
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify navigate to Course section and search course");
-			GenericFunctions.waitWebDriver(2500);
+			GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 			createUserPage.headerCourse.click();
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
 			createUserPage.searchInput.sendKeys(courseName);
 			createUserPage.searchIcon.click();
-			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitForElementToAppear(createMentorPage.courseImg1);
 			createMentorPage.courseImg1.click();
 			GenericFunctions.waitWebDriver(3000);
 		
@@ -110,11 +112,14 @@ public class CreateMentorPageObj extends BaseTest{
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify navigate to Course section, search course and create open batch");
-			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 			createUserPage.headerCourse.click();
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.searchInput.sendKeys(courseName);
+			
 			createUserPage.searchIcon.click();
+			GenericFunctions.waitWebDriver(4000);
+			
 			GenericFunctions.waitForElementToAppear(createMentorPage.courseImg1);
 			createMentorPage.courseImg1.click();
 			GenericFunctions.waitWebDriver(2000);
@@ -138,10 +143,10 @@ public class CreateMentorPageObj extends BaseTest{
 		try{
 
 			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify navigate to Course section, search course and create open batch");
-			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 			createUserPage.headerCourse.click();
 			GenericFunctions.waitWebDriver(1000);
-			createUserPage.searchInput.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName() + GenericFunctions.readFromNotepad("./TestData/courseNumbers.txt"));
+			createUserPage.searchInput.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName() + GenericFunctions.readFromNotepad("./TestData/batchNumbers.txt"));
 			createUserPage.searchIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 			createMentorPage.courseImg1.click();
@@ -164,25 +169,25 @@ public class CreateMentorPageObj extends BaseTest{
 	public void navigateToCourseSearchAndUpdate(String courseName1) throws InterruptedException
 	{
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-		String courseName="";
 		try{
-			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify navigate to Course section, search course and update the course");
-			GenericFunctions.waitWebDriver(1500);
+			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify navigate to Course section, search course and update the batch");
+			GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 			createUserPage.headerCourse.click();
 			GenericFunctions.waitWebDriver(1000);
-			createUserPage.searchInput.sendKeys(courseName);
+			createUserPage.searchInput.sendKeys(courseName1);
 			createUserPage.searchIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 			createMentorPage.courseImg1.click();
-			GenericFunctions.waitWebDriver(3000);
+			GenericFunctions.waitForElementToAppear(createMentorPage.editBatch);
 			createMentorPage.editBatch.click();
 			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.switchToFrame(driver, createMentorPage.batchForm);
 			GenericFunctions.waitWebDriver(1000);
 			createMentorPage.nameOfBatch.clear();
-			createMentorPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(1).getCourseName()+ GenericFunctions.testDataIncrementer("./TestData/batchName.txt"));
+			createMentorPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(1).getCourseName()+ GenericFunctions.testDataIncrementer("./TestData/batchName.txt")+"Edited");
 			GenericFunctions.waitWebDriver(1000);
 			createMentorPage.updateBatch.click();
+			ExtentTestManager.getTest().log(LogStatus.PASS, "The course "+courseName1+" is searched sucessfully and updated it");
 		}
 		catch(Exception e)
 		{
@@ -202,7 +207,7 @@ public class CreateMentorPageObj extends BaseTest{
 	{
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate to Worskpace and select batch "+batchType);
-			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitForElementToAppear(createUserPage.profileIconDropdown);
 			createUserPage.profileIconDropdown.click();
 			GenericFunctions.waitWebDriver(1000);
 			createAnnouncementPage.workspaceInDropDown.click();	
@@ -355,7 +360,7 @@ public class CreateMentorPageObj extends BaseTest{
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create invite only batch for a course");
-			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 			createUserPage.headerCourse.click();
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.searchInput.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName() + GenericFunctions.readFromNotepad("./TestData/batchNumbers.txt").toUpperCase());
@@ -366,6 +371,9 @@ public class CreateMentorPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(2000);
 			createMentorPage.getCourseName.click();
 			GenericFunctions.waitWebDriver(3000);
+			
+			
+			GenericFunctions.waitForElementToAppear(createMentorPage.addIcon);
 			createMentorPage.addIcon.click();
 			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.switchToFrame(driver, createMentorPage.batchForm);
@@ -401,7 +409,9 @@ public class CreateMentorPageObj extends BaseTest{
 			createMentorPage.memberDropdown.click();
 			GenericFunctions.waitWebDriver(2000);
 			createMentorPage.buttonCreate.click();
+			ExtentTestManager.getTest().log(LogStatus.PASS, "Invite only batch for a course is created sucessfully");
 			System.out.println("Batch Created");
+			GenericFunctions.waitWebDriver(3000);
 
 		}
 		catch(Exception e)
@@ -463,7 +473,7 @@ public class CreateMentorPageObj extends BaseTest{
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create invite only batch for Sub Organization");
-			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 			createUserPage.headerCourse.click();
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.searchInput.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());//+GenericFunctions.readFromNotepad("./TestData/batchNumbers.txt").toUpperCase());
@@ -497,6 +507,7 @@ public class CreateMentorPageObj extends BaseTest{
 			boolean elementPresent = generic.isElementPresent(createMentorPage.orgAdminInBatch);
 			if(elementPresent==false)
 			{
+				ExtentTestManager.getTest().log(LogStatus.INFO, "Invite only batch is created");
 				System.out.println("Batch not Created");
 			}
 			else
@@ -525,15 +536,27 @@ public class CreateMentorPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to view the course stats");
 			GenericFunctions.waitWebDriver(2500);
 			GenericFunctions.refreshWebPage();
-			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(createMentorPage.viewCourseStat);
+			GenericFunctions.waitWebDriver(1000);
 			createMentorPage.viewCourseStat.click();
-			/*GenericFunctions.waitForElementToAppear(createMentorPage.courseSearchDropDown);
-			createMentorPage.courseSearchDropDown.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+ GenericFunctions.readFromNotepad("./TestData/openBatchData.txt"));
+			GenericFunctions.waitWebDriver(3000);
+			
+			try
+			{
+			GenericFunctions.waitForElementToAppear(createMentorPage.courseSearchDropDown);
+			createMentorPage.courseSearchDropDown.click();
+			//createMentorPage.courseSearchDropDown.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+ GenericFunctions.readFromNotepad("./TestData/openBatchData.txt"));
 			GenericFunctions.waitForElementToAppear(createMentorPage.selectSearchedCourse);
-			createMentorPage.selectSearchedCourse.click();*/
+			createMentorPage.selectSearchedCourse.click();
+			}
+			catch(Exception e3)
+			{
+				System.out.println(e3);
+			}
 			GenericFunctions.waitForElementToAppear(createMentorPage.fromBeginning);
 			createMentorPage.fromBeginning.click();
 			GenericFunctions.waitWebDriver(2000);
+			
 		}
 		catch(Exception e)
 		{
@@ -594,58 +617,6 @@ public class CreateMentorPageObj extends BaseTest{
 		}
 	}
 	
-	/**
-	* Purpose: searchInUpForReviewForOpenBatch() method is used for searching the created courses 
-	* in up for review bucket
-	*/
-	public String searchInUpForReviewForOpenBatch(String source,List <TestDataForSunbird> objListOFTestDataForSunbird) throws Exception{
-		String courseNumber = "",searchCourseName="";
-		try
-		{	
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to search in Up For Review bucket for "+source);
-			GenericFunctions.waitWebDriver(3000);
-			publicUserPage.headerProfile.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
-			createUserPage.workSpace.click();
-			createUserPage.upForReview.click();
-			if(source.equalsIgnoreCase(COURSE)){
-				courseNumber = GenericFunctions.readFromNotepad("./TestData/openBatchData.txt").toString();
-				createUserPage.searchForReview.click();
-				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+courseNumber);
-				createUserPage.searchIcon.click();
-				searchCourseName = objListOFTestDataForSunbird.get(0).getCourseName()+courseNumber;
-				GenericFunctions.waitWebDriver(3000);			
-			}
-			else if(source.equalsIgnoreCase(BOOK)){
-				courseNumber = GenericFunctions.readFromNotepad("./TestData/bookNumbers.txt").toString();
-				createUserPage.searchForReview.click();
-				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(2).getCourseName()+courseNumber);
-				createUserPage.searchIcon.click();
-				searchCourseName = objListOFTestDataForSunbird.get(2).getCourseName()+courseNumber;
-				GenericFunctions.waitWebDriver(3000);			
-			}
-			//Added on 10 july 2018
-			else if(source.equalsIgnoreCase(RESOURCE))
-			{
-				courseNumber = GenericFunctions.readFromNotepad("./TestData/resourceNumbers.txt").toString();
-				createUserPage.searchForReview.click();
-				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(6).getCourseName()+courseNumber);
-				createUserPage.searchIcon.click();
-				searchCourseName = objListOFTestDataForSunbird.get(6).getCourseName()+courseNumber;
-				GenericFunctions.waitWebDriver(5000);
-			}
-		}
-		catch(Exception e)
-		{
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on searching in Up for review");
-			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
-			System.out.println(e.getLocalizedMessage());
-			log.error("Exception In the method searchCourse"+e.getMessage());
-			Assert.fail("Failed to search in Up for review bucket");
-		}
-		return searchCourseName;
-
-	}
 	
 	/**
 	* Purpose: enrollForOpenBatchN() method is used for users to enroll for open batches

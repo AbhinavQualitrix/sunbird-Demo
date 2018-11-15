@@ -134,7 +134,7 @@ public class UploadOrgPage {
 	//OCT 10 - v1.11.0
 	//@FindBy(xpath="//a[.='Admin dashboard']")
 	//@FindBy(xpath="//div[@class='menu transition hidden']//a[.='Admin dashboard']")
-	@FindBy(xpath="(//*[@id='dropdown-menu-list-header'])[2]//a[.='Admin dashboard']")
+	@FindBy(xpath="(//*[@id='dropdown-menu-list-header'])[2]//following::a[.='Admin dashboard']")
 	public WebElement clickAdminDashboardIcon;
 	
 	//@FindBy(xpath="//div[.='Select Organization']")
@@ -172,10 +172,10 @@ public class UploadOrgPage {
 	@FindBy(xpath="//i[@class='close icon']")
 	public WebElement closeThanks;
 	
-	@FindBy(xpath="//span[contains(text(),'LAST 14 DAYS')]")
+	@FindBy(xpath="//div//span[contains(text(),'LAST 14 DAYS')]")
 	public WebElement last14Days;
 	
-	@FindBy(xpath="//span[contains(text(),'LAST 5 WEEKS')]")
+	@FindBy(xpath="//div//span[contains(text(),'LAST 5 WEEKS')]")
 	public WebElement last5Weeks;
 	
 	@FindBy(xpath="//span[contains(text(),'LAST 7 DAYS')]")
@@ -195,6 +195,9 @@ public class UploadOrgPage {
 	//@FindBy(xpath="//a[.='Logout']")
 	//@FindBy(xpath="//div[@id='dropdown-menu-list-header']//a[.='Logout']")
 	public WebElement logout;
+	
+	@FindBy(xpath="//div[@class='content']//p")
+	public WebElement thankYouMessage;
 
 }
 

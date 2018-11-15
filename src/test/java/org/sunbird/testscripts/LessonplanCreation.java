@@ -28,7 +28,7 @@ public class LessonplanCreation extends BaseTest
 		creatorUserPageObj.createLessonPlan();
 		
 		//Step 3: Submit the lesson plan for Review
-		creatorUserPageObj.saveAndPublishLesson();
+		//creatorUserPageObj.saveAndPublishLesson();
 		
 		//Step 4: Logout as Creator
 		signupObj.userLogout();

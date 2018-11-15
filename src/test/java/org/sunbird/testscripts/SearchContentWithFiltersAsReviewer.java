@@ -22,7 +22,7 @@ public class SearchContentWithFiltersAsReviewer extends BaseTest
 		creatorUserPageObj.createLessonPlan();
 		
 		//Step3:Save and send for Review
-		creatorUserPageObj.saveAndPublishLesson();
+		//creatorUserPageObj.saveAndPublishLesson();
 		
 		//Step4:Logout as Creator
 		signupObj.userLogout();

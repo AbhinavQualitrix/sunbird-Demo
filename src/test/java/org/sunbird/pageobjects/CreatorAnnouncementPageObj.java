@@ -13,6 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.sunbird.generic.AllUploadingPaths;
 import org.sunbird.generic.ExtentTestManager;
 import org.sunbird.generic.GenericExlMethods;
 import org.sunbird.generic.GenericFunctions;
@@ -44,7 +45,7 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 	String announcementName;
 	List <TestDataForSunbird> objListOFTestDataForSunbird= null;
 
-
+	
 
 	public void navigateToAnnouncementInDropDownMenu() throws InterruptedException
 	{
@@ -165,13 +166,16 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			createAnnouncementPage.enterUrl.click();
 			GenericFunctions.waitWebDriver(1000);
 			createAnnouncementPage.enterUrl.sendKeys(objListOFTestDataForSunbird.get(7).getTitleDescription());
-			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitWebDriver(4000);
 			
 			action.moveToElement(createAnnouncementPage.uploadDocument).click().build().perform();
-			String path = System.getProperty("user.dir")+"\\UploadingDocuments\\Upload Document Contents\\"+IMAGE;
+		
+			//action.click().build().perform();
+			GenericFunctions.waitWebDriver(3000);
+			//String path = System.getProperty("user.dir")+"\\uploadingDocuments\\upload Document Contents\\"+IMAGE;
 			GenericFunctions.waitWebDriver(3000);
 			//String path = System.getProperty("user.dir")+"/UploadingDocuments/Upload Document Contents/"+IMAGE;
-			GenericFunctions.uploadFile(path);
+			GenericFunctions.uploadFile(AllUploadingPaths.attachmentImagePath);
 			GenericFunctions.waitWebDriver(5000);
 			
 			//GenericFunctions.waitForElementState(createAnnouncementPage.selectRecipient);
