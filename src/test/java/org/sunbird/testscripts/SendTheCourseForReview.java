@@ -29,6 +29,9 @@ public class SendTheCourseForReview extends BaseTest
 		
 		//Step 3:Submit the course for review 
 		creatorUserPageObj.saveAndSendCourseForReview(objListOFTestDataForSunbird);
+		
+		//Step 4:Logout as Public user
+		signupObj.userLogout();
 	}
 
 }

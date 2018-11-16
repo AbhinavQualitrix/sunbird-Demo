@@ -24,7 +24,7 @@ public class VerifyTheBookAvailableForReview extends BaseTest
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 		
 		//Login as Creator	
-		signupObj.userLogin(CREATOR);
+		signupObj.userLogin(BOOKCREATOR);
 
 		//Go to workspace , create a book,submit for reviewer
 		creatorUserPageObj.navigateToWorkspace(BOOK);
@@ -45,7 +45,7 @@ public class VerifyTheBookAvailableForReview extends BaseTest
 		creatorUserPageObj.verifyOnlyBooksPresent();
 		
 		//Step 8: Login as Creator
-		signupObj.userLogin(CREATOR);
+		signupObj.userLogin(BOOKCREATOR);
 
 		//Step 9: Navigate to WorkSpace
 		creatorUserPageObj.navigateToWorkspace(PUBLISHED);

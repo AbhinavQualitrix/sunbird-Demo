@@ -23,7 +23,7 @@ public class BookCreateOptionValidation extends BaseTest
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 
 		//Step 1:Login with content creator credentials.
-		signupObj.userLogin(A_CONTENT_CREATOR);
+		signupObj.userLogin(MENTOR);
 
 		//Step 2:Go to workspace
 		// Click on create

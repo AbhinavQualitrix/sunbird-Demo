@@ -30,7 +30,7 @@ public class DialCodeLink extends BaseTest
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 
 		//Step 1:Login as Creator
-		signupObj.userLogin(CREATOR);
+		signupObj.userLogin(BOOKCREATOR);
 
 		//Step 2:Navigate to workspace to Create a book
 		creatorUserPageObj.navigateToWorkspace(BOOK);
@@ -44,17 +44,7 @@ public class DialCodeLink extends BaseTest
 		//Step 5: Logout as Creator
 		signupObj.userLogout();
 		
-		//Step 6: Login as Creator
-		signupObj.userLogin(CREATOR);
-
-		//Step 7: Navigate to WorkSpace
-		creatorUserPageObj.navigateToWorkspace(PUBLISHED);
-
-		//Step 8: Delete the Created item
-		creatorUserPageObj.deleteCreatedItems();
-
-		//Step 9: Logout as Creator
-		signupObj.userLogout();
+		
 	}
 	
 }

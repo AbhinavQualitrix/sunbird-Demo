@@ -29,7 +29,7 @@ public class LimitedSharingTheContent extends BaseTest
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 		
 		//Step 1:Login as Content creator
-		signupObj.userLogin(CREATOR);
+		signupObj.userLogin(BOOKCREATOR);
 		
 		//Step 2:Navigate to workspace and create all the content types
 		creatorUserPageObj.navigateToWorkspace(BOOK);
@@ -40,42 +40,48 @@ public class LimitedSharingTheContent extends BaseTest
 		//Step 4:Send BOOK for Limited Sharing
 		creatorUserPageObj.limitedSharing("Book");
 		
-		//Step 5:Navigate to workspace to Create a course 
+		//Step 5: Creator Logout
+		signupObj.userLogout();
+		
+		//Step 6:Login as Content creator
+		signupObj.userLogin(CREATOR);
+		
+		//Step 7:Navigate to workspace to Create a course 
 		creatorUserPageObj.navigateToWorkspace(COURSE);
 		
-		//Step 6:create content type-COURSE
+		//Step 8:create content type-COURSE
 		creatorUserPageObj.createCourse(objListOFTestDataForSunbird);
 		
-		//Step 7:Send COURSE for Limited Sharing
+		//Step 9:Send COURSE for Limited Sharing
 		creatorUserPageObj.limitedSharing("course");
 		
-		//Step 8:Navigate to workspace to Create a LESSON PLAN
+		//Step 10:Navigate to workspace to Create a LESSON PLAN
 		//AND
-		//Step 8:Create content type-Lesson plan
+		//Step 11:Create content type-Lesson plan
 		creatorUserPageObj.createLessonPlan();
 		
-		//Step 9:Send the LESSON PLAN for Limited sharing
+		//Step 12:Send the LESSON PLAN for Limited sharing
 		creatorUserPageObj.limitedSharing("lesson plan");
 		
-		//Step 10:Navigate to workspace to create a Resource
+		//Step 13:Navigate to workspace to create a Resource
 		creatorUserPageObj.navigateToWorkspace(RESOURCE);
 		
-		//Step 11:Create content type-Resource
+		//Step 14:Create content type-Resource
 		creatorUserPageObj.createResource(objListOFTestDataForSunbird);
 		
-		//Step 12:Send the RESOURCE for Limited sharing
+		//Step 15:Send the RESOURCE for Limited sharing
 		creatorUserPageObj.limitedSharing("resource");
 		
-		//Step 13:Navigate to workspace to Upload Content-
+		//Step 16:Navigate to workspace to Upload Content-
 		creatorUserPageObj.navigateToWorkspace(UPLOADCONTENT);
 		
-		//Step 14:Create content type-EPUB
+		//Step 17:Create content type-EPUB
 		creatorUserPageObj.uploadContentLimitedSharing(EPUB);
 		
-		//Step 15:Send the EPUB content for Limited sharing
+		//Step 18:Send the EPUB content for Limited sharing
 		creatorUserPageObj.limitedSharing("upload");
 		
-		//Step 16: Creator Logout
+		//Step 19: Creator Logout
 		signupObj.userLogout();
 		
 	}

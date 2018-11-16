@@ -38,106 +38,85 @@ public class SignUpPageObj extends BaseTest
           try{
         	    ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to Log In");
                 orgUploadPage.loginButton.click();
-                if(userRole.equalsIgnoreCase("ADMIN")){   
+                if(userRole.equalsIgnoreCase(ADMIN)){   
+                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(3).getUsername());
+                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(3).getPassword());
+                      System.out.println("Logged in as "+userRole+" with UN:"+objListOFTestDataForSunbird.get(3).getUsername()+" and PW:"+
+                                  objListOFTestDataForSunbird.get(3).getPassword());
+                      log.info("Logged in as"+userRole+"with UN:"+objListOFTestDataForSunbird.get(3).getUsername()+" and PW:"+
+                                  objListOFTestDataForSunbird.get(3).getPassword());
+                }
+                else if(userRole.equalsIgnoreCase(CREATOR)){
+                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(0).getUsername());
+                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(0).getPassword());
+                      System.out.println("Logged in as "+userRole+" with UN:"+objListOFTestDataForSunbird.get(0).getUsername()+" and PW:"+
+                              objListOFTestDataForSunbird.get(0).getPassword());
+                log.info("UN"+objListOFTestDataForSunbird.get(0).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(0).getPassword());
+                }
+                else if(userRole.equalsIgnoreCase(REVIEWER)){
+                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(1).getUsername());
+                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(1).getPassword());
+                      System.out.println("Logged in as "+userRole+" with UN:"+objListOFTestDataForSunbird.get(1).getUsername()+" and PW:"+
+                              objListOFTestDataForSunbird.get(1).getPassword());
+                log.info("UN"+objListOFTestDataForSunbird.get(1).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(1).getPassword());
+                }
+                else if(userRole.equalsIgnoreCase(MENTOR)){
+                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(2).getUsername());
+                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(2).getPassword());
+                      System.out.println("Logged in as "+userRole+" with UN:"+objListOFTestDataForSunbird.get(2).getUsername()+" and PW:"+
+                              objListOFTestDataForSunbird.get(2).getPassword());
+                log.info("UN"+objListOFTestDataForSunbird.get(2).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(2).getPassword());
+                }
+                else if(userRole.equalsIgnoreCase(PUBLICUSER1)){
+                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(4).getUsername());
+                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(4).getPassword());
+                      System.out.println("Logged in as "+userRole+" with UN:"+objListOFTestDataForSunbird.get(4).getUsername()+" and PW:"+
+                              objListOFTestDataForSunbird.get(4).getPassword());
+                log.info("UN"+objListOFTestDataForSunbird.get(4).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(4).getPassword());
+                }
+                else if(userRole.equalsIgnoreCase(PUBLICUSER2))
+                {
                       orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(5).getUsername());
                       orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(5).getPassword());
                       System.out.println("Logged in as "+userRole+" with UN:"+objListOFTestDataForSunbird.get(5).getUsername()+" and PW:"+
-                                  objListOFTestDataForSunbird.get(5).getPassword());
-                      log.info("Logged in as"+userRole+"with UN:"+objListOFTestDataForSunbird.get(5).getUsername()+" and PW:"+
-                                  objListOFTestDataForSunbird.get(5).getPassword());
-                }
-                else if(userRole.equalsIgnoreCase("CREATOR")){
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(0).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(0).getPassword());
-                log.info("UN"+objListOFTestDataForSunbird.get(0).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(0).getPassword());
-                }
-                else if(userRole.equalsIgnoreCase("REVIEWER")){
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(1).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(1).getPassword());
-                log.info("UN"+objListOFTestDataForSunbird.get(1).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(1).getPassword());
-                }
-                else if(userRole.equalsIgnoreCase("MENTOR")){
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(2).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(2).getPassword());
-                log.info("UN"+objListOFTestDataForSunbird.get(2).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(2).getPassword());
-                }
-                else if(userRole.equalsIgnoreCase("FLAGREVIEWER")){
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(4).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(4).getPassword());
-                log.info("UN"+objListOFTestDataForSunbird.get(4).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(4).getPassword());
-                }     
-                else if(userRole.equalsIgnoreCase("PUBLICUSER")){
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(6).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(6).getPassword());
-                log.info("UN"+objListOFTestDataForSunbird.get(6).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(6).getPassword());
-                }
-                else if(userRole.equalsIgnoreCase("PUBLICUSER1"))
-                {
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(9).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(9).getPassword());
-                log.info("UN"+objListOFTestDataForSunbird.get(9).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(9).getPassword());
-                }
-                
-                else if(userRole.equalsIgnoreCase("BOOKREVIEWER"))
-                {
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(10).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(10).getPassword());
-                log.info("UN"+objListOFTestDataForSunbird.get(10).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(10).getPassword());
-                }
-                
-                else if(userRole.equalsIgnoreCase("AUTOCREATOR"))
-                {
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(12).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(12).getPassword());
-                log.info("UN"+objListOFTestDataForSunbird.get(12).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(12).getPassword());
-                }
-                else if(userRole.equalsIgnoreCase("A_CONTENT_CREATOR"))
-                {
-                	 orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(28).getUsername());
-                     orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(28).getPassword());
-               log.info("UN"+objListOFTestDataForSunbird.get(28).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(28).getPassword());
+                              objListOFTestDataForSunbird.get(5).getPassword());
+                log.info("UN"+objListOFTestDataForSunbird.get(5).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(5).getPassword());
                 }
                 else if(userRole.equalsIgnoreCase(BOOKCREATOR))
                 {
-                	 orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(20).getUsername());
-                     orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(20).getPassword());
-               log.info("UN"+objListOFTestDataForSunbird.get(20).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(20).getPassword());
+                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(6).getUsername());
+                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(6).getPassword());
+                      System.out.println("Logged in as "+userRole+" with UN:"+objListOFTestDataForSunbird.get(6).getUsername()+" and PW:"+
+                              objListOFTestDataForSunbird.get(6).getPassword());
+                log.info("UN"+objListOFTestDataForSunbird.get(6).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(6).getPassword());
                 }
-                else if(userRole.equalsIgnoreCase(MENTOR_S))
+                else if(userRole.equalsIgnoreCase(BOOKREVIEWER))
                 {
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(24).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(24).getPassword());
-                log.info("UN"+objListOFTestDataForSunbird.get(24).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(24).getPassword());
+                	 orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(7).getUsername());
+                     orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(7).getPassword());
+                     System.out.println("Logged in as "+userRole+" with UN:"+objListOFTestDataForSunbird.get(7).getUsername()+" and PW:"+
+                             objListOFTestDataForSunbird.get(7).getPassword());
+               log.info("UN"+objListOFTestDataForSunbird.get(7).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(7).getPassword());
                 }
-                else if(userRole.equalsIgnoreCase(REVIEWER_S))
+                else if(userRole.equalsIgnoreCase(FLAGREVIEWER))
                 {
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(25).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(25).getPassword());
-                log.info("UN"+objListOFTestDataForSunbird.get(25).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(25).getPassword());
+                	 orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(8).getUsername());
+                     orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(8).getPassword());
+                     System.out.println("Logged in as "+userRole+" with UN:"+objListOFTestDataForSunbird.get(8).getUsername()+" and PW:"+
+                             objListOFTestDataForSunbird.get(8).getPassword());
+               log.info("UN"+objListOFTestDataForSunbird.get(8).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(8).getPassword());
                 }
-                else if(userRole.equalsIgnoreCase(PUBLICUSER_S))
+                else if(userRole.equalsIgnoreCase(PUBLICUSER3))
                 {
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(23).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(23).getPassword());
-                log.info("UN"+objListOFTestDataForSunbird.get(23).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(23).getPassword());
+                	 orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(9).getUsername());
+                     orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(9).getPassword());
+                     System.out.println("Logged in as "+userRole+" with UN:"+objListOFTestDataForSunbird.get(9).getUsername()+" and PW:"+
+                             objListOFTestDataForSunbird.get(9).getPassword());
+               log.info("UN"+objListOFTestDataForSunbird.get(9).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(9).getPassword());
                 }
-                else if(userRole.equalsIgnoreCase(MENTORS_S))
-                {
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(26).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(26).getPassword());
-                log.info("UN"+objListOFTestDataForSunbird.get(26).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(26).getPassword());
-                }
-                else if(userRole.equalsIgnoreCase(PUBLICUSERS_S))
-                {
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(27).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(27).getPassword());
-                log.info("UN"+objListOFTestDataForSunbird.get(27).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(27).getPassword());
-                }
-                
                 else{
                       log.error("User info not found");
                 }
-                //orgUploadPage.clickLogin.click();
                 orgUploadPage.clickLogin1.click();
           }
           catch(Exception e)
