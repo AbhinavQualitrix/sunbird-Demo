@@ -43,7 +43,8 @@ public class UploadOrgPage {
 	@FindBy(xpath="//a[contains(text(),'Check Upload Status')]")
 	public WebElement uploadStatus;
 
-	@FindBy(xpath="//a[contains(text(),'Upload Organizations')]")
+	@FindBy(xpath="//sui-select-option//span[contains(text(),'Upload Organizations')]")
+	//@FindBy(xpath="//a[contains(text(),'Upload Organizations')]")
 	public WebElement organizationUpload;
 
 	@FindBy(xpath="//button[contains(text(),'UPLOAD ORGANIZATIONS CSV')]")
@@ -70,9 +71,10 @@ public class UploadOrgPage {
 	@FindBy(xpath="//p[contains(text(),'Process ID:')]")
 	public WebElement processID;
 	
-	//Updated on 30 May 2018
+	//Updated on 16 NOv 2018
 	//@FindBy(xpath="//a[.='Upload Users']")
-	@FindBy(xpath="//a[contains(text(),'Upload Users')]")
+	//@FindBy(xpath="//a[contains(text(),'Upload Users')]")
+	@FindBy(xpath="//sui-select-option//span[contains(text(),'Upload Users')]")
 	public WebElement uploadUsers;
 	
 	@FindBy(xpath="//input[@placeholder='OrgId']")
@@ -85,8 +87,9 @@ public class UploadOrgPage {
 	 
 	//@FindBy(xpath="//a[.='Check Upload Status']")
 	
-	//Updated on 30 May 2018
-	@FindBy(xpath="//a[contains(text(),'Check Upload Status')]")
+	//Updated on 16 Nov 2018
+	@FindBy(xpath="//sui-select-option//span[contains(text(),'Check Upload Status')]")
+	//@FindBy(xpath="//a[contains(text(),'Check Upload Status')]")
 	public WebElement checkUploadStatus;
 	
 	@FindBy(xpath="//input[@placeholder='Process ID']")
@@ -100,8 +103,10 @@ public class UploadOrgPage {
 	@FindBy(xpath="//h5[contains(.,'Uploaded File: ')]")
 	public WebElement uploadedRUser;
 	
-	@FindBy(xpath="//button['CHECK STATUS']")
-	public WebElement clickCheckStatus;
+	//Updated on Nov 19th
+	@FindBy(xpath="//input[@placeholder='Process ID']/following::button['CHECK STATUS']")
+	//@FindBy(xpath="//button['CHECK STATUS']")
+	public WebElement checkStatusButton;
 	
 	//Updated on 30 May 2018
 	//@FindBy(xpath="//div[@id='statusBulkUpload']//i")
@@ -198,7 +203,14 @@ public class UploadOrgPage {
 	
 	@FindBy(xpath="//div[@class='content']//p")
 	public WebElement thankYouMessage;
+	
+	//Nov 19th
+	@FindBy(xpath="//strong[@class='iziToast-title slideIn']")
+	public static WebElement errorToast;
 
+	//Added on Nov 16th
+	@FindBy(xpath="//sui-select//div[@class='default text'][.='Admin Actions']/following::i[@class='dropdown icon']")
+	public static WebElement adminActionsButton;
 }
 
 

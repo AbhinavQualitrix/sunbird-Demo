@@ -13,9 +13,10 @@ import org.sunbird.pageobjects.UploadOrgObj;
 import org.sunbird.startup.BaseTest;
 import org.testng.annotations.Test;
 
-public class UploadSubOrgUsers extends BaseTest
+public class UploadSubOrgUsersWithOrgId extends BaseTest
 {
-	@Test(priority=4)
+	//MT done
+	@Test(priority=4, groups={"Admin group"})
 	public void uploadSubOrgUsers() throws Exception
 	{
 		//Step1: Admin Login

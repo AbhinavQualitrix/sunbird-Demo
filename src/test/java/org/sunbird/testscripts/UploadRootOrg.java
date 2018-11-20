@@ -18,17 +18,19 @@ import org.testng.annotations.Test;
 
 public class UploadRootOrg extends BaseTest {
 
-	@Test(priority=1)
-	public void uploadRootOrg() throws Exception 
-	
+	@Test(priority=1, groups={"Admin group"})
+	public void uploadRootOrg() throws Exception 	
 	{		
 		//Step1: Admin Login
 		SignUpPageObj adminLogin = new SignUpPageObj();
+		UploadOrgObj adminUpload= new UploadOrgObj();
+		
+		
 		adminLogin.userLogin(ADMIN);
 			
-		//Step2 and 3: Upload Root Org
-		UploadOrgObj adminUpload= new UploadOrgObj();
+		//Step2 and 3: Upload Root Org		
 		boolean actualValue= adminUpload.uploadRootAndSubOrg(UPLOAD_ROOT_ORG);
+		
 		AssertJUnit.assertEquals(true,actualValue);
 		
 		//Wait for 2 seconds

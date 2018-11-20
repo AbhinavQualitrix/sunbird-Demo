@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 public class AdminConsumptionAndDownloadCsv extends BaseTest 
 {
-	@Test(priority=9)
+	@Test(priority=9, groups={"Admin group"})
 	public void adminConsumptionAndDownloadCsv() throws Exception
 	{
 		SignUpPageObj adminLogin = new SignUpPageObj();
@@ -24,12 +24,12 @@ public class AdminConsumptionAndDownloadCsv extends BaseTest
 		//Step1: Login as Admin
 		adminLogin.userLogin(ADMIN);
 
-		//Step 2: Click on admin dashboard.
+		//Step 2,3,4 and 5: Click on admin dashboard.
 		//Apply filter, check stats 
 		//Download the CSV
 		adminUpload.adminCreationConsumption(FILTER_CONSUMPTION);
 
-		//Step3: Logout as Admin
+		//Logout as Admin
 		adminLogin.userLogout();
 	}
 
