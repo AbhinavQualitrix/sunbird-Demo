@@ -636,4 +636,23 @@ public class GenericFunctions extends BaseTest{
 		
 		return value.trim();
 	}
+	
+	/**
+	 * Purpose: captureScreenshotOnValidation method is used to capture screenshot of web page
+	 */
+	public static void captureScreenshotOnValidation(){
+		try
+		{
+			GenericFunctions.waitWebDriver(1500);
+			String base64Screenshot = "data:image/png;base64,"+((TakesScreenshot)driver).
+					getScreenshotAs(OutputType.BASE64);
+			ExtentTestManager.getTest().log(LogStatus.INFO,"CONTENT VALIDATED",
+					ExtentTestManager.getTest().addBase64ScreenShot(base64Screenshot));
+		}
+		catch(Exception e)
+		{
+			System.out.println("Method: waitWebDriver :: exception =  " + e.getMessage());
+		}
+	}
 }
+
