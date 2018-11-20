@@ -32,10 +32,13 @@ public class CreatorUserPage {
 	@FindBy(xpath="(//a[@class='item mt-15 computer only' and contains(text(),'Profile')])[2]")
 	public WebElement headerProfile;
 
+	//Nov 20th
+	
 	//@FindBy(xpath="//a[.='Workspace']")
 	//@FindBy(xpath="//a[contains(text(),'Workspace')]")
 	//@FindBy(xpath="//div[@class='menu transition hidden']//a[contains(text(),'Workspace')]")
-	@FindBy(xpath="//span[.='View your workspace']")
+	//@FindBy(xpath="//span[.='View your workspace']")
+	@FindBy(xpath="(//a[contains(.,'Workspace')])[2]")
 	public WebElement workSpace;
 
 	@FindBy(xpath="//input[@placeholder='Name']")
@@ -364,7 +367,9 @@ public class CreatorUserPage {
 	@FindBy(xpath="//input[@class='listItem']")
 	public List<WebElement> checkbox;
 
+	//Nov 9th
 	@FindBy(xpath="//span[@class='sliderCardHeading text-cencapitalize']")
+	//@FindBy(xpath="//span[@class='sliderCardHeading text-cencapitalize']")
 	public List<WebElement> searchPublishedCourses;
 
 	//10 OCT
