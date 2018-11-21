@@ -18,23 +18,20 @@ public class SearchContentWithFiltersAsReviewer extends BaseTest
 		//Step1: Login as Creator
 		signupObj.userLogin(CREATOR);
 
-		//Step2:Go to workspace , create a book,submit for reviwe
+		//Go to workspace , create a book,submit for reviwe
 		creatorUserPageObj.createLessonPlan();
 		
-		//Step3:Save and send for Review
-		//creatorUserPageObj.saveAndPublishLesson();
+		//Save and send for Review
+		creatorUserPageObj.saveAndSendForReviewLesson();
 		
-		//Step4:Logout as Creator
+		//Logout as Creator
 		signupObj.userLogout();
 		
-		//Step5:Login as content creator
+		//Login as content creator
 		signupObj.userLogin(REVIEWER);
 		
-		//Step6:Navigate to workspace and apply filter and search the content type-Lesson plan
+		//Navigate to workspace and apply filter and search the content type-Lesson plan
 		creatorUserPageObj.searchWithFilters();
-		
-		//Step7:Logout as Creator
-		signupObj.userLogout();
 	}
 
 }

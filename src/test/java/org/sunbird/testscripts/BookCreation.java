@@ -23,15 +23,21 @@ public class BookCreation extends BaseTest
 	@Test(priority=2, groups={"Creator Group"})
 	public void bookCreation() throws Exception
 	{	
+		//MT blocked
 		List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
+		GenericFunctions genericFunctions = new GenericFunctions();
+		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 		
 		//Step 1: Login as Creator
 		SignUpPageObj signupObj = new SignUpPageObj();
-		signupObj.userLogin(BOOKCREATOR);
-
+		signupObj.userLogin(CREATOR);
+		
+		//Handle the popup after login
+		creatorUserPageObj.handlePopupOnLogin();
+		
 		//Step 2:Go to workspace , create a book,submit for reviewer
-		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
+		
 		creatorUserPageObj.navigateToWorkspace(BOOK);
 
 		//Step 3: Create new Book
@@ -39,8 +45,7 @@ public class BookCreation extends BaseTest
 
 		//Step 4: Save and Send for Review
 		creatorUserPageObj.saveAndSendBookForReview(objListOFTestDataForSunbird);
-		GenericFunctions.waitWebDriver(2000);
-		GenericFunctions.refreshWebPage();
+		
 
 		//Step 5: Check for course in review submissions 
 		creatorUserPageObj.reviewInSubmissions(BOOK, objListOFTestDataForSunbird);
@@ -50,7 +55,10 @@ public class BookCreation extends BaseTest
 
 		//Step 7: Login as reviewer
 		signupObj.userLogin(BOOKREVIEWER);
-
+		
+		//Handle the popup after login
+		creatorUserPageObj.handlePopupOnLogin();
+		
 		//Step 8:Check in Up for Review ,publish and reject a Book
 		creatorUserPageObj.searchInUpForReview(BOOK,objListOFTestDataForSunbird);
 		
@@ -63,16 +71,16 @@ public class BookCreation extends BaseTest
 		//Step 11: Logout as reviewer
 		signupObj.userLogout();
 		
-		//Step12: Login as Creator
-		signupObj.userLogin(BOOKCREATOR);
+		//Step 12: Login as Creator
+		signupObj.userLogin(CREATOR);
 
-		//Step13: Navigate to WorkSpace
-		creatorUserPageObj.navigateToWorkspace(PUBLISHED);
-
-		//Step14: Delete the Created item
+		//Step 13:Navigate to Workspace-All my content
+		genericFunctions.navigateToWorkspaceFeatures(ALL_MY_CONTENT);
+		
+		//Step 14: Delete the Created item
 		creatorUserPageObj.deleteCreatedItems();
 
-		//Step15: Logout as Creator
+		//Step 15: Logout as Creator
 		signupObj.userLogout();
 	}
 

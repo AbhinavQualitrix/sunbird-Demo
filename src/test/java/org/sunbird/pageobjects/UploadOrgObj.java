@@ -181,6 +181,7 @@ public class UploadOrgObj extends BaseTest
 		catch(Exception e)
 		{
 			driver.navigate().refresh();
+			handlePopupOnLogin();
 			log.error("No Files were uploaded");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception : Failed on Uploading Organizations and Sub Organizations");
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
@@ -409,6 +410,7 @@ public class UploadOrgObj extends BaseTest
 
 				GenericFunctions.waitWebDriver(2000);
 				GenericFunctions.refreshWebPage();
+				handlePopupOnLogin();
 				GenericFunctions.waitWebDriver(2000);
 
 				GenericFunctions.waitForElementToAppear(UploadOrgPage.adminActionsButton);
@@ -709,6 +711,37 @@ public class UploadOrgObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Could not navigate to Profile Page");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message: "+e.getLocalizedMessage());
 			Assert.fail("Could not navigate to Profile Page");
+		}
+	}
+	public void handlePopupOnLogin()
+	{
+		/*try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Navigate to Profile Page");
+			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitForElementToAppear(createUserPage.profileIconDropdown);
+			createUserPage.profileIconDropdown.click();
+			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitForElementToAppear(createUserPage.profileIconProfile);
+			createUserPage.profileIconProfile.click();
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Could not navigate to Profile Page");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message: "+e.getLocalizedMessage());
+			Assert.fail("Could not navigate to Profile Page");
+		}*/
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is tring to handle the popup ");
+			GenericFunctions.waitWebDriver(4000);
+			GenericFunctions.waitForElementToAppear(createUserPage.closeIcon);
+			createUserPage.closeIcon.click();
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Could not find the-Enter details to get relevant content Popup after login");
+			System.out.println("Exception occured " +e.getLocalizedMessage());
 		}
 	}
 

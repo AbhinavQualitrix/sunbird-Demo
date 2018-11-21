@@ -29,7 +29,7 @@ public class LoginAndChangePassword extends BaseTest
 		PublicUserPageObj publicUser = new PublicUserPageObj();
 		
 		//Step 1: Login into Application as Public user
-		publicLogin.userLogin(PUBLICUSER3);
+		publicLogin.userLogin(PUBLICUSER2);
 		
 		//Step 2: Verify Login 
 		//And Change Password

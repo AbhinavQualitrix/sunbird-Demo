@@ -1,9 +1,9 @@
 /**
-* Created by Qualitrix Technologies Pvt Ltd.
-* @author: Ajith Manjunath
-* Date: 06/20/2018
-* Purpose:  Upload content type-YOUTUBE and validate it
-*/
+ * Created by Qualitrix Technologies Pvt Ltd.
+ * @author: Ajith Manjunath
+ * Date: 06/20/2018
+ * Purpose:  Upload content type-YOUTUBE and validate it
+ */
 
 package org.sunbird.testscripts;
 
@@ -21,42 +21,49 @@ public class UploadYoutubeContent extends BaseTest
 	{
 		SignUpPageObj signupObj = new SignUpPageObj();
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
-		
+		GenericFunctions genereicFunctions = new GenericFunctions();
+
 		//Step 1:Login as content creator
 		signupObj.userLogin(CREATOR);
+
+		//Handle the popup 
+		creatorUserPageObj.handlePopupOnLogin();
 		
 		//Step 2,3 and 4:Navigate to workspace and upload content from YouTube link
 		creatorUserPageObj.uploadContentMp4(YOUTUBE);
+
 		creatorUserPageObj.uploadContentMp4(YOUTUBE);
-		
+
 		//Logout as creator
 		signupObj.userLogout();
-		
+
 		//Step 5:Login as Reviewer
 		signupObj.userLogin(REVIEWER);
-		
+
 		//Step 6,7:Go to workspace and publish the youtube content
 		creatorUserPageObj.goToWorkspace("youtube");
-		
+
 		GenericFunctions.waitWebDriver(2000);
-		
-		//reject the upload type -YOUTUBE
+
+		//Step 8 :reject the upload type -YOUTUBE
 		creatorUserPageObj.rejectTheUploads(YOUTUBE);
-		
+
 		//Logout as Reviewer
 		signupObj.userLogout();
-		
-		//Step 8: Login as Creator
+
+		//Step9: Login as Creator
 		signupObj.userLogin(CREATOR);
 
-		//Step 9: Navigate to WorkSpace
-		creatorUserPageObj.navigateToWorkspace(PUBLISHED);
+		//Step10: Navigate to WorkSpace-All my content
+		genereicFunctions.navigateToWorkspaceFeatures(ALL_MY_CONTENT);
 
-		//Step 10: Delete the Created item
+		//Step11: Delete the Created item
 		creatorUserPageObj.deleteCreatedItems();
 
-		//Step 11: Logout as Creator
+		//Step12: Logout as Creator
 		signupObj.userLogout();
+
+
 	}
 
 }

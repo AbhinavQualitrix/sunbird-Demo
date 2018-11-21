@@ -24,9 +24,10 @@ public class UploadRootOrg extends BaseTest {
 		//Step1: Admin Login
 		SignUpPageObj adminLogin = new SignUpPageObj();
 		UploadOrgObj adminUpload= new UploadOrgObj();
-		
-		
 		adminLogin.userLogin(ADMIN);
+		
+		//Handle the popup 
+		adminUpload.handlePopupOnLogin();
 			
 		//Step2 and 3: Upload Root Org		
 		boolean actualValue= adminUpload.uploadRootAndSubOrg(UPLOAD_ROOT_ORG);

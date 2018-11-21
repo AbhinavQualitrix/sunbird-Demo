@@ -67,7 +67,7 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createUserPage.profileIconProfile);
 			createUserPage.profileIconProfile.click();
 			*/
-			goToProfilePage();
+			//handlePopupOnLogin();
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
 			createUserPage.workSpace.click();
@@ -114,7 +114,7 @@ public class CreatorUserPageObj extends BaseTest{
 			
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create course");
 			GenericFunctions.waitWebDriver(1500);
-			try
+			/*try
 			{
 				GenericFunctions.waitWebDriver(1000);
 				GenericFunctions.waitForElementToAppear(createUserPage.closeIcon);
@@ -124,7 +124,7 @@ public class CreatorUserPageObj extends BaseTest{
 			{
 				ExtentTestManager.getTest().log(LogStatus.INFO, "Could not find the Popup after login");
 				System.out.println("Exception occured " +e.getLocalizedMessage());
-			}
+			}*/
 			System.out.println(driver.findElement(By.xpath(" //span[contains(text(),'Design Course')]")).getText());
 			GenericFunctions.waitForElementToAppear(createUserPage.courseName);
 			String courseNumber = GenericFunctions.testDataIncrementer("./testData/courseNumbers.txt").toString();
@@ -222,6 +222,7 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.saveButton.click();
 			GenericFunctions.waitWebDriver(3500);
 			GenericFunctions.refreshWebPage();
+			handlePopupOnLogin();
 		}
 		catch(Exception e)
 		{
@@ -268,6 +269,9 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(2500);
 			//createUserPage.editorCloseIcon.click();
 			GenericFunctions.waitWebDriver(2500);
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.refreshWebPage();
+			handlePopupOnLogin();
 		}
 		catch(Exception e)
 		{
@@ -287,7 +291,7 @@ public class CreatorUserPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to search in Up For Review bucket for "+source);
 			/*GenericFunctions.waitForElementToAppear(publicUserPage.headerProfile);
 			publicUserPage.headerProfile.click();*/
-			goToProfilePage();
+			//handlePopupOnLogin();
 			
 			GenericFunctions.waitWebDriver(2000);	
 			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
@@ -348,6 +352,7 @@ public class CreatorUserPageObj extends BaseTest{
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify "+source+" is found in review submission");
 			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(createUserPage.reviewSubmission);
 			createUserPage.reviewSubmission.click();
 			assertFoundInReviewSubmission(source,objListOFTestDataForSunbird);
 			GenericFunctions.waitWebDriver(3000);
@@ -370,6 +375,7 @@ public class CreatorUserPageObj extends BaseTest{
 
 			if(source.equalsIgnoreCase(COURSE))
 			{
+				GenericFunctions.waitWebDriver(2000);
 				String courseNumber = GenericFunctions.readFromNotepad("./testData/courseNumbers.txt").toString();
 				for(int i=0;i<createUserPage1.reviewSubmittedCourse.size();i++){
 					String courseName = createUserPage1.reviewSubmittedCourse.get(i).getText();
@@ -378,6 +384,7 @@ public class CreatorUserPageObj extends BaseTest{
 						Assert.assertTrue(true, courseName+" Found: Submitted for Review");
 						System.out.println(courseName+"Course Found: Course Submitted for Review");
 						log.info(courseName+"Course Found: Course Submitted for Review");
+						ExtentTestManager.getTest().log(LogStatus.PASS, courseName+"Course Found: Course Submitted for Review");
 						break;
 					}
 					else
@@ -539,13 +546,17 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createUserPage.bookName);
 			String bookNumber = GenericFunctions.testDataIncrementer("./testData/bookNumbers.txt").toString();
 			createUserPage.bookName.sendKeys(objListOFTestDataForSunbird.get(2).getCourseName()+bookNumber);
+			
 			createUserPage.clickBookBoard.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectBookBoard);
 			createUserPage.selectBookBoard.click();
-			GenericFunctions.waitWebDriver(1500);
-			createUserPage.clickBookGrade.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.selectBookGrade);
-			createUserPage.selectBookGrade.click();
+			GenericFunctions.waitWebDriver(2000);
+			
+			createUserPage.clickBookGrade.get(1).click();
+			//GenericFunctions.waitForElementToAppear(createUserPage.selectBookGrade);
+			GenericFunctions.waitWebDriver(2000);
+			createUserPage.selectBookGrade.get(1).click();
+			
 			createUserPage.bookName.click();
 			GenericFunctions.waitWebDriver(1500);
 			createUserPage.clickBookSubject.click();
@@ -555,8 +566,9 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.clickBookMedium.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectBookMedium);
 			createUserPage.selectBookMedium.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.startCreating);
+			
 			GenericFunctions.waitWebDriver(1200);
+			GenericFunctions.waitForElementToAppear(createUserPage.startCreating);			
 			createUserPage.startCreating.click();
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
@@ -570,6 +582,7 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.bookTitle.clear();
 			createUserPage.bookTitle.sendKeys(objListOFTestDataForSunbird.get(2).getCourseName());
 			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitForElementToAppear(createUserPage.addResource);
 			createUserPage.addResource.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.findSelectActivities);
 			//createUserPage.selectResource.click();
@@ -620,9 +633,10 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createUserPage.selectBookBoard);
 			createUserPage.selectBookBoard.click();
 			GenericFunctions.waitWebDriver(2000);
-			createUserPage.clickBookGrade.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.selectBookGrade);
-			createUserPage.selectBookGrade.click();
+			createUserPage.clickBookGrade.get(1).click();
+			//GenericFunctions.waitForElementToAppear(createUserPage.selectBookGrade);
+			GenericFunctions.waitWebDriver(2000);
+			createUserPage.selectBookGrade.get(1).click();
 			//createUserPage.clickOnPopup.click();
 			GenericFunctions.waitWebDriver(2000);
 			createUserPage.clickBookSubject.click();
@@ -724,6 +738,7 @@ public class CreatorUserPageObj extends BaseTest{
 		String courseNumber="",searchCourseName="";
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to publish and search "+source);
+			GenericFunctions.waitWebDriver(3000);	
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitWebDriver(3000);	
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.publishCourseButton);
@@ -731,17 +746,21 @@ public class CreatorUserPageObj extends BaseTest{
 			for(int i=0;i<createUserPage.checkbox.size();i++){
 				createUserPage.checkbox.get(i).click();
 			}
-			GenericFunctions.waitWebDriver(1500);
+			
+			GenericFunctions.waitWebDriver(2500);
 			createUserPage.popupPublishButton.click();
 			GenericFunctions.waitWebDriver(3000);
-			driver.switchTo().defaultContent();
+			
+			//driver.switchTo().defaultContent();
+			
 			if(source.equalsIgnoreCase(COURSE))
 			{
 				GenericFunctions.refreshWebPage();
-				GenericFunctions.waitWebDriver(2500);
+				handlePopupOnLogin();
+				GenericFunctions.waitWebDriver(3000);
 				GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 				createUserPage.headerCourse.click();
-				GenericFunctions.waitWebDriver(2500);
+				GenericFunctions.waitWebDriver(3000);
 				courseNumber = GenericFunctions.readFromNotepad("./testData/courseNumbers.txt").toString();
 				GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
 				createUserPage.searchInput.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+courseNumber);
@@ -749,8 +768,11 @@ public class CreatorUserPageObj extends BaseTest{
 				GenericFunctions.waitWebDriver(2500);
 				searchCourseName = objListOFTestDataForSunbird.get(0).getCourseName()+courseNumber;
 			}
+			
 			else if(source.equalsIgnoreCase(BOOK))
 			{
+				GenericFunctions.refreshWebPage();
+				handlePopupOnLogin();
 				GenericFunctions.waitForElementToAppear(createUserPage.headerLibrary);
 				createUserPage.headerLibrary.click();
 				GenericFunctions.waitWebDriver(2500);
@@ -763,6 +785,7 @@ public class CreatorUserPageObj extends BaseTest{
 			}
 
 			//Added on Maintenance 06/09/2018
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(createUserPage.getCourseName);
 
 			assertOnSearchAfterPublish(searchCourseName);
@@ -785,11 +808,11 @@ public class CreatorUserPageObj extends BaseTest{
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate to workspace, search in Up for review and publish "+inputToSearch);
 			GenericFunctions.refreshWebPage();
+			handlePopupOnLogin();
 			objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			/*GenericFunctions.waitForElementToAppear(publicUserPage.headerProfile);
 			publicUserPage.headerProfile.click();*/
 			
-			goToProfilePage();
 			
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
@@ -880,8 +903,10 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createUserPage.popupPublishButton);
 			createUserPage.popupPublishButton.click();
 			System.out.println(inputToSearch+" Content published sucessfully");
+			ExtentTestManager.getTest().log(LogStatus.PASS,inputToSearch+" Content published sucessfully");
 			GenericFunctions.waitWebDriver(3000);
 			GenericFunctions.refreshWebPage();
+			handlePopupOnLogin();
 			GenericFunctions.waitWebDriver(3000);
 		}
 		catch(Exception e)
@@ -1334,10 +1359,11 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createUserPage.selectBookBoard);
 			createUserPage.selectBookBoard.click();			
 			GenericFunctions.waitWebDriver(1500);
-			createUserPage.clickBookGrade.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.selectBookGrade);
+			createUserPage.clickBookGrade.get(1).click();
+			//GenericFunctions.waitForElementToAppear(createUserPage.selectBookGrade);
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitWebDriver(1500);
-			createUserPage.selectBookGrade.click();
+			createUserPage.selectBookGrade.get(1).click();
 			GenericFunctions.waitWebDriver(1500);
 			createUserPage.clickBookSubject.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectBookSubject);
@@ -1711,6 +1737,7 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.published.click();
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.refreshWebPage();
+			handlePopupOnLogin();
 			GenericFunctions.waitForElementToAppear(createUserPage.getCourseName);
 
 			String courseName= createUserPage.getCourseName.getText();
@@ -1792,6 +1819,7 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.editorCloseIcon.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.profileIconDropdown);
 			GenericFunctions.refreshWebPage();
+			handlePopupOnLogin();
 			GenericFunctions.waitWebDriver(3000);
 		}
 		catch(Exception e)
@@ -1861,13 +1889,16 @@ public class CreatorUserPageObj extends BaseTest{
 
 			/*GenericFunctions.waitForElementToAppear(publicUserPage.headerProfile);
 			publicUserPage.headerProfile.click();*/
-			goToProfilePage();
+			//handlePopupOnLogin();
+			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
 			createUserPage.workSpace.click();
+			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitForElementToAppear(createUserPage.upForReview);
 			createUserPage.upForReview.click();
 
 			//To search for an upload and reject it which is already existing in the list
-
+			GenericFunctions.waitForElementToAppear(createUserPage.searchForReview);
 			if(uploadType.equalsIgnoreCase("epub"))
 			{
 				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(4).getCourseName()+" "+EPUB);
@@ -1895,9 +1926,11 @@ public class CreatorUserPageObj extends BaseTest{
 				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(4).getCourseName()+" "+H5P);
 			}
 			GenericFunctions.waitWebDriver(3000);
+			GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
 			createUserPage.searchedContentForPublish.click();
+			GenericFunctions.waitWebDriver(3000);
 			GenericFunctions.waitForElementToAppear(createUserPage.clickRequestChanges);
-			GenericFunctions.scrollToElement(createUserPage.clickRequestChanges);
+			//GenericFunctions.scrollToElement(createUserPage.clickRequestChanges);
 			GenericFunctions.waitWebDriver(2500);
 			//Giving reasons 
 			createUserPage.clickRequestChanges.click();
@@ -1912,8 +1945,10 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.requestChangesButton.click();
 			GenericFunctions.waitWebDriver(3000);
 			GenericFunctions.refreshWebPage();
+			handlePopupOnLogin();
 			GenericFunctions.waitWebDriver(3000);
 			System.out.println(uploadType+" rejected succesfully ");
+			ExtentTestManager.getTest().log(LogStatus.PASS, uploadType+" rejected succesfully ");
 		}
 		catch(Exception e)
 		{
@@ -1932,7 +1967,7 @@ public class CreatorUserPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify that only books are present to the user");
 			/*GenericFunctions.waitForElementToAppear(publicUserPage.headerProfile);
 			publicUserPage.headerProfile.click();*/
-			goToProfilePage();
+			handlePopupOnLogin();
 			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
 			createUserPage.workSpace.click();
 			String actual=createUserPage.contentType.getText();
@@ -1968,7 +2003,7 @@ public class CreatorUserPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify search with filters");
 			/*GenericFunctions.waitForElementToAppear(publicUserPage.headerProfile);
 			publicUserPage.headerProfile.click();*/
-			goToProfilePage();
+			handlePopupOnLogin();
 			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
 			createUserPage.workSpace.click();
 			GenericFunctions.waitWebDriver(2000);
@@ -2029,7 +2064,7 @@ public class CreatorUserPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate to profile and search "+userData);
 			/*GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
 			createUserPage.headerProfile.click();*/
-			goToProfilePage();
+			handlePopupOnLogin();
 			GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.searchInput.click();
@@ -2053,7 +2088,7 @@ public class CreatorUserPageObj extends BaseTest{
 			//createUserPage.dropDown.click();
 			/*GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
 			createUserPage.headerProfile.click();*/
-			goToProfilePage();
+			handlePopupOnLogin();
 			GenericFunctions.waitForElementToAppear(createMentorPage.searchDropDown);
 			createMentorPage.searchDropDown.click();
 			GenericFunctions.waitWebDriver(1000);
@@ -2080,7 +2115,7 @@ public class CreatorUserPageObj extends BaseTest{
 			//createUserPage.dropDown.click();
 			/*GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
 			createUserPage.headerProfile.click();*/
-			goToProfilePage();
+			handlePopupOnLogin();
 			GenericFunctions.waitWebDriver(1000);
 			createMentorPage.searchDropDown.click();
 			GenericFunctions.waitWebDriver(1000);
@@ -2111,7 +2146,7 @@ public class CreatorUserPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify no book option is present to the user");
 			/*GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
 			createUserPage.headerProfile.click();*/
-			goToProfilePage();
+			handlePopupOnLogin();
 			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
 			createUserPage.workSpace.click();
@@ -2251,6 +2286,7 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.yesButtonPopup.click();
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.refreshWebPage();
+			handlePopupOnLogin();
 			GenericFunctions.waitForElementToAppear(uploadOrgPage.dropdown);
 		
 		}
@@ -2262,7 +2298,29 @@ public class CreatorUserPageObj extends BaseTest{
 		Assert.fail("Failed to delete Items ");
 	 }
 	}
+	
+	
 	public void goToProfilePage()
+	{
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Navigate to Profile Page");
+			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitForElementToAppear(createUserPage.profileIconDropdown);
+			createUserPage.profileIconDropdown.click();
+			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitForElementToAppear(createUserPage.profileIconProfile);
+			createUserPage.profileIconProfile.click();
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Could not navigate to Profile Page");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message: "+e.getLocalizedMessage());
+			Assert.fail("Could not navigate to Profile Page");
+		}
+	}
+
+	public void handlePopupOnLogin()
 	{
 		/*try
 		{
@@ -2282,8 +2340,8 @@ public class CreatorUserPageObj extends BaseTest{
 		}*/
 		try
 		{
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is tring to close the popup after User login");
-			GenericFunctions.waitWebDriver(1000);
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is tring to handle the popup ");
+			GenericFunctions.waitWebDriver(4000);
 			GenericFunctions.waitForElementToAppear(createUserPage.closeIcon);
 			createUserPage.closeIcon.click();
 		}
@@ -2293,5 +2351,4 @@ public class CreatorUserPageObj extends BaseTest{
 			System.out.println("Exception occured " +e.getLocalizedMessage());
 		}
 	}
-
 }

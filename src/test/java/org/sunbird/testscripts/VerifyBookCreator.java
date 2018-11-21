@@ -23,7 +23,7 @@ public class VerifyBookCreator extends BaseTest
 		
 		//Step 1:Login as Book creator
 		signupObj.userLogin(BOOKCREATOR);
-		
+			
 		//Step 2,3 and 4:Navigate to workspace and verify only book option is present 
 		creatorUserPageObj.verifyOnlyBookOption();
 		

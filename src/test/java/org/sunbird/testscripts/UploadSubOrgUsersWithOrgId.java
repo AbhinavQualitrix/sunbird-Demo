@@ -21,11 +21,15 @@ public class UploadSubOrgUsersWithOrgId extends BaseTest
 	{
 		//Step1: Admin Login
 		SignUpPageObj adminLogin = new SignUpPageObj();
+		UploadOrgObj adminUpload= new UploadOrgObj();
 		adminLogin.userLogin(ADMIN);
 
+		//Handle the popup 
+		adminUpload.handlePopupOnLogin();
+		
 		//Step2,3,4 and 5:Go to profile and 
 		//Upload Users for Sub Org with sub Org Id
-		UploadOrgObj adminUpload= new UploadOrgObj();
+		
 		adminUpload.uploadRootAndSubOrgUserWithOrgId(UPLOAD_USERS_SUB_ORG);
 		
 		

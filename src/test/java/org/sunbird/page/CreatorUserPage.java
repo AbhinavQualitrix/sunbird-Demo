@@ -223,12 +223,13 @@ public class CreatorUserPage {
 	public WebElement selectBookBoard;
 
 	@FindBy(xpath="//sui-multi-select[@id='gradeLevel']")
-	public WebElement clickBookGrade;
+	public List<WebElement> clickBookGrade;
 
 
 	//OCT 10 - v1.11.0
+	//@FindBy(xpath="(//sui-multi-select[@id='gradeLevel']/..//sui-select-option[@class='item selected'])[2]")
 	@FindBy(xpath="//sui-multi-select[@id='gradeLevel']/..//sui-select-option[@class='item selected']")
-	public WebElement selectBookGrade;
+	public List<WebElement> selectBookGrade;
 
 	@FindBy(xpath="//sui-select[@id='subject']")
 	public WebElement clickBookSubject;
@@ -325,9 +326,11 @@ public class CreatorUserPage {
 	@FindBy(xpath="//input[@class='listItem']")
 	public List<WebElement> selectAllCB; 
 
+	//Nov 21
 	//@FindBy(xpath="//button[@class='ui blue button ng-binding']")
 	//@FindBy(xpath="//button[contains(text(),'PUBLISH')]")
-	@FindBy(xpath="//div[@class='row margin-top-10']//button[contains(text(),'PUBLISH')]")
+	//@FindBy(xpath="//div[@class='row margin-top-10']//button[contains(text(),'PUBLISH')]")
+	@FindBy(xpath="//body//button[contains(text(),'PUBLISH')]")
 	public WebElement publishButton;
 
 
@@ -368,7 +371,8 @@ public class CreatorUserPage {
 	public List<WebElement> checkbox;
 
 	//Nov 9th
-	@FindBy(xpath="//span[@class='sliderCardHeading text-cencapitalize']")
+	@FindBy(xpath="//div[@class='sbCard mt-20 mr-30']/div[@class='sub-header']/h4")
+	//@FindBy(xpath="//span[@class='sliderCardHeading text-cencapitalize']")
 	//@FindBy(xpath="//span[@class='sliderCardHeading text-cencapitalize']")
 	public List<WebElement> searchPublishedCourses;
 
@@ -485,7 +489,8 @@ public class CreatorUserPage {
 	@FindBy(xpath="//a[contains(text(),'Drafts')]")
 	public WebElement drafts;
 
-	@FindBy(xpath="//span[@class='sliderCardHeading text-cencapitalize']")
+	@FindBy(xpath="//div[@class='sbCard mt-20 mr-30']/div[@class='sub-header']/h4")
+	//@FindBy(xpath="//span[@class='sliderCardHeading text-cencapitalize']")
 	public WebElement getCourseName;
 
 	@FindBy(xpath="//img[@class='resourceMetaImage ']")

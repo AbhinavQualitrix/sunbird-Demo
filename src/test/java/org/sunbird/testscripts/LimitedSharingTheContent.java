@@ -22,6 +22,7 @@ public class LimitedSharingTheContent extends BaseTest
 	@Test(priority=14, groups={"Creator Group"})
 	public void limitedSharingTheContent() throws Exception
 	{
+		//MT blocked
 		List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 		
@@ -29,59 +30,64 @@ public class LimitedSharingTheContent extends BaseTest
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 		
 		//Step 1:Login as Content creator
-		signupObj.userLogin(BOOKCREATOR);
-		
+		signupObj.userLogin(CREATOR);
+			
 		//Step 2:Navigate to workspace and create all the content types
 		creatorUserPageObj.navigateToWorkspace(BOOK);
 		
-		//Step 3:Create content type -BOOK
+		//Step 3e:Create content type -BOOK
 		creatorUserPageObj.createBook(objListOFTestDataForSunbird);
 		
-		//Step 4:Send BOOK for Limited Sharing
+		//Step 3eSend BOOK for Limited Sharing
 		creatorUserPageObj.limitedSharing("Book");
 		
-		//Step 5: Creator Logout
-		signupObj.userLogout();
-		
-		//Step 6:Login as Content creator
-		signupObj.userLogin(CREATOR);
-		
-		//Step 7:Navigate to workspace to Create a course 
+		//Step 3a:Navigate to workspace to Create a course 
 		creatorUserPageObj.navigateToWorkspace(COURSE);
 		
-		//Step 8:create content type-COURSE
+		//Step 3a:create content type-COURSE
 		creatorUserPageObj.createCourse(objListOFTestDataForSunbird);
 		
-		//Step 9:Send COURSE for Limited Sharing
+		//Step 3a:Send COURSE for Limited Sharing
 		creatorUserPageObj.limitedSharing("course");
 		
-		//Step 10:Navigate to workspace to Create a LESSON PLAN
+		
+			
+		//Step 3c:Navigate to workspace to Create a LESSON PLAN
 		//AND
-		//Step 11:Create content type-Lesson plan
+		//Step 3c:Create content type-Lesson plan
 		creatorUserPageObj.createLessonPlan();
 		
-		//Step 12:Send the LESSON PLAN for Limited sharing
+		//Step 3c:Send the LESSON PLAN for Limited sharing
 		creatorUserPageObj.limitedSharing("lesson plan");
 		
-		//Step 13:Navigate to workspace to create a Resource
+		
+		//Step 3d:Navigate to workspace to create a Resource
 		creatorUserPageObj.navigateToWorkspace(RESOURCE);
 		
-		//Step 14:Create content type-Resource
-		creatorUserPageObj.createResource(objListOFTestDataForSunbird);
+		//Step 3d:Create content type-Resource
+		//creatorUserPageObj.createResource(objListOFTestDataForSunbird);
+		creatorUserPageObj.resourceName();
 		
-		//Step 15:Send the RESOURCE for Limited sharing
+		//Step 3e: Add Audio for the resource.
+		creatorUserPageObj.addAudio();
+		
+		//creatorUserPageObj.saveAndSendResouceForReview();
+		//creatorUserPageObj.sendResourceForReview();
+		
+		//Step 3f:Send the RESOURCE for Limited sharing
 		creatorUserPageObj.limitedSharing("resource");
 		
-		//Step 16:Navigate to workspace to Upload Content-
+		
+		//Step 3g:Navigate to workspace to Upload Content-
 		creatorUserPageObj.navigateToWorkspace(UPLOADCONTENT);
 		
-		//Step 17:Create content type-EPUB
+		//Step 3g:Create content type-EPUB
 		creatorUserPageObj.uploadContentLimitedSharing(EPUB);
 		
-		//Step 18:Send the EPUB content for Limited sharing
+		//Step 3g:Send the EPUB content for Limited sharing
 		creatorUserPageObj.limitedSharing("upload");
 		
-		//Step 19: Creator Logout
+		//Creator Logout
 		signupObj.userLogout();
 		
 	}

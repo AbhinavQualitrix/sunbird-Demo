@@ -16,6 +16,7 @@ import org.testng.annotations.Test;
 
 public class UploadH5pContent  extends BaseTest
 {
+	//MT done
 	@Test(priority=9, groups={"Creator Group"})
 	public void uploadH5pContent() throws Exception
 	{
@@ -25,8 +26,12 @@ public class UploadH5pContent  extends BaseTest
 		//Step 1:Login as content creator
 		signupObj.userLogin(CREATOR);
 		
+		//Handle the popup 
+		creatorUserPageObj.handlePopupOnLogin();
+		
 		//Step 2,3 and 4:Navigate to workspace and upload content type-H5P
 		creatorUserPageObj.uploadContentMp4(H5P);
+		
 		creatorUserPageObj.uploadContentMp4(H5P);
 		
 		//Logout as creator
@@ -44,18 +49,6 @@ public class UploadH5pContent  extends BaseTest
 		creatorUserPageObj.rejectTheUploads(H5P);
 		
 		//Logout as Reviewer
-		signupObj.userLogout();
-		
-		//Step12: Login as Creator
-		signupObj.userLogin(CREATOR);
-
-		//Step13: Navigate to WorkSpace
-		creatorUserPageObj.navigateToWorkspace(PUBLISHED);
-
-		//Step14: Delete the Created item
-		creatorUserPageObj.deleteCreatedItems();
-
-		//Step15: Logout as Creator
 		signupObj.userLogout();
 	}
 

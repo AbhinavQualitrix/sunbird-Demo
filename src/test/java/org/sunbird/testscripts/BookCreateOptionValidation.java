@@ -16,21 +16,23 @@ import org.testng.annotations.Test;
 
 public class BookCreateOptionValidation extends BaseTest
 {
+	//MT blocked
+	
 	@Test(priority=19, groups={"Creator Group"})
 	public void bookCreateOptionValidation() throws Exception
 	{
 		SignUpPageObj signupObj = new SignUpPageObj();
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 
-		//Step 1:Login with content creator credentials.
+		//Step 1:Login with ANY user who dont have  credentials.
 		signupObj.userLogin(MENTOR);
 
 		//Step 2:Go to workspace
-		// Click on create
-		// Verify book option is not displaying.
+		//3. Click on create
+		//4. Verify book option is not displaying.
 		creatorUserPageObj.verifyNoBookOptionPresent();
 		
-		//Step3: Logout as Content creator
+		//Logout as Content creator
 		signupObj.userLogout();
 		
 		

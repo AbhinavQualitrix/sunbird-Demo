@@ -25,8 +25,12 @@ public class UploadWebmContent extends BaseTest
 		//Step 1 :Login as content creator
 		signupObj.userLogin(CREATOR);
 		
+		//Handle the popup 
+		creatorUserPageObj.handlePopupOnLogin();
+		
 		//Step 2,3 and 4:Navigate to workspace and upload content of type "webm"
 		creatorUserPageObj.uploadContentMp4(WEBM);
+		
 		creatorUserPageObj.uploadContentMp4(WEBM);
 		//Logout as creator
 		signupObj.userLogout();
@@ -43,18 +47,6 @@ public class UploadWebmContent extends BaseTest
 		creatorUserPageObj.rejectTheUploads(WEBM);
 		
 		//Logout as reviewer
-		signupObj.userLogout();
-		
-		//Step 8: Login as Creator
-		signupObj.userLogin(CREATOR);
-
-		//Step 9: Navigate to WorkSpace
-		creatorUserPageObj.navigateToWorkspace(PUBLISHED);
-
-		//Step 10: Delete the Created item
-		creatorUserPageObj.deleteCreatedItems();
-
-		//Step 11: Logout as Creator
 		signupObj.userLogout();
 	}
 

@@ -24,6 +24,9 @@ public class AdminCreationAndDownloadCsv extends BaseTest
 		//Step1: Login as Admin
 		adminLogin.userLogin(ADMIN);
 
+		//Handle the popup 
+		adminUpload.handlePopupOnLogin();
+		
 		//Step 2,3,4 and 5: Click on admin dashboard.
 		//Apply filter, check stats 
 		//Download the CSV

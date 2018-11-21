@@ -52,9 +52,11 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.sunbird.page.CreatorUserPage;
 import org.sunbird.pageobjects.CreatorUserPageObj;
 import org.sunbird.startup.BaseTest;
 import org.testng.Assert;
@@ -75,6 +77,7 @@ public class GenericFunctions extends BaseTest{
 	public Select select;
 	public Action action;
 
+	CreatorUserPage createUserPage=PageFactory.initElements(driver, CreatorUserPage.class);
 	static Logger log = Logger.getLogger(GenericFunctions.class.getName());
 	
 	public static void selectValueFromDropdown(WebDriver driver,String locator, String text)
@@ -652,6 +655,74 @@ public class GenericFunctions extends BaseTest{
 		catch(Exception e)
 		{
 			System.out.println("Method: waitWebDriver :: exception =  " + e.getMessage());
+		}
+	}
+	/**
+	 * Purpose: navigateToWorkspaceFeatures method is used to Navigate to Workspace and Access the parameterized variable
+	 */
+	public void navigateToWorkspaceFeatures(String workspaceVariable)
+	{
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Navigate to Workspace and Access :"+workspaceVariable);
+			try
+			{
+				ExtentTestManager.getTest().log(LogStatus.INFO, "User is tring to close the popup after User login");
+				GenericFunctions.waitWebDriver(1000);
+				GenericFunctions.waitForElementToAppear(createUserPage.closeIcon);
+				createUserPage.closeIcon.click();
+			}
+			catch(Exception e)
+			{
+				ExtentTestManager.getTest().log(LogStatus.INFO, "Could not find the-Enter details to get relevant content Popup after login");
+				System.out.println("Exception occured " +e.getLocalizedMessage());
+			}
+			/*
+			GenericFunctions.waitForElementToAppear(createUserPage.profileIconDropdown);
+			createUserPage.profileIconDropdown.click();
+			GenericFunctions.waitForElementToAppear(createUserPage.profileIconProfile);
+			createUserPage.profileIconProfile.click();
+			*/
+			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
+			createUserPage.workSpace.click();
+			GenericFunctions.waitWebDriver(1000);
+			if(workspaceVariable.equalsIgnoreCase("All My Content"))
+			{
+				createUserPage.allMyContent.click();
+			}
+			else if (workspaceVariable.equalsIgnoreCase("Drafts"))
+			{
+				createUserPage.drafts.click();
+			}
+			else if(workspaceVariable.equalsIgnoreCase("Review Submissions"))
+			{
+				createUserPage.reviewSubmission.click();
+			}
+			else if(workspaceVariable.equalsIgnoreCase("Published"))
+			{
+				createUserPage.published.click();
+			}
+			else if(workspaceVariable.equalsIgnoreCase("All Uploads"))
+			{
+				createUserPage.allUploads.click();
+			}
+			else if(workspaceVariable.equalsIgnoreCase("Up For Review"))
+			{
+				createUserPage.upForReview.click();
+			}
+			else if(workspaceVariable.equalsIgnoreCase("Limited Publishing"))
+			{
+				createUserPage.limitedPublishing.click();
+			}
+
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Could not access the features of Workspace");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message: "+e.getLocalizedMessage());
+			Assert.fail("Could not access the features of Workspace");
+
 		}
 	}
 }
