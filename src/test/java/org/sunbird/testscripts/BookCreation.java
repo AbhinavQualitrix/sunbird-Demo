@@ -32,12 +32,9 @@ public class BookCreation extends BaseTest
 		//Step 1: Login as Creator
 		SignUpPageObj signupObj = new SignUpPageObj();
 		signupObj.userLogin(CREATOR);
-		
-		//Handle the popup after login
-		creatorUserPageObj.handlePopupOnLogin();
+	
 		
 		//Step 2:Go to workspace , create a book,submit for reviewer
-		
 		creatorUserPageObj.navigateToWorkspace(BOOK);
 
 		//Step 3: Create new Book
@@ -56,8 +53,6 @@ public class BookCreation extends BaseTest
 		//Step 7: Login as reviewer
 		signupObj.userLogin(BOOKREVIEWER);
 		
-		//Handle the popup after login
-		creatorUserPageObj.handlePopupOnLogin();
 		
 		//Step 8:Check in Up for Review ,publish and reject a Book
 		creatorUserPageObj.searchInUpForReview(BOOK,objListOFTestDataForSunbird);
