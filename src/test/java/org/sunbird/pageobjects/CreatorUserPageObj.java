@@ -230,6 +230,7 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.refreshWebPage();
 			//handlePopupOnLogin();
 			Assert.assertTrue(true);
+			ExtentTestManager.getTest().log(LogStatus.PASS, "Course is sucessfully sent for review ");
 		}
 		catch(Exception e)
 		{
@@ -2353,5 +2354,28 @@ public class CreatorUserPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Could not find the-Enter details to get relevant content Popup after login");
 			System.out.println("Exception occured " +e.getLocalizedMessage());
 		}
+	}
+	
+	public void tryForWorkSpace()
+	{
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Trying for the visibility of Workspace");
+			 boolean state = GenericFunctions.waitForElementToAppear(createUserPage.workSpace).isDisplayed();			
+			if(state==true)
+			{
+				handlePopupOnLogin();
+			}
+			else if(state==false)
+			{
+				GenericFunctions.refreshWebPage();
+			}
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Could not find the-Enter details to get relevant content Popup after login");
+			System.out.println("Exception occured " +e.getLocalizedMessage());
+		}
+		
 	}
 }

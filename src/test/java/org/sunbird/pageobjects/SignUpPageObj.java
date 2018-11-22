@@ -140,7 +140,8 @@ public class SignUpPageObj extends BaseTest
                 }
                 //orgUploadPage.clickLogin.click();
                 orgUploadPage.clickLogin1.click();
-                createUserPageObj.handlePopupOnLogin();
+                createUserPageObj.tryForWorkSpace();
+                //createUserPageObj.handlePopupOnLogin();
           }
           catch(Exception e)
           {
