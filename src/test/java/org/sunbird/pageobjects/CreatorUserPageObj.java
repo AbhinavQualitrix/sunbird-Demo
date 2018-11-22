@@ -244,7 +244,6 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1500);
 			createUserPage.sendForReview.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.clickAppIcon);
-
 			//Added on Maintenace 12/09/2018
 			createUserPage.clickAppIcon.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.searchUploadImage);
@@ -268,10 +267,9 @@ public class CreatorUserPageObj extends BaseTest{
 			System.out.println("Content updated successfully");
 			GenericFunctions.waitWebDriver(2500);
 			//createUserPage.editorCloseIcon.click();
-			GenericFunctions.waitWebDriver(2500);
-			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitWebDriver(4500);
 			GenericFunctions.refreshWebPage();
-			handlePopupOnLogin();
+		
 		}
 		catch(Exception e)
 		{

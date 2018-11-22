@@ -6,319 +6,73 @@
   </listeners>
   <test name="regressiontest-P1(failed)">
     <classes>
-      <class name="org.sunbird.testscripts.SendTheCourseForReview">
-        <methods>
-          <include name="sendTheCourseForReview"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.SendTheCourseForReview -->
-      <class name="org.sunbird.testscripts.SkillEndorsement">
-        <methods>
-          <include name="skillEndorsement"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.SkillEndorsement -->
-      <class name="org.sunbird.testscripts.UploadSubOrg">
-        <methods>
-          <include name="uploadSubOrg"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.UploadSubOrg -->
-      <class name="org.sunbird.testscripts.CourseCreation">
-        <methods>
-          <include name="courseCreation"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.CourseCreation -->
-      <class name="org.sunbird.testscripts.ResourceCreation">
-        <methods>
-          <include name="resourceCreation"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.ResourceCreation -->
-      <class name="org.sunbird.testscripts.UploadRootOrg">
-        <methods>
-          <include name="uploadRootOrg"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.UploadRootOrg -->
-      <class name="org.sunbird.testscripts.CheckSuborgMentorInvitingOrgMember">
-        <methods>
-          <include name="suborgMentorInvitingOrgMember"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.CheckSuborgMentorInvitingOrgMember -->
-      <class name="org.sunbird.testscripts.CollectionCreation">
-        <methods>
-          <include name="collectionCreation"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.CollectionCreation -->
-      <class name="org.sunbird.testscripts.Create_Verify_DeleteAnnouncement">
-        <methods>
-          <include name="create_Verify_DeleteAnnouncement"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.Create_Verify_DeleteAnnouncement -->
-      <class name="org.sunbird.testscripts.CheckForAuthenticUserInMentor">
-        <methods>
-          <include name="checkForAuthenticUserInMentor"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.CheckForAuthenticUserInMentor -->
-      <class name="org.sunbird.testscripts.UpdateBatchAsInvitedMentor">
-        <methods>
-          <include name="updateBatchAsInvitedMember"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.UpdateBatchAsInvitedMentor -->
-      <class name="org.sunbird.testscripts.UnlinkDailcode">
-        <methods>
-          <include name="unlinkDailcode"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.UnlinkDailcode -->
-      <class name="org.sunbird.testscripts.CreateAnnouncementWithAttachment">
-        <methods>
-          <include name="createAnnouncementWithAttachment"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.CreateAnnouncementWithAttachment -->
-      <class name="org.sunbird.testscripts.BookCreateOptionValidation">
-        <methods>
-          <include name="bookCreateOptionValidation"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.BookCreateOptionValidation -->
-      <class name="org.sunbird.testscripts.ResendAnnouncement">
-        <methods>
-          <include name="resendAnnouncement"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.ResendAnnouncement -->
-      <class name="org.sunbird.testscripts.ResendAnnouncementAndVerifyAnnouncement">
-        <methods>
-          <include name="resendAnnouncementAndVerifyAnnouncement"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.ResendAnnouncementAndVerifyAnnouncement -->
-      <class name="org.sunbird.testscripts.VerifyPublishedBucket">
-        <methods>
-          <include name="verifyPublishedBucket"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.VerifyPublishedBucket -->
-      <class name="org.sunbird.testscripts.UploadMp4Content">
-        <methods>
-          <include name="uploadMp4Content"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.UploadMp4Content -->
-      <class name="org.sunbird.testscripts.DialCodeLink">
-        <methods>
-          <include name="dialCodeLink"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.DialCodeLink -->
-      <class name="org.sunbird.testscripts.SubOrgUsersProviderAndExtId">
-        <methods>
-          <include name="subOrgUsersProviderAndExtId"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.SubOrgUsersProviderAndExtId -->
-      <class name="org.sunbird.testscripts.SearchUsers">
-        <methods>
-          <include name="searchUsers"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.SearchUsers -->
-      <class name="org.sunbird.testscripts.AdminCreationAndDownloadCsv">
-        <methods>
-          <include name="adminCreationAndDownloadCsv"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.AdminCreationAndDownloadCsv -->
-      <class name="org.sunbird.testscripts.AdminConsumptionAndDownloadCsv">
-        <methods>
-          <include name="adminConsumptionAndDownloadCsv"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.AdminConsumptionAndDownloadCsv -->
-      <class name="org.sunbird.testscripts.CheckCourseStatAsMentor">
-        <methods>
-          <include name="checkCourseStatAsMentor"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.CheckCourseStatAsMentor -->
-      <class name="org.sunbird.testscripts.CheckUpForReviewAsFlagReviewer">
-        <methods>
-          <include name="checkUpForReviewAsFlagReviewer"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.CheckUpForReviewAsFlagReviewer -->
-      <class name="org.sunbird.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor">
-        <methods>
-          <include name="consumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor -->
-      <class name="org.sunbird.testscripts.UploadH5pContent">
-        <methods>
-          <include name="uploadH5pContent"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.UploadH5pContent -->
-      <class name="org.sunbird.testscripts.VerifyElementsInAdminDashboard">
-        <methods>
-          <include name="verifyElementsInAdminDashboard"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.VerifyElementsInAdminDashboard -->
-      <class name="org.sunbird.testscripts.NavigateToMyActivityInDropdown">
-        <methods>
-          <include name="navigateToMyActivityInDropdown"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.NavigateToMyActivityInDropdown -->
-      <class name="org.sunbird.testscripts.UploadSubOrgUsers">
-        <methods>
-          <include name="uploadSubOrgUsers"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.UploadSubOrgUsers -->
-      <class name="org.sunbird.testscripts.SearchOrgsAsMentor">
-        <methods>
-          <include name="searchOrgsAsMentor"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.SearchOrgsAsMentor -->
-      <class name="org.sunbird.testscripts.UploadHtmlContent">
-        <methods>
-          <include name="uploadHtmlContent"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.UploadHtmlContent -->
-      <class name="org.sunbird.testscripts.ConsumeCourseByInvitedMember">
-        <methods>
-          <include name="consumeCourseByInvitedMember"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.ConsumeCourseByInvitedMember -->
-      <class name="org.sunbird.testscripts.SearchInLibrary">
-        <methods>
-          <include name="librarySearch"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.SearchInLibrary -->
-      <class name="org.sunbird.testscripts.NavigateToAnnouncementDashboard">
-        <methods>
-          <include name="navigateToAnnouncementDashboard"/>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.NavigateToAnnouncementDashboard -->
-      <class name="org.sunbird.testscripts.VerifyTheBookAvailableForReview">
-        <methods>
-          <include name="verifyTheBookAvailableForReview"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.VerifyTheBookAvailableForReview -->
-      <class name="org.sunbird.testscripts.ConfirmInstructionReceivedInforgotPassword">
-        <methods>
-          <include name="confirmInstructionReceivedInforgotPassword"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.ConfirmInstructionReceivedInforgotPassword -->
-      <class name="org.sunbird.testscripts.CheckForDownloadButtonAvailabilityForUserInProfile">
-        <methods>
-          <include name="checkForDownloadButtonAvailabilityForUserInProfile"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.CheckForDownloadButtonAvailabilityForUserInProfile -->
-      <class name="org.sunbird.testscripts.CheckAvailabilityOfCourseForInvitedMember">
-        <methods>
-          <include name="checkAvailabilityOfCourseForInvitedMember"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.CheckAvailabilityOfCourseForInvitedMember -->
-      <class name="org.sunbird.testscripts.CheckInReviewSubmission">
-        <methods>
-          <include name="checkInReviewSubmission"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.CheckInReviewSubmission -->
-      <class name="org.sunbird.testscripts.EditContentAndSendForReview">
-        <methods>
-          <include name="editContentAndSendForReview"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.EditContentAndSendForReview -->
-      <class name="org.sunbird.testscripts.EnrollToCourseInOpenBatch">
-        <methods>
-          <include name="enrollToCourseInOpenBatch"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.EnrollToCourseInOpenBatch -->
-      <class name="org.sunbird.testscripts.UploadEpubContent">
-        <methods>
-          <include name="uploadEpubContent"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.UploadEpubContent -->
-      <class name="org.sunbird.testscripts.UploadYoutubeContent">
-        <methods>
-          <include name="uploadYoutubeContent"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.UploadYoutubeContent -->
-      <class name="org.sunbird.testscripts.VerifyBookCreator">
-        <methods>
-          <include name="verifyBookCreation"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.VerifyBookCreator -->
-      <class name="org.sunbird.testscripts.RootUsersProviderAndExtID">
-        <methods>
-          <include name="rootUsersProviderAndExtID"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.RootUsersProviderAndExtID -->
       <class name="org.sunbird.testscripts.SearchAndDownloadOrgFile">
         <methods>
           <include name="searchAndDownloadOrgFile"/>
         </methods>
       </class> <!-- org.sunbird.testscripts.SearchAndDownloadOrgFile -->
-      <class name="org.sunbird.testscripts.SearchCourseUsingFilter">
+      <class name="org.sunbird.testscripts.CheckForAuthenticUserInMentor">
         <methods>
-          <include name="searchCourseUsingFilter"/>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
+          <include name="checkForAuthenticUserInMentor"/>
         </methods>
-      </class> <!-- org.sunbird.testscripts.SearchCourseUsingFilter -->
-      <class name="org.sunbird.testscripts.UpdateProfilePhoto">
+      </class> <!-- org.sunbird.testscripts.CheckForAuthenticUserInMentor -->
+      <class name="org.sunbird.testscripts.ConsumeCourseByInvitedMember">
         <methods>
-          <include name="updateProfilePhoto"/>
+          <include name="consumeCourseByInvitedMember"/>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
         </methods>
-      </class> <!-- org.sunbird.testscripts.UpdateProfilePhoto -->
-      <class name="org.sunbird.testscripts.ProfileInfoUpdate">
+      </class> <!-- org.sunbird.testscripts.ConsumeCourseByInvitedMember -->
+      <class name="org.sunbird.testscripts.CheckSuborgMentorInvitingOrgMember">
         <methods>
-          <include name="profileInfoUpdate"/>
+          <include name="suborgMentorInvitingOrgMember"/>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
         </methods>
-      </class> <!-- org.sunbird.testscripts.ProfileInfoUpdate -->
-      <class name="org.sunbird.testscripts.ResendAnnouncementAndVerifyAsReciever">
+      </class> <!-- org.sunbird.testscripts.CheckSuborgMentorInvitingOrgMember -->
+      <class name="org.sunbird.testscripts.SearchOrgsAsMentor">
         <methods>
-          <include name="resendAnnouncementAndVerifyAsReciever"/>
+          <include name="closeApplication"/>
+          <include name="searchOrgsAsMentor"/>
+          <include name="openApplication"/>
         </methods>
-      </class> <!-- org.sunbird.testscripts.ResendAnnouncementAndVerifyAsReciever -->
-      <class name="org.sunbird.testscripts.OpenAnnouncement">
+      </class> <!-- org.sunbird.testscripts.SearchOrgsAsMentor -->
+      <class name="org.sunbird.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor">
         <methods>
-          <include name="openAnnouncement"/>
+          <include name="consumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
         </methods>
-      </class> <!-- org.sunbird.testscripts.OpenAnnouncement -->
-      <class name="org.sunbird.testscripts.SearchContentWithFiltersAsReviewer">
+      </class> <!-- org.sunbird.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor -->
+      <class name="org.sunbird.testscripts.UpdateBatchAsInvitedMentor">
         <methods>
-          <include name="searchContentWithFiltersAsReviewer"/>
+          <include name="updateBatchAsInvitedMember"/>
         </methods>
-      </class> <!-- org.sunbird.testscripts.SearchContentWithFiltersAsReviewer -->
-      <class name="org.sunbird.testscripts.LessonplanCreation">
+      </class> <!-- org.sunbird.testscripts.UpdateBatchAsInvitedMentor -->
+      <class name="org.sunbird.testscripts.CheckForDownloadButtonAvailabilityForUserInProfile">
         <methods>
-          <include name="lessonplanCreation"/>
+          <include name="checkForDownloadButtonAvailabilityForUserInProfile"/>
         </methods>
-      </class> <!-- org.sunbird.testscripts.LessonplanCreation -->
-      <class name="org.sunbird.testscripts.BookCreation">
+      </class> <!-- org.sunbird.testscripts.CheckForDownloadButtonAvailabilityForUserInProfile -->
+      <class name="org.sunbird.testscripts.CheckCourseStatAsMentor">
         <methods>
-          <include name="bookCreation"/>
+          <include name="checkCourseStatAsMentor"/>
         </methods>
-      </class> <!-- org.sunbird.testscripts.BookCreation -->
-      <class name="org.sunbird.testscripts.UploadWebmContent">
+      </class> <!-- org.sunbird.testscripts.CheckCourseStatAsMentor -->
+      <class name="org.sunbird.testscripts.CheckAvailabilityOfCourseForInvitedMember">
         <methods>
-          <include name="uploadWebmContent"/>
+          <include name="checkAvailabilityOfCourseForInvitedMember"/>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
         </methods>
-      </class> <!-- org.sunbird.testscripts.UploadWebmContent -->
-      <class name="org.sunbird.testscripts.LoginAndChangePassword">
+      </class> <!-- org.sunbird.testscripts.CheckAvailabilityOfCourseForInvitedMember -->
+      <class name="org.sunbird.testscripts.EnrollToCourseInOpenBatch">
         <methods>
-          <include name="loginAndChangePassword"/>
+          <include name="closeApplication"/>
+          <include name="enrollToCourseInOpenBatch"/>
+          <include name="openApplication"/>
         </methods>
-      </class> <!-- org.sunbird.testscripts.LoginAndChangePassword -->
-      <class name="org.sunbird.testscripts.SearchCourse">
-        <methods>
-          <include name="searchCourse"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.SearchCourse -->
-      <class name="org.sunbird.testscripts.VerifyHomePage">
-        <methods>
-          <include name="verifyHomePage"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.VerifyHomePage -->
-      <class name="org.sunbird.testscripts.UploadRootOrgUsers">
-        <methods>
-          <include name="uploadRootOrgUsers"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.UploadRootOrgUsers -->
-      <class name="org.sunbird.testscripts.SearchInLibraryUsingFilter">
-        <methods>
-          <include name="librarySearchUsingFilter"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.SearchInLibraryUsingFilter -->
-      <class name="org.sunbird.testscripts.LimitedSharingTheContent">
-        <methods>
-          <include name="limitedSharingTheContent"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.LimitedSharingTheContent -->
+      </class> <!-- org.sunbird.testscripts.EnrollToCourseInOpenBatch -->
     </classes>
   </test> <!-- regressiontest-P1(failed) -->
 </suite> <!-- Failed suite [Sunbird-Automation] -->
