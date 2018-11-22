@@ -670,6 +670,16 @@ public class CreatorUserPage {
 	 @FindBy(xpath="//a[@href='/workspace/content/limited-publish/1']")
 	 public WebElement limitedPublishing;
 	 
+	 //Nov 22
+	 @FindBy(xpath="//div[@class='cardImageText center aligned ']/span")
+	 public WebElement getContentInDrafts;
+	 
+	 //Nov 22
+	 @FindBy(xpath="//span[contains(text(),'View Details')]")
+	 public WebElement viewDetails;
+	 
+	 
+
 	 @FindBy(xpath="(//sui-select-option[@value='Organisations'])[2]")
 	 public WebElement organisationsInSearch;
 	 
@@ -691,6 +701,7 @@ public class CreatorUserPage {
 	 
 	 @FindBy(xpath="//button[contains(text(),'Close')]")
 	 public WebElement closeButtonMsg ;
+
 }
 
 

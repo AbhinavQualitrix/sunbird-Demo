@@ -20,7 +20,7 @@ import org.testng.annotations.Test;
 
 public class CheckInReviewSubmission extends BaseTest
 {
-	@Test(priority=15, groups={"Creator Group"}, invocationCount=2)
+	@Test(priority=15, groups={"Creator Group"})
 	public void checkInReviewSubmission() throws Exception
 	{
 		List <TestDataForSunbird> objListOFTestDataForSunbird= null ;

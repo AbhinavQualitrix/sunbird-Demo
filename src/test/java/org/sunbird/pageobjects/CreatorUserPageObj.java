@@ -770,7 +770,7 @@ public class CreatorUserPageObj extends BaseTest{
 			{
 				GenericFunctions.refreshWebPage();
 				//handlePopupOnLogin();
-				GenericFunctions.waitWebDriver(3000);
+				GenericFunctions.waitWebDriver(6000);
 				GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 				createUserPage.headerCourse.click();
 				GenericFunctions.waitWebDriver(3000);
@@ -786,6 +786,7 @@ public class CreatorUserPageObj extends BaseTest{
 			{
 				GenericFunctions.refreshWebPage();
 				//handlePopupOnLogin();
+				GenericFunctions.waitWebDriver(6000);
 				GenericFunctions.waitForElementToAppear(createUserPage.headerLibrary);
 				createUserPage.headerLibrary.click();
 				GenericFunctions.waitWebDriver(2500);
@@ -1560,9 +1561,10 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.drafts.click();
 			String courseToAssert = objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad("./testData/courseNumbers.txt").toString();
-			if(createUserPage.getCourseName.getText().equalsIgnoreCase(courseToAssert))
+			if(createUserPage.getContentInDrafts.getText().equalsIgnoreCase(courseToAssert))
 			{
-				createUserPage.getCourseName.click();
+				//createUserPage.getCourseName.click();
+				createUserPage.getContentInDrafts.click();
 			}
 			else
 			{
@@ -1710,20 +1712,41 @@ public class CreatorUserPageObj extends BaseTest{
 			String courseToAssert = objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad("./testData/courseNumbers.txt").toString();
 			System.out.println(courseToAssert);
 			GenericFunctions.waitWebDriver(3000);
-			if(createUserPage.getCourseName.getText().equalsIgnoreCase(courseToAssert))
+			if(createUserPage.getContentInDrafts.getText().equalsIgnoreCase(courseToAssert))
 			{
-				createUserPage.getCourseName.click();
+				//createUserPage.getCourseName.click();
+				createUserPage.getContentInDrafts.click();
 			}
 			else
 			{
 				System.out.println(courseToAssert +"Course is not found in Review Submission");
 			}
-			GenericFunctions.waitWebDriver(3000);
-			//createUserPage.getCourseName.click();
-			System.out.println("User does not have the Edit access");
-			GenericFunctions.waitWebDriver(3000);
+	
+			//createUserPage.getCourseName.click();						
+			
+			GenericFunctions.waitWebDriver(6000);
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
-			createUserPage.editorCloseIcon.click();
+			GenericFunctions.waitWebDriver(6000);
+			try
+			{
+			
+			if(createUserPage.viewDetails.isDisplayed())
+			{		
+				System.out.println(createUserPage.viewDetails.getText());
+				System.out.println(createUserPage.viewDetails.getText().length());
+				//Assert.assertEquals(createUserPage.viewDetails.getText(), " View Details ");
+				System.out.println("User does not have the Edit access");
+				
+				createUserPage.editorCloseIcon.click();
+				ExtentTestManager.getTest().log(LogStatus.PASS, "User does not have the Edit access and have only View Access");
+			}
+			}
+			catch(Exception e)
+			{
+				System.out.println("Exception Occured here"+e);
+				ExtentTestManager.getTest().log(LogStatus.FAIL, "EXCEPTION"+e.getLocalizedMessage());
+			}
+			
 		}
 		catch(Exception e)
 		{
@@ -1751,14 +1774,16 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.refreshWebPage();
 			//handlePopupOnLogin();
-			GenericFunctions.waitForElementToAppear(createUserPage.getCourseName);
+			GenericFunctions.waitForElementToAppear(createUserPage.getContentInDrafts);
 
-			String courseName= createUserPage.getCourseName.getText();
+			//String courseName= createUserPage.getCourseName.getText();
+			String courseName= createUserPage.getContentInDrafts.getText();
 			System.out.println(courseName);
 			System.out.println(objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad("./testData/courseNumbers.txt").toString());
 			if(courseName.equalsIgnoreCase(objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad("./testData/courseNumbers.txt").toString()))
 			{
 				System.out.println("Course: "+courseName+" is found in published bucket");
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Course: "+courseName+" is found in published bucket");
 			}
 			else
 			{
@@ -1853,7 +1878,7 @@ public class CreatorUserPageObj extends BaseTest{
 			/*GenericFunctions.waitForElementToAppear(publicUserPage.headerProfile);
 			publicUserPage.headerProfile.click();*/
 			//goToProfilePage();
-			try
+			/*try
 			{
 				GenericFunctions.waitWebDriver(1000);
 				GenericFunctions.waitForElementToAppear(createUserPage.closeIcon);
@@ -1863,7 +1888,7 @@ public class CreatorUserPageObj extends BaseTest{
 			{
 				ExtentTestManager.getTest().log(LogStatus.INFO, "Could not find the Popup after login");
 				System.out.println("Exception occured " +e.getLocalizedMessage());
-			}
+			}*/
 			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
 			createUserPage.workSpace.click();
 			GenericFunctions.waitWebDriver(2500);
@@ -2079,7 +2104,7 @@ public class CreatorUserPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate to profile and search "+userData);
 			/*GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
 			createUserPage.headerProfile.click();*/
-			goToProfilePage();
+			handlePopupOnLogin();
 			GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.searchInput.click();
@@ -2307,6 +2332,7 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.refreshWebPage();
 			//handlePopupOnLogin();
 			GenericFunctions.waitForElementToAppear(uploadOrgPage.dropdown);
+			ExtentTestManager.getTest().log(LogStatus.PASS, "Created content is deleted from All My Content");
 		
 		}
 	catch(Exception e)
@@ -2369,7 +2395,8 @@ public class CreatorUserPageObj extends BaseTest{
 			{
 				GenericFunctions.refreshWebPage();
 			}
-			else {
+			else 
+			{
 				GenericFunctions.refreshWebPage();
 			}
 		}
