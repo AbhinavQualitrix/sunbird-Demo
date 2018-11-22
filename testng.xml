@@ -7,7 +7,12 @@
 	<test thread-count="1" name="regressiontest-P1">
 		<classes>
 		
-		<!-- 	Test Cases for Admin -->
+			<class name="org.sunbird.testscripts.ResourceCreation" />
+			
+
+		<!-- 		
+				Test Cases for Admin
+				
 			<class name="org.sunbird.testscripts.UploadRootOrg" />
 			<class name="org.sunbird.testscripts.UploadRootOrgUsersWithOrgId" />
 			<class name="org.sunbird.testscripts.UploadSubOrg" />
@@ -18,10 +23,8 @@
 			
 
 		 	
-			<!-- Test Cases for Public User -->
-			<class name="org.sunbird.testscripts.SkillEndorsement" />
-			<class name="org.sunbird.testscripts.UpdateProfilePhoto" />
-			<class name="org.sunbird.testscripts.SearchUsers" />
+			Test Cases for Public User
+
 			<class name="org.sunbird.testscripts.LoginAndChangePassword" />
 			<class name="org.sunbird.testscripts.SearchCourse" />
 			<class name="org.sunbird.testscripts.ProfileInfoUpdate" />
@@ -31,36 +34,42 @@
 			<class name="org.sunbird.testscripts.ConfirmInstructionReceivedInforgotPassword" />
 			<class name="org.sunbird.testscripts.VerifyHomePage" />
 
-		<!-- 	Test Cases for Content Creator -->
+			Test Cases for Content Creator
 			<class name="org.sunbird.testscripts.UnlinkDailcode" />
-			<class name="org.sunbird.testscripts.UploadH5pContent" />
+			<class name="org.sunbird.testscripts.DialCodeLink" />
 			<class name="org.sunbird.testscripts.BookCreation" />
+			<class name="org.sunbird.testscripts.BookCreateOptionValidation" />
+			<class name="org.sunbird.testscripts.LimitedSharingTheContent" />
+			
+			<class name="org.sunbird.testscripts.UploadH5pContent" />			
 			<class name="org.sunbird.testscripts.UploadHtmlContent" />
 			<class name="org.sunbird.testscripts.UploadYoutubeContent" />
 			<class name="org.sunbird.testscripts.UploadEpubContent" />
 			<class name="org.sunbird.testscripts.UploadMp4Content" />
-			<class name="org.sunbird.testscripts.BookCreateOptionValidation" />
+			<class name="org.sunbird.testscripts.UploadWebmContent" />
+			
+			
 			<class name="org.sunbird.testscripts.ResourceCreation" />
 			<class name="org.sunbird.testscripts.CollectionCreation" />
 			<class name="org.sunbird.testscripts.SendTheCourseForReview" />
 			<class name="org.sunbird.testscripts.CourseCreation" />
 			<class name="org.sunbird.testscripts.VerifyBookCreator" />
-			<class name="org.sunbird.testscripts.DialCodeLink" />
+			
 			<class name="org.sunbird.testscripts.LessonplanCreation" />
-			<class name="org.sunbird.testscripts.UploadWebmContent" />
+			
 			<class name="org.sunbird.testscripts.EditContentAndSendForReview" />
 			<class name="org.sunbird.testscripts.CheckInReviewSubmission" />
 			<class name="org.sunbird.testscripts.VerifyPublishedBucket" />
-			<class name="org.sunbird.testscripts.LimitedSharingTheContent" />	
+				
 
 
-			<!-- Test Cases for Reviewer -->
+			Test Cases for Reviewer
 			<class name="org.sunbird.testscripts.SearchContentWithFiltersAsReviewer" />
 			<class name="org.sunbird.testscripts.LimitedSharingTheContent" />
 			<class name="org.sunbird.testscripts.VerifyTheBookAvailableForReview" /> 
  			
 			
-			<!-- 	Test Cases for Mentor 	 -->
+				Test Cases for Mentor 	
 			<class name="org.sunbird.testscripts.SearchOrgsAsMentor" />
 			<class name="org.sunbird.testscripts.EnrollToCourseInOpenBatch" />
 			<class name="org.sunbird.testscripts.ConsumeCourseByInvitedMember" />
@@ -74,7 +83,7 @@
 			<class name="org.sunbird.testscripts.SearchAndDownloadOrgFile" />
 
 		
-			<!-- Test Cases for Announcement sender -->
+			Test Cases for Announcement sender
 			<class name="org.sunbird.testscripts.CheckUpForReviewAsFlagReviewer" />
 			<class name="org.sunbird.testscripts.NavigateToAnnouncementDashboard" />
 			<class name="org.sunbird.testscripts.ResendAnnouncementAndVerifyAnnouncement" />
@@ -84,17 +93,24 @@
 			<class name="org.sunbird.testscripts.OpenAnnouncement" />
 			<class name="org.sunbird.testscripts.ResendAnnouncement" />	
 			
-			
+			 -->
 			<!-- Test Cases that are out of coverage point of view
+			
 			<class name="org.sunbird.testscripts.ChangeTheContentAfterFlagged" />
-			 <class name="org.sunbird.testscripts.AcceptAsflagReviewer" /> 
-				<class name="org.sunbird.testscripts.FlagTheContentAsPublicUser" />
-				 <class name="org.sunbird.testscripts.CheckTheflaggedContentINDraft" /> 
-				<class name="org.sunbird.testscripts.DiscardAsFlagReviewer" /> 
-							<class name="org.sunbird.testscripts.AdminConsumptionAndDownloadCsv" /> 
+			<class name="org.sunbird.testscripts.AcceptAsflagReviewer" /> 
+			<class name="org.sunbird.testscripts.FlagTheContentAsPublicUser" />
+		    <class name="org.sunbird.testscripts.CheckTheflaggedContentINDraft" /> 
+			<class name="org.sunbird.testscripts.DiscardAsFlagReviewer" /> 
+			<class name="org.sunbird.testscripts.AdminConsumptionAndDownloadCsv" /> 
 							
+			<test cases of Admin which have removed>				
 			<class name="org.sunbird.testscripts.UploadRootOrgUsersWithProviderAndExtID" />
 			<class name="org.sunbird.testscripts.AdminConsumptionAndDownloadCsv" />
+			
+			<test cases of public user which have removed>
+			<class name="org.sunbird.testscripts.SkillEndorsement" />
+			<class name="org.sunbird.testscripts.UpdateProfilePhoto" />
+			<class name="org.sunbird.testscripts.SearchUsers" />
  			-->
 		</classes>
 	</test> <!-- regressiontest-P1 -->
