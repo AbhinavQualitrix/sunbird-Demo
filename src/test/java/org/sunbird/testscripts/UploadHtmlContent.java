@@ -26,8 +26,6 @@ public class UploadHtmlContent  extends BaseTest
 		//Step 1:Login as content creator
 		signupObj.userLogin(CREATOR);
 
-		//Handle the popup 
-		creatorUserPageObj.handlePopupOnLogin();
 		
 		//Step 2,3 and 4:Navigate to workspace and upload content type-HTML
 		creatorUserPageObj.uploadContentMp4(HTML);

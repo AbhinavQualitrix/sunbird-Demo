@@ -26,8 +26,7 @@ public class UploadSubOrgUsersWithProviderAndExtId extends BaseTest
 		//Step1: Admin Login
 		adminLogin.userLogin(ADMIN);
 		
-		//Handle the popup 
-		adminUpload.handlePopupOnLogin();
+
 		
 		//Step 2,3,4 and 5: Go to profile
 		//and Upload users for Sub org with provider and external ID

@@ -24,6 +24,10 @@ public class SendTheCourseForReview extends BaseTest
 		//Step 1 :Login as content creator
 		signupObj.userLogin(CREATOR);
 		
+		
+		//Navigate 
+		creatorUserPageObj.navigateToWorkspace(COURSE);
+		
 		//Doubt here
 		//Step 2 :create a Course
 		creatorUserPageObj.createCourse(objListOFTestDataForSunbird);

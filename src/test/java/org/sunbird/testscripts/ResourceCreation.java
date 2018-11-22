@@ -23,6 +23,7 @@ public class ResourceCreation extends BaseTest {
 	@Test(priority=11, groups={"Creator Group"})
 	public void resourceCreation() throws Exception
 	{
+		//MT done
 		List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 		GenericFunctions genereicFunctions = new GenericFunctions();
@@ -33,8 +34,6 @@ public class ResourceCreation extends BaseTest {
 		//Step1: Login as Creator
 		creatorLogin.userLogin(CREATOR);
 
-		//Handle the popup 
-		creatorUserPageObj.handlePopupOnLogin();
 		
 		//Step2: Navigate to WorkSpace
 		creatorUserPageObj.navigateToWorkspace(RESOURCE);
@@ -50,11 +49,7 @@ public class ResourceCreation extends BaseTest {
 		//creatorUserPageObj.saveAndSendResouceForReview();
 		creatorUserPageObj.sendResourceForReview();
 
-		//Wait for 2 seconds and refresh the web page
-		GenericFunctions.waitWebDriver(2000);
-
-		GenericFunctions.refreshWebPage();
-
+	
 		//Step5: Check for course in review submissions 
 		creatorUserPageObj.reviewInSubmissions(RESOURCE,objListOFTestDataForSunbird);
 
@@ -65,9 +60,7 @@ public class ResourceCreation extends BaseTest {
 
 		//Step7: Login as Reviewer
 		creatorLogin.userLogin(REVIEWER);
-		
-		//Handle the popup 
-		creatorUserPageObj.handlePopupOnLogin();
+
 		
 		//Step8: Search the course which was submitted for review
 		GenericFunctions.waitWebDriver(2000);
@@ -86,6 +79,8 @@ public class ResourceCreation extends BaseTest {
 		//Step9: Login as Creator
 		creatorLogin.userLogin(CREATOR);
 
+
+		
 		//Step10: Navigate to WorkSpace-All my content
 		genereicFunctions.navigateToWorkspaceFeatures(ALL_MY_CONTENT);
 

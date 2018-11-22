@@ -21,13 +21,18 @@ public class CollectionCreation extends BaseTest
 	{
 		SignUpPageObj signupObj = new SignUpPageObj();
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
+		GenericFunctions genereicFunctions = new GenericFunctions();
 		
 		//Step1:Login as content creator
 		signupObj.userLogin(CREATOR);
 		
+
+		
+		
 		//Step2:Navigate to workspace and create a Collection 
 		//And send the Collection for review
 		creatorUserPageObj.createCollection();
+		
 		creatorUserPageObj.createCollection();
 		
 		//Step3:Logout as Creator 
@@ -36,26 +41,31 @@ public class CollectionCreation extends BaseTest
 		//Step4:Login as Reviewer
 		signupObj.userLogin(REVIEWER);
 		
+
+		
 		//Step5:Go to workspace and publish the content-h5p
 		creatorUserPageObj.goToWorkspace("collection");
+		
 		GenericFunctions.waitWebDriver(2000);
 		
 		//Step6:Reject the Collection
 		creatorUserPageObj.rejectTheContent(COLLECTION);
 		
-		//Step7:Logout as Reviewer
+		//StepLogout as Reviewer
 		signupObj.userLogout();
 		
-		//Step8: Login as Creator
+		//Step7: Login as Creator
 		signupObj.userLogin(CREATOR);
 
-		//Step9: Navigate to WorkSpace
-		creatorUserPageObj.navigateToWorkspace(PUBLISHED);
 
-		//Step10: Delete the Created item
+		
+		//Step8: Navigate to WorkSpace-All my content
+		genereicFunctions.navigateToWorkspaceFeatures(ALL_MY_CONTENT);
+
+		//Step9: Delete the Created item
 		creatorUserPageObj.deleteCreatedItems();
 
-		//Step11: Logout as Creator
+		//Step10: Logout as Creator
 		signupObj.userLogout();
 	}
 

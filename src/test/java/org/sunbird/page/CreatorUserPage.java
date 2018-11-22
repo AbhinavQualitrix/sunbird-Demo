@@ -479,7 +479,7 @@ public class CreatorUserPage {
 	public WebElement checkCollectionIcon;
 
 	@FindBy(xpath="//textarea")
-	public WebElement reviewComment;
+	public List<WebElement> reviewComment;
 
 
 	//Updated on 06/09/2018

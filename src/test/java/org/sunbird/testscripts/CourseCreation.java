@@ -34,9 +34,6 @@ public class CourseCreation extends BaseTest
 
 		//Step1: Login as Creator
 		creatorLogin.userLogin(CREATOR);
-
-		//Handle the popup after Login
-		creatorUserPageObj.handlePopupOnLogin();
 		
 		//Step2: Navigate to WorkSpace
 		creatorUserPageObj.navigateToWorkspace(COURSE);
@@ -57,8 +54,7 @@ public class CourseCreation extends BaseTest
 		//Step7: Login as Reviewer
 		creatorLogin.userLogin(REVIEWER);
 
-		//Handle the popup after Login
-		creatorUserPageObj.handlePopupOnLogin();
+
 		
 		//Step8: Search the course which was submitted for review
 		creatorUserPageObj.searchInUpForReview(COURSE,objListOFTestDataForSunbird);

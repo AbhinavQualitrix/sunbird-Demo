@@ -181,7 +181,7 @@ public class UploadOrgObj extends BaseTest
 		catch(Exception e)
 		{
 			driver.navigate().refresh();
-			handlePopupOnLogin();
+			//handlePopupOnLogin();
 			log.error("No Files were uploaded");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception : Failed on Uploading Organizations and Sub Organizations");
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
@@ -410,7 +410,7 @@ public class UploadOrgObj extends BaseTest
 
 				GenericFunctions.waitWebDriver(2000);
 				GenericFunctions.refreshWebPage();
-				handlePopupOnLogin();
+				//handlePopupOnLogin();
 				GenericFunctions.waitWebDriver(2000);
 
 				GenericFunctions.waitForElementToAppear(UploadOrgPage.adminActionsButton);

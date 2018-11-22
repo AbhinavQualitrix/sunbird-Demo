@@ -27,8 +27,7 @@ public class UploadMp4Content extends BaseTest
 		//Step 1:Login as content creator
 		signupObj.userLogin(CREATOR);
 
-		//Handle the popup 
-		creatorUserPageObj.handlePopupOnLogin();
+
 		
 		//Step 2,3 and 4:Navigate to workspace and upload content-MP4 and send the content for review
 		creatorUserPageObj.uploadContentMp4(MP4);

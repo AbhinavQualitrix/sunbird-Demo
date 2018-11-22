@@ -1,37 +1,22 @@
-/**
-
-* Created by Qualitrix Technologies Pvt Ltd.
-
-* @author: Ajith Manjunath
-
-* Date: 05/20/2018
-
-* Purpose: Contains all the reusable generic methods. 
-*/
-
-
 package org.sunbird.generic;
 
+import org.testng.annotations.Test;
+
+import com.relevantcodes.extentreports.LogStatus;
+
+import org.testng.AssertJUnit;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Base64;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -40,9 +25,6 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.imageio.ImageIO;
-
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -61,28 +43,27 @@ import org.sunbird.pageobjects.CreatorUserPageObj;
 import org.sunbird.startup.BaseTest;
 import org.testng.Assert;
 
-import com.relevantcodes.extentreports.LogStatus;
+/**
+ * Created by Qualitrix Technologies Pvt Ltd.
+ * Purpose: To have all set of generic methods which are used across the project
+ */
 
-import ru.yandex.qatools.ashot.AShot;
-import ru.yandex.qatools.ashot.Screenshot;
-import ru.yandex.qatools.ashot.comparison.ImageDiff;
-import ru.yandex.qatools.ashot.comparison.ImageDiffer;
+public class GenericFunctions extends BaseTest
+{
 
-import java.text.ParseException;
-
-
-
-public class GenericFunctions extends BaseTest{
-	
 	public Select select;
 	public Action action;
 
 	CreatorUserPage createUserPage=PageFactory.initElements(driver, CreatorUserPage.class);
+	static CreatorUserPageObj createUserPageObj = new CreatorUserPageObj();
 	static Logger log = Logger.getLogger(GenericFunctions.class.getName());
-	
+
+	/**
+	 * Purpose: selectValueFromDropdown method selects the value from the dropdown list
+	 */
 	public static void selectValueFromDropdown(WebDriver driver,String locator, String text)
 	{	
-	
+
 		WebElement lang = driver.findElement(By.xpath(locator));
 		List<WebElement> list = lang.findElements(By.xpath(locator));
 		for (WebElement opt : list)
@@ -95,6 +76,9 @@ public class GenericFunctions extends BaseTest{
 		}		
 	}
 
+	/**
+	 * Purpose: setClipboardData method is used to select and set data to clipboard
+	 */
 	public static void setClipboardData(String string) 
 	{
 		//StringSelection is a class that can be used for copy and paste operations.
@@ -102,6 +86,9 @@ public class GenericFunctions extends BaseTest{
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
 	}
 
+	/**
+	 * Purpose: uploadFile method is used to upload file from the system to the application
+	 */
 	public static void uploadFile(String fileLocation) 
 	{
 		try {
@@ -121,6 +108,9 @@ public class GenericFunctions extends BaseTest{
 		}
 	}
 
+	/**
+	 * Purpose: writeNotepad method is used to write the content into file
+	 */
 	public static void writeNotepad(String processID,String fileName)
 	{
 		try 
@@ -136,244 +126,283 @@ public class GenericFunctions extends BaseTest{
 		}
 
 	}
-	
+
+	/**
+	 * Purpose: readFromNotepad method is used to read the content into file
+	 */
 	@SuppressWarnings("resource")
-    public static String readFromNotepad(String fileName){
-        String path = "";
-        try {
-            BufferedReader bReader=new BufferedReader(new FileReader(fileName));
-            while((path=bReader.readLine())!=null){
-                System.out.println("Read ID: "+path);
-                String str = bReader.readLine();
-               // System.out.println(str);
-                return path;
-            }
-        } catch (Exception e) {
-        	System.out.println(e.getMessage());
-        }
+	public static String readFromNotepad(String fileName){
+		String path = "";
+		try {
+			BufferedReader bReader=new BufferedReader(new FileReader(fileName));
+			while((path=bReader.readLine())!=null){
+				System.out.println("Read ID: "+path);
+				String str = bReader.readLine();
+				// System.out.println(str);
+				return path;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		return path;
-    }
-	
+	}
+
+
+	/**
+	 * Purpose: waitTillTheElementIsVisibleAndClickable method is used to synchronize element appearance
+	 */
 	public static void waitTillTheElementIsVisibleAndClickable(WebElement element) {
 
-        WebDriverWait wait = new WebDriverWait(driver, 120);
-        wait.until(ExpectedConditions.visibilityOf(element));
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.visibilityOf(element));
 
-        wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-    }
-
-    public static void waitTillTheElementInVisible(WebElement element) {
-
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-        wait.until(ExpectedConditions.invisibilityOf(element));
-    }
-
-    public static void waitForPageToLoad(WebElement id) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.elementToBeClickable(id));
-    }
-
-    public static void waitForElementState(WebElement id) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.stalenessOf(id));
-
-        wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.elementToBeClickable(id));
-    }
-
-    public static void waitForPageToLoad(List<WebElement> id) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOfAllElements(id));
-    }
-
-    public static void waitForElementToDisAppear(List<WebElement> id) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.invisibilityOfAllElements(id));
-    }
-
-    public static void waitForElementToDisAppear(List<WebElement> id, int timeout) {
-        WebDriverWait wait = new WebDriverWait(driver, timeout);
-        wait.until(ExpectedConditions.invisibilityOfAllElements(id));
-    }
-
-    public static WebElement waitForElementToAppear(WebElement id) {
-        WebDriverWait wait = new WebDriverWait(driver, 120);
-        wait.until(ExpectedConditions.visibilityOf(id));
-        return id;
-    }
-
-    public WebElement waitForElementToAppear(WebElement id, int timeout) {
-        WebDriverWait wait = new WebDriverWait(driver, timeout);
-        wait.until(ExpectedConditions.visibilityOf(id));
-        return id;
-    }
-
-    public WebElement waitForElement(WebElement arg) {
-        waitForPageToLoad(arg);
-        WebElement el = arg;
-        return el;
-    }
-
-    public static void WaitForFrameAndSwitchToIt(WebElement frame){
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frame));
-    }
-
-    public static void WaitForFrameAndSwitchToIt(int id){
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(id));
-    }
-
-    public static void scrollToElement(WebElement element){
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-    }
-
-    public static void waitForElements(List<WebElement> arg) {
-        waitForPageToLoad(arg);
-    }
-
-    public static WebElement waitForElementToAppearOnScreen(WebElement arg) {
-        waitForElementToAppear(arg);
-        WebElement el = arg;
-        return el;
-    }
-
-    public static void clickUntilElementExists(WebElement clickLocator, By by) {
-        boolean elementOnScreen;
-        int i = 0;
-        do {
-            if (i == 25) {
-                break;
-            }
-            try {
-                driver.findElement(by);
-                break;
-            } catch (NoSuchElementException e) {
-                clickLocator.click();
-                elementOnScreen = false;
-                System.out.println(i);
-            }
-            i++;
-        } while (!elementOnScreen);
-    }
-
-    public String getCurrentMethodName() {
-        return Thread.currentThread().getStackTrace()[2].getMethodName();
-     }
-
-    public String withBoldHTML(String string) {
-        if (!string.trim().isEmpty()) {
-            return "<b>" + string + "</b>";
-        } else {
-            return "";
-        }
-    }
-
-
-    public boolean isElementPresent(WebElement locator) {
-        try {
-            if (locator.isDisplayed())
-                System.out.println("Element presend on screen ***********" + locator);
-            return true;
-        } catch (NoSuchElementException e) {
-            System.out.println("Element not present on screen **************" + locator);
-            return false;
-        }
-    }
-
-    public String getCurrentMonth(int month) {
-        int i = Calendar.getInstance().get(Calendar.MONTH);
-        String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-        return monthNames[month + i];
-    }
-
-    public static void refreshWebPage() {
-        driver.navigate().refresh();
-        GenericFunctions.waitWebDriver(2000);
-    }
-
-    //Method to wait for time
-    public static void waitWebDriver(long time) {
-        try {
-            Thread.sleep(time);
-        } catch (InterruptedException e) {
-            System.out.println("Method: waitWebDriver :: exception =  " + e.getMessage());
-
-        }
-    }
-
-    public static void switchToNewWindow() {
-        for (String winHandle : driver.getWindowHandles()) {
-            driver.switchTo().window(winHandle);
-        }
-    }
-    
-    public static String genrateRandomInputs(String getRandomIp)
-	{
-	char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-	StringBuilder sb = new StringBuilder(20);
-	Random random = new Random();
-	for (int i = 0; i < 10; i++) {
-	    char c = chars[random.nextInt(chars.length)];
-	    sb.append(c);
+		wait = new WebDriverWait(driver, 5);
+		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
-	String output = sb.toString();
-	System.out.println(output);
-	return output;
+
+	/**
+	 * Purpose: waitTillTheElementInVisible method is used to synchronize single element to disappear
+	 */
+	public static void waitTillTheElementInVisible(WebElement element) {
+
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.invisibilityOf(element));
 	}
-	
-  //Method to switchToFrame
-  	public static void switchToFrame(WebDriver mDriver,WebElement frame){
-  		try 
-  		{
-  			mDriver.switchTo().frame(frame);
-  		} catch (Exception e) {
-  			log.error("Method: switchToFrame :: Exception is = " + e.getMessage() );
-  		}
-  	}
-  	
-  //Method Tab Operation
-  	public static void keyTab(WebDriver mDriver,String locator)	{
-  		
-  		try	{
-  			log.info("MethodName: keyTab :: element found = " + locator);
-  			
-  			mDriver.findElement(By.cssSelector(locator)).sendKeys(Keys.TAB);
-  		} catch(Exception e) {
-  			log.error("MethodName: TabKeys :: Exception occured for locator = " + locator + "exception = "+ e.getMessage());
-  		}
-  	}
-  	
- // Method to get value of element
- 	public static String getValue(WebDriver mDriver, String identifyBy, String locator) {
- 		boolean assertElementExists = false;
- 		String value = "";
 
- 		try	{
- 			assertElementExists = assertIfElementExists(mDriver, identifyBy, locator);
- 			log.info("Method: getValue :: assertElementExists = " + assertElementExists + " for xpath = " + locator);
- 			if (assertElementExists==true) {	
- 				if (identifyBy.equalsIgnoreCase("xpath")) 
- 					value = mDriver.findElement(By.xpath(locator)).getText();
- 				else if (identifyBy.equalsIgnoreCase("id")) 
- 					value = mDriver.findElement(By.id(locator)).getText();
- 				else if (identifyBy.equalsIgnoreCase("name")) 
- 					value = mDriver.findElement(By.name(locator)).getText();
- 				else if (identifyBy.equalsIgnoreCase("css")) 
- 					value = mDriver.findElement(By.cssSelector(locator)).getText();
- 			}
- 		} catch(Exception e) {
- 			log.error("Method: getValue :: Exception occured for locator = " + locator + "exception = "+ e.getMessage());
- 			// e.printStackTrace();
- 		}
- 		log.info("Method: getValue :: value of element = " + value);
- 		//System.out.println("Method: getValue :: value of element = " + value); 
- 		return value.trim();
- 	}
- 	
+	/**
+	 * Purpose: waitForPageToLoad method is used to synchronize with whole page to load with clickable action
+	 */
+	public static void waitForPageToLoad(WebElement id) {
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(id));
+	}
 
-	// Method to check if element exists on page
+	/**
+	 * Purpose: waitForElementState method is used to synchronize with element staleness  
+	 */
+	public static void waitForElementState(WebElement id) {
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.stalenessOf(id));
+
+		wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(id));
+	}
+
+	/**
+	 * Purpose: waitForPageToLoad method is used to synchronize with whole page to load with visibility action 
+	 */
+	public static void waitForPageToLoad(List<WebElement> id) {
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOfAllElements(id));
+	}
+
+	/**
+	 * Purpose: waitForPageToLoad method is used to synchronize with whole page to load with visibility action 
+	 */
+	public static void waitForElementToDisAppear(List<WebElement> id) {
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.invisibilityOfAllElements(id));
+	}
+
+	/**
+	 * Purpose: waitForElementToDisAppear method is used to synchronize all elements to disappear
+	 */
+	public static void waitForElementToDisAppear(List<WebElement> id, int timeout) {
+		WebDriverWait wait = new WebDriverWait(driver, timeout);
+		wait.until(ExpectedConditions.invisibilityOfAllElements(id));
+	}
+
+
+	/**
+	 * Purpose: waitForElementToAppear method is used to synchronize for an element to be visible 
+	 */
+	public static WebElement waitForElementToAppear(WebElement id) {
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.visibilityOf(id));
+		return id;
+	}
+
+	/**
+	 * Purpose: waitForElementToAppear method is used to synchronize for an element to be visible with parameterised time
+	 */
+	public WebElement waitForElementToAppear(WebElement id, int timeout) {
+		WebDriverWait wait = new WebDriverWait(driver, timeout);
+		wait.until(ExpectedConditions.visibilityOf(id));
+		return id;
+	}
+
+	/**
+	 * Purpose: waitForElement method is used to synchronize for an element to be visible with parameterised time
+	 */
+	public WebElement waitForElement(WebElement arg) {
+		waitForPageToLoad(arg);
+		WebElement el = arg;
+		return el;
+	}
+
+	/**
+	 * Purpose: WaitForFrameAndSwitchToIt method is used to synchronize and shift between the frames 
+	 */
+	public static void WaitForFrameAndSwitchToIt(WebElement frame){
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frame));
+	}
+
+	/**
+	 * Purpose: WaitForFrameAndSwitchToIt method is used to synchronize and shift between the frames using id
+	 */
+	public static void WaitForFrameAndSwitchToIt(int id){
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(id));
+	}
+
+	/**
+	 * Purpose: scrollToElement method is used to scroll across the application with respect to element specified
+	 */
+	public static void scrollToElement(WebElement element){
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+	}
+
+	/**
+	 * Purpose: waitForElements method is used to synchronize with page to load with elements
+	 */
+	public static void waitForElements(List<WebElement> arg) {
+		waitForPageToLoad(arg);
+	}
+
+	/**
+	 * Purpose: waitForElementToAppearOnScreen method is used to synchronize with element to appear
+	 */
+	public static WebElement waitForElementToAppearOnScreen(WebElement arg) {
+		waitForElementToAppear(arg);
+		WebElement el = arg;
+		return el;
+	}
+
+	/**
+	 * Purpose: clickUntilElementExists method is used to click on multiple occurence of prompt window
+	 */
+	public static void clickUntilElementExists(WebElement clickLocator, By by) {
+		boolean elementOnScreen;
+		int i = 0;
+		do {
+			if (i == 25) {
+				break;
+			}
+			try {
+				driver.findElement(by);
+				break;
+			} catch (NoSuchElementException e) {
+				clickLocator.click();
+				elementOnScreen = false;
+				System.out.println(i);
+			}
+			i++;
+		} while (!elementOnScreen);
+	}
+
+	/**
+	 * Purpose: isElementPresent method return whether the element is present on web page or not
+	 */
+	public boolean isElementPresent(WebElement locator) {
+		try {
+			if (locator.isDisplayed())
+				System.out.println("Element presend on screen ***********" + locator);
+			return true;
+		} catch (NoSuchElementException e) {
+			System.out.println("Element not present on screen **************" + locator);
+			return false;
+		}
+	}
+
+	/**
+	 * Purpose: refreshWebPage method refreshes the web page
+	 */
+	public static void refreshWebPage() {
+		driver.navigate().refresh();
+		GenericFunctions.waitWebDriver(2500);
+		createUserPageObj.handlePopupOnLogin();
+		
+	}
+
+	/**
+	 * Purpose: waitWebDriver method used parameterised time input for synchronization
+	 */
+	public static void waitWebDriver(long time) {
+		try {
+			Thread.sleep(time);
+		} catch (InterruptedException e) {
+			System.out.println("Method: waitWebDriver :: exception =  " + e.getMessage());
+
+		}
+	}
+
+	/**
+	 * Purpose: switchToNewWindow method is used to switch the control between multiple windows
+	 */
+	public static void switchToNewWindow() {
+		for (String winHandle : driver.getWindowHandles()) {
+			driver.switchTo().window(winHandle);
+		}
+	}
+
+	/**
+	 * Purpose: switchToNewWindow method is used to switch the control between multiple windows
+	 */
+	public static void switchToFrame(WebDriver mDriver,WebElement frame){
+		try 
+		{
+			mDriver.switchTo().frame(frame);
+		} catch (Exception e) {
+			log.error("Method: switchToFrame :: Exception is = " + e.getMessage() );
+		}
+	}
+
+	/**
+	 * Purpose: keyTab method is used to switch to next field using TAB
+	 */
+	public static void keyTab(WebDriver mDriver,String locator)	{
+
+		try	{
+			log.info("MethodName: keyTab :: element found = " + locator);
+
+			mDriver.findElement(By.cssSelector(locator)).sendKeys(Keys.TAB);
+		} catch(Exception e) {
+			log.error("MethodName: TabKeys :: Exception occured for locator = " + locator + "exception = "+ e.getMessage());
+		}
+	}
+
+	/**
+	 * Purpose: getValue method is used to read values from the webelement
+	 */
+	public static String getValue(WebDriver mDriver, String identifyBy, String locator) {
+		boolean assertElementExists = false;
+		String value = "";
+
+		try	{
+			assertElementExists = assertIfElementExists(mDriver, identifyBy, locator);
+			log.info("Method: getValue :: assertElementExists = " + assertElementExists + " for xpath = " + locator);
+			if (assertElementExists==true) {	
+				if (identifyBy.equalsIgnoreCase("xpath")) 
+					value = mDriver.findElement(By.xpath(locator)).getText();
+				else if (identifyBy.equalsIgnoreCase("id")) 
+					value = mDriver.findElement(By.id(locator)).getText();
+				else if (identifyBy.equalsIgnoreCase("name")) 
+					value = mDriver.findElement(By.name(locator)).getText();
+				else if (identifyBy.equalsIgnoreCase("css")) 
+					value = mDriver.findElement(By.cssSelector(locator)).getText();
+			}
+		} catch(Exception e) {
+			log.error("Method: getValue :: Exception occured for locator = " + locator + "exception = "+ e.getMessage());
+		}
+		log.info("Method: getValue :: value of element = " + value);
+		return value.trim();
+	}
+
+
+	/**
+	 * Purpose: assertIfElementExists method is used to whether the element exists on web page
+	 */
 	public static boolean assertIfElementExists(WebDriver mDriver, String identifyBy, String locator) throws Exception {
 		boolean bElementFound = false;
 		try	{		
@@ -394,13 +423,18 @@ public class GenericFunctions extends BaseTest{
 			}
 		} catch(Exception e){
 			log.error("Method: assertIfElementExists :: Exception occured for locator = " + locator + " exception is = "+ e.getMessage());
-			Assert.assertTrue(false,"***Method: assertIfElementExists: Exception occured for locator= " + e.getMessage());
+			Assert.assertTrue(false);
+
 		}
 		log.info("Method: assertIfElementExists for locator = " + locator  + " status = " + bElementFound);	
 		return bElementFound;
 	}
 
-  	public static boolean assertElementValue(WebDriver mDriver, String identifyBy, String locator, String expectedValue) {
+
+	/**
+	 * Purpose: assertElementValue method is used to verify with actual and expected webelement value
+	 */
+	public static boolean assertElementValue(WebDriver mDriver, String identifyBy, String locator, String expectedValue) {
 		String actualElementValue = "";
 		actualElementValue =  getValue(mDriver, identifyBy, locator);
 		expectedValue = expectedValue.trim();
@@ -413,38 +447,10 @@ public class GenericFunctions extends BaseTest{
 		else
 			return false;
 	}
-  	
 
-	public static String currentDateAndTime() {
-		LocalDateTime now = LocalDateTime.now();
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("ddHHmmss");
-		// String newDate = dtf.toString().toCharArray().toString();
-		//	System.out.println(now.format(dtf).toCharArray());
-		String date = now.format(dtf);
-		return date;
-	}
-	public static String currentDate() {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");  
-	    Date date = new Date();  
-	    //System.out.println(formatter.format(date));  
-		String current_date = formatter.format(date);
-		return current_date;
-	}
-	
-
-	public static String autoIncrementer()
-	{
-		String get = GenericFunctions.readFromNotepad(".\\courseNumbers.txt");
-		int var=Integer.parseInt(get);
-		System.out.println("Reading "+var);
-		var=++var;
-		String var1 = Integer.toString(var);
-		GenericFunctions.writeNotepad(var1,".\\courseNumbers.txt");
-		String set=GenericFunctions.readFromNotepad(".\\courseNumbers.txt");
-		System.out.println("writing "+set);
-		return set;
-	}
-	
+	/**
+	 * Purpose: randomCourseName method is used to generate random string input for course name
+	 */
 	public static String randomCourseName()
 	{
 
@@ -458,71 +464,65 @@ public class GenericFunctions extends BaseTest{
 		String output = sb.toString();
 		return output;
 	}
+
+	/**
+	 * Purpose: testDataIncrementer method is used to increment the values
+	 */
 	public static String testDataIncrementer(String filePath) {
 
-		   String courseNum = GenericFunctions.readFromNotepad(filePath);
-		      Pattern compile = Pattern.compile("^(.*?)([9Z]*)$");
-		      Matcher matcher = compile.matcher(courseNum);
-		      String left="";
-		      String right="";
-		      if(matcher.matches()){
-		           left = matcher.group(1);
-		           right = matcher.group(2);
-		      }
-		      courseNum = !left.isEmpty() ? Long.toString(Long.parseLong(left, 36) + 1,36):"";
-		      courseNum += right.replace("Z", "A").replace("9", "0");
-		      GenericFunctions.writeNotepad(courseNum,filePath);
-		      return courseNum.toUpperCase();
-		  }
-	public static void getStatusOfMonthsBetweenDates(String startDate, String endDate) throws Exception {
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
-        Date date1 = sdf.parse(startDate);
-        Date date2 = sdf.parse(endDate);
-
-        System.out.println("date1 : " + sdf.format(date1));
-        System.out.println("date2 : " + sdf.format(date2));
-
-        if (date1.compareTo(date2) > 0) {
-            System.out.println("startDate is after endDate");
-        } else if (date1.compareTo(date2) < 0) {
-            System.out.println("startDate is before endDate");
-        } else if (date1.compareTo(date2) == 0) {
-            System.out.println("startDate is equal to endDate");
-        } else {
-            System.out.println("How to get here?");
-        }
-
-    }
-	
-	public boolean isFileDownloaded(String downloadPath, String fileName) {
-		boolean flag = false;
-	    File dir = new File(downloadPath);
-	    File[] dir_contents = dir.listFiles();
-	  	    
-	    for (int i = 0; i < dir_contents.length; i++) {
-	        if (dir_contents[i].getName().equals(fileName))
-	            return flag=true;
-	            }
-
-	    return flag;
+		String courseNum = GenericFunctions.readFromNotepad(filePath);
+		Pattern compile = Pattern.compile("^(.*?)([9Z]*)$");
+		Matcher matcher = compile.matcher(courseNum);
+		String left="";
+		String right="";
+		if(matcher.matches()){
+			left = matcher.group(1);
+			right = matcher.group(2);
+		}
+		courseNum = !left.isEmpty() ? Long.toString(Long.parseLong(left, 36) + 1,36):"";
+		courseNum += right.replace("Z", "A").replace("9", "0");
+		GenericFunctions.writeNotepad(courseNum,filePath);
+		return courseNum.toUpperCase();
 	}
-	
-	public boolean isFileDownloaded_Ext(String dirPath, String ext){
+
+	/**
+	 * Purpose: isFileDownloaded_Ext method is used to check if file is downloaded 
+	 */
+	public boolean isFileDownloaded_Ext(String dirPath, String ext)
+	{
 		boolean flag=false;
-	    File dir = new File(dirPath);
-	    File[] files = dir.listFiles();
-	    if (files == null || files.length == 0) {
-	        flag = false;
-	    }
-	    
-	    for (int i = 1; i < files.length; i++) {
-	    	if(files[i].getName().contains(ext)) {
-	    		flag=true;
-	    	}
-	    }
-	    return flag;
+		File dir = new File(dirPath);
+		File[] files = dir.listFiles();
+		if (files == null || files.length == 0) {
+			flag = false;
+		}
+
+		for (int i = 1; i < files.length; i++) {
+			if(files[i].getName().contains(ext)) {
+				flag=true;
+			}
+		}
+		return flag;
 	}
+
+	/**
+	 * Purpose: captureScreenshotOnValidation method is used to capture screenshot of web page
+	 */
+	public static void captureScreenshotOnValidation(){
+		try
+		{
+			GenericFunctions.waitWebDriver(1500);
+			String base64Screenshot = "data:image/png;base64,"+((TakesScreenshot)driver).
+					getScreenshotAs(OutputType.BASE64);
+			ExtentTestManager.getTest().log(LogStatus.INFO,"CONTENT VALIDATED",
+					ExtentTestManager.getTest().addBase64ScreenShot(base64Screenshot));
+		}
+		catch(Exception e)
+		{
+			System.out.println("Method: waitWebDriver :: exception =  " + e.getMessage());
+		}
+	}
+
 	/**
 	 * Purpose: assertIfAllElementsExists method is check if list of all elements exist on web page
 	 */
@@ -636,47 +636,18 @@ public class GenericFunctions extends BaseTest{
 			// e.printStackTrace();
 		}
 		log.info("Method: getValue :: value of element = " + value);
-		
+
 		return value.trim();
 	}
-	
-	/**
-	 * Purpose: captureScreenshotOnValidation method is used to capture screenshot of web page
-	 */
-	public static void captureScreenshotOnValidation(){
-		try
-		{
-			GenericFunctions.waitWebDriver(1500);
-			String base64Screenshot = "data:image/png;base64,"+((TakesScreenshot)driver).
-					getScreenshotAs(OutputType.BASE64);
-			ExtentTestManager.getTest().log(LogStatus.INFO,"CONTENT VALIDATED",
-					ExtentTestManager.getTest().addBase64ScreenShot(base64Screenshot));
-		}
-		catch(Exception e)
-		{
-			System.out.println("Method: waitWebDriver :: exception =  " + e.getMessage());
-		}
-	}
+
 	/**
 	 * Purpose: navigateToWorkspaceFeatures method is used to Navigate to Workspace and Access the parameterized variable
 	 */
 	public void navigateToWorkspaceFeatures(String workspaceVariable)
 	{
 		try
-		{
-			ExtentTestManager.getTest().log(LogStatus.INFO, "Navigate to Workspace and Access :"+workspaceVariable);
-			try
-			{
-				ExtentTestManager.getTest().log(LogStatus.INFO, "User is tring to close the popup after User login");
-				GenericFunctions.waitWebDriver(1000);
-				GenericFunctions.waitForElementToAppear(createUserPage.closeIcon);
-				createUserPage.closeIcon.click();
-			}
-			catch(Exception e)
-			{
-				ExtentTestManager.getTest().log(LogStatus.INFO, "Could not find the-Enter details to get relevant content Popup after login");
-				System.out.println("Exception occured " +e.getLocalizedMessage());
-			}
+		{			
+			refreshWebPage();
 			/*
 			GenericFunctions.waitForElementToAppear(createUserPage.profileIconDropdown);
 			createUserPage.profileIconDropdown.click();
@@ -726,4 +697,3 @@ public class GenericFunctions extends BaseTest{
 		}
 	}
 }
-

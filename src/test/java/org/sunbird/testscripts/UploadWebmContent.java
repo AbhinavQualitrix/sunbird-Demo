@@ -24,9 +24,7 @@ public class UploadWebmContent extends BaseTest
 		
 		//Step 1 :Login as content creator
 		signupObj.userLogin(CREATOR);
-		
-		//Handle the popup 
-		creatorUserPageObj.handlePopupOnLogin();
+
 		
 		//Step 2,3 and 4:Navigate to workspace and upload content of type "webm"
 		creatorUserPageObj.uploadContentMp4(WEBM);

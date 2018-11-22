@@ -24,9 +24,6 @@ public class UploadSubOrgUsersWithOrgId extends BaseTest
 		UploadOrgObj adminUpload= new UploadOrgObj();
 		adminLogin.userLogin(ADMIN);
 
-		//Handle the popup 
-		adminUpload.handlePopupOnLogin();
-		
 		//Step2,3,4 and 5:Go to profile and 
 		//Upload Users for Sub Org with sub Org Id
 		

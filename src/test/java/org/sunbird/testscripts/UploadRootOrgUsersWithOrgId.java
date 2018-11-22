@@ -25,9 +25,7 @@ public class UploadRootOrgUsersWithOrgId extends BaseTest
 		//Step1: Admin Login
 		adminLogin.userLogin(ADMIN);
 		
-		//Handle the popup 
-		adminUpload.handlePopupOnLogin();
-		
+
 		//Step2,3,4 and 5:Go to profile, and Upload users With Root Org ID
 		adminUpload.uploadRootAndSubOrgUserWithOrgId(UPLOAD_USERS_ROOT_ORG);
 		

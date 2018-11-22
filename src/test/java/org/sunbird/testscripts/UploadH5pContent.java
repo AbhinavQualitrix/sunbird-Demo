@@ -26,8 +26,6 @@ public class UploadH5pContent  extends BaseTest
 		//Step 1:Login as content creator
 		signupObj.userLogin(CREATOR);
 		
-		//Handle the popup 
-		creatorUserPageObj.handlePopupOnLogin();
 		
 		//Step 2,3 and 4:Navigate to workspace and upload content type-H5P
 		creatorUserPageObj.uploadContentMp4(H5P);

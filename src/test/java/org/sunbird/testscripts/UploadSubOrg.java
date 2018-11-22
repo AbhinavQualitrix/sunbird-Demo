@@ -29,8 +29,7 @@ public class UploadSubOrg extends BaseTest
 		UploadOrgObj adminUpload= new UploadOrgObj();
 		adminLogin.userLogin(ADMIN);
 		
-		//Handle the popup 
-		adminUpload.handlePopupOnLogin();
+
 		
 		//Step2 and 3: Upload Sub Org		
 		boolean actualValue=adminUpload.uploadRootAndSubOrg(UPLOAD_SUB_ORG);

@@ -155,8 +155,14 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createUserPage.proceedButton);
 			createUserPage.proceedButton.click();
 			GenericFunctions.waitWebDriver(500);
-
-
+			if(createUserPage.saveCourse.isDisplayed())
+			{
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Course is created succesfully");
+				Assert.assertTrue(true);	
+				
+			}
+			
+		
 		}
 		catch(Exception e)
 		{
@@ -222,7 +228,8 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.saveButton.click();
 			GenericFunctions.waitWebDriver(3500);
 			GenericFunctions.refreshWebPage();
-			handlePopupOnLogin();
+			//handlePopupOnLogin();
+			Assert.assertTrue(true);
 		}
 		catch(Exception e)
 		{
@@ -244,6 +251,7 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1500);
 			createUserPage.sendForReview.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.clickAppIcon);
+
 			//Added on Maintenace 12/09/2018
 			createUserPage.clickAppIcon.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.searchUploadImage);
@@ -267,9 +275,10 @@ public class CreatorUserPageObj extends BaseTest{
 			System.out.println("Content updated successfully");
 			GenericFunctions.waitWebDriver(2500);
 			//createUserPage.editorCloseIcon.click();
-			GenericFunctions.waitWebDriver(4500);
+			GenericFunctions.waitWebDriver(2500);
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.refreshWebPage();
-		
+			//handlePopupOnLogin();
 		}
 		catch(Exception e)
 		{
@@ -349,6 +358,9 @@ public class CreatorUserPageObj extends BaseTest{
 
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify "+source+" is found in review submission");
+			GenericFunctions.waitWebDriver(4000);
+			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
+			createUserPage.workSpace.click();
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(createUserPage.reviewSubmission);
 			createUserPage.reviewSubmission.click();
@@ -370,7 +382,7 @@ public class CreatorUserPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "To assert that "+source+" is found in review submission");
 			//List<WebElement> result = driver.findElements(By.xpath("//div[@class='cardImageText center aligned ']/span"));
 			CreatorUserPage createUserPage1=PageFactory.initElements(driver, CreatorUserPage.class);
-
+			GenericFunctions.waitWebDriver(2000);
 			if(source.equalsIgnoreCase(COURSE))
 			{
 				GenericFunctions.waitWebDriver(2000);
@@ -393,7 +405,7 @@ public class CreatorUserPageObj extends BaseTest{
 			}
 			else if(source.equalsIgnoreCase(BOOK))
 			{
-
+				GenericFunctions.waitWebDriver(2000);
 				String courseNumber = GenericFunctions.readFromNotepad("./testData/bookNumbers.txt").toString();
 				for(int i=0;i<createUserPage1.reviewSubmittedCourse.size();i++){
 					String courseName = createUserPage1.reviewSubmittedCourse.get(i).getText();
@@ -412,6 +424,7 @@ public class CreatorUserPageObj extends BaseTest{
 			}
 			else if(source.equalsIgnoreCase(RESOURCE))
 			{
+				GenericFunctions.waitWebDriver(2000);
 				String courseNumber = GenericFunctions.readFromNotepad("./testData/resourceNumbers.txt").toString();
 				for(int i=0;i<createUserPage1.reviewSubmittedCourse.size();i++){
 					String courseName = createUserPage1.reviewSubmittedCourse.get(i).getText();
@@ -420,6 +433,7 @@ public class CreatorUserPageObj extends BaseTest{
 						Assert.assertTrue(true, courseName+" Resource : Submitted for Review");
 						System.out.println(courseName+"Resource Found: Course Submitted for Review");
 						log.info(courseName+"Resource Found: resource Submitted for Review");
+						ExtentTestManager.getTest().log(LogStatus.PASS, courseName+"Resource Found: resource Submitted for Review");
 						break;
 					}
 					else
@@ -754,7 +768,7 @@ public class CreatorUserPageObj extends BaseTest{
 			if(source.equalsIgnoreCase(COURSE))
 			{
 				GenericFunctions.refreshWebPage();
-				handlePopupOnLogin();
+				//handlePopupOnLogin();
 				GenericFunctions.waitWebDriver(3000);
 				GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 				createUserPage.headerCourse.click();
@@ -770,7 +784,7 @@ public class CreatorUserPageObj extends BaseTest{
 			else if(source.equalsIgnoreCase(BOOK))
 			{
 				GenericFunctions.refreshWebPage();
-				handlePopupOnLogin();
+				//handlePopupOnLogin();
 				GenericFunctions.waitForElementToAppear(createUserPage.headerLibrary);
 				createUserPage.headerLibrary.click();
 				GenericFunctions.waitWebDriver(2500);
@@ -806,7 +820,7 @@ public class CreatorUserPageObj extends BaseTest{
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate to workspace, search in Up for review and publish "+inputToSearch);
 			GenericFunctions.refreshWebPage();
-			handlePopupOnLogin();
+			//handlePopupOnLogin();
 			objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			/*GenericFunctions.waitForElementToAppear(publicUserPage.headerProfile);
 			publicUserPage.headerProfile.click();*/
@@ -904,7 +918,7 @@ public class CreatorUserPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.PASS,inputToSearch+" Content published sucessfully");
 			GenericFunctions.waitWebDriver(3000);
 			GenericFunctions.refreshWebPage();
-			handlePopupOnLogin();
+			//handlePopupOnLogin();
 			GenericFunctions.waitWebDriver(3000);
 		}
 		catch(Exception e)
@@ -1250,8 +1264,8 @@ public class CreatorUserPageObj extends BaseTest{
 				createUserPage.rejectReason2.click();
 				createUserPage.rejectReason3.click();
 				String rejectReason = (REVIEW_COMMENTS[new Random().nextInt(REVIEW_COMMENTS.length)]);
-				createUserPage.reviewComment.click();
-				createUserPage.reviewComment.sendKeys(rejectReason);
+				createUserPage.reviewComment.get(1).click();
+				createUserPage.reviewComment.get(1).sendKeys(rejectReason);
 				GenericFunctions.waitForElementToAppear(createUserPage.requestChangesButton);
 				GenericFunctions.waitWebDriver(1000);
 				createUserPage.requestChangesButton.click();
@@ -1326,8 +1340,8 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(2000);
 
 			//updated on 06/09/2018
-			createUserPage.reviewComment.click();
-			createUserPage.reviewComment.sendKeys(rejectReason);
+			createUserPage.reviewComment.get(1).click();
+			createUserPage.reviewComment.get(1).sendKeys(rejectReason);
 			GenericFunctions.waitWebDriver(700);
 			createUserPage.requestChangesButton.click();
 			GenericFunctions.waitWebDriver(3000);
@@ -1735,7 +1749,7 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.published.click();
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.refreshWebPage();
-			handlePopupOnLogin();
+			//handlePopupOnLogin();
 			GenericFunctions.waitForElementToAppear(createUserPage.getCourseName);
 
 			String courseName= createUserPage.getCourseName.getText();
@@ -1817,7 +1831,7 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.editorCloseIcon.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.profileIconDropdown);
 			GenericFunctions.refreshWebPage();
-			handlePopupOnLogin();
+			//handlePopupOnLogin();
 			GenericFunctions.waitWebDriver(3000);
 		}
 		catch(Exception e)
@@ -1938,12 +1952,14 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.rejectReason2.click();
 			createUserPage.rejectReason3.click();
 			String rejectReason = (REVIEW_COMMENTS[new Random().nextInt(REVIEW_COMMENTS.length)]);
-			createUserPage.reviewComment.click();
-			createUserPage.reviewComment.sendKeys(rejectReason);
+			createUserPage.reviewComment.get(1).click();
+			createUserPage.reviewComment.get(1).sendKeys(rejectReason);
+			GenericFunctions.waitForElementToAppear(createUserPage.requestChangesButton);
+			GenericFunctions.waitWebDriver(2000);
 			createUserPage.requestChangesButton.click();
 			GenericFunctions.waitWebDriver(3000);
 			GenericFunctions.refreshWebPage();
-			handlePopupOnLogin();
+			//handlePopupOnLogin();
 			GenericFunctions.waitWebDriver(3000);
 			System.out.println(uploadType+" rejected succesfully ");
 			ExtentTestManager.getTest().log(LogStatus.PASS, uploadType+" rejected succesfully ");
@@ -2245,8 +2261,13 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.selectOwner.click();
 			GenericFunctions.waitWebDriver(1500);
 			GenericFunctions.waitForElementToAppear(createUserPage.saveButton);
-
+			GenericFunctions.waitWebDriver(1000);
 			createUserPage.saveButton.click();
+		
+			//Wait for 2 seconds and refresh the web page
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.refreshWebPage();
+			//handlePopupOnLogin();
 		}
 		catch(Exception e)
 		{
@@ -2284,7 +2305,7 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.yesButtonPopup.click();
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.refreshWebPage();
-			handlePopupOnLogin();
+			//handlePopupOnLogin();
 			GenericFunctions.waitForElementToAppear(uploadOrgPage.dropdown);
 		
 		}
@@ -2320,22 +2341,6 @@ public class CreatorUserPageObj extends BaseTest{
 
 	public void handlePopupOnLogin()
 	{
-		/*try
-		{
-			ExtentTestManager.getTest().log(LogStatus.INFO, "Navigate to Profile Page");
-			GenericFunctions.waitWebDriver(1000);
-			GenericFunctions.waitForElementToAppear(createUserPage.profileIconDropdown);
-			createUserPage.profileIconDropdown.click();
-			GenericFunctions.waitWebDriver(1000);
-			GenericFunctions.waitForElementToAppear(createUserPage.profileIconProfile);
-			createUserPage.profileIconProfile.click();
-		}
-		catch(Exception e)
-		{
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Could not navigate to Profile Page");
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message: "+e.getLocalizedMessage());
-			Assert.fail("Could not navigate to Profile Page");
-		}*/
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is tring to handle the popup ");
