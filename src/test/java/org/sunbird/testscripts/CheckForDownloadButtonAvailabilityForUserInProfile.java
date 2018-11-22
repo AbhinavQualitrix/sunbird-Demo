@@ -32,28 +32,22 @@ public class CheckForDownloadButtonAvailabilityForUserInProfile extends BaseTest
 	@Test
 	public void checkForDownloadButtonAvailabilityForUserInProfile() throws Exception
 	{
-		
-		//Step1: Login as Creator
-		
 		SignUpPageObj creatorLogin = new SignUpPageObj();
-		creatorLogin.userLogin(MENTOR);
-
-		
-		//Step2: Navigate to profile and search for user and download button shouldn't be available
-		
+		CreatorUserPageObj cretorUserPageObj =new CreatorUserPageObj();
 		List <TestDataForSunbird> objListOFTestDataForSunbird1=null;
 		objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-		CreatorUserPageObj cretorUserPageObj =new CreatorUserPageObj();
-		cretorUserPageObj.navigateToProfileAndSearch(objListOFTestDataForSunbird1.get(8).getCourseName());
-		GenericFunctions.waitWebDriver(1000);
 		GenericFunctions generic = new GenericFunctions();
 		CreateMentorPage createMentorPage=PageFactory.initElements(driver, CreateMentorPage.class);
+		
+		//Step1: Login as Creator
+		creatorLogin.userLogin(ADMIN);
+
+		//Step2: Navigate to profile and search for user and download button shouldn't be available
+		cretorUserPageObj.navigateToProfileAndSearch(objListOFTestDataForSunbird1.get(8).getCourseName());
 		generic.isElementPresent(createMentorPage.downloadButton);
 		System.out.println("Download button was not available");
 		
 		//Step3: Logout as mentor
-		
-		GenericFunctions.waitWebDriver(1000);
 		creatorLogin.userLogout();
 
 	}

@@ -50,7 +50,9 @@ public class CreateMentorPageObj extends BaseTest{
 	public void navigateToMyActivityInDropDownMenu() throws InterruptedException
 	{
 		try{
+			
 			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify navigate to My Activity in drop down menu");
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(createUserPage.profileIconDropdown);
 			createUserPage.profileIconDropdown.click();
 			GenericFunctions.waitWebDriver(1000);

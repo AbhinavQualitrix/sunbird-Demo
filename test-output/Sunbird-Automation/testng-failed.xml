@@ -6,73 +6,13 @@
   </listeners>
   <test name="regressiontest-P1(failed)">
     <classes>
-      <class name="org.sunbird.testscripts.SearchAndDownloadOrgFile">
+      <class name="org.sunbird.testscripts.NavigateToMyActivityInDropdown">
         <methods>
-          <include name="searchAndDownloadOrgFile"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.SearchAndDownloadOrgFile -->
-      <class name="org.sunbird.testscripts.CheckForAuthenticUserInMentor">
-        <methods>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-          <include name="checkForAuthenticUserInMentor"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.CheckForAuthenticUserInMentor -->
-      <class name="org.sunbird.testscripts.ConsumeCourseByInvitedMember">
-        <methods>
-          <include name="consumeCourseByInvitedMember"/>
+          <include name="navigateToMyActivityInDropdown"/>
           <include name="closeApplication"/>
           <include name="openApplication"/>
         </methods>
-      </class> <!-- org.sunbird.testscripts.ConsumeCourseByInvitedMember -->
-      <class name="org.sunbird.testscripts.CheckSuborgMentorInvitingOrgMember">
-        <methods>
-          <include name="suborgMentorInvitingOrgMember"/>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.CheckSuborgMentorInvitingOrgMember -->
-      <class name="org.sunbird.testscripts.SearchOrgsAsMentor">
-        <methods>
-          <include name="closeApplication"/>
-          <include name="searchOrgsAsMentor"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.SearchOrgsAsMentor -->
-      <class name="org.sunbird.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor">
-        <methods>
-          <include name="consumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor -->
-      <class name="org.sunbird.testscripts.UpdateBatchAsInvitedMentor">
-        <methods>
-          <include name="updateBatchAsInvitedMember"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.UpdateBatchAsInvitedMentor -->
-      <class name="org.sunbird.testscripts.CheckForDownloadButtonAvailabilityForUserInProfile">
-        <methods>
-          <include name="checkForDownloadButtonAvailabilityForUserInProfile"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.CheckForDownloadButtonAvailabilityForUserInProfile -->
-      <class name="org.sunbird.testscripts.CheckCourseStatAsMentor">
-        <methods>
-          <include name="checkCourseStatAsMentor"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.CheckCourseStatAsMentor -->
-      <class name="org.sunbird.testscripts.CheckAvailabilityOfCourseForInvitedMember">
-        <methods>
-          <include name="checkAvailabilityOfCourseForInvitedMember"/>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.CheckAvailabilityOfCourseForInvitedMember -->
-      <class name="org.sunbird.testscripts.EnrollToCourseInOpenBatch">
-        <methods>
-          <include name="closeApplication"/>
-          <include name="enrollToCourseInOpenBatch"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.sunbird.testscripts.EnrollToCourseInOpenBatch -->
+      </class> <!-- org.sunbird.testscripts.NavigateToMyActivityInDropdown -->
     </classes>
   </test> <!-- regressiontest-P1(failed) -->
 </suite> <!-- Failed suite [Sunbird-Automation] -->

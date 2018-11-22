@@ -2079,7 +2079,7 @@ public class CreatorUserPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate to profile and search "+userData);
 			/*GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
 			createUserPage.headerProfile.click();*/
-			handlePopupOnLogin();
+			goToProfilePage();
 			GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.searchInput.click();
@@ -2103,11 +2103,10 @@ public class CreatorUserPageObj extends BaseTest{
 			//createUserPage.dropDown.click();
 			/*GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
 			createUserPage.headerProfile.click();*/
-			handlePopupOnLogin();
-			GenericFunctions.waitForElementToAppear(createMentorPage.searchDropDown);
-			createMentorPage.searchDropDown.click();
+			//GenericFunctions.waitForElementToAppear(createMentorPage.searchDropDown);
+			//createMentorPage.searchDropDown.click();
 			GenericFunctions.waitWebDriver(1000);
-			createMentorPage.searchDropDownOrg.click();
+			//createMentorPage.searchDropDownOrg.click();
 			GenericFunctions.waitWebDriver(1000);
 			createMentorPage.downloadButton.click();
 			GenericFunctions.waitWebDriver(2000);
@@ -2368,6 +2367,9 @@ public class CreatorUserPageObj extends BaseTest{
 			}
 			else if(state==false)
 			{
+				GenericFunctions.refreshWebPage();
+			}
+			else {
 				GenericFunctions.refreshWebPage();
 			}
 		}

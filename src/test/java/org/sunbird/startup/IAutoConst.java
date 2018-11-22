@@ -48,7 +48,7 @@ public interface IAutoConst {
 	String[] searchInput = new String[]{"BookA","Automation content","Automation Collection","lesson plan","Automation Resource"};
 	String UPLOAD_PROFILE_PIC="images1";
 	String[] SEARCH_USERS=new String[]{"mentor","admin","public user","creator","reviewer"};
-	String[] SEARCH_ORG=new String[]{"Org","Root Org"};
+	String[] SEARCH_ORG=new String[]{"Org"};
 	String SUMMARY_EDIT ="Profile Summary is edited";
 	String EXP_OCCUPATION="Test Occupation";
 	String EXP_DESIGNATION="Test Designation";

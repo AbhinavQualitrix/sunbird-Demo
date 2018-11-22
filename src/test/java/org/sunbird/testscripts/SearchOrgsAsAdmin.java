@@ -13,17 +13,17 @@ import org.sunbird.pageobjects.SignUpPageObj;
 import org.sunbird.startup.BaseTest;
 import org.testng.annotations.Test;
 
-public class SearchOrgsAsMentor extends BaseTest
+public class SearchOrgsAsAdmin extends BaseTest
 {
 	@Test
-	public void searchOrgsAsMentor() throws Exception
+	public void searchOrgsAsAdmin() throws Exception
 	{
 		
 		SignUpPageObj userLogin = new SignUpPageObj();
 		PublicUserPageObj publicUser = new PublicUserPageObj();
 		
 		//Step 1 :Login as any user(MENTOR)
-		userLogin.userLogin(MENTOR);
+		userLogin.userLogin(ADMIN);
 
 		//Step 2:Search for a particular Organization	
 		publicUser.searchOrgs();

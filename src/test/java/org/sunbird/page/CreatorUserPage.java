@@ -669,6 +669,28 @@ public class CreatorUserPage {
 	 
 	 @FindBy(xpath="//a[@href='/workspace/content/limited-publish/1']")
 	 public WebElement limitedPublishing;
+	 
+	 @FindBy(xpath="(//sui-select-option[@value='Organisations'])[2]")
+	 public WebElement organisationsInSearch;
+	 
+	 @FindBy(xpath="(//i[@class='dropdown icon'])[2]")
+	 public WebElement searchDropdown;
+	 
+	 @FindBy(xpath="(//input[@class='checkBox'])[1]")
+	 public WebElement selectResourceN;
+	 
+	 @FindBy(xpath="(//div[@class='UpReviewHeader'])[1]")
+	 public WebElement searchCoursesUpForReviewE;
+	 
+	 @FindBy(xpath="//div[@class='five wide column custom-5-wide']/div/div/div/div[5]")
+	 //@FindBy(xpath="//div[@data-content='Send for review']")
+	 public WebElement sendForReviewA;
+	 
+	 @FindBy(xpath="//span[@class='ng-scope']")
+	 public WebElement editdetailslink;
+	 
+	 @FindBy(xpath="//button[contains(text(),'Close')]")
+	 public WebElement closeButtonMsg ;
 }
 
 

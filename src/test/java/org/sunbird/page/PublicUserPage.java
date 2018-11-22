@@ -390,7 +390,11 @@ public class PublicUserPage
 	@FindBy(xpath="//div[@id='education']/..//i[@class='trash outline icon trashIcon-fontSize m-responsive-p-icon-ml']")
 	public WebElement educationDelete;
 	
+	@FindBy(xpath="//a[@class='header ']")
+	public List<WebElement> searchedResults1;
 	
+	@FindBy(xpath="//a[@class='header ']")
+	public WebElement searchedResult;
 }	
 
 

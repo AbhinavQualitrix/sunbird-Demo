@@ -40,12 +40,12 @@ public class SignUpPageObj extends BaseTest
         	    ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to Log in as "+userRole);
                 orgUploadPage.loginButton.click();
                 if(userRole.equalsIgnoreCase("ADMIN")){   
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(5).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(5).getPassword());
-                      System.out.println("Logged in as "+userRole+" with UN:"+objListOFTestDataForSunbird.get(5).getUsername()+" and PW:"+
-                                  objListOFTestDataForSunbird.get(5).getPassword());
-                      log.info("Logged in as"+userRole+"with UN:"+objListOFTestDataForSunbird.get(5).getUsername()+" and PW:"+
-                                  objListOFTestDataForSunbird.get(5).getPassword());
+                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(3).getUsername());
+                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(3).getPassword());
+                      System.out.println("Logged in as "+userRole+" with UN:"+objListOFTestDataForSunbird.get(3).getUsername()+" and PW:"+
+                                  objListOFTestDataForSunbird.get(3).getPassword());
+                      log.info("Logged in as"+userRole+"with UN:"+objListOFTestDataForSunbird.get(3).getUsername()+" and PW:"+
+                                  objListOFTestDataForSunbird.get(3).getPassword());
                 }
                 else if(userRole.equalsIgnoreCase("CREATOR")){
                       orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(0).getUsername());
@@ -158,13 +158,13 @@ public class SignUpPageObj extends BaseTest
 	public void userLogout()throws Exception{
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to Log out");
-			GenericFunctions.waitWebDriver(4000);
+			GenericFunctions.waitWebDriver(5000);
 			UploadOrgPage orgUploadPage=PageFactory.initElements(driver, UploadOrgPage.class);
 			GenericFunctions.waitForElementToAppear(orgUploadPage.dropdown);
 			orgUploadPage.dropdown.click();
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(orgUploadPage.logout);
 			orgUploadPage.logout.click();
-			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitWebDriver(3500);
 			System.out.println("User Logout");
 			
 		}

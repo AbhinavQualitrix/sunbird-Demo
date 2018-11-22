@@ -467,15 +467,27 @@ public class PublicUserPageObj extends BaseTest
 			/*GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
 			createUserPage.headerProfile.click();*/
 			creatorUserPageObj.goToProfilePage();
+			GenericFunctions.waitWebDriver(1000);
+			//createUserPage.searchDropdown.click();
+			GenericFunctions.waitWebDriver(1000);
+			//createUserPage.organisationsInSearch.click();
 			GenericFunctions.waitWebDriver(3000);
 			for(int i=0;i<SEARCH_ORG.length;i++)
 			{	
-
 				GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
 				createUserPage.searchInput.sendKeys(SEARCH_ORG[i]);
 				GenericFunctions.waitWebDriver(1000);
 				createUserPage.searchIcon.click();
-				GenericFunctions.waitForElementToAppear(publicUserPage.searchedInputResult);
+				GenericFunctions.waitForElementToAppear(publicUserPage.searchedResult);
+				for(int j=0;j<publicUserPage.searchedResults1.size();j++)	
+				{
+					String orgName=publicUserPage.searchedResults1.get(j).getText();
+					System.out.println(orgName);
+				}
+				
+				
+				
+				/*GenericFunctions.waitForElementToAppear(publicUserPage.searchedInputResult);
 				if(publicUserPage.searchedInputResult.isDisplayed())
 				{
 					GenericFunctions.waitWebDriver(2000);
@@ -491,7 +503,7 @@ public class PublicUserPageObj extends BaseTest
 				else
 				{
 					System.out.println(publicUserPage.searchedInputResult+"element is not displayed");
-				}
+				}*/
 
 			}
 		}
