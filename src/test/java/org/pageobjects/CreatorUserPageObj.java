@@ -2104,7 +2104,7 @@ public class CreatorUserPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate to profile and search "+userData);
 			/*GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
 			createUserPage.headerProfile.click();*/
-			handlePopupOnLogin();
+			goToProfilePage();
 			GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.searchInput.click();
@@ -2220,7 +2220,7 @@ public class CreatorUserPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying create new resource by giving an Unique Resource name");
 			GenericFunctions.waitWebDriver(1500);
 			GenericFunctions.waitForElementToAppear(createUserPage.bookName);
-			String resourceNumber = GenericFunctions.testDataIncrementer(".//testData//resourceNumbers.txt").toString();
+			String resourceNumber = GenericFunctions.testDataIncrementer("./testData/resourceNumbers.txt").toString();
 			createUserPage.bookName.sendKeys(objListOFTestDataForSunbird1.get(6).getCourseName()+resourceNumber);
 			GenericFunctions.waitWebDriver(2000);
 			createUserPage.startCreating.click();
@@ -2391,10 +2391,10 @@ public class CreatorUserPageObj extends BaseTest{
 			{
 				handlePopupOnLogin();
 			}
-			else if(state==false)
+			/*else if(state==false)
 			{
 				GenericFunctions.refreshWebPage();
-			}
+			}*/
 			else 
 			{
 				GenericFunctions.refreshWebPage();
@@ -2457,11 +2457,8 @@ try{
 			if(createUserPage.saveCourse.isDisplayed())
 			{
 				ExtentTestManager.getTest().log(LogStatus.PASS, "Course is created succesfully");
-				Assert.assertTrue(true);	
-				
+				Assert.assertTrue(true);		
 			}
-			
-		
 		}
 		catch(Exception e)
 		{
@@ -2473,100 +2470,134 @@ try{
 
 		}
 	}
-	public void searchInUpForReviewForOpenbatch(String source,List <TestDataForSunbird> objListOFTestDataForSunbird) throws Exception{
-		try{	
+	public String searchInUpForReviewForOpenbatch(String source,List <TestDataForSunbird> objListOFTestDataForSunbird) throws Exception{
+		String courseNumber = "",searchCourseName="";
+		try
+		{	
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to search in Up For Review bucket for "+source);
-			String courseNumber = "",searchCourseName="";
-			GenericFunctions.waitWebDriver(3000);
-			publicUserPage.headerProfile.click();
+			/*GenericFunctions.waitForElementToAppear(publicUserPage.headerProfile);
+			publicUserPage.headerProfile.click();*/
+			//handlePopupOnLogin();
+			
+			GenericFunctions.waitWebDriver(2000);	
 			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
 			createUserPage.workSpace.click();
+			GenericFunctions.waitWebDriver(1000);	
 			createUserPage.upForReview.click();
 			if(source.equalsIgnoreCase(COURSE)){
 				courseNumber = GenericFunctions.readFromNotepad("./testData/dikshadata.txt").toString();
 				createUserPage.searchForReview.click();
 				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+courseNumber);
-				//createUserPage.searchIcon.click();
+				createUserPage.searchIconUpForReview.click();
 				searchCourseName = objListOFTestDataForSunbird.get(0).getCourseName()+courseNumber;
-				GenericFunctions.waitWebDriver(3000);	
-				GenericFunctions.waitForElementToAppear(createUserPage.searchCoursesUpForReviewE);
-				createUserPage.searchCoursesUpForReviewE.click();
+				GenericFunctions.waitWebDriver(3000);		
+
 			}
 			else if(source.equalsIgnoreCase(BOOK)){
-				courseNumber = GenericFunctions.readFromNotepad("./testData/dikshadata.txt").toString();
+				courseNumber = GenericFunctions.readFromNotepad("./testData/bookNumbers.txt").toString();
 				createUserPage.searchForReview.click();
 				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(2).getCourseName()+courseNumber);
-				//createUserPage.searchIcon.click();
+				createUserPage.searchIconUpForReview.click();
 				searchCourseName = objListOFTestDataForSunbird.get(2).getCourseName()+courseNumber;
-				GenericFunctions.waitWebDriver(3000);
-				GenericFunctions.waitForElementToAppear(createUserPage.searchCoursesUpForReviewE);
-				createUserPage.searchCoursesUpForReviewE.click();
+				GenericFunctions.waitWebDriver(3000);			
 			}
-			else if(source.equalsIgnoreCase(RESOURCE)){
-				courseNumber = GenericFunctions.readFromNotepad("./testData/dikshadata.txt").toString();
+			//Added on 10 july 2018
+			else if(source.equalsIgnoreCase(RESOURCE))
+			{
+				courseNumber = GenericFunctions.readFromNotepad("./testData/resourceNumbers.txt").toString();
 				createUserPage.searchForReview.click();
 				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(6).getCourseName()+courseNumber);
-				//createUserPage.searchIcon.click();
+				createUserPage.searchIconUpForReview.click();
 				searchCourseName = objListOFTestDataForSunbird.get(6).getCourseName()+courseNumber;
-				GenericFunctions.waitWebDriver(3000);	
-				GenericFunctions.waitForElementToAppear(createUserPage.searchCoursesUpForReviewE);
-				createUserPage.searchCoursesUpForReviewE.click();
-			}
-			else if(source.equalsIgnoreCase(COLLECTION)){
-				courseNumber = GenericFunctions.readFromNotepad("./testData/dikshadata.txt").toString();
-				createUserPage.searchForReview.click();
-				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+courseNumber);
-				//createUserPage.searchIcon.click();
-				searchCourseName = objListOFTestDataForSunbird.get(0).getCourseName()+courseNumber;
 				GenericFunctions.waitWebDriver(3000);
-				GenericFunctions.waitForElementToAppear(createUserPage.searchCoursesUpForReviewE);
-				createUserPage.searchCoursesUpForReviewE.click();
 			}
-			else if(source.equalsIgnoreCase(LESSONPLAN)){
-				courseNumber = GenericFunctions.readFromNotepad("./testData/dikshadata.txt").toString();
-				createUserPage.searchForReview.click();
-				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(3).getCourseName()+courseNumber);
-				//createUserPage.searchIcon.click();
-				searchCourseName = objListOFTestDataForSunbird.get(3).getCourseName()+courseNumber;
-				GenericFunctions.waitWebDriver(3000);
-				GenericFunctions.waitForElementToAppear(createUserPage.searchCoursesUpForReviewE);
-				createUserPage.searchCoursesUpForReviewE.click();
-			}
+			//------------ADDED ON OCT 11 v1.11.0--------------
+
+			GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
+			createUserPage.searchedContentForPublish.click();
 			GenericFunctions.waitWebDriver(3000);
+			//createUserPage.editorCloseIcon.click();
+
 		}
-		catch(Exception e){
+		catch(Exception e)
+		{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on searching in Up for review");
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
 			System.out.println(e.getLocalizedMessage());
 			log.error("Exception In the method searchCourse"+e.getMessage());
 			Assert.fail("Failed to search in Up for review bucket");
 		}
+		return searchCourseName;
 
 	}
-	public void publishAndSearchForOpenBatch(String source,List <TestDataForSunbird> objListOFTestDataForSunbird){
+	
+	public String publishAndSearchForOpenBatch(String source,List <TestDataForSunbird> objListOFTestDataForSunbird){
+		String courseNumber="",searchCourseName="";
 		try{
-			String courseNumber="",searchCourseName="";
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to publish and search "+source);
+			GenericFunctions.waitWebDriver(3000);	
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
-			GenericFunctions.waitWebDriver(2000);	
+			GenericFunctions.waitWebDriver(3000);	
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.publishCourseButton);
 			createUserPage.publishCourseButton.click();
 			for(int i=0;i<createUserPage.checkbox.size();i++){
 				createUserPage.checkbox.get(i).click();
 			}
-			GenericFunctions.waitWebDriver(1500);
+			
+			GenericFunctions.waitWebDriver(2500);
 			createUserPage.popupPublishButton.click();
 			GenericFunctions.waitWebDriver(3000);
-			driver.switchTo().defaultContent();
-			assertOnSearchAfterPublish(searchCourseName);
+			
+			//driver.switchTo().defaultContent();
+			
+			if(source.equalsIgnoreCase(COURSE))
+			{
+				GenericFunctions.refreshWebPage();
+				//handlePopupOnLogin();
+				GenericFunctions.waitWebDriver(6000);
+				GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
+				createUserPage.headerCourse.click();
+				GenericFunctions.waitWebDriver(3000);
+				courseNumber = GenericFunctions.readFromNotepad("./testData/dikshadata.txt").toString();
+				GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
+				createUserPage.searchInput.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+courseNumber);
+				createUserPage.searchIcon.click();
+				GenericFunctions.waitWebDriver(2500);
+				searchCourseName = objListOFTestDataForSunbird.get(0).getCourseName()+courseNumber;
+			}
+			
+			else if(source.equalsIgnoreCase(BOOK))
+			{
+				GenericFunctions.refreshWebPage();
+				//handlePopupOnLogin();
+				GenericFunctions.waitWebDriver(6000);
+				GenericFunctions.waitForElementToAppear(createUserPage.headerLibrary);
+				createUserPage.headerLibrary.click();
+				GenericFunctions.waitWebDriver(2500);
+				courseNumber = GenericFunctions.readFromNotepad("./testData/bookNumbers.txt").toString();
+				GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
+				createUserPage.searchInput.sendKeys(objListOFTestDataForSunbird.get(2).getCourseName()+courseNumber);
+				createUserPage.searchIcon.click();
+				GenericFunctions.waitWebDriver(2500);
+				searchCourseName = createUserPage.getCourseName.getText(); //objListOFTestDataForSunbird.get(2).getCourseName()+courseNumber;
+			}
+
+			//Added on Maintenance 06/09/2018
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(createUserPage.getCourseName);
+
+			//assertOnSearchAfterPublish(searchCourseName);
+			
 		}
-		catch(Exception e){
+		catch(Exception e)
+		{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to publish and search "+source);
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
 			System.out.println(e.getMessage());
 			Assert.fail("Failed to publish and search");
 		}
-
+		System.out.println(searchCourseName);
+		return searchCourseName;
 	}
 	
 	

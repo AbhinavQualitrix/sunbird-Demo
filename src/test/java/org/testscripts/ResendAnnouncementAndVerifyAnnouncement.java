@@ -6,7 +6,7 @@
 
 * Date: 06/28/2018
 
-* Purpose: Resend and edit the Announcement and verify as reviewer.
+* Purpose: Resend and edit the Announcement and verify as reciever.
 
 */
 package org.testscripts;

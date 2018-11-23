@@ -44,7 +44,7 @@ public class CheckForDownloadButtonAvailabilityForUserInProfile extends BaseTest
 		CreateMentorPage createMentorPage=PageFactory.initElements(driver, CreateMentorPage.class);
 		
 		//Step1: Login as Creator
-		creatorLogin.userLogin(CREATOR);
+		creatorLogin.userLogin(ADMIN);
 
 		//Step2: Navigate to profile and search for user and download button shouldn't be available
 		cretorUserPageObj.navigateToProfileAndSearch(objListOFTestDataForSunbird1.get(8).getCourseName());

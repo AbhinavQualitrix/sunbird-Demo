@@ -319,6 +319,7 @@ public class GenericFunctions extends BaseTest
 	 * Purpose: refreshWebPage method refreshes the web page
 	 */
 	public static void refreshWebPage() {
+		GenericFunctions.waitWebDriver(2000);
 		driver.navigate().refresh();
 		GenericFunctions.waitWebDriver(2500);
 		createUserPageObj.handlePopupOnLogin();

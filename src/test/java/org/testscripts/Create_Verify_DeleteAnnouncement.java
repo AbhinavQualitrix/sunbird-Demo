@@ -40,46 +40,32 @@ public class Create_Verify_DeleteAnnouncement extends BaseTest {
 	@Test
 	public void create_Verify_DeleteAnnouncement() throws Exception
 	{
-		//Step1: Login as Creator
 		SignUpPageObj creatorLogin = new SignUpPageObj();
+		CreatorAnnouncementPageObj creatorAnnouncementPageObj =new CreatorAnnouncementPageObj();
+		
+		//Step1: Login as Creator
 		creatorLogin.userLogin(CREATOR);
 		
 		//Step2: Navigate to Announcement Dashboard in Dropdown
-		CreatorAnnouncementPageObj creatorAnnouncementPageObj =new CreatorAnnouncementPageObj();
 		creatorAnnouncementPageObj.navigateToAnnouncementInDropDownMenu();
 		
 		//Step3:Create Announcement using description
 		creatorAnnouncementPageObj.CreateAnnouncement();
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-		GenericFunctions.waitWebDriver(1500);
-		String announcementNumber = GenericFunctions.readFromNotepad("./TestData/announcementNumbers.txt").toString().toUpperCase();
+		String announcementNumber = GenericFunctions.readFromNotepad("./testData/announcementNumbers.txt").toString().toUpperCase();
 		announcementName = objListOFTestDataForSunbird.get(7).getCourseName() + announcementNumber;
 		
 		// Step4: Logout as Creator
-		GenericFunctions.waitWebDriver(2000);
 		GenericFunctions.refreshWebPage();
-		GenericFunctions.waitWebDriver(2000);
 		creatorLogin.userLogout();
 
-		// Step5: Login as Reciever				
-		GenericFunctions.waitWebDriver(1500);
+		/*// Step5: Login as Reciever				
 		creatorLogin.userLogin(REVIEWER);
 		
 		//Step6:check for the announcement
-		CreatorAnnouncementPage createAnnouncementPage = PageFactory.initElements(driver,CreatorAnnouncementPage.class);
-		GenericFunctions.waitWebDriver(1000);
-		createAnnouncementPage.seeAllAnnouncement.click();
-		GenericFunctions.waitWebDriver(1500);
-		announcementnameReview = createAnnouncementPage.reviewAnnouncementN.getText();
-		System.out.println(announcementnameReview);
-		AssertJUnit.assertEquals(announcementnameReview, announcementName);
-		createAnnouncementPage.reviewAnnouncementN.click();
-		GenericFunctions.waitWebDriver(1000);
-		createAnnouncementPage.popupCloseIcon.click();
-		System.out.println("Created Announcement is available");
+		creatorAnnouncementPageObj.checkForAnnouncement();
 		
 		// Step7: Logout as Reciever
-		GenericFunctions.waitWebDriver(2500);
 		creatorLogin.userLogout();
 		
 		//Step8: Login as Creator
@@ -89,44 +75,19 @@ public class Create_Verify_DeleteAnnouncement extends BaseTest {
 		creatorAnnouncementPageObj.navigateToAnnouncementInDropDownMenu();
 	
 		//Step10: click on Delete on particular Announcement	
-		GenericFunctions generic = new GenericFunctions();
-		checkForDeleteButton = generic.isElementPresent(createAnnouncementPage.deleteAnnouncementButton);
-		if (checkForDeleteButton==true) {
-			announcementName1 = createAnnouncementPage.selectAnnouncementName.getText();
-			System.out.println("Deleted Announcement is" +announcementName1);
-			createAnnouncementPage.deleteAnnouncementButton.click();
-		} else{
-			createAnnouncementPage.nextarrowOnHomePage.click();
-			GenericFunctions.waitWebDriver(1000);
-			announcementName1 = createAnnouncementPage.selectAnnouncementName.getText();
-			System.out.println("Deleted Announcement is" +announcementName1);
-			createAnnouncementPage.deleteAnnouncementButton.click();
-		}
-		GenericFunctions.waitWebDriver(1500);
-		createAnnouncementPage.stopCreatingAnnouncementMessageYes.click();
+		creatorAnnouncementPageObj.deleteAnnouncement();
 		
 		// Step11: Logout as Creator
-		GenericFunctions.waitWebDriver(2500);
 		creatorLogin.userLogout();
 		
 		// Step12: Login as Reciever
-		GenericFunctions.waitWebDriver(2500);
 		creatorLogin.userLogin(REVIEWER);
 
 		// step13: check that the same announcement deleted from their account also
-		GenericFunctions.waitWebDriver(1000);
-		createAnnouncementPage.seeAllAnnouncement.click();
-		GenericFunctions.waitWebDriver(1500);
-		for (WebElement ele : createAnnouncementPage.reviewAnnouncement) {
-			announcementnameReview = ele.getText();
-			Assert.assertNotEquals(announcementnameReview, announcementName1);
-
-		}
-		System.out.println("Deleted Announcement is not available");
+		creatorAnnouncementPageObj.checkDeletedAnnouncement(announcementName1);
 		
 		// Step14: Logout as Creator
-		GenericFunctions.waitWebDriver(2500);
-		creatorLogin.userLogout();
+		creatorLogin.userLogout();*/
 	}
 
 }

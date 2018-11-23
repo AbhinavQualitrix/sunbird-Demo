@@ -59,12 +59,13 @@ public class CreateMentorPageObj extends BaseTest{
 			createAnnouncementPage.myActivityInDropdown.click();	
 			GenericFunctions.waitForElementToAppear(createMentorPage.searchCourseDropdown);
 			createMentorPage.searchCourseDropdown.click();
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitWebDriver(2000);
 			createMentorPage.firstCourseDropdownitem.click();
 			GenericFunctions.waitForElementToAppear(createMentorPage.rightArrowIcon);
 			createMentorPage.rightArrowIcon.click();
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitWebDriver(2000);
 			createMentorPage.leftArrowIcon.click();
+			System.out.println("inside My activity");
 			ExtentTestManager.getTest().log(LogStatus.PASS, "Course Mentor Dashboard is verified");
 		}
 		catch(Exception e)
@@ -148,7 +149,7 @@ public class CreateMentorPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 			createUserPage.headerCourse.click();
 			GenericFunctions.waitWebDriver(1000);
-			createUserPage.searchInput.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName() + GenericFunctions.readFromNotepad("./TestData/batchNumbers.txt"));
+			createUserPage.searchInput.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName() + GenericFunctions.readFromNotepad("./testData/dikshadata.txt"));
 			createUserPage.searchIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 			createMentorPage.courseImg1.click();
@@ -440,7 +441,7 @@ public class CreateMentorPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.switchToFrame(driver, createMentorPage.batchForm);
 			GenericFunctions.waitWebDriver(1000);
-			createMentorPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+ GenericFunctions.readFromNotepad("./TestData/courseNumbers.txt"));
+			createMentorPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+ GenericFunctions.readFromNotepad("./testData/courseNumbers.txt"));
 			createMentorPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
 			createMentorPage.openBatch.click();
 			GenericFunctions.waitWebDriver(1000);

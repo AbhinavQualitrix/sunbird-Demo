@@ -27,35 +27,19 @@ public class OpenAnnouncement extends BaseTest {
 	String verifyannouncementName;
 	@Test
 	public void openAnnouncement() throws Exception{
+		SignUpPageObj creatorLogin = new SignUpPageObj();
+		CreatorAnnouncementPageObj creatorAnnouncementPageObj = new CreatorAnnouncementPageObj();
 		
 		// Step1: Login as Creator
-
-		SignUpPageObj creatorLogin = new SignUpPageObj();
 		creatorLogin.userLogin(CREATOR);
 
 		// Step2: Navigate to Announcement Dashboard in Dropdown
-
-		CreatorAnnouncementPageObj creatorAnnouncementPageObj = new CreatorAnnouncementPageObj();
 		creatorAnnouncementPageObj.navigateToAnnouncementInDropDownMenu();
 		
 		//Step3:  Click on particular Announcement.
+		creatorAnnouncementPageObj.openAnnouncement();
 		
-		GenericFunctions.waitWebDriver(1000);
-		CreatorAnnouncementPage createAnnouncementPage = PageFactory.initElements(driver,CreatorAnnouncementPage.class);
-		announcementName = createAnnouncementPage.announcementTableNameContent.getText();
-		createAnnouncementPage.announcementTableNameContent.click();
-		System.out.println(announcementName);
-		
-		//Step4:  Accouncement details opens up.
-		
-		GenericFunctions.waitWebDriver(1000);
-		verifyannouncementName = createAnnouncementPage.announcementReview.getText();
-		AssertJUnit.assertEquals(announcementName, verifyannouncementName);
-		System.out.println("Announcement is verified");
-		
-		//Step5: Logout as Creator.
-
-		GenericFunctions.waitWebDriver(2500);
+		//Step4: Logout as Creator.
 		creatorLogin.userLogout();
 		
 		

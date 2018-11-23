@@ -40,76 +40,20 @@ public class ResendAnnouncement extends BaseTest{
 	@Test
 	public void resendAnnouncement() throws InterruptedException, Exception
 	{
-		//Step1.Login as creator.
-		
 		SignUpPageObj creatorLogin = new SignUpPageObj();
+		CreatorAnnouncementPageObj creatorAnnouncementPageObj =new CreatorAnnouncementPageObj();
+		CreatorAnnouncementPage createAnnouncementPage = PageFactory.initElements(driver,CreatorAnnouncementPage.class);
+		
+		//Step1.Login as creator.
 		creatorLogin.userLogin(CREATOR);
 		
 		//Step2.Click on Announcement Dashboard.
-		
-		CreatorAnnouncementPageObj creatorAnnouncementPageObj =new CreatorAnnouncementPageObj();
 		creatorAnnouncementPageObj.navigateToAnnouncementInDropDownMenu();
 		
 		//Step3.Click on resend.
-		
-		CreatorAnnouncementPage createAnnouncementPage = PageFactory.initElements(driver,CreatorAnnouncementPage.class);
-		GenericFunctions generic = new GenericFunctions();
-		checkForResendButton = generic.isElementPresent(createAnnouncementPage.resendAnnouncementButton);
-		if (checkForResendButton==true) {
-			announcementName = createAnnouncementPage.resendAnnouncementName.getText();
-			System.out.println(announcementName);
-			createAnnouncementPage.resendAnnouncementButton.click();
-		} else{
-			createAnnouncementPage.nextarrowOnHomePage.click();
-			GenericFunctions.waitWebDriver(1000);
-			announcementName = createAnnouncementPage.resendAnnouncementName.getText();
-			System.out.println(announcementName);
-			createAnnouncementPage.resendAnnouncementButton.click();
-		}
-		GenericFunctions.waitWebDriver(1500);
-		
-		
-		//Step4.Edit the details.
-		
-		Robot robot = new Robot();
-		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-		GenericFunctions.waitWebDriver(1500);
-		createAnnouncementPage.enterTitle.click();
-		createAnnouncementPage.enterTitle.clear();
-		String announcementNumber = GenericFunctions.readFromNotepad("./TestData/announcementNumbers.txt").toString().toUpperCase();
-		editTitle = objListOFTestDataForSunbird.get(7).getCourseName()  + announcementNumber;
-		GenericFunctions.waitWebDriver(2000);
-		createAnnouncementPage.editRecipients.click();
-		GenericFunctions.waitWebDriver(2000);
-		
-
-		//Step6.Select location.
-		
-		createAnnouncementPage.searchForLocation.click();
-		GenericFunctions.waitWebDriver(2000);
-		
-		
-		//Step7.Click on confirm recipients.
-		
-		createAnnouncementPage.confirmRecipients.click();
-		GenericFunctions.waitWebDriver(2000);
-		createAnnouncementPage.previewAnnouncement.click();
-		GenericFunctions.waitWebDriver(2000);
-		createAnnouncementPage.sendAnnouncement.click();
-		GenericFunctions.waitWebDriver(2000);
-		createAnnouncementPage.announcementcreatedConfirmation.click();
-		
-		
-		
-		//Step8. Check that the announcement sender receives the announcement
-		
-		edittedTitle = createAnnouncementPage.resendAnnouncementName.getText();
-		System.out.println(edittedTitle);
-		AssertJUnit.assertEquals(announcementName, edittedTitle);
-		System.out.println("updated info verified");
+		creatorAnnouncementPageObj.resendAndVerifyAnnouncement();
 		
 		//Step9. Logout as Creator
-		GenericFunctions.waitWebDriver(2500);
 		creatorLogin.userLogout();
 	}
 

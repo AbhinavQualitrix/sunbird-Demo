@@ -32,6 +32,7 @@ public class SignUpPageObj extends BaseTest
 	*/
 	public void userLogin(String userRole) throws InterruptedException
     {
+		  GenericFunctions.waitWebDriver(1500);
           UploadOrgPage orgUploadPage=PageFactory.initElements(driver, UploadOrgPage.class);
           List <TestDataForSunbird> objListOFTestDataForSunbird=null;
           objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcredentials");

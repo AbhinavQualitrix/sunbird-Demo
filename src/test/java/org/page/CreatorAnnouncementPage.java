@@ -18,7 +18,7 @@ public class CreatorAnnouncementPage {
 	
 	
 	//Added on 22-Oct0-2018
-	@FindBy(xpath="//*[@class='close icon']")
+	@FindBy(xpath="(//*[@class='close icon'])[2]")
 	public WebElement CloseAnnouncementPopup;
 	
 	

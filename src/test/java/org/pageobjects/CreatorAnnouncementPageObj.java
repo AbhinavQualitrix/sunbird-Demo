@@ -25,6 +25,7 @@ import org.page.SignUpPage;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
+import org.testng.AssertJUnit;
 
 import com.aventstack.extentreports.ExtentReporter;
 import com.relevantcodes.extentreports.LogStatus;
@@ -55,15 +56,16 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createUserPage.profileIconDropdown);
 			GenericFunctions.waitWebDriver(1500);
 			createUserPage.profileIconDropdown.click();
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitWebDriver(2000);
 			createAnnouncementPage.announcement_Dashboard.click();	
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.create_Announcement);
 			if(createAnnouncementPage.create_Announcement.isDisplayed())
 			{
-				GenericFunctions.waitWebDriver(1000);
+				GenericFunctions.waitWebDriver(2000);
 				Assert.assertEquals(driver.getCurrentUrl(), expectedDashboardUrl);
 				Assert.assertTrue(true);
 				ExtentTestManager.getTest().log(LogStatus.PASS, "Announcement dashboard is sucessfully visible to user");
+				GenericFunctions.waitWebDriver(2000);
 			}
 		}
 		catch(Exception e)
@@ -88,7 +90,7 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.enterTitle);
 			createAnnouncementPage.enterTitle.click();
 			String announcementNumber = GenericFunctions.testDataIncrementer("./TestData/announcementNumbers.txt").toString();
-			announcementName = objListOFTestDataForSunbird.get(7).getCourseName();
+			announcementName = objListOFTestDataForSunbird.get(7).getCourseName()+announcementNumber;
 			System.out.println(announcementName + announcementNumber);
 			createAnnouncementPage.enterTitle.sendKeys(announcementName + announcementNumber );
 			createAnnouncementPage.enterOrg.click();
@@ -106,26 +108,21 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			createAnnouncementPage.enterUrl.sendKeys(objListOFTestDataForSunbird.get(7).getTitleDescription());
 			GenericFunctions.waitWebDriver(2000);
-			
-	
-			
 			action.moveToElement(createAnnouncementPage.selectRecipient).click().build().perform();
-			
 			GenericFunctions.waitWebDriver(3000);
-			
 			createAnnouncementPage.checkLocation.get(0).click();
 			createAnnouncementPage.checkLocation.get(1).click();
-			
 			//action.moveToElement(createAnnouncementPage.checkLocation).click().build().perform();
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitWebDriver(2000);
 			createAnnouncementPage.confirmRecipients.click();
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.previewAnnouncement);
 			createAnnouncementPage.previewAnnouncement.click();
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.sendAnnouncement);
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitWebDriver(2000);
 			createAnnouncementPage.sendAnnouncement.click();
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.announcementcreatedConfirmation);
 			createAnnouncementPage.announcementcreatedConfirmation.click();
+			GenericFunctions.waitWebDriver(2000);
 		}
 		catch(Exception e)
 		{
@@ -148,7 +145,7 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.enterTitle);
 			createAnnouncementPage.enterTitle.click();
-			String announcementNumber = GenericFunctions.testDataIncrementer("./TestData/announcementNumbers.txt").toString();
+			String announcementNumber = GenericFunctions.testDataIncrementer("./testData/announcementNumbers.txt").toString();
 			announcementName = objListOFTestDataForSunbird.get(7).getCourseName();
 			System.out.println(announcementName + announcementNumber);
 			createAnnouncementPage.enterTitle.sendKeys(announcementName + announcementNumber );
@@ -167,7 +164,6 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			createAnnouncementPage.enterUrl.sendKeys(objListOFTestDataForSunbird.get(7).getTitleDescription());
 			GenericFunctions.waitWebDriver(4000);
-			
 			action.moveToElement(createAnnouncementPage.uploadDocument).click().build().perform();
 		
 			//action.click().build().perform();
@@ -201,6 +197,7 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			createAnnouncementPage.sendAnnouncement.click();
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.announcementcreatedConfirmation);
 			createAnnouncementPage.announcementcreatedConfirmation.click();
+			GenericFunctions.waitWebDriver(2500);
 			ExtentTestManager.getTest().log(LogStatus.PASS, "An Announcement along with the attachment is created sucessfully");
 		}
 
@@ -239,6 +236,155 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
 			log.error("Exception In the method checkForAnnouncement "+e.getMessage());
 			Assert.fail("User failed to find the announcement in the Home Page "+e.getLocalizedMessage());
+		}
+	}
+	public void deleteAnnouncement()
+	{
+		String announcementnameReview;
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to delete the announcement in the Home Page");
+			GenericFunctions generic = new GenericFunctions();
+			boolean checkForDeleteButton = generic.isElementPresent(createAnnouncementPage.deleteAnnouncementButton);
+			if (checkForDeleteButton==true) {
+				String announcementName1 = createAnnouncementPage.selectAnnouncementName.getText();
+				System.out.println("Deleted Announcement is" +announcementName1);
+				createAnnouncementPage.deleteAnnouncementButton.click();
+			} else{
+				createAnnouncementPage.nextarrowOnHomePage.click();
+				GenericFunctions.waitWebDriver(1000);
+				String announcementName1 = createAnnouncementPage.selectAnnouncementName.getText();
+				System.out.println("Deleted Announcement is" +announcementName1);
+				createAnnouncementPage.deleteAnnouncementButton.click();
+			}
+			GenericFunctions.waitWebDriver(1500);
+			createAnnouncementPage.stopCreatingAnnouncementMessageYes.click();
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "User failed to delete the announcement in the Home Page");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			log.error("Exception In the method deleteAnnouncement "+e.getMessage());
+			Assert.fail("User failed to delete the announcement in the Home Page "+e.getLocalizedMessage());
+		}
+	}
+	public void checkDeletedAnnouncement(String Announcement)
+	{
+		String announcementnameReview;
+		try
+		{
+			GenericFunctions.waitWebDriver(1000);
+			createAnnouncementPage.seeAllAnnouncement.click();
+			GenericFunctions.waitWebDriver(1500);
+			for (WebElement ele : createAnnouncementPage.reviewAnnouncement) {
+				announcementnameReview = ele.getText();
+				Assert.assertNotEquals(announcementnameReview, Announcement);
+
+			}
+			System.out.println("Deleted Announcement is not available");
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "User failed to delete the announcement in the Home Page");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			log.error("Exception In the method deleteAnnouncement "+e.getMessage());
+			Assert.fail("User failed to delete the announcement in the Home Page "+e.getLocalizedMessage());
+		}
+	}
+	public void checkForAnnouncementWithAttachment(String announcementName2)
+	{
+		String announcementnameReview;
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to Check for the created announcement with attachement in the Home Page");
+			GenericFunctions.waitWebDriver(1000);
+			createAnnouncementPage.seeAllAnnouncement.click();
+			GenericFunctions.waitWebDriver(1500);
+			announcementnameReview = createAnnouncementPage.reviewAnnouncementN.getText();
+			AssertJUnit.assertEquals(announcementName2, announcementnameReview);
+			createAnnouncementPage.reviewAnnouncementN.click();
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "User failed to find the announcement with attachment in the Home Page");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			log.error("Exception In the method checkForAnnouncementWithAttachment "+e.getMessage());
+			Assert.fail("User failed to find the announcement with attachment in the Home Page "+e.getLocalizedMessage());
+		}
+	}
+	public void openAnnouncement()
+	{
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to open announcement in the Home Page");
+			GenericFunctions.waitWebDriver(1000);
+			CreatorAnnouncementPage createAnnouncementPage = PageFactory.initElements(driver,CreatorAnnouncementPage.class);
+			announcementName = createAnnouncementPage.announcementTableNameContent.getText();
+			createAnnouncementPage.announcementTableNameContent.click();
+			System.out.println(announcementName);
+			GenericFunctions.waitWebDriver(1000);
+			String verifyannouncementName = createAnnouncementPage.announcementReview.getText();
+			AssertJUnit.assertEquals(announcementName, verifyannouncementName);
+			System.out.println("Announcement is verified");
+			GenericFunctions.waitWebDriver(1000);
+			createAnnouncementPage.CloseAnnouncementPopup.click();
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "User failed to open announcement in the Home Page");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			log.error("Exception In the method open announcement in the Home Page "+e.getMessage());
+			Assert.fail("User failed to open announcement in the Home Page "+e.getLocalizedMessage());
+		}
+	}
+	public void resendAndVerifyAnnouncement()
+	{
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to resend announcement in the Home Page");
+			GenericFunctions generic = new GenericFunctions();
+			boolean checkForResendButton = generic.isElementPresent(createAnnouncementPage.resendAnnouncementButton);
+			if (checkForResendButton==true) {
+				announcementName = createAnnouncementPage.resendAnnouncementName.getText();
+				System.out.println(announcementName);
+				createAnnouncementPage.resendAnnouncementButton.click();
+			} else{
+				createAnnouncementPage.nextarrowOnHomePage.click();
+				GenericFunctions.waitWebDriver(1000);
+				announcementName = createAnnouncementPage.resendAnnouncementName.getText();
+				System.out.println(announcementName);
+				createAnnouncementPage.resendAnnouncementButton.click();
+			}
+			GenericFunctions.waitWebDriver(1500);
+			objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
+			GenericFunctions.waitWebDriver(1500);
+			createAnnouncementPage.enterTitle.click();
+			createAnnouncementPage.enterTitle.clear();
+			String announcementNumber = GenericFunctions.readFromNotepad("./testData/announcementNumbers.txt").toString().toUpperCase();
+			String editTitle = objListOFTestDataForSunbird.get(7).getCourseName()  + announcementNumber;
+			GenericFunctions.waitWebDriver(2000);
+			createAnnouncementPage.editRecipients.click();
+			GenericFunctions.waitWebDriver(2000);
+			createAnnouncementPage.searchForLocation.click();
+			GenericFunctions.waitWebDriver(2000);
+			createAnnouncementPage.confirmRecipients.click();
+			GenericFunctions.waitWebDriver(2000);
+			createAnnouncementPage.previewAnnouncement.click();
+			GenericFunctions.waitWebDriver(2000);
+			createAnnouncementPage.sendAnnouncement.click();
+			GenericFunctions.waitWebDriver(2000);
+			createAnnouncementPage.announcementcreatedConfirmation.click();
+			String edittedTitle = createAnnouncementPage.resendAnnouncementName.getText();
+			System.out.println(edittedTitle);
+			AssertJUnit.assertEquals(announcementName, edittedTitle);
+			System.out.println("updated info verified");
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "User failed to resend announcement in the Home Page");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			log.error("Exception In the method resend announcement in the Home Page "+e.getMessage());
+			Assert.fail("User failed to resend announcement in the Home Page "+e.getLocalizedMessage());
 		}
 	}
 }

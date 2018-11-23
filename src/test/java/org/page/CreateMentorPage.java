@@ -18,10 +18,10 @@ public class CreateMentorPage {
 		this.driver=driver; 
 	}
 
-	@FindBy(xpath="(//i[@class='dropdown icon'])[3]")
+	@FindBy(xpath="(//i[@class='dropdown icon'])[7]")
 	public WebElement searchCourseDropdown;
 	
-	@FindBy(xpath="//sui-select-option[@class='item selected']")
+	@FindBy(xpath="//sui-select//sui-select-option[@class='item selected']")
 	public WebElement firstCourseDropdownitem;
 	
 	@FindBy(xpath="//i[@class='right arrow icon']")

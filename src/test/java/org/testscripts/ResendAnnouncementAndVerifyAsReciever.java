@@ -4,9 +4,9 @@
 
 * @author: Abhinav kumar singh
 
-* Date: 06/27/2018
+* Date: 06/26/2018
 
-* Purpose: Resend and edit the Announcement and verify as reviewer.
+* Purpose: Resend and edit the Announcement and verify announcement sender receives it.
 
 */
 package org.testscripts;
@@ -38,84 +38,28 @@ public class ResendAnnouncementAndVerifyAsReciever extends BaseTest{
 	int count=7;
 	List <TestDataForSunbird> objListOFTestDataForSunbird= null;
 	@Test
-	public void resendAnnouncementAndVerifyAsReciever() throws InterruptedException, Exception
+	public void resendAnnouncement() throws InterruptedException, Exception
 	{
-		//Step1.Login as creator.
-		
 		SignUpPageObj creatorLogin = new SignUpPageObj();
+		CreatorAnnouncementPageObj creatorAnnouncementPageObj =new CreatorAnnouncementPageObj();
+		CreatorAnnouncementPage createAnnouncementPage = PageFactory.initElements(driver,CreatorAnnouncementPage.class);
+		
+		//Step1.Login as creator.
 		creatorLogin.userLogin(CREATOR);
 		
 		//Step2.Click on Announcement Dashboard.
-		
-		CreatorAnnouncementPageObj creatorAnnouncementPageObj =new CreatorAnnouncementPageObj();
 		creatorAnnouncementPageObj.navigateToAnnouncementInDropDownMenu();
 		
 		//Step3.Click on resend.
+		creatorAnnouncementPageObj.resendAndVerifyAnnouncement();
 		
-		CreatorAnnouncementPage createAnnouncementPage = PageFactory.initElements(driver,CreatorAnnouncementPage.class);
-		GenericFunctions generic = new GenericFunctions();
-		checkForResendButton = generic.isElementPresent(createAnnouncementPage.resendAnnouncementButton);
-		if (checkForResendButton==true) {
-			announcementName = createAnnouncementPage.resendAnnouncementName.getText();
-			System.out.println(announcementName);
-			createAnnouncementPage.resendAnnouncementButton.click();
-		} else{
-			createAnnouncementPage.nextarrowOnHomePage.click();
-			GenericFunctions.waitWebDriver(1000);
-			announcementName = createAnnouncementPage.resendAnnouncementName.getText();
-			System.out.println(announcementName);
-			createAnnouncementPage.resendAnnouncementButton.click();
-		}
-		GenericFunctions.waitWebDriver(1500);
-		
-		
-		//Step4.Edit the details.
-		
-		Robot robot = new Robot();
-		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-		GenericFunctions.waitWebDriver(1500);
-		createAnnouncementPage.enterTitle.click();
-		createAnnouncementPage.enterTitle.clear();
-		String announcementNumber = GenericFunctions.readFromNotepad("./TestData/announcementNumbers.txt").toString().toUpperCase();
-		editTitle = objListOFTestDataForSunbird.get(7).getCourseName() + announcementNumber;
-		GenericFunctions.waitWebDriver(2000);
-		createAnnouncementPage.editRecipients.click();
-		GenericFunctions.waitWebDriver(2000);
-		
-		//Step6.Select location.
-		
-		createAnnouncementPage.searchForLocation.click();
-		GenericFunctions.waitWebDriver(2000);
-		
-		
-		//Step7.Click on confirm recipients.
-		
-		createAnnouncementPage.confirmRecipients.click();
-		GenericFunctions.waitWebDriver(1000);
-		createAnnouncementPage.previewAnnouncement.click();
-		GenericFunctions.waitWebDriver(1000);
-		createAnnouncementPage.sendAnnouncement.click();
-		createAnnouncementPage.announcementcreatedConfirmation.click();
-		
-		
-		
-		//Step8.Logout as Creator
-		
-		GenericFunctions.waitWebDriver(2000);
-		GenericFunctions.refreshWebPage();
-		GenericFunctions.waitWebDriver(1000);
+		//Step4. Logout as Creator
 		creatorLogin.userLogout();
 				
-				
-		//Step9: Login as Reviewer
-				
-		GenericFunctions.waitWebDriver(1500);
+		/*//Step5: Login as Reviewer
 		creatorLogin.userLogin(REVIEWER);
 		
-		
-		//Step10: Review the Announcement.use Assert
-						
-
+		//Step6: Review the Announcement.use Assert
 		GenericFunctions.waitWebDriver(1000);
 		createAnnouncementPage.seeAllAnnouncement.click();
 		GenericFunctions.waitWebDriver(1500);
@@ -126,9 +70,7 @@ public class ResendAnnouncementAndVerifyAsReciever extends BaseTest{
 		System.out.println("Edited Announcement is  available");
 		
 		//Step11. Logout as Creator
-		
-		GenericFunctions.waitWebDriver(2500);
-		creatorLogin.userLogout();
+		creatorLogin.userLogout();*/
 	}
 
 }
