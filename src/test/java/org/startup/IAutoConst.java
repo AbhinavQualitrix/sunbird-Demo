@@ -22,6 +22,8 @@ public interface IAutoConst {
 	String MENTORS_S="MENTORS_S";
 	String PUBLICUSERS_S="PUBLICUSERS_S";
 	String A_CONTENT_CREATOR="A_CONTENT_CREATOR";
+	//Nov 23
+	String CREATOR2="CREATOR2";
 	
 
 	//Driver values

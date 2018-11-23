@@ -701,7 +701,19 @@ public class CreatorUserPage {
 	 
 	 @FindBy(xpath="//button[contains(text(),'Close')]")
 	 public WebElement closeButtonMsg ;
-
+	 
+	 
+	 //Nov 23rd
+	 @FindBy(xpath="//label[contains(.,'Topics')]/..//topic-selector/..//input")
+	 public WebElement clickTopic;
+	 
+	//Nov 23rd
+	 @FindBy(xpath="//div[@id='topicSelector_defaultTemplate-topic']//input[@placeholder='Search']")
+	 public WebElement searchTopic;
+	 
+	//Nov 23rd
+	 @FindBy(xpath="//div[@class='ui tree-picker tree']/..//i[@class='add circle icon']/..//a")
+	 public WebElement selectTopic;
 }
 
 

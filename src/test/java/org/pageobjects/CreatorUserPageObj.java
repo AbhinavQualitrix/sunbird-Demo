@@ -19,6 +19,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.page.CreateMentorPage;
 import org.page.CreatorUserPage;
@@ -564,12 +565,12 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createUserPage.selectBookBoard);
 			createUserPage.selectBookBoard.click();
 			GenericFunctions.waitWebDriver(2000);
-			
-			createUserPage.clickBookGrade.get(1).click();
+
+			createUserPage.clickBookGrade.get(0).click();
 			//GenericFunctions.waitForElementToAppear(createUserPage.selectBookGrade);
 			GenericFunctions.waitWebDriver(2000);
-			createUserPage.selectBookGrade.get(1).click();
-			
+			createUserPage.selectBookGrade.get(0).click();
+
 			createUserPage.bookName.click();
 			GenericFunctions.waitWebDriver(1500);
 			createUserPage.clickBookSubject.click();
@@ -646,10 +647,10 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createUserPage.selectBookBoard);
 			createUserPage.selectBookBoard.click();
 			GenericFunctions.waitWebDriver(2000);
-			createUserPage.clickBookGrade.get(1).click();
+			createUserPage.clickBookGrade.get(0).click();
 			//GenericFunctions.waitForElementToAppear(createUserPage.selectBookGrade);
 			GenericFunctions.waitWebDriver(2000);
-			createUserPage.selectBookGrade.get(1).click();
+			createUserPage.selectBookGrade.get(0).click();
 			//createUserPage.clickOnPopup.click();
 			GenericFunctions.waitWebDriver(2000);
 			createUserPage.clickBookSubject.click();
@@ -730,8 +731,12 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createUserPage.clickOwner);
 			GenericFunctions.scrollToElement(createUserPage.clickOwner);
 			createUserPage.clickOwner.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.selectOwner);
+			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitForElementToAppear(createUserPage.selectOwner);			
 			createUserPage.selectOwner.click();
+
+			selectTopic();
+
 			GenericFunctions.waitWebDriver(2500);
 			GenericFunctions.waitForElementToAppear(createUserPage.saveButton);
 			createUserPage.saveButton.click();
@@ -1179,6 +1184,9 @@ public class CreatorUserPageObj extends BaseTest{
 				createUserPage.clickOwner.click();
 				GenericFunctions.waitForElementToAppear(createUserPage.selectOwner);
 				createUserPage.selectOwner.click();
+
+				selectTopic();
+
 				GenericFunctions.waitWebDriver(1500);
 				GenericFunctions.waitForElementToAppear(createUserPage.saveButton);
 				createUserPage.saveButton.click();
@@ -1373,11 +1381,11 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createUserPage.selectBookBoard);
 			createUserPage.selectBookBoard.click();			
 			GenericFunctions.waitWebDriver(1500);
-			createUserPage.clickBookGrade.get(1).click();
+			createUserPage.clickBookGrade.get(0).click();
 			//GenericFunctions.waitForElementToAppear(createUserPage.selectBookGrade);
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitWebDriver(1500);
-			createUserPage.selectBookGrade.get(1).click();
+			createUserPage.selectBookGrade.get(0).click();
 			GenericFunctions.waitWebDriver(1500);
 			createUserPage.clickBookSubject.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectBookSubject);
@@ -2385,17 +2393,33 @@ public class CreatorUserPageObj extends BaseTest{
 	{
 		try
 		{
-			ExtentTestManager.getTest().log(LogStatus.INFO, "Trying for the visibility of Workspace");
-			 boolean state = GenericFunctions.waitForElementToAppear(createUserPage.workSpace).isDisplayed();			
-			if(state==true)
-			{
-				handlePopupOnLogin();
-			}
-			/*else if(state==false)
+			/*ExtentTestManager.getTest().log(LogStatus.INFO, "Trying for the visibility of Workspace");
+			boolean state = GenericFunctions.waitForElementToAppear(createUserPage.workSpace).isDisplayed();			
+			if(state==false)
 			{
 				GenericFunctions.refreshWebPage();
+				if(createUserPage.workSpace.isDisplayed())
+				{
+					return true;
+				}
+				else
+				{
+					 tryForWorkSpace();
+				}
+			}
+			else if(state==true)
+			{
+				return true;
 			}*/
-			else 
+			String cssValue="#main-nav > div.ui.text.primary-nav.menu.ml-auto.computer.only > app-main-menu > div > a.item.active";
+
+			if((driver.findElements(By.xpath("(//a[contains(.,'Workspace')])[2]")).size()!=0))
+			{
+				//if(driver.findElement(By.cssSelector(cssValue)).isDisplayed()
+				System.out.println("Element is Present");		
+				createUserPage.closeIcon.click();
+			}
+			else
 			{
 				GenericFunctions.refreshWebPage();
 			}
@@ -2600,5 +2624,51 @@ try{
 		return searchCourseName;
 	}
 	
-	
+		public void selectTopic()
+	{
+		try
+		{
+			createUserPage.clickTopic.click();
+			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitForElementToAppear(createUserPage.searchTopic);
+			createUserPage.searchTopic.click();
+			GenericFunctions.waitWebDriver(1000);
+			createUserPage.selectTopic.click();	
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(createUserPage.doneButton);
+			GenericFunctions.waitWebDriver(2000);
+			createUserPage.doneButton.click();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Could not select the Topic is send for review form");
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Could not select the Topic is send for review form");
+		}
+	}
+
+	public boolean IsElementDisplayed()//WebDriver driver, WebElement id)
+	{
+		try		
+		{
+			WebDriverWait wait =new WebDriverWait(driver, 120);
+			WebElement elementState = wait.until(ExpectedConditions.visibilityOf(createUserPage.workSpace));
+			
+			if(elementState.isDisplayed())
+			{
+				return true;
+			}
+			else
+			{
+				GenericFunctions.refreshWebPage();
+				return false;
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println("exception e"+e);
+		}
+		return false;
+	}
+
+
 }
