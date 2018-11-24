@@ -97,7 +97,7 @@ public class ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor extends Bas
 		
 		
 		//Step15:Login as Public user
-		userLogin.userLogin(PUBLICUSERS_S);
+		userLogin.userLogin(PUBLICUSER);
 		
 		
 		//Step16:Search for the course

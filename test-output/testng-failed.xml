@@ -6,13 +6,13 @@
   </listeners>
   <test name="regressiontest-P1(failed)">
     <classes>
-      <class name="org.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor">
+      <class name="org.testscripts.ConsumeCourseByInvitedMember">
         <methods>
-          <include name="consumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
+          <include name="consumeCourseByInvitedMember"/>
           <include name="closeApplication"/>
           <include name="openApplication"/>
         </methods>
-      </class> <!-- org.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor -->
+      </class> <!-- org.testscripts.ConsumeCourseByInvitedMember -->
     </classes>
   </test> <!-- regressiontest-P1(failed) -->
 </suite> <!-- Failed suite [Automation Suite] -->
