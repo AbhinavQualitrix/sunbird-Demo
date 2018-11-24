@@ -7,7 +7,7 @@
 	<test thread-count="1" name="regressiontest-P1">
 		<classes>
 		
-			<!-- Test Cases for Admin-->
+			<!-- Test Cases for Admin -->
 			<class name="org.testscripts.UploadRootOrg" />
 			<class name="org.testscripts.UploadRootOrgUsersWithOrgId" />
 			<class name="org.testscripts.UploadSubOrg" />
@@ -18,7 +18,7 @@
 			
 
 		 	
-			<!-- Test Cases for Public User  -->
+			<!-- Test Cases for Public User --> 
 			<class name="org.testscripts.SkillEndorsement" />
 			<class name="org.testscripts.UpdateProfilePhoto" />
 			<class name="org.testscripts.SearchUsers" />
@@ -62,21 +62,21 @@
 			
 			<!-- 	Test Cases for Mentor 	--> 
 			
-			<class name="org.testscripts.EnrollToCourseInOpenBatch" />
-			<class name="org.testscripts.ConsumeCourseByInvitedMember" />
+			 
+			
 			<class name="org.testscripts.CheckSuborgMentorInvitingOrgMember" />
 			<class name="org.testscripts.CheckAvailabilityOfCourseForInvitedMember" />
-			
 			<class name="org.testscripts.UpdateBatchAsInvitedMentor" />
-			<class name="org.testscripts.CheckCourseStatAsMentor" />
 			
-			 
-			 <class name="org.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor" />
-			 
+			<class name="org.testscripts.EnrollToCourseInOpenBatch" />
+			<class name="org.testscripts.CheckCourseStatAsMentor" />
+			<class name="org.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor" />
 			 <class name="org.testscripts.NavigateToMyActivityInDropdown" />
 			 <class name="org.testscripts.CheckForDownloadButtonAvailabilityForUserInProfile" />
 		 	<class name="org.testscripts.SearchOrgsAsAdmin" />
 		 	<class name="org.testscripts.CheckForAuthenticUserInMentor" />
+			
+			<class name="org.testscripts.ConsumeCourseByInvitedMember" />
 			
 			<!-- Test Cases for Announcement sender  -->
 			

@@ -47,22 +47,18 @@ public class ConsumeCourseByInvitedMember extends BaseTest
 		
 		//Step4: Save and Send for Review
 		creatorUserPageObj.saveAndSendCourseForReview(objListOFTestDataForSunbird);
-		GenericFunctions.waitWebDriver(2000);
 		GenericFunctions.refreshWebPage();
 	
 		//Step5: Check for course in review submissions 
 		creatorUserPageObj.reviewInSubmissions(COURSE,objListOFTestDataForSunbird);
-		GenericFunctions.waitWebDriver(3000);
 
 		//Step6: Logout as Mentor
 		userLogin.userLogout();
-		GenericFunctions.waitWebDriver(3000);
 		
 		//Step7: Login as Reviewer
 		userLogin.userLogin(REVIEWER);
 		
 		//Step8: Search the course which was submitted for review
-		GenericFunctions.waitWebDriver(2000);
 		creatorUserPageObj.searchInUpForReview(COURSE,objListOFTestDataForSunbird);
 		
 		//Step9:Publish the Course
@@ -81,7 +77,7 @@ public class ConsumeCourseByInvitedMember extends BaseTest
 		userLogin.userLogout();	
 		
 		//Step14:Login as Invited Member
-		userLogin.userLogin(PUBLICUSER1);
+		userLogin.userLogin(REVIEWER);
 		
 		//Step15:Consume  the course if ongoing else not
 		createMentorPageObj.navigateToCourseAndSearch(courseName);
@@ -90,7 +86,7 @@ public class ConsumeCourseByInvitedMember extends BaseTest
 		userLogin.userLogout();	
 		
 		//Step17: Login as Creator
-		userLogin.userLogin(CREATOR);
+		userLogin.userLogin(MENTOR);
 
 		//Step18: Navigate to WorkSpace
 		creatorUserPageObj.navigateToWorkspace(PUBLISHED);

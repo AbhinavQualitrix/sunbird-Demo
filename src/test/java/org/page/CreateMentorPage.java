@@ -177,7 +177,7 @@ public class CreateMentorPage {
 	@FindBy(xpath="(//i[@class='dropdown icon'])[4]")
 	public WebElement mentorDropdown;
 	
-	@FindBy(xpath="//button[@class='ui primary button']")
+	@FindBy(xpath="//div[@class='actions']//button[@class='ui primary button']")
 	public WebElement buttonCreate;
 	
 	@FindBy(xpath="//button[contains(text(),'VIEW COURSE STATS')]")
@@ -201,8 +201,7 @@ public class CreateMentorPage {
 	@FindBy(xpath="//img[contains(@src,'https://cdn.ntp.net.in/player/assets/images/default.png')]")
 	public List<WebElement> courseImg;
 	
-	@FindBy(xpath="//div[@class='ui image']")
-	public WebElement courseImg1;
+	
 	
 	@FindBy(xpath="(//i[@class='dropdown icon'])[3]")
 	public WebElement courseSearchDropDown;
@@ -240,4 +239,12 @@ public class CreateMentorPage {
 	@FindBy(xpath="//span[.=' FROM BEGINING']")
 	public WebElement fromBeginning;
 	
+	@FindBy(xpath="//div[@class='header p-15 pb-0']")
+	public WebElement courseImg1;
+	
+	@FindBy(xpath="(//input[@id='mentorSelList']/following::div/div[contains(.,'creator')])")
+	public WebElement selectMentorsInBatch;
+	
+	@FindBy(xpath="(//input[@id='mentorSelList']/following::div/div/div[contains(.,'content reviewer')])[2]")
+	public WebElement selectMembersInBatch;
 }

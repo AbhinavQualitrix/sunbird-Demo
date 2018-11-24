@@ -97,7 +97,7 @@ public class CheckCourseStatAsMentor extends BaseTest
 		
 		
 		//Step15:Login as Public user
-		userLogin.userLogin(PUBLICUSERS_S);
+		userLogin.userLogin(PUBLICUSER);
 		
 		
 		//Step16:Search for the course
@@ -111,10 +111,8 @@ public class CheckCourseStatAsMentor extends BaseTest
 		//Step18:Logout as public user
 		userLogin.userLogout();	
 	 
-		
 		//Step19:Login as Mentor
 		userLogin.userLogin(MENTOR);
-		
 		
 		//Step20:Search the course and check the stats
 		createMentorPageObj.navigateToCourseAndSearchForOpenBatch();
@@ -136,10 +134,7 @@ public class CheckCourseStatAsMentor extends BaseTest
 		userLogin.userLogout();
 				
 		
-		
-		
-		
-		
+	
 		
 	}
 	

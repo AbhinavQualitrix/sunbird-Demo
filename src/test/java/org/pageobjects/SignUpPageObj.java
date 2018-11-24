@@ -63,20 +63,20 @@ public class SignUpPageObj extends BaseTest
                 log.info("UN"+objListOFTestDataForSunbird.get(2).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(2).getPassword());
                 }
                 else if(userRole.equalsIgnoreCase("FLAGREVIEWER")){
+                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(8).getUsername());
+                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(8).getPassword());
+                log.info("UN"+objListOFTestDataForSunbird.get(8).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(8).getPassword());
+                }           
+                else if(userRole.equalsIgnoreCase("PUBLICUSER")){
                       orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(4).getUsername());
                       orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(4).getPassword());
                 log.info("UN"+objListOFTestDataForSunbird.get(4).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(4).getPassword());
-                }           
-                else if(userRole.equalsIgnoreCase("PUBLICUSER")){
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(6).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(6).getPassword());
-                log.info("UN"+objListOFTestDataForSunbird.get(6).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(6).getPassword());
                 }
                 else if(userRole.equalsIgnoreCase("PUBLICUSER1"))
                 {
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(4).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(4).getPassword());
-                log.info("UN"+objListOFTestDataForSunbird.get(4).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(4).getPassword());
+                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(5).getUsername());
+                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(5).getPassword());
+                log.info("UN"+objListOFTestDataForSunbird.get(5).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(5).getPassword());
                 }
                 
                 else if(userRole.equalsIgnoreCase("BOOKREVIEWER"))
@@ -144,7 +144,15 @@ public class SignUpPageObj extends BaseTest
                 }
                 //orgUploadPage.clickLogin.click();
                 orgUploadPage.clickLogin1.click();
+                if(userRole.equalsIgnoreCase(PUBLICUSER)&&userRole.equalsIgnoreCase(PUBLICUSER))
+                {
+                	System.out.println("Public user login");
+                	createUserPageObj.handlePopupOnLogin();
+                }
+                else
+                {
                 createUserPageObj.tryForWorkSpace();
+                }
                // createUserPageObj.IsElementDisplayed();
                 //createUserPageObj.handlePopupOnLogin();
           }

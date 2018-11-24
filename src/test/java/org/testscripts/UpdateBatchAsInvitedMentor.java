@@ -23,6 +23,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.page.CreateMentorPage;
 import org.page.CreatorUserPage;
 import org.pageobjects.CreateMentorPageObj;
+import org.pageobjects.CreatorUserPageObj;
 import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
@@ -36,84 +37,87 @@ public class UpdateBatchAsInvitedMentor extends BaseTest
 	
 	
 	@Test
-	public void updateBatchAsInvitedMember() throws Exception
+	public void updateBatchAsInvitedMentor() throws Exception
 	{
 		
-		SignUpPageObj creatorLogin = new SignUpPageObj();
-		CreateMentorPageObj createMentorPageObj =new CreateMentorPageObj();
+		List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
+		SignUpPageObj userLogin = new SignUpPageObj();
+		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
+		CreateMentorPageObj createMentorPageObj=new CreateMentorPageObj();
 		
-		//Step1: Login as mentor
-		
-		creatorLogin.userLogin(MENTOR);
-		
-		//Step2: search for the course created by other user and create invite only batch
-		
+		//Step1: Login as Mentor
+		userLogin.userLogin(MENTOR);
+
+		//Step2: Navigate to WorkSpace
+		creatorUserPageObj.navigateToWorkspace(COURSE);
+
+		//Step3: Create new Course
+		creatorUserPageObj.createCourse(objListOFTestDataForSunbird);
+
+		//Step4: Save and Send for Review
+		creatorUserPageObj.saveAndSendCourseForReview(objListOFTestDataForSunbird);
+		GenericFunctions.refreshWebPage();
+
+		//Step5: Check for course in review submissions 
+		creatorUserPageObj.reviewInSubmissions(COURSE,objListOFTestDataForSunbird);
+
+		//Step6: Logout as Mentor
+		userLogin.userLogout();
+
+		//Step7: Login as Reviewer
+		userLogin.userLogin(REVIEWER);
+
+		//Step8: Search the course which was submitted for review
+		creatorUserPageObj.searchInUpForReview(COURSE,objListOFTestDataForSunbird);
+
+		//Step9:Publish the Course
+		creatorUserPageObj.publishAndSearch(COURSE,objListOFTestDataForSunbird);
+
+		//Step10: Logout as Reviewer		
+		userLogin.userLogout();	
+
+		//Step11:Login as Mentor
+		userLogin.userLogin(MENTOR);
+
+		//Step12:Search the course and create invite only batch
 		String courseName=createMentorPageObj.createInviteOnlyBatch();
 		System.out.println(courseName);
-		GenericFunctions.waitWebDriver(3000);
 		
-		//Step3: Logout as mentor
+		//Step13: Logout as mentor
+		userLogin.userLogout();
+		           
+		//Step14: Login as mentor
+		userLogin.userLogin(MENTOR);
 		
-		GenericFunctions.waitWebDriver(3000);
-		creatorLogin.userLogout();
-		
-		
-		//Step4: Login as invited member  
-			
-		creatorLogin.userLogin(PUBLICUSER1);
-		
-		
-		//Step5: Search for the particular course 
-		
-		createMentorPageObj.navigateToCourseAndSearch(courseName);
-		
-		//Step6: Logout as invited member
-		
-		GenericFunctions.waitWebDriver(2000);
-		//GenericFunctions.refreshWebPage();
-		GenericFunctions.waitWebDriver(1000);
-		creatorLogin.userLogout();
-		
-		//Step7: Login as mentor
-		
-		creatorLogin.userLogin(CREATOR);
-		
-		//Step8: Search for the particular course and update the batch
-		
+		//Step15: Search for the particular course and update the batch
 		createMentorPageObj.navigateToCourseSearchAndUpdate(courseName);
-		String expected = courseName;//objListOFTestDataForSunbird.get(1).getCourseName()+ GenericFunctions.readFromNotepad("./TestData/batchName.txt");
+		String expected = courseName;
 		System.out.println(expected);
 		
-		//Step9: Logout as mentor
+		//Step16: Logout as mentor
+		userLogin.userLogout();
 		
-		GenericFunctions.waitWebDriver(2000);
-		//GenericFunctions.refreshWebPage();
-		GenericFunctions.waitWebDriver(1000);
-		creatorLogin.userLogout();
-		
-		//Step10: Login as invited member  
-		
-		creatorLogin.userLogin(PUBLICUSER1);
+		//Step17: Login as invited member  
+		userLogin.userLogin(REVIEWER);
 					
-		//Step11: Search for the particular course 
-				
+		//Step18: Search for the particular course 		
 		createMentorPageObj.navigateToCourseAndSearch(courseName);
-		GenericFunctions.waitWebDriver(2000);
-		createMentorPage.closeBatchIcon.click();
-		GenericFunctions.waitWebDriver(2000);
-		String Actual = createMentorPage.batchDetails.getText();
-		System.out.println(Actual);
 		
-		//Step11: Verify the update 
+		//Step19: Logout as mentor
+		userLogin.userLogout();
+		
+		//Step20: Login as Creator
+		userLogin.userLogin(MENTOR);
 
-		Assert.assertEquals(Actual, expected);
-		System.out.println("updated data is verified");
-		
-		//Step12: Logout as mentor
-		
-		GenericFunctions.waitWebDriver(3000);
-		creatorLogin.userLogout();
-		
+		//Step21: Navigate to WorkSpace
+		creatorUserPageObj.navigateToWorkspace(PUBLISHED);
+
+		//Step22: Delete the Created item
+		creatorUserPageObj.deleteCreatedItems();
+
+		//Step23: Logout as Creator
+		userLogin.userLogout();
+
 	}
 }

@@ -807,7 +807,7 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(createUserPage.getCourseName);
 
-			assertOnSearchAfterPublish(searchCourseName);
+			//assertOnSearchAfterPublish(searchCourseName);
 			
 		}
 		catch(Exception e)
@@ -2416,12 +2416,16 @@ public class CreatorUserPageObj extends BaseTest{
 			if((driver.findElements(By.xpath("(//a[contains(.,'Workspace')])[2]")).size()!=0))
 			{
 				//if(driver.findElement(By.cssSelector(cssValue)).isDisplayed()
+				GenericFunctions.waitWebDriver(2000);
+				GenericFunctions.waitForElementToAppear(createUserPage.closeIcon);
 				System.out.println("Element is Present");		
 				createUserPage.closeIcon.click();
+				//GenericFunctions.refreshWebPage();
 			}
 			else
 			{
 				GenericFunctions.refreshWebPage();
+				tryForWorkSpace();
 			}
 		}
 		catch(Exception e)
