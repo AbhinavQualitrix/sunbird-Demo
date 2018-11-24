@@ -2412,17 +2412,19 @@ public class CreatorUserPageObj extends BaseTest{
 				return true;
 			}*/
 			String cssValue="#main-nav > div.ui.text.primary-nav.menu.ml-auto.computer.only > app-main-menu > div > a.item.active";
-
 			if((driver.findElements(By.xpath("(//a[contains(.,'Workspace')])[2]")).size()!=0))
 			{
 				//if(driver.findElement(By.cssSelector(cssValue)).isDisplayed()
+				GenericFunctions.waitForElementToAppear(createUserPage.closeIcon);
 				System.out.println("Element is Present");		
 				createUserPage.closeIcon.click();
 			}
 			else
 			{
 				GenericFunctions.refreshWebPage();
+				tryForWorkSpace();
 			}
+
 		}
 		catch(Exception e)
 		{
