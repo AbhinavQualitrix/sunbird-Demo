@@ -226,11 +226,6 @@ public class CreatorUserPage {
 	public List<WebElement> clickBookGrade;
 
 
-	//OCT 10 - v1.11.0
-	//@FindBy(xpath="(//sui-multi-select[@id='gradeLevel']/..//sui-select-option[@class='item selected'])[2]")
-	@FindBy(xpath="//sui-multi-select[@id='gradeLevel']/..//sui-select-option[@class='item selected']")
-	public List<WebElement> selectBookGrade;
-
 	@FindBy(xpath="//sui-select[@id='subject']")
 	public WebElement clickBookSubject;
 
@@ -432,9 +427,6 @@ public class CreatorUserPage {
 	@FindBy(xpath="//a[.='Softmax']")
 	public WebElement selectSubConcept3;
 
-	@FindBy(xpath="(//a[.='Done'])[2]")
-	public WebElement doneButton;
-
 	@FindBy(xpath="//div[.='no-results']")
 	public WebElement noResults;
 
@@ -573,15 +565,11 @@ public class CreatorUserPage {
 	@FindBy(xpath="//i[@class='remove icon custom-cursor']")
 	public WebElement editorCloseIcon;
 
-	@FindBy(xpath="//div[contains(text(),'TextBook')]")
-	public WebElement contentType;
 
 	//Adding elements for test case 14
 	@FindBy(xpath="//span[@class='browse item cursor-pointer']")
 	public WebElement filterIcon;
 
-	@FindBy(xpath="//sui-multi-select[@id='board']")
-	public WebElement clickFilterBoard;
 
 	@FindBy(xpath="//sui-multi-select[@id='subject']")
 	public WebElement clickFilterSubject;
@@ -712,8 +700,28 @@ public class CreatorUserPage {
 	 public WebElement searchTopic;
 	 
 	//Nov 23rd
-	 @FindBy(xpath="//div[@class='ui tree-picker tree']/..//i[@class='add circle icon']/..//a")
-	 public WebElement selectTopic;
+	@FindBy(xpath="//div[@class='ui tree-picker tree']/..//i[@class='add circle icon']/..//a")
+	public WebElement selectTopic;
+
+	//Nov 23
+	//@FindBy(xpath="//a[.='Done']")
+	@FindBy(xpath="(//a[.='Done'])[2]")
+	public WebElement doneButton;
+
+	//Nov 24
+	@FindBy(xpath="(//sui-multi-select[@id='board'])[2]")
+	//@FindBy(xpath="//sui-multi-select[@id='board']")
+	public WebElement clickFilterBoard;
+
+	//Nov 24 - v1.11.0
+	//@FindBy(xpath="(//sui-multi-select[@id='gradeLevel']/..//sui-select-option[@class='item selected'])[2]")
+	//@FindBy(xpath="//sui-multi-select[@id='gradeLevel']/..//sui-select-option[@class='item selected']")
+	@FindBy(xpath="(//sui-multi-select[@id='gradeLevel'])[2]/..//sui-select-option")
+	public List<WebElement> selectBookGrade;
+
+	//Nov 24
+	@FindBy(xpath="//div[contains(text(),'TextBook')]")
+	public List<WebElement> contentType;
 }
 
 

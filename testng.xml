@@ -71,7 +71,7 @@
 
 			<class name="org.testscripts.SearchContentWithFiltersAsReviewer" />
 			<class name="org.testscripts.LimitedSharingTheContent" />
-			<class name="org.testscripts.VerifyTheBookAvailableForReview" />
+			<class name="org.testscripts.CreateBookAndVerifyOnlyBooksPresent" />
  			
 			
 

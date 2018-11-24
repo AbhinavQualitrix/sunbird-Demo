@@ -11,6 +11,7 @@ public class SearchContentWithFiltersAsReviewer extends BaseTest
 	@Test
 	public void searchContentWithFiltersAsReviewer() throws Exception
 	{
+		//MT done
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 		SignUpPageObj signupObj = new SignUpPageObj();
 		
@@ -18,7 +19,7 @@ public class SearchContentWithFiltersAsReviewer extends BaseTest
 		//Step1: Login as Creator
 		signupObj.userLogin(CREATOR);
 
-		//Go to workspace , create a book,submit for reviwe
+		//Go to workspace , create a book,submit for review
 		creatorUserPageObj.createLessonPlan();
 		
 		//Save and send for Review
@@ -27,11 +28,15 @@ public class SearchContentWithFiltersAsReviewer extends BaseTest
 		//Logout as Creator
 		signupObj.userLogout();
 		
-		//Login as content creator
+		//Login as content reviewer
 		signupObj.userLogin(REVIEWER);
 		
 		//Navigate to workspace and apply filter and search the content type-Lesson plan
-		creatorUserPageObj.searchWithFilters();
+		creatorUserPageObj.searchTheCreatedContentWithFilters();
+		
+		//Logout as reviewer
+		signupObj.userLogout();
+		
 	}
 
 }

@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 
 public class SendTheCourseForReview extends BaseTest
 {
+	//MT done
 	@Test
 	public void sendTheCourseForReview() throws Exception
 	{

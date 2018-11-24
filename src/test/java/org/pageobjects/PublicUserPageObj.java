@@ -259,18 +259,18 @@ public class PublicUserPageObj extends BaseTest
 			publicUserPage.selectFilterBoard.click();
 			
 			publicUserPage.clickFilterClass.click();
-			GenericFunctions.waitForElementToAppear(publicUserPage.selectFilterClass);
-			publicUserPage.selectFilterClass.click();
+			GenericFunctions.waitForElements(publicUserPage.selectFilterClass);
+			publicUserPage.selectFilterClass.get(0).click();
 			
 			publicUserPage.clickFilterSubject.click();
-			GenericFunctions.waitForElementToAppear(publicUserPage.selectFilterSubject);
-			publicUserPage.selectFilterSubject.click();
+			GenericFunctions.waitForElements(publicUserPage.selectFilterSubject);
+			publicUserPage.selectFilterSubject.get(0).click();
 			GenericFunctions.waitWebDriver(1500);
 			GenericFunctions.waitWebDriver(1500);
 			
 			publicUserPage.clickFilterMedium.click();
-			GenericFunctions.waitForElementToAppear(publicUserPage.selectFilterMedium);
-			publicUserPage.selectFilterMedium.click();
+			GenericFunctions.waitForElements(publicUserPage.selectFilterMedium);
+			publicUserPage.selectFilterMedium.get(0).click();
 			GenericFunctions.waitWebDriver(2000);
 			publicUserPage.clickContentTypes.click();
 			GenericFunctions.waitForElementToAppear(publicUserPage.selectContentType);
@@ -333,16 +333,16 @@ public class PublicUserPageObj extends BaseTest
 			publicUserPage.selectFilterBoard.click();
 			GenericFunctions.waitWebDriver(2000);
 			publicUserPage.clickFilterClass.click();
-			GenericFunctions.waitForElementToAppear(publicUserPage.selectFilterClass);
-			publicUserPage.selectFilterClass.click();
+			GenericFunctions.waitForElements(publicUserPage.selectFilterClass);
+			publicUserPage.selectFilterClass.get(0).click();
 			GenericFunctions.waitWebDriver(1500);
 			publicUserPage.clickFilterSubject.click();
-			GenericFunctions.waitForElementToAppear(publicUserPage.selectFilterSubject);
-			publicUserPage.selectFilterSubject.click();
+			GenericFunctions.waitForElements(publicUserPage.selectFilterSubject);
+			publicUserPage.selectFilterSubject.get(0).click();
 			GenericFunctions.waitWebDriver(1500);
 			publicUserPage.clickFilterMedium.click();
-			GenericFunctions.waitForElementToAppear(publicUserPage.selectFilterMedium);
-			publicUserPage.selectFilterMedium.click();
+			GenericFunctions.waitForElements(publicUserPage.selectFilterMedium);
+			publicUserPage.selectFilterMedium.get(0).click();
 			GenericFunctions.waitWebDriver(1500);
 			publicUserPage.clickContentTypes.click();
 			GenericFunctions.waitWebDriver(2000);

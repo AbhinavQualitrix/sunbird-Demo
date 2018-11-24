@@ -98,24 +98,12 @@ public class PublicUserPage
 	@FindBy(xpath="//i[@class='icon filter']")
 	public WebElement filterIcon;
 	
-	@FindBy(xpath="//sui-multi-select[@id='subject']//i[@class='dropdown icon']")
-	public WebElement clickFilterSubject;
-	
-	@FindBy(xpath="//sui-multi-select[@id='subject']/..//sui-select-option")
-	public WebElement selectFilterSubject;
 	
 	@FindBy(xpath="//sui-multi-select[@id='board']//i[@class='dropdown icon']")
 	public WebElement clickFilterBoard;
 	
 	
-	@FindBy(xpath="//sui-multi-select[@id='gradeLevel']//i[@class='dropdown icon']")
-	public WebElement clickFilterClass;
-	
-	@FindBy(xpath="//sui-multi-select[@id='gradeLevel']/..//sui-select-option")
-	public WebElement selectFilterClass;
-	
-	@FindBy(xpath="//sui-multi-select[@id='medium']//i[@class='dropdown icon']")
-	public WebElement clickFilterMedium;
+
 	
 	@FindBy(xpath="//sui-multi-select[@id='contentType']")
 	public WebElement clickContentTypes;
@@ -125,16 +113,7 @@ public class PublicUserPage
 	
 	@FindBy(xpath="//input[contains(text(),'Concepts ')]")
 	public WebElement clickConcepts;
-	
-
-	//OCT 12 - v1.11.0
-	//@FindBy(xpath="//div//span[.='CBSE']")
-	@FindBy(xpath="//sui-multi-select[@id='board']/..//sui-select-option")
-	public WebElement selectFilterBoard;
-	
-	@FindBy(xpath="//sui-multi-select[@id='medium']/..//sui-select-option")
-	public WebElement selectFilterMedium;
-	
+		
 	@FindBy(xpath="//div[@class='ui search form']//input[@type='text'][@placeholder='Search']")
 	public WebElement clickSearchConcepts;
 	
@@ -395,6 +374,43 @@ public class PublicUserPage
 	
 	@FindBy(xpath="//a[@class='header ']")
 	public WebElement searchedResult;
+	
+	//Nov 24
+	//@FindBy(xpath="//sui-multi-select[@id='gradeLevel']//i[@class='dropdown icon']")
+	@FindBy(xpath="(//sui-multi-select[@id='gradeLevel']//i[@class='dropdown icon'])[2]")
+	public WebElement clickFilterClass;
+	
+	//Nov 24
+	//@FindBy(xpath="//div//span[.='CBSE']")
+	//@FindBy(xpath="//sui-multi-select[@id='board']/..//sui-select-option")
+	@FindBy(xpath="(//sui-multi-select[@id='board']/..//sui-select-option)[2]")
+	public WebElement selectFilterBoard;
+	
+	//Nov 24
+	@FindBy(xpath="((//sui-multi-select[@id='gradeLevel'])[2]/..//sui-select-option)")
+	//@FindBy(xpath="//sui-multi-select[@id='gradeLevel']/..//sui-select-option")
+	public List<WebElement> selectFilterClass;
+	
+	//Nov 24
+	@FindBy(xpath="(//sui-multi-select[@id='subject']//i[@class='dropdown icon'])[2]")
+	//@FindBy(xpath="//sui-multi-select[@id='subject']//i[@class='dropdown icon']")
+	public WebElement clickFilterSubject;
+	
+	//Nov 24
+	@FindBy(xpath="(//sui-multi-select[@id='subject'])[2]/..//sui-select-option")
+	//@FindBy(xpath="//sui-multi-select[@id='subject']/..//sui-select-option")
+	public List<WebElement> selectFilterSubject;
+	
+	//Nov 24
+	@FindBy(xpath="(//sui-multi-select[@id='medium']//i[@class='dropdown icon'])[2]")
+	//@FindBy(xpath="//sui-multi-select[@id='medium']//i[@class='dropdown icon']")
+	public WebElement clickFilterMedium;
+	
+	
+	//Nov 24
+	//@FindBy(xpath="//sui-multi-select[@id='medium']/..//sui-select-option")
+	@FindBy(xpath="(//sui-multi-select[@id='medium'])[2]/..//sui-select-option")
+	public List<WebElement> selectFilterMedium;
 }	
 
 
