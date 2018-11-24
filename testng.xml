@@ -7,18 +7,18 @@
 	<test thread-count="1" name="regressiontest-P1">
 		<classes>
 		
-			<!-- Test Cases for Admin
+			<!-- Test Cases for Admin -->
 			<class name="org.testscripts.UploadRootOrg" />
 			<class name="org.testscripts.UploadRootOrgUsersWithOrgId" />
 			<class name="org.testscripts.UploadSubOrg" />
 			<class name="org.testscripts.UploadSubOrgUsersWithOrgId" />
 			<class name="org.testscripts.UploadSubOrgUsersWithProviderAndExtId" />
 			<class name="org.testscripts.VerifyElementsInAdminDashboard" />			 
-			<class name="org.testscripts.AdminCreationAndDownloadCsv" /> -->
+			<class name="org.testscripts.AdminCreationAndDownloadCsv" />
 			
 
 		 	
-			<!-- Test Cases for Public User  
+			<!-- Test Cases for Public User   -->
 			<class name="org.testscripts.SkillEndorsement" />
 			<class name="org.testscripts.UpdateProfilePhoto" />
 			<class name="org.testscripts.SearchUsers" />
@@ -29,9 +29,9 @@
 			<class name="org.testscripts.SearchCourseUsingFilter" />
 			<class name="org.testscripts.SearchInLibraryUsingFilter" />
 			<class name="org.testscripts.ConfirmInstructionReceivedInforgotPassword" />
-			<class name="org.testscripts.VerifyHomePage" />-->
+			<class name="org.testscripts.VerifyHomePage" />
 
-		<!-- 	Test Cases for Content Creator 
+		<!-- 	Test Cases for Content Creator  -->
 			<class name="org.testscripts.UnlinkDailcode" />
 			<class name="org.testscripts.UploadH5pContent" />
 			<class name="org.testscripts.BookCreation" />
@@ -51,16 +51,16 @@
 			<class name="org.testscripts.EditContentAndSendForReview" />
 			<class name="org.testscripts.CheckInReviewSubmission" />
 			<class name="org.testscripts.VerifyPublishedBucket" />
-			<class name="org.testscripts.LimitedSharingTheContent" />-->	
+			<class name="org.testscripts.LimitedSharingTheContent" />	
 
 
-			<!-- Test Cases for Reviewer  
+			<!-- Test Cases for Reviewer -->  
 			<class name="org.testscripts.SearchContentWithFiltersAsReviewer" />
 			<class name="org.testscripts.LimitedSharingTheContent" />
-			<class name="org.testscripts.VerifyTheBookAvailableForReview" />-->
+			<class name="org.testscripts.VerifyTheBookAvailableForReview" />
  			
 			
-			<!-- 	Test Cases for Mentor 	
+				<!-- Test Cases for Mentor 	 -->
 			
 			<class name="org.testscripts.EnrollToCourseInOpenBatch" />
 			<class name="org.testscripts.ConsumeCourseByInvitedMember" />
@@ -70,27 +70,24 @@
 			<class name="org.testscripts.UpdateBatchAsInvitedMentor" />
 			<class name="org.testscripts.CheckCourseStatAsMentor" />
 			
-			 --> 
+			 
 			 <class name="org.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor" />
 			 
-			 <!-- <class name="org.testscripts.NavigateToMyActivityInDropdown" />
+			 <class name="org.testscripts.NavigateToMyActivityInDropdown" />
 			 <class name="org.testscripts.CheckForDownloadButtonAvailabilityForUserInProfile" />
 		 	<class name="org.testscripts.SearchOrgsAsAdmin" />
 		 	<class name="org.testscripts.CheckForAuthenticUserInMentor" />
-			-->
-			<!-- Test Cases for Announcement sender  
 			
-			<class name="org.testscripts.ResendAnnouncementAndVerifyAnnouncement" />
+		<!-- 	Test Cases for Announcement sender   -->
 			
-			
-				-->
-			<!--  <class name="org.testscripts.NavigateToAnnouncementDashboard" />
+			<class name="org.testscripts.ResendAnnouncementAndVerifyAnnouncement" />								
+			 <class name="org.testscripts.NavigateToAnnouncementDashboard" />
 			<class name="org.testscripts.Create_Verify_DeleteAnnouncement" />
 			<class name="org.testscripts.CreateAnnouncementWithAttachment" />
 			<class name="org.testscripts.OpenAnnouncement" />
 			<class name="org.testscripts.ResendAnnouncement" />
 			<class name="org.testscripts.ResendAnnouncementAndVerifyAsReciever" />
-			-->
+			
 			
 			<!-- Test Cases that are out of coverage point of view
 			<class name="org.testscripts.ChangeTheContentAfterFlagged" />
