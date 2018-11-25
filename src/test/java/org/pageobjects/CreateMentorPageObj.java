@@ -539,7 +539,7 @@ public class CreateMentorPageObj extends BaseTest{
 	/**
 	* Purpose: viewCourseStats() method is used for checking the course status
 	*/
-	public void viewCourseStats()
+	/*public void viewCourseStats()
 	{
 		try
 		{
@@ -576,7 +576,7 @@ public class CreateMentorPageObj extends BaseTest{
 			Assert.fail("Failed to view the course stat, Exception"+e.getLocalizedMessage());
 
 		}
-	}
+	}*/
 	
 	/**
 	* Purpose: createCourseForOpenBatch() method is used for creating coursed for open batches
@@ -650,6 +650,143 @@ public class CreateMentorPageObj extends BaseTest{
 			Assert.fail("Failed to enroll for an open batch, Exception"+e.getLocalizedMessage());
 		}
 	}
+	public void navigateToCourseAndSearchForCourse() throws InterruptedException
+	{
+		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
+		try{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate To Course And Search For Course");
+			GenericFunctions.waitWebDriver(3500);
+			createUserPage.headerCourse.click();
+			GenericFunctions.waitWebDriver(2000);
+			createMentorPage.filterSearch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad("./testData/courseNumbers.txt"));
+			GenericFunctions.waitWebDriver(2000);
+			createUserPage.searchIcon.click();
+			GenericFunctions.waitWebDriver(3000);
+			GenericFunctions.waitForElementToAppear(createMentorPage.courseImg1);
+			createMentorPage.courseImg1.click();
+			GenericFunctions.waitWebDriver(3000);
+		}
+		catch(Exception e){
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to navigate To Course And Search For Course");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			log.error("Exception In the method navigateToCourseAndSearchForCourse"+e.getMessage());
+			Assert.fail("Failed to navigate To Course And Search For Course, Exception"+e.getLocalizedMessage());
+		}
+	}
+	public void navigateToLibraryAndSearchForCollection() throws InterruptedException
+	{
+		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
+		try{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate To Library And Search For Collection");
+			GenericFunctions.waitWebDriver(1500);
+			createUserPage.headerLibrary.click();
+			GenericFunctions.waitWebDriver(1000);
+			createMentorPage.filterSearch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad("./testData/collectionNumbers.txt"));
+			createUserPage.searchIcon.click();
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(createMentorPage.courseImg1);
+			createMentorPage.courseImg1.click();
+			GenericFunctions.waitWebDriver(3000);
+		}
+		catch(Exception e){
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to navigate To Library And Search For Collection");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			log.error("Exception In the method navigateToLibraryAndSearchForCollection"+e.getMessage());
+			Assert.fail("Failed to navigate To Library And Search For Collection, Exception"+e.getLocalizedMessage());
+		}
+	}
+	
+	public void navigateToLibraryAndSearchForBook() throws InterruptedException
+	{
+		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
+		try{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate To Library And Search For Book");
+			GenericFunctions.waitWebDriver(1500);
+			createUserPage.headerLibrary.click();
+			GenericFunctions.waitWebDriver(1000);
+			createMentorPage.filterSearch.sendKeys(objListOFTestDataForSunbird.get(2).getCourseName()+GenericFunctions.readFromNotepad("./testData/bookNumbers.txt"));
+			createUserPage.searchIcon.click();
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(createMentorPage.courseImg1);
+			createMentorPage.courseImg1.click();
+			GenericFunctions.waitWebDriver(3000);
+		}
+		catch(Exception e){
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to navigate To Library And Search For Book");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			log.error("Exception In the method navigateToLibraryAndSearchForBook"+e.getMessage());
+			Assert.fail("Failed to navigate To Library And Search For Book, Exception"+e.getLocalizedMessage());
+		}
+	}
+	public void navigateToLibraryAndSearchForLessonPlan() throws InterruptedException
+	{
+		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
+		try{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate To Library And Search For LessonPlan");
+			GenericFunctions.waitWebDriver(1500);
+			createUserPage.headerLibrary.click();
+			GenericFunctions.waitWebDriver(1000);
+			createMentorPage.filterSearch.sendKeys(objListOFTestDataForSunbird.get(3).getCourseName()+GenericFunctions.readFromNotepad("./testData/lessonPlan.txt"));
+			createUserPage.searchIcon.click();
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(createMentorPage.courseImg1);
+			createMentorPage.courseImg1.click();
+			GenericFunctions.waitWebDriver(3000);
+		}
+		catch(Exception e){
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to navigate To Library And Search For LessonPlan");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			log.error("Exception In the method navigateToLibraryAndSearchForLessonPlan"+e.getMessage());
+			Assert.fail("Failed to navigate To Library And Search For LessonPlan, Exception"+e.getLocalizedMessage());
+		}
+	}
+	
+	public void viewCourseStats()
+	{
+		try
+		{
+		ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to view the course stats");
+		GenericFunctions.waitWebDriver(2000);
+		GenericFunctions.refreshWebPage();
+		GenericFunctions.waitWebDriver(2000);
+		createMentorPage.viewCourseStat.click();
+		GenericFunctions.waitWebDriver(2000);
+		createMentorPage.fromBeginning.click();
+		GenericFunctions.waitWebDriver(2000);	
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to view the course stats");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			log.error("Exception In the method viewCourseStats"+e.getMessage());
+			Assert.fail("Failed to view the course stat, Exception"+e.getLocalizedMessage());
+
+		}
+	}
+
+	public void navigateToLibraryAndSearchForEdittedBook() throws InterruptedException
+	{
+		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
+		try{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate To Library And Search For Book");
+			GenericFunctions.waitWebDriver(1500);
+			createUserPage.headerLibrary.click();
+			GenericFunctions.waitWebDriver(1000);
+			createMentorPage.filterSearch.sendKeys(objListOFTestDataForSunbird.get(2).getCourseName());//+GenericFunctions.readFromNotepad("./testData/bookNumbers.txt"));
+			createUserPage.searchIcon.click();
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(createMentorPage.courseImg1);
+			createMentorPage.courseImg1.click();
+			GenericFunctions.waitWebDriver(3000);
+		}
+		catch(Exception e){
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to navigate To Library And Search For Book");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			log.error("Exception In the method navigateToLibraryAndSearchForBook"+e.getMessage());
+			Assert.fail("Failed to navigate To Library And Search For Book, Exception"+e.getLocalizedMessage());
+		}
+	}
+
 
 }
 

@@ -722,6 +722,9 @@ public class CreatorUserPage {
 	//Nov 24
 	@FindBy(xpath="//div[contains(text(),'TextBook')]")
 	public List<WebElement> contentType;
+	
+	@FindBy(xpath="(//div[@class='content'])[1]")
+	public WebElement searchedContent;
 }
 
 

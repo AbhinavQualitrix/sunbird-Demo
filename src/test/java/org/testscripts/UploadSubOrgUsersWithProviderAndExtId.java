@@ -8,6 +8,7 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
+import org.testng.annotations.Test;
 import org.pageobjects.SignUpPageObj;
 import org.pageobjects.UploadOrgObj;
 import org.startup.BaseTest;

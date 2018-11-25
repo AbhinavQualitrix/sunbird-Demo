@@ -12,8 +12,7 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
-
-import junit.framework.Assert;
+import org.testng.annotations.Test;
 
 import java.util.List;
 

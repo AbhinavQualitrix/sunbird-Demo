@@ -9,6 +9,8 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.generic.GenericFunctions;
@@ -31,7 +33,7 @@ public class UploadSubOrg extends BaseTest
 		
 		//Step2 and 3: Upload Sub Org		
 		boolean actualValue=adminUpload.uploadRootAndSubOrg(UPLOAD_SUB_ORG);
-		Assert.assertEquals(true,actualValue);
+		AssertJUnit.assertEquals(true,actualValue);
 		
 		GenericFunctions.waitWebDriver(2000);
 		//Logout as Admin

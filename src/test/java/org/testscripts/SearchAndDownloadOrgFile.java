@@ -12,6 +12,7 @@
 */package org.testscripts;
 
 import org.testng.annotations.Test;
+import org.testng.annotations.Test;
 import org.generic.GenericFunctions;
 import org.openqa.selenium.support.PageFactory;
 import org.page.CreatorUserPage;

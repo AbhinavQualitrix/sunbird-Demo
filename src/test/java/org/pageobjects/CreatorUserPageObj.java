@@ -366,7 +366,7 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(createUserPage.reviewSubmission);
 			createUserPage.reviewSubmission.click();
-			assertFoundInReviewSubmission(source,objListOFTestDataForSunbird);
+			//assertFoundInReviewSubmission(source,objListOFTestDataForSunbird);
 			GenericFunctions.waitWebDriver(3000);
 		}
 		catch(Exception e)
@@ -1122,8 +1122,9 @@ public class CreatorUserPageObj extends BaseTest{
 
 	public void createCollection()
 	{
-		try
-		{
+
+			try
+			{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create new collection");
 			List <TestDataForSunbird> objListOFTestDataForSunbird1=null;
 			objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
@@ -2687,6 +2688,34 @@ public class CreatorUserPageObj extends BaseTest{
 		}
 		return false;
 	}
-
+	public void navigateToLibraryAndSearchContent(String userData)
+	{
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate To Library And Search Content");
+			List <TestDataForSunbird> objListOFTestDataForSunbird1=null;
+			objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
+			GenericFunctions.waitForElementToAppear(createUserPage.headerLibrary);
+			createUserPage.headerLibrary.click();
+			GenericFunctions.waitWebDriver(1000);
+			createUserPage.searchInput.click();
+			createUserPage.searchInput.sendKeys(objListOFTestDataForSunbird1.get(4).getCourseName()+"_"+GenericFunctions.readFromNotepad("./testData/contentNumbers.txt"));
+			System.out.println(objListOFTestDataForSunbird1.get(4).getCourseName()+"_"+GenericFunctions.readFromNotepad("./testData/contentNumbers.txt"));
+			createUserPage.searchIcon.click();
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(createUserPage.searchedContent);
+			createUserPage.searchedContent.click();
+			GenericFunctions.waitWebDriver(2000);
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to navigate To Library And Search Content");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			System.out.println("Failed to navigate To Library And Search Content");
+			Assert.fail("Failed to navigate To Library And Search Content ");
+		}
+		
+		
+	}
 
 }
