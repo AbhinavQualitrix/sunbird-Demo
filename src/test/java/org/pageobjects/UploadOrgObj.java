@@ -7,15 +7,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.List;
 import org.apache.log4j.Logger;
-import org.generic.AllUploadingPaths;
-import org.generic.ExtentTestManager;
-import org.generic.GenericFunctions;
-import org.generic.ReadTestDataFromExcel;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.generic.AllUploadingPaths;
+import org.generic.ExtentTestManager;
+import org.generic.GenericFunctions;
+import org.generic.ReadTestDataFromExcel;
 import org.page.CreatorUserPage;
 import org.page.UploadOrgPage;
 import org.startup.BaseTest;
@@ -120,19 +120,17 @@ public class UploadOrgObj extends BaseTest
 
 				if(uploadDocument.equalsIgnoreCase(UPLOAD_ROOT_ORG))
 				{
-					readAndUpdateCsvFile(UPLOAD_ROOT_ORG);
+					readAndUpdateCsvFile(ROOT_ORG);
 					GenericFunctions.waitForElementToAppear(orgUploadPage.uploadCSV);
+					GenericFunctions.waitWebDriver(2000);
 					orgUploadPage.uploadCSV.click();
 					GenericFunctions.waitWebDriver(3000);
-
-					System.out.println("Passed here");
 					ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to upload Root Organization "+UPLOAD_ROOT_ORG+" is the file name");
 					//String path = System.getProperty("user.dir")+"/uploadingDocuments/"+UPLOAD_ROOT_ORG;
 					System.out.println("Uploaded file name: "+AllUploadingPaths.rootOrgPath);
 					GenericFunctions.waitWebDriver(3000);
 					GenericFunctions.uploadFile(AllUploadingPaths.rootOrgPath);
-					GenericFunctions.waitForElementToAppear(orgUploadPage.processID);
-					GenericFunctions.waitWebDriver(3000);
+					GenericFunctions.waitWebDriver(2000);
 					GenericFunctions.waitForElementToAppear(orgUploadPage.processID);
 					GenericFunctions.waitWebDriver(3000);	
 					String getProcessID = orgUploadPage.processID.getText();
@@ -146,11 +144,15 @@ public class UploadOrgObj extends BaseTest
 					orgUploadPage.closePopup.click();
 					System.out.println("Successful on Root Org upload");
 					log.info("Process ID: "+getProcessID+"Successful on Root Org upload");
+					Assert.assertTrue(true);
+					ExtentTestManager.getTest().log(LogStatus.PASS, "Root Org Uploaded Sucessfully");
 				}
 				else if(uploadDocument.equalsIgnoreCase(UPLOAD_SUB_ORG))
 				{
-					readAndUpdateCsvFile(UPLOAD_ROOT_ORG);
+					readAndUpdateCsvFile(SUB_ORG);
+					
 					GenericFunctions.waitForElementToAppear(orgUploadPage.uploadCSV);
+					GenericFunctions.waitWebDriver(2000);
 					orgUploadPage.uploadCSV.click();
 					GenericFunctions.waitWebDriver(3000);
 					ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to upload Sub-Organization "+UPLOAD_SUB_ORG+" is the file name");
@@ -172,6 +174,8 @@ public class UploadOrgObj extends BaseTest
 					orgUploadPage.closePopup.click();
 					System.out.println("Successful on Sub Org upload");
 					log.info("Process ID: "+getProcessID+"Successful on Sub Org upload");
+					Assert.assertTrue(true);
+					ExtentTestManager.getTest().log(LogStatus.PASS, "Sub Org Uploaded Sucessfully");
 
 				}
 
@@ -544,12 +548,16 @@ public class UploadOrgObj extends BaseTest
 	{
 		try
 		{
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(orgUploadPage.dropdown);
 			orgUploadPage.dropdown.click();
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(orgUploadPage.clickAdminDashboardIcon);
 			GenericFunctions.waitWebDriver(1500);
 			orgUploadPage.clickAdminDashboardIcon.click();
 			GenericFunctions.waitWebDriver(3000);
+			GenericFunctions.waitForElementToAppear(orgUploadPage.clickCreation);
+			
 			String creationText=orgUploadPage.clickCreation.getText();
 			orgUploadPage.clickCreation.click();
 			//String consumptionText=orgUploadPage.clickConsumption.getText();
@@ -557,7 +565,7 @@ public class UploadOrgObj extends BaseTest
 			//System.out.println(consumptionText);
 
 
-			if(orgUploadPage.clickCreation.getText().equalsIgnoreCase(filterName))
+			if(creationText.equalsIgnoreCase(filterName))
 			{
 				ExtentTestManager.getTest().log(LogStatus.INFO, "Verifying the Dashboard by applying filter as "+filterName);
 				GenericFunctions.waitForElementToAppear(orgUploadPage.clickCreation);
@@ -570,7 +578,8 @@ public class UploadOrgObj extends BaseTest
 				orgUploadPage.dropdown.click();
 				GenericFunctions.waitWebDriver(1001);	
 				GenericFunctions.waitForElementToAppear(orgUploadPage.clickAdminDashboardIcon);
-				orgUploadPage.clickAdminDashboardIcon.click();
+				GenericFunctions.waitWebDriver(1000);	
+				orgUploadPage.clickAdminDashboardIcon.click();	
 				GenericFunctions.waitForElementToAppear(orgUploadPage.last14Days);
 				orgUploadPage.last14Days.click();
 				GenericFunctions.waitWebDriver(2000);
@@ -588,6 +597,7 @@ public class UploadOrgObj extends BaseTest
 				verifyPageElements();
 				GenericFunctions.waitWebDriver(2000);
 				Assert.assertTrue(true);
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Admin Dashboard is verified sucessfully");
 			}
 			else if(orgUploadPage.clickConsumption.getText().equalsIgnoreCase(filterName))
 			{
@@ -625,19 +635,13 @@ public class UploadOrgObj extends BaseTest
 
 		try
 		{
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(orgUploadPage.contentsCreated);
-			if(orgUploadPage.contentsCreated.isDisplayed())
+			if(orgUploadPage.contentsCreated.isDisplayed()&&orgUploadPage.authors.isDisplayed()&&orgUploadPage.reviewers.isDisplayed())
 			{
 				log.info(orgUploadPage.contentsCreated.getText()+" element is displayed");
-				GenericFunctions.waitWebDriver(2000);
-				if(orgUploadPage.authors.isDisplayed())
-				{	
-					log.info(orgUploadPage.authors.getText()+" element is displayed");
-					GenericFunctions.waitWebDriver(2000);
-					if(orgUploadPage.reviewers.isDisplayed())
-					{
-						log.info(orgUploadPage.reviewers.getText()+" element is displayed");
-						GenericFunctions.waitWebDriver(2000);
+				log.info(orgUploadPage.authors.getText()+" element is displayed");
+				log.info(orgUploadPage.reviewers.getText()+" element is displayed");
 						if(orgUploadPage.csvLink.isDisplayed())
 						{
 							GenericFunctions.scrollToElement(orgUploadPage.csvLink);
@@ -649,8 +653,8 @@ public class UploadOrgObj extends BaseTest
 							GenericFunctions.waitWebDriver(1000);
 							orgUploadPage.closeThanks.click();
 						}
-					}
-				}
+					
+				
 			}
 		}
 		catch(Exception e)

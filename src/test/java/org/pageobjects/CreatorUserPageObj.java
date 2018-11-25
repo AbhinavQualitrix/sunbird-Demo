@@ -384,10 +384,10 @@ public class CreatorUserPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "To assert that "+source+" is found in review submission");
 			//List<WebElement> result = driver.findElements(By.xpath("//div[@class='cardImageText center aligned ']/span"));
 			CreatorUserPage createUserPage1=PageFactory.initElements(driver, CreatorUserPage.class);
-			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitWebDriver(4000);
 			if(source.equalsIgnoreCase(COURSE))
 			{
-				GenericFunctions.waitWebDriver(2000);
+				GenericFunctions.waitWebDriver(4000);
 				String courseNumber = GenericFunctions.readFromNotepad("./testData/courseNumbers.txt").toString();
 				for(int i=0;i<createUserPage1.reviewSubmittedCourse.size();i++){
 					String courseName = createUserPage1.reviewSubmittedCourse.get(i).getText();
@@ -407,7 +407,7 @@ public class CreatorUserPageObj extends BaseTest{
 			}
 			else if(source.equalsIgnoreCase(BOOK))
 			{
-				GenericFunctions.waitWebDriver(2000);
+				GenericFunctions.waitWebDriver(4000);
 				String courseNumber = GenericFunctions.readFromNotepad("./testData/bookNumbers.txt").toString();
 				for(int i=0;i<createUserPage1.reviewSubmittedCourse.size();i++){
 					String courseName = createUserPage1.reviewSubmittedCourse.get(i).getText();

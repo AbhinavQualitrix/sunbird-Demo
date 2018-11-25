@@ -81,9 +81,15 @@ public class SignUpPageObj extends BaseTest
                 
                 else if(userRole.equalsIgnoreCase("BOOKREVIEWER"))
                 {
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(10).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(10).getPassword());
-                log.info("UN"+objListOFTestDataForSunbird.get(10).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(10).getPassword());
+                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(7).getUsername());
+                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(7).getPassword());
+                log.info("UN"+objListOFTestDataForSunbird.get(7).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(7).getPassword());
+                }
+                else if(userRole.equalsIgnoreCase("BOOKCREATOR"))
+                {
+                	 orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(6).getUsername());
+                     orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(6).getPassword());
+               log.info("UN"+objListOFTestDataForSunbird.get(6).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(6).getPassword());
                 }
                 
                 else if(userRole.equalsIgnoreCase("AUTOCREATOR"))
@@ -98,12 +104,7 @@ public class SignUpPageObj extends BaseTest
                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(28).getPassword());
                log.info("UN"+objListOFTestDataForSunbird.get(28).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(28).getPassword());
                 }
-                else if(userRole.equalsIgnoreCase(BOOKCREATOR))
-                {
-                	 orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(6).getUsername());
-                     orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(6).getPassword());
-               log.info("UN"+objListOFTestDataForSunbird.get(6).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(6).getPassword());
-                }
+         
                 else if(userRole.equalsIgnoreCase(MENTOR_S))
                 {
                       orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(24).getUsername());

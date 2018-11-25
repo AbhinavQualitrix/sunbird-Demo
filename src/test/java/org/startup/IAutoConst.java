@@ -12,7 +12,6 @@ public interface IAutoConst {
 	String XPATH="XPATH";
 	String PUBLICUSER1="PUBLICUSER1";
 	String PUBLICUSER2="PUBLICUSER2";
-	String PUBLICUSER3="PUBLICUSER3";
 	String BOOKREVIEWER="BOOKREVIEWER";
 	String AUTOCREATOR="AUTOCREATOR";
 	String BOOKCREATOR="BOOKCREATOR";
@@ -24,11 +23,10 @@ public interface IAutoConst {
 	String A_CONTENT_CREATOR="A_CONTENT_CREATOR";
 	//Nov 23
 	String CREATOR2="CREATOR2";
-	
 
 	//Driver values
 	String CHROME_KEY="webdriver.chrome.driver";
-	String CHROME_VAL="drivers/chromedriver";
+	String CHROME_VAL="drivers/chromedriver.exe";
 	String GECKO_KEY="webdriver.gecko.driver";
 	String GECKO_VAL="./drivers/geckodriver";
 	String APP_URL="https://staging.open-sunbird.org";
@@ -50,7 +48,7 @@ public interface IAutoConst {
 	String[] searchInput = new String[]{"BookA","Automation content","Automation Collection","lesson plan","Automation Resource"};
 	String UPLOAD_PROFILE_PIC="images1";
 	String[] SEARCH_USERS=new String[]{"mentor","admin","public user","creator","reviewer"};
-	String[] SEARCH_ORG=new String[]{"Org"};
+	String[] SEARCH_ORG=new String[]{"Org","Root Org"};
 	String SUMMARY_EDIT ="Profile Summary is edited";
 	String EXP_OCCUPATION="Test Occupation";
 	String EXP_DESIGNATION="Test Designation";
@@ -130,5 +128,9 @@ public interface IAutoConst {
 	
 	//Merged from Ajith - 25/09/2018
 	String HINDI_LABEL="डायल कोड दर्ज करें ";
+	
+	//Nov 25
+	String ROOT_ORG="Upload_root_org";
+	String SUB_ORG="Upload_sub_org";
 	
 }

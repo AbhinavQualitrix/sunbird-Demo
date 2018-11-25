@@ -59,7 +59,7 @@ public class UploadOrgPage {
 	public WebElement uploadErrorToast;
 
 	//@FindBy(xpath="//div[.='Upload Organizations']/../div[@class='one wide column actions']")
-	@FindBy(xpath="//i[@class='close icon']")
+	@FindBy(xpath="(//i[@class='close icon'])[2]")
 	public WebElement closePopup;
 
 	@FindBy(xpath="//div[4]//a[.='Course']")
@@ -174,8 +174,7 @@ public class UploadOrgPage {
 	@FindBy(xpath="//a[contains(text(),'CSV')]")
 	public WebElement csvLink;
 	
-	@FindBy(xpath="//i[@class='close icon']")
-	public WebElement closeThanks;
+
 	
 	@FindBy(xpath="//div//span[contains(text(),'LAST 14 DAYS')]")
 	public WebElement last14Days;
@@ -211,6 +210,12 @@ public class UploadOrgPage {
 	//Added on Nov 16th
 	@FindBy(xpath="//sui-select//div[@class='default text'][.='Admin Actions']/following::i[@class='dropdown icon']")
 	public static WebElement adminActionsButton;
+	
+	
+	//Nov 25
+	//@FindBy(xpath="(//i[@class='close icon'])")
+	@FindBy(xpath="(//i[@class='close icon'])[2]")
+	public WebElement closeThanks;
 }
 
 

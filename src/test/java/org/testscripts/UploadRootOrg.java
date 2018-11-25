@@ -30,7 +30,6 @@ public class UploadRootOrg extends BaseTest {
 		//Step2 and 3: Upload Root Org		
 		boolean actualValue= adminUpload.uploadRootAndSubOrg(UPLOAD_ROOT_ORG);
 		
-		AssertJUnit.assertEquals(true,actualValue);
 		
 		//Wait for 2 seconds
 		GenericFunctions.waitWebDriver(2000);

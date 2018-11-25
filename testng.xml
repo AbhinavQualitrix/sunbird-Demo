@@ -13,11 +13,8 @@
 			<!-- Test Cases for Admin-->
 
 
-			<class name="org.testscripts.UploadRootOrg" />
-			<class name="org.testscripts.UploadRootOrgUsersWithOrgId" />
-			<class name="org.testscripts.UploadSubOrg" />
-			<class name="org.testscripts.UploadSubOrgUsersWithOrgId" />
-			<class name="org.testscripts.UploadSubOrgUsersWithProviderAndExtId" />
+			<class name="org.testscripts.UploadRootOrg" />			
+			<class name="org.testscripts.UploadSubOrg" />			
 			<class name="org.testscripts.VerifyElementsInAdminDashboard" />			 
 			<class name="org.testscripts.AdminCreationAndDownloadCsv" />
 			
@@ -114,15 +111,17 @@
 			<!-- Test Cases that are out of coverage point of view
 			<class name="org.testscripts.ChangeTheContentAfterFlagged" />
 			 <class name="org.testscripts.AcceptAsflagReviewer" /> 
-				<class name="org.testscripts.FlagTheContentAsPublicUser" />
-				 <class name="org.testscripts.CheckTheflaggedContentINDraft" /> 
-				<class name="org.testscripts.DiscardAsFlagReviewer" /> 
-							<class name="org.testscripts.AdminConsumptionAndDownloadCsv" /> 
-							<class name="org.testscripts.CheckUpForReviewAsFlagReviewer" />
-							
+			<class name="org.testscripts.FlagTheContentAsPublicUser" />
+			 <class name="org.testscripts.CheckTheflaggedContentINDraft" /> 
+			<class name="org.testscripts.DiscardAsFlagReviewer" /> 
+			<class name="org.testscripts.AdminConsumptionAndDownloadCsv" /> 
+			<class name="org.testscripts.CheckUpForReviewAsFlagReviewer" />							
 			<class name="org.testscripts.UploadRootOrgUsersWithProviderAndExtID" />
 			<class name="org.testscripts.AdminConsumptionAndDownloadCsv" />
 			<class name="org.testscripts.SearchAndDownloadOrgFile" />
+			<class name="org.testscripts.UploadRootOrgUsersWithOrgId" />
+			<class name="org.testscripts.UploadSubOrgUsersWithOrgId" />
+			<class name="org.testscripts.UploadSubOrgUsersWithProviderAndExtId" />
  			-->
 		</classes>
 	</test> <!-- regressiontest-P1 -->
