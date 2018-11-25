@@ -40,12 +40,12 @@ public class SignUpPageObj extends BaseTest
         	    ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to Log in as "+userRole);
                 orgUploadPage.loginButton.click();
                 if(userRole.equalsIgnoreCase("ADMIN")){   
-                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(5).getUsername());
-                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(5).getPassword());
-                      System.out.println("Logged in as "+userRole+" with UN:"+objListOFTestDataForSunbird.get(5).getUsername()+" and PW:"+
-                                  objListOFTestDataForSunbird.get(5).getPassword());
-                      log.info("Logged in as"+userRole+"with UN:"+objListOFTestDataForSunbird.get(5).getUsername()+" and PW:"+
-                                  objListOFTestDataForSunbird.get(5).getPassword());
+                      orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(3).getUsername());
+                      orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(3).getPassword());
+                      System.out.println("Logged in as "+userRole+" with UN:"+objListOFTestDataForSunbird.get(3).getUsername()+" and PW:"+
+                                  objListOFTestDataForSunbird.get(3).getPassword());
+                      log.info("Logged in as"+userRole+"with UN:"+objListOFTestDataForSunbird.get(3).getUsername()+" and PW:"+
+                                  objListOFTestDataForSunbird.get(3).getPassword());
                 }
                 else if(userRole.equalsIgnoreCase("CREATOR")){
                       orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(0).getUsername());
@@ -67,12 +67,12 @@ public class SignUpPageObj extends BaseTest
                       orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(8).getPassword());
                 log.info("UN"+objListOFTestDataForSunbird.get(8).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(8).getPassword());
                 }           
-                else if(userRole.equalsIgnoreCase("PUBLICUSER")){
+                else if(userRole.equalsIgnoreCase("PUBLICUSER1")){
                       orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(4).getUsername());
                       orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(4).getPassword());
                 log.info("UN"+objListOFTestDataForSunbird.get(4).getUsername()+"/nPW"+objListOFTestDataForSunbird.get(4).getPassword());
                 }
-                else if(userRole.equalsIgnoreCase("PUBLICUSER1"))
+                else if(userRole.equalsIgnoreCase("PUBLICUSER2"))
                 {
                       orgUploadPage.username.sendKeys(objListOFTestDataForSunbird.get(5).getUsername());
                       orgUploadPage.password.sendKeys(objListOFTestDataForSunbird.get(5).getPassword());
@@ -144,7 +144,7 @@ public class SignUpPageObj extends BaseTest
                 }
                 //orgUploadPage.clickLogin.click();
                 orgUploadPage.clickLogin1.click();
-                if(userRole.equalsIgnoreCase(PUBLICUSER)&&userRole.equalsIgnoreCase(PUBLICUSER))
+                if(userRole.equalsIgnoreCase(PUBLICUSER)||userRole.equalsIgnoreCase(PUBLICUSER1))
                 {
                 	System.out.println("Public user login");
                 	createUserPageObj.handlePopupOnLogin();

@@ -23,7 +23,7 @@
 			
 
 		 	
-			<!-- Test Cases for Public User   -->
+			<!-- Test Cases for Public User  
 
 			<class name="org.testscripts.AdminCreationAndDownloadCsv" /> 
 			<class name="org.testscripts.SkillEndorsement" />
@@ -36,7 +36,7 @@
 			<class name="org.testscripts.SearchCourseUsingFilter" />
 			<class name="org.testscripts.SearchInLibraryUsingFilter" />
 			<class name="org.testscripts.ConfirmInstructionReceivedInforgotPassword" />
-			<class name="org.testscripts.VerifyHomePage" />
+			<class name="org.testscripts.VerifyHomePage" /> -->
 
 
 		
@@ -77,7 +77,7 @@
 
 			
 
-			<!-- 	Test Cases for Mentor 	--> 
+			<!-- 	Test Cases for Mentor -->	 
 
 			
 			 
@@ -98,13 +98,10 @@
 			<class name="org.testscripts.ConsumeCourseByInvitedMember" />
 			
 
-		<!-- 	Test Cases for Announcement sender   -->
+		<!-- 	Test Cases for Announcement sender  --> 
 			
-			<class name="org.testscripts.ResendAnnouncementAndVerifyAnnouncement" />								
-
-
 			
-			<class name="org.testscripts.ResendAnnouncementAndVerifyAnnouncement" />
+			 <class name="org.testscripts.ResendAnnouncementAndVerifyAnnouncement" />
 
 			 <class name="org.testscripts.NavigateToAnnouncementDashboard" />
 			<class name="org.testscripts.Create_Verify_DeleteAnnouncement" />

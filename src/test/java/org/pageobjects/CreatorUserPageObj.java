@@ -2419,8 +2419,17 @@ public class CreatorUserPageObj extends BaseTest{
 			{
 				//if(driver.findElement(By.cssSelector(cssValue)).isDisplayed()
 				GenericFunctions.waitWebDriver(4000);
-				GenericFunctions.waitForElementToAppear(createUserPage.closeIcon);
 				System.out.println("Element is Present");		
+				if(driver.findElements(By.xpath("//i[@class='close icon']")).size()!=0)
+				{
+					createUserPage.closeIcon.click();
+				}
+				else
+				{
+					System.out.println("Close icon is not present");
+				}
+				//GenericFunctions.waitForElementToAppear(createUserPage.closeIcon);
+				
 				createUserPage.closeIcon.click();
 				//GenericFunctions.refreshWebPage();
 			}
