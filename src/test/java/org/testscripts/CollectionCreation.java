@@ -8,7 +8,6 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.Test;
 import org.generic.GenericFunctions;
 import org.pageobjects.CreatorUserPageObj;
 import org.pageobjects.SignUpPageObj;
@@ -42,7 +41,6 @@ public class CollectionCreation extends BaseTest
 		//Step4:Login as Reviewer
 		signupObj.userLogin(REVIEWER);
 		
-
 		
 		//Step5:Go to workspace and publish the content-h5p
 		creatorUserPageObj.goToWorkspace("collection");
@@ -55,10 +53,8 @@ public class CollectionCreation extends BaseTest
 		//StepLogout as Reviewer
 		signupObj.userLogout();
 		
-		//Step7: Login as Creator
+		/*//Step7: Login as Creator
 		signupObj.userLogin(CREATOR);
-
-
 		
 		//Step8: Navigate to WorkSpace-All my content
 		genereicFunctions.navigateToWorkspaceFeatures(ALL_MY_CONTENT);
@@ -67,7 +63,7 @@ public class CollectionCreation extends BaseTest
 		creatorUserPageObj.deleteCreatedItems();
 
 		//Step10: Logout as Creator
-		signupObj.userLogout();
+		signupObj.userLogout();*/
 	}
 
 }

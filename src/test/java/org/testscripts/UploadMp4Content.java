@@ -8,7 +8,6 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.Test;
 import org.generic.GenericFunctions;
 import org.pageobjects.CreatorUserPageObj;
 import org.pageobjects.SignUpPageObj;
@@ -17,6 +16,7 @@ import org.testng.annotations.Test;
 
 public class UploadMp4Content extends BaseTest
 {
+	//MT done
 	@Test(priority=4, groups={"Creator Group"})
 	public void uploadMp4Content() throws Exception
 	{
@@ -27,7 +27,6 @@ public class UploadMp4Content extends BaseTest
 
 		//Step 1:Login as content creator
 		signupObj.userLogin(CREATOR);
-
 
 		
 		//Step 2,3 and 4:Navigate to workspace and upload content-MP4 and send the content for review
@@ -52,7 +51,7 @@ public class UploadMp4Content extends BaseTest
 		//Step 9 :Logout as Reviewer
 		signupObj.userLogout();
 
-		//Step10: Login as Creator
+		/*//Step10: Login as Creator
 		signupObj.userLogin(CREATOR);
 
 		//Step11: Navigate to WorkSpace-All my content
@@ -62,6 +61,6 @@ public class UploadMp4Content extends BaseTest
 		creatorUserPageObj.deleteCreatedItems();
 
 		//Step13: Logout as Creator
-		signupObj.userLogout();
+		signupObj.userLogout();*/
 	}
 }

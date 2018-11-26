@@ -8,7 +8,6 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.Test;
 import java.util.List;
 
 import org.generic.GenericFunctions;
@@ -19,7 +18,8 @@ import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.annotations.Test;
 
-public class ResourceCreation extends BaseTest {
+public class ResourceCreation extends BaseTest 
+{
 
 	@Test(priority=11, groups={"Creator Group"})
 	public void resourceCreation() throws Exception
@@ -77,11 +77,9 @@ public class ResourceCreation extends BaseTest {
 		//Step 11: Logout as Reviewer
 		creatorLogin.userLogout();
 
-		//Step9: Login as Creator
+		/*//Step9: Login as Creator
 		creatorLogin.userLogin(CREATOR);
-
-
-		
+	
 		//Step10: Navigate to WorkSpace-All my content
 		genereicFunctions.navigateToWorkspaceFeatures(ALL_MY_CONTENT);
 
@@ -90,7 +88,7 @@ public class ResourceCreation extends BaseTest {
 
 		//Step12: Logout as Creator
 		creatorLogin.userLogout();
-
+*/
 	}
 
 }

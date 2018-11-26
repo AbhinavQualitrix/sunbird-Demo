@@ -8,7 +8,6 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.Test;
 import org.generic.GenericFunctions;
 import org.pageobjects.CreatorUserPageObj;
 import org.pageobjects.SignUpPageObj;
@@ -17,6 +16,7 @@ import org.testng.annotations.Test;
 
 public class UploadHtmlContent  extends BaseTest 
 {
+	//MT done
 	@Test(priority=8, groups={"Creator Group"})
 	public void uploadHtmlContent() throws Exception
 	{
@@ -50,7 +50,7 @@ public class UploadHtmlContent  extends BaseTest
 		//Logout as Reviewer
 		signupObj.userLogout();
 
-		//Step7=9: Login as Creator
+		/*//Step7=9: Login as Creator
 		signupObj.userLogin(CREATOR);
 
 		//Step10: Navigate to WorkSpace-All my content
@@ -60,7 +60,7 @@ public class UploadHtmlContent  extends BaseTest
 		creatorUserPageObj.deleteCreatedItems();
 
 		//Step12: Logout as Creator
-		signupObj.userLogout();
+		signupObj.userLogout();*/
 	}
 
 }

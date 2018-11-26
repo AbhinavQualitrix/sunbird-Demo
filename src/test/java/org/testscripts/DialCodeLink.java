@@ -8,16 +8,15 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.LogStatus;
 
 import java.util.List;
 
-import org.openqa.selenium.support.PageFactory;
 import org.generic.ExtentTestManager;
 import org.generic.GenericFunctions;
 import org.generic.ReadTestDataFromExcel;
+import org.openqa.selenium.support.PageFactory;
 import org.page.CreatorUserPage;
 import org.pageobjects.CreatorUserPageObj;
 import org.pageobjects.SignUpPageObj;
@@ -30,7 +29,7 @@ public class DialCodeLink extends BaseTest
 	@Test(priority=17, groups={"Creator Group"})
 	public void dialCodeLink() throws Exception
 	{
-		//MT blocked
+		//MT done
 		CreatorUserPage createUserPage=PageFactory.initElements(driver, CreatorUserPage.class);
 
 		List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
@@ -40,7 +39,7 @@ public class DialCodeLink extends BaseTest
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 
 		//Step 1:Login as Creator
-		signupObj.userLogin(BOOKCREATOR);
+		signupObj.userLogin(CREATOR);
 
 		//Step 2:Navigate to workspace to Create a book
 		creatorUserPageObj.navigateToWorkspace(BOOK);

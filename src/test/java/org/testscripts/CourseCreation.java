@@ -9,7 +9,6 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.Test;
 import java.util.List;
 
 import org.generic.GenericFunctions;
@@ -29,7 +28,6 @@ public class CourseCreation extends BaseTest
 		List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 
-		GenericFunctions genereicFunctions = new GenericFunctions();
 		SignUpPageObj creatorLogin = new SignUpPageObj();
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 
@@ -68,7 +66,7 @@ public class CourseCreation extends BaseTest
 
 		//Step9: Logout as Reviewer
 		creatorLogin.userLogout();
-
+		/*
 		//Step 10: Login as Creator
 		creatorLogin.userLogin(CREATOR);
 
@@ -79,7 +77,7 @@ public class CourseCreation extends BaseTest
 		creatorUserPageObj.deleteCreatedItems();
 
 		//Step 13: Logout as Creator
-		creatorLogin.userLogout();
+		creatorLogin.userLogout();*/
 		 
 	}
 
