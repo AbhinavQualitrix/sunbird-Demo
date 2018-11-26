@@ -145,10 +145,10 @@ public class SignUpPageObj extends BaseTest
                 }
                 //orgUploadPage.clickLogin.click();
                 orgUploadPage.clickLogin1.click();
-                if(userRole.equalsIgnoreCase(PUBLICUSER)||userRole.equalsIgnoreCase(PUBLICUSER1))
+                if(userRole.equalsIgnoreCase(PUBLICUSER1)||userRole.equalsIgnoreCase(PUBLICUSER2))
                 {
                 	System.out.println("Public user login");
-                	createUserPageObj.handlePopupOnLogin();
+                	//createUserPageObj.handlePopupOnLogin();
                 }
                 else
                 {

@@ -705,7 +705,7 @@ public class CreatorUserPage {
 
 	//Nov 23
 	//@FindBy(xpath="//a[.='Done']")
-	@FindBy(xpath="(//a[.='Done'])[2]")
+	@FindBy(xpath="(//a[.='Done'])[1]")
 	public WebElement doneButton;
 
 	//Nov 24
@@ -713,11 +713,7 @@ public class CreatorUserPage {
 	//@FindBy(xpath="//sui-multi-select[@id='board']")
 	public WebElement clickFilterBoard;
 
-	//Nov 24 - v1.11.0
-	//@FindBy(xpath="(//sui-multi-select[@id='gradeLevel']/..//sui-select-option[@class='item selected'])[2]")
-	//@FindBy(xpath="//sui-multi-select[@id='gradeLevel']/..//sui-select-option[@class='item selected']")
-	@FindBy(xpath="(//sui-multi-select[@id='gradeLevel'])[2]/..//sui-select-option")
-	public List<WebElement> selectBookGrade;
+
 
 	//Nov 24
 	@FindBy(xpath="//div[contains(text(),'TextBook')]")
@@ -725,6 +721,12 @@ public class CreatorUserPage {
 	
 	@FindBy(xpath="(//div[@class='content'])[1]")
 	public WebElement searchedContent;
+	
+	//Nov 26 - v1.11.0
+	//@FindBy(xpath="(//sui-multi-select[@id='gradeLevel']/..//sui-select-option[@class='item selected'])[2]")
+	//@FindBy(xpath="//sui-multi-select[@id='gradeLevel']/..//sui-select-option[@class='item selected']")
+	@FindBy(xpath="(//sui-multi-select[@id='gradeLevel'])[1]/..//sui-select-option")
+	public List<WebElement> selectBookGrade;
 }
 
 

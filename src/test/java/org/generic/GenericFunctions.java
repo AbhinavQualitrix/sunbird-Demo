@@ -219,7 +219,7 @@ public class GenericFunctions extends BaseTest
 	 * Purpose: waitForElementToAppear method is used to synchronize for an element to be visible 
 	 */
 	public static WebElement waitForElementToAppear(WebElement id) {
-		WebDriverWait wait = new WebDriverWait(driver, 120);
+		WebDriverWait wait = new WebDriverWait(driver, 60);
 		wait.until(ExpectedConditions.visibilityOf(id));
 		return id;
 	}

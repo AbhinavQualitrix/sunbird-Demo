@@ -6,12 +6,9 @@
 	</listeners>
   <test thread-count="5" name="Test">
     <classes>
-      <class name="org.testscripts.NavigateToMyActivity"/>
-      <class name="org.testscripts.UploadContentTypeMp4"/>
+      <!-- <class name="org.testscripts.NavigateToMyActivity"/>
      
-      <class name="org.testscripts.UploadEpubContent"/>
      
-      
       <class name="org.testscripts.SearchUsers"/>
       <class name="org.testscripts.ProfileInfoUpdate"/>
       <class name="org.testscripts.SearchCourse"/>
@@ -39,11 +36,11 @@
      
       <class name="org.testscripts2.UploadContentTypeMp4"/>
       <class name="org.testscripts.LoginAndChangePassword"/>
-      <class name="org.testscripts.CollectionCreation"/>
+     
       <class name="org.testscripts.ConfirmInstructionReceivedInforgotPassword"/>
-      <class name="org.testscripts.UploadMp4Content"/>
+      
      
-     
+  
       <class name="org.testscripts.UnlinkDailcode"/>
       <class name="org.testscripts2.UploadContentTypeEpubAndVerify"/>
       <class name="org.testscripts.CreateAnnouncementWithAttachment"/>
@@ -69,7 +66,6 @@
       <class name="org.testscripts.AdminCreationAndDownloadCsv"/>
       <class name="org.testscripts.UploadRootOrg"/>
       <class name="org.testscripts.CreateBookAndVerifyOnlyBooksPresent"/>
-      <class name="org.generic.GenericFunctions"/>
       <class name="org.testscripts.SearchContentWithFiltersAsReviewer"/>
       <class name="org.testscripts.CheckAvailabilityOfCourseForInvitedMember"/>
       <class name="org.testscripts.UploadContentTypeEpubAndVerify"/>
@@ -77,14 +73,14 @@
       <class name="org.testscripts.SendTheCourseForReview"/>
       <class name="org.testscripts.ConsumeCourseByInvitedMember"/>
       <class name="org.testscripts2.UploadContentTypeH5pAndVerify"/>
-      
+       <class name="org.testscripts2.ConsumeOpenCourseByPublicUser"/>
       <class name="org.testscripts.NavigateToMyActivityInDropdown"/>
       <class name="org.testscripts2.CreateCourseAndVerify"/>
       <class name="org.testscripts.SearchInLibraryUsingFilter"/>
-      <class name="org.testscripts.BookCreation"/>
+      
       <class name="org.testscripts.UploadContentTypePdfAndVerify"/>
       
-      <class name="org.testscripts2.ConsumeOpenCourseByPublicUser"/>
+      
       <class name="org.testscripts2.CreateLessonPlanAndVerify"/>
       <class name="org.testscripts.ResourceCreation"/>
       <class name="org.testscripts.UploadContentTypeHtmlAndVerify"/>
@@ -96,22 +92,24 @@
       <class name="org.testscripts.VerifyTheBookAvailableForReview"/>
       <class name="org.testscripts2.ResourceCreationAndPublish"/>
       <class name="org.testscripts.UpdateBatchAsInvitedMentor"/>
-      
-      <class name="org.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
+     
       <class name="org.testscripts.CheckSuborgMentorInvitingOrgMember"/>
       <class name="org.testscripts.VerifyHomePage"/>
       <class name="org.testscripts.CourseCreation"/>
       <class name="org.testscripts.LessonplanCreation"/>
-     
       <class name="org.testscripts2.CreateBookAndVerify"/>
       <class name="org.testscripts.OpenAnnouncement"/>
-     
       <class name="org.testscripts.EditContentAndSendForReview"/>
       <class name="org.testscripts.ResendAnnouncementAndVerifyAnnouncement"/>
-     
-      <class name="org.testscripts.VerifyElementsInAdminDashboard"/>
+      <class name="org.testscripts.VerifyElementsInAdminDashboard"/> 
+       <class name="org.testscripts.UploadContentTypeMp4"/>
+       <class name="org.testscripts.UploadMp4Content"/>
+        <class name="org.testscripts.UploadEpubContent"/>
+        <class name="org.testscripts.BookCreation"/>
+         <class name="org.testscripts.CollectionCreation"/>
+      -->
       
-      
+      <class name="org.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
       
        <!-- <class name="org.testscripts.ChangeTheContentAfterFlagged"/> 
         <class name="org.testscripts.AcceptAsflagReviewer"/>
