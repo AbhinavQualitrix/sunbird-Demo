@@ -6,7 +6,7 @@
 	</listeners>
   <test thread-count="5" name="Test">
     <classes>
-      <!-- <class name="org.testscripts.NavigateToMyActivity"/>
+       <class name="org.testscripts.NavigateToMyActivity"/>
      
      
       <class name="org.testscripts.SearchUsers"/>
@@ -107,7 +107,7 @@
         <class name="org.testscripts.UploadEpubContent"/>
         <class name="org.testscripts.BookCreation"/>
          <class name="org.testscripts.CollectionCreation"/>
-      -->
+      
       
       <class name="org.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
       
