@@ -69,7 +69,6 @@
       <class name="org.testscripts.AdminCreationAndDownloadCsv"/>
       <class name="org.testscripts.UploadRootOrg"/>
       <class name="org.testscripts.CreateBookAndVerifyOnlyBooksPresent"/>
-      <class name="org.generic.GenericFunctions"/>
       <class name="org.testscripts.SearchContentWithFiltersAsReviewer"/>
       <class name="org.testscripts.CheckAvailabilityOfCourseForInvitedMember"/>
       <class name="org.testscripts.UploadContentTypeEpubAndVerify"/>
