@@ -8,7 +8,6 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.Test;
 import org.pageobjects.PublicUserPageObj;
 import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
@@ -16,6 +15,7 @@ import org.testng.annotations.Test;
 
 public class SearchCourse extends BaseTest
 {
+	//MT done
 	@Test
 	public void searchCourse() throws Exception
 	{
@@ -25,11 +25,11 @@ public class SearchCourse extends BaseTest
 		//Step 1 : Login into Application as Public user	
 		userLogin.userLogin(PUBLICUSER1);
 
-		//Step 2 : Click on courses
+		//Step 2 and 3 : Click on courses
 		//Search for course
 		publicUser.courseSearch();
 		
-		//Step 3:Logout as Public user
+		//Logout as Public user
 		userLogin.userLogout();
 	
 	}

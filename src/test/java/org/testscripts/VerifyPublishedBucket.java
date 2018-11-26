@@ -1,13 +1,12 @@
 /**
-* Created by Qualitrix Technologies Pvt Ltd.
-* @author: Ajith Manjunath
-* Date: 06/26/2018
-* Purpose: Published content shows in "Published" bucket
-*/
+ * Created by Qualitrix Technologies Pvt Ltd.
+ * @author: Ajith Manjunath
+ * Date: 06/26/2018
+ * Purpose: Published content shows in "Published" bucket
+ */
 
 package org.testscripts;
 
-import org.testng.annotations.Test;
 import org.testng.annotations.Test;
 import java.util.List;
 
@@ -21,12 +20,13 @@ import org.testng.annotations.Test;
 
 public class VerifyPublishedBucket extends BaseTest
 {
+	//MT done
 	@Test(priority=16, groups={"Creator Group"})
 	public void verifyPublishedBucket() throws Exception
 	{
 		List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-
+		GenericFunctions genereicFunctions = new GenericFunctions();
 		SignUpPageObj signupObj = new SignUpPageObj();
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 
@@ -44,45 +44,46 @@ public class VerifyPublishedBucket extends BaseTest
 
 		GenericFunctions.waitWebDriver(2000);
 		GenericFunctions.refreshWebPage();
-		
+
 		//Logout as creator
 		signupObj.userLogout();
-		
+
 		//Step 5:Login as Reviewer
 		signupObj.userLogin(REVIEWER);
-		
+
 		//wait for 2 sec
 		GenericFunctions.waitWebDriver(2000);
-		
+
 		//Step 6:Search the course in Up for review		
 		creatorUserPageObj.searchInUpForReview(COURSE,objListOFTestDataForSunbird);
-		
+
 		//Step 7:Publish the course 
 		creatorUserPageObj.publishAndSearch(COURSE,objListOFTestDataForSunbird);
-		
+
 		//Logout as Reviewer
 		signupObj.userLogout();
-		
+
 		//Step 8:Login as Creator
 		signupObj.userLogin(CREATOR);
-		
+
 		//Step 8a:Checked the publishes course in Published Bucket
 		creatorUserPageObj.checkInPublished(COURSE,objListOFTestDataForSunbird);
-		
+
 		//Logout as Creator
 		signupObj.userLogout();
-		
-		//Step 8: Login as Creator
+
+		/*//Step9: Login as Creator
 		signupObj.userLogin(CREATOR);
 
-		//Step 9: Navigate to WorkSpace
-		creatorUserPageObj.navigateToWorkspace(PUBLISHED);
+		//Step10: Navigate to WorkSpace-All my content
+		genereicFunctions.navigateToWorkspaceFeatures(ALL_MY_CONTENT);
 
-		//Step 10: Delete the Created item
+		//Step11: Delete the Created item
 		creatorUserPageObj.deleteCreatedItems();
 
-		//Step 11: Logout as Creator
-		signupObj.userLogout();
+		//Step12: Logout as Creator
+		signupObj.userLogout();*/
+
 	}
 
 }

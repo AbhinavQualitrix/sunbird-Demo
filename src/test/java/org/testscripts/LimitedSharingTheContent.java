@@ -8,7 +8,6 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.Test;
 import java.util.List;
 
 import org.generic.ReadTestDataFromExcel;
@@ -23,7 +22,7 @@ public class LimitedSharingTheContent extends BaseTest
 	@Test(priority=14, groups={"Creator Group"})
 	public void limitedSharingTheContent() throws Exception
 	{
-		//MT blocked
+		//MT done
 		List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 		
@@ -42,6 +41,8 @@ public class LimitedSharingTheContent extends BaseTest
 		//Step 3eSend BOOK for Limited Sharing
 		creatorUserPageObj.limitedSharing("Book");
 		
+		
+
 		//Step 3a:Navigate to workspace to Create a course 
 		creatorUserPageObj.navigateToWorkspace(COURSE);
 		
@@ -51,8 +52,7 @@ public class LimitedSharingTheContent extends BaseTest
 		//Step 3a:Send COURSE for Limited Sharing
 		creatorUserPageObj.limitedSharing("course");
 		
-		
-			
+					
 		//Step 3c:Navigate to workspace to Create a LESSON PLAN
 		//AND
 		//Step 3c:Create content type-Lesson plan

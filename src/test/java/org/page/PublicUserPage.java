@@ -290,9 +290,7 @@ public class PublicUserPage
 	
 	@FindBy(xpath="//div[@class='cardImageText center aligned ']//span[contains(text(),'Course')]")
 	public 	List<WebElement> searchedCourses;
-	
-	@FindBy(xpath="//span[@class='sliderCardHeading text-cencapitalize']")
-	public WebElement searchedCourses1;
+
 	
 	@FindBy(xpath="//div[@class='cardImageText center aligned ']//span")
 	public WebElement courseToBeClicked;
@@ -411,6 +409,61 @@ public class PublicUserPage
 	//@FindBy(xpath="//sui-multi-select[@id='medium']/..//sui-select-option")
 	@FindBy(xpath="(//sui-multi-select[@id='medium'])[2]/..//sui-select-option")
 	public List<WebElement> selectFilterMedium;
+	
+	//Nov 25	
+		@FindBy(xpath="(//div[@id='headerSearch'])[2]/..//span[2]")
+		public WebElement headerDropDown;
+
+		//Nov 25
+		@FindBy(xpath="//div[@class='sub-header']")
+		//@FindBy(xpath="//span[@class='sliderCardHeading text-cencapitalize']")
+		public WebElement searchedCourses1;
+
+		//Nov 25
+		@FindBy(xpath="//div[@class='sbCard mt-20 mr-30']")
+		public WebElement resultCourseCard;
+
+		//Nov 25
+		@FindBy(xpath="(//button[contains(text(),'Edit')])[1]")
+		public static WebElement editButton;
+
+		//Nov 25
+		@FindBy(xpath="(//label[.='Board']/..//i)[1]")
+		public static WebElement clickProfileBoard;
+
+		//Nov 25
+		@FindBy(xpath="(//label[.='Board'])[2]/..//sui-select-option")
+		public static WebElement selectProfileBoard;
+
+		//Nov 25
+		@FindBy(xpath="(//label[.='Medium']/..//i)[2]")
+		public static WebElement clickProfileMedium;
+		
+		//Nov 25
+		@FindBy(xpath="(//label[.='Medium'])/..//sui-select-option")
+		public static WebElement selectProfileMedium;
+
+		
+		//Nov 25
+		@FindBy(xpath="(//label[.='Class']/..//i)[2]")
+		public static WebElement clickProfileClass;
+
+		//Nov 25
+		@FindBy(xpath="(//label[.='Class'])/..//sui-select-option")
+		public static WebElement selectProfileClass;
+		
+		//Nov 25
+		@FindBy(xpath="(//label[.='Subject']/..//i)[2]")
+		public static WebElement clickProfileSubject;
+
+		//Nov 25
+		@FindBy(xpath="(//label[.='Subject'])/..//sui-select-option")
+		public static WebElement selectProfileSubject;
+
+		//Nov 25
+		@FindBy(xpath="(//button[contains(.,'SUBMIT')])")
+		public static WebElement submitButton;
+
 }	
 
 

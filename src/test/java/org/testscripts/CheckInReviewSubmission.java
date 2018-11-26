@@ -8,7 +8,6 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.Test;
 import java.util.List;
 
 import org.generic.GenericFunctions;
@@ -59,7 +58,7 @@ public class CheckInReviewSubmission extends BaseTest
 		//Logout as creator
 		signupObj.userLogout();
 		
-		//Step 7: Login as Creator
+		/*//Step 7: Login as Creator
 		signupObj.userLogin(CREATOR);
 
 		//Step 8: Navigate to WorkSpace-All my content
@@ -69,7 +68,7 @@ public class CheckInReviewSubmission extends BaseTest
 		creatorUserPageObj.deleteCreatedItems();
 
 		//Step 10: Logout as Creator
-		signupObj.userLogout();
+		signupObj.userLogout();*/
 
 
 	}

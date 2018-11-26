@@ -8,7 +8,6 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.Test;
 import java.util.List;
 
 import org.generic.GenericFunctions;
@@ -21,7 +20,7 @@ import org.testng.annotations.Test;
 
 public class UnlinkDailcode extends BaseTest
 {
-	//MT blocked
+	//MT done
 	@Test(priority=18, groups={"Creator Group"})
 	public void unlinkDailcode() throws Exception
 	{
@@ -47,7 +46,7 @@ public class UnlinkDailcode extends BaseTest
 		//Logout as Creator
 		signupObj.userLogout();
 
-		//Step10: Login as Creator
+		/*//Step10: Login as Creator
 		signupObj.userLogin(BOOKCREATOR);
 
 		//Step11: Navigate to WorkSpace-All my content
@@ -57,7 +56,7 @@ public class UnlinkDailcode extends BaseTest
 		creatorUserPageObj.deleteCreatedItems();
 
 		//Step13: Logout as Creator
-		signupObj.userLogout();
+		signupObj.userLogout();*/
 
 	}
 

@@ -8,7 +8,6 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.Test;
 import org.pageobjects.PublicUserPageObj;
 import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
@@ -16,6 +15,7 @@ import org.testng.annotations.Test;
 
 public class SearchUsers extends BaseTest
 {
+	//MT done
 	@Test
 	public void searchUsers() throws Exception
 	{
@@ -23,12 +23,12 @@ public class SearchUsers extends BaseTest
 		PublicUserPageObj publicUser = new PublicUserPageObj();
 		
 		//Step 1 : Login in as any user(CREATOR)
-		userLogin.userLogin(MENTOR);
+		userLogin.userLogin(ADMIN);
 
 		//Step 2 : Search for users
 		publicUser.userSearch();
 		
-		//Step 3:Logout as Public user
+		//Logout as Public user
 		userLogin.userLogout();
 	}
 

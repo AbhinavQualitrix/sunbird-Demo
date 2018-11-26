@@ -9,7 +9,6 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.Test;
 import org.pageobjects.CreatorUserPageObj;
 import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
@@ -17,7 +16,7 @@ import org.testng.annotations.Test;
 
 public class BookCreateOptionValidation extends BaseTest
 {
-	//MT blocked
+	//MT done
 	
 	@Test(priority=19, groups={"Creator Group"})
 	public void bookCreateOptionValidation() throws Exception

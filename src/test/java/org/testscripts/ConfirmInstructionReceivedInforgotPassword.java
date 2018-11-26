@@ -8,7 +8,6 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.Test;
 import org.generic.GenericFunctions;
 import org.pageobjects.PublicUserPageObj;
 import org.pageobjects.SignUpPageObj;
@@ -17,6 +16,7 @@ import org.testng.annotations.Test;
 
 public class ConfirmInstructionReceivedInforgotPassword extends BaseTest
 {
+	//MT done
 	@Test
 	public void confirmInstructionReceivedInforgotPassword() throws Exception 
 	{
@@ -25,7 +25,7 @@ public class ConfirmInstructionReceivedInforgotPassword extends BaseTest
 	
 		GenericFunctions.waitWebDriver(3000);
 		
-		//Step 1: To verify Forgot Password
+		//Step 1,2,3 and 4: To verify Forgot Password
 		//and confirm the instructions received
 		publicUser.forgotPassword();
 	}

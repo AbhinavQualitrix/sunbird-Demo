@@ -8,7 +8,6 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.Test;
 import java.util.List;
 
 import org.generic.GenericFunctions;
@@ -24,7 +23,7 @@ public class BookCreation extends BaseTest
 	@Test(priority=2, groups={"Creator Group"})
 	public void bookCreation() throws Exception
 	{	
-		//MT blocked
+		//MT done
 		List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 		GenericFunctions genericFunctions = new GenericFunctions();
@@ -67,7 +66,7 @@ public class BookCreation extends BaseTest
 		//Step 11: Logout as reviewer
 		signupObj.userLogout();
 		
-		//Step 12: Login as Creator
+		/*//Step 12: Login as Creator
 		signupObj.userLogin(CREATOR);
 
 		//Step 13:Navigate to Workspace-All my content
@@ -77,7 +76,7 @@ public class BookCreation extends BaseTest
 		creatorUserPageObj.deleteCreatedItems();
 
 		//Step 15: Logout as Creator
-		signupObj.userLogout();
+		signupObj.userLogout();*/
 	}
 
 }

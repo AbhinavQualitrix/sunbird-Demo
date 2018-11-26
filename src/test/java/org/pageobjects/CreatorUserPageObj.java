@@ -284,8 +284,9 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.clickOwner.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectOwner);
 			createUserPage.selectOwner.click();
-			
+
 			selectTopic();
+
 			GenericFunctions.waitWebDriver(1500);
 			GenericFunctions.waitForElementToAppear(createUserPage.saveButton);
 			GenericFunctions.waitWebDriver(1800);
@@ -2687,6 +2688,7 @@ public class CreatorUserPageObj extends BaseTest{
 		}
 	}
 
+	//Method not in use currently
 	public boolean IsElementDisplayed()//WebDriver driver, WebElement id)
 	{
 		try		

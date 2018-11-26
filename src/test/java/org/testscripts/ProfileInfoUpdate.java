@@ -8,7 +8,6 @@
 package org.testscripts;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.Test;
 import org.pageobjects.PublicUserPageObj;
 import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
@@ -20,16 +19,17 @@ public class ProfileInfoUpdate extends BaseTest
 	public void profileInfoUpdate() throws Exception
 	{
 		SignUpPageObj userLogin = new SignUpPageObj();
-		PublicUserPageObj publicUser = new PublicUserPageObj();
+		PublicUserPageObj publicUserPageObj = new PublicUserPageObj();
 		
 		
 		//Step 1 : Login as any user	
 		userLogin.userLogin(PUBLICUSER1);
 		 
 		//Step 2: Profile - all information update	
-		publicUser.profileInformationUpdate();
+		//publicUser.profileInformationUpdate();
+		publicUserPageObj.updateProfileInformation();
 		
-		//Step 3: Logout as Public user
+		//Logout as Public user
 		userLogin.userLogout();
 		
 	}

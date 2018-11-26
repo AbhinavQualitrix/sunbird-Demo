@@ -49,7 +49,7 @@ public class PublicUserPageObj extends BaseTest
 	Actions action = new Actions(driver);
 	Random rand = new Random();
 	JavascriptExecutor js = (JavascriptExecutor)driver;
-	
+
 	CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 
 
@@ -93,7 +93,7 @@ public class PublicUserPageObj extends BaseTest
 			GenericFunctions.waitForElementToAppear(OrgUploadPage.loginButton);
 			OrgUploadPage.loginButton.click();
 			GenericFunctions.waitWebDriver(2000);
-			//Click Forgot password link
+			//Click Forgot password link 
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Verifying the forgot password functionality");
 			publicUserPage.forgotPasswordLink.click();
 			GenericFunctions.waitWebDriver(3000);
@@ -110,6 +110,7 @@ public class PublicUserPageObj extends BaseTest
 				log.info(getMessage);
 				System.out.println(getMessage);
 				Assert.assertTrue(true);
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Forgot password functionality is verified");
 				GenericFunctions.waitWebDriver(2000);
 				publicUserPage.backToApplicationLink.click();
 				GenericFunctions.waitWebDriver(2000);
@@ -158,18 +159,19 @@ public class PublicUserPageObj extends BaseTest
 
 	public void courseSearch() throws Exception
 	{
-		List <TestDataForSunbird> objListOFTestDataForSunbird1=null;
-		objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
+		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "verifying the course search");
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 			createUserPage.headerCourse.click();
+			GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
 			GenericFunctions.waitWebDriver(2000);
 			createUserPage.searchInput.sendKeys(SEARCH_COURSE);
 			createUserPage.searchIcon.click();
 			GenericFunctions.waitWebDriver(3000);
-			if(publicUserPage.showResults.isDisplayed())
+			if(publicUserPage.showResults.isDisplayed()&&publicUserPage.resultCourseCard.isDisplayed())
 			{
 				Assert.assertTrue(true);
 				System.out.println("Course :"+publicUserPage.searchedCourses1.getText());
@@ -178,7 +180,7 @@ public class PublicUserPageObj extends BaseTest
 				GenericFunctions.waitWebDriver(2000);
 				js.executeScript("scroll(0, -250);");
 				GenericFunctions.waitWebDriver(5000);
-
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Course is sucessfully searhced from Course tab");
 			}
 		}
 		catch(Exception e)
@@ -199,7 +201,7 @@ public class PublicUserPageObj extends BaseTest
 			GenericFunctions.waitForElementToAppear(createUserPage.headerLibrary);
 			createUserPage.headerLibrary.click();
 			//creatorUserPageObj.goToProfilePage();
-			
+
 			for(int i=0;i<searchInput.length;i++)
 			{	
 				GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
@@ -247,27 +249,27 @@ public class PublicUserPageObj extends BaseTest
 			objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 			createUserPage.headerCourse.click();
-			
+
 			GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
 			createUserPage.searchInput.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
 			publicUserPage.filterIcon.click();
 			GenericFunctions.waitWebDriver(1500);
-			
+
 			GenericFunctions.waitForElementToAppear(publicUserPage.clickFilterSubject);
 			publicUserPage.clickFilterBoard.click();
 			GenericFunctions.waitForElementToAppear(publicUserPage.selectFilterBoard);
 			publicUserPage.selectFilterBoard.click();
-			
+
 			publicUserPage.clickFilterClass.click();
 			GenericFunctions.waitForElements(publicUserPage.selectFilterClass);
 			publicUserPage.selectFilterClass.get(0).click();
-			
+
 			publicUserPage.clickFilterSubject.click();
 			GenericFunctions.waitForElements(publicUserPage.selectFilterSubject);
 			publicUserPage.selectFilterSubject.get(0).click();
 			GenericFunctions.waitWebDriver(1500);
 			GenericFunctions.waitWebDriver(1500);
-			
+
 			publicUserPage.clickFilterMedium.click();
 			GenericFunctions.waitForElements(publicUserPage.selectFilterMedium);
 			publicUserPage.selectFilterMedium.get(0).click();
@@ -370,7 +372,7 @@ public class PublicUserPageObj extends BaseTest
 				ExtentTestManager.getTest().log(LogStatus.PASS, "Filters are applied but could not get the resultant Content");
 				ExtentTestManager.getTest().log(LogStatus.INFO,"Exception Message: "+e.getLocalizedMessage());
 			}
-			
+
 		}
 		catch(Exception e)	
 		{
@@ -387,7 +389,7 @@ public class PublicUserPageObj extends BaseTest
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "verifying the update profile image");
-			
+
 			/*GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
 			createUserPage.headerProfile.click();*/
 			creatorUserPageObj.goToProfilePage();
@@ -409,7 +411,7 @@ public class PublicUserPageObj extends BaseTest
 			System.out.println("Could not upload profile image");
 			Assert.fail("Failed on updating profile image");
 		}
-		
+
 	}
 
 	public void userSearch() throws Exception
@@ -419,34 +421,44 @@ public class PublicUserPageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.INFO, "verifying the user search in the profile page");
 			GenericFunctions.waitWebDriver(2000);
 			/*GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
-			createUserPage.headerProfile.click();*/
+			createUserPage.headerProfile.click();*/			
 			creatorUserPageObj.goToProfilePage();
 			GenericFunctions.waitWebDriver(3000);
-			for(int i=0;i<SEARCH_USERS.length;i++)
-			{	
-				GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
-				createUserPage.searchInput.sendKeys(SEARCH_USERS[i]);
-				GenericFunctions.waitWebDriver(1000);
-				createUserPage.searchIcon.click();
-				GenericFunctions.waitWebDriver(4000);
-				if(publicUserPage.searchedInputResult.isDisplayed())
+			GenericFunctions.waitForElementToAppear(publicUserPage.headerDropDown);
+			if(publicUserPage.headerDropDown.isDisplayed())
+			{
+				assertEquals(publicUserPage.headerDropDown.getText(),"Users");
+				assertTrue(true);
+
+				for(int i=0;i<SEARCH_USERS.length;i++)
 				{	
-					js.executeScript("scroll(0, 450);");
-					GenericFunctions.waitWebDriver(2000);
-					js.executeScript("scroll(0, -200);");
-					js.executeScript("scroll(0, -250);");
-					Assert.assertTrue(true);
-					System.out.println("Getting results : "+publicUserPage.searchedInputResult.getText()+ " are the input :" +SEARCH_USERS[i]);
-					GenericFunctions.waitWebDriver(3000);
-					createUserPage.searchInput.clear();
+					GenericFunctions.waitWebDriver(1000);
+					GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
+					createUserPage.searchInput.sendKeys(SEARCH_USERS[i]);
+					GenericFunctions.waitWebDriver(1000);
+					createUserPage.searchIcon.click();
+					GenericFunctions.waitWebDriver(4000);
+					GenericFunctions.waitForElementToAppear(publicUserPage.searchedInputResult);
+					if(publicUserPage.searchedInputResult.isDisplayed())
+					{	
+						js.executeScript("scroll(0, 450);");
+						GenericFunctions.waitWebDriver(2000);
+						js.executeScript("scroll(0, -200);");
+						js.executeScript("scroll(0, -250);");
+						Assert.assertTrue(true);
+						System.out.println("Getting results : "+publicUserPage.searchedInputResult.getText()+ " are the input :" +SEARCH_USERS[i]);
+						ExtentTestManager.getTest().log(LogStatus.PASS,"Getting results : "+publicUserPage.searchedInputResult.getText()+ " are the input :" +SEARCH_USERS[i]);
+						GenericFunctions.waitWebDriver(3000);
+						createUserPage.searchInput.clear();
+
+					}
+					else
+					{
+						System.out.println(publicUserPage.searchedInputResult+"element is not displayed");
+					}
+					ExtentTestManager.getTest().log(LogStatus.PASS,"Admin can search Users in profile page");
 
 				}
-				else
-				{
-					System.out.println(publicUserPage.searchedInputResult+"element is not displayed");
-				}
-
-
 			}
 		}
 		catch(Exception e )
@@ -484,9 +496,9 @@ public class PublicUserPageObj extends BaseTest
 					String orgName=publicUserPage.searchedResults1.get(j).getText();
 					System.out.println(orgName);
 				}
-				
-				
-				
+
+
+
 				/*GenericFunctions.waitForElementToAppear(publicUserPage.searchedInputResult);
 				if(publicUserPage.searchedInputResult.isDisplayed())
 				{
@@ -585,9 +597,9 @@ public class PublicUserPageObj extends BaseTest
 					publicUserPage.addressZipcode.sendKeys(objListOFTestDataForSunbird1.get(1).getPincode());
 					publicUserPage.summarySave.click();
 
-					
+
 					GenericFunctions.waitWebDriver(2000);
-					
+
 					//Edit educational Details
 					ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to update profile educational details");
 					GenericFunctions.waitForElementToAppear(publicUserPage.educationEditButton);
@@ -617,7 +629,7 @@ public class PublicUserPageObj extends BaseTest
 
 					GenericFunctions.waitWebDriver(3500);
 					GenericFunctions.waitForElementToAppear(publicUserPage.skillEditButton);
-			
+
 					//Add Skills
 					ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to update profile skill set");
 					publicUserPage.skillEditButton.click();
@@ -626,8 +638,8 @@ public class PublicUserPageObj extends BaseTest
 					//GenericFunctions.waitForElementToAppear(publicUserPage.deleteSkill);
 					for(int i=1;i<=2;i++)
 					{
-					action.moveToElement(publicUserPage.deleteSkill).click().build().perform();
-					publicUserPage.deleteSkill.click();
+						action.moveToElement(publicUserPage.deleteSkill).click().build().perform();
+						publicUserPage.deleteSkill.click();
 					}
 					action.moveToElement(publicUserPage.addSkills);	
 					GenericFunctions.waitWebDriver(1500);
@@ -708,11 +720,11 @@ public class PublicUserPageObj extends BaseTest
 				publicUserPage.getResultsUsername.click();
 				try
 				{
-				GenericFunctions.waitForElementToAppear(publicUserPage.viewMoreSkills);
-				GenericFunctions.scrollToElement(publicUserPage.viewMoreSkills);
-				GenericFunctions.waitWebDriver(1500);
-				publicUserPage.viewMoreSkills.click();
-				GenericFunctions.waitWebDriver(3000);
+					GenericFunctions.waitForElementToAppear(publicUserPage.viewMoreSkills);
+					GenericFunctions.scrollToElement(publicUserPage.viewMoreSkills);
+					GenericFunctions.waitWebDriver(1500);
+					publicUserPage.viewMoreSkills.click();
+					GenericFunctions.waitWebDriver(3000);
 				}
 				catch(Exception e)
 				{
@@ -720,7 +732,7 @@ public class PublicUserPageObj extends BaseTest
 				}
 				GenericFunctions.scrollToElement(publicUserPage.endorsementIcon);
 				publicUserPage.endorsementIcon.click();
-				
+
 				GenericFunctions.waitWebDriver(2500);
 				String endorseSize=publicUserPage.endorsementCount.getText();
 				int size = Integer.parseInt(endorseSize);
@@ -827,7 +839,7 @@ public class PublicUserPageObj extends BaseTest
 			/*GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
 			createUserPage.headerProfile.click();*/
 			creatorUserPageObj.goToProfilePage();
-			
+
 			//GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
 			GenericFunctions.waitWebDriver(3500);
 			GenericFunctions.scrollToElement(publicUserPage.skillEditButton);
@@ -846,7 +858,7 @@ public class PublicUserPageObj extends BaseTest
 			publicUserPage.addSkill.click();
 			GenericFunctions.waitWebDriver(2000);
 			//publicUserPage.addSkillItem.click();
-		
+
 			publicUserPage.addSkillLockUnlockIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 			publicUserPage.summarySave.click();
@@ -864,6 +876,75 @@ public class PublicUserPageObj extends BaseTest
 			Assert.fail("Failed on adding skill set");
 		}
 		return username;
+	}
+
+	public void updateProfileInformation()
+	{
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is tring Update/Edit profile information");
+			GenericFunctions.waitWebDriver(2000);
+			creatorUserPageObj.goToProfilePage();
+			GenericFunctions.waitWebDriver(4000);
+			/*GenericFunctions.waitForElementToAppear(PublicUserPage.editButton);
+			PublicUserPage.editButton.click();*/
+			
+			String actualProfileUrl=driver.getCurrentUrl();
+			String expectedProfileUrl="https://staging.open-sunbird.org/profile";
+			GenericFunctions.waitWebDriver(4000);
+			action.moveToElement(PublicUserPage.editButton).build().perform();
+			action.click(PublicUserPage.editButton).build().perform();
+			
+			
+			GenericFunctions.waitForElementToAppear(PublicUserPage.clickProfileBoard);
+			/*PublicUserPage.clickProfileBoard.click();
+			GenericFunctions.waitWebDriver(2000);
+			PublicUserPage.selectProfileSubject.click();
+			PublicUserPage.clickProfileBoard.click();*/
+
+
+			PublicUserPage.clickProfileMedium.click();
+			GenericFunctions.waitWebDriver(2000);
+			PublicUserPage.selectProfileMedium.click();
+			GenericFunctions.waitWebDriver(2000);
+			PublicUserPage.clickProfileBoard.click();
+			/*action.moveToElement(PublicUserPage.clickProfileMedium).build().perform();
+			action.click(PublicUserPage.clickProfileMedium).build().perform();*/
+		
+			GenericFunctions.waitWebDriver(2000);
+			PublicUserPage.clickProfileClass.click();
+			GenericFunctions.waitWebDriver(2000);
+			PublicUserPage.selectProfileClass.click();
+			GenericFunctions.waitWebDriver(2000);
+			PublicUserPage.clickProfileBoard.click();
+			/*action.moveToElement(PublicUserPage.clickProfileClass).build().perform();
+			action.click(PublicUserPage.clickProfileClass).build().perform();*/
+
+			GenericFunctions.waitWebDriver(2000);
+			PublicUserPage.clickProfileSubject.click();
+			GenericFunctions.waitWebDriver(2000);
+			PublicUserPage.selectProfileSubject.click();
+			GenericFunctions.waitWebDriver(2000);
+			PublicUserPage.clickProfileBoard.click();
+			/*action.moveToElement(PublicUserPage.clickProfileSubject).build().perform();
+			action.click(PublicUserPage.clickProfileSubject).build().perform();*/
+
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(PublicUserPage.submitButton);
+			if(PublicUserPage.submitButton.isEnabled())
+			{
+				PublicUserPage.submitButton.click();
+				GenericFunctions.waitWebDriver(2000);
+				assertTrue(true);
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Profile is sucessfully updated");
+			}
+		}
+		catch(Exception e )
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on Updating Profile information");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			System.out.println("Failed on Updating Profile information");
+			Assert.fail("Failed on Updating Profile information");
+		}
 	}
 
 }
