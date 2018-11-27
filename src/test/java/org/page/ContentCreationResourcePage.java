@@ -638,8 +638,6 @@ public class ContentCreationResourcePage
 	@FindBy(xpath="//div[.='Select Class']/..//div[@class='item selected']")
 	public WebElement afSelectGradeLevel;
 	
-	@FindBy(xpath="//label[contains(text(),'Yes, make it available to everyone')]")
-	public WebElement rightBtnAvailable;
 	
 	//Added on 10 Sep 
 	@FindBy(xpath="//div[@id='closeButton']/a/i")
