@@ -17,7 +17,7 @@ public class Regression_TC06 extends BaseTest
 		
 		signupObj.userLogin(CREATOR);
 		
-		//Step2:Navigate to workspace and uplaod content-MP4
+		//Step2:Navigate to workspace and upload content-MP4
 		
 		creatorUserPageObj.uploadContentMp4(MP4); //fix from here line no: 964
 		

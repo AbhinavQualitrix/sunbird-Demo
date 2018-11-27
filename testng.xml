@@ -6,9 +6,7 @@
 	</listeners>
   <test thread-count="5" name="Test">
     <classes>
-       <class name="org.testscripts.NavigateToMyActivity"/>
-     
-     
+      <class name="org.testscripts.NavigateToMyActivity"/>
       <class name="org.testscripts.SearchUsers"/>
       <class name="org.testscripts.ProfileInfoUpdate"/>
       <class name="org.testscripts.SearchCourse"/>
@@ -65,7 +63,7 @@
       <class name="org.testscripts.UploadYoutubeContent"/>
       <class name="org.testscripts.AdminCreationAndDownloadCsv"/>
       <class name="org.testscripts.UploadRootOrg"/>
-      <class name="org.testscripts.CreateBookAndVerifyOnlyBooksPresent"/>
+     
       <class name="org.testscripts.SearchContentWithFiltersAsReviewer"/>
       <class name="org.testscripts.CheckAvailabilityOfCourseForInvitedMember"/>
       <class name="org.testscripts.UploadContentTypeEpubAndVerify"/>
@@ -107,9 +105,9 @@
         <class name="org.testscripts.UploadEpubContent"/>
         <class name="org.testscripts.BookCreation"/>
          <class name="org.testscripts.CollectionCreation"/>
-      
-      
       <class name="org.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
+      
+       <class name="org.testscripts.CreateBookAndVerifyOnlyBooksPresent"/>
       
        <!-- <class name="org.testscripts.ChangeTheContentAfterFlagged"/> 
         <class name="org.testscripts.AcceptAsflagReviewer"/>
