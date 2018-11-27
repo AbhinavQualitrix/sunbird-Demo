@@ -72,15 +72,16 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
 			createUserPage.workSpace.click();
 			GenericFunctions.waitWebDriver(2500);
-			if(createVariable.equalsIgnoreCase(createUserPage.createCourse.getText()))
+			if(createVariable.equalsIgnoreCase(createUserPage.createBook.getText()))
+			{	
+				createUserPage.createBook.click();
+			}
+			else if(createVariable.equalsIgnoreCase(createUserPage.createCourse.getText()))
 			{
 				createUserPage.createCourse.click();
 				GenericFunctions.waitWebDriver(1500);
 			}
-			else if(createVariable.equalsIgnoreCase(createUserPage.createBook.getText()))
-			{
-				createUserPage.createBook.click();
-			}
+
 			else if(createVariable.equalsIgnoreCase(createUserPage.createResource.getText()))
 			{
 				createUserPage.createResource.click();

@@ -107,7 +107,12 @@
          <class name="org.testscripts.CollectionCreation"/>
       <class name="org.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
       
+
        <class name="org.testscripts.CreateBookAndVerifyOnlyBooksPresent"/>
+
+      <!-- Test cases of P2 -->
+      <class name="org.testscripts.CopyContentFromLibraryAndVerify"/>
+
       
        <!-- <class name="org.testscripts.ChangeTheContentAfterFlagged"/> 
         <class name="org.testscripts.AcceptAsflagReviewer"/>

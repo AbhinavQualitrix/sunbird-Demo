@@ -155,7 +155,7 @@ public class GenericFunctions extends BaseTest
 	 */
 	public static void waitTillTheElementIsVisibleAndClickable(WebElement element) {
 
-		WebDriverWait wait = new WebDriverWait(driver, 60);
+		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOf(element));
 
 		wait = new WebDriverWait(driver, 5);
@@ -426,7 +426,7 @@ public class GenericFunctions extends BaseTest
 			}
 		} catch(Exception e){
 			log.error("Method: assertIfElementExists :: Exception occured for locator = " + locator + " exception is = "+ e.getMessage());
-			AssertJUnit.assertTrue(false);
+			Assert.assertTrue(false);
 
 		}
 		log.info("Method: assertIfElementExists for locator = " + locator  + " status = " + bElementFound);	
@@ -538,7 +538,7 @@ public class GenericFunctions extends BaseTest
 			{
 				boolean value = opt.isDisplayed();
 				if(value==true){
-					AssertJUnit.assertTrue(true);
+					Assert.assertTrue(true);
 					log.info(value+" found as related to Dial Code searched");
 				}
 			}	
@@ -696,7 +696,7 @@ public class GenericFunctions extends BaseTest
 		{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Could not access the features of Workspace");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message: "+e.getLocalizedMessage());
-			AssertJUnit.fail("Could not access the features of Workspace");
+			Assert.fail("Could not access the features of Workspace");
 
 		}
 	}
