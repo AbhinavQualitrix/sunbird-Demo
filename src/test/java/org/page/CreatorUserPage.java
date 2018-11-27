@@ -727,6 +727,11 @@ public class CreatorUserPage {
 	//@FindBy(xpath="//sui-multi-select[@id='gradeLevel']/..//sui-select-option[@class='item selected']")
 	@FindBy(xpath="(//sui-multi-select[@id='gradeLevel'])[1]/..//sui-select-option")
 	public List<WebElement> selectBookGrade;
+	
+	//Merge of Nov 27
+	
+	@FindBy(xpath="//h4[contains(text(),'Course')]")
+	public WebElement headerCourseTitles;
 }
 
 

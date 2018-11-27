@@ -216,6 +216,13 @@ public class UploadOrgPage {
 	//@FindBy(xpath="(//i[@class='close icon'])")
 	@FindBy(xpath="(//i[@class='close icon'])[2]")
 	public WebElement closeThanks;
+	
+		@FindBy(css="#radial-mood-response-rate > svg > g > g.labels.q2")
+	public WebElement radial1;
+	
+		//-------------------------------------------------------------
+	@FindBy(xpath="//*[@id='radial-mood-response-rate']/svg")
+	public WebElement radial;
 }
 
 

@@ -12,36 +12,52 @@ import org.startup.BaseTest;
 public class SignUpPage extends BaseTest {
 	WebDriver driver;
 	
-	@FindBy(xpath="//div/button[.='SIGN UP']")
-	public WebElement signUpButton;
+	//Nov 9th
+	@FindBy(xpath="(//a[contains(text(),'SIGN UP')])[2]")
+	public WebElement signUpLink;
 	
-	@FindBy(name="userName")
+	//Nov 9th
+	//@FindBy(name="userName")
+	@FindBy(xpath="//input[@formcontrolname='userName']")
 	public WebElement username;
 	
-	@FindBy(name="password")
+	//Nov 9th
+	@FindBy(xpath="//input[@type='password']")
+	//@FindBy(name="password")
 	public WebElement password;
 	
-	@FindBy(name="firstName")
+	//Nov 9th
+	//@FindBy(name="firstName")
+	@FindBy(xpath="//input[@formcontrolname='firstName']")
 	public WebElement firstName;
 	
 	@FindBy(xpath="//div/input[@placeholder='Last Name']")
 	public WebElement lastName;
 	
-	@FindBy(name="phone")
+	//Nov 9th
+	@FindBy(xpath="//input[@formcontrolname='phone']")
+	//@FindBy(name="phone")
 	public WebElement phone;
 	
-	@FindBy(name="email")
+	//Nov 9th
+	@FindBy(xpath="//input[@formcontrolname='email']")
+	//@FindBy(name="email")
 	public WebElement email;
 	
-	@FindBy(xpath="//div[.='SIGN UP']")
-	public WebElement signup; 
+	//Nov 9th
+	@FindBy(xpath="//div//button[.='SIGN UP']")
+	public WebElement signUpButton; 
 	
 	@FindBy(xpath="//i[@class='dropdown icon']")
-	public WebElement language;
+	public WebElement languageDropdown;
 	
-	@FindBy(xpath="//div[.='English']")
-	public WebElement languageEnglish;
+	//9th Nov
+	@FindBy(xpath="//sui-select-option[@class='item selected']//span[2]")
+	//@FindBy(xpath="//div[.='English']")
+	public WebElement selectLanguage;
 	
 
+	@FindBy(xpath="//div[@class='iziToast-texts']//strong[@class='iziToast-title slideIn']")
+	public WebElement alertMessage;
 }
 

@@ -109,9 +109,47 @@
       
 
        <class name="org.testscripts.CreateBookAndVerifyOnlyBooksPresent"/>
-
+	   <class name="org.testscripts.CopyContentFromLibraryAndVerify"/>
       <!-- Test cases of P2 -->
-      <class name="org.testscripts.CopyContentFromLibraryAndVerify"/>
+
+      
+
+
+     <class name="org.testscripts.regression.CreateResourceWithContentsPluginsAndVerifyContentEditor"/>
+      <class name="org.testscripts.regression.NavigateToGetStartedAndExploreSunbird"/>
+      <class name="org.testscripts.regression.ReviewerPublishesAndRejectsContent"/>
+      <class name="org.testscripts.regression.UpForReview_LatestContentInTop_SearchContent_FromSameChannel_ApplyAndResetFilters"/>
+      <class name="org.testscripts.regression.CreateReourceByAddingAudio"/>
+      <class name="org.testscripts.regression.SameUserNameIsNotAllowedWhileSignup"/>
+      <class name="org.testscripts.regression.VerifyFeaturesOfProfileIconAndWorkspace"/>
+      <class name="org.testscripts.regression.VerifyPropertySection_PreviewSlidesAndFromBegining"/>
+      <class name="org.testscripts.regression.VerifyNavigateToGetPage"/>
+      <class name="org.testscripts.regression.SearchParticularContentInAllMyContent"/>
+      <class name="org.testscripts.regression.VerifySortOption"/>
+      <class name="org.testscripts.regression.CopyContentFromLibraryAndVerify"/>
+      <class name="org.testscripts.regression.ReviewerRequestChangesTheBook"/>
+      <class name="org.testscripts.regression.SendForReviewContentUnderReviewSubmission"/>
+      <class name="org.testscripts.regression.CreateResource_PublishAndDeleteFromLimitedPublising"/>
+      <class name="org.testscripts.regression.VerifyUploadContentPopup_UploadAnyContent_CloseButton_DownloadContent"/>
+      <class name="org.testscripts.regression.ReviewAndPublishReceivedContent"/>
+      <class name="org.testscripts.regression.SeeTheContentBasedOnAppliedFilter"/>
+      <class name="org.testscripts.regression.RejectTheUploadedContent"/>
+      <class name="org.testscripts.regression.QuestionTemplateFillInTheBlankCustom"/>
+      <class name="org.testscripts.regression.VerifyLibraryCopyContent"/>
+      <class name="org.testscripts.regression.LimitedSharedContentInLimitedSharingSection"/>
+      <class name="org.testscripts.regression.SavedContentUnderAllUploads"/>
+      <class name="org.testscripts.regression.AccessOnAllPagesAfterLogin"/>
+      <class name="org.testscripts.regression.VerifyEditDetailsPopupAndTopicTree"/>
+      <class name="org.testscripts.regression.VerifyMyActivityLinkInProfileDropdown"/>
+      <class name="org.testscripts.regression.LatestContentOnTopOfUpForReviewAndSearch"/>
+      <class name="org.testscripts.regression.SortTheResultInUpForReview"/>
+      <class name="org.testscripts.regression.VerifyEditMetadataPageForCollection"/>
+      <class name="org.testscripts.regression.VerifyNoAnnouncement_MyAnnouncement_AnnouncementPopup"/>
+      <class name="org.testscripts.regression.CreateResourceByCreatingAFillInThBlanksQuestion"/>
+      <class name="org.testscripts.regression.CreateResourceByUploadingVideoAndActivityPlugins"/>
+      <class name="org.testscripts.regression.UploadYoutubeFile"/>
+      <class name="org.testscripts.regression.VerifyUserNaviagationToContentEditor"/>
+      <class name="org.testscripts.regression.VerifyTheClosingOfContentEditor"/>
 
       
        <!-- <class name="org.testscripts.ChangeTheContentAfterFlagged"/> 

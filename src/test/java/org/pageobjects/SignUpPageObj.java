@@ -25,7 +25,7 @@ public class SignUpPageObj extends BaseTest
 	static Logger log = Logger.getLogger(SignUpPageObj.class.getName());
 
 	CreatorUserPageObj createUserPageObj = new CreatorUserPageObj();
-	
+	SignUpPage objSignUp=PageFactory.initElements(driver, SignUpPage.class);
 
 	/**
 	* Purpose: userLogin() method is used for user logging
@@ -191,6 +191,69 @@ public class SignUpPageObj extends BaseTest
 		}
 
 	}
+	
+	
+	public void singleSignUpUser() throws InterruptedException
+	{
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Single User is trying to Sign up to the application");
+			List <TestDataForSunbird> objListOFTestDataForSunbird=null;
+			objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetuserinfo");
+				//GenericFunctions generic=PageFactory.initElements(driver, GenericFunctions.class);
+				
+				objSignUp.signUpLink.click();
+				GenericFunctions.waitForElementToAppear(objSignUp.username);
+				objSignUp.username.sendKeys(objListOFTestDataForSunbird.get(0).getUsername());
+				objSignUp.password.sendKeys(objListOFTestDataForSunbird.get(0).getPassword());
+				objSignUp.firstName.sendKeys(objListOFTestDataForSunbird.get(0).getFirstName());
+				objSignUp.lastName.sendKeys(objListOFTestDataForSunbird.get(0).getLastName());
+				objSignUp.phone.sendKeys(objListOFTestDataForSunbird.get(0).getPhone());
+				objSignUp.email.sendKeys(objListOFTestDataForSunbird.get(0).getEmail());
+				GenericFunctions.waitForElementToAppear(objSignUp.languageDropdown);
+				objSignUp.languageDropdown.click();
+				GenericFunctions.waitWebDriver(2000);
+				objSignUp.selectLanguage.click();
+				
+				/*
+				String locator = "//i[@class='dropdown icon']";				
+				driver.findElement(By.xpath(locator)).click();
+				String locDrop ="//sui-select-option[@class='item']/span[2]";
+				generic.selectValueFromDropdown(driver, locDrop, "English");
+				*/
+				objSignUp.languageDropdown.click();
+				GenericFunctions.waitTillTheElementIsVisibleAndClickable(objSignUp.signUpButton);
+				GenericFunctions.waitWebDriver(1000);
+				objSignUp.signUpButton.click();
+			
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on Single Sign up to the application");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			Assert.fail("Failed on sign up to the application"+e.getLocalizedMessage());
+		}
+
+	}
+	
+	public void checkUserDataExists() throws InterruptedException
+	{
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Verifying whether the currently creating data has existed or not");		
+			objSignUp.alertMessage.click();
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Alert Message: "+objSignUp.alertMessage.getText());
+			System.out.println(objSignUp.alertMessage.getText());
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on Single Sign up to the application");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			Assert.fail("Failed on sign up to the application"+e.getLocalizedMessage());
+		}
+
+	}
+
 }
 
 

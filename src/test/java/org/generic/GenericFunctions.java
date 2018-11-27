@@ -43,6 +43,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.page.CreatorUserPage;
 import org.pageobjects.CreatorUserPageObj;
 import org.startup.BaseTest;
+import org.generic.ExtentTestManager;
+import org.generic.GenericFunctions;
 import org.testng.Assert;
 
 /**
@@ -697,6 +699,54 @@ public class GenericFunctions extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Could not access the features of Workspace");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message: "+e.getLocalizedMessage());
 			Assert.fail("Could not access the features of Workspace");
+
+		}
+	}
+	
+	//Nov 27
+	
+	public static boolean assertIfElementExists1(WebDriver mDriver, String identifyBy, WebElement locator) throws Exception {
+		boolean bElementFound = false;
+		try	{		
+			if (identifyBy.equalsIgnoreCase("xpath")){ 
+				bElementFound = locator.isDisplayed();
+			}else if (identifyBy.equalsIgnoreCase("id")){ 
+				bElementFound = locator.isDisplayed();
+			}else if (identifyBy.equalsIgnoreCase("name")){ 
+				bElementFound = locator.isDisplayed();
+			}else if (identifyBy.equalsIgnoreCase("css")){ 
+				bElementFound = locator.isDisplayed();
+			}else if (identifyBy.equalsIgnoreCase("linktext")){ 
+				bElementFound = locator.isDisplayed();
+			}else if (identifyBy.equalsIgnoreCase("partialtext")){ 
+				bElementFound = locator.isDisplayed();
+			}else {
+				log.info("None of the Element Selected Please check the Element Once: ");
+			}
+		} catch(Exception e){
+			log.error("Method: assertIfElementExists :: Exception occured for locator = " + locator + " exception is = "+ e.getMessage());
+			Assert.assertTrue(false,"***Method: assertIfElementExists: Exception occured for locator= " + e.getMessage());
+		}
+		log.info("Method: assertIfElementExists for locator = " + locator  + " status = " + bElementFound);	
+		return bElementFound;
+	}
+	
+	public static void FetchFieldsAndAssert(WebElement ele,String ExpValue)
+	{
+		try
+		{
+			GenericFunctions.waitWebDriver(2000);
+			String Actual=ele.getText();
+			Assert.assertEquals(Actual,ExpValue);
+
+			ExtentTestManager.getTest().log(LogStatus.PASS,ExpValue+ "Field Verified Succesfully");
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on Fetching & Asserting Fields");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+
+			Assert.fail("Failed on Fetching & Asserting Fields");
 
 		}
 	}
