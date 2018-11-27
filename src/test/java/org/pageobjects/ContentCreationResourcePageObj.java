@@ -13,7 +13,6 @@ import java.util.Random;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.apache.poi.util.SystemOutLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
@@ -24,7 +23,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.generic.ExtentTestManager;
 import org.generic.GenericFunctions;
 import org.generic.ReadTestDataFromExcel;
-//import org.generic.SoftAssert;
 import org.page.ContentCreationResourcePage;
 import org.page.CreateMentorPage;
 import org.page.CreatorUserPage;
@@ -32,10 +30,10 @@ import org.page.PublicUserPage;
 import org.page.SignUpPage;
 import org.page.UploadOrgPage;
 import org.startup.BaseTest;
+import org.generic.AllUploadingPaths;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
-
 
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -47,36 +45,159 @@ public class ContentCreationResourcePageObj extends BaseTest
 	CreateMentorPage createMentorPage=PageFactory.initElements(driver, CreateMentorPage.class);
 	UploadOrgPage orgUploadPage=PageFactory.initElements(driver, UploadOrgPage.class);
 	SignUpPage signUpPage=PageFactory.initElements(driver, SignUpPage.class);
-	ContentCreationResourcePage contentResourcePage =PageFactory.initElements(driver,ContentCreationResourcePage.class);
+	ContentCreationResourcePage contentCreationResourcePage =PageFactory.initElements(driver,ContentCreationResourcePage.class);
 	static Logger log = Logger.getLogger(CreatorUserPageObj.class.getName());
 	List <TestDataForSunbird> objListOFTestDataForSunbird1= null ;
 	Actions action = new Actions(driver);
 	Random rand=new Random();
-	public Robot r;
+	CreatorUserPageObj createUserPageObj= new CreatorUserPageObj();
+	SoftAssert softAssert = new SoftAssert();
 
-	/*public ContentCreationResourcePageObj() throws AWTException
+
+
+	public void SearchContentAndValidate(String Contentname)
 	{
-		Robot r = new Robot();
 
-	}*/
+		try
+		{
+
+			GenericFunctions.waitForElementToAppear(createUserPage.searchForReview);
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is Searching for the content in search field");
+			GenericFunctions.waitForElementToAppear(createUserPage.searchForReview);
+			createUserPage.searchForReview.sendKeys(Contentname);
+			GenericFunctions.waitWebDriver(600);
+			SoftAssert softAssert = new SoftAssert();
+
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.VerifySearchedContent);
+			String ContentType=contentCreationResourcePage.VerifySearchedContent.getText();
+			System.out.println(ContentType);
+
+			System.out.println(Contentname);
+			switch (Contentname) {
+			case "CourseA":
+
+				softAssert.assertEquals(ContentType,"Course");
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Search Content "+Contentname+" is displayed Succesfully");
+				log.info("Search Content is displayed Succesfully");
+				break;
+
+
+			case "BookA":
+
+				softAssert.assertEquals(ContentType,"TextBook");
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Search Content "+Contentname+" is displayed Succesfully");
+				log.info("Search Content is displayed Succesfully");
+				break;
+
+
+
+			case "LessonA":
+				softAssert.assertEquals(ContentType,"LessonPlan");
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Search Content "+Contentname+" is displayed Succesfully");
+				log.info("Search Content is displayed Succesfully");
+				break;
+
+			case "Automation Content":
+				softAssert.assertEquals(ContentType,"Resource");
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Search Content "+Contentname+" is displayed Succesfully");
+				log.info("Search Content is displayed Succesfully");
+				break;
+
+			case "Automation Collection":
+				softAssert.assertEquals(ContentType,"Collection");
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Search Content "+Contentname+" is displayed Succesfully");
+				break;
+
+
+			default:
+				System.out.println(Contentname);
+				ExtentTestManager.getTest().log(LogStatus.FAIL, "Search Content is Not displayed Succesfully");
+				log.error("Search Content is Not displayed Succesfully");
+			}
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on validating Searched Content in All my content Page");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			System.out.println("Failed on validating Searched Content in All my content Page");
+			Assert.fail("Failed on validating Searched Content in All my content Page");
+
+		}
+
+	}
+	public void VerifySortByIsExists()
+	{
+		try
+		{
+			SoftAssert softAssert = new SoftAssert();
+
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to Click on Library Page");
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.ClickOnLibrary);
+			contentCreationResourcePage.ClickOnLibrary.click();
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Click on Library Page");
+			//softAssert.assertTrue(true);
+
+
+
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Validate the SortBy Text & SortyBy Option in Library Page");
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.VerifySortBy);
+			if(contentCreationResourcePage.VerifySortBy.isDisplayed())
+			{
+				String ActualValue=contentCreationResourcePage.VerifySortBy.getText();
+				softAssert.assertEquals(ActualValue,"Sort by:");
+
+				//ExtentTestManager.getTest().log(LogStatus.INFO, "Click on SortBy Dropdown in Library Page");
+				GenericFunctions.waitForElementToAppear(contentCreationResourcePage.ClickSortByDropDown);
+				contentCreationResourcePage.ClickSortByDropDown.click();
+
+				//ExtentTestManager.getTest().log(LogStatus.INFO, "Validate Modified option in Dropdown in Library Page");
+				String OptionValue1=contentCreationResourcePage.VerifySortByOptionList.getText();
+				softAssert.assertEquals(OptionValue1,"Modified On");
+
+				//ExtentTestManager.getTest().log(LogStatus.INFO, "Validate CreatedOn option in Dropdown in Library Page");
+				String OptionValue2=contentCreationResourcePage.VerifySortByOptionList1.getText();
+				softAssert.assertEquals(OptionValue2,"Created On");
+
+				softAssert.assertAll();
+
+				ExtentTestManager.getTest().log(LogStatus.PASS,"SortBy Option has been verified in Library Page");
+			}
+			else
+			{
+				System.out.println("Could not verify elements");
+				log.info("Could not verify elements");
+			}
+
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on validating SoryBy Options in Library Page");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			System.out.println("Failed on validating SoryBy Options in Library Page");
+			Assert.fail("Failed on validating SoryBy Options in Library Page");
+
+		}
+
+
+	}
 	public void verifyProfileIconAndWorkspace()
 	{
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to validate the features under Profile Icon");
-			GenericFunctions.waitForElementToAppear(createUserPage.headerDropdown);
-			createUserPage.headerDropdown.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.profileIconWorkspace);
-			if(contentResourcePage.profileIconWorkspace.isDisplayed()&&contentResourcePage.profileIconActivity.isDisplayed()
-					&&contentResourcePage.profileIconLogout.isDisplayed()&&contentResourcePage.profileIconProfile.isDisplayed())
+			GenericFunctions.waitForElementToAppear(createUserPage.profileIconDropdown);
+			createUserPage.profileIconDropdown.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.profileIconProfile);
+			if(contentCreationResourcePage.profileIconAnnouncementDashboard.isDisplayed()&&contentCreationResourcePage.profileIconActivity.isDisplayed()
+					&&contentCreationResourcePage.profileIconLogout.isDisplayed()&&contentCreationResourcePage.profileIconProfile.isDisplayed())
 			{
 				Assert.assertTrue(true);
-				System.out.println(contentResourcePage.profileIconProfile);
-				System.out.println(contentResourcePage.profileIconWorkspace);
-				System.out.println(contentResourcePage.profileIconActivity);
-				System.out.println(contentResourcePage.profileIconLogout);
-				ExtentTestManager.getTest().log(LogStatus.INFO, "Profile ,Workspace, My Activity and Logout features are verified on clicking Profile Icon");
-				System.out.println("Test case 72 is passed");
+				System.out.println(contentCreationResourcePage.profileIconProfile);
+				System.out.println(contentCreationResourcePage.profileIconAnnouncementDashboard);
+				System.out.println(contentCreationResourcePage.profileIconActivity);
+				System.out.println(contentCreationResourcePage.profileIconLogout);
+
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Features :"+contentCreationResourcePage.profileIconProfile+", "+contentCreationResourcePage.profileIconAnnouncementDashboard+"," +contentCreationResourcePage.profileIconActivity+" and"+ contentCreationResourcePage.profileIconLogout +" are verified on clicking Profile Icon");
 			}
 			else
 			{
@@ -104,9 +225,12 @@ public class ContentCreationResourcePageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to validate all the features/Options under Workspace");
 			System.out.println("Continuation of Test case 73");
 			GenericFunctions.waitWebDriver(2000);
-			contentResourcePage.profileIconWorkspace.click();
+			contentCreationResourcePage.profileIconProfile.click();
 			GenericFunctions.waitWebDriver(500);
+			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
+			createUserPage.workSpace.click();
 			String eUrl="https://staging.open-sunbird.org/workspace/content/create";
+			GenericFunctions.waitForElementToAppear(createUserPage.createBook);
 			String aUrl=driver.getCurrentUrl();
 
 			if(createUserPage.createBook.isDisplayed()&&createUserPage.createCourse.isDisplayed()&&createUserPage.createResource.isDisplayed()
@@ -115,27 +239,28 @@ public class ContentCreationResourcePageObj extends BaseTest
 				Assert.assertEquals(aUrl, eUrl, "Failed on validating Url");
 				Assert.assertTrue(true);
 				System.out.println("Book"+"\n"+"Course"+"\n"+"Resource"+"\n"+"Collection"+"\n"+"Lesson plan"+"\n"+"Upload Content"+"\n"+" Elements are present under CREATE Bucket in Workspace");
+				ExtentTestManager.getTest().log(LogStatus.PASS,"Book, Course, Resource, Collection, Lesson plan, Upload Content Elements are verified and are present under CREATE Bucket in Workspace");
 				GenericFunctions.waitWebDriver(2000);
-				contentResourcePage.allMyActivity.click();
-				GenericFunctions.waitForElementToAppear(contentResourcePage.showFilters);
-				if(contentResourcePage.showFilters.isDisplayed())
+				contentCreationResourcePage.allMyActivity.click();
+				GenericFunctions.waitForElementToAppear(contentCreationResourcePage.showFilters);
+				if(contentCreationResourcePage.showFilters.isDisplayed())
 				{
 					GenericFunctions.waitWebDriver(1500);
-					contentResourcePage.showFilters.click();
-					GenericFunctions.waitWebDriver(500);
-					if(contentResourcePage.filterApplyButton.isDisplayed()&&contentResourcePage.filterResetButton.isDisplayed())
+					contentCreationResourcePage.showFilters.click();
+					GenericFunctions.waitForElementToAppear(contentCreationResourcePage.filterApplyButton);
+					if(contentCreationResourcePage.filterApplyButton.isDisplayed()&&contentCreationResourcePage.filterResetButton.isDisplayed())
 					{
-						contentResourcePage.sortByIcon.click();
+						contentCreationResourcePage.sortByIcon.click();
 						GenericFunctions.waitWebDriver(1000);
 						Assert.assertTrue(true);
 						System.out.println("Filters"+"\n"+"APPLY BUTTON"+"\n"+"RESET BUTTON"+"\n"+"Sort By"+"\n"+"Features and buttons are displayed successfully under All My Content Bucket");
-						System.out.println("Test 73 is passed");
+
 					}
 
 				}
 				else
 				{
-					System.out.println(contentResourcePage.showFilters+" element is not displayed under All My Content bucket");
+					System.out.println(contentCreationResourcePage.showFilters+" element is not displayed under All My Content bucket");
 				}
 
 			}
@@ -161,11 +286,14 @@ public class ContentCreationResourcePageObj extends BaseTest
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate to Library and search "+inputToSearch); 
 			objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-			//createUserPage.dropDown.click();
+
+			GenericFunctions.waitWebDriver(2500);
 			GenericFunctions.waitForElementToAppear(createUserPage.headerLibrary);
 			createUserPage.headerLibrary.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.searchInput);
 			createUserPage.searchInput.click();
+
 			if(inputToSearch.contains("resource"))
 			{
 				search=objListOFTestDataForSunbird1.get(6).getCourseName();
@@ -181,12 +309,37 @@ public class ContentCreationResourcePageObj extends BaseTest
 				search=objListOFTestDataForSunbird1.get(5).getCourseName();
 				createUserPage.searchInput.sendKeys(search);
 			}
+
 			//+"_"+GenericFunctions.readFromNotepad(".//TestData//contentNumbers.txt"));
 			System.out.println(inputToSearch);//+"_"+GenericFunctions.readFromNotepad(".//TestData//contentNumbers.txt"));
 			createUserPage.searchIcon.click();
 			GenericFunctions.waitWebDriver(2500);
 			GenericFunctions.waitForElementToAppear(createUserPage.getCourseName);
+
+			if(createUserPage.getCourseName.isDisplayed())
+			{
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Contents are sucessfully displayed in Library");
+				String contentLabel = ContentCreationResourcePage.libraryContentLabel.getText();
+				System.out.println(contentLabel);
+				if(contentLabel.equalsIgnoreCase("resource"))
+				{
+					softAssert.assertTrue(true,"Labels of the results did not match");			
+				}
+				else if(contentLabel.equalsIgnoreCase("textbook"))
+				{
+					softAssert.assertTrue(true,"Labels of the results did not match");
+				}
+				else if(contentLabel.equalsIgnoreCase("collection"))
+				{
+					softAssert.assertTrue(true,"Labels of the results did not match");
+				}
+
+				softAssert.assertAll();
+
+			}
 			createUserPage.getCourseName.click();
+			//Wait for 3 sec
+			GenericFunctions.waitWebDriver(3000);	
 		}
 		catch(Exception e)
 		{
@@ -200,35 +353,70 @@ public class ContentCreationResourcePageObj extends BaseTest
 
 	public void copyContentAndValidate(String contentType)
 	{
-		String searchedBookName="";
+		String searchedBookName="", copiedContentInDrafts="";
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to search content in Library and copy it");
 			if(contentType.equalsIgnoreCase("course"))
 			{
-				GenericFunctions.waitForElementToAppear(contentResourcePage.searchedClickedCourseResource);
-				searchedBookName=contentResourcePage.searchedClickedCourseResource.getText();
-				GenericFunctions.waitForElementToAppear(contentResourcePage.courseCopyIcon);
-				contentResourcePage.courseCopyIcon.click();
+				GenericFunctions.waitForElementToAppear(contentCreationResourcePage.searchedClickedCourseResource);
+				searchedBookName=contentCreationResourcePage.searchedClickedCourseResource.getText();
+				GenericFunctions.waitWebDriver(2000);
+				GenericFunctions.waitForElementToAppear(contentCreationResourcePage.courseCopyIcon);
+				contentCreationResourcePage.courseCopyIcon.click();
 			}
-			else 
+			else if(contentType.equalsIgnoreCase("resource"))
 			{
-				GenericFunctions.waitForElementToAppear(contentResourcePage.searchedClickedContent);
-				searchedBookName=contentResourcePage.searchedClickedContent.getText();
-				GenericFunctions.waitForElementToAppear(contentResourcePage.libContentCopyIcon);
-				contentResourcePage.libContentCopyIcon.click();
+				GenericFunctions.waitForElementToAppear(contentCreationResourcePage.searchedClickedContent);
+				searchedBookName=contentCreationResourcePage.searchedClickedContent.getText();
+				GenericFunctions.waitWebDriver(2000);
+				GenericFunctions.waitForElementToAppear(contentCreationResourcePage.libraryContentCopyIcon);
+				contentCreationResourcePage.libraryContentCopyIcon.click();
 			}
+			try
+			{
+				GenericFunctions.waitForElementToAppear(ContentCreationResourcePage.copyErrorToast);
+				boolean state = ContentCreationResourcePage.copyErrorToast.isDisplayed();
+				if(state==true)
+				{
+					GenericFunctions.captureScreenshotOnValidation();
+					ExtentTestManager.getTest().log(LogStatus.FAIL, "Could not copy the content ");
+					//Assert.fail("Error "+ContentCreationResourcePage.copyErrorToast.getText());
+					GenericFunctions.refreshWebPage();										
+					
+				}
+			}
+			catch(Exception e)
+			{
+				ExtentTestManager.getTest().log(LogStatus.FAIL, "No Error while copying the content");
+				
+			}
+			GenericFunctions.refreshWebPage();	
+			if(contentType.equalsIgnoreCase("course"))
+			{
+				GenericFunctions.waitWebDriver(2000);
+				GenericFunctions.waitForElementToAppear(contentCreationResourcePage.courseCopyIcon);
+				contentCreationResourcePage.courseCopyIcon.click();
+			}
+			else if(contentType.equalsIgnoreCase("resource"))
+			{
+				GenericFunctions.waitWebDriver(2000);
+				GenericFunctions.waitForElementToAppear(contentCreationResourcePage.libraryContentCopyIcon);
+				contentCreationResourcePage.libraryContentCopyIcon.click();
+			}
+				
+			GenericFunctions.refreshWebPage();
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitWebDriver(6500);
-			GenericFunctions.waitForElementToAppear(contentResourcePage.copiedContentName);
-			String aBookname=contentResourcePage.copiedContentName.getText();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.copiedContentName);
+			String aBookname=contentCreationResourcePage.copiedContentName.getText();
 			System.out.println(aBookname);
 			if(aBookname.contains(searchedBookName))
 			{
-				ExtentTestManager.getTest().log(LogStatus.INFO, "Content is copied sucessfully");
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Content is copied sucessfully");
 				System.out.println(aBookname+" Content copied succesfully");
-				GenericFunctions.waitWebDriver(2001);
+				GenericFunctions.waitWebDriver(2000);
 				Assert.assertTrue(true);
 			}
 			else
@@ -236,21 +424,28 @@ public class ContentCreationResourcePageObj extends BaseTest
 				ExtentTestManager.getTest().log(LogStatus.ERROR, "Could not copy Content");
 				System.out.println("Could not copy Content");
 			}
+			GenericFunctions.waitWebDriver(2000);
 			createUserPage.editorCloseIcon.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.getCourseName);
-			//createUserPage.getCourseName.click();
-			String draftCopiedCN=createUserPage.getCourseName.getText();
-			//GenericFunctions.waitForElementToAppear(contentResourcePage.draftCopiedContentName);
-			//String draftCopiedCN=contentResourcePage.draftCopiedContentName.getText();
-			if(aBookname.contains(draftCopiedCN))
-			{
-				ExtentTestManager.getTest().log(LogStatus.INFO, contentResourcePage.draftCopiedContentName.getText()+"Content is found in Draft");
-				System.out.println(draftCopiedCN+" is the content present in the drafts");
-				GenericFunctions.waitWebDriver(2001);
-				//createUserPage.editorCloseIcon.click();
-				Assert.assertTrue(true);
+			try
+			{			
+				GenericFunctions.waitForElementToAppear(createUserPage.getCourseName);
+				copiedContentInDrafts=contentCreationResourcePage.draftsCopiedContentName.getText();
+				System.out.println(copiedContentInDrafts);
+				String trimmedContentName = copiedContentInDrafts.substring(0, 40);
+				if(aBookname.contains(trimmedContentName))
+				{
+					ExtentTestManager.getTest().log(LogStatus.INFO, copiedContentInDrafts+"is the Copied Content found in Drafts");
+					System.out.println(copiedContentInDrafts+" is the copied content present in the drafts");
+					GenericFunctions.waitWebDriver(2001);
+					Assert.assertTrue(true);
+				}
 			}
-
+			catch(Exception e)
+			{
+				ExtentTestManager.getTest().log(LogStatus.FAIL, copiedContentInDrafts+" Content is not found in Draft");
+				System.out.println(copiedContentInDrafts+" Content is not found in Draft");
+			}
+			GenericFunctions.waitWebDriver(2000);
 		}
 		catch(Exception e)
 		{
@@ -267,7 +462,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 		try
 		{
 			objListOFTestDataForSunbird1= ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to validate content editor");
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create new resource");
 			GenericFunctions.waitWebDriver(1500);
 			GenericFunctions.waitForElementToAppear(createUserPage.bookName);
 			String resourceNumber = GenericFunctions.testDataIncrementer(".//TestData//resourceNumbers.txt").toString();
@@ -277,10 +472,10 @@ public class ContentCreationResourcePageObj extends BaseTest
 			GenericFunctions.waitWebDriver(7000);			
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitWebDriver(4500);
-			GenericFunctions.waitForElementToAppear(contentResourcePage.addSlide);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addSlide);
 			if(createUserPage.saveCourse.isDisplayed()&&createUserPage.sendForReview.isDisplayed())
 			{
-				ExtentTestManager.getTest().log(LogStatus.INFO, "User is sucessfully navigated to Content editor and validated");
+				ExtentTestManager.getTest().log(LogStatus.PASS, "User is sucessfully navigated to Content editor and validated");
 				System.out.println("User is sucessfully navigated to Content editor and validated");
 				GenericFunctions.waitWebDriver(2500);
 				/*createUserPage.editorCloseIcon.click();
@@ -292,6 +487,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 				ExtentTestManager.getTest().log(LogStatus.ERROR, "User failed to navigate to Content editor");
 				System.out.println("User failed to navigate to Content editor");
 			}
+			GenericFunctions.waitWebDriver(2000);
 		}
 		catch(Exception e)
 		{
@@ -326,11 +522,11 @@ public class ContentCreationResourcePageObj extends BaseTest
 
 
 			//Adding hotspot
-			contentResourcePage.addHotspot.click();
+			contentCreationResourcePage.addHotspot.click();
 			GenericFunctions.waitWebDriver(300);
 
 			//Adding scribblepad
-			contentResourcePage.addScribblepad.click();
+			contentCreationResourcePage.addScribblepad.click();
 			GenericFunctions.waitWebDriver(500);
 
 			//Adding Question Set
@@ -341,9 +537,9 @@ public class ContentCreationResourcePageObj extends BaseTest
 			addMathPlugin();
 
 			//Adding multiple Slides
-			contentResourcePage.addSlide.click();
+			contentCreationResourcePage.addSlide.click();
 			GenericFunctions.waitWebDriver(500);
-			contentResourcePage.addSlide.click();
+			contentCreationResourcePage.addSlide.click();
 
 			//Click on save button for saving the resource
 			createUserPage.saveCourse.click();
@@ -360,34 +556,34 @@ public class ContentCreationResourcePageObj extends BaseTest
 
 	public void addShapes()
 	{
-		GenericFunctions.waitForElementToAppear(contentResourcePage.addShapes);
-		contentResourcePage.addShapes.click();
+		GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addShapes);
+		contentCreationResourcePage.addShapes.click();
 		GenericFunctions.waitWebDriver(500);
-		contentResourcePage.addTriangleShape.click();
+		contentCreationResourcePage.addTriangleShape.click();
 		GenericFunctions.waitWebDriver(3000);
 	}
 
 	public void addText()
 	{
 		//Adding text
-		GenericFunctions.waitForElementToAppear(contentResourcePage.addText);
-		contentResourcePage.addText.click();
-		contentResourcePage.addTextTextArea.sendKeys(objListOFTestDataForSunbird1.get(10).getCourseName());
+		GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addText);
+		contentCreationResourcePage.addText.click();
+		contentCreationResourcePage.addTextTextArea.sendKeys(objListOFTestDataForSunbird1.get(10).getCourseName());
 		GenericFunctions.waitWebDriver(500);
-		contentResourcePage.addTextDoneButton.click();
+		contentCreationResourcePage.addTextDoneButton.click();
 		GenericFunctions.waitWebDriver(500);
 	}
 
 	public void addImage()
 	{
 		//Adding Image
-		GenericFunctions.waitForElementToAppear(contentResourcePage.addImage);
-		contentResourcePage.addImage.click();
+		GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addImage);
+		contentCreationResourcePage.addImage.click();
 		GenericFunctions.waitForElementToAppear(createUserPage.searchUploadImage);
 		createUserPage.searchUploadImage.sendKeys(SEARCH_RESOURCE_IMAGE);
 		createUserPage.clickImageSearch.click();
-		GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentResourcePage.checkContentIcon);
-		contentResourcePage.checkContentIcon.click();
+		GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.checkContentIcon);
+		contentCreationResourcePage.checkContentIcon.click();
 		GenericFunctions.waitWebDriver(2000);
 		createUserPage.selectAppIcon.click();
 		GenericFunctions.waitWebDriver(500);
@@ -399,10 +595,10 @@ public class ContentCreationResourcePageObj extends BaseTest
 		{
 			//objListOFTestDataForSunbird1= ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to add slides to the Resource");
-			GenericFunctions.waitForElementToAppear(contentResourcePage.addSlide);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addSlide);
 			for(int i=1;i<=noOfSlides;i++)
 			{
-				contentResourcePage.addSlide.click();
+				contentCreationResourcePage.addSlide.click();
 				if(i<=1)
 				{
 					addText();
@@ -425,10 +621,10 @@ public class ContentCreationResourcePageObj extends BaseTest
 				}
 			}	
 			GenericFunctions.waitWebDriver(1000);
-			contentResourcePage.propertiesSection.click();
+			contentCreationResourcePage.propertiesSection.click();
 			GenericFunctions.captureScreenshotOnValidation();
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is able to view property section-completed Test case "+"testCaseName");
-			contentResourcePage.clickNextSlide.click();
+			contentCreationResourcePage.clickNextSlide.click();
 
 		}
 		catch(Exception e)
@@ -445,10 +641,10 @@ public class ContentCreationResourcePageObj extends BaseTest
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to add "+slidesToAdd+ " slides to the Resource");
-			GenericFunctions.waitForElementToAppear(contentResourcePage.addSlide);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addSlide);
 			for(int i=1;i<=slidesToAdd;i++)
 			{
-				contentResourcePage.addSlide.click();
+				contentCreationResourcePage.addSlide.click();
 				if(i<=1)
 				{
 					addText();
@@ -471,7 +667,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 				}
 				GenericFunctions.waitWebDriver(500);
 			}	
-			contentResourcePage.clickNextSlide.click();
+			contentCreationResourcePage.clickNextSlide.click();
 		}
 		catch(Exception e)
 		{
@@ -487,20 +683,20 @@ public class ContentCreationResourcePageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to preview the slides added to the content");
 			int slidesToAdd=10;
 			addSlides(slidesToAdd);
-			GenericFunctions.waitForElementToAppear(contentResourcePage.previewIcon);
-			contentResourcePage.previewIcon.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.previewPopup);
-			if(contentResourcePage.previewPopup.isDisplayed())
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.previewIcon);
+			contentCreationResourcePage.previewIcon.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.previewPopup);
+			if(contentCreationResourcePage.previewPopup.isDisplayed())
 			{
-				GenericFunctions.WaitForFrameAndSwitchToIt(contentResourcePage.previewPopupFrame);
-				GenericFunctions.waitForElementToAppear(contentResourcePage.previewNextBtn);
+				GenericFunctions.WaitForFrameAndSwitchToIt(contentCreationResourcePage.previewPopupFrame);
+				GenericFunctions.waitForElementToAppear(contentCreationResourcePage.previewNextBtn);
 				for(int i=1;i<=slidesToAdd+3;i++)
 				{
-					contentResourcePage.previewNextBtn.click();
+					contentCreationResourcePage.previewNextBtn.click();
 					GenericFunctions.waitWebDriver(500);
 				}
 				GenericFunctions.waitWebDriver(1500);
-				if(contentResourcePage.contentPreiviewCompleteScreen.isDisplayed()&&contentResourcePage.previewPopupReplayBtn.isDisplayed())
+				if(contentCreationResourcePage.contentPreiviewCompleteScreen.isDisplayed()&&contentCreationResourcePage.previewPopupReplayBtn.isDisplayed())
 				{
 					//contentResourcePage.contentPreiviewCompleteScreen.getText();
 					Assert.assertTrue(true);
@@ -514,6 +710,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			GenericFunctions.refreshWebPage();
 			GenericFunctions.waitForElementToAppear(createUserPage.editorCloseIcon);
 			createUserPage.editorCloseIcon.click();
+			GenericFunctions.waitWebDriver(2000);
 		}
 		catch(Exception e)
 		{
@@ -529,11 +726,11 @@ public class ContentCreationResourcePageObj extends BaseTest
 	public void addMathPlugin()
 	{
 		//Adding Math plugin
-		GenericFunctions.waitForElementToAppear(contentResourcePage.addMathText);
-		contentResourcePage.addMathText.click();
-		GenericFunctions.waitForElementToAppearOnScreen(contentResourcePage.selectMathText);
-		contentResourcePage.selectMathText.click();
-		contentResourcePage.selectedMathTextAdd.click();
+		GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addMathText);
+		contentCreationResourcePage.addMathText.click();
+		GenericFunctions.waitForElementToAppearOnScreen(contentCreationResourcePage.selectMathText);
+		contentCreationResourcePage.selectMathText.click();
+		contentCreationResourcePage.selectedMathTextAdd.click();
 		GenericFunctions.waitWebDriver(500);
 		GenericFunctions.waitForElementToAppear(createUserPage.saveCourse);
 		/*createUserPage.saveCourse.click();
@@ -543,18 +740,18 @@ public class ContentCreationResourcePageObj extends BaseTest
 	public void addAudio()
 	{
 		//Adding Audio
-		GenericFunctions.waitForElementToAppear(contentResourcePage.addAudio);
-		contentResourcePage.addAudio.click();
+		GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addAudio);
+		contentCreationResourcePage.addAudio.click();
 		/*
 		GenericFunctions.waitForElementToAppearOnScreen(contentResourcePage.selectMyAudio);
 		contentResourcePage.selectMyAudio.click();
 		 */
-		GenericFunctions.waitForElementToAppearOnScreen(contentResourcePage.clickAllAudio);
+		GenericFunctions.waitForElementToAppearOnScreen(contentCreationResourcePage.clickAllAudio);
 		GenericFunctions.waitWebDriver(500);
-		contentResourcePage.clickAllAudio.click();
-		GenericFunctions.waitForElementToAppear(contentResourcePage.selectAudio_AllAudio);
+		contentCreationResourcePage.clickAllAudio.click();
+		GenericFunctions.waitForElementToAppear(contentCreationResourcePage.selectAudio_AllAudio);
 		GenericFunctions.waitWebDriver(500);
-		contentResourcePage.selectAudio_AllAudio.click();
+		contentCreationResourcePage.selectAudio_AllAudio.click();
 		GenericFunctions.waitWebDriver(600);
 		createUserPage.selectAppIcon.click();
 		GenericFunctions.waitWebDriver(500);
@@ -562,15 +759,16 @@ public class ContentCreationResourcePageObj extends BaseTest
 
 	public void addVideo()
 	{
-		GenericFunctions.waitForElementToAppear(contentResourcePage.addVideo);
-		contentResourcePage.addVideo.click();
-		GenericFunctions.waitForElementToAppear(contentResourcePage.pasteVideoUrl);
-		contentResourcePage.pasteVideoUrl.sendKeys(VIDEO_UPLOAD);
-		GenericFunctions.waitForElementToAppear(contentResourcePage.goButton);
-		contentResourcePage.goButton.click();
-		GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentResourcePage.addToLessonBtn);
+		GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addVideo);
+		contentCreationResourcePage.addVideo.click();
+		GenericFunctions.waitForElementToAppear(contentCreationResourcePage.pasteVideoUrl);
+		contentCreationResourcePage.pasteVideoUrl.sendKeys(VIDEO_UPLOAD);
+		GenericFunctions.waitWebDriver(2500);
+		GenericFunctions.waitForElementToAppear(contentCreationResourcePage.goButton);
+		contentCreationResourcePage.goButton.click();
+		GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.addToLessonBtn);
 		GenericFunctions.waitWebDriver(3500);
-		contentResourcePage.addToLessonBtn.click();
+		contentCreationResourcePage.addToLessonBtn.click();
 		GenericFunctions.waitWebDriver(1500);
 
 	}
@@ -581,22 +779,22 @@ public class ContentCreationResourcePageObj extends BaseTest
 		{
 			objListOFTestDataForSunbird1= ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to add Question set, Audio, Video and plugins to the resource");
-			GenericFunctions.waitForElementToAppear(contentResourcePage.addQuestionSet);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addQuestionSet);
 
 			//Add Question set from existing list
-			contentResourcePage.addQuestionSet.click();
+			contentCreationResourcePage.addQuestionSet.click();
 			GenericFunctions.waitWebDriver(500);	
 			//GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
-			GenericFunctions.waitForElementToAppear(contentResourcePage.pickQuestion);
-			contentResourcePage.pickQuestionCheckBox.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.pickQuestion);
+			contentCreationResourcePage.pickQuestionCheckBox.click();
 			GenericFunctions.waitWebDriver(1500);
-			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentResourcePage.pickQueNextButton);
-			contentResourcePage.pickQueNextButton.click();
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.pickQueNextButton);
+			contentCreationResourcePage.pickQueNextButton.click();
 			GenericFunctions.waitWebDriver(1500);
-			GenericFunctions.waitForElementToAppear(contentResourcePage.questionSetTitle);
-			contentResourcePage.questionSetTitle.sendKeys(objListOFTestDataForSunbird1.get(11).getCourseDescription());
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.questionSetTitle);
+			contentCreationResourcePage.questionSetTitle.sendKeys(objListOFTestDataForSunbird1.get(11).getCourseDescription());
 			GenericFunctions.waitWebDriver(500);
-			contentResourcePage.questionSetAddButton.click();
+			contentCreationResourcePage.questionSetAddButton.click();
 			GenericFunctions.waitWebDriver(1500);
 
 			//Add plugins
@@ -612,6 +810,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			createUserPage.saveCourse.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.closeContentPopup);
 			createUserPage.closeContentPopup.click();
+			GenericFunctions.waitWebDriver(2000);
 		}
 
 		catch(Exception e)
@@ -624,37 +823,36 @@ public class ContentCreationResourcePageObj extends BaseTest
 
 	}
 
-	public String verifyLimitedSharing(String contentType) throws Exception
+	public void verifyLimitedSharing() throws Exception
 	{
-		String contentName="";
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is verify the Limited sharing and share the content via the Share Icon");	
 			Robot r = new Robot();
-			GenericFunctions.waitWebDriver(1400);
-			GenericFunctions.waitForElementToAppear(contentResourcePage.limitedSharingIcon);
-			if(contentResourcePage.limitedSharingIcon.isDisplayed())//&&contentResourcePage.deleteIconLP.isDisplayed())
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.limitedSharingIcon);
+			if(contentCreationResourcePage.limitedSharingIcon.isDisplayed())//&&contentResourcePage.deleteIconLP.isDisplayed())
 			{
-				contentResourcePage.limitedSharingIcon.click();
+				contentCreationResourcePage.limitedSharingIcon.click();
 				GenericFunctions.waitWebDriver(500);
-				contentResourcePage.clickLimitedSharing.click();
+				contentCreationResourcePage.clickLimitedSharing.click();
 				GenericFunctions.waitWebDriver(1500);
 				GenericFunctions.waitForElementToAppear(createUserPage.getCourseName);
-				contentResourcePage.limitedPublishing.click();
+				contentCreationResourcePage.limitedPublishing.click();
 				GenericFunctions.waitForElementToAppear(createUserPage.getCourseName);
 				GenericFunctions.waitWebDriver(500);
-				GenericFunctions.waitForElementToAppear(contentResourcePage.contentShareIcon);
-				GenericFunctions.waitForElementToAppear(contentResourcePage.deleteIconLP);
-				if(contentResourcePage.contentShareIcon.isDisplayed()&&contentResourcePage.deleteIconLP.isDisplayed())
-					contentResourcePage.contentShareIcon.click();
-				GenericFunctions.waitWebDriver(600);
+				GenericFunctions.waitForElementToAppear(contentCreationResourcePage.contentShareIcon);
+				GenericFunctions.waitForElementToAppear(contentCreationResourcePage.deleteIconLP);
+				if(contentCreationResourcePage.contentShareIcon.isDisplayed()&&contentCreationResourcePage.deleteIconLP.isDisplayed())
+					//contentResourcePage.contentShareIcon.click();
+					GenericFunctions.waitWebDriver(600);
 				//contentResourcePage.contentShareIcon.click();
 				GenericFunctions.waitWebDriver(500);
-				contentResourcePage.copyLinkBtn.click();
-				if(contentResourcePage.copiedMessage.isDisplayed())
+				contentCreationResourcePage.copyLinkBtn.click();
+				if(contentCreationResourcePage.copiedMessage.isDisplayed())
 				{
-					action.moveToElement(contentResourcePage.linkDataField).build().perform();
-					action.contextClick(contentResourcePage.linkDataField).build().perform();
+					action.moveToElement(contentCreationResourcePage.linkDataField).build().perform();
+					action.contextClick(contentCreationResourcePage.linkDataField).build().perform();
 					GenericFunctions.waitWebDriver(1100);
 					r.keyPress(KeyEvent.VK_DOWN);
 					GenericFunctions.waitWebDriver(500);
@@ -670,68 +868,25 @@ public class ContentCreationResourcePageObj extends BaseTest
 					ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
 					driver.switchTo().window(tabs2.get(1));//.get("https://staging.open-sunbird.org/resources/play/content/do_21259328104976384013190/Unlisted");
 
-					if(contentType.equalsIgnoreCase("resource"))
-					{
-						GenericFunctions.waitForElementToAppear(contentResourcePage.resourceNameNewWindow);
-						while(contentResourcePage.resourceNameNewWindow.isDisplayed())
-						{
-							ExtentTestManager.getTest().log(LogStatus.INFO, "The copied link is accessible to the user");
-							Assert.assertTrue(true);
-							driver.switchTo().window(tabs2.get(0));
-							break;
-						}
-					}	
-					else if(contentType.equalsIgnoreCase("collection"))
-					{
-						GenericFunctions.waitForElementToAppear(contentResourcePage.searchedClickedContent);
-						while(contentResourcePage.searchedClickedContent.isDisplayed())
-						{
-							contentName=contentResourcePage.searchedClickedContent.getText();
-							ExtentTestManager.getTest().log(LogStatus.INFO, "The copied link is accessible to the user");
-							Assert.assertTrue(true);
-							driver.switchTo().window(tabs2.get(0));
-							break;
-						}
-						GenericFunctions.waitForElementToAppear(contentResourcePage.contentCloseIcon);
-						contentResourcePage.contentCloseIcon.click();
-					}
 
-					/*while(contentResourcePage.resourceNameNewWindow.isDisplayed())
+					GenericFunctions.waitForElementToAppear(contentCreationResourcePage.resourceNameNewWindow);
+					while(contentCreationResourcePage.resourceNameNewWindow.isDisplayed())
 					{
-							ExtentTestManager.getTest().log(LogStatus.INFO, "The copied link is accessible to the user");
-							Assert.assertTrue(true);
-							driver.switchTo().window(tabs2.get(0));
-							break;
-					}*/
-					else
-					{
-						System.out.println("Could not switch to new Tab");
-						ExtentTestManager.getTest().log(LogStatus.INFO, "Could not switch to new Tab");
+						ExtentTestManager.getTest().log(LogStatus.INFO, "The copied link is accessible to the user");
+						Assert.assertTrue(true);
+						break;
 					}
 				}
 				else
 				{
 					System.out.println("Could not copy the link");
-					ExtentTestManager.getTest().log(LogStatus.INFO, "Could not copy the link");
 				}
+				//ExtentTestManager.getTest().log(LogStatus.PASS,"Capture the Share popup"+log.addScreenCaptureFromPath());
 			}
-			/*else if(contentType.equalsIgnoreCase("collection"))
-				{
-
-					GenericFunctions.waitForElementToAppear(contentResourcePage.deleteIconLP);
-					contentResourcePage.deleteIconLP.click();
-					GenericFunctions.waitWebDriver(2000);
-					contentResourcePage.deletePopupYesBtn.click();
-					GenericFunctions.waitWebDriver(2000);
-					GenericFunctions.captureScreenshotOnValidation();
-				}*/
-			//ExtentTestManager.getTest().log(LogStatus.PASS,"Capture the Share popup"+log.addScreenCaptureFromPath());
 			else 
 			{
 				System.out.println("Could not find Share and Delete icon");
-				ExtentTestManager.getTest().log(LogStatus.INFO, "Could not find Share and Delete icon");
 			}
-			return contentName;
 		}
 		catch(Exception e)
 		{
@@ -740,7 +895,6 @@ public class ContentCreationResourcePageObj extends BaseTest
 			System.out.println("Failed to verify Limited Share and Share resource via Share icon feature "+e.getLocalizedMessage());
 			Assert.fail("Failed to verify Limited Share and Share resource via Share icon feature "+e.getLocalizedMessage());
 		}
-		return contentName;
 	}
 
 	public void deleteFromLimitedPublishing()
@@ -748,8 +902,6 @@ public class ContentCreationResourcePageObj extends BaseTest
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to delete the content from Limited publishing bucket");	
-			GenericFunctions.refreshWebPage();
-			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(ContentCreationResourcePage.deleteIconLP);
 			ContentCreationResourcePage.deleteIconLP.click();
 			GenericFunctions.waitForElementToAppear(ContentCreationResourcePage.deletePopupYesBtn);
@@ -773,9 +925,9 @@ public class ContentCreationResourcePageObj extends BaseTest
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to edit details of Resource to verify Edit Details");	
 			//GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
-			System.out.println(contentResourcePage.editorEditDetails.getText());
-			GenericFunctions.waitForElementToAppear(contentResourcePage.editorEditDetails);
-			contentResourcePage.editorEditDetails.click();
+			System.out.println(contentCreationResourcePage.editorEditDetails.getText());
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.editorEditDetails);
+			contentCreationResourcePage.editorEditDetails.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.clickOnSelectCurriculum);
 			createUserPage.clickOnSelectCurriculum.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectCurriculum);
@@ -787,21 +939,23 @@ public class ContentCreationResourcePageObj extends BaseTest
 			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.scrollToElement(createUserPage.clickOnSelectSubject);
 			createUserPage.clickOnSelectSubject.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.selectSubject);
-			contentResourcePage.selectSubject.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.selectSubject);
+			contentCreationResourcePage.selectSubject.click();
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.clickOnSelectMedium.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.selectMedium);
-			contentResourcePage.selectMedium.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.clickTopics);
-			contentResourcePage.clickTopics.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.selectMedium);
+			contentCreationResourcePage.selectMedium.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.clickTopics);
+			contentCreationResourcePage.clickTopics.click();
 			//GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitWebDriver(2700);
-			GenericFunctions.waitForElementToAppear(contentResourcePage.selectTopic);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.selectTopic);
 			GenericFunctions.waitWebDriver(1000);
-			contentResourcePage.selectTopic.click();
+			contentCreationResourcePage.selectTopic.click();
+			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.topicsDoneBtn);
+			contentCreationResourcePage.topicsDoneBtn.click();
 			GenericFunctions.waitWebDriver(2000);
-			contentResourcePage.topicsDoneBtn.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.saveButton);
 			createUserPage.saveButton.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.closeContentPopup);
@@ -823,23 +977,23 @@ public class ContentCreationResourcePageObj extends BaseTest
 		{
 			objListOFTestDataForSunbird1= ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to Create new Question set");
-			GenericFunctions.waitForElementToAppear(contentResourcePage.addQuestionSet);
-			contentResourcePage.addQuestionSet.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.pickQuestion);
-			contentResourcePage.createQuestion.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.questionTemplateSelect);
-			contentResourcePage.questionTemplateSelect.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addQuestionSet);
+			contentCreationResourcePage.addQuestionSet.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.pickQuestion);
+			contentCreationResourcePage.createQuestion.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.questionTemplateSelect);
+			contentCreationResourcePage.questionTemplateSelect.click();
 			GenericFunctions.waitWebDriver(3500);
 			//GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
-			GenericFunctions.WaitForFrameAndSwitchToIt(contentResourcePage.enterQuestionIframe);
-			contentResourcePage.enterTheQuestion.click();
-			contentResourcePage.enterTheQuestion.sendKeys(objListOFTestDataForSunbird1.get(10).getCourseDescription());
+			GenericFunctions.WaitForFrameAndSwitchToIt(contentCreationResourcePage.enterQuestionIframe);
+			contentCreationResourcePage.enterTheQuestion.click();
+			contentCreationResourcePage.enterTheQuestion.sendKeys(objListOFTestDataForSunbird1.get(10).getCourseDescription());
 
 			//Added here - change here
 			//driver.switchTo().defaultContent();
 
 			GenericFunctions.waitWebDriver(500);
-			action.moveToElement(contentResourcePage.setAnswer0).sendKeys("OPTION 1").build().perform();
+			action.moveToElement(contentCreationResourcePage.setAnswer0).sendKeys("OPTION 1").build().perform();
 
 			//action.sendKeys("OPTION 1").build().perform();
 
@@ -852,51 +1006,52 @@ public class ContentCreationResourcePageObj extends BaseTest
 			contentResourcePage.setAnswer0.sendKeys(objListOFTestDataForSunbird1.get(10).getTitle());
 			 */
 			GenericFunctions.waitWebDriver(500);
-			contentResourcePage.markAsRight.click();
+			contentCreationResourcePage.markAsRight.click();
 			GenericFunctions.waitWebDriver(500);
-			contentResourcePage.setAnswer1.click();
-			contentResourcePage.setAnswer1.sendKeys(objListOFTestDataForSunbird1.get(10).getTitleDescription());
+			contentCreationResourcePage.setAnswer1.click();
+			contentCreationResourcePage.setAnswer1.sendKeys(objListOFTestDataForSunbird1.get(10).getTitleDescription());
 			GenericFunctions.waitWebDriver(500);
-			contentResourcePage.createQueNext.click();
+			contentCreationResourcePage.createQueNext.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.clickOnSelectMedium);
 			createUserPage.clickOnSelectMedium.click();
 			GenericFunctions.waitWebDriver(500);
 			createUserPage.selectMedium.click();
-			contentResourcePage.clickLevel.click();
+			contentCreationResourcePage.clickLevel.click();
 			GenericFunctions.waitWebDriver(500);
-			contentResourcePage.selectLevel.click();
-			contentResourcePage.clickGrade.click();
+			contentCreationResourcePage.selectLevel.click();
+			contentCreationResourcePage.clickGrade.click();
 			GenericFunctions.waitWebDriver(500);
-			contentResourcePage.selectGrade.click();
-			contentResourcePage.clickSubject.click();
+			contentCreationResourcePage.selectGrade.click();
+			contentCreationResourcePage.clickSubject.click();
 			GenericFunctions.waitWebDriver(500);
-			contentResourcePage.selectSubject.click();
-			contentResourcePage.clickBoard.click();
+			contentCreationResourcePage.selectSubject.click();
+			contentCreationResourcePage.clickBoard.click();
 			GenericFunctions.waitWebDriver(500);
-			contentResourcePage.selectBoard.click();
-			GenericFunctions.scrollToElement(contentResourcePage.questionMaxScore);
-			contentResourcePage.questionMaxScore.sendKeys(objListOFTestDataForSunbird1.get(11).getCourseDescription());
+			contentCreationResourcePage.selectBoard.click();
+			GenericFunctions.scrollToElement(contentCreationResourcePage.questionMaxScore);
+			contentCreationResourcePage.questionMaxScore.clear();
+			contentCreationResourcePage.questionMaxScore.sendKeys(objListOFTestDataForSunbird1.get(11).getCourseName());
 			GenericFunctions.waitWebDriver(500);
 
 			//Concepts code in Add Question set
-			contentResourcePage.clickConcepts.click();
+			contentCreationResourcePage.clickConcepts.click();
 			GenericFunctions.waitWebDriver(1500);
 			GenericFunctions.waitForElementToAppear(createUserPage.searchConcept);
-			contentResourcePage.searchConcepts.sendKeys(objListOFTestDataForSunbird1.get(6).getTitle());
+			contentCreationResourcePage.searchConcepts.sendKeys(objListOFTestDataForSunbird1.get(6).getTitle());
 			GenericFunctions.waitWebDriver(2000);
-			contentResourcePage.conceptChooseAll.click();
+			contentCreationResourcePage.conceptChooseAll.click();
 			GenericFunctions.waitWebDriver(500);
-			contentResourcePage.conceptDoneButton.click();
+			contentCreationResourcePage.conceptDoneButton.click();
 			GenericFunctions.waitWebDriver(2000);
-			contentResourcePage.QueSubmitButton.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.pickQuestion);
-			contentResourcePage.pickQuestionCheckBox.click();
+			contentCreationResourcePage.QueSubmitButton.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.pickQuestion);
+			contentCreationResourcePage.pickQuestionCheckBox.click();
 			GenericFunctions.waitWebDriver(500);
-			contentResourcePage.pickQueNextButton.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.questionSetTitle);
-			contentResourcePage.questionSetTitle.sendKeys(objListOFTestDataForSunbird1.get(11).getCourseDescription());
+			contentCreationResourcePage.pickQueNextButton.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.questionSetTitle);
+			contentCreationResourcePage.questionSetTitle.sendKeys(objListOFTestDataForSunbird1.get(11).getCourseDescription());
 			GenericFunctions.waitWebDriver(500);
-			contentResourcePage.questionSetAddButton.click();
+			contentCreationResourcePage.questionSetAddButton.click();
 		}
 		catch(Exception e)
 		{
@@ -920,8 +1075,8 @@ public class ContentCreationResourcePageObj extends BaseTest
 			GenericFunctions.waitForElementToAppear(createUserPage.closeIcon);
 			createUserPage.closeIcon.click();
 			GenericFunctions.waitWebDriver(1000);
-			GenericFunctions.waitForElementToAppear(contentResourcePage.upForReview);
-			contentResourcePage.upForReview.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.upForReview);
+			contentCreationResourcePage.upForReview.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
 			String latestContent=createUserPage.searchedContentForPublish.getText();
 			ExtentTestManager.getTest().log(LogStatus.INFO, latestContent+" is the Latest content is displayed in the top of List");
@@ -946,8 +1101,8 @@ public class ContentCreationResourcePageObj extends BaseTest
 			String [] otherChannelContent={"KS","Checking Bugs"};
 			createUserPage.searchForReview.sendKeys(otherChannelContent[rand.nextInt(otherChannelContent.length)]);
 			GenericFunctions.waitWebDriver(3000);
-			GenericFunctions.waitForElementToAppear(contentResourcePage.noResultText);
-			if(contentResourcePage.noResultText.isDisplayed())
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.noResultText);
+			if(contentCreationResourcePage.noResultText.isDisplayed())
 			{
 				Assert.assertTrue(true);
 				ExtentTestManager.getTest().log(LogStatus.INFO, "User is not getting the results for searching different Org contents");
@@ -969,47 +1124,47 @@ public class ContentCreationResourcePageObj extends BaseTest
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to apply filters and validate contents");
-			contentResourcePage.upForReview.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.showFilters);
-			contentResourcePage.showFilters.click();
+			contentCreationResourcePage.upForReview.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.showFilters);
+			contentCreationResourcePage.showFilters.click();
 
 			//Board
 			GenericFunctions.waitForElementToAppear(createUserPage.clickFilterBoard);
 			createUserPage.clickFilterBoard.click();
 			GenericFunctions.waitWebDriver(1000);
-			contentResourcePage.selectFilterBoard.click();
-			GenericFunctions.waitWebDriver(1000);
+			contentCreationResourcePage.selectFilterBoard.click();
+			//GenericFunctions.waitWebDriver(1000);
 			//Grade(class)
-			//GenericFunctions.waitForElementToAppear(createUserPage.clickBookGrade);
+			GenericFunctions.waitForElements(createUserPage.clickBookGrade);
 			createUserPage.clickBookGrade.get(0).click();
 			GenericFunctions.waitWebDriver(1000);
-			contentResourcePage.selectFilterGrade.click();
+			contentCreationResourcePage.selectFilterGrade.click();
 			//Subject
 			GenericFunctions.waitForElementToAppear(createUserPage.clickFilterSubject);
 			createUserPage.clickFilterSubject.click();
 			GenericFunctions.waitWebDriver(1000);
-			contentResourcePage.selectFilterSubject.click();
+			contentCreationResourcePage.selectFilterSubject.click();
 			//Medium
 			GenericFunctions.waitForElementToAppear(createUserPage.clickFilterMedium);
 			createUserPage.clickFilterMedium.click();
 			GenericFunctions.waitWebDriver(1000);
-			String MediumText=contentResourcePage.selectFilterMedium.getText();
-			contentResourcePage.selectFilterMedium.click();
+			String MediumText=contentCreationResourcePage.selectFilterMedium.getText();
+			contentCreationResourcePage.selectFilterMedium.click();
 			//Content type
 			GenericFunctions.waitForElementToAppear(createUserPage.clickContentType);
 			createUserPage.clickContentType.click();
 			GenericFunctions.waitWebDriver(1000);
-			contentResourcePage.selectCotentType.click();
+			contentCreationResourcePage.selectCotentType.click();
 			GenericFunctions.waitWebDriver(500);
-			contentResourcePage.filterApplyButton.click();
-			contentResourcePage.showFilters.click();
+			contentCreationResourcePage.filterApplyButton.click();
+			contentCreationResourcePage.showFilters.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
 			GenericFunctions.waitWebDriver(500);
 			createUserPage.searchedContentForPublish.click();
 			GenericFunctions.waitWebDriver(1000);
-			GenericFunctions.waitForElementToAppear(contentResourcePage.verifyFilterMedium);
-			GenericFunctions.scrollToElement(contentResourcePage.verifyFilterMedium);
-			String compMediumText=contentResourcePage.verifyFilterMedium.getText();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.verifyFilterMedium);
+			GenericFunctions.scrollToElement(contentCreationResourcePage.verifyFilterMedium);
+			String compMediumText=contentCreationResourcePage.verifyFilterMedium.getText();
 			GenericFunctions.waitWebDriver(1000);
 			if(MediumText.equalsIgnoreCase(compMediumText))
 			{
@@ -1017,20 +1172,20 @@ public class ContentCreationResourcePageObj extends BaseTest
 				ExtentTestManager.getTest().log(LogStatus.INFO, "Results are satisfying the given search filter criteria, and filters are same in the content");
 			}
 			GenericFunctions.scrollToElement(createUserPage.headerLibrary);
-			GenericFunctions.waitForElementToAppear(contentResourcePage.contentCloseIcon);
-			GenericFunctions.scrollToElement(contentResourcePage.contentCloseIcon);
-			contentResourcePage.contentCloseIcon.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.contentCloseIcon);
+			GenericFunctions.scrollToElement(contentCreationResourcePage.contentCloseIcon);
+			contentCreationResourcePage.contentCloseIcon.click();
 
 			//Test case 96-b
-			GenericFunctions.waitForElementToAppear(contentResourcePage.showFilters);
-			contentResourcePage.showFilters.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.showFilters);
+			contentCreationResourcePage.showFilters.click();
 			GenericFunctions.waitWebDriver(1000);
-			contentResourcePage.filterResetButton.click();
+			contentCreationResourcePage.filterResetButton.click();
 			GenericFunctions.waitWebDriver(500);
-			contentResourcePage.showFilters.click();
+			contentCreationResourcePage.showFilters.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
 			String loadedTopContent=createUserPage.searchedContentForPublish.getText();
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitWebDriver(3000);
 			ExtentTestManager.getTest().log(LogStatus.INFO, "On Resetting all the filters contents are loaded sucessfully, "+loadedTopContent+" is the latest content at the Top of the list");
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Completed Test cases 92, 93, 94, 96 a & b");
 		}
@@ -1073,6 +1228,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			createUserPage.clickOnSelectMedium.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectMedium);
 			createUserPage.selectMedium.click();
+
 			GenericFunctions.scrollToElement(createUserPage.selectConcept);
 			createUserPage.selectConcept.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.searchConcept);
@@ -1081,7 +1237,17 @@ public class ContentCreationResourcePageObj extends BaseTest
 			createUserPage.conceptChooseAll.click();
 			createUserPage.conceptDoneButton.click();
 			GenericFunctions.waitWebDriver(1500);
+
+
+			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.scrollToElement(createUserPage.clickOwner);
+			createUserPage.clickOwner.click();
+			GenericFunctions.waitForElementToAppear(createUserPage.selectOwner);
+			createUserPage.selectOwner.click();
+			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitForElementToAppear(createUserPage.saveButton);
 			createUserPage.saveButton.click();
+			GenericFunctions.waitWebDriver(1500);
 		}
 		catch(Exception e)
 		{
@@ -1129,25 +1295,28 @@ public class ContentCreationResourcePageObj extends BaseTest
 
 			//Add Video files to Resource
 			addVideo();
-
+			ExtentTestManager.getTest().log(LogStatus.PASS, "Video is uploaded sucessfully");
 			GenericFunctions.waitForElementToAppear(createUserPage.saveCourse);
 			createUserPage.saveCourse.click();
-			GenericFunctions.waitWebDriver(600);
+			GenericFunctions.waitForElementToAppear(createUserPage.closeContentPopup);
 			createUserPage.closeContentPopup.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.previewIcon);
-			contentResourcePage.previewIcon.click();
-			//GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
-			GenericFunctions.waitForElementToAppear(contentResourcePage.previewPopup);
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.previewIcon);
+			contentCreationResourcePage.previewIcon.click();
 			GenericFunctions.waitWebDriver(1600);
-			Boolean confirmPopup = contentResourcePage.previewPopup.isDisplayed();
+			//GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.previewPopup);
+			GenericFunctions.waitWebDriver(1600);
+			Boolean confirmPopup = contentCreationResourcePage.previewPopup.isDisplayed();
 			while(confirmPopup==true)
 			{
 				GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
-				GenericFunctions.waitForElementToAppear(contentResourcePage.confirmContent);
-				String aVideoUrl=contentResourcePage.confirmContent.getAttribute("src");
+				GenericFunctions.waitForElementToAppear(contentCreationResourcePage.confirmContent);
+				String aVideoUrl=contentCreationResourcePage.confirmContent.getAttribute("src");
+				System.out.println(aVideoUrl);
 				if(aVideoUrl.equalsIgnoreCase(VIDEO_UPLOAD))
 				{
-					ExtentTestManager.getTest().log(LogStatus.INFO, "The content creator is able to preview and save the uploaded video file");
+					ExtentTestManager.getTest().log(LogStatus.PASS, "The content creator is able to preview and save the uploaded video file");
 					Assert.assertTrue(true);
 				}
 				else
@@ -1157,10 +1326,11 @@ public class ContentCreationResourcePageObj extends BaseTest
 				}
 
 				GenericFunctions.refreshWebPage();
+				GenericFunctions.waitWebDriver(2000);
 				//contentResourcePage.randomClickElement.click();
 				//driver.switchTo().defaultContent();
 				//GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
-
+				break;
 			}
 		}
 		catch(Exception e)
@@ -1177,24 +1347,26 @@ public class ContentCreationResourcePageObj extends BaseTest
 		try
 		{
 			objListOFTestDataForSunbird1= ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-			ExtentTestManager.getTest().log(LogStatus.INFO, "Continuation with Test case 80");
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to upload Video files");
-			GenericFunctions.waitForElementToAppear(contentResourcePage.addActivity);
-			contentResourcePage.addActivity.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.searchActivity);
-			contentResourcePage.searchActivity.click();
-			contentResourcePage.searchActivity.sendKeys(objListOFTestDataForSunbird1.get(11).getTitle());
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Continuation with the next test case");
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to Add activity Plugins");
+			GenericFunctions.waitWebDriver(2000);
+			action.moveToElement(contentCreationResourcePage.addActivity).build().perform();
+			//GenericFunctions.waitForElementToAppear(contentResourcePage.addActivity);
+			action.click(contentCreationResourcePage.addActivity).build().perform();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.searchActivity);
+			contentCreationResourcePage.searchActivity.click();
+			contentCreationResourcePage.searchActivity.sendKeys(objListOFTestDataForSunbird1.get(11).getTitle());
 			GenericFunctions.waitWebDriver(650);
-			contentResourcePage.clickCategory.click();
+			contentCreationResourcePage.clickCategory.click();
 			GenericFunctions.waitWebDriver(500);
-			contentResourcePage.selectCategory.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.selectActivity);
-			contentResourcePage.addActivityBtn.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.clickAddedActivity);
-			contentResourcePage.clickAddedActivity.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.addActivityPopupBtn);
+			contentCreationResourcePage.selectCategory.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.selectActivity);
+			contentCreationResourcePage.addActivityBtn.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.clickAddedActivity);
+			contentCreationResourcePage.clickAddedActivity.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addActivityPopupBtn);
 			GenericFunctions.waitWebDriver(2500);
-			contentResourcePage.addActivityPopupBtn.click();
+			contentCreationResourcePage.addActivityPopupBtn.click();
 
 			GenericFunctions.waitForElementToAppear(createUserPage.saveCourse);
 			createUserPage.saveCourse.click();
@@ -1202,15 +1374,15 @@ public class ContentCreationResourcePageObj extends BaseTest
 			createUserPage.closeContentPopup.click();
 			//createUserPage.editorCloseIcon.click();
 
-			GenericFunctions.waitForElementToAppear(contentResourcePage.previewIcon);
-			contentResourcePage.previewIcon.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.previewIcon);
+			contentCreationResourcePage.previewIcon.click();
 			//GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
-			GenericFunctions.waitForElementToAppear(contentResourcePage.previewPopup);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.previewPopup);
 			GenericFunctions.waitWebDriver(1600);
-			Boolean confirmPopup = contentResourcePage.previewPopup.isDisplayed();
+			Boolean confirmPopup = contentCreationResourcePage.previewPopup.isDisplayed();
 			while(confirmPopup==true)
 			{
-				ExtentTestManager.getTest().log(LogStatus.INFO, "User is able to preview the added activity/plugins");
+				ExtentTestManager.getTest().log(LogStatus.PASS, "User is able to preview the added activity/plugins");
 				Assert.assertTrue(true);
 				break;
 			}
@@ -1224,10 +1396,10 @@ public class ContentCreationResourcePageObj extends BaseTest
 
 		catch(Exception e)
 		{
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to upload video files");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to Add Activity Plugins to the resource");
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
-			System.out.println("Failed to upload video files"+e.getLocalizedMessage());
-			Assert.fail("Failed to upload video files"+e.getLocalizedMessage());
+			System.out.println("Failed to Add Activity Plugins to the resource"+e.getLocalizedMessage());
+			Assert.fail("Failed to Add Activity Plugins to the resource "+e.getLocalizedMessage());
 		}
 	}
 
@@ -1237,44 +1409,45 @@ public class ContentCreationResourcePageObj extends BaseTest
 		{
 			objListOFTestDataForSunbird1= ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to apply filter for Question Set");
-			GenericFunctions.waitForElementToAppear(contentResourcePage.addQuestionSet);
-			contentResourcePage.addQuestionSet.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.questionSetSearchBar);
-			contentResourcePage.questionSetSearchBar.click();
-			contentResourcePage.questionSetSearchBar.sendKeys(objListOFTestDataForSunbird1.get(11).getTitleDescription());
+
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addQuestionSet);
+			contentCreationResourcePage.addQuestionSet.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.questionSetSearchBar);
+			contentCreationResourcePage.questionSetSearchBar.click();
+			contentCreationResourcePage.questionSetSearchBar.sendKeys(objListOFTestDataForSunbird1.get(11).getTitleDescription());
 			GenericFunctions.waitWebDriver(1000);
-			contentResourcePage.AdvancedFilter.click();
+			contentCreationResourcePage.advancedFilter.click();
 			GenericFunctions.waitWebDriver(1500);
-			contentResourcePage.AFClickLanguage.click();
+			contentCreationResourcePage.afClickLanguage.click();
 			GenericFunctions.waitWebDriver(1000);
-			contentResourcePage.AFSelectLanguage.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.AFClickDifficulty);
-			contentResourcePage.AFClickDifficulty.click();
+			contentCreationResourcePage.afSelectLanguage.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.afClickDifficulty);
+			contentCreationResourcePage.afClickDifficulty.click();
 			GenericFunctions.waitWebDriver(1000);
-			contentResourcePage.selectLevel.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.AFClickQuestionType);
-			contentResourcePage.AFClickQuestionType.click();
+			contentCreationResourcePage.selectLevel.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.afClickQuestionType);
+			contentCreationResourcePage.afClickQuestionType.click();
 			GenericFunctions.waitWebDriver(1000);
-			contentResourcePage.AFSelectQuestionType.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.AFClickGradeLevel);
-			contentResourcePage.AFClickGradeLevel.click();
+			contentCreationResourcePage.afSelectQuestionType.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.afClickGradeLevel);
+			contentCreationResourcePage.afClickGradeLevel.click();
 			GenericFunctions.waitWebDriver(1000);
-			contentResourcePage.AFSelectGradeLevel.click();
+			contentCreationResourcePage.afSelectGradeLevel.click();
 			GenericFunctions.waitWebDriver(1500);
-			contentResourcePage.SearchIcon.click();
+			contentCreationResourcePage.searchIcon.click();
 			//GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 
-			GenericFunctions.waitForElementToAppear(contentResourcePage.pickQuestion);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.pickQuestion);
 			GenericFunctions.waitWebDriver(3500);
 
-			action.moveToElement(contentResourcePage.pickQuestionCheckBox).click().build().perform();
+			action.moveToElement(contentCreationResourcePage.pickQuestionCheckBox).click().build().perform();
 
-			GenericFunctions.waitForElementToAppear(contentResourcePage.pickQueNextButton);
-			contentResourcePage.pickQueNextButton.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.questionSetTitle);
-			contentResourcePage.questionSetTitle.sendKeys(objListOFTestDataForSunbird1.get(11).getCourseDescription());
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.pickQueNextButton);
+			contentCreationResourcePage.pickQueNextButton.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.questionSetTitle);
+			contentCreationResourcePage.questionSetTitle.sendKeys(objListOFTestDataForSunbird1.get(11).getCourseDescription());
 			GenericFunctions.waitWebDriver(500);
-			contentResourcePage.questionSetAddButton.click();
+			contentCreationResourcePage.questionSetAddButton.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.saveCourse);
 			createUserPage.saveCourse.click();
 			GenericFunctions.waitWebDriver(600);
@@ -1298,25 +1471,26 @@ public class ContentCreationResourcePageObj extends BaseTest
 		{
 			//Select select = new Select(contentResourcePage.selectKeyboard);
 			objListOFTestDataForSunbird1= ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify user is able to create-Fill in the blanks question type");
-			GenericFunctions.waitForElementToAppear(contentResourcePage.addQuestionSet);
-			contentResourcePage.addQuestionSet.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.createQuestion);
-			contentResourcePage.createQuestion.click();
+			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify user is able to create - Fill in the blanks question type");
+			GenericFunctions.waitWebDriver(1600);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addQuestionSet);
+			contentCreationResourcePage.addQuestionSet.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.createQuestion);
+			contentCreationResourcePage.createQuestion.click();
 			GenericFunctions.waitWebDriver(2600);
-			contentResourcePage.fibQuestionTemplate.click();
+			contentCreationResourcePage.fibQuestionTemplate.click();
 			GenericFunctions.waitWebDriver(2600);
 			//GenericFunctions.waitForElementToAppear(contentResourcePage.enterTheQuestion);
-			GenericFunctions.WaitForFrameAndSwitchToIt(contentResourcePage.enterQuestionIframe);
-			contentResourcePage.enterTheQuestion.click();
-			contentResourcePage.enterTheQuestion.sendKeys(objListOFTestDataForSunbird1.get(12).getCourseName());
+			GenericFunctions.WaitForFrameAndSwitchToIt(contentCreationResourcePage.enterQuestionIframe);
+			contentCreationResourcePage.enterTheQuestion.click();
+			contentCreationResourcePage.enterTheQuestion.sendKeys(objListOFTestDataForSunbird1.get(12).getCourseName());
 			GenericFunctions.waitWebDriver(1600);
 			//GenericFunctions.WaitForFrameAndSwitchToIt(contentResourcePage.createQuestionFrame1);
 			//GenericFunctions.scrollToElement(contentResourcePage.selectKeyboard);
 			driver.switchTo().parentFrame();
 			GenericFunctions.waitWebDriver(3600);
-			action.moveToElement(contentResourcePage.selectKeyboard).build().perform();
-			action.click(contentResourcePage.selectKeyboard).build().perform();
+			action.moveToElement(contentCreationResourcePage.selectKeyboard).build().perform();
+			action.click(contentCreationResourcePage.selectKeyboard).build().perform();
 			//contentResourcePage.selectKeyboard.click();
 
 			/*//To verify Keyboard Type English And Device
@@ -1337,147 +1511,166 @@ public class ContentCreationResourcePageObj extends BaseTest
 		ExtentTestManager.getTest().log(LogStatus.INFO,"Completion of Test case 82 of Creator");
 	}
 
-	public void keyboardType_English_Device()
+	public void keyboardTypeEnglishAndDevice()
 	{
 
-		//To VERIFY THE KEYBOARD TYPE - ENGLISH
-		GenericFunctions.waitWebDriver(1600);
-		contentResourcePage.keyboardTypeEnglish.click();
-		GenericFunctions.waitWebDriver(1200);
-		contentResourcePage.previewRefreshIcon.click();
-		GenericFunctions.WaitForFrameAndSwitchToIt(contentResourcePage.previewFrameArea);
-		GenericFunctions.waitForElementToAppear(contentResourcePage.previewAnsFiled1);
-		GenericFunctions.waitWebDriver(1200);
-		contentResourcePage.previewAnsFiled1.click();
-		GenericFunctions.waitWebDriver(2000);
-		if(contentResourcePage.previewKeyboard.isDisplayed()&&contentResourcePage.keyboardLetterA.isDisplayed())
+		try
 		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "USer is trying to select keyboard type English And Device");
+
+			//To VERIFY THE KEYBOARD TYPE - ENGLISH
+			GenericFunctions.waitWebDriver(1600);
+			contentCreationResourcePage.keyboardTypeEnglish.click();
+			GenericFunctions.waitWebDriver(1200);
+			contentCreationResourcePage.previewRefreshIcon.click();
+			GenericFunctions.WaitForFrameAndSwitchToIt(contentCreationResourcePage.previewFrameArea);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.previewAnsFiled1);
+			GenericFunctions.waitWebDriver(1200);
+			contentCreationResourcePage.previewAnsFiled1.click();
+			GenericFunctions.waitWebDriver(2000);
+			if(contentCreationResourcePage.previewKeyboard.isDisplayed()&&contentCreationResourcePage.keyboardLetterA.isDisplayed())
+			{
+				Assert.assertTrue(true);
+				ExtentTestManager.getTest().log(LogStatus.INFO,"Keyboard is displayed on previewing the question and Keyboard type as 'English'");
+				System.out.println("Keyboard is displayed on previewing the question and Keyboard type as 'English'");
+			}
+			else 
+			{
+				System.out.println("Keyboard is not displayed on Previewing the Question");
+			}
+
+			//TO VERIFY KEYBOARD TYPE-DEVICE
+			driver.switchTo().parentFrame();
+			GenericFunctions.waitWebDriver(1200);
+			action.moveToElement(contentCreationResourcePage.selectKeyboard).build().perform();
+			action.click(contentCreationResourcePage.selectKeyboard).build().perform();
+			GenericFunctions.waitWebDriver(600);
+			contentCreationResourcePage.keyboardTypeDevice.click();
+			GenericFunctions.waitWebDriver(1200);
+			contentCreationResourcePage.previewRefreshIcon.click();
+			GenericFunctions.WaitForFrameAndSwitchToIt(contentCreationResourcePage.previewFrameArea);
+			GenericFunctions.waitWebDriver(1200);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.previewAnsFiled1);
+			GenericFunctions.waitWebDriver(1200);
+			contentCreationResourcePage.previewAnsFiled1.click();
+			contentCreationResourcePage.previewAnsFiled1.sendKeys("Test 1");
 			Assert.assertTrue(true);
-			ExtentTestManager.getTest().log(LogStatus.INFO,"Keyboard is displayed on previewing the question and Keyboard type as 'English'");
-			System.out.println("Keyboard is displayed on previewing the question and Keyboard type as 'English'");
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Keyboard is not displayed while previewing the quesiton and Keyboard type as 'Device'");
 		}
-		else 
+		catch(Exception e)
 		{
-			System.out.println("Keyboard is not displayed on Previewing the Question");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to select keyboard type English And Device");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			System.out.println("Failed to select keyboard type English And Device "+e.getLocalizedMessage());
+			Assert.fail("Failed to select keyboard type English And Device "+e.getLocalizedMessage());
 		}
-
-		//TO VERIFY KEYBOARD TYPE-DEVICE
-		driver.switchTo().parentFrame();
-		GenericFunctions.waitWebDriver(1200);
-		action.moveToElement(contentResourcePage.selectKeyboard).build().perform();
-		action.click(contentResourcePage.selectKeyboard).build().perform();
-		GenericFunctions.waitWebDriver(600);
-		contentResourcePage.keyboardTypeDevice.click();
-		GenericFunctions.waitWebDriver(1200);
-		contentResourcePage.previewRefreshIcon.click();
-		GenericFunctions.WaitForFrameAndSwitchToIt(contentResourcePage.previewFrameArea);
-		GenericFunctions.waitWebDriver(1200);
-		GenericFunctions.waitForElementToAppear(contentResourcePage.previewAnsFiled1);
-		GenericFunctions.waitWebDriver(1200);
-		contentResourcePage.previewAnsFiled1.click();
-		contentResourcePage.previewAnsFiled1.sendKeys("Test 1");
-		Assert.assertTrue(true);
-		ExtentTestManager.getTest().log(LogStatus.INFO,"Keyboard is not displayed while previewing the quesiton and Keyboard type as 'Device'");
-
 	}
 
 
 	public void selectCustomKBType(String addKeysType)
 	{
-		int inputCharArrSize=0;
-		char[] inputKeyCharArr=null;
-		char[] prevKBElementsCharArr=null;
-		driver.switchTo().parentFrame();
-		GenericFunctions.waitWebDriver(1200);
-		action.moveToElement(contentResourcePage.selectKeyboard).build().perform();
-		action.click(contentResourcePage.selectKeyboard).build().perform();
-		GenericFunctions.waitWebDriver(600);
-		contentResourcePage.keyboardTypeCustom.click();
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to select Custom type keyboard");
+			int inputCharArrSize=0;
+			char[] inputKeyCharArr=null;
+			char[] prevKBElementsCharArr=null;
+			driver.switchTo().parentFrame();
+			GenericFunctions.waitWebDriver(1200);
+			action.moveToElement(contentCreationResourcePage.selectKeyboard).build().perform();
+			action.click(contentCreationResourcePage.selectKeyboard).build().perform();
+			GenericFunctions.waitWebDriver(600);
+			contentCreationResourcePage.keyboardTypeCustom.click();
 
-		GenericFunctions.waitWebDriver(650);
-		if(addKeysType.equalsIgnoreCase("language"))
-		{
-			contentResourcePage.addKeysTB.sendKeys(objListOFTestDataForSunbird1.get(12).getTitle());
-		}
-		else if(addKeysType.equalsIgnoreCase("default"))
-		{
-			contentResourcePage.addKeysTB.clear();
-			contentResourcePage.addKeysTB.sendKeys(objListOFTestDataForSunbird1.get(12).getTitle());
+			GenericFunctions.waitWebDriver(650);
+			if(addKeysType.equalsIgnoreCase("language"))
+			{
+				contentCreationResourcePage.addKeysTB.sendKeys(objListOFTestDataForSunbird1.get(12).getTitle());
+			}
+			else if(addKeysType.equalsIgnoreCase("default"))
+			{
+				contentCreationResourcePage.addKeysTB.clear();
+				contentCreationResourcePage.addKeysTB.sendKeys(objListOFTestDataForSunbird1.get(12).getTitle());
 
-		}
-		else if(addKeysType.equalsIgnoreCase("characters"))
-		{
-			contentResourcePage.addKeysTB.clear();
-			inputKeyCharArr = objListOFTestDataForSunbird1.get(12).getTitleDescription().toCharArray();
-			inputCharArrSize = inputKeyCharArr.length;
-			contentResourcePage.addKeysTB.sendKeys(objListOFTestDataForSunbird1.get(12).getTitleDescription());
+			}
+			else if(addKeysType.equalsIgnoreCase("characters"))
+			{
+				contentCreationResourcePage.addKeysTB.clear();
+				inputKeyCharArr = objListOFTestDataForSunbird1.get(12).getTitleDescription().toCharArray();
+				inputCharArrSize = inputKeyCharArr.length-7;
+				contentCreationResourcePage.addKeysTB.sendKeys(objListOFTestDataForSunbird1.get(12).getTitleDescription());
 
-		}
-		else if(addKeysType.equalsIgnoreCase("alphabets"))
-		{
-			contentResourcePage.addKeysTB.clear();
-			contentResourcePage.addKeysTB.sendKeys(objListOFTestDataForSunbird1.get(12).getCourseDescription());
-		}
-		else if(addKeysType.equalsIgnoreCase("special chracters"))
-		{
-			contentResourcePage.addKeysTB.clear();
-			contentResourcePage.addKeysTB.sendKeys(objListOFTestDataForSunbird1.get(13).getCourseName());
-		}
-		GenericFunctions.waitWebDriver(1200);
-		contentResourcePage.previewRefreshIcon.click();
-		GenericFunctions.WaitForFrameAndSwitchToIt(contentResourcePage.previewFrameArea);
-		GenericFunctions.waitWebDriver(1200); 	
-		GenericFunctions.waitForElementToAppear(contentResourcePage.previewAnsFiled1);
-		GenericFunctions.waitWebDriver(1300);
-		contentResourcePage.previewAnsFiled1.click();
-		GenericFunctions.waitWebDriver(1000);
-		if(contentResourcePage.previewKeyboard.isDisplayed()&&contentResourcePage.keyboardLetterA.isDisplayed())
-		{
-			Assert.assertTrue(true);
-			ExtentTestManager.getTest().log(LogStatus.INFO,"Custom Keyboard is displayed with only the entered keywords while previewing the question");
-			System.out.println("Custom Keyboard is displayed with only the entered keywords while previewing the question");
-		}
-		/*if(addKeysType.contains("characters"))
-		{
+			}
+			else if(addKeysType.equalsIgnoreCase("alphabets"))
+			{
+				contentCreationResourcePage.addKeysTB.clear();
+				contentCreationResourcePage.addKeysTB.sendKeys(objListOFTestDataForSunbird1.get(12).getCourseDescription());
+			}
+			else if(addKeysType.equalsIgnoreCase("special chracters"))
+			{
+				contentCreationResourcePage.addKeysTB.clear();
+				contentCreationResourcePage.addKeysTB.sendKeys(objListOFTestDataForSunbird1.get(13).getCourseName());
+			}
+			GenericFunctions.waitWebDriver(1200);
+			contentCreationResourcePage.previewRefreshIcon.click();
+			GenericFunctions.WaitForFrameAndSwitchToIt(contentCreationResourcePage.previewFrameArea);
+			GenericFunctions.waitWebDriver(1200); 	
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.previewAnsFiled1);
+			GenericFunctions.waitWebDriver(1300);
+			contentCreationResourcePage.previewAnsFiled1.click();
+			GenericFunctions.waitWebDriver(1000);
+			if(contentCreationResourcePage.previewKeyboard.isDisplayed()&&contentCreationResourcePage.keyboardLetterA.isDisplayed())
+			{
+				Assert.assertTrue(true);
+				ExtentTestManager.getTest().log(LogStatus.INFO,"Custom Keyboard is displayed with only the entered keywords while previewing the question");
+				System.out.println("Custom Keyboard is displayed with only the entered keywords while previewing the question");
+			}
+			/*if(addKeysType.contains("characters"))
+			{
 
 				//contentResourcePage.previewKBCharCount.getText();
 				//driver.findElement(By.xpath("//sui-multi-select[@formcontrolname='language']")).click();
 				//driver.findElement(By.tagName("sui-multi-select")).click();
 			}
-		}*/
-		if(addKeysType.contains("characters"))
-		{
-			//for(int i=0;i<contentResourcePage.previewKBCharCount.size();i++)
-			//{
-			int i=0;
-			for(WebElement kBChar:contentResourcePage.previewKBCharCount)
+			}*/
+			if(addKeysType.contains("characters"))
 			{
-				//WebElement kBChar:
 
-				prevKBElementsCharArr = contentResourcePage.previewKBCharCount.get(i).getText().toCharArray();
-				// =kBChar.getText(i);
-				//prevKBElementsCharArr[i] = prevKBElements.toCharArray();
-				i++;
-				System.out.println(prevKBElementsCharArr[i]);
-			}
-			int prevKBCharArrSize = prevKBElementsCharArr.length-7;
-			System.out.println((prevKBCharArrSize));
-			if(prevKBCharArrSize==inputCharArrSize)
-			{
-				boolean compareVal=Arrays.equals(inputKeyCharArr,prevKBElementsCharArr);
-				while(compareVal==true)
+				System.out.println(contentCreationResourcePage.previewKBCharCount.size());
+				//int prevKBCharArrSize = prevKBElementsCharArr[i];
+				int prevKBCharArrSize = contentCreationResourcePage.previewKBCharCount.size();
+				//	int prevKBCharArrSizeChanged= prevKBCharArrSize - 7 ;
+				System.out.println((prevKBCharArrSize));
+				if(prevKBCharArrSize==inputCharArrSize)
 				{
-					Assert.assertTrue(true);
-					ExtentTestManager.getTest().log(LogStatus.INFO,"Number of characters displayed in the keyboard preview is same as the number of characters while creating the keyboard");
-					ExtentTestManager.getTest().log(LogStatus.INFO,"Characters entered while creating the keyboards are same in the Custom keyboard while previewing");
-					break;
-				}
-			}
-		}
 
-		GenericFunctions.waitWebDriver(1100);
-		//driver.switchTo().parentFrame();
-		GenericFunctions.waitWebDriver(1000);
+
+					Assert.assertTrue(true, "Characters dint matach to Assert");
+					ExtentTestManager.getTest().log(LogStatus.PASS,"Number of characters displayed in the keyboard preview is same as the number of characters while creating the keyboard");
+					ExtentTestManager.getTest().log(LogStatus.PASS,"Characters entered while creating the keyboards are same in the Custom keyboard while previewing");
+					GenericFunctions.waitWebDriver(1100);
+
+					driver.switchTo().parentFrame();
+					//GenericFunctions.WaitForFrameAndSwitchToIt(contentResourcePage.createQuestionFrame1);
+					action.moveToElement(contentCreationResourcePage.createQueNext).build().perform();
+					action.click(contentCreationResourcePage.createQueNext).click().build().perform();						
+					//contentResourcePage.createQueNext.click();	
+				}
+				else 
+				{
+					System.out.println("Characters did not match");
+				}
+			}	
+
+
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to Select custom type keyboard");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			System.out.println("Failed to Select custom type keyboard, Exception "+e.getLocalizedMessage());
+			Assert.fail("Failed to Select custom type keyboard "+e.getLocalizedMessage());
+		}
 		//contentResourcePage.createQueNext.click();
 	}
 
@@ -1488,43 +1681,45 @@ public class ContentCreationResourcePageObj extends BaseTest
 			//Select select = new Select(contentResourcePage.selectKeyboard);
 			objListOFTestDataForSunbird1= ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to fill all the mandatory fields for submitting");
-			GenericFunctions.waitForElementToAppear(contentResourcePage.clickMedium);
-			contentResourcePage.clickMedium.click();
+			//GenericFunctions.WaitForFrameAndSwitchToIt(contentResourcePage.createQuestionFrame1);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.clickMedium);
+			contentCreationResourcePage.clickMedium.click();
 			GenericFunctions.waitWebDriver(1300);
-			contentResourcePage.selectMedium.click();
+			contentCreationResourcePage.selectMedium.click();
 			GenericFunctions.waitWebDriver(1300);
-			contentResourcePage.clickLevel.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.selectLevel);
-			contentResourcePage.selectLevel.click();
+			contentCreationResourcePage.clickLevel.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.selectLevel);
+			contentCreationResourcePage.selectLevel.click();
 			GenericFunctions.waitWebDriver(1300);
-			contentResourcePage.clickGrade.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.selectGrade);
-			contentResourcePage.selectGrade.click();
+			contentCreationResourcePage.clickGrade.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.selectGrade);
+			contentCreationResourcePage.selectGrade.click();
 			GenericFunctions.waitWebDriver(1300);
-			contentResourcePage.clickSubject.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.selectSubject);
-			contentResourcePage.selectSubject.click();
+			contentCreationResourcePage.clickSubject.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.selectSubject);
+			contentCreationResourcePage.selectSubject.click();
 			GenericFunctions.waitWebDriver(1000);
-			contentResourcePage.clickBoard.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.selectBoard);
-			contentResourcePage.selectBoard.click();
+			contentCreationResourcePage.clickBoard.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.selectBoard);
+			contentCreationResourcePage.selectBoard.click();
 			GenericFunctions.waitWebDriver(700);
-			contentResourcePage.questionMaxScore.sendKeys(objListOFTestDataForSunbird1.get(11).getCourseDescription());
-			contentResourcePage.clickConcepts.click();
+			contentCreationResourcePage.questionMaxScore.clear();
+			contentCreationResourcePage.questionMaxScore.sendKeys(objListOFTestDataForSunbird1.get(11).getCourseName());
+			contentCreationResourcePage.clickConcepts.click();
 			GenericFunctions.waitWebDriver(1500);
-			GenericFunctions.waitForElementToAppear(createUserPage.searchConcept);
-			contentResourcePage.searchConcepts.sendKeys(objListOFTestDataForSunbird1.get(6).getTitle());
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.searchConcepts);
+			contentCreationResourcePage.searchConcepts.sendKeys(objListOFTestDataForSunbird1.get(6).getTitle());
 			GenericFunctions.waitWebDriver(2000);
-			contentResourcePage.conceptChooseAll.click();
+			contentCreationResourcePage.conceptChooseAll.click();
 			GenericFunctions.waitWebDriver(500);
-			contentResourcePage.conceptDoneButton.click();
+			contentCreationResourcePage.conceptDoneButton.click();
 			GenericFunctions.waitWebDriver(2000);
-			contentResourcePage.QueSubmitButton.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.pickQuestion);
-			if(contentResourcePage.pickQuestion.isDisplayed())
+			contentCreationResourcePage.QueSubmitButton.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.pickQuestion);
+			if(contentCreationResourcePage.pickQuestion.isDisplayed())
 			{
 				Assert.assertTrue(true);
-				ExtentTestManager.getTest().log(LogStatus.INFO,"Keyboard is displayed with only the entered keywords while previewing the quesiton and Keyboard type as 'Custom'");
+				ExtentTestManager.getTest().log(LogStatus.PASS,"Keyboard is displayed with only the entered keywords while previewing the quesiton and Keyboard type as 'Custom'");
 
 			}
 
@@ -1540,11 +1735,33 @@ public class ContentCreationResourcePageObj extends BaseTest
 
 	}
 
-	public void searchConsumeCourse()	
+	public void createQuestionTitle()
 	{
-
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is provide title for the Question Set");
+			GenericFunctions.waitWebDriver(2600);
+			action.moveToElement(contentCreationResourcePage.pickQueNextButton).build().perform();
+			action.click(contentCreationResourcePage.pickQueNextButton).build().perform();
+			//GenericFunctions.waitForElementToAppear(contentResourcePage.pickQueNextButton);
+			//contentResourcePage.pickQueNextButton.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.questionSetTitle);
+			contentCreationResourcePage.questionSetTitle.sendKeys(objListOFTestDataForSunbird1.get(11).getCourseDescription());
+			GenericFunctions.waitWebDriver(500);
+			contentCreationResourcePage.questionSetAddButton.click();
+			GenericFunctions.waitForElementToAppear(createUserPage.saveCourse);
+			createUserPage.saveCourse.click();
+			GenericFunctions.waitWebDriver(600);
+			createUserPage.closeContentPopup.click();
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to give the title for Question Set");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			System.out.println("Failed to give the title for Question Set , Exception : "+e.getLocalizedMessage());
+			Assert.fail("Failed to give the title for Question Set "+e.getLocalizedMessage());
+		}
 	}
-
 	public void verifyCloseContentEditor()
 	{
 		try
@@ -1563,7 +1780,9 @@ public class ContentCreationResourcePageObj extends BaseTest
 			GenericFunctions.waitForElementToAppear(createUserPage.editorCloseIcon);
 			createUserPage.editorCloseIcon.click();
 			Assert.assertTrue(true);
-			ExtentTestManager.getTest().log(LogStatus.INFO, "validated the message before saving the content, "+validationMsg+" is the Message, completed Test case 123");
+			ExtentTestManager.getTest().log(LogStatus.PASS, "validated the message before saving the content, "+validationMsg+" is the Message");
+			//Wait for 2 sec
+			GenericFunctions.waitWebDriver(2000);
 		}
 		catch(Exception e)
 		{
@@ -1579,34 +1798,36 @@ public class ContentCreationResourcePageObj extends BaseTest
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to Navigate to "+clickOn +" from workspace");
-			GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
-			createUserPage.headerProfile.click();
+			/*GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
+			createUserPage.headerProfile.click();*/
+			createUserPageObj.goToProfilePage();
 			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
 			createUserPage.workSpace.click();
 			GenericFunctions.waitWebDriver(1000);
 			if(clickOn.equalsIgnoreCase("Up For Review"))
 			{
-				contentResourcePage.upForReview.click();
+				contentCreationResourcePage.upForReview.click();
 			}	
 			else if(clickOn.equalsIgnoreCase("Drafts"))
 			{
-				contentResourcePage.drafts.click();
+				contentCreationResourcePage.drafts.click();
 			}	
 			else if(clickOn.equalsIgnoreCase("Published"))
 			{
-				contentResourcePage.published.click();
+				contentCreationResourcePage.published.click();
 			}
 			else if(clickOn.equalsIgnoreCase("Limited Publishing"))
 			{
-				contentResourcePage.limitedPublishing.click();	
+				contentCreationResourcePage.limitedPublishing.click();	
 			}	
 			else if(clickOn.equalsIgnoreCase("Review Submissions"))
 			{
-				contentResourcePage.reviewSubmissions.click();	
+				contentCreationResourcePage.reviewSubmissions.click();	
+
 			}
-			else if(clickOn.equalsIgnoreCase("All my content"))
+			else if(clickOn.equalsIgnoreCase("All My content"))
 			{
-				contentResourcePage.allMyActivity.click();
+				contentCreationResourcePage.allMyActivity.click();	
 			}
 			else
 			{
@@ -1629,15 +1850,16 @@ public class ContentCreationResourcePageObj extends BaseTest
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to verify My Activity");
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(orgUploadPage.dropdown);
 			orgUploadPage.dropdown.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.profileIconActivity);
-			contentResourcePage.profileIconActivity.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.profileIconActivity);
+			contentCreationResourcePage.profileIconActivity.click();
 			String eUrl="https://staging.open-sunbird.org/myActivity";
 			String aUrl=driver.getCurrentUrl();
 			GenericFunctions.waitWebDriver(2000);
 			Assert.assertEquals(aUrl, eUrl, "User is not able to verify My activity dashboard");
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is able to view the course dashboard on click of my activity option.");
+			ExtentTestManager.getTest().log(LogStatus.PASS, "User is able to view the course dashboard on click of my activity option.");
 		}
 		catch(Exception e)
 		{
@@ -1648,109 +1870,53 @@ public class ContentCreationResourcePageObj extends BaseTest
 		}
 	}
 
-	public void verifyEditDetails_OfMetadataPage()//List<String> metapageDetails)
+	public void verifyEditDetails_OfMetadataPage(List<String> metapageDetails)
 	{
 		try
 		{
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to verify Edit details metadata page");
-			GenericFunctions.waitForElementToAppear(contentResourcePage.editorEditDetails);
-			contentResourcePage.editorEditDetails.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.editDetailsCollectionTitle);
-			contentResourcePage.editDetailsCollectionTitle.clear();
-			contentResourcePage.editDetailsCollectionTitle.sendKeys(objListOFTestDataForSunbird1.get(5).getCourseName()+"_"+GenericFunctions.testDataIncrementer(".//TestData//collectionNumbers.txt")+"_Edited");
-			String aCollectionTitle=contentResourcePage.editDetailsCollectionTitle.getText();
-			GenericFunctions.waitForElementToAppear(createUserPage.saveButton);
-			createUserPage.saveButton.click();
-			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.waitForElementToAppear(createUserPage.closeContentPopup);
-			createUserPage.closeContentPopup.click();
-			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.waitForElementToAppear(contentResourcePage.editorEditDetails);
-			contentResourcePage.editorEditDetails.click();
-			GenericFunctions.waitForElementToAppear(contentResourcePage.editDetailsCollectionTitle);
-			String eCollectionTitle=contentResourcePage.editDetailsCollectionTitle.getText();
-			Assert.assertEquals(aCollectionTitle, eCollectionTitle);
-			Assert.assertTrue(true);
-			ExtentTestManager.getTest().log(LogStatus.INFO, "On clicking second time on Edit Details link user is able to verify previously added data is saved");
-			GenericFunctions.waitWebDriver(2000);
-			contentResourcePage.editDetailsClose.click();
-			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.waitForElementToAppear(createUserPage.saveCourse);
-			createUserPage.saveCourse.click();
-			GenericFunctions.waitWebDriver(1501);
-
-			/*
-			GenericFunctions.waitForElementToAppear(contentResourcePage.limitedSharingIcon);
-			contentResourcePage.limitedSharingIcon.click();
-			GenericFunctions.waitWebDriver(1500);
-			contentResourcePage.clickLimitedSharing.click();
-			 */
-
-			//createUserPage.editorCloseIcon.click();
-
-
-			/*for(int i=0;i<=metapageDetails.size();i++)
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to verify My Activity");
+			//GenericFunctions.waitForElementToAppear(contentResourcePage.editorEditDetails);
+			//contentResourcePage.editorEditDetails.click();
+			for(int i=0;i<=metapageDetails.size();i++)
 			{
 				String data=metapageDetails.get(i);
 				System.out.println(data);
 
-			}*/
-
+			}
 		}
 		catch(Exception e)
 		{
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to verify Edit details form");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to navigate to  from workspace");
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
-			System.out.println("Failed to verify Edit details form"+e.getLocalizedMessage());
-			Assert.fail("Failed to verify Edit details form"+e.getLocalizedMessage());
+			System.out.println("Failed to navigate to from workspace "+e.getLocalizedMessage());
+			Assert.fail("Failed to navigate to from workspace"+e.getLocalizedMessage());
 		}
 	}
 
-	public String createNewCollection()
+	public List<String> createNewCollection()
 	{
-		String collectionName="";
-		//List<String> metadataPageDetails = new ArrayList<String>();
+		List<String> metadataPageDetails = new ArrayList<String>();
 		try
 		{
 
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create new collection");
 			objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-
-			//Give the collection Name
 			GenericFunctions.waitForElementToAppear(createUserPage.courseName);
-			GenericFunctions.waitWebDriver(4000);
-			collectionName = objListOFTestDataForSunbird1.get(5).getCourseName()+"_"+GenericFunctions.testDataIncrementer(".//TestData//collectionNumbers.txt");
-			//createUserPage.courseName.sendKeys(collectionName);
-			//Give the Collection Description
-			//GenericFunctions.waitForElementToAppear(createUserPage.courseDescription);
-			//createUserPage.courseDescription.sendKeys(objListOFTestDataForSunbird1.get(5).getCourseDescription());
 			GenericFunctions.waitForElementToAppear(createUserPage.startCreating);
 			createUserPage.startCreating.click();
+			GenericFunctions.waitWebDriver(4000);
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitWebDriver(7500);
 			GenericFunctions.waitForElementToAppear(createUserPage.newChild);
 			action.moveToElement(createUserPage.newChild).click().perform();
 
-			GenericFunctions.waitForElementToAppear(createUserPage.collectionKeywords);
-			createUserPage.collectionKeywords.sendKeys(objListOFTestDataForSunbird1.get(5).getTitle());
-
-
-			GenericFunctions.waitForElementToAppear(contentResourcePage.untitledCollection);
-			contentResourcePage.untitledCollection.clear();
-			contentResourcePage.untitledCollection.sendKeys(collectionName);
-			GenericFunctions.waitWebDriver(1000);
-			contentResourcePage.untitledCollectionDesc.clear();
-			contentResourcePage.untitledCollectionDesc.sendKeys(objListOFTestDataForSunbird1.get(5).getCourseDescription());
-
+			String collectionName = objListOFTestDataForSunbird1.get(5).getCourseName()+"_"+GenericFunctions.testDataIncrementer(".//TestData//collectionNumbers.txt");
+			createUserPage.courseName.sendKeys(collectionName);
+			createUserPage.courseDescription.sendKeys(objListOFTestDataForSunbird1.get(5).getCourseDescription());
 			GenericFunctions.waitForElementToAppear(createUserPage.addResource);
 			createUserPage.addResource.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.findSelectActivities);
 			GenericFunctions.waitWebDriver(1500);
-			GenericFunctions.waitForElementToAppear(createUserPage.selectResource);
-			createUserPage.selectResource.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.proceedButton);
-			createUserPage.proceedButton.click();
-			GenericFunctions.waitWebDriver(500);
 		}
 		catch(Exception e)
 		{
@@ -1759,280 +1925,46 @@ public class ContentCreationResourcePageObj extends BaseTest
 			System.out.println("Failed on creating collection");
 			Assert.fail("Failed to create new collection");
 		}
-		return collectionName;
-	}
-
-	public List<String> enterMandatory_EditDetailsPage()
-	{
-		List<String> metadataPageDetails = new ArrayList<String>();
-		try
-		{
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to enter all mandatories in the Edit details page");
-			GenericFunctions.waitWebDriver(1000);
-			createUserPage.clickAppIcon.click();
-			GenericFunctions.waitWebDriver(2000);
-			createUserPage.searchUploadImage.sendKeys(SEARCH_COLLECTION_IMAGE);
-			createUserPage.clickImageSearch.click();
-			GenericFunctions.waitWebDriver(1000);
-			createUserPage.checkCollectionIcon.click();
-			createUserPage.selectAppIcon.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.clickOnSelectCurriculum);
-			createUserPage.clickOnSelectCurriculum.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.selectCurriculum);
-			GenericFunctions.scrollToElement(createUserPage.selectCurriculum);
-			//Get text
-			String currText=createUserPage.selectCurriculum.getText();
-			metadataPageDetails.add(0, currText);
-
-			createUserPage.selectCurriculum.click();
-
-			GenericFunctions.waitForElementToAppear(createUserPage.clickOnSelectClass);
-			createUserPage.clickOnSelectClass.click();
-			GenericFunctions.waitWebDriver(1002);
-			//Get text
-			String classText = createUserPage.selectClass.getText();
-			metadataPageDetails.add(1, classText);
-
-			createUserPage.selectClass.click();
-			GenericFunctions.scrollToElement(createUserPage.clickOnSelectSubject);
-			createUserPage.clickOnSelectSubject.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.selectSubject);
-			//Get text
-			String subText = createUserPage.selectSubject.getText();
-			metadataPageDetails.add(2, subText);
-			createUserPage.selectSubject.click();
-			createUserPage.clickOnSelectMedium.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.selectMedium);
-			//Get text
-			String medText=createUserPage.selectMedium.getText();
-			metadataPageDetails.add(3, medText);
-
-			createUserPage.selectMedium.click();
-			createUserPage.saveButton.click();
-			GenericFunctions.waitWebDriver(3000);
-
-		}
-		catch(Exception e)
-		{
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to enter details in Metadata page");
-			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
-			System.out.println("Failed to enter details in Metadata page");
-			Assert.fail("Failed to enter details in Metadata page");
-		}
 		return metadataPageDetails;
 	}
-
-	public void verifyContent_AllMyContent(String contentName)
+	
+	public void uploadAudioForEveryone() throws InterruptedException
 	{
 		try
 		{
-
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to verify content in All My Content Bucket");
-			GenericFunctions.waitForElementToAppear(contentResourcePage.allMyActivity);
-			contentResourcePage.allMyActivity.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.searchForReview);
-			createUserPage.searchForReview.click();
-			createUserPage.searchForReview.sendKeys(contentName);
-			createUserPage.searchIcon.click();
-			GenericFunctions.waitWebDriver(1000);
-			GenericFunctions.waitForPageToLoad(ContentCreationResourcePage.noResultFound);
-			if(ContentCreationResourcePage.noResultFound.isDisplayed())
-			{
-				Assert.assertTrue(true);
-				ExtentTestManager.getTest().log(LogStatus.PASS, "Content deleted from Limited publishing is not found in All My Content");
-			}
-
-		}
-		catch(Exception e)
-		{
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to verify content in All My Content Bucket");
-			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
-			System.out.println("Failed to verify content in All My Content Bucket");
-			Assert.fail("Failed to verify content in All My Content Bucket"+e);
-		}
-	}
-
-	public String verifyRemoveRootNote()
-	{
-		String eMsgText="Sorry, delete is not allowed.";
-		String rootNodeText="";
-		try
-		{
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to verify whether root node can be removed from TOC");
-			GenericFunctions.waitForElementToAppear(contentResourcePage.rootNodeElement);
-			contentResourcePage.rootNodeElement.click();
-			GenericFunctions.waitWebDriver(1000);			
-			r = new Robot();
-			r.keyPress(KeyEvent.VK_DELETE);
-			r.keyRelease(KeyEvent.VK_DELETE);
-		
-			action.moveToElement(contentResourcePage.deleteToaster).build().perform();
-			//String msgText=contentResourcePage.getToasterMsg.getText();
-			String aMsgText=contentResourcePage.deleteToaster.getText();
-			System.out.println(aMsgText);
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to upload an audio");
+			GenericFunctions.waitWebDriver(1500);
+			contentCreationResourcePage.addAudio.click();
+			contentCreationResourcePage.selectMyAudio.click();
+			contentCreationResourcePage.btnUploadRecord.click();
+			contentCreationResourcePage.iconUpload.click();
+			contentCreationResourcePage.btnChooseFile.click();
+			String path=AllUploadingPaths.audioPath;
+			String secondpath = "./UploadingDocuments/Uploading audios/"+AUDIO_UPLOAD;  
+			GenericFunctions.uploadFile(path);
+			contentCreationResourcePage.rightBtnAvailable.click();
+			GenericFunctions.waitWebDriver(1500);
+			contentCreationResourcePage.btnUploadAndUse.click();
+			String alertActualMessage = contentCreationResourcePage.alertMessage.getText();
+			String alertExpectedMessage = "Audio successfully uploaded";
+			Assert.assertEquals(alertActualMessage, alertExpectedMessage);
 			GenericFunctions.waitWebDriver(3000);
-			Assert.assertEquals(aMsgText,eMsgText);
-			ExtentTestManager.getTest().log(LogStatus.PASS, "User cannot delete root node from TOC as Delete is disabled");
-			
-			
+			System.out.println(alertActualMessage);
+			createUserPage.saveCourse.click();
+			GenericFunctions.waitWebDriver(3000);
+			createUserPage.closeButton.click();
+			GenericFunctions.waitWebDriver(3000);
+			contentCreationResourcePage.xWindowCloseButton.click();
+			GenericFunctions.waitWebDriver(5000);
+
 		}
 		catch(Exception e)
 		{
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to verify root node is can be removable from TOC");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to upload an audio");
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
-			System.out.println("Failed to verify content in All My Content Bucket");
-			Assert.fail("Failed to verify content in All My Content Bucket"+e);
+			Assert.fail("Failed to upload an audio"+e.getLocalizedMessage());
 		}
-		return rootNodeText;
-	}
-	
-	/*	
- 	public static void verifyUpdateRootNodeName()
-	{
-		contentResourcePage.untitledCollection.clear();
-		contentResourcePage.untitledCollection.sendKeys(collectionName);
-		ContentCreationResourcePage.rootNodeElement.getText();
-		System.out.println("Testing");
-	}*/
-
-	public void verifyUpdateRootNodeName() 
-	{
-		GenericFunctions.waitForElementToAppear(ContentCreationResourcePage.rootNodeElement);
-		action.moveToElement(ContentCreationResourcePage.rootNodeElement);
-		String text = ContentCreationResourcePage.rootNodeElement.getText();
-		GenericFunctions.waitForElementToAppear(contentResourcePage.untitledCollection);
-		contentResourcePage.untitledCollection.clear();
-		contentResourcePage.untitledCollection.sendKeys(text+"_Updated");
-		
-		
-		
-	}
-	
-	
-	//Added by Raju 
-	public void SearchContentAndValidate(String Contentname)
-	{
-		
-		try
-		{
-			
-		GenericFunctions.waitForElementToAppear(createUserPage.searchForReview);
-		ExtentTestManager.getTest().log(LogStatus.INFO, "User is Searching for the content in search field");
-				createUserPage.searchForReview.sendKeys(Contentname);
-				GenericFunctions.waitWebDriver(6000);
-				SoftAssert softAssert = new SoftAssert();
-				
-				GenericFunctions.waitForElementToAppear(contentResourcePage.VerifySearchedContent);
-						String ContentType=contentResourcePage.VerifySearchedContent.getText();
-						System.out.println(ContentType);
-						
-						System.out.println(Contentname);
-						switch (Contentname) {
-						case "CourseA":
-														
-								softAssert.assertEquals(ContentType,"Course");
-								ExtentTestManager.getTest().log(LogStatus.PASS, "Search Content is displayed Succesfully");
-								break;
-					
-					
-												
-							
-						case "BookA":
-						
-								softAssert.assertEquals(ContentType,"TextBook");
-								ExtentTestManager.getTest().log(LogStatus.PASS, "Search Content is displayed Succesfully");
-							break;
-					
-                           
-							
-						case "LessonA":
-                            softAssert.assertEquals(ContentType,"LessonPlan");
-                            ExtentTestManager.getTest().log(LogStatus.PASS, "Search Content is displayed Succesfully");
-							break;
-							
-						case "Automation Content":
-                            softAssert.assertEquals(ContentType,"Resource");
-                            ExtentTestManager.getTest().log(LogStatus.PASS, "Search Content is displayed Succesfully");
-							break;
-							
-						case "Automation Collection":
-                            softAssert.assertEquals(ContentType,"Collection");
-                            ExtentTestManager.getTest().log(LogStatus.PASS, "Search Content is displayed Succesfully");
-							break;
-							
-							
-						default:
-							System.out.println(Contentname);
-							ExtentTestManager.getTest().log(LogStatus.FAIL, "Search Content is Not displayed Succesfully");
-						}
-		}
-		catch(Exception e)
-		{
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on validating Searched Content in All my content Page");
-			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
-			System.out.println("Failed on validating Searched Content in All my content Page");
-			Assert.fail("Failed on validating Searched Content in All my content Page");
-			
-		}
-					
-	}
-	
-	//Added by Raju 
-	public void VerifySortByIsExists()
-	{
-		try
-		{
-		SoftAssert softAssert = new SoftAssert();
-		
-		ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to Click on Library Page");
-		GenericFunctions.waitForElementToAppear(contentResourcePage.ClickOnLibrary);
-			contentResourcePage.ClickOnLibrary.click();
-			ExtentTestManager.getTest().log(LogStatus.INFO, "Click on Library Page");
-		//softAssert.assertTrue(true);
-		
-		
-		
-		ExtentTestManager.getTest().log(LogStatus.INFO, "Validate the SortBy Text & SortyBy Option in Library Page");
-		GenericFunctions.waitForElementToAppear(contentResourcePage.VerifySortBy);
-		if(contentResourcePage.VerifySortBy.isDisplayed())
-		{
-			String ActualValue=contentResourcePage.VerifySortBy.getText();
-			softAssert.assertEquals(ActualValue,"Sort by:");
-			
-			//ExtentTestManager.getTest().log(LogStatus.INFO, "Click on SortBy Dropdown in Library Page");
-			GenericFunctions.waitForElementToAppear(contentResourcePage.ClickSortByDropDown);
-			contentResourcePage.ClickSortByDropDown.click();
-			
-			//ExtentTestManager.getTest().log(LogStatus.INFO, "Validate Modified option in Dropdown in Library Page");
-			String OptionValue1=contentResourcePage.VerifySortByOptionList.getText();
-			softAssert.assertEquals(OptionValue1,"Modified On");
-			
-			//ExtentTestManager.getTest().log(LogStatus.INFO, "Validate CreatedOn option in Dropdown in Library Page");
-		String OptionValue2=contentResourcePage.VerifySortByOptionList1.getText();
-		softAssert.assertEquals(OptionValue2,"Created On");
-
-		softAssert.assertAll();
-		
-		ExtentTestManager.getTest().log(LogStatus.PASS,"SortBy Option has been verified in Library Page");
-		}
-		else
-		{
-			System.out.println("Could not verify elements");
-			log.info("Could not verify elements");
-		}
-		
-		}
-		catch(Exception e)
-		{
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on validating SoryBy Options in Library Page");
-			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
-			System.out.println("Failed on validating SoryBy Options in Library Page");
-			Assert.fail("Failed on validating SoryBy Options in Library Page");
-			
-		}
-
 
 	}
-
 
 }

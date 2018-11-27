@@ -133,4 +133,7 @@ public interface IAutoConst {
 	String ROOT_ORG="Upload_root_org";
 	String SUB_ORG="Upload_sub_org";
 	
+	//Merged from Ajith
+	String ID="ID";
+	
 }
