@@ -111,6 +111,9 @@
       
       <class name="org.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
       
+      <!-- Test cases of P2 -->
+      <class name="org.testscripts.CopyContentFromLibraryAndVerify"/>
+      
        <!-- <class name="org.testscripts.ChangeTheContentAfterFlagged"/> 
         <class name="org.testscripts.AcceptAsflagReviewer"/>
          <class name="org.testscripts.FlagTheContentAsPublicUser"/>
