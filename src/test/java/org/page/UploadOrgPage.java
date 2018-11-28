@@ -194,12 +194,7 @@ public class UploadOrgPage {
 	@FindBy(xpath="//div[.='Average time spent by user per visit']")
 	public WebElement avgTime;
 	
-	//OCT 10
-	@FindBy(xpath="(//div[@id='dropdown-menu-list-header'])[2]//a[.='Logout']")
-	//@FindBy(xpath="//a[.='Logout']")
-	//@FindBy(xpath="//div[@id='dropdown-menu-list-header']//a[.='Logout']")
-	public WebElement logout;
-	
+
 	@FindBy(xpath="//div[@class='content']//p")
 	public WebElement thankYouMessage;
 	
@@ -217,12 +212,20 @@ public class UploadOrgPage {
 	@FindBy(xpath="(//i[@class='close icon'])[2]")
 	public WebElement closeThanks;
 	
-		@FindBy(css="#radial-mood-response-rate > svg > g > g.labels.q2")
+	@FindBy(css="#radial-mood-response-rate > svg > g > g.labels.q2")
 	public WebElement radial1;
 	
 		//-------------------------------------------------------------
 	@FindBy(xpath="//*[@id='radial-mood-response-rate']/svg")
 	public WebElement radial;
+	
+	//Nov 28th
+	@FindBy(xpath="(//div[@class='item headerDropdownProfile'])[2]/following::a[contains(.,'Logout')]")
+	//@FindBy(xpath="(//div[@id='dropdown-menu-list-header'])[2]//a[.='Logout']")
+	//@FindBy(xpath="//a[.='Logout']")
+	//@FindBy(xpath="//div[@id='dropdown-menu-list-header']//a[.='Logout']")
+	public WebElement logout;
+	
 }
 
 

@@ -19,7 +19,7 @@
       <class name="org.testscripts2.UploadContentTypePdfAndVerify"/>
       <class name="org.testscripts2.UploadContentTypeWebm"/>
       <class name="org.testscripts.UploadContentTypeH5pAndVerify"/>
-      <class name="org.testscripts.UploadSubOrg"/>
+      
       <class name="org.testscripts.Create_Verify_DeleteAnnouncement"/>
       <class name="org.testscripts.UploadHtmlContent"/>
       <class name="org.testscripts.Regression_TC04"/>
@@ -57,7 +57,7 @@
       <class name="org.testscripts.UploadH5pContent"/>
       <class name="org.testscripts.UploadYoutubeContent"/>
       <class name="org.testscripts.AdminCreationAndDownloadCsv"/>
-      <class name="org.testscripts.UploadRootOrg"/>
+   
       <class name="org.testscripts.CreateBookAndVerifyOnlyBooksPresent"/>
       <class name="org.testscripts.SearchContentWithFiltersAsReviewer"/>
       <class name="org.testscripts.CheckAvailabilityOfCourseForInvitedMember"/>
@@ -144,6 +144,8 @@
       
       
        <!-- <class name="org.testscripts.ChangeTheContentAfterFlagged"/> 
+       	   <class name="org.testscripts.UploadRootOrg"/>
+       	<class name="org.testscripts.UploadSubOrg"/>
         <class name="org.testscripts.AcceptAsflagReviewer"/>
         <class name="org.testscripts.FlagTheContentAsPublicUser"/>
         <class name="org.testscripts.CheckTheflaggedContentINDraft"/>

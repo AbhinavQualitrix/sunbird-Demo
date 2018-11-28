@@ -7,7 +7,7 @@ import org.generic.ExtentTestManager;
 import org.generic.GenericFunctions;
 import org.generic.ReadTestDataFromExcel;
 import org.openqa.selenium.By;
-
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.page.SignUpPage;
 import org.page.UploadOrgPage;
@@ -26,6 +26,7 @@ public class SignUpPageObj extends BaseTest
 
 	CreatorUserPageObj createUserPageObj = new CreatorUserPageObj();
 	SignUpPage objSignUp=PageFactory.initElements(driver, SignUpPage.class);
+	Actions action = new Actions(driver);
 
 	/**
 	* Purpose: userLogin() method is used for user logging
@@ -169,18 +170,23 @@ public class SignUpPageObj extends BaseTest
 	/**
 	* Purpose: userLogout() method is used for user logout
 	*/
+	
+	//Nov 28
 	public void userLogout()throws Exception{
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to Log out");
-			GenericFunctions.waitWebDriver(5000);
 			UploadOrgPage orgUploadPage=PageFactory.initElements(driver, UploadOrgPage.class);
+			GenericFunctions.waitWebDriver(3000);			
 			GenericFunctions.waitForElementToAppear(orgUploadPage.dropdown);
+			GenericFunctions.waitWebDriver(2000);
 			orgUploadPage.dropdown.click();
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(orgUploadPage.logout);
-			orgUploadPage.logout.click();
+			GenericFunctions.waitWebDriver(1000);
+			action.moveToElement(orgUploadPage.logout).build().perform();
+			action.click(orgUploadPage.logout).build().perform();
+			//orgUploadPage.logout.click();
 			GenericFunctions.waitWebDriver(3500);
-			System.out.println("User Logout");
-			
+			System.out.println("User Logout");			
 		}
 		catch(Exception e){
 			
