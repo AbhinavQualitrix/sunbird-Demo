@@ -6,7 +6,7 @@
 	<artifactId>Automation</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	
+
 
 	<build>
 		<plugins>
@@ -115,14 +115,20 @@
 			<artifactId>jxl</artifactId>
 			<version>2.6.12</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/ru.yandex.qatools.ashot/ashot -->
 		<dependency>
-    		<groupId>ru.yandex.qatools.ashot</groupId>
-    		<artifactId>ashot</artifactId>
-    		<version>1.1</version>
+			<groupId>ru.yandex.qatools.ashot</groupId>
+			<artifactId>ashot</artifactId>
+			<version>1.1</version>
 		</dependency>
-		
+
+		<!-- To read the CSV file -->
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>4.1</version>
+		</dependency>
 
 	</dependencies>
 </project>
