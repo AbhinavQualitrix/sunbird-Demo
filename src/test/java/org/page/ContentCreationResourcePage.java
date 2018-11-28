@@ -13,7 +13,6 @@ public class ContentCreationResourcePage
 
 	public  ContentCreationResourcePage(WebDriver driver)
 	{ 
-
 		this.driver=driver; 
 	}
 
@@ -40,7 +39,7 @@ public class ContentCreationResourcePage
 	//@FindBy(xpath="//div[@id='dropdown-menu-list-header']//a[text()='Profile']")
 	public WebElement profileIconProfile;
 
-
+	
 	//Added For Test case TC_073
 
 
@@ -87,7 +86,7 @@ public class ContentCreationResourcePage
 	public  WebElement courseCopyIcon;
 
 	@FindBy(xpath="(//div[@class='player-badge-alignment']//i)[7]")
-	public WebElement libContentCopyIcon;
+	public WebElement libraryContentCopyIcon;
 
 	@FindBy(xpath="//label[@class='content-title popup-item ng-binding ng-scope']")
 	public WebElement copiedContentName;
@@ -98,8 +97,10 @@ public class ContentCreationResourcePage
 	@FindBy(xpath="//span[@class='ui HomeAccordianHeading left floated header']")
 	public WebElement searchedClickedCourseResource;
 
-	@FindBy(xpath="//label[@class='content-title popup-item ng-binding ng-scope']")
-	public WebElement draftCopiedContentName;
+
+
+	@FindBy(xpath=".//div[@class='sbCard mt-20 mr-30']/..//h4")
+	public WebElement draftsCopiedContentName;
 
 	//TC_76 
 
@@ -136,8 +137,7 @@ public class ContentCreationResourcePage
 	@FindBy(xpath="//div[@class='audioitem infopopover']")
 	public static WebElement selectMyAudio;
 
-	@FindBy(linkText="All audio")
-	public WebElement clickAllAudio;
+
 
 	@FindBy(xpath="(//audio[@id='audio-5'])[2]")
 	public WebElement selectAudio_AllAudio;
@@ -256,24 +256,7 @@ public class ContentCreationResourcePage
 
 	//SelectAppIcon is in CreatorUP
 
-	//Added for Test case 78
-	@FindBy(xpath="//button[contains(text(),'Upload/ Record')]")
-	public WebElement btnUploadRecord; 
 
-	@FindBy(xpath="//i[@class='huge upload icon']")
-	public WebElement iconUpload;
-
-	@FindBy(id="assetfile")
-	public WebElement btnChooseFile;
-
-	@FindBy(xpath="//label[contains(text(),'Yes, make it available to everyone')]")
-	public WebElement rightBtnAvailable;
-
-	@FindBy(xpath="//button[contains(text(),'Upload and Use')]")
-	public WebElement btnUploadAndUse;
-
-	@FindBy(xpath="//p[@class='slideIn']")
-	public WebElement alertMessage;
 
 	//Added for Test case 79
 
@@ -330,33 +313,33 @@ public class ContentCreationResourcePage
 	public WebElement questionSetSearchBar;
 
 	@FindBy(xpath="//div[.='Select Language']")
-	public WebElement AFClickLanguage;
+	public WebElement afClickLanguage;
 
 	@FindBy(xpath="//div[.='Select Language']/..//div[.='English']")
-	public WebElement AFSelectLanguage;
+	public WebElement afSelectLanguage;
 
 	@FindBy(xpath="//div[.='Select Level']")
-	public WebElement AFClickDifficulty;
+	public WebElement afClickDifficulty;
 
 	//Select Difficulty is already located
 
 	@FindBy(xpath="//div[.='Question Type']")
-	public WebElement AFClickQuestionType;
+	public WebElement afClickQuestionType;
 
 	@FindBy(xpath="//div[.='Question Type']/..//div[@class='item selected']")
-	public WebElement AFSelectQuestionType;
+	public WebElement afSelectQuestionType;
 
 	@FindBy(xpath="//div[.='Select Class']")
-	public WebElement AFClickGradeLevel;
+	public WebElement afClickGradeLevel;
 
 	@FindBy(xpath="//div[.='Select Class']/..//div[@class='item selected']")
-	public WebElement AFSelectGradeLevel;
+	public WebElement afSelectGradeLevel;
 
 	@FindBy(xpath="//div[@class='advanceFilterDiv']")
-	public WebElement AdvancedFilter;
+	public WebElement advancedFilter;
 
 	@FindBy(xpath="//i[@id='qb-search-button']")
-	public WebElement SearchIcon;
+	public WebElement searchIcon;
 
 	@FindBy(xpath="//iframe[@frameborder='0']")
 	public WebElement enterQuestionIframe;
@@ -451,12 +434,10 @@ public class ContentCreationResourcePage
 	public WebElement clickTopics;
 
 	//@FindBy(xpath="//div[@class='topic-tree-tab']/..//div[@class='node']")
-	//@FindBy(xpath="//div[@class='topic-tree-tab']//div[@data-name='Vedic Mathematics']//a")
 	@FindBy(xpath="//div[@data-id='rj_k-12_1_topic_mathematics_l1con_1']//a[@class='name']")
 	public WebElement selectTopic;
 
 	//@FindBy(xpath="(//a[.='Cancel']/following::a[@class='ui blue button accept'])[1]")
-	//@FindBy(xpath="(//div[@class='actions']/..//a[@class='ui blue button accept'])[5]")
 	//@FindBy(xpath="(//div[@id='topicSelector_defaultTemplate-topic']/..//a[.='Done'])[1]")
 	@FindBy(xpath="//div[@id='topicSelector_defaultTemplate-topic']/..//a[.='Done']")
 	public WebElement topicsDoneBtn;
@@ -575,9 +556,13 @@ public class ContentCreationResourcePage
 	@FindBy(xpath="//span[@class='ShowFilterSubTitle']/following::i[@class='dropdown icon']")
 	public WebElement ClickSortByDropDown;
 
+
+
 	@FindBy(xpath="//span[@class='ShowFilterSubTitle']/following::i[@class='dropdown icon']/following::span[contains(text(),'Modified On')]")
 	public WebElement VerifySortByOptionList;
 
+
+	//created
 	@FindBy(xpath="//span[@class='ShowFilterSubTitle']/following::i[@class='dropdown icon']/following::span[contains(text(),'Created On')]")
 	public WebElement VerifySortByOptionList1;
 
@@ -594,53 +579,43 @@ public class ContentCreationResourcePage
 	//@FindBy(xpath="//span[@class='ui HomeAccordianHeading m-responsive-cp left floated header']")
 	public WebElement searchedClickedContent;
 
-
+	//Nov 26
 	@FindBy(xpath="//strong[@class='iziToast-title slideIn']")
 	public static  WebElement copyErrorToast;
-
 	
-	@FindBy(xpath="(//div[@class='player-badge-alignment']//i)[7]")
-	public WebElement libraryContentCopyIcon;
-
-	
-	@FindBy(xpath=".//div[@class='sbCard mt-20 mr-30']/..//h4")
-	public WebElement draftsCopiedContentName;
-	
-	
-	@FindBy(xpath="//div[@class='advanceFilterDiv']")
-	public WebElement advancedFilter;
-	
-	
-	@FindBy(xpath="//i[@id='qb-search-button']")
-	public WebElement searchIcon;
-	
-	
-	@FindBy(xpath="//div[.='Select Language']")
-	public WebElement afClickLanguage;
-	
-
-	@FindBy(xpath="//div[.='Select Language']/..//div[.='English']")
-	public WebElement afSelectLanguage;
-	
-
-	@FindBy(xpath="//div[.='Select Level']")
-	public WebElement afClickDifficulty;
-
-	@FindBy(xpath="//div[.='Question Type']")
-	public WebElement afClickQuestionType;
-
-	@FindBy(xpath="//div[.='Question Type']/..//div[@class='item selected']")
-	public WebElement afSelectQuestionType;
-
-	@FindBy(xpath="//div[.='Select Class']")
-	public WebElement afClickGradeLevel;
-
-	@FindBy(xpath="//div[.='Select Class']/..//div[@class='item selected']")
-	public WebElement afSelectGradeLevel;
-	
-	
-	//Added on 10 Sep 
+	//Merge Nov 27
 	@FindBy(xpath="//div[@id='closeButton']/a/i")
 	public WebElement xWindowCloseButton;
-	//End of Nov 27
+	
+	//Nov 28
+	@FindBy(linkText="All audio")
+	public static WebElement clickAllAudio;
+	
+	//Nov 28
+	@FindBy(xpath="//label[contains(text(),'Yes, make it available to everyone')]")
+	public WebElement yesRadioButton;
+	
+	//Nov 28
+	@FindBy(xpath="//i[@class='huge upload icon']")
+	public WebElement audioUploadIcon;
+	
+	/*@FindBy(xpath="//label[contains(text(),'Yes, make it available to everyone')]")
+	public WebElement rightBtnAvailable;*/
+	
+	//Added for Test case 78
+	@FindBy(xpath="//button[contains(text(),'Upload/ Record')]")
+	public WebElement btnUploadRecord; 
+
+	@FindBy(id="assetfile")
+	public WebElement btnChooseFile;
+
+	@FindBy(xpath="//button[contains(text(),'Upload and Use')]")
+	public WebElement btnUploadAndUse;
+
+	@FindBy(xpath="//p[@class='slideIn']")
+	public WebElement alertMessage;
+
+	@FindBy(xpath="//span[contains(@class,'playAudio')")
+	public static WebElement verifyAudioName;
 }
+

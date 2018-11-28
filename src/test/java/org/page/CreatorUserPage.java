@@ -8,6 +8,10 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 
+/**
+ * @author TEJAS46
+ *
+ */
 public class CreatorUserPage {
 	WebDriver driver;
 
@@ -33,7 +37,7 @@ public class CreatorUserPage {
 	public WebElement headerProfile;
 
 	//Nov 20th
-	
+
 	//@FindBy(xpath="//a[.='Workspace']")
 	//@FindBy(xpath="//a[contains(text(),'Workspace')]")
 	//@FindBy(xpath="//div[@class='menu transition hidden']//a[contains(text(),'Workspace')]")
@@ -86,12 +90,6 @@ public class CreatorUserPage {
 	@FindBy(xpath="//div[@class=' ui clearing segment']/..//button[contains(text(),'PROCEED')]")
 	public WebElement proceedButton;
 
-	@FindBy(xpath="//span[.='Save']")
-	public WebElement saveCourse;
-
-	@FindBy(xpath="//div[@class='ui button text-part popup-item']")
-	public WebElement sendForReview;
-
 	@FindBy(xpath="//div[@class='ui appIconSelector']")
 	public WebElement clickAppIcon;
 
@@ -143,9 +141,6 @@ public class CreatorUserPage {
 
 	@FindBy(xpath="//div[@class='text']//span[.='All']")
 	public WebElement headerDropdown;
-
-	//10 OCt
-	
 
 	@FindBy(xpath="//div[@id='headerSearch']//span[.='Courses']")
 	public WebElement headerCourseClick;
@@ -222,6 +217,8 @@ public class CreatorUserPage {
 
 	@FindBy(xpath="//sui-multi-select[@id='gradeLevel']")
 	public List<WebElement> clickBookGrade;
+
+
 
 
 	@FindBy(xpath="//sui-select[@id='subject']")
@@ -369,10 +366,7 @@ public class CreatorUserPage {
 	//@FindBy(xpath="//span[@class='sliderCardHeading text-cencapitalize']")
 	public List<WebElement> searchPublishedCourses;
 
-	//10 OCT
-	@FindBy(xpath="//div[@class='ui text menu m-0 jc-center flex']/following::a[contains(text(),'Library')]")
-	//@FindBy(xpath="//a[contains(text(),'Library')]")
-	public WebElement headerLibrary;
+
 
 	//Elements for upload documents -
 
@@ -425,6 +419,8 @@ public class CreatorUserPage {
 	@FindBy(xpath="//a[.='Softmax']")
 	public WebElement selectSubConcept3;
 
+
+	//div[@id='topicSelector_defaultTemplate-topic']/..//a[contains(.,'Done')]
 	@FindBy(xpath="//div[.='no-results']")
 	public WebElement noResults;
 
@@ -476,8 +472,6 @@ public class CreatorUserPage {
 	@FindBy(xpath="//h5[.='Comments']/..//textarea")
 	public WebElement reviewComments;
 
-	@FindBy(xpath="//a[contains(text(),'Drafts')]")
-	public WebElement drafts;
 
 	@FindBy(xpath="//div[@class='sbCard mt-20 mr-30']/div[@class='sub-header']/h4")
 	//@FindBy(xpath="//span[@class='sliderCardHeading text-cencapitalize']")
@@ -551,8 +545,7 @@ public class CreatorUserPage {
 
 	//Adding elements for Test case 16
 
-	@FindBy(xpath="//a[contains(text(),'Published')]")
-	public WebElement published;
+
 
 	//Adding elements for Test case 18
 	@FindBy(xpath="//a[.='Edit']")
@@ -564,10 +557,10 @@ public class CreatorUserPage {
 	public WebElement editorCloseIcon;
 
 
+
 	//Adding elements for test case 14
 	@FindBy(xpath="//span[@class='browse item cursor-pointer']")
 	public WebElement filterIcon;
-
 
 	@FindBy(xpath="//sui-multi-select[@id='subject']")
 	public WebElement clickFilterSubject;
@@ -597,8 +590,6 @@ public class CreatorUserPage {
 	@FindBy(xpath="//button[contains(text(),'Upload and use')]")
 	public WebElement uploadAndUseButton;
 
-	@FindBy(xpath="//label[contains(text(),'Yes, make it available to everyone')]")
-	public WebElement yesRadioButton;
 
 	@FindBy(xpath="//input[@id='assetfile']")
 	public WebElement chooseFileButton;
@@ -630,81 +621,76 @@ public class CreatorUserPage {
 
 	@FindBy(xpath="(//audio[@id='audio-5'])[2]")
 	public WebElement selectAudio_AllAudio;
-	
-	 //@FindBy(xpath="//a[.=' All My Content ']")
-	 @FindBy(xpath="//a[@href='/workspace/content/allcontent/1']")
-	 public WebElement allMyContent;
-	 
-	 @FindBy(xpath="//i[@class='trash large icon']")
-	 public List<WebElement> deleteButtonAll ;
 
-	 @FindBy(xpath="//button[.='Yes']")
-	 public WebElement yesButtonPopup ;
 
-	 @FindBy(xpath="(//i[@class='trash large icon'])[1]")
-	 public WebElement deleteButton ;
-	 
-	 
-	 //Added on OCT 23 2018
-	 //@FindBy(xpath="(//*[@id='dropdown-menu-list-header'])[2]//following::a[@href='/profile']")
-	 @FindBy(xpath="(.//a[contains(text(),'Profile')])[2]")
-	 public WebElement profileIconProfile;
-	  
-	 @FindBy(xpath="//a[@href='/workspace/content/uploaded/1']")
-	 public WebElement allUploads;
-	 
-	 @FindBy(xpath="//a[@href='/workspace/content/limited-publish/1']")
-	 public WebElement limitedPublishing;
-	 
-	 //Nov 22
-	 @FindBy(xpath="//div[@class='cardImageText center aligned ']/span")
-	 public WebElement getContentInDrafts;
-	 
-	 //Nov 22
-	 @FindBy(xpath="//span[contains(text(),'View Details')]")
-	 public WebElement viewDetails;
-	 
-	 
 
-	 @FindBy(xpath="(//sui-select-option[@value='Organisations'])[2]")
-	 public WebElement organisationsInSearch;
-	 
-	 @FindBy(xpath="(//i[@class='dropdown icon'])[2]")
-	 public WebElement searchDropdown;
-	 
-	 @FindBy(xpath="(//input[@class='checkBox'])[1]")
-	 public WebElement selectResourceN;
-	 
-	 @FindBy(xpath="(//div[@class='UpReviewHeader'])[1]")
-	 public WebElement searchCoursesUpForReviewE;
-	 
-	 @FindBy(xpath="//div[@class='five wide column custom-5-wide']/div/div/div/div[5]")
-	 //@FindBy(xpath="//div[@data-content='Send for review']")
-	 public WebElement sendForReviewA;
-	 
-	 @FindBy(xpath="//span[@class='ng-scope']")
-	 public WebElement editdetailslink;
-	 
-	 @FindBy(xpath="//button[contains(text(),'Close')]")
-	 public WebElement closeButtonMsg ;
-	 
-	 
-	 //Nov 23rd
-	 @FindBy(xpath="//label[contains(.,'Topics')]/..//topic-selector/..//input")
-	 public WebElement clickTopic;
-	 
+	@FindBy(xpath="//i[@class='trash large icon']")
+	public List<WebElement> deleteButtonAll ;
+
+	@FindBy(xpath="//button[.='Yes']")
+	public WebElement yesButtonPopup ;
+
+	@FindBy(xpath="(//i[@class='trash large icon'])[1]")
+	public WebElement deleteButton ;
+
+
+	//Added on OCT 23 2018
+	//@FindBy(xpath="(//*[@id='dropdown-menu-list-header'])[2]//following::a[@href='/profile']")
+	@FindBy(xpath="(.//a[contains(text(),'Profile')])[2]")
+	public WebElement profileIconProfile;
+
+	@FindBy(xpath="//a[@href='/workspace/content/uploaded/1']")
+	public WebElement allUploads;
+
+	@FindBy(xpath="//a[@href='/workspace/content/limited-publish/1']")
+	public WebElement limitedPublishing;
+
+	//Nov 22
+	@FindBy(xpath="//div[@class='cardImageText center aligned ']/span")
+	public WebElement getContentInDrafts;
+
+	//Nov 22
+	@FindBy(xpath="//span[contains(text(),'View Details')]")
+	public WebElement viewDetails;
+
+
+
+	@FindBy(xpath="(//sui-select-option[@value='Organisations'])[2]")
+	public WebElement organisationsInSearch;
+
+	@FindBy(xpath="(//i[@class='dropdown icon'])[2]")
+	public WebElement searchDropdown;
+
+	@FindBy(xpath="(//input[@class='checkBox'])[1]")
+	public WebElement selectResourceN;
+
+	@FindBy(xpath="(//div[@class='UpReviewHeader'])[1]")
+	public WebElement searchCoursesUpForReviewE;
+
+	@FindBy(xpath="//div[@class='five wide column custom-5-wide']/div/div/div/div[5]")
+	//@FindBy(xpath="//div[@data-content='Send for review']")
+	public WebElement sendForReviewA;
+
+	@FindBy(xpath="//span[@class='ng-scope']")
+	public WebElement editdetailslink;
+
+	@FindBy(xpath="//button[contains(text(),'Close')]")
+	public WebElement closeButtonMsg ;
+
+
 	//Nov 23rd
-	 @FindBy(xpath="//div[@id='topicSelector_defaultTemplate-topic']//input[@placeholder='Search']")
-	 public WebElement searchTopic;
-	 
+	@FindBy(xpath="//label[contains(.,'Topics')]/..//topic-selector/..//input")
+	public WebElement clickTopic;
+
+	//Nov 23rd
+	@FindBy(xpath="//div[@id='topicSelector_defaultTemplate-topic']//input[@placeholder='Search']")
+	public WebElement searchTopic;
+
 	//Nov 23rd
 	@FindBy(xpath="//div[@class='ui tree-picker tree']/..//i[@class='add circle icon']/..//a")
 	public WebElement selectTopic;
 
-	//Nov 23
-	//@FindBy(xpath="//a[.='Done']")
-	@FindBy(xpath="(//a[.='Done'])[1]")
-	public WebElement doneButton;
+
 
 	//Nov 24
 	@FindBy(xpath="(//sui-multi-select[@id='board'])[2]")
@@ -712,31 +698,79 @@ public class CreatorUserPage {
 	public WebElement clickFilterBoard;
 
 
-
 	//Nov 24
 	@FindBy(xpath="//div[contains(text(),'TextBook')]")
 	public List<WebElement> contentType;
-	
+
 	@FindBy(xpath="(//div[@class='content'])[1]")
 	public WebElement searchedContent;
-	
+
 	//Nov 26 - v1.11.0
 	//@FindBy(xpath="(//sui-multi-select[@id='gradeLevel']/..//sui-select-option[@class='item selected'])[2]")
 	//@FindBy(xpath="//sui-multi-select[@id='gradeLevel']/..//sui-select-option[@class='item selected']")
 	@FindBy(xpath="(//sui-multi-select[@id='gradeLevel'])[1]/..//sui-select-option")
 	public List<WebElement> selectBookGrade;
+
+	//Nov 27-Added
+	@FindBy(xpath="//label[contains(.,'Name')]/following::input[@type='text' or @placeholder='Name']")
+	public WebElement resourceName;
+
+
+	//span[contains(.,'Create')]/following::input[@type='text']
+	//span[contains(.,'Create')]/following::input[@type='text' or @placeholder='Name']
+	//label[contains(.,'Name')]/following::input[@type='text' or @placeholder='Name']
+	//label[contains(.,'Name')]/following::input[@type='text' or @placeholder='Name']
+
+
+
+	//Nov 28th
+	@FindBy(xpath="//div[contains(@class,'ui text menu m-0 ')]/following::a[contains(text(),'Courses')]")
+	//@FindBy(xpath="//div[@class='ui text menu m-0 jc-center flex']/following::a[contains(text(),'Courses')]")
+	//@FindBy(xpath="//a[contains(text(),'Course')]")
+	public WebElement headerCourse;
+
+	//Nov 28th
+	@FindBy(xpath="//div[contains(@class,'ui text menu m-0 ')]/following::a[contains(text(),'Library')]")
+	//@FindBy(xpath="//div[@class='ui text menu m-0 jc-center flex']/following::a[contains(text(),'Library')]")
+	//@FindBy(xpath="//a[contains(text(),'Library')]")
+	public WebElement headerLibrary;
+
+	//Nov 28th
+	@FindBy(xpath="//div[@id='saveButton']//i")
+	//@FindBy(xpath="//span[.='Save']")
+	public WebElement saveCourse;
+	
+	//Nov 28
+	@FindBy(xpath="//div[@class='no-result-text']")
+	public WebElement noContentInUpForReview;
+	
+	//Nov 28
+	@FindBy(xpath="//a[contains(text(),'Published')]")
+	public WebElement published;
+	
+	//Nov 28
+	@FindBy(xpath="//a[contains(text(),'Drafts')]")
+	public WebElement drafts;
+	
+	//Nov 28
+	//@FindBy(xpath="//a[.=' All My Content ']")
+	@FindBy(xpath="//a[@href='/workspace/content/allcontent/1']")
+	public WebElement allMyContent;
+	
+	//Nov 28
+	//@FindBy(xpath="//a[.='Done']")
+	@FindBy(xpath="(//a[.='Done'])[1]")
+	public WebElement doneButton;
+	
+	//Nov 28
+	@FindBy(xpath="//div[@class='ui button text-part popup-item']//i[@class='send icon']")
+	//@FindBy(xpath="//div[@class='ui button text-part popup-item']")
+	public WebElement sendForReview;
 	
 	//Merge of Nov 27
 	
 	@FindBy(xpath="//h4[contains(text(),'Course')]")
 	public WebElement headerCourseTitles;
-	
-	@FindBy(xpath="//div[@class='ui text menu m-0 flex-jc-center d-flex']/following::a[contains(text(),'Courses')]")
-	//@FindBy(xpath="//a[contains(text(),'Course')]")
-	public WebElement headerCourse;
-	
-	@FindBy(xpath="(//sui-select-option[@value='Users'])[2]")
-	public WebElement usersInSearch;
 }
 
 

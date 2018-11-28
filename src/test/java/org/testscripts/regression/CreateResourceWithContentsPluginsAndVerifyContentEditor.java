@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class CreateResourceWithContentsPluginsAndVerifyContentEditor extends BaseTest 
 {
 	//TC75
-	@Test
+	@Test(groups ="content resource page")
 	public void createResourceWithContentsPlugins_VerifyContentEditor() throws Exception
 	{
 		SignUpPageObj userLogin = new SignUpPageObj();
