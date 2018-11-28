@@ -20,6 +20,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.generic.AllUploadingPaths;
 import org.generic.ExtentTestManager;
 import org.generic.GenericFunctions;
 import org.generic.ReadTestDataFromExcel;
@@ -30,7 +31,6 @@ import org.page.PublicUserPage;
 import org.page.SignUpPage;
 import org.page.UploadOrgPage;
 import org.startup.BaseTest;
-import org.generic.AllUploadingPaths;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
@@ -310,8 +310,8 @@ public class ContentCreationResourcePageObj extends BaseTest
 				createUserPage.searchInput.sendKeys(search);
 			}
 
-			//+"_"+GenericFunctions.readFromNotepad(".//TestData//contentNumbers.txt"));
-			System.out.println(inputToSearch);//+"_"+GenericFunctions.readFromNotepad(".//TestData//contentNumbers.txt"));
+			//+"_"+GenericFunctions.readFromNotepad("./TestData//contentNumbers.txt"));
+			System.out.println(inputToSearch);//+"_"+GenericFunctions.readFromNotepad("./testData/contentNumbers.txt"));
 			createUserPage.searchIcon.click();
 			GenericFunctions.waitWebDriver(2500);
 			GenericFunctions.waitForElementToAppear(createUserPage.getCourseName);
@@ -383,7 +383,18 @@ public class ContentCreationResourcePageObj extends BaseTest
 					ExtentTestManager.getTest().log(LogStatus.FAIL, "Could not copy the content ");
 					//Assert.fail("Error "+ContentCreationResourcePage.copyErrorToast.getText());
 					GenericFunctions.refreshWebPage();										
-					
+					if(contentType.equalsIgnoreCase("course"))
+					{
+						GenericFunctions.waitWebDriver(2000);
+						GenericFunctions.waitForElementToAppear(contentCreationResourcePage.courseCopyIcon);
+						contentCreationResourcePage.courseCopyIcon.click();
+					}
+					else if(contentType.equalsIgnoreCase("resource"))
+					{
+						GenericFunctions.waitWebDriver(2000);
+						GenericFunctions.waitForElementToAppear(contentCreationResourcePage.libraryContentCopyIcon);
+						contentCreationResourcePage.libraryContentCopyIcon.click();
+					}
 				}
 			}
 			catch(Exception e)
@@ -391,19 +402,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 				ExtentTestManager.getTest().log(LogStatus.FAIL, "No Error while copying the content");
 				
 			}
-			GenericFunctions.refreshWebPage();	
-			if(contentType.equalsIgnoreCase("course"))
-			{
-				GenericFunctions.waitWebDriver(2000);
-				GenericFunctions.waitForElementToAppear(contentCreationResourcePage.courseCopyIcon);
-				contentCreationResourcePage.courseCopyIcon.click();
-			}
-			else if(contentType.equalsIgnoreCase("resource"))
-			{
-				GenericFunctions.waitWebDriver(2000);
-				GenericFunctions.waitForElementToAppear(contentCreationResourcePage.libraryContentCopyIcon);
-				contentCreationResourcePage.libraryContentCopyIcon.click();
-			}
+			
 				
 			GenericFunctions.refreshWebPage();
 			GenericFunctions.waitWebDriver(2000);
@@ -421,7 +420,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			}
 			else
 			{
-				ExtentTestManager.getTest().log(LogStatus.ERROR, "Could not copy Content");
+				ExtentTestManager.getTest().log(LogStatus.INFO, "Could not copy Content");
 				System.out.println("Could not copy Content");
 			}
 			GenericFunctions.waitWebDriver(2000);
@@ -465,7 +464,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create new resource");
 			GenericFunctions.waitWebDriver(1500);
 			GenericFunctions.waitForElementToAppear(createUserPage.bookName);
-			String resourceNumber = GenericFunctions.testDataIncrementer(".//TestData//resourceNumbers.txt").toString();
+			String resourceNumber = GenericFunctions.testDataIncrementer("./testData/resourceNumbers.txt").toString();
 			createUserPage.bookName.sendKeys(objListOFTestDataForSunbird1.get(6).getCourseName()+resourceNumber);
 			GenericFunctions.waitWebDriver(2000);
 			createUserPage.startCreating.click();
@@ -1136,7 +1135,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			//GenericFunctions.waitWebDriver(1000);
 			//Grade(class)
 			GenericFunctions.waitForElements(createUserPage.clickBookGrade);
-			createUserPage.clickBookGrade.get(0).click();
+			createUserPage.clickBookGrade.get(1).click();
 			GenericFunctions.waitWebDriver(1000);
 			contentCreationResourcePage.selectFilterGrade.click();
 			//Subject
@@ -1264,12 +1263,16 @@ public class ContentCreationResourcePageObj extends BaseTest
 	{
 		try
 		{
-			objListOFTestDataForSunbird1= ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
+			
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying create new resource by giving an Unique Resource name");
-			GenericFunctions.waitWebDriver(1500);
-			GenericFunctions.waitForElementToAppear(createUserPage.bookName);
-			String resourceNumber = GenericFunctions.testDataIncrementer(".//TestData//resourceNumbers.txt").toString();
-			createUserPage.bookName.sendKeys(objListOFTestDataForSunbird1.get(6).getCourseName()+resourceNumber);
+			System.out.println("Passed here");
+			objListOFTestDataForSunbird1= ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
+			GenericFunctions.waitWebDriver(4000);
+			GenericFunctions.waitForElementToAppear(createUserPage.resourceName);
+			String resourceNumber = GenericFunctions.testDataIncrementer("./testData/resourceNumbers.txt").toString();
+			action.moveToElement(createUserPage.resourceName).build().perform();
+
+			createUserPage.resourceName.sendKeys(objListOFTestDataForSunbird1.get(6).getCourseName()+resourceNumber);
 			GenericFunctions.waitWebDriver(2000);
 			createUserPage.startCreating.click();
 			GenericFunctions.waitWebDriver(7000);			
@@ -1910,7 +1913,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			GenericFunctions.waitForElementToAppear(createUserPage.newChild);
 			action.moveToElement(createUserPage.newChild).click().perform();
 
-			String collectionName = objListOFTestDataForSunbird1.get(5).getCourseName()+"_"+GenericFunctions.testDataIncrementer(".//TestData//collectionNumbers.txt");
+			String collectionName = objListOFTestDataForSunbird1.get(5).getCourseName()+"_"+GenericFunctions.testDataIncrementer("./testData/collectionNumbers.txt");
 			createUserPage.courseName.sendKeys(collectionName);
 			createUserPage.courseDescription.sendKeys(objListOFTestDataForSunbird1.get(5).getCourseDescription());
 			GenericFunctions.waitForElementToAppear(createUserPage.addResource);
@@ -1932,28 +1935,62 @@ public class ContentCreationResourcePageObj extends BaseTest
 	{
 		try
 		{
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to upload an audio");
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addAudio);
+			if(contentCreationResourcePage.addAudio.isEnabled())
+			{
+				Assert.assertTrue(true);
+				ExtentTestManager.getTest().log(LogStatus.INFO, "User is sucessfully navigated to the metadata/plugins page of resource");
+			}
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to upload an audio for resource");
 			GenericFunctions.waitWebDriver(1500);
+			
 			contentCreationResourcePage.addAudio.click();
-			contentCreationResourcePage.selectMyAudio.click();
+			GenericFunctions.waitWebDriver(1000);
+			
+			/*GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.clickAllAudio);
+			contentCreationResourcePage.clickAllAudio.click();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.selectAudio_AllAudio);
+			contentCreationResourcePage.selectAudio_AllAudio.click();*/
+			
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.btnUploadRecord);
 			contentCreationResourcePage.btnUploadRecord.click();
-			contentCreationResourcePage.iconUpload.click();
+			GenericFunctions.waitWebDriver(2000);
+			action.click(contentCreationResourcePage.yesRadioButton).build().perform();
+			//contentCreationResourcePage.yesRadioButton.click();
+			
+			contentCreationResourcePage.audioUploadIcon.click();
+			GenericFunctions.waitWebDriver(3000);
 			contentCreationResourcePage.btnChooseFile.click();
 			String path=AllUploadingPaths.audioPath;
-			String secondpath = "./UploadingDocuments/Uploading audios/"+AUDIO_UPLOAD;  
 			GenericFunctions.uploadFile(path);
-			contentCreationResourcePage.rightBtnAvailable.click();
+			
+			//String secondpath = "./UploadingDocuments/Uploading audios/"+AUDIO_UPLOAD;  
+			
+			//contentCreationResourcePage.rightBtnAvailable.click();
+			
 			GenericFunctions.waitWebDriver(1500);
 			contentCreationResourcePage.btnUploadAndUse.click();
-			String alertActualMessage = contentCreationResourcePage.alertMessage.getText();
-			String alertExpectedMessage = "Audio successfully uploaded";
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.alertMessage);
+			String alertActualMessage = contentCreationResourcePage.alertMessage.getText();						
+			String alertExpectedMessage = "Audio successfully uploaded";			
 			Assert.assertEquals(alertActualMessage, alertExpectedMessage);
-			GenericFunctions.waitWebDriver(3000);
+			Assert.assertTrue(true);
+			action.moveToElement(contentCreationResourcePage.verifyAudioName).build().perform();
+			String uploadedAudioName = contentCreationResourcePage.verifyAudioName.getText();
+			if(AUDIO_UPLOAD.contains(uploadedAudioName))
+			{
+				Assert.assertTrue(true);
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Audio is uploaded sucesssfully to the resource");
+			
+			}GenericFunctions.waitWebDriver(3000);
 			System.out.println(alertActualMessage);
 			createUserPage.saveCourse.click();
-			GenericFunctions.waitWebDriver(3000);
+			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitForElementToAppear(createUserPage.closeButton);
 			createUserPage.closeButton.click();
-			GenericFunctions.waitWebDriver(3000);
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.xWindowCloseButton);
 			contentCreationResourcePage.xWindowCloseButton.click();
 			GenericFunctions.waitWebDriver(5000);
 

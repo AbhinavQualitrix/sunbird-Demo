@@ -732,6 +732,10 @@ public class CreatorUserPage {
 	
 	@FindBy(xpath="//h4[contains(text(),'Course')]")
 	public WebElement headerCourseTitles;
+	
+	//Nov 27-Added
+	@FindBy(xpath="//label[contains(.,'Name')]/following::input[@type='text' or @placeholder='Name']")
+	public WebElement resourceName;
 }
 
 
