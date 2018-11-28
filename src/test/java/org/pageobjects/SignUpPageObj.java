@@ -28,6 +28,7 @@ public class SignUpPageObj extends BaseTest
 	SignUpPage objSignUp=PageFactory.initElements(driver, SignUpPage.class);
 	Actions action = new Actions(driver);
 
+
 	/**
 	* Purpose: userLogin() method is used for user logging
 	*/

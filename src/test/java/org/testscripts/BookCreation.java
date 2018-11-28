@@ -31,7 +31,7 @@ public class BookCreation extends BaseTest
 		
 		//Step 1: Login as Creator
 		SignUpPageObj signupObj = new SignUpPageObj();
-		signupObj.userLogin(CREATOR);
+		signupObj.userLogin(BOOKCREATOR);
 	
 		
 		//Step 2:Go to workspace , create a book,submit for reviewer
@@ -66,7 +66,7 @@ public class BookCreation extends BaseTest
 		//Step 11: Logout as reviewer
 		signupObj.userLogout();
 		
-		/*//Step 12: Login as Creator
+		//Step 12: Login as Creator
 		signupObj.userLogin(CREATOR);
 
 		//Step 13:Navigate to Workspace-All my content
@@ -76,7 +76,7 @@ public class BookCreation extends BaseTest
 		creatorUserPageObj.deleteCreatedItems();
 
 		//Step 15: Logout as Creator
-		signupObj.userLogout();*/
+		signupObj.userLogout();
 	}
 
 }

@@ -39,7 +39,7 @@ public class ResendAnnouncementAndVerifyAsReciever extends BaseTest{
 	int count=7;
 	List <TestDataForSunbird> objListOFTestDataForSunbird= null;
 	@Test
-	public void resendAnnouncement() throws InterruptedException, Exception
+	public void resendAnnouncementAndVerifyAsReciever() throws InterruptedException, Exception
 	{
 		SignUpPageObj creatorLogin = new SignUpPageObj();
 		CreatorAnnouncementPageObj creatorAnnouncementPageObj =new CreatorAnnouncementPageObj();

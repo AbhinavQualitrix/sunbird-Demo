@@ -26,6 +26,9 @@ public class CollectionCreation extends BaseTest
 		//Step1:Login as content creator
 		signupObj.userLogin(CREATOR);
 		
+
+		
+		
 		//Step2:Navigate to workspace and create a Collection 
 		//And send the Collection for review
 		creatorUserPageObj.createCollection();
@@ -37,9 +40,12 @@ public class CollectionCreation extends BaseTest
 		
 		//Step4:Login as Reviewer
 		signupObj.userLogin(REVIEWER);
-
+		
+		
 		//Step5:Go to workspace and publish the content-h5p
 		creatorUserPageObj.goToWorkspace("collection");
+		
+		GenericFunctions.waitWebDriver(2000);
 		
 		//Step6:Reject the Collection
 		creatorUserPageObj.rejectTheContent(COLLECTION);

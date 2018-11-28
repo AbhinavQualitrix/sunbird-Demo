@@ -18,7 +18,7 @@ public class CreatorAnnouncementPage {
 	
 	
 	//Added on 22-Oct0-2018
-	@FindBy(xpath="(//*[@class='close icon'])[2]")
+	@FindBy(xpath="//*[@class='close icon']")
 	public WebElement CloseAnnouncementPopup;
 	
 	
@@ -138,7 +138,7 @@ public class CreatorAnnouncementPage {
 	@FindBy(xpath="//table[@class=\"ui padded table\"]//td[@class=\"cursor-pointer blue-text-color-sunbird\"]")
 	public WebElement announcementTableActionsContent;
 	
-	@FindBy(xpath="//div[@class='header padding-top-5']/div")
+	@FindBy(xpath="//div[@class='pt-10 segment-heading']")
 	public WebElement announcementReview;
 	
 	

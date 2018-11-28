@@ -77,7 +77,7 @@ public class ResourceCreation extends BaseTest
 		//Step 11: Logout as Reviewer
 		creatorLogin.userLogout();
 
-		/*//Step9: Login as Creator
+		//Step9: Login as Creator
 		creatorLogin.userLogin(CREATOR);
 	
 		//Step10: Navigate to WorkSpace-All my content
@@ -88,7 +88,7 @@ public class ResourceCreation extends BaseTest
 
 		//Step12: Logout as Creator
 		creatorLogin.userLogout();
-*/
+
 	}
 
 }

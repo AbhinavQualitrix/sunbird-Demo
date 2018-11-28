@@ -18,7 +18,7 @@ public class CreateMentorPage {
 		this.driver=driver; 
 	}
 
-	@FindBy(xpath="(//i[@class='dropdown icon'])[7]")
+	@FindBy(xpath="(//i[@class='dropdown icon'])[3]")
 	public WebElement searchCourseDropdown;
 	
 	@FindBy(xpath="//sui-select//sui-select-option[@class='item selected']")
@@ -213,8 +213,7 @@ public class CreateMentorPage {
 	@FindBy(xpath="//input[@formcontrolname='startDate']/../../../../../../../../../../../../sui-popup/div/sui-datepicker/sui-calendar-date-view/table/tbody/tr/td[@class='link today focus']")
 	public WebElement startDateCalendar;
 	
-	@FindBy(xpath="//span[@class='sliderCardHeading text-cencapitalize']")
-	public WebElement getCourseName;
+	
 	
 	// Added on 8 sep 2018
 	@FindBy(xpath="(//div[@data-value='08a6aa7a-4673-497e-971a-aa15bef52376'])[1]")
@@ -247,4 +246,7 @@ public class CreateMentorPage {
 	
 	@FindBy(xpath="(//input[@id='mentorSelList']/following::div/div/div[contains(.,'content reviewer')])[2]")
 	public WebElement selectMembersInBatch;
+	
+	@FindBy(xpath="//div[@class='sub-header']")
+	public WebElement getCourseName;
 }

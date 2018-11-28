@@ -21,7 +21,7 @@ public class UploadWebmContent extends BaseTest
 	{
 		SignUpPageObj signupObj = new SignUpPageObj();
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
-		
+		/*
 		//Step 1 :Login as content creator
 		signupObj.userLogin(CREATOR);
 
@@ -32,7 +32,7 @@ public class UploadWebmContent extends BaseTest
 		creatorUserPageObj.uploadContentMp4(WEBM);
 		//Logout as creator
 		signupObj.userLogout();
-		
+		*/
 		//Step 5:Login as Reviewer
 		signupObj.userLogin(REVIEWER);
 		

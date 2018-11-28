@@ -42,7 +42,9 @@ public class UploadMp4Content extends BaseTest
 
 		//Step 6, 7:Go to workspace and publish content Mp4
 		creatorUserPageObj.goToWorkspace("mp4");
-		
+
+		GenericFunctions.waitWebDriver(2000);
+
 		//Step 8 :Reject the upload type-MP4 which is already existing in the list
 		creatorUserPageObj.rejectTheUploads("mp4");
 

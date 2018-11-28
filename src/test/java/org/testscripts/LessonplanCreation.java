@@ -60,7 +60,7 @@ public class LessonplanCreation extends BaseTest
 		//Logout as Reviewer
 		signupObj.userLogout();
 		
-		/*//Logout as Creator
+		//Logout as Creator
 		signupObj.userLogin(CREATOR);
 		
 		//Navigate to Workspace and access All My Content
@@ -70,7 +70,7 @@ public class LessonplanCreation extends BaseTest
 		creatorUserPageObj.deleteCreatedItems();
 		
 		//Logout as Content Creator
-		signupObj.userLogout();*/
+		signupObj.userLogout();
 		
 		
 	}

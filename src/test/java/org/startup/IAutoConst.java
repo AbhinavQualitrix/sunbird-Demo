@@ -58,12 +58,12 @@ public interface IAutoConst {
 	
 	String[] ADDRESS=new String[]{"Test #15","Test Vasanthnagar","Test Bangalore","Test Karnataka","Test India","Test 560035"};
 	String ENDORSE_USER="TestFlagReviewer  N";
-	String BOOK="book";
+	String BOOK="Book";
 	String COURSE="Course";
-	String RESOURCE="resource";
-	String COLLECTION="collection";
-	String LESSONPLAN="lesson plan";
-	String UPLOADCONTENT="upload content";
+	String RESOURCE="Resource";
+	String COLLECTION="Collection";
+	String LESSONPLAN="Lesson plan";
+	String UPLOADCONTENT="Upload Content";
 	String PUBLISHER="Test Automation Publisher";
 	String[] DIAL_CODE={"F2SGB5","I1XNH4","L13VN3","NZ93U2","65BTS8","94H1Y7","C3M956","RYEB11","UXJI6Z","XWPQCY"};
 	String LESSON_NAME="Automation Lesson Plan";	
@@ -91,7 +91,7 @@ public interface IAutoConst {
 	String H5P="H5P";
 	String UPLOAD_H5P="fill-in-the-blanks-837.h5p";
 	String PDF="PDF";
-	String UPLOAD_PDF="Short-Stories-for-Children-PDF.pdf";
+	String UPLOAD_PDF="samplepdf.pdf";
 	String SEARCH_COLLECTION_IMAGE="Collection Image";
 	
 	//Added for Send For Review Popup
@@ -112,7 +112,7 @@ public interface IAutoConst {
 	//Adding for Public user 
 	String TEST_MAIL_ID="testmemeight@gmail.com";
 	String [] CONTENT_TYPE={"//sui-select-option/..//span[.='TextBook']","//sui-select-option/..//span[.='Collection']","//sui-select-option/..//span[.='LessonPlan']","//sui-select-option/..//span[.='Resource']"};
-	String PUBLISHED="published";
+	String PUBLISHED="Published";
 	
 	//Added on Maintenance - OCT 23
 	String ALL_MY_CONTENT="All My Content";
