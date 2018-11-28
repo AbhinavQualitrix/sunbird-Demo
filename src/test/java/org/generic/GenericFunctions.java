@@ -326,7 +326,7 @@ public class GenericFunctions extends BaseTest
 		GenericFunctions.waitWebDriver(2000);
 		driver.navigate().refresh();
 		GenericFunctions.waitWebDriver(2500);
-		createUserPageObj.handlePopupOnLogin();
+		//createUserPageObj.handlePopupOnLogin();
 		
 	}
 

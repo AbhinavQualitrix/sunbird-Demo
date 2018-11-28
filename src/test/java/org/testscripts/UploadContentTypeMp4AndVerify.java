@@ -15,10 +15,10 @@ import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
 import org.testng.annotations.Test;
 
-public class UploadContentTypeMp4 extends BaseTest
+public class UploadContentTypeMp4AndVerify extends BaseTest
 {
 	@Test(priority=4, groups={"Creator Group"})
-	public void uploadContentTypeMp4() throws Exception
+	public void uploadContentTypeMp4AndVerify() throws Exception
 	{
 		
 		SignUpPageObj signupObj = new SignUpPageObj();

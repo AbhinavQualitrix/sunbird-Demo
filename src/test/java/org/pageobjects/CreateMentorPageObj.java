@@ -87,6 +87,7 @@ public class CreateMentorPageObj extends BaseTest{
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify navigate to Course section and search course");
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 			createUserPage.headerCourse.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
@@ -176,6 +177,7 @@ public class CreateMentorPageObj extends BaseTest{
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify navigate to Course section, search course and update the batch");
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 			createUserPage.headerCourse.click();
 			GenericFunctions.waitWebDriver(1000);
@@ -262,30 +264,20 @@ public class CreateMentorPageObj extends BaseTest{
 			boolean elementStatus = generic.isElementPresent(createMentorPage.editIconInUserProfileSearch);	
 			if(elementStatus == true)
 			{
-
 				System.out.println("authenticPerson");
 				createMentorPage.editIconInUserProfileSearch.click();
 				GenericFunctions.waitWebDriver(1000);		
-				for(int k=0;k<=createMentorPage.selectRoleCheckboxes.size();k++) 
-				{
-					if(createMentorPage.selectRoleCheckboxes.get(k).isSelected()) 
-					{
-						createMentorPage.selectRoleCheckboxes.get(k).click();
-						k++;
-					}
-					else
-					{
-						createMentorPage.selectRoleCheckboxes.get(k).click();
-						GenericFunctions.waitWebDriver(1000);
-						break;
-					}
-
-				}
+				createMentorPage.selectRoleCheckbox.click();
+				GenericFunctions.waitWebDriver(2000);	
 				createMentorPage.updateButtonInUserProfile.click();
-				GenericFunctions.waitForElementToAppear(createMentorPage.successfulMessage);
-				String msg = createMentorPage.successfulMessage.getText();
-				System.out.println(msg);
-				ExtentTestManager.getTest().log(LogStatus.PASS, msg+" of the User");
+				try {
+					GenericFunctions.waitForElementToAppear(createMentorPage.successfulMessage);
+					String msg = createMentorPage.successfulMessage.getText();
+					System.out.println(msg);
+				}catch(Exception e)
+				{
+					ExtentTestManager.getTest().log(LogStatus.INFO,"Could not capture successful message ");
+				}
 			}	
 
 		}
@@ -370,6 +362,7 @@ public class CreateMentorPageObj extends BaseTest{
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create invite only batch for a course");
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 			createUserPage.headerCourse.click();
 			GenericFunctions.waitWebDriver(1000);
@@ -483,10 +476,11 @@ public class CreateMentorPageObj extends BaseTest{
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create invite only batch for Sub Organization");
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 			createUserPage.headerCourse.click();
 			GenericFunctions.waitWebDriver(1000);
-			createUserPage.searchInput.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());//+GenericFunctions.readFromNotepad("./TestData/batchNumbers.txt").toUpperCase());
+			createUserPage.searchInput.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad("./testData/courseNumbers.txt").toUpperCase());
 			createUserPage.searchIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 			createMentorPage.courseImg1.click();

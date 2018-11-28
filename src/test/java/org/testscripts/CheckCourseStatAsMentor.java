@@ -98,7 +98,7 @@ public class CheckCourseStatAsMentor extends BaseTest
 		
 		
 		//Step15:Login as Public user
-		userLogin.userLogin(PUBLICUSER);
+		userLogin.userLogin(PUBLICUSER1);
 		
 		
 		//Step16:Search for the course

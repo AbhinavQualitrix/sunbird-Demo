@@ -61,18 +61,77 @@ public class CreatorUserPageObj extends BaseTest{
 			publicUserPage.headerProfile.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
 			createUserPage.workSpace.click();
-			*/
+			 */
 			/*
 			GenericFunctions.waitForElementToAppear(createUserPage.profileIconDropdown);
 			createUserPage.profileIconDropdown.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.profileIconProfile);
 			createUserPage.profileIconProfile.click();
-			*/
-			goToProfilePage();
+			 */
+			////handlePopupOnLogin();
+			
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
+			createUserPage.workSpace.click();
+			GenericFunctions.waitWebDriver(2000);
+			switch(createVariable)
+			{
+			case "Book":
+				GenericFunctions.waitForElementToAppear(createUserPage.createBook);
+				createUserPage.createBook.click();
+				GenericFunctions.waitWebDriver(2000);
+				break;
+			case "Course":
+				GenericFunctions.waitForElementToAppear(createUserPage.createCourse);
+				createUserPage.createCourse.click();
+				GenericFunctions.waitWebDriver(2000);
+				break;
+			case "Resource":
+				GenericFunctions.waitForElementToAppear(createUserPage.createResource);
+				createUserPage.createResource.click();
+				GenericFunctions.waitWebDriver(2000);
+				break;
+			case "Collection":
+				GenericFunctions.waitForElementToAppear(createUserPage.createCollection);
+				createUserPage.createCollection.click();
+				GenericFunctions.waitWebDriver(2000);
+				break;
+			case "Lesson Plan":
+				GenericFunctions.waitForElementToAppear(createUserPage.createLesson);
+				createUserPage.createLesson.click();
+				GenericFunctions.waitWebDriver(2000);
+				break;
+			case "Upload Content":
+				GenericFunctions.waitForElementToAppear(createUserPage.createUploadContent);
+				createUserPage.createUploadContent.click();
+				GenericFunctions.waitWebDriver(2000);
+				break;
+			case "Published":	
+				GenericFunctions.waitForElementToAppear(createUserPage.published);
+				createUserPage.published.click();
+				GenericFunctions.waitWebDriver(2000);
+				break;
+				
+			case "Drafts":
+				GenericFunctions.waitForElementToAppear(createUserPage.drafts);
+				createUserPage.drafts.click();
+				GenericFunctions.waitWebDriver(2000);
+				break;
+				
+			case "All My Content":
+				GenericFunctions.waitForElementToAppear(createUserPage.allMyContent);
+				createUserPage.allMyContent.click();
+				GenericFunctions.waitWebDriver(2000);
+				break;
+			}
+			
+			/*GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
 			createUserPage.workSpace.click();
 			GenericFunctions.waitWebDriver(2500);
-			if(createVariable.equalsIgnoreCase(createUserPage.createBook.getText()))
+			//if(createVariable.equalsIgnoreCase(createUserPage.createBook.getText()))
+			if(createVariable.equalsIgnoreCase(createUserPage.createBook.getText())
+					||(createUserPage.createBook.isDisplayed())==false)	
 			{	
 				createUserPage.createBook.click();
 			}
@@ -97,23 +156,8 @@ public class CreatorUserPageObj extends BaseTest{
 			else if(createVariable.equalsIgnoreCase(createUserPage.createUploadContent.getText()))
 			{
 				createUserPage.createUploadContent.click();
-			}
-			else if(createVariable.equalsIgnoreCase(createUserPage.published.getText()))
-			{
-				createUserPage.published.click();
-				GenericFunctions.waitWebDriver(2500);
-			}
-			else if(createVariable.equalsIgnoreCase(createUserPage.drafts.getText()))
-			{
-				createUserPage.drafts.click();
-				GenericFunctions.waitWebDriver(1500);
-			}
-			else if(createVariable.equalsIgnoreCase(createUserPage.allMyContent.getText()))
-			{
-				createUserPage.allMyContent.click();
-				GenericFunctions.waitWebDriver(1500);
-			}
-		
+			}*/
+			
 		}
 		catch(Exception e)
 		{
@@ -792,7 +836,7 @@ public class CreatorUserPageObj extends BaseTest{
 			
 			//driver.switchTo().defaultContent();
 			
-			if(source.equalsIgnoreCase(COURSE))
+			/*if(source.equalsIgnoreCase(COURSE))
 			{
 				GenericFunctions.refreshWebPage();
 				//handlePopupOnLogin();
@@ -822,11 +866,11 @@ public class CreatorUserPageObj extends BaseTest{
 				createUserPage.searchIcon.click();
 				GenericFunctions.waitWebDriver(2500);
 				searchCourseName = createUserPage.getCourseName.getText(); //objListOFTestDataForSunbird.get(2).getCourseName()+courseNumber;
-			}
+			}*/
 
 			//Added on Maintenance 06/09/2018
 			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.waitForElementToAppear(createUserPage.getCourseName);
+			//GenericFunctions.waitForElementToAppear(createUserPage.getCourseName);
 
 			//assertOnSearchAfterPublish(searchCourseName);
 			
@@ -1121,6 +1165,8 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.clickOwner.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectOwner);
 			createUserPage.selectOwner.click();
+			GenericFunctions.waitWebDriver(1500);
+			selectTopic();
 			GenericFunctions.waitWebDriver(1500);
 			GenericFunctions.waitForElementToAppear(createUserPage.saveButton);
 			GenericFunctions.waitWebDriver(1000);
@@ -2616,7 +2662,7 @@ public class CreatorUserPageObj extends BaseTest{
 			
 			//driver.switchTo().defaultContent();
 			
-			if(source.equalsIgnoreCase(COURSE))
+			/*if(source.equalsIgnoreCase(COURSE))
 			{
 				GenericFunctions.refreshWebPage();
 				//handlePopupOnLogin();
@@ -2653,7 +2699,7 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createUserPage.getCourseName);
 
 			//assertOnSearchAfterPublish(searchCourseName);
-			
+*/			
 		}
 		catch(Exception e)
 		{

@@ -471,64 +471,7 @@ public class PublicUserPageObj extends BaseTest
 
 	}
 
-	public void searchOrgs() throws Exception
-	{
-		try
-		{
-			ExtentTestManager.getTest().log(LogStatus.INFO, "Verifying search Organizations search in Profile page");
-			/*GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
-			createUserPage.headerProfile.click();*/
-			creatorUserPageObj.goToProfilePage();
-			GenericFunctions.waitWebDriver(1000);
-			//createUserPage.searchDropdown.click();
-			GenericFunctions.waitWebDriver(1000);
-			//createUserPage.organisationsInSearch.click();
-			GenericFunctions.waitWebDriver(3000);
-			for(int i=0;i<SEARCH_ORG.length;i++)
-			{	
-				GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
-				createUserPage.searchInput.sendKeys(SEARCH_ORG[i]);
-				GenericFunctions.waitWebDriver(1000);
-				createUserPage.searchIcon.click();
-				GenericFunctions.waitForElementToAppear(publicUserPage.searchedResult);
-				for(int j=0;j<publicUserPage.searchedResults1.size();j++)	
-				{
-					String orgName=publicUserPage.searchedResults1.get(j).getText();
-					System.out.println(orgName);
-				}
-
-
-
-				/*GenericFunctions.waitForElementToAppear(publicUserPage.searchedInputResult);
-				if(publicUserPage.searchedInputResult.isDisplayed())
-				{
-					GenericFunctions.waitWebDriver(2000);
-					js.executeScript("scroll(0, 450);");
-					GenericFunctions.waitWebDriver(2000);
-					js.executeScript("scroll(0, -200);");
-					js.executeScript("scroll(0, -250);");
-					Assert.assertTrue(true);
-					System.out.println("Getting results "+publicUserPage.searchedInputResult.getText()+ " are the input " +SEARCH_ORG[i]);
-					GenericFunctions.waitWebDriver(3000);
-					createUserPage.searchInput.clear();
-				}
-				else
-				{
-					System.out.println(publicUserPage.searchedInputResult+"element is not displayed");
-				}*/
-
-			}
-		}
-		catch(Exception e )
-		{
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on searching the Organizations");
-			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
-			System.out.println("Could not search Organizations");
-			Assert.fail("Failed on searching Organizations in profile page");
-		}
-
-	}
-
+	
 	public void profileInformationUpdate() throws Exception
 	{
 		try
@@ -945,6 +888,63 @@ public class PublicUserPageObj extends BaseTest
 			System.out.println("Failed on Updating Profile information");
 			Assert.fail("Failed on Updating Profile information");
 		}
+	}
+	public void searchOrgs() throws Exception
+	{
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Verifying search Organizations search in Profile page");
+			/*GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
+			createUserPage.headerProfile.click();*/
+			creatorUserPageObj.goToProfilePage();
+			GenericFunctions.waitWebDriver(1000);
+			//createUserPage.searchDropdown.click();
+			GenericFunctions.waitWebDriver(1000);
+			//createUserPage.usersInSearch.click();
+			GenericFunctions.waitWebDriver(3000);
+			for(int i=0;i<SEARCH_ORG.length;i++)
+			{	
+				GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
+				createUserPage.searchInput.sendKeys(SEARCH_ORG[i]);
+				GenericFunctions.waitWebDriver(1000);
+				createUserPage.searchIcon.click();
+				GenericFunctions.waitForElementToAppear(publicUserPage.searchedResult);
+				for(int j=0;j<publicUserPage.searchedResults1.size();j++)	
+				{
+					String orgName=publicUserPage.searchedResults1.get(j).getText();
+					System.out.println(orgName);
+				}
+
+
+
+				/*GenericFunctions.waitForElementToAppear(publicUserPage.searchedInputResult);
+				if(publicUserPage.searchedInputResult.isDisplayed())
+				{
+					GenericFunctions.waitWebDriver(2000);
+					js.executeScript("scroll(0, 450);");
+					GenericFunctions.waitWebDriver(2000);
+					js.executeScript("scroll(0, -200);");
+					js.executeScript("scroll(0, -250);");
+					Assert.assertTrue(true);
+					System.out.println("Getting results "+publicUserPage.searchedInputResult.getText()+ " are the input " +SEARCH_ORG[i]);
+					GenericFunctions.waitWebDriver(3000);
+					createUserPage.searchInput.clear();
+				}
+				else
+				{
+					System.out.println(publicUserPage.searchedInputResult+"element is not displayed");
+				}*/
+
+			}
+		}
+		catch(Exception e )
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on searching the Organizations");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			System.out.println("Could not search Organizations");
+			Assert.fail("Failed on searching Organizations in profile page");
+		}
+
 	}
 
 }

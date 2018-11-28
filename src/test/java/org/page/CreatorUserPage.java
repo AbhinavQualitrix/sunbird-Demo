@@ -145,9 +145,7 @@ public class CreatorUserPage {
 	public WebElement headerDropdown;
 
 	//10 OCt
-	@FindBy(xpath="//div[@class='ui text menu m-0 jc-center flex']/following::a[contains(text(),'Courses')]")
-	//@FindBy(xpath="//a[contains(text(),'Course')]")
-	public WebElement headerCourse;
+	
 
 	@FindBy(xpath="//div[@id='headerSearch']//span[.='Courses']")
 	public WebElement headerCourseClick;
@@ -732,6 +730,13 @@ public class CreatorUserPage {
 	
 	@FindBy(xpath="//h4[contains(text(),'Course')]")
 	public WebElement headerCourseTitles;
+	
+	@FindBy(xpath="//div[@class='ui text menu m-0 flex-jc-center d-flex']/following::a[contains(text(),'Courses')]")
+	//@FindBy(xpath="//a[contains(text(),'Course')]")
+	public WebElement headerCourse;
+	
+	@FindBy(xpath="(//sui-select-option[@value='Users'])[2]")
+	public WebElement usersInSearch;
 }
 
 

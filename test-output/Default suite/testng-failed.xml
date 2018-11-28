@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test name="Default test(failed)">
     <classes>
-      <class name="org.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor">
+      <class name="org.testscripts.ConsumeOpenCourseByPublicUser">
         <methods>
-          <include name="consumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
+          <include name="consumeOpenCourseByPublicUser"/>
           <include name="closeApplication"/>
           <include name="openApplication"/>
         </methods>
-      </class> <!-- org.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor -->
+      </class> <!-- org.testscripts.ConsumeOpenCourseByPublicUser -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
