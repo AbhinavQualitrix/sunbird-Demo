@@ -139,6 +139,7 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.scrollToElement(createUserPage.clickOwner);
 			createUserPage.clickOwner.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectOwner);
+			GenericFunctions.waitWebDriver(1000);
 			createUserPage.selectOwner.click();
 
 			selectTopic();
@@ -454,7 +455,8 @@ public class CreatorUserPageObj extends BaseTest{
 			driver.switchTo().window(myWindowHandle);
 			lessonNumber = GenericFunctions.testDataIncrementer("./testData/lessonPlan.txt");
 			//createUserPage.clickOnPopup.click();
-
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(createUserPage.bookName);
 			createUserPage.bookName.sendKeys(objListOFTestDataForSunbird1.get(3).getCourseName()+lessonNumber);
 			System.out.println("Lesson created :"+objListOFTestDataForSunbird1.get(3).getCourseName()+lessonNumber);
 			GenericFunctions.waitWebDriver(2000);
@@ -535,7 +537,7 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitWebDriver(7500);
 			GenericFunctions.waitForElementToAppear(createUserPage.enterUrl);
-			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitWebDriver(4000);
 			WebElement browse=createUserPage.browseButton;
 			if(uploadType.equalsIgnoreCase("mp4"))
 			{
@@ -560,10 +562,15 @@ public class CreatorUserPageObj extends BaseTest{
 			}
 			else if(uploadType.equalsIgnoreCase("youtube"))
 			{
+				GenericFunctions.waitForElementToAppear(createUserPage.enterUrl);
 				createUserPage.enterUrl.sendKeys(UPLOAD_YOUTUBE);
 				GenericFunctions.waitWebDriver(2000);
-				System.out.println("YOUTUBE content uploaded sucessfully");
+				GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.UploadButton);	
+				GenericFunctions.waitWebDriver(1000);
+				action.moveToElement(createUserPage.UploadButton).build().perform();
+				//action.click(createUserPage.UploadButton).build().perform();
 				createUserPage.UploadButton.click();
+				System.out.println("YOUTUBE content uploaded sucessfully");
 			}
 			else if(uploadType.equalsIgnoreCase("epub"))
 			{
@@ -798,8 +805,12 @@ public class CreatorUserPageObj extends BaseTest{
 				String rejectReason = (REVIEW_COMMENTS[new Random().nextInt(REVIEW_COMMENTS.length)]);
 				createUserPage.reviewComments.click();
 				createUserPage.reviewComments.sendKeys(rejectReason);
+				GenericFunctions.waitWebDriver(2000);
 				GenericFunctions.waitForElementToAppear(createUserPage.requestChangesButton1);
-				GenericFunctions.waitWebDriver(1000);
+				//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.requestChangesButton1);
+				//action.moveToElement(createUserPage.requestChangesButton1);
+				//GenericFunctions.clickOnElementUsingJavascript(createUserPage.requestChangesButton1);
+				GenericFunctions.waitWebDriver(4000);
 				createUserPage.requestChangesButton1.click();
 				GenericFunctions.waitWebDriver(3000);
 				System.out.println(inputToReject+" is rejected succesfully");
@@ -2069,12 +2080,16 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.waitForElementToAppear(createUserPage.searchTopic);
 			createUserPage.searchTopic.click();
+			GenericFunctions.waitForElementToAppear(createUserPage.selectTopic);
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.selectTopic.click();	
-			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.waitForElementToAppear(createUserPage.doneButton);
+			GenericFunctions.waitWebDriver(4000);
+			//GenericFunctions.scrollToElement(createUserPage.doneButton);
+			//GenericFunctions.scrollTillEndOfPage();
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.doneButton);
 			GenericFunctions.waitWebDriver(2000);
 			action.moveToElement(createUserPage.doneButton).build().perform();
+			//GenericFunctions.clickOnElementUsingJavascript(createUserPage.doneButton);
 			action.click(createUserPage.doneButton).click().build().perform();
 		}
 		catch(Exception e)
@@ -2291,7 +2306,9 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(4000);
 			
 			GenericFunctions.waitForElementToAppear(createUserPage.upForReview);
-			if(createUserPage.upForReview.isDisplayed()&&createUserPage.noContentInUpForReview.isDisplayed())
+			//if(createUserPage.upForReview.isDisplayed()&&createUserPage.noContentInUpForReview.isDisplayed())
+			
+			if(createUserPage.upForReview.isDisplayed())
 			{
 				Assert.assertTrue(true);
 				ExtentTestManager.getTest().log(LogStatus.PASS, source+"is published sucessfully");
@@ -2739,7 +2756,7 @@ public class CreatorUserPageObj extends BaseTest{
 				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird1.get(4).getCourseName()+"_"+GenericFunctions.readFromNotepad("./testData/contentNumbers.txt")+"_"+EPUB);
 			}
 			else if(inputToSearch.equalsIgnoreCase(HTML))
-			{
+			{  
 				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird1.get(4).getCourseName()+"_"+GenericFunctions.readFromNotepad("./testData/contentNumbers.txt")+"_"+HTML);
 			}
 			else if(inputToSearch.equalsIgnoreCase(H5P))

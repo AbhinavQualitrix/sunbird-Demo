@@ -328,7 +328,7 @@ public class GenericFunctions extends BaseTest
 		driver.navigate().refresh();
 		GenericFunctions.waitWebDriver(2500);
 		//createUserPageObj.handlePopupOnLogin();
-		
+
 	}
 
 	/**
@@ -660,7 +660,7 @@ public class GenericFunctions extends BaseTest
 			createUserPage.profileIconDropdown.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.profileIconProfile);
 			createUserPage.profileIconProfile.click();
-			*/
+			 */
 			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
 			createUserPage.workSpace.click();
@@ -703,9 +703,9 @@ public class GenericFunctions extends BaseTest
 
 		}
 	}
-	
+
 	//Nov 27
-	
+
 	public static boolean assertIfElementExists1(WebDriver mDriver, String identifyBy, WebElement locator) throws Exception {
 		boolean bElementFound = false;
 		try	{		
@@ -731,7 +731,7 @@ public class GenericFunctions extends BaseTest
 		log.info("Method: assertIfElementExists for locator = " + locator  + " status = " + bElementFound);	
 		return bElementFound;
 	}
-	
+
 	public static void FetchFieldsAndAssert(WebElement ele,String ExpValue)
 	{
 		try
@@ -775,4 +775,15 @@ public class GenericFunctions extends BaseTest
 			System.out.println("Unable to click on element "+ e.getStackTrace());
 		}
 	}
+
+	
+	
+	public static void scrollTillEndOfPage()
+	{
+	     
+   	 // ((JavascriptExecutor) driver).executeScript("window.scrollTo(0,document.body.scrollHeight )");  
+   	  ((JavascriptExecutor) driver).executeScript("scroll(0, 250);");
+	 
+   }
+
 }

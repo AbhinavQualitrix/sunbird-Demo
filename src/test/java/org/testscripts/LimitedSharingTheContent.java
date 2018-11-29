@@ -30,26 +30,30 @@ public class LimitedSharingTheContent extends BaseTest
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 		
 		//Step 1:Login as Content creator
-		signupObj.userLogin(CREATOR);
+		signupObj.userLogin(BOOKCREATOR);
 			
 		//Step 2:Navigate to workspace and create all the content types
 		creatorUserPageObj.navigateToWorkspace(BOOK);
 		
-		//Step 3e:Create content type -BOOK
+		//Step 3a:Create content type -BOOK
 		creatorUserPageObj.createBook(objListOFTestDataForSunbird);
 		
-		//Step 3eSend BOOK for Limited Sharing
+		//Step 3a:Send BOOK for Limited Sharing
 		creatorUserPageObj.limitedSharing("Book");
 		
+		//Step 3a:Logout as book creator
+		signupObj.userLogout();
 		
-
-		//Step 3a:Navigate to workspace to Create a course 
+		//Step 3b:Login as content creator
+		signupObj.userLogin(CREATOR);
+		
+		//Step 3b:Navigate to workspace to Create a course 
 		creatorUserPageObj.navigateToWorkspace(COURSE);
 		
-		//Step 3a:create content type-COURSE
+		//Step 3b:create content type-COURSE
 		creatorUserPageObj.createCourse(objListOFTestDataForSunbird);
 		
-		//Step 3a:Send COURSE for Limited Sharing
+		//Step 3b:Send COURSE for Limited Sharing
 		creatorUserPageObj.limitedSharing("course");
 		
 					
