@@ -1,5 +1,6 @@
 package org.testscripts;
 
+import org.testng.annotations.Test;
 import org.pageobjects.ContentCreationResourcePageObj;
 import org.pageobjects.CreatorUserPageObj;
 import org.pageobjects.SignUpPageObj;

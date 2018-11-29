@@ -1,6 +1,7 @@
 package org.testscripts2;
 
 import org.testng.annotations.Test;
+import org.testng.annotations.Test;
 import java.util.List;
 import org.generic.GenericFunctions;
 import org.generic.ReadTestDataFromExcel;

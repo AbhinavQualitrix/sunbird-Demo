@@ -10,6 +10,7 @@ To verify that the user is able to view the sort option
 
 
 package org.testscripts.regression;
+import org.testng.annotations.Test;
 import org.pageobjects.ContentCreationResourcePageObj;
 import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;

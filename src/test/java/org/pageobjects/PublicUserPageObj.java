@@ -277,8 +277,12 @@ public class PublicUserPageObj extends BaseTest
 			publicUserPage.clickContentTypes.click();
 			GenericFunctions.waitForElementToAppear(publicUserPage.selectContentType);
 			publicUserPage.selectContentType.click();
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitWebDriver(3000);
+			publicUserPage.clickContentTypes.click();
+			
+			Thread.sleep(5000);
 			publicUserPage.clickApply.click();
+		
 			try
 			{
 				WebElement result = GenericFunctions.waitForElementToAppear(publicUserPage.courseToBeClicked);
@@ -297,7 +301,7 @@ public class PublicUserPageObj extends BaseTest
 			}
 			catch(Exception e)
 			{
-				ExtentTestManager.getTest().log(LogStatus.PASS, "Filters are applied but could not get the resultant course");
+				ExtentTestManager.getTest().log(LogStatus.FAIL, "Filters are applied but could not get the resultant course");
 				ExtentTestManager.getTest().log(LogStatus.INFO,"Exception Message: "+e.getLocalizedMessage());
 			}
 
@@ -327,7 +331,7 @@ public class PublicUserPageObj extends BaseTest
 
 			GenericFunctions.waitForElementToAppear(createUserPage.headerLibrary);
 			createUserPage.headerLibrary.click();
-			GenericFunctions.waitWebDriver(1600);
+			GenericFunctions.waitWebDriver(4000);
 			publicUserPage.filterIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 			publicUserPage.clickFilterBoard.click();
@@ -345,10 +349,13 @@ public class PublicUserPageObj extends BaseTest
 			publicUserPage.clickFilterMedium.click();
 			GenericFunctions.waitForElements(publicUserPage.selectFilterMedium);
 			publicUserPage.selectFilterMedium.get(0).click();
+			
+			
+			
 			GenericFunctions.waitWebDriver(1500);
-			publicUserPage.clickContentTypes.click();
+		/*	publicUserPage.clickContentTypes.click();
 			GenericFunctions.waitWebDriver(2000);
-			publicUserPage.selectContentType.click();
+			publicUserPage.selectContentType.click();*/
 			publicUserPage.clickApply.click();
 
 			try
@@ -471,7 +478,64 @@ public class PublicUserPageObj extends BaseTest
 
 	}
 
-	
+	public void searchOrgs() throws Exception
+	{
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Verifying search Organizations search in Profile page");
+			/*GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
+			createUserPage.headerProfile.click();*/
+			creatorUserPageObj.goToProfilePage();
+			GenericFunctions.waitWebDriver(1000);
+			//createUserPage.searchDropdown.click();
+			GenericFunctions.waitWebDriver(1000);
+			//createUserPage.organisationsInSearch.click();
+			GenericFunctions.waitWebDriver(3000);
+			for(int i=0;i<SEARCH_ORG.length;i++)
+			{	
+				GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
+				createUserPage.searchInput.sendKeys(SEARCH_ORG[i]);
+				GenericFunctions.waitWebDriver(1000);
+				createUserPage.searchIcon.click();
+				GenericFunctions.waitForElementToAppear(publicUserPage.searchedResult);
+				for(int j=0;j<publicUserPage.searchedResults1.size();j++)	
+				{
+					String orgName=publicUserPage.searchedResults1.get(j).getText();
+					System.out.println(orgName);
+				}
+
+
+
+				/*GenericFunctions.waitForElementToAppear(publicUserPage.searchedInputResult);
+				if(publicUserPage.searchedInputResult.isDisplayed())
+				{
+					GenericFunctions.waitWebDriver(2000);
+					js.executeScript("scroll(0, 450);");
+					GenericFunctions.waitWebDriver(2000);
+					js.executeScript("scroll(0, -200);");
+					js.executeScript("scroll(0, -250);");
+					Assert.assertTrue(true);
+					System.out.println("Getting results "+publicUserPage.searchedInputResult.getText()+ " are the input " +SEARCH_ORG[i]);
+					GenericFunctions.waitWebDriver(3000);
+					createUserPage.searchInput.clear();
+				}
+				else
+				{
+					System.out.println(publicUserPage.searchedInputResult+"element is not displayed");
+				}*/
+
+			}
+		}
+		catch(Exception e )
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on searching the Organizations");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			System.out.println("Could not search Organizations");
+			Assert.fail("Failed on searching Organizations in profile page");
+		}
+
+	}
+
 	public void profileInformationUpdate() throws Exception
 	{
 		try
@@ -835,15 +899,21 @@ public class PublicUserPageObj extends BaseTest
 			String actualProfileUrl=driver.getCurrentUrl();
 			String expectedProfileUrl="https://staging.open-sunbird.org/profile";
 			GenericFunctions.waitWebDriver(4000);
+			
 			action.moveToElement(PublicUserPage.editButton).build().perform();
 			action.click(PublicUserPage.editButton).build().perform();
+			GenericFunctions.waitWebDriver(2000);
+			
+			updateProfilePage();
+			
+			
 			
 			
 			GenericFunctions.waitForElementToAppear(PublicUserPage.clickProfileBoard);
-			/*PublicUserPage.clickProfileBoard.click();
+		PublicUserPage.clickProfileBoard.click();
 			GenericFunctions.waitWebDriver(2000);
-			PublicUserPage.selectProfileSubject.click();
-			PublicUserPage.clickProfileBoard.click();*/
+			PublicUserPage.selectProfileBoard.click();
+			PublicUserPage.clickProfileBoard.click();
 
 
 			PublicUserPage.clickProfileMedium.click();
@@ -864,7 +934,7 @@ public class PublicUserPageObj extends BaseTest
 			action.click(PublicUserPage.clickProfileClass).build().perform();*/
 
 			GenericFunctions.waitWebDriver(2000);
-			PublicUserPage.clickProfileSubject.click();
+			PublicUserPage.clickProfilesubject.click();
 			GenericFunctions.waitWebDriver(2000);
 			PublicUserPage.selectProfileSubject.click();
 			GenericFunctions.waitWebDriver(2000);
@@ -889,62 +959,28 @@ public class PublicUserPageObj extends BaseTest
 			Assert.fail("Failed on Updating Profile information");
 		}
 	}
-	public void searchOrgs() throws Exception
+	
+	
+	
+	public void updateProfilePage()
 	{
+		
 		try
 		{
-			ExtentTestManager.getTest().log(LogStatus.INFO, "Verifying search Organizations search in Profile page");
-			/*GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
-			createUserPage.headerProfile.click();*/
-			creatorUserPageObj.goToProfilePage();
-			GenericFunctions.waitWebDriver(1000);
-			//createUserPage.searchDropdown.click();
-			GenericFunctions.waitWebDriver(1000);
-			//createUserPage.usersInSearch.click();
-			GenericFunctions.waitWebDriver(3000);
-			for(int i=0;i<SEARCH_ORG.length;i++)
-			{	
-				GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
-				createUserPage.searchInput.sendKeys(SEARCH_ORG[i]);
+			for(int i=0;i<50;i++)
+			{
+				GenericFunctions.waitWebDriver(2000);
+				PublicUserPage.ProfileSlted.click();
 				GenericFunctions.waitWebDriver(1000);
-				createUserPage.searchIcon.click();
-				GenericFunctions.waitForElementToAppear(publicUserPage.searchedResult);
-				for(int j=0;j<publicUserPage.searchedResults1.size();j++)	
-				{
-					String orgName=publicUserPage.searchedResults1.get(j).getText();
-					System.out.println(orgName);
-				}
-
-
-
-				/*GenericFunctions.waitForElementToAppear(publicUserPage.searchedInputResult);
-				if(publicUserPage.searchedInputResult.isDisplayed())
-				{
-					GenericFunctions.waitWebDriver(2000);
-					js.executeScript("scroll(0, 450);");
-					GenericFunctions.waitWebDriver(2000);
-					js.executeScript("scroll(0, -200);");
-					js.executeScript("scroll(0, -250);");
-					Assert.assertTrue(true);
-					System.out.println("Getting results "+publicUserPage.searchedInputResult.getText()+ " are the input " +SEARCH_ORG[i]);
-					GenericFunctions.waitWebDriver(3000);
-					createUserPage.searchInput.clear();
-				}
-				else
-				{
-					System.out.println(publicUserPage.searchedInputResult+"element is not displayed");
-				}*/
-
+				PublicUserPage.ProfileHeaderTxt.click();
 			}
-		}
-		catch(Exception e )
+			
+		}catch(Exception e)
 		{
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on searching the Organizations");
-			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
-			System.out.println("Could not search Organizations");
-			Assert.fail("Failed on searching Organizations in profile page");
+			System.out.println("Not Clicked");
+			
 		}
-
+		
 	}
 
 }

@@ -1,5 +1,6 @@
 package org.testscripts;
 
+import org.testng.annotations.Test;
 import org.pageobjects.ContentCreateUploadPageObj;
 import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;

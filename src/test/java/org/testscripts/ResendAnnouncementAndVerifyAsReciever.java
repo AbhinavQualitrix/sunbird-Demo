@@ -13,6 +13,7 @@ package org.testscripts;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.Test;
+import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;

@@ -47,10 +47,7 @@ public class PublicUserPage
 	public WebElement userNotFound;
 	
 	
-	//OCT 10
-	@FindBy(xpath="//div[@class='ui text menu m-0 jc-center flex']/following::a[contains(text(),'Home')]")
-	//@FindBy(xpath="//a[contains(text(),'Home')]")
-	public WebElement headerHome;
+	
 	
 	@FindBy(xpath="//a[contains(text(),'Courses')]")
 	public WebElement headerCourses;
@@ -63,12 +60,10 @@ public class PublicUserPage
 	
 	//Added on 18/07/2018
 	//Adding Test case 4
+
 	
-	@FindBy(xpath="//span[@class='ui header accordian-heading']")
-	public WebElement toDo;
 	
-	@FindBy(xpath="//span[@class='todolabel ui red circular inline label ']")
-	public WebElement toDoCount;
+	
 	
 	@FindBy(xpath="//p[@class='serch-allresult']")
 	public WebElement showResults;
@@ -98,7 +93,7 @@ public class PublicUserPage
 	@FindBy(xpath="//i[@class='icon filter']")
 	public WebElement filterIcon;
 	
-	
+	//i[@class='icon filter']
 	@FindBy(xpath="//sui-multi-select[@id='board']//i[@class='dropdown icon']")
 	public WebElement clickFilterBoard;
 	
@@ -292,7 +287,7 @@ public class PublicUserPage
 	public 	List<WebElement> searchedCourses;
 
 	
-	@FindBy(xpath="//div[@class='cardImageText center aligned ']//span")
+	@FindBy(xpath="//div[@class='sub-header'][1]")
 	public WebElement courseToBeClicked;
 	
 	//Added for Test case 8 -18/07/2018
@@ -375,39 +370,39 @@ public class PublicUserPage
 	
 	//Nov 24
 	//@FindBy(xpath="//sui-multi-select[@id='gradeLevel']//i[@class='dropdown icon']")
-	@FindBy(xpath="(//sui-multi-select[@id='gradeLevel']//i[@class='dropdown icon'])[2]")
+	@FindBy(xpath="(//sui-multi-select[@id='gradeLevel']//i[@class='dropdown icon'])[1]")
 	public WebElement clickFilterClass;
 	
 	//Nov 24
 	//@FindBy(xpath="//div//span[.='CBSE']")
 	//@FindBy(xpath="//sui-multi-select[@id='board']/..//sui-select-option")
-	@FindBy(xpath="(//sui-multi-select[@id='board']/..//sui-select-option)[2]")
+	@FindBy(xpath="(//sui-multi-select[@id='board']/..//sui-select-option)[1]")
 	public WebElement selectFilterBoard;
 	
 	//Nov 24
-	@FindBy(xpath="((//sui-multi-select[@id='gradeLevel'])[2]/..//sui-select-option)")
+	@FindBy(xpath="((//sui-multi-select[@id='gradeLevel'])/..//sui-select-option)")
 	//@FindBy(xpath="//sui-multi-select[@id='gradeLevel']/..//sui-select-option")
 	public List<WebElement> selectFilterClass;
 	
 	//Nov 24
-	@FindBy(xpath="(//sui-multi-select[@id='subject']//i[@class='dropdown icon'])[2]")
+	@FindBy(xpath="(//sui-multi-select[@id='subject']//i[@class='dropdown icon'])[1]")
 	//@FindBy(xpath="//sui-multi-select[@id='subject']//i[@class='dropdown icon']")
 	public WebElement clickFilterSubject;
 	
 	//Nov 24
-	@FindBy(xpath="(//sui-multi-select[@id='subject'])[2]/..//sui-select-option")
+	@FindBy(xpath="(//sui-multi-select[@id='subject'])/..//sui-select-option")
 	//@FindBy(xpath="//sui-multi-select[@id='subject']/..//sui-select-option")
 	public List<WebElement> selectFilterSubject;
 	
 	//Nov 24
-	@FindBy(xpath="(//sui-multi-select[@id='medium']//i[@class='dropdown icon'])[2]")
+	@FindBy(xpath="(//sui-multi-select[@id='medium']//i[@class='dropdown icon'])[1]")
 	//@FindBy(xpath="//sui-multi-select[@id='medium']//i[@class='dropdown icon']")
 	public WebElement clickFilterMedium;
 	
 	
 	//Nov 24
 	//@FindBy(xpath="//sui-multi-select[@id='medium']/..//sui-select-option")
-	@FindBy(xpath="(//sui-multi-select[@id='medium'])[2]/..//sui-select-option")
+	@FindBy(xpath="(//sui-multi-select[@id='medium'])/..//sui-select-option")
 	public List<WebElement> selectFilterMedium;
 	
 	//Nov 25	
@@ -419,10 +414,8 @@ public class PublicUserPage
 		//@FindBy(xpath="//span[@class='sliderCardHeading text-cencapitalize']")
 		public WebElement searchedCourses1;
 
-		//Nov 25
-		@FindBy(xpath="//div[@class='sbCard mt-20 mr-30']")
-		public WebElement resultCourseCard;
-
+		
+		
 		//Nov 25
 		@FindBy(xpath="(//button[contains(text(),'Edit')])[1]")
 		public static WebElement editButton;
@@ -432,11 +425,11 @@ public class PublicUserPage
 		public static WebElement clickProfileBoard;
 
 		//Nov 25
-		@FindBy(xpath="(//label[.='Board'])[2]/..//sui-select-option")
+		@FindBy(xpath="(//label[.='Board'])[1]/..//sui-select-option")
 		public static WebElement selectProfileBoard;
 
 		//Nov 25
-		@FindBy(xpath="(//label[.='Medium']/..//i)[2]")
+		@FindBy(xpath="(//label[.='Medium']/..//i)[1]")
 		public static WebElement clickProfileMedium;
 		
 		//Nov 25
@@ -445,16 +438,16 @@ public class PublicUserPage
 
 		
 		//Nov 25
-		@FindBy(xpath="(//label[.='Class']/..//i)[2]")
+		@FindBy(xpath="(//label[.='Class']/..//i)[1]")
 		public static WebElement clickProfileClass;
 
 		//Nov 25
 		@FindBy(xpath="(//label[.='Class'])/..//sui-select-option")
 		public static WebElement selectProfileClass;
 		
-		//Nov 25
-		@FindBy(xpath="(//label[.='Subject']/..//i)[2]")
-		public static WebElement clickProfileSubject;
+		
+		@FindBy(xpath="(//label[.='Subject']/..//i)[1]")
+		public static WebElement clickProfilesubject;
 
 		//Nov 25
 		@FindBy(xpath="(//label[.='Subject'])/..//sui-select-option")
@@ -463,7 +456,48 @@ public class PublicUserPage
 		//Nov 25
 		@FindBy(xpath="(//button[contains(.,'SUBMIT')])")
 		public static WebElement submitButton;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
+		//Nov 28
+		@FindBy(xpath="//label[contains(text(),'Subject')]/..//div[1]")
+		public static WebElement clickProfileSubject;
+
+		
+		@FindBy(xpath="//label[contains(text(),'Board')]/following::i[1]/following::i[@class='delete icon'][1]")
+		public static WebElement ProfileSlted;
+		
+		
+		@FindBy(xpath="//span[@class='ui header']")
+		public static WebElement ProfileHeaderTxt;
+		
+		
+	//Nov 18
+		@FindBy(xpath="//a[@href='/home']/following::a[contains(text(),'Home')]")
+		//@FindBy(xpath="//a[contains(text(),'Home')]")
+		public WebElement headerHome;
+		
+		
+		 //Nov 28
+		@FindBy(xpath="//span[@class='ui header accordian-heading mt-0']")
+		public WebElement toDo;
+		
+		@FindBy(xpath="//span[contains(@class,'todolabel')]")
+		public WebElement toDoCount;
+		
+		
+		//Nov 28
+				@FindBy(xpath="//div[contains(@class,'sbCard mt-20 mr-30')][1]")
+				public WebElement resultCourseCard;
+		
 }	
 
 

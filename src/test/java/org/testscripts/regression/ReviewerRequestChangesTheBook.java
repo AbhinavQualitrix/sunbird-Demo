@@ -1,4 +1,5 @@
 package org.testscripts.regression;
+import org.testng.annotations.Test;
 import org.pageobjects.ContentCreationLessonPlanPageObj;
 import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;

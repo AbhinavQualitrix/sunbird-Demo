@@ -10,6 +10,7 @@ package org.testscripts;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.Test;
+import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.generic.GenericFunctions;
 import org.pageobjects.SignUpPageObj;

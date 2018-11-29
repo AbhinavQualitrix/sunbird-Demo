@@ -2,6 +2,7 @@ package org.testscripts;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.Test;
+import org.testng.annotations.Test;
 import org.pageobjects.FlagReviewerPageObj;
 import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;

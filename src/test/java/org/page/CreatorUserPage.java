@@ -45,12 +45,7 @@ public class CreatorUserPage {
 	@FindBy(xpath="(//a[contains(.,'Workspace')])[2]")
 	public WebElement workSpace;
 
-	@FindBy(xpath="//input[@placeholder='Name']")
-	//	@FindBy(xpath="//div[@class='ui modal ng-scope transition visible active']//input[@placeholder='Name']")
-	//	@FindBy(xpath="//div[@class='ui modal scroll transition active visible normal']/..//input[@placeholder='Name']")
-	//	@FindBy(xpath="//label[contains(text(),'Name')]/following-sibling::div/input")
-	//	@FindBy(xpath="//form[@class='ui form ng-untouched ng-pristine ng-valid']//input")
-	public WebElement courseName;
+	
 
 	@FindBy(xpath="//input[@placeholder='Description']")
 	public WebElement courseDescription;
@@ -134,10 +129,7 @@ public class CreatorUserPage {
 	@FindBy(xpath="//div[.='Select Medium']")
 	public WebElement clickOnSelectMedium;
 
-	//OCT 10
-	//@FindBy(xpath="(//div[@data-value='English'])")
-	@FindBy(xpath="//div[.='Select Medium']/following::div[@class='item selected']")
-	public WebElement selectMedium;
+	
 
 	@FindBy(xpath="//div[@class='text']//span[.='All']")
 	public WebElement headerDropdown;
@@ -201,11 +193,7 @@ public class CreatorUserPage {
 	@FindBy(xpath="//div[@class='content']/..//span[.='Upload Content']")
 	public WebElement createUploadContent;
 
-	//Updated on 06/09/2018
-	//@FindBy(xpath="(//input[@type='text'])[3]")
-	@FindBy(xpath="//input[@placeholder='Name']")
-	public WebElement bookName;
-
+	
 	@FindBy(xpath="//sui-select[@id='board']")
 	public WebElement clickBookBoard;
 
@@ -771,6 +759,24 @@ public class CreatorUserPage {
 	@FindBy(xpath="//div[@class='ui button text-part popup-item']//i[@class='send icon']")
 	//@FindBy(xpath="//div[@class='ui button text-part popup-item']")
 	public WebElement sendForReview;
+	
+	//Nov 29
+	@FindBy(xpath="//div[@class='default text']/following::div[@class='item selected']")
+	public WebElement selectMedium;
+
+
+	//Nov 29
+	@FindBy(xpath="//label[contains(text(),'Title')]//following::input[@placeholder='Enter title for Book']")
+	public WebElement bookName;
+
+	//input[@placeholder='Enter title for Book'][@name='name']
+
+	@FindBy(xpath="//input[@placeholder='Name']")
+	//	@FindBy(xpath="//div[@class='ui modal ng-scope transition visible active']//input[@placeholder='Name']")
+	//	@FindBy(xpath="//div[@class='ui modal scroll transition active visible normal']/..//input[@placeholder='Name']")
+	//	@FindBy(xpath="//label[contains(text(),'Name')]/following-sibling::div/input")
+	//	@FindBy(xpath="//form[@class='ui form ng-untouched ng-pristine ng-valid']//input")
+	public WebElement courseName;
 	
 	
 }

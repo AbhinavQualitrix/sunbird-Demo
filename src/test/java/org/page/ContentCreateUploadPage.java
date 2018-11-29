@@ -244,8 +244,7 @@ public WebElement cancelButton;
 @FindBy(xpath="//*[@id=\"ownedBy\"]/div[1]/div[1]")
 public WebElement owner;
 
-@FindBy(xpath="//div[@data-value=\"9a957591-9936-49e3-bfac-5c5245deddc1\"]")
-public WebElement ownership;
+
 
 @FindBy(xpath="//div[@class=\"UpReviewHeader\"]")
 public WebElement contentName;
@@ -267,5 +266,9 @@ public WebElement searchForReview;
 
 @FindBy(xpath="//*[@id=\"main-nav\"]/div[2]/app-main-menu/div/a[1]")
 public WebElement homePage;
+
+//Nov 29
+@FindBy(xpath="//div[@class='default text']/following::div[@class='item selected']")
+public WebElement ownership;
 
 }

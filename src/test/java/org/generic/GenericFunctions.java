@@ -3,6 +3,8 @@ package org.generic;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -429,7 +431,7 @@ public class GenericFunctions extends BaseTest
 			}
 		} catch(Exception e){
 			log.error("Method: assertIfElementExists :: Exception occured for locator = " + locator + " exception is = "+ e.getMessage());
-			Assert.assertTrue(false);
+			AssertJUnit.assertTrue(false);
 
 		}
 		log.info("Method: assertIfElementExists for locator = " + locator  + " status = " + bElementFound);	
@@ -541,7 +543,7 @@ public class GenericFunctions extends BaseTest
 			{
 				boolean value = opt.isDisplayed();
 				if(value==true){
-					Assert.assertTrue(true);
+					AssertJUnit.assertTrue(true);
 					log.info(value+" found as related to Dial Code searched");
 				}
 			}	
@@ -699,7 +701,7 @@ public class GenericFunctions extends BaseTest
 		{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Could not access the features of Workspace");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message: "+e.getLocalizedMessage());
-			Assert.fail("Could not access the features of Workspace");
+			AssertJUnit.fail("Could not access the features of Workspace");
 
 		}
 	}
@@ -738,7 +740,7 @@ public class GenericFunctions extends BaseTest
 		{
 			GenericFunctions.waitWebDriver(2000);
 			String Actual=ele.getText();
-			Assert.assertEquals(Actual,ExpValue);
+			AssertJUnit.assertEquals(Actual,ExpValue);
 
 			ExtentTestManager.getTest().log(LogStatus.PASS,ExpValue+ "Field Verified Succesfully");
 		}
@@ -747,7 +749,7 @@ public class GenericFunctions extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on Fetching & Asserting Fields");
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
 
-			Assert.fail("Failed on Fetching & Asserting Fields");
+			AssertJUnit.fail("Failed on Fetching & Asserting Fields");
 
 		}
 	}

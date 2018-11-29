@@ -12,6 +12,7 @@
 package org.testscripts2;
 
 import org.testng.annotations.Test;
+import org.testng.annotations.Test;
 import org.generic.GenericFunctions;
 import org.pageobjects.CreatorUserPageObj;
 import org.pageobjects.SignUpPageObj;

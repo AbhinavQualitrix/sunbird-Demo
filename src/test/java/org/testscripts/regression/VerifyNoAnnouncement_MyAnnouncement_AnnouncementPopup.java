@@ -10,6 +10,7 @@ package org.testscripts.regression;
 
 
 
+import org.testng.annotations.Test;
 import org.generic.GenericFunctions;
 import org.openqa.selenium.support.PageFactory;
 import org.page.AnnouncementCreationsPage;
