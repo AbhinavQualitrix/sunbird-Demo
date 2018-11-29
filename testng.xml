@@ -7,8 +7,29 @@
   <test thread-count="5" name="Test">
     <classes>
     
+    <!-- Creator role test cases -->
+   			 <class name="org.testscripts.CourseCreation" />
+			<class name="org.testscripts.UnlinkDailcode" />		
+			<class name="org.testscripts.BookCreation" />
+			<class name="org.testscripts.UploadHtmlContent" />
+			<class name="org.testscripts.UploadYoutubeContent" />
+			<class name="org.testscripts.UploadEpubContent" />
+			<class name="org.testscripts.UploadMp4Content" />
+			<class name="org.testscripts.UploadH5pContent" />			
+			<class name="org.testscripts.BookCreateOptionValidation" />
+			<class name="org.testscripts.ResourceCreation" />
+			<class name="org.testscripts.CollectionCreation" />
+			<class name="org.testscripts.SendTheCourseForReview" />			
+			<class name="org.testscripts.VerifyBookCreator" />
+			<class name="org.testscripts.DialCodeLink" />
+			<class name="org.testscripts.LessonplanCreation" />
+			<class name="org.testscripts.UploadWebmContent" />
+			<class name="org.testscripts.EditContentAndSendForReview" />
+			<class name="org.testscripts.CheckInReviewSubmission" />
+			<class name="org.testscripts.VerifyPublishedBucket" />
+			<class name="org.testscripts.LimitedSharingTheContent" />
     
-       <class name="org.testscripts.NavigateToMyActivity"/>     
+     <!--   <class name="org.testscripts.NavigateToMyActivity"/>     
       <class name="org.testscripts.SearchUsers"/>
       <class name="org.testscripts.ProfileInfoUpdate"/>
       <class name="org.testscripts.SearchCourse"/>
@@ -22,11 +43,11 @@
       
       <class name="org.testscripts.Create_Verify_DeleteAnnouncement"/>
       <class name="org.testscripts.UploadHtmlContent"/>
-      <class name="org.testscripts.Regression_TC04"/>
+      <class name="org.testscripts2.Regression_TC04"/>
       <class name="org.testscripts.CheckForDownloadButtonAvailabilityForUserInProfile"/>
-      <class name="org.testscripts.Regression_TC05"/>
+      <class name="org.testscripts2.Regression_TC05"/>
       <class name="org.testscripts.CreateLessonPlanAndVerify"/>
-      <class name="org.testscripts.Regression_TC06"/>
+      <class name="org.testscripts2.Regression_TC06"/>
       <class name="org.testscripts.CheckForAuthenticUserInMentor"/>
       <class name="org.testscripts.RootUsersProviderAndExtID"/>
       <class name="org.testscripts2.UploadContentTypeHtmlAndVerify"/>
@@ -94,14 +115,14 @@
       <class name="org.testscripts.ResendAnnouncementAndVerifyAnnouncement"/>
       <class name="org.testscripts.VerifyElementsInAdminDashboard"/> 
       <class name="org.testscripts.UploadContentTypeMp4"/>
-      <class name="org.testscripts.UploadMp4Content"/>
+      <class name="org.testscripts2.UploadMp4Content"/>
       <class name="org.testscripts.UploadEpubContent"/>
       <class name="org.testscripts.BookCreation"/>
       <class name="org.testscripts.CollectionCreation"/>    
-     
+    -->  
    
       
-      <!-- Test cases of P2 -->
+      <!-- Test cases of P2 
       
       
      
@@ -140,7 +161,7 @@
       <class name="org.testscripts.regression.CreateResourceByUploadingVideoAndActivityPlugins"/>
       <class name="org.testscripts.regression.UploadYoutubeFile"/>
       <class name="org.testscripts.regression.VerifyUserNaviagationToContentEditor"/>
-      <class name="org.testscripts.regression.VerifyTheClosingOfContentEditor"/> 
+      <class name="org.testscripts.regression.VerifyTheClosingOfContentEditor"/> -->
       
       
        <!-- <class name="org.testscripts.ChangeTheContentAfterFlagged"/> 
