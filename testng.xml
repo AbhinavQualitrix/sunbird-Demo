@@ -15,8 +15,7 @@
 			<class name="org.testscripts.UploadYoutubeContent" />
 			<class name="org.testscripts.UploadEpubContent" />
 			<class name="org.testscripts.UploadMp4Content" />
-			<class name="org.testscripts.UploadH5pContent" />			
-			
+			<class name="org.testscripts.UploadH5pContent" />		
 			
 			<class name="org.testscripts.CollectionCreation" />		
 			
@@ -26,12 +25,11 @@
 			
 			
 			<class name="org.testscripts.VerifyPublishedBucket" />
-	 	   
 	  		  <class name="org.testscripts.VerifyBookCreator" />
 	    		<class name="org.testscripts.BookCreateOptionValidation" />
  		        <class name="org.testscripts.DialCodeLink" />
 	 	        <class name="org.testscripts.CheckInReviewSubmission" />
-	    		<class name="org.testscripts.EditContentAndSendForReview" /
+	    		<class name="org.testscripts.EditContentAndSendForReview" />
 		       <class name="org.testscripts.ResourceCreation" />	    
 			<class name="org.testscripts.LimitedSharingTheContent" />
     
