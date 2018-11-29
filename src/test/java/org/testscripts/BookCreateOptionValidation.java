@@ -25,7 +25,7 @@ public class BookCreateOptionValidation extends BaseTest
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 
 		//Step 1:Login with ANY user who dont have  credentials.
-		signupObj.userLogin(BOOKCREATOR);
+		signupObj.userLogin(CREATOR);
 		//signupObj.userLogin(CREATOR);
 		
 		//Step 2:Go to workspace

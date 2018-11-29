@@ -2,6 +2,8 @@ package org.startup;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
@@ -21,6 +23,8 @@ public abstract class BaseTest implements IAutoConst {
 	{
 		System.out.println("Test Execution Started : Opening the browser");
 		driver = new ChromeDriver(); 
+		Dimension d = new Dimension(800,480);
+		driver.manage().window().setSize(d);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		//driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);

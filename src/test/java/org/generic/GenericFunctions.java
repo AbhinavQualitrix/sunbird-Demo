@@ -758,7 +758,8 @@ public class GenericFunctions extends BaseTest
 		{
 			if (element.isEnabled() && element.isDisplayed()) {
 				System.out.println("Clicking on element with using java script click");
-
+				GenericFunctions.waitForElementToAppear(element);
+				GenericFunctions.waitWebDriver(2000);
 				((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 			} else {
 				System.out.println("Unable to click on element");
@@ -775,4 +776,13 @@ public class GenericFunctions extends BaseTest
 			System.out.println("Unable to click on element "+ e.getStackTrace());
 		}
 	}
+	
+	
+	public static void scrollTillEndOfPage()
+	{
+	     
+   	 // ((JavascriptExecutor) driver).executeScript("window.scrollTo(0,document.body.scrollHeight )");  
+   	  ((JavascriptExecutor) driver).executeScript("scroll(0, 250);");
+	 
+   }
 }

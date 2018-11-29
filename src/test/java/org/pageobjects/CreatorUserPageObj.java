@@ -806,10 +806,11 @@ public class CreatorUserPageObj extends BaseTest{
 				createUserPage.reviewComments.click();
 				createUserPage.reviewComments.sendKeys(rejectReason);
 				GenericFunctions.waitWebDriver(2000);
-				GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.requestChangesButton1);
-				action.moveToElement(createUserPage.requestChangesButton1);
+				GenericFunctions.waitForElementToAppear(createUserPage.requestChangesButton1);
+				//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.requestChangesButton1);
+				//action.moveToElement(createUserPage.requestChangesButton1);
 				//GenericFunctions.clickOnElementUsingJavascript(createUserPage.requestChangesButton1);
-				GenericFunctions.waitWebDriver(1000);
+				GenericFunctions.waitWebDriver(4000);
 				createUserPage.requestChangesButton1.click();
 				GenericFunctions.waitWebDriver(3000);
 				System.out.println(inputToReject+" is rejected succesfully");
@@ -2082,10 +2083,13 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createUserPage.selectTopic);
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.selectTopic.click();	
-			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitWebDriver(4000);
+			//GenericFunctions.scrollToElement(createUserPage.doneButton);
+			//GenericFunctions.scrollTillEndOfPage();
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.doneButton);
 			GenericFunctions.waitWebDriver(2000);
 			action.moveToElement(createUserPage.doneButton).build().perform();
+			//GenericFunctions.clickOnElementUsingJavascript(createUserPage.doneButton);
 			action.click(createUserPage.doneButton).click().build().perform();
 		}
 		catch(Exception e)
