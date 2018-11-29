@@ -14,10 +14,10 @@ import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
 import org.testng.annotations.Test;
 
-public class Creator_TC139 extends BaseTest{
+public class VerifyAppliedFilter extends BaseTest{
 	@Test
 	
-	public void workspace_showfilter() throws Exception{
+	public void verifyAppliedFilter() throws Exception{
 	SignUpPageObj signupobj = new SignUpPageObj();
 	CreatorUserPageObj createuserpageobj = new CreatorUserPageObj();
 	ContentCreateUploadPageObj contentcreateuploadpageobj = new ContentCreateUploadPageObj(); 
@@ -27,9 +27,9 @@ public class Creator_TC139 extends BaseTest{
 	
 	//Step no.2 :Navigate to workspace and show filter
 	contentcreateuploadpageobj.showFilter();
-	
-	
-	
+
+	//Step no.3 :Logout as reviewer
+	signupobj.userLogout();
 	
 
 	

@@ -782,17 +782,22 @@ public class ContentCreationResourcePageObj extends BaseTest
 
 			//Add Question set from existing list
 			contentCreationResourcePage.addQuestionSet.click();
-			GenericFunctions.waitWebDriver(500);	
+			GenericFunctions.waitWebDriver(2000);	
 			//GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.pickQuestion);
+			GenericFunctions.waitWebDriver(2000);
 			contentCreationResourcePage.pickQuestionCheckBox.click();
 			GenericFunctions.waitWebDriver(1500);
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.pickQueNextButton);
 			contentCreationResourcePage.pickQueNextButton.click();
-			GenericFunctions.waitWebDriver(1500);
-			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.questionSetTitle);
-			contentCreationResourcePage.questionSetTitle.sendKeys(objListOFTestDataForSunbird1.get(11).getCourseDescription());
-			GenericFunctions.waitWebDriver(500);
+			GenericFunctions.waitWebDriver(2500);
+			//GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.questionSetTitle);
+			action.moveToElement(contentCreationResourcePage.questionSetTitle).build().perform();
+			action.click(contentCreationResourcePage.questionSetTitle).build().perform();
+			action.sendKeys(contentCreationResourcePage.questionSetTitle,objListOFTestDataForSunbird1.get(11).getCourseDescription()).build().perform();
+			//contentCreationResourcePage.questionSetTitle.sendKeys(objListOFTestDataForSunbird1.get(11).getCourseDescription());
+			GenericFunctions.waitWebDriver(2000);
 			contentCreationResourcePage.questionSetAddButton.click();
 			GenericFunctions.waitWebDriver(1500);
 
@@ -952,8 +957,9 @@ public class ContentCreationResourcePageObj extends BaseTest
 			GenericFunctions.waitWebDriver(1000);
 			contentCreationResourcePage.selectTopic.click();
 			GenericFunctions.waitWebDriver(1000);
-			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.topicsDoneBtn);
-			contentCreationResourcePage.topicsDoneBtn.click();
+			GenericFunctions.clickOnElementUsingJavascript(contentCreationResourcePage.topicsDoneBtn);
+			/*GenericFunctions.waitForElementToAppear(contentCreationResourcePage.topicsDoneBtn);
+			contentCreationResourcePage.topicsDoneBtn.click();*/
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(createUserPage.saveButton);
 			createUserPage.saveButton.click();

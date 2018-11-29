@@ -6,38 +6,38 @@
 * when clicking on the upload content 
 */
 
+
 package org.testscripts;
-
-import java.util.List;
-
-import org.generic.ReadTestDataFromExcel;
 import org.pageobjects.ContentCreateUploadPageObj;
 import org.pageobjects.CreatorUserPageObj;
 import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
-import org.testdata.TestDataForSunbird;
 import org.testng.annotations.Test;
 
-public class Creator_TC125 extends BaseTest
+public class VerifyTheUploadedContent extends BaseTest
 
 {
 	@Test
-	public void library_copyContent() throws Exception
+	public void verifyTheUploadedContent() throws Exception
 	{
 	 SignUpPageObj signupobj = new SignUpPageObj();
 	 CreatorUserPageObj createuserpageobj = new CreatorUserPageObj();
 	 ContentCreateUploadPageObj contentcreateuploadpageobj = new ContentCreateUploadPageObj(); 
-	 List <TestDataForSunbird> objListOFTestDataForSunbird1=null;
-	objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 	 
 	 // Step no.1:Login as a content creator
 	 signupobj.userLogin(CREATOR);
 	 
-	
-	 //Step no.2:Go to library
-	 contentcreateuploadpageobj.navigateToLibraryAndSearchContent(objListOFTestDataForSunbird1);
+	 createuserpageobj.navigateToWorkspace(UPLOADCONTENT);
+	 //Step no.2:Click on workspace
 	 
+	 //Step no.3:Enter URL
+	 contentcreateuploadpageobj.verifyUploadContentPopupDisplay();
+	
+	 //Step no.4:Upload the youtube url	 
+	 contentcreateuploadpageobj.verifyFileUpload();
+	 
+	 //Step no.5 :Logout as reviewer
+	 signupobj.userLogout();
 	 
 	}
 }
-	 

@@ -14,11 +14,11 @@ import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
 import org.testng.annotations.Test;
 
-public class Creator_TC134 extends BaseTest {
+public class VerifyLimitedSharing extends BaseTest {
 
 	@Test
 
-	public void workspace_LimitedPublishing() throws Exception{
+	public void verifyLimitedSharing() throws Exception{
 		SignUpPageObj signupobj = new SignUpPageObj();
 		CreatorUserPageObj createuserpageobj = new CreatorUserPageObj();
 		ContentCreateUploadPageObj contentcreateuploadpageobj = new ContentCreateUploadPageObj(); 
@@ -32,7 +32,8 @@ public class Creator_TC134 extends BaseTest {
 		//Steps no.3:Enter Details in edit details page
 		contentcreateuploadpageobj.verifyThatEditDetailsPageIsDisplayed();
 		
-		
+		//Step no.4 :Logout as reviewer
+		signupobj.userLogout();
 		
 		
 		

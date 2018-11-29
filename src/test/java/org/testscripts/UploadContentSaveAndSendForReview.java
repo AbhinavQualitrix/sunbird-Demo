@@ -14,7 +14,7 @@ import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
 import org.testng.annotations.Test;
 
-public class Creator_TC126 extends BaseTest
+public class UploadContentSaveAndSendForReview extends BaseTest
 
 {
 	@Test
@@ -25,7 +25,7 @@ public class Creator_TC126 extends BaseTest
 	 ContentCreateUploadPageObj contentcreateuploadpageobj = new ContentCreateUploadPageObj(); 
 	 
 	 
-	 // Step no.1:Login as a content creator
+	 //Step no.1:Login as a content creator
 	 signupobj.userLogin(CREATOR);
 	 
      //Step no.2:Click on Workspace
@@ -37,6 +37,8 @@ public class Creator_TC126 extends BaseTest
 	 //Step no.4:Save and Send Upload Content For Review
 	 contentcreateuploadpageobj.saveAndSendUploadContentForReview();
 	 
+	 //Step no.4 :Logout as reviewer
+	 signupobj.userLogout();
 	 
 	 
 	 

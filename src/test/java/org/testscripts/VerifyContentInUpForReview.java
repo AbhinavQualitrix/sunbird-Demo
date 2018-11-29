@@ -13,10 +13,10 @@ import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
 import org.testng.annotations.Test;
 
-public class Creator_TC136_TC137 extends BaseTest {
+public class VerifyContentInUpForReview extends BaseTest {
 
 	@Test
-	public  void workspace_reviewsubmission() throws Exception {
+	public  void verifyContentInUpForReview() throws Exception {
 		SignUpPageObj signupobj = new SignUpPageObj();
 		CreatorUserPageObj createuserpageobj = new CreatorUserPageObj();
 		ContentCreateUploadPageObj contentcreateuploadpageobj = new ContentCreateUploadPageObj(); 
@@ -31,11 +31,9 @@ public class Creator_TC136_TC137 extends BaseTest {
 		//Step no.3:Enter URL and click on upload content
 		contentcreateuploadpageobj.verifyThatEditDetailsPageIsDisplayed();
 
-		
 		//Steps no.4:Check the in review submission page
 		contentcreateuploadpageobj.reviewSubmissionPage();
 
-		
 	    //Step no. 5:Logout as a content reviewer
 		signupobj.userLogout();
 		
@@ -45,7 +43,8 @@ public class Creator_TC136_TC137 extends BaseTest {
 		//Step no.7 :Navigate to worksapce		
 		contentcreateuploadpageobj.navigateToUpForReview();
 		
-		
+		 //Step no. 5:Logout as a content reviewer
+		signupobj.userLogout();
 		
 		
 		

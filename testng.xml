@@ -8,7 +8,7 @@
     <classes>
     
     <!-- Creator role test cases -->
-   			 <class name="org.testscripts.CourseCreation" />
+   		 	 <class name="org.testscripts.CourseCreation" />
 			<class name="org.testscripts.UnlinkDailcode" />		
 			<class name="org.testscripts.BookCreation" />
 			<class name="org.testscripts.UploadHtmlContent" />
@@ -28,8 +28,8 @@
 			<class name="org.testscripts.CheckInReviewSubmission" />
 			<class name="org.testscripts.VerifyPublishedBucket" />
 			<class name="org.testscripts.LimitedSharingTheContent" />
-    
-     <!--   <class name="org.testscripts.NavigateToMyActivity"/>     
+   
+      <class name="org.testscripts.NavigateToMyActivity"/>     
       <class name="org.testscripts.SearchUsers"/>
       <class name="org.testscripts.ProfileInfoUpdate"/>
       <class name="org.testscripts.SearchCourse"/>
@@ -43,11 +43,11 @@
       
       <class name="org.testscripts.Create_Verify_DeleteAnnouncement"/>
       <class name="org.testscripts.UploadHtmlContent"/>
-      <class name="org.testscripts2.Regression_TC04"/>
+     
       <class name="org.testscripts.CheckForDownloadButtonAvailabilityForUserInProfile"/>
-      <class name="org.testscripts2.Regression_TC05"/>
+    
       <class name="org.testscripts.CreateLessonPlanAndVerify"/>
-      <class name="org.testscripts2.Regression_TC06"/>
+      
       <class name="org.testscripts.CheckForAuthenticUserInMentor"/>
       <class name="org.testscripts.RootUsersProviderAndExtID"/>
       <class name="org.testscripts2.UploadContentTypeHtmlAndVerify"/>
@@ -96,9 +96,7 @@
       <class name="org.testscripts2.CreateLessonPlanAndVerify"/>
       <class name="org.testscripts.ResourceCreation"/>
       <class name="org.testscripts.UploadContentTypeHtmlAndVerify"/>
-      <class name="org.testscripts2.Regression_TC06"/>
-      <class name="org.testscripts2.Regression_TC05"/>
-      <class name="org.testscripts2.Regression_TC04"/>
+      
       <class name="org.testscripts.CheckInReviewSubmission"/>
       <class name="org.testscripts.CreateBookAndVerify"/>
       <class name="org.testscripts.VerifyTheBookAvailableForReview"/>
@@ -119,14 +117,12 @@
       <class name="org.testscripts.UploadEpubContent"/>
       <class name="org.testscripts.BookCreation"/>
       <class name="org.testscripts.CollectionCreation"/>    
-    -->  
+    
    
       
-      <!-- Test cases of P2 
-      
-      
-     
     
+      <!-- Test cases of P2 -->
+      
        <class name="org.testscripts.regression.CreateResourceWithContentsPluginsAndVerifyContentEditor"/>
       <class name="org.testscripts.regression.NavigateToGetStartedAndExploreSunbird"/>
       <class name="org.testscripts.regression.ReviewerPublishesAndRejectsContent"/>
@@ -161,8 +157,11 @@
       <class name="org.testscripts.regression.CreateResourceByUploadingVideoAndActivityPlugins"/>
       <class name="org.testscripts.regression.UploadYoutubeFile"/>
       <class name="org.testscripts.regression.VerifyUserNaviagationToContentEditor"/>
-      <class name="org.testscripts.regression.VerifyTheClosingOfContentEditor"/> -->
+      <class name="org.testscripts.regression.VerifyTheClosingOfContentEditor"/> 
       
+    
+     
+    
       
        <!-- <class name="org.testscripts.ChangeTheContentAfterFlagged"/> 
        	   <class name="org.testscripts.UploadRootOrg"/>

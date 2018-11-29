@@ -369,7 +369,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to get edit Detail Page is Displaying and Continuation of the test case number 129");
 			//List<TestDataForSunbird>objListOFTestDatForSunbird=null;
 			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-			String upload =GenericFunctions.testDataIncrementer("./TestData/uploadNumbers.txt");
+			String upload =GenericFunctions.testDataIncrementer("./testData/uploadNumbers.txt");
 			GenericFunctions.waitWebDriver(5000);
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitWebDriver(7500);
@@ -686,7 +686,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 			}
 			contentCreatePage.contentupload.isDisplayed();
 			GenericFunctions.waitWebDriver(5000);
-			String auploadcontent=contentCreatePage.contentupload.getText();
+			String uploadcontent=contentCreatePage.contentupload.getText();
 
 			GenericFunctions.waitWebDriver(5000);
 
@@ -816,14 +816,11 @@ public class ContentCreateUploadPageObj extends BaseTest
 		}
 	}
 
-	public void navigateToUpForReview1()
+	public void navigateToUpForReviewN()
 	{
 		try {
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to see the upload content in up for review page");
-
 			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-
-
 			GenericFunctions.waitForElementToAppear(contentCreatePage.workspace);
 			contentCreatePage.workspace.click();
 			GenericFunctions.waitWebDriver(5000);

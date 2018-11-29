@@ -126,7 +126,7 @@ public interface IAutoConst {
 	String AUDIO_UPLOAD="school_chale_hum.mp3";
 
 	//Added for Audio Upload Regression Test case 79
-	String VIDEO_UPLOAD="https://goo.gl/uw2hGe";
+	String VIDEO_UPLOAD="https://drive.google.com/uc?export=download&id=1RYgA8UbwKukgLSLhDVzvTGS0-wGj98cL";
 	
 	//Merged from Ajith - 25/09/2018
 	String HINDI_LABEL="डायल कोड दर्ज करें ";

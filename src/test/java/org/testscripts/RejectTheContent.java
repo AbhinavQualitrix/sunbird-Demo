@@ -6,12 +6,11 @@ import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
 import org.testng.annotations.Test;
 
-public class Creator_TC141 extends BaseTest{
+public class RejectTheContent extends BaseTest{
 @Test
 	
-	public void workspace_showfilter() throws Exception{
+	public void rejectTheContent() throws Exception{
 	SignUpPageObj signupobj = new SignUpPageObj();
-	CreatorUserPageObj createuserpageobj = new CreatorUserPageObj();
 	ContentCreateUploadPageObj contentcreateuploadpageobj = new ContentCreateUploadPageObj(); 
 
 	//Step no.1 :Login as reviewer
@@ -20,16 +19,17 @@ public class Creator_TC141 extends BaseTest{
 	//Step no.2:Navigate to workspace and request the changes
 	contentcreateuploadpageobj.requestChanges();
 	
-	//Step no. :Logout as reviewer
+	//Step no.3 :Logout as reviewer
 	signupobj.userLogout();
 	
-	//Step np.:Login as creator	
+	//Step n0.4:Login as creator	
 	signupobj.userLogin(CREATOR);
 	
-	//Step no.:Navigate to workspace then navigate to all uploads 
+	//Step no.5:Navigate to workspace then navigate to all uploads 
 	contentcreateuploadpageobj.alluploads();
 	
-	
+	//Step no.6:Logout as reviewer
+	signupobj.userLogout();
 	
 	
 	

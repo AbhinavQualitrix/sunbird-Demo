@@ -14,13 +14,12 @@ import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
 import org.testng.annotations.Test;
 
-public class Creator_TC138 extends BaseTest {
+public class VerifyTheSorting extends BaseTest {
 
 	@Test
 
-	public void  workspace_upforreviewsortby() throws Exception {
+	public void  verifyTheSorting() throws Exception {
 		SignUpPageObj signupobj = new SignUpPageObj();
-		CreatorUserPageObj createuserpageobj = new CreatorUserPageObj();
 		ContentCreateUploadPageObj contentcreateuploadpageobj = new ContentCreateUploadPageObj(); 
 
 		//Step no.1 :Login as reviewer
@@ -33,7 +32,8 @@ public class Creator_TC138 extends BaseTest {
 		//step no.3:Click on sort By
 		contentcreateuploadpageobj.clickOnSortBy();
 		
-		
+		//Step no.4 :Logout as reviewer
+		signupobj.userLogout();
 		
 		
 

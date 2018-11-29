@@ -15,11 +15,11 @@ import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
 import org.testng.annotations.Test;
 
-public class Creator_TC128_TC129 extends BaseTest
+public class EditAndVerifyTopicTree extends BaseTest
 
 {
 	@Test
-	public void workspace_editailspage() throws Exception
+	public void editAndVerifyTopicTree() throws Exception
 	{
 	 SignUpPageObj signupobj = new SignUpPageObj();
 	 CreatorUserPageObj createuserpageobj = new CreatorUserPageObj();
@@ -35,7 +35,8 @@ public class Creator_TC128_TC129 extends BaseTest
 	 //Step no.3 click on edit details popuop
 	 contentcreateuploadpageobj.verifyThatEditDetailsPageIsDisplayed();
 	 
-	 
+	//Step no.4 :Logout as reviewer
+	signupobj.userLogout();
 	
 	 
 	 

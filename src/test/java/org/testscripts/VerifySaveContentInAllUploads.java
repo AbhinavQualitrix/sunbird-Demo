@@ -14,10 +14,10 @@ import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
 import org.testng.annotations.Test;
 
-public class Creator_TC133 extends BaseTest 
+public class VerifySaveContentInAllUploads extends BaseTest 
 {
 	@Test
-	public void workspace_uploadcontent() throws Exception
+	public void verifySaveContentInAllUploads() throws Exception
 	{
 		SignUpPageObj signupobj = new SignUpPageObj();
 		 CreatorUserPageObj createuserpageobj = new CreatorUserPageObj();
@@ -35,7 +35,8 @@ public class Creator_TC133 extends BaseTest
 		 //Steps no.4 Check the content is in all uploads
 		 contentcreateuploadpageobj.allUploadsContent();
 		 
-		 
+		//Step no.5 :Logout as reviewer
+		signupobj.userLogout();
 		 
 		 
 		 
