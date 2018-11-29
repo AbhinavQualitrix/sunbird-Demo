@@ -62,7 +62,7 @@ public interface IAutoConst {
 	String COURSE="Course";
 	String RESOURCE="Resource";
 	String COLLECTION="Collection";
-	String LESSONPLAN="Lesson plan";
+	String LESSONPLAN="Lesson Plan";
 	String UPLOADCONTENT="Upload Content";
 	String PUBLISHER="Test Automation Publisher";
 	String[] DIAL_CODE={"F2SGB5","I1XNH4","L13VN3","NZ93U2","65BTS8","94H1Y7","C3M956","RYEB11","UXJI6Z","XWPQCY"};

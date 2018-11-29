@@ -2739,7 +2739,7 @@ public class CreatorUserPageObj extends BaseTest{
 				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird1.get(4).getCourseName()+"_"+GenericFunctions.readFromNotepad("./testData/contentNumbers.txt")+"_"+EPUB);
 			}
 			else if(inputToSearch.equalsIgnoreCase(HTML))
-			{
+			{  
 				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird1.get(4).getCourseName()+"_"+GenericFunctions.readFromNotepad("./testData/contentNumbers.txt")+"_"+HTML);
 			}
 			else if(inputToSearch.equalsIgnoreCase(H5P))
