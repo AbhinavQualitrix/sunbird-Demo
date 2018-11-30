@@ -79,9 +79,9 @@
       <class name="org.testscript.regression.SameUserNameIsNotAllowedWhileSignup"/>
       <class name="org.testscript.regression.VerifyNavigateToGetPage"/>
       <class name="org.testscript.regression.ContentValidationInUpForReviewSearchWithFilter"/>	
-       <class name="org.testscript.regression.VerifyUploadAndDownloadContent"/>
-       <class name="org.testscript.regression.ReviewerRequestChangesTheBook"/>
-       <class name="org.testscript.regression.SavedContentUnderAllUploads"/>
+      
+       
+       
       <class name="org.testscript.regression.AccessOnAllPagesAfterLogin"/>
       <class name="org.testscript.regression.VerifyEditDetailsPopupAndTopicTree"/>
       <class name="org.testscript.regression.CreateResourceByAddingAudio"/>
@@ -109,6 +109,11 @@
    			<!-- Test cases of Admin -->
    			<!-- Test cases of Reviewer -->
    <!--
+   <class name="org.testscript.regression.ReviewerRequestChangesTheBook"/>
+   <class name="org.testscript.VerifyLimitedSharing"/>
+    <class name="org.testscript.regression.VerifyUploadAndDownloadContent"/>
+    <class name="org.testscript.PublishTheContent"/>
+   <class name="org.testscript.regression.SavedContentUnderAllUploads"/>
    <class name="org.testscript.VerifyThatTopicsAreDisplayedOnMetaDataForm"/>
    <class name="org.testscript.VerifyThatTopicsAreSelectedOnMetaDataPage"/>
    <class name="org.testscript.CopyContentFromLibraryAndVerify"/>
@@ -161,13 +166,13 @@
       
       <class name="org.testscript.CollectionCreation"/>
      
-      <class name="org.testscript.VerifyLimitedSharing"/>
+      
       <class name="org.testscript.ConfirmInstructionReceivedInforgotPassword"/>
       <class name="org.testscript.UploadMp4Content"/>
       
       
      
-      <class name="org.testscript.PublishTheContent"/>
+     
       <class name="org.testscript.UnlinkDailcode"/>
       
       
