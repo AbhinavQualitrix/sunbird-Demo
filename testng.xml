@@ -26,7 +26,7 @@
         <class name="org.testscript.UpdateProfilePhoto"/>-->
     
     
-      <class name="org.testscript.NavigateToMyActivity"/>
+     <class name="org.testscript.NavigateToMyActivity"/>
       <class name="org.testscript.UploadContentTypeMp4AndVerify"/>
      
       <class name="org.testscript.UploadEpubContent"/>
@@ -142,23 +142,7 @@
       <class name="org.testscript.UploadContentTypePdfAndVerify"/>
       
 
-       <!-- <class name="org.testscripts.ChangeTheContentAfterFlagged"/> 
-       	   <class name="org.testscripts.UploadRootOrg"/>
-       	<class name="org.testscripts.UploadSubOrg"/>
-        <class name="org.testscripts.AcceptAsflagReviewer"/>
-        <class name="org.testscripts.FlagTheContentAsPublicUser"/>
-        <class name="org.testscripts.CheckTheflaggedContentINDraft"/>
-        <class name="org.testscripts.DiscardAsFlagReviewer"/>
-        <class name="org.testscripts.AdminConsumptionAndDownloadCsv"/>
-        <class name="org.testscripts.CheckUpForReviewAsFlagReviewer"/>
-        <class name="org.testscripts.UploadSubOrgUsersWithProviderAndExtId"/>
-        <class name="org.testscripts.UploadRootOrgUsersWithProviderAndExtID"/>
-        <class name="org.testscripts.SearchAndDownloadOrgFile"/>
-        <class name="org.testscripts.UploadRootOrgUsersWithOrgId"/>
-        <class name="org.testscripts.UploadSubOrgUsersWithOrgId"/>
-        <class name="org.testscripts.SkillEndorsement"/>
-        <class name="org.testscripts.UpdatePr
-        ofilePhoto"/>-->
+      
         
 
       <class name="org.testscript.VerifyTheSorting"/>
