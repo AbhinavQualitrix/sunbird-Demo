@@ -87,7 +87,7 @@
       <class name="org.testscript.regression.CreateResourceByAddingAudio"/>
       <class name="org.testscript.regression.VerifyEditMetadataPageForCollection"/>
       <class name="org.testscript.regression.VerifyAnnouncementPageContent"/>
-      <class name="org.testscript.regression.CreateResourceByCreatingAFillInThBlanksQuestion"/>
+      
       <class name="org.testscript.regression.ReviewerPublishesAndRejectsContent"/>
       <class name="org.testscript.regression.NavigateToGetStartedAndExploreSunbird"/>
       <class name="org.testscript.regression.SendForReviewContentUnderReviewSubmission"/> 
@@ -126,6 +126,7 @@
      <class name="org.testscript.EditAndVerifyTopicTree"/>
       <class name="org.testscript.CheckInReviewSubmission"/>
       <class name="org.testscript.VerifycopyContent"/>
+      <class name="org.testscript.regression.CreateResourceByCreatingAFillInThBlanksQuestion"/>
      -->
      <class name="org.testscript.NavigateToMyActivity"/>  
       <class name="org.testscript.UploadEpubContent"/>
