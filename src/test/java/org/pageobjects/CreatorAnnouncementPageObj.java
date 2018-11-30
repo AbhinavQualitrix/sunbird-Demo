@@ -12,6 +12,7 @@ import org.generic.GenericExlMethods;
 import org.generic.GenericFunctions;
 import org.generic.ReadTestDataFromExcel;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
@@ -41,6 +42,7 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 	PublicUserPage publicUserPage = PageFactory.initElements(driver, PublicUserPage.class);
 	SignUpPage signUpPage=PageFactory.initElements(driver, SignUpPage.class);
 	static Logger log = Logger.getLogger(CreatorAnnouncementPage.class.getName());
+	JavascriptExecutor executor = (JavascriptExecutor)driver;
 	Actions action = new Actions(driver);
 	Random rand=new Random();
 	String announcementName;
@@ -108,20 +110,27 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			createAnnouncementPage.enterUrl.sendKeys(objListOFTestDataForSunbird.get(7).getTitleDescription());
 			GenericFunctions.waitWebDriver(2000);
-			action.moveToElement(createAnnouncementPage.selectRecipient).click().build().perform();
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.selectRecipient);
+			/*action.moveToElement(createAnnouncementPage.selectRecipient).build().perform();
+			action.click().build().perform();*/
 			GenericFunctions.waitWebDriver(3000);
+			GenericFunctions.waitForElements(createAnnouncementPage.checkLocation);
 			createAnnouncementPage.checkLocation.get(0).click();
 			createAnnouncementPage.checkLocation.get(1).click();
 			//action.moveToElement(createAnnouncementPage.checkLocation).click().build().perform();
 			GenericFunctions.waitWebDriver(2000);
-			createAnnouncementPage.confirmRecipients.click();
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.confirmRecipients);
+			//createAnnouncementPage.confirmRecipients.click();
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.previewAnnouncement);
-			createAnnouncementPage.previewAnnouncement.click();
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.previewAnnouncement);
+			//createAnnouncementPage.previewAnnouncement.click();
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.sendAnnouncement);
 			GenericFunctions.waitWebDriver(2000);
-			createAnnouncementPage.sendAnnouncement.click();
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.sendAnnouncement);
+			//createAnnouncementPage.sendAnnouncement.click();
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.announcementcreatedConfirmation);
-			createAnnouncementPage.announcementcreatedConfirmation.click();
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.announcementcreatedConfirmation);
+			//createAnnouncementPage.announcementcreatedConfirmation.click();
 			GenericFunctions.waitWebDriver(2000);
 		}
 		catch(Exception e)

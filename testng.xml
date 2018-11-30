@@ -101,13 +101,27 @@
        <class name="org.testscript.regression.UploadYoutubeFile"/>
       <class name="org.testscript.regression.VerifyUserNaviagationToContentEditor"/>
       <class name="org.testscript.regression.ReviewAndPublishReceivedContent"/>
+      <class name="org.testscript.regression.SearchParticularContentInAllMyContent"/>
    			
    			
    			
    			<!-- Test cases of Creator -->
    			<!-- Test cases of Admin -->
    			<!-- Test cases of Reviewer -->
-   
+   <!--
+   <class name="org.testscript.VerifyThatTopicsAreDisplayedOnMetaDataForm"/>
+   <class name="org.testscript.VerifyThatTopicsAreSelectedOnMetaDataPage"/>
+   <class name="org.testscript.CopyContentFromLibraryAndVerify"/>
+   <class name="org.testscript.VerifyTheUploadedContent"/>
+   <class name="org.testscript.VerifySaveContentInAllUploads"/>
+   <class name="org.testscript.VerifyContentInUpForReview"/>
+   <class name="org.testscript.SearchContentWithFiltersAsReviewer"/>
+    <class name="org.testscript.UploadContentSaveAndSendForReview"/>
+    <class name="org.testscript.VerifyTheSorting"/>
+     <class name="org.testscript.EditAndVerifyTopicTree"/>
+      <class name="org.testscript.CheckInReviewSubmission"/>
+      <class name="org.testscript.VerifycopyContent"/>
+     -->
      <class name="org.testscript.NavigateToMyActivity"/>  
       <class name="org.testscript.UploadEpubContent"/>
       <class name="org.testscript.SearchUsers"/>
@@ -117,26 +131,26 @@
       
       <class name="org.testscript.VerifyAppliedFilter"/>
       
-      <class name="org.testscript.VerifyThatTopicsAreDisplayedOnMetaDataForm"/>
+      
       <class name="org.testscript.SearchInLibrary"/>
       <class name="org.testscript.LimitedSharingTheContent"/>
       
-      <class name="org.testscript.CopyContentFromLibraryAndVerify"/>
+      
      
      
       
       
       
  
-      <class name="org.testscript.VerifyTheUploadedContent"/>
+      
       
       <class name="org.testscript.UploadHtmlContent"/>
-      <class name="org.testscript.VerifycopyContent"/>
+      
       
      
       
       
-      <class name="org.testscript.VerifySaveContentInAllUploads"/>
+      
       <class name="org.testscript.RootUsersProviderAndExtID"/>
       
      
@@ -144,13 +158,13 @@
       
       
       <class name="org.testscript.LoginAndChangePassword"/>
-      <class name="org.testscript.regression.SearchParticularContentInAllMyContent"/>
+      
       <class name="org.testscript.CollectionCreation"/>
      
       <class name="org.testscript.VerifyLimitedSharing"/>
       <class name="org.testscript.ConfirmInstructionReceivedInforgotPassword"/>
       <class name="org.testscript.UploadMp4Content"/>
-      <class name="org.testscript.VerifyContentInUpForReview"/>
+      
       
      
       <class name="org.testscript.PublishTheContent"/>
@@ -168,7 +182,7 @@
       
       
       <class name="org.testscript.VerifyPublishedBucket"/>
-      <class name="org.testscript.VerifyThatTopicsAreSelectedOnMetaDataPage"/>
+      
      
      
       
@@ -179,11 +193,11 @@
       <class name="org.testscript.AdminCreationAndDownloadCsv"/>
       
      
-      <class name="org.testscript.UploadContentSaveAndSendForReview"/>
+     
       <class name="org.testscript.CreateBookAndVerifyOnlyBooksPresent"/>
     
       
-      <class name="org.testscript.SearchContentWithFiltersAsReviewer"/>
+      
       
       
       
@@ -198,12 +212,12 @@
       
         
 
-      <class name="org.testscript.VerifyTheSorting"/>
+      
      
       <class name="org.testscript.ResourceCreation"/>
       
       
-      <class name="org.testscript.CheckInReviewSubmission"/>
+     
      
      
       <class name="org.testscript.VerifyTheBookAvailableForReview"/>
@@ -211,7 +225,7 @@
       
      
       
-      <class name="org.testscript.EditAndVerifyTopicTree"/>
+     
     
       <class name="org.testscript.VerifyHomePage"/>
       <class name="org.testscript.RejectTheContent"/>
