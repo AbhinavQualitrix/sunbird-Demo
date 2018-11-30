@@ -14,6 +14,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -51,6 +52,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 	Actions action = new Actions(driver);
 	Random rand=new Random();
 	CreatorUserPageObj createUserPageObj= new CreatorUserPageObj();
+	JavascriptExecutor executor = (JavascriptExecutor)driver;
 	SoftAssert softAssert = new SoftAssert();
 
 
@@ -997,7 +999,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			//Added here - change here
 			//driver.switchTo().defaultContent();
 
-			GenericFunctions.waitWebDriver(500);
+			GenericFunctions.waitWebDriver(1500);
 			action.moveToElement(contentCreationResourcePage.setAnswer0).sendKeys("OPTION 1").build().perform();
 
 			//action.sendKeys("OPTION 1").build().perform();
@@ -1051,11 +1053,11 @@ public class ContentCreationResourcePageObj extends BaseTest
 			contentCreationResourcePage.QueSubmitButton.click();
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.pickQuestion);
 			contentCreationResourcePage.pickQuestionCheckBox.click();
-			GenericFunctions.waitWebDriver(500);
+			GenericFunctions.waitWebDriver(2500);
 			contentCreationResourcePage.pickQueNextButton.click();
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.questionSetTitle);
 			contentCreationResourcePage.questionSetTitle.sendKeys(objListOFTestDataForSunbird1.get(11).getCourseDescription());
-			GenericFunctions.waitWebDriver(500);
+			GenericFunctions.waitWebDriver(1500);
 			contentCreationResourcePage.questionSetAddButton.click();
 		}
 		catch(Exception e)
@@ -1231,8 +1233,10 @@ public class ContentCreationResourcePageObj extends BaseTest
 			GenericFunctions.waitForElementToAppear(createUserPage.selectSubject);
 			createUserPage.selectSubject.click();
 			createUserPage.clickOnSelectMedium.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.selectMedium);
-			createUserPage.selectMedium.click();
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.selectMedium);
+			executor.executeScript("arguments[0].click();", createUserPage.selectMedium);
+			//createUserPage.selectMedium.click();
 
 			GenericFunctions.scrollToElement(createUserPage.selectConcept);
 			createUserPage.selectConcept.click();
@@ -1967,6 +1971,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			
 			contentCreationResourcePage.audioUploadIcon.click();
 			GenericFunctions.waitWebDriver(3000);
+			action.moveToElement(contentCreationResourcePage.btnChooseFile).build().perform();
 			contentCreationResourcePage.btnChooseFile.click();
 			String path=AllUploadingPaths.audioPath;
 			GenericFunctions.uploadFile(path);
@@ -1976,8 +1981,10 @@ public class ContentCreationResourcePageObj extends BaseTest
 			//contentCreationResourcePage.rightBtnAvailable.click();
 			
 			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.btnUploadAndUse);
 			contentCreationResourcePage.btnUploadAndUse.click();
-			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.alertMessage);
+			
+			GenericFunctions.waitForElementToAppear	(contentCreationResourcePage.alertMessage);
 			String alertActualMessage = contentCreationResourcePage.alertMessage.getText();						
 			String alertExpectedMessage = "Audio successfully uploaded";			
 			Assert.assertEquals(alertActualMessage, alertExpectedMessage);

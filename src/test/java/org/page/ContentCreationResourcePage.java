@@ -169,9 +169,11 @@ public class ContentCreationResourcePage
 	//@FindBy(xpath="//div[@class='form-group segment textBoxDiv questionTextBox']//textarea")
 	public WebElement enterTheQuestion;
 
+	//Nov 30
 	//@FindBy(xpath="//div[@id='options_0']//p")
-	@FindBy(xpath="//div//input[@name='options_0']")
+	//@FindBy(xpath="//div//input[@name='options_0']")
 	//@FindBy(xpath="//div[@class='form-group segment textBoxDiv']//input")
+	@FindBy(xpath="//div//input[contains(@name,'0')]")
 	public WebElement setAnswer0;
 
 	//@FindBy(xpath="//div[@id='options_1']//p")
@@ -606,7 +608,9 @@ public class ContentCreationResourcePage
 	@FindBy(xpath="//button[contains(text(),'Upload/ Record')]")
 	public WebElement btnUploadRecord; 
 
-	@FindBy(id="assetfile")
+	//Nov 30
+	//@FindBy(id="assetfile")
+	@FindBy(xpath="//label[contains(.,'drag and drop')]/..//input")
 	public WebElement btnChooseFile;
 
 	@FindBy(xpath="//button[contains(text(),'Upload and Use')]")
@@ -617,5 +621,7 @@ public class ContentCreationResourcePage
 
 	@FindBy(xpath="//span[contains(@class,'playAudio')")
 	public static WebElement verifyAudioName;
+	
+
 }
 

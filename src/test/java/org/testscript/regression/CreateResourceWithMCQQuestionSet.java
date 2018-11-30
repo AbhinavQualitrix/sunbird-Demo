@@ -7,11 +7,11 @@ import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
 import org.testng.annotations.Test;
 
-public class CreateResourceByCreatingAFillInThBlanksQuestion extends BaseTest
+public class CreateResourceWithMCQQuestionSet extends BaseTest
 {
 	//Test case Not taken MT, scripting yet to complete 
 	@Test
-	public void createResourceByCreatingFillInTheBlanksQuestion() throws Exception
+	public void createResourceWithMcqQuestion() throws Exception
 	{
 		SignUpPageObj userLogin = new SignUpPageObj();
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();

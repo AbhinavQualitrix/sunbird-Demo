@@ -13,6 +13,7 @@ import org.generic.ExtentTestManager;
 import org.generic.GenericFunctions;
 import org.generic.ReadTestDataFromExcel;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -44,6 +45,7 @@ public class CreatorUserPageObj extends BaseTest{
 	static Logger log = Logger.getLogger(CreatorUserPageObj.class.getName());
 	List <TestDataForSunbird> objListOFTestDataForSunbird1= null ;
 	Actions action = new Actions(driver);
+	JavascriptExecutor executor = (JavascriptExecutor)driver;
 	Random rand=new Random();
 	String lessonNumber;
 	String title="";
@@ -1013,8 +1015,9 @@ public class CreatorUserPageObj extends BaseTest{
 			}
 			System.out.println("Checked all Check Boxes");
 			GenericFunctions.waitWebDriver(4000);	
-			GenericFunctions.waitForElementToAppear(createUserPage.popupPublishButton);
-			createUserPage.popupPublishButton.click();
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.popupPublishButton);
+			executor.executeScript("arguments[0].click();", createUserPage.popupPublishButton);
+			//createUserPage.popupPublishButton.click();
 			GenericFunctions.waitWebDriver(3000);
 
 			assertOnSearchAfterPublish(searchCourseName);
@@ -1766,7 +1769,9 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.selectSubject.click();
 			createUserPage.clickOnSelectMedium.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectMedium);
-			createUserPage.selectMedium.click();
+			action.moveToElement(createUserPage.selectMedium).build().perform();
+			action.click(createUserPage.selectMedium).build().perform();
+			//createUserPage.selectMedium.click();
 			/*
 			GenericFunctions.scrollToElement(createUserPage.selectConcept);
 			createUserPage.selectConcept.click();
@@ -1777,6 +1782,7 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.conceptDoneButton.click();
 			GenericFunctions.waitWebDriver(1500);
 			 */
+			GenericFunctions.waitWebDriver(1500);
 			GenericFunctions.waitForElementToAppear(createUserPage.clickOwner);
 			GenericFunctions.scrollToElement(createUserPage.clickOwner);
 			createUserPage.clickOwner.click();
@@ -2088,10 +2094,12 @@ public class CreatorUserPageObj extends BaseTest{
 			//GenericFunctions.scrollTillEndOfPage();
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.doneButton);
 			GenericFunctions.waitWebDriver(2000);
-			action.moveToElement(createUserPage.doneButton).build().perform();
+			executor.executeScript("arguments[0].click();",createUserPage.doneButton);
+			/*action.moveToElement(createUserPage.doneButton).build().perform();
 			//GenericFunctions.clickOnElementUsingJavascript(createUserPage.doneButton);
 			action.click(createUserPage.doneButton).click().build().perform();
-		}
+			 */		
+			}
 		catch(Exception e)
 		{
 			System.out.println("Could not select the Topic is send for review form");

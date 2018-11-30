@@ -8,6 +8,7 @@ import org.generic.ExtentTestManager;
 import org.generic.GenericFunctions;
 import org.generic.ReadTestDataFromExcel;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
@@ -38,6 +39,7 @@ public class CreateMentorPageObj extends BaseTest{
 	CreatorUserPage createUserPage=PageFactory.initElements(driver, CreatorUserPage.class);
 	CreatorUserPageObj creatorUserPageObj =new CreatorUserPageObj();
 	Actions action = new Actions(driver);
+	JavascriptExecutor executor = (JavascriptExecutor)driver;
 	Random rand=new Random();
 	List <TestDataForSunbird> objListOFTestDataForSunbird= null;
 	String batchStatus="Previous Batches";
@@ -401,8 +403,12 @@ public class CreateMentorPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			createMentorPage.mentorDropdown.click();
 			createMentorPage.membersInBatch.click();
-			GenericFunctions.waitWebDriver(3000);
-			createMentorPage.selectMembersInBatch.click();
+			GenericFunctions.waitWebDriver(2000);
+			
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createMentorPage.selectMembersInBatch);			
+			executor.executeScript("arguments[0].click();",createMentorPage.selectMembersInBatch);
+			
+			// 	 createMentorPage.selectMembersInBatch.click();
 			GenericFunctions.waitWebDriver(1000);
 			createMentorPage.memberDropdown.click();
 			GenericFunctions.waitWebDriver(2000);

@@ -115,5 +115,7 @@ public class GetPage {
 	@FindBy(xpath="(//sui-select-option[@class='item']//span[contains(text(),'English')])[2]")
 	public WebElement xSelectEnglishLanguage;
 	
-	
+	//Nov 30
+	@FindBy(xpath="//div[contains(@class,'sbCard mt')]/div[@class='sub-header']/h4")
+	public WebElement exploreSunbirdContentCard;
 }

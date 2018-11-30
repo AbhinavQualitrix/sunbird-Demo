@@ -23,7 +23,10 @@
         <class name="org.testscript.UploadRootOrgUsersWithOrgId"/>
         <class name="org.testscript.UploadSubOrgUsersWithOrgId"/>
         <class name="org.testscript.SkillEndorsement"/>
-        <class name="org.testscript.UpdateProfilePhoto"/>-->
+        <class name="org.testscript.UpdateProfilePhoto"/>
+        
+        P2 test cases that are out of coverage
+         <class name="org.testscript.regression.SeeTheContentBasedOnAppliedFilter"/>-->
     
     
       <class name="org.testscript.NavigateToMyActivity"/>
@@ -42,7 +45,7 @@
       <class name="org.testscript.VerifyThatTopicsAreDisplayedOnMetaDataForm"/>
       <class name="org.testscript.SearchInLibrary"/>
       <class name="org.testscript.LimitedSharingTheContent"/>
-      <class name="org.testscript.regression.SeeTheContentBasedOnAppliedFilter"/>
+     
       <class name="org.testscript.CopyContentFromLibraryAndVerify"/>
      
      
@@ -97,7 +100,7 @@
       <class name="org.testscript.UploadWebmContent"/>
       <class name="org.testscript.regression.VerifyEditMetadataPageForCollection"/>
       <class name="org.testscript.regression.VerifyAnnouncementPageContent"/>
-      <class name="org.testscript.regression.CreateResourceByCreatingAFillInThBlanksQuestion"/>
+      <class name="org.testscript.regression.CreateResourceWithMCQQuestionSet"/>
       <class name="org.testscript.ResendAnnouncementAndVerifyAsReciever"/>
       <class name="org.testscript.BookCreateOptionValidation"/>
       <class name="org.testscript.ResendAnnouncement"/>

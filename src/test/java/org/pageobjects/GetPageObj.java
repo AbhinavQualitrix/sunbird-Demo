@@ -37,7 +37,7 @@ public class GetPageObj extends BaseTest{
 	{
 		try
 		{
-			
+
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate to get page");
 			GenericFunctions.assertIfElementExists1(driver, XPATH, orgUploadPage.loginButton);
 			ExtentTestManager.getTest().log(LogStatus.PASS, "Found login button: "+orgUploadPage.loginButton);
@@ -236,11 +236,20 @@ public class GetPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1500);
 			CreatorUserPageObj.assertCourseFoundInSearch(objListOFTestDataForSunbird.get(0).getCourseName());
 			GenericFunctions.waitWebDriver(1500);
-			GenericFunctions.waitForElementToAppear(createUserPage.getCourseName);
-			if(createUserPage.getCourseName.isDisplayed())
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(getPage.exploreSunbirdContentCard);
+
+			try
 			{
-				Assert.assertTrue(true,"Failed on Asserting the resuults after the content search");
-				ExtentTestManager.getTest().log(LogStatus.PASS, "Contents are displayed on searching in explore sunbird Page");
+				if(getPage.exploreSunbirdContentCard.isDisplayed())
+
+				{
+					Assert.assertTrue(true,"Failed on Asserting the resuults after the content search");
+					ExtentTestManager.getTest().log(LogStatus.PASS, "Contents are displayed on searching in explore sunbird Page");
+				}
+			}
+			catch(Exception e)
+			{
+				ExtentTestManager.getTest().log(LogStatus.INFO, "Contents are not displayed on searching in explore sunbird Page"+e.getLocalizedMessage());
 			}
 		}
 		catch(Exception e)
@@ -316,7 +325,7 @@ public class GetPageObj extends BaseTest{
 			Assert.fail("Failed to verify that the user is able to get and access the content associated with the DIAL code "+e.getLocalizedMessage());
 		}
 	}
-	
+
 
 	public void verifyLoginNavigationFromExploreSunbird() throws InterruptedException
 	{
