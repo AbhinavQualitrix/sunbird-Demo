@@ -1770,7 +1770,8 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.clickOnSelectMedium.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectMedium);
 			action.moveToElement(createUserPage.selectMedium).build().perform();
-			action.click(createUserPage.selectMedium).build().perform();
+			//action.click(createUserPage.selectMedium).build().perform();
+			executor.executeScript("arguments[0].click();",createUserPage.selectMedium);
 			//createUserPage.selectMedium.click();
 			/*
 			GenericFunctions.scrollToElement(createUserPage.selectConcept);
