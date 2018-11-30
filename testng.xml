@@ -39,7 +39,7 @@
       <class name="org.testscript.CheckCourseStatAsMentor"/>
       <class name="org.testscript.VerifyAppliedFilter"/>
       <class name="org.testscript.EnrollToCourseInOpenBatch"/>
-      <class name="org.testscript.verifyThatTopicsAreDisplayedOnMetaDataForm"/>
+      <class name="org.testscript.VerifyThatTopicsAreDisplayedOnMetaDataForm"/>
       <class name="org.testscript.SearchInLibrary"/>
       <class name="org.testscript.LimitedSharingTheContent"/>
       <class name="org.testscript.regression.SeeTheContentBasedOnAppliedFilter"/>
