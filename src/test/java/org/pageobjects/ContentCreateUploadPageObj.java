@@ -50,7 +50,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 	public void verifyUploadContentPopupDisplay()
 	{
 		try 
-		{   SoftAssert softAssert = new SoftAssert();
+		{  
 		objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 		ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to verify the upload content popup display");
 		GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
@@ -58,17 +58,17 @@ public class ContentCreateUploadPageObj extends BaseTest
 		if( contentCreatePage.uploadContentText.isDisplayed())
 		{
 			String Evalue = contentCreatePage.uploadContentText.getText();			
-			softAssert.assertEquals("Upload Content", Evalue);
+			Assert.assertEquals("Upload Content", Evalue);
 		}
 		if(contentCreatePage.uploadButtonPop.isDisplayed())
 		{
 			String Evalue = contentCreatePage.uploadButtonPop.getText();	
-			softAssert.assertEquals("Upload", Evalue);	
+			Assert.assertEquals("Upload", Evalue);	
 		}
 		if(contentCreatePage.closeEditor.isDisplayed())
 		{
 			String Evalue = contentCreatePage.closeEditor.getText();	
-			softAssert.assertEquals("Close Editor", Evalue);	
+			Assert.assertEquals("Close Editor", Evalue);	
 		}
 
 
@@ -89,15 +89,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 		GenericFunctions.waitForElementToAppear(contentCreatePage.uploadButtonPop);
 		contentCreatePage.uploadButtonPop.click();
 		GenericFunctions.waitWebDriver(5000);
-
-
-
-
-
 		System.out.println(objListOFTestDataForSunbird1.get(10).getCourseName());
-
-
-
 		}
 		catch(Exception e)
 		{
@@ -109,7 +101,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 	public void verifyFileUpload()
 	{
 		try {
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to save the content and verify the close button display");
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to  verify the upload content");
 
 			contentCreatePage.saveuploadcontent.click();
 			GenericFunctions.waitWebDriver(5000);
@@ -129,26 +121,24 @@ public class ContentCreateUploadPageObj extends BaseTest
 			if(createUserPage.closeButton.isDisplayed()){
 				createUserPage.closeButton.click();
 			}
-
-
-
 			createUserPage.closeButton.click();
 			GenericFunctions.waitWebDriver(2000);
 
-		}catch(Exception e) {}
+		}catch(Exception e) {
 
-		Assert.assertTrue(true);
-		ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to verify the close button");
-
+		
+		ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to verify the upload content");
+		ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+		Assert.fail("Could not verify the upload content popup, Exception"+e.getLocalizedMessage());
 	}	
 
-
+	}
 
 	public void navigateToLibraryAndSearchContent(List<TestDataForSunbird> objListOFTestDataForSunbird12)
 	{
 		try	
 		{
-			SoftAssert softAssert = new SoftAssert();
+			
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate to library and search for the content");	
 
 			objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
@@ -173,7 +163,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 			if(contentCreatePage.searchContentName.isDisplayed())
 			{
 				String Evalue = contentCreatePage.searchContentName.getText();
-				softAssert.assertEquals(" Automation Content_CN0049_WEBM", Evalue);
+				Assert.assertEquals(" Automation Content_CN0049_WEBM", Evalue);
 
 			}
 			GenericFunctions.waitForElementToAppear(contentCreatePage.copy);		
@@ -183,7 +173,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 		}
 		catch(Exception e)
 		{
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to verify book option to the user");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to navigate to library and search for the content");
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
 			Assert.fail("Could not Navigate to library and search the content, Exception"+e.getLocalizedMessage());
 
@@ -205,7 +195,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 		{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to verify the upload content for the user");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message: "+e.getLocalizedMessage());
-			Assert.fail("Could not go to the up for review and verify the upload content, Exception Message:Exception\"+e.getLocalizedMessage()");
+			Assert.fail("Could not go to the up for review and verify the upload content"+e.getLocalizedMessage());
 
 		}
 	}
@@ -335,7 +325,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on saving and sending course for review");
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
 			System.out.println("Failed to save and course for review");
-			Assert.fail("Failed on saving and sending course for review");
+			Assert.fail("Failed on saving and sending course for review, Exception"+e.getLocalizedMessage());
 
 		}
 
@@ -351,21 +341,21 @@ public class ContentCreateUploadPageObj extends BaseTest
 			GenericFunctions.waitWebDriver(5000);
 			contentCreatePage.browseButton.click();
 
-			Thread.sleep(5000);
+			GenericFunctions.waitWebDriver(5000);
 
 
 		}catch(Exception e)
 		{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed To upload MP4");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message: "+e.getLocalizedMessage());
-			Assert.fail("Failed on uploading a mp4");
+			Assert.fail("Failed to upload MP4, Exception"+e.getLocalizedMessage());
 		}
 
 	}
 	public void verifyThatEditDetailsPageIsDisplayed()
 	{
 		try {
-			SoftAssert softAssert = new SoftAssert();
+			
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to get edit Detail Page is Displaying and Continuation of the test case number 129");
 			//List<TestDataForSunbird>objListOFTestDatForSunbird=null;
 			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
@@ -384,24 +374,24 @@ public class ContentCreateUploadPageObj extends BaseTest
 			if(contentCreatePage.editDetailsHeading.isDisplayed())
 			{
 				String Evalue = contentCreatePage.editDetailsHeading.getText();
-				softAssert.assertEquals("Edit Details", Evalue);
+				Assert.assertEquals("Edit Details", Evalue);
 
 			}
 			if(contentCreatePage.appIcon.isDisplayed())
 			{
 				String Evalue = contentCreatePage.appIcon.getText();
-				softAssert.assertEquals("App Icon", Evalue);
+				Assert.assertEquals("App Icon", Evalue);
 			}
 			if(contentCreatePage.cancelButton.isDisplayed())
 			{
 				String Evalue = contentCreatePage.cancelButton.getText();
-				softAssert.assertEquals("Cancel", Evalue);	
+				Assert.assertEquals("Cancel", Evalue);	
 			}
 			if(createUserPage.saveButton.isDisplayed())
 			{
 
 				String Evalue = createUserPage.saveButton.getText();
-				softAssert.assertEquals("Save", Evalue);
+				Assert.assertEquals("Save", Evalue);
 			}
 
 
@@ -543,16 +533,6 @@ public class ContentCreateUploadPageObj extends BaseTest
 			GenericFunctions.waitWebDriver(5000);
 			createUserPage.saveButton.click();
 			GenericFunctions.waitWebDriver(2500);
-
-
-
-
-
-
-
-
-
-
 			//				
 			//				String url1=contentCreatePage.linkdata.getText();
 			//				GenericFunctions.waitWebDriver(5000);
@@ -586,14 +566,14 @@ public class ContentCreateUploadPageObj extends BaseTest
 		{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Could not display the edit details page");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message:"+e.getLocalizedMessage());
-			Assert.fail("Failed to display the edit details page");
+			Assert.fail("Could not display the edit details page, Exception"+e.getLocalizedMessage());
 		}
 	}
 
 	public void allUploadsContent()
 	{
 		try {
-			SoftAssert softAssert = new SoftAssert();
+			
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to verify the saved upload content in all upload section.");
 			GenericFunctions.waitWebDriver(3000);
 			//			Alert alert = driver.switchTo().alert();
@@ -604,7 +584,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 			if(createUserPage.reviewCourseName.isDisplayed())
 			{
 				String eupload=	createUserPage.reviewCourseName.getText();
-				softAssert.assertEquals("CourseA Description ", eupload);
+				Assert.assertEquals("CourseA Description ", eupload);
 			}
 
 
@@ -624,7 +604,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 		{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "The upload content is not in all uploads after saving");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message:"+e.getLocalizedMessage());
-			Assert.fail("Failed to display the upload content in all uploads");
+			Assert.fail("The upload content is not in all uploads after saving, Exception"+e.getLocalizedMessage());
 		}
 	}
 
@@ -632,7 +612,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 	public void reviewSubmissionPage()
 	{
 		try {
-			SoftAssert softAssert = new SoftAssert();
+			
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to see the upload content in review submision page.");
 
 			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
@@ -644,7 +624,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 			if(contentCreatePage.reviewCardView.isDisplayed())
 			{
 				String Evalue =contentCreatePage.reviewCardView.getText();
-				softAssert.assertEquals("CourseA Description", Evalue);
+				Assert.assertEquals("CourseA Description", Evalue);
 			}
 			GenericFunctions.waitWebDriver(5000);
 			contentCreatePage.homeNavigation.click();
@@ -656,7 +636,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 		{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "The upload content is not displaying in the review submision page");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message:"+e.getLocalizedMessage());
-			Assert.fail("Failed to display the upload content in review submission page");
+			Assert.fail("The upload content is not displaying in the review submision page, Exception"+e.getLocalizedMessage());
 
 
 		}
@@ -666,8 +646,8 @@ public class ContentCreateUploadPageObj extends BaseTest
 	public void navigateToUpForReview()
 	{
 		try {
-			SoftAssert softAssert = new SoftAssert();
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to see the upload content in up for review page");
+			
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate to up for review page");
 
 			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 
@@ -681,7 +661,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 			if(contentCreatePage.contentupload.isDisplayed())
 			{
 				String Evalue=contentCreatePage.contentupload.getText();
-				softAssert.assertEquals("CourseA Description", Evalue);
+				Assert.assertEquals("CourseA Description", Evalue);
 
 			}
 			contentCreatePage.contentupload.isDisplayed();
@@ -693,9 +673,9 @@ public class ContentCreateUploadPageObj extends BaseTest
 
 		}catch(Exception e)
 		{
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "The upload content is not displaying in the review submision page");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "User is failed to navigate to up for review page");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message:"+e.getLocalizedMessage());
-			Assert.fail("Failed to display the upload content in review submission page");
+			Assert.fail("User is failed to navigate to up for review page, Exception"+e.getLocalizedMessage());
 
 
 
@@ -754,7 +734,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 		}catch(Exception e) {
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "The upload content is not sort");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message:"+e.getLocalizedMessage());
-			Assert.fail("Failed to display the content sort by date");
+			Assert.fail("The upload content is not sort, Exception"+e.getLocalizedMessage());
 		}
 	}
 
@@ -762,8 +742,8 @@ public class ContentCreateUploadPageObj extends BaseTest
 	public void showFilter(){
 		{
 			try {
-				SoftAssert softAssert = new SoftAssert();
-
+				
+				ExtentTestManager.getTest().log(LogStatus.INFO, "The upload content is filtering with based on curriculum,grades,medium,subjects,content types,");
 				objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 				GenericFunctions.waitWebDriver(5000);			
 				GenericFunctions.waitForElementToAppear(contentCreatePage.workspace);
@@ -800,7 +780,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 				if(contentCreatePage.contentName.isDisplayed())
 				{
 					String Evalue =contentCreatePage.contentName.getText();
-					softAssert.assertEquals("Automation Collection_CL0043", Evalue);
+					Assert.assertEquals("Automation Collection_CL0043", Evalue);
 
 				}
 				GenericFunctions.waitWebDriver(5000);
@@ -811,7 +791,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 			{
 				ExtentTestManager.getTest().log(LogStatus.FAIL, "The upload content is not filtering with based on curriculum,grades,medium,subjects,content types,");
 				ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message:"+e.getLocalizedMessage());
-				Assert.fail("Failed to filter the topic based on curriculum,grades,medium,subjects,content types ");
+				Assert.fail("The upload content is not filtering with based on curriculum,grades,medium,subjects,content types,, Exception"+e.getLocalizedMessage());
 			}
 		}
 	}
@@ -864,7 +844,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 		{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "The upload content is not displaying in the review submision page");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message:"+e.getLocalizedMessage());
-			Assert.fail("Failed to display the content in review submission page");
+			Assert.fail("The upload content is not displaying in the review submision page, Exception"+e.getLocalizedMessage());
 		}
 
 	}
@@ -896,7 +876,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 		{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "The upload content is not displaying in the published section");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message:"+e.getLocalizedMessage());
-			Assert.fail("Failed to display the content in published section");
+			Assert.fail("The upload content is not displaying in the published section, Exception"+e.getLocalizedMessage());
 		}
 
 
@@ -905,7 +885,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 	public void requestChanges()
 	{
 		try {
-			SoftAssert softAssert = new SoftAssert();
+			
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User  is trying to send the request changes for all upload content");
 			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 
@@ -925,7 +905,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 			if(contentCreatePage.contentupload.isDisplayed())
 			{
 				String Evalue =contentCreatePage.contentupload.getText();
-				softAssert.assertEquals("CourseA Description", Evalue);
+				Assert.assertEquals("CourseA Description", Evalue);
 			}
 
 			GenericFunctions.waitWebDriver(5000);
@@ -959,9 +939,9 @@ public class ContentCreateUploadPageObj extends BaseTest
 
 		}catch(Exception e)
 		{
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "The reviewer rejects the uploaded content ");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "The reviewer failed to rejects the uploaded content ");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message:"+e.getLocalizedMessage());
-			Assert.fail("Failed to get  the request changes for upload content");
+			Assert.fail("The reviewer failed to rejects the uploaded content, Exception"+e.getLocalizedMessage());
 
 		}
 
@@ -999,7 +979,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 		{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "User is not able to see the upload content in the all uploads section");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message:"+e.getLocalizedMessage());
-			Assert.fail("Failed to get the upload content in all upload section");
+			Assert.fail("User is not able to see the upload content in the all uploads section, Exception"+e.getLocalizedMessage());
 
 		}
 

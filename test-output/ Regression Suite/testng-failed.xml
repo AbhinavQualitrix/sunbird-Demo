@@ -533,6 +533,7 @@
       <class name="org.testscript.SearchCourse">
         <methods>
           <include name="searchCourse"/>
+          <include name="openApplication"/>
         </methods>
       </class> <!-- org.testscript.SearchCourse -->
       <class name="org.testscript.ResourceCreation">

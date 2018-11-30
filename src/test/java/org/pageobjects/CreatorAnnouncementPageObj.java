@@ -1,22 +1,18 @@
 package org.pageobjects;
 
 
-import java.awt.Robot;
 import java.util.List;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
 import org.generic.AllUploadingPaths;
 import org.generic.ExtentTestManager;
-import org.generic.GenericExlMethods;
 import org.generic.GenericFunctions;
 import org.generic.ReadTestDataFromExcel;
-import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.page.CreatorAnnouncementPage;
 import org.page.CreatorUserPage;
@@ -27,10 +23,7 @@ import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
 
-import com.aventstack.extentreports.ExtentReporter;
 import com.relevantcodes.extentreports.LogStatus;
-
-import net.bytebuddy.description.type.TypeDescription.Generic;
 
 
 public class CreatorAnnouncementPageObj extends BaseTest{
@@ -41,6 +34,7 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 	PublicUserPage publicUserPage = PageFactory.initElements(driver, PublicUserPage.class);
 	SignUpPage signUpPage=PageFactory.initElements(driver, SignUpPage.class);
 	static Logger log = Logger.getLogger(CreatorAnnouncementPage.class.getName());
+	JavascriptExecutor executor = (JavascriptExecutor)driver;
 	Actions action = new Actions(driver);
 	Random rand=new Random();
 	String announcementName;
@@ -108,20 +102,27 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			createAnnouncementPage.enterUrl.sendKeys(objListOFTestDataForSunbird.get(7).getTitleDescription());
 			GenericFunctions.waitWebDriver(2000);
-			action.moveToElement(createAnnouncementPage.selectRecipient).click().build().perform();
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.selectRecipient);
+			/*action.moveToElement(createAnnouncementPage.selectRecipient).build().perform();
+			action.click().build().perform();*/
 			GenericFunctions.waitWebDriver(3000);
+			GenericFunctions.waitForElements(createAnnouncementPage.checkLocation);
 			createAnnouncementPage.checkLocation.get(0).click();
 			createAnnouncementPage.checkLocation.get(1).click();
 			//action.moveToElement(createAnnouncementPage.checkLocation).click().build().perform();
 			GenericFunctions.waitWebDriver(2000);
-			createAnnouncementPage.confirmRecipients.click();
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.confirmRecipients);
+			//createAnnouncementPage.confirmRecipients.click();
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.previewAnnouncement);
-			createAnnouncementPage.previewAnnouncement.click();
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.previewAnnouncement);
+			//createAnnouncementPage.previewAnnouncement.click();
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.sendAnnouncement);
 			GenericFunctions.waitWebDriver(2000);
-			createAnnouncementPage.sendAnnouncement.click();
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.sendAnnouncement);
+			//createAnnouncementPage.sendAnnouncement.click();
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.announcementcreatedConfirmation);
-			createAnnouncementPage.announcementcreatedConfirmation.click();
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.announcementcreatedConfirmation);
+			//createAnnouncementPage.announcementcreatedConfirmation.click();
 			GenericFunctions.waitWebDriver(2000);
 		}
 		catch(Exception e)
@@ -174,30 +175,28 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			GenericFunctions.uploadFile(AllUploadingPaths.attachmentImagePath);
 			GenericFunctions.waitWebDriver(5000);
 			
-			//GenericFunctions.waitForElementState(createAnnouncementPage.selectRecipient);
-			GenericFunctions.waitForElementToAppear(createAnnouncementPage.selectRecipient);
-			action.moveToElement(createAnnouncementPage.selectRecipient).click().build().perform();
-			
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.selectRecipient);
+			/*action.moveToElement(createAnnouncementPage.selectRecipient).build().perform();
+			action.click().build().perform();*/
 			GenericFunctions.waitWebDriver(3000);
 			GenericFunctions.waitForElements(createAnnouncementPage.checkLocation);
 			createAnnouncementPage.checkLocation.get(0).click();
 			createAnnouncementPage.checkLocation.get(1).click();
-			
-			//OCT 12
-			
-			//	createAnnouncementPage.checkLocation.click();
-			GenericFunctions.waitForElementToAppear(createAnnouncementPage.confirmRecipients);
-			GenericFunctions.waitWebDriver(1000);
-			createAnnouncementPage.confirmRecipients.click();
-			GenericFunctions.waitWebDriver(1000);
+			//action.moveToElement(createAnnouncementPage.checkLocation).click().build().perform();
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.confirmRecipients);
+			//createAnnouncementPage.confirmRecipients.click();
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.previewAnnouncement);
-			createAnnouncementPage.previewAnnouncement.click();
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.previewAnnouncement);
+			//createAnnouncementPage.previewAnnouncement.click();
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.sendAnnouncement);
-			createAnnouncementPage.sendAnnouncement.click();
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.sendAnnouncement);
+			//createAnnouncementPage.sendAnnouncement.click();
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.announcementcreatedConfirmation);
-			createAnnouncementPage.announcementcreatedConfirmation.click();
-			GenericFunctions.waitWebDriver(2500);
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.announcementcreatedConfirmation);
+			//createAnnouncementPage.announcementcreatedConfirmation.click();
+			GenericFunctions.waitWebDriver(2000);
 			ExtentTestManager.getTest().log(LogStatus.PASS, "An Announcement along with the attachment is created sucessfully");
 		}
 
@@ -363,17 +362,35 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			String announcementNumber = GenericFunctions.readFromNotepad("./testData/announcementNumbers.txt").toString().toUpperCase();
 			String editTitle = objListOFTestDataForSunbird.get(7).getCourseName()  + announcementNumber;
 			GenericFunctions.waitWebDriver(2000);
-			createAnnouncementPage.editRecipients.click();
+			/*GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.selectRecipient);
+			action.moveToElement(createAnnouncementPage.selectRecipient).build().perform();
+			action.click().build().perform();
+			GenericFunctions.waitWebDriver(3000);
+			GenericFunctions.waitForElements(createAnnouncementPage.checkLocation);
+			createAnnouncementPage.checkLocation.get(0).click();
+			createAnnouncementPage.checkLocation.get(1).click();
+			//action.moveToElement(createAnnouncementPage.checkLocation).click().build().perform();
 			GenericFunctions.waitWebDriver(2000);
-			createAnnouncementPage.searchForLocation.click();
+			
+*/			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.editRecipients);
+			//createAnnouncementPage.editRecipients.click();
 			GenericFunctions.waitWebDriver(2000);
-			createAnnouncementPage.confirmRecipients.click();
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.searchForLocation);
+			//createAnnouncementPage.searchForLocation.click();
 			GenericFunctions.waitWebDriver(2000);
-			createAnnouncementPage.previewAnnouncement.click();
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.confirmRecipients);
+			//createAnnouncementPage.confirmRecipients.click();
+			GenericFunctions.waitForElementToAppear(createAnnouncementPage.previewAnnouncement);
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.previewAnnouncement);
+			//createAnnouncementPage.previewAnnouncement.click();
+			GenericFunctions.waitForElementToAppear(createAnnouncementPage.sendAnnouncement);
 			GenericFunctions.waitWebDriver(2000);
-			createAnnouncementPage.sendAnnouncement.click();
-			GenericFunctions.waitWebDriver(2000);
-			createAnnouncementPage.announcementcreatedConfirmation.click();
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.sendAnnouncement);
+			//createAnnouncementPage.sendAnnouncement.click();
+			GenericFunctions.waitForElementToAppear(createAnnouncementPage.announcementcreatedConfirmation);
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.announcementcreatedConfirmation);
+			//createAnnouncementPage.announcementcreatedConfirmation.click();
 			String edittedTitle = createAnnouncementPage.resendAnnouncementName.getText();
 			System.out.println(edittedTitle);
 			AssertJUnit.assertEquals(announcementName, edittedTitle);
