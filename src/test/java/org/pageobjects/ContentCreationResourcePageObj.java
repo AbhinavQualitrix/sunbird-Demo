@@ -247,7 +247,9 @@ public class ContentCreationResourcePageObj extends BaseTest
 				GenericFunctions.waitForElementToAppear(contentCreationResourcePage.showFilters);
 				if(contentCreationResourcePage.showFilters.isDisplayed())
 				{
-					GenericFunctions.waitWebDriver(1500);
+					GenericFunctions.waitWebDriver(2000);
+				
+					
 					contentCreationResourcePage.showFilters.click();
 					GenericFunctions.waitForElementToAppear(contentCreationResourcePage.filterApplyButton);
 					if(contentCreationResourcePage.filterApplyButton.isDisplayed()&&contentCreationResourcePage.filterResetButton.isDisplayed())
@@ -1162,8 +1164,9 @@ public class ContentCreationResourcePageObj extends BaseTest
 			createUserPage.clickContentType.click();
 			GenericFunctions.waitWebDriver(1000);
 			contentCreationResourcePage.selectCotentType.click();
-			GenericFunctions.waitWebDriver(500);
-			contentCreationResourcePage.filterApplyButton.click();
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.clickOnElementUsingJavascript(contentCreationResourcePage.filterApplyButton);
+			//contentCreationResourcePage.filterApplyButton.click();
 			contentCreationResourcePage.showFilters.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
 			GenericFunctions.waitWebDriver(500);

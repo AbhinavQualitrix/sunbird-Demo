@@ -33,6 +33,8 @@ import org.testng.Assert;
 
 import com.relevantcodes.extentreports.LogStatus;
 
+import freemarker.template.utility.Execute;
+
 public class CreatorUserPageObj extends BaseTest{
 
 	private static final boolean Object = false;
@@ -459,7 +461,8 @@ public class CreatorUserPageObj extends BaseTest{
 			//createUserPage.clickOnPopup.click();
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(createUserPage.bookName);
-			createUserPage.bookName.sendKeys(objListOFTestDataForSunbird1.get(3).getCourseName()+lessonNumber);
+			//createUserPage.bookName.sendKeys(objListOFTestDataForSunbird1.get(3).getCourseName()+lessonNumber);
+			createUserPage.lessonPlanName.sendKeys(objListOFTestDataForSunbird1.get(3).getCourseName()+lessonNumber);
 			System.out.println("Lesson created :"+objListOFTestDataForSunbird1.get(3).getCourseName()+lessonNumber);
 			GenericFunctions.waitWebDriver(2000);
 			createUserPage.clickBookBoard.click();
@@ -537,28 +540,28 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(2000);
 			navigateToWorkspace(UPLOADCONTENT);		
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
-			GenericFunctions.waitWebDriver(7500);
+			GenericFunctions.waitWebDriver(8000);
 			GenericFunctions.waitForElementToAppear(createUserPage.enterUrl);
-			GenericFunctions.waitWebDriver(4000);
+			GenericFunctions.waitWebDriver(8000);
 			WebElement browse=createUserPage.browseButton;
 			if(uploadType.equalsIgnoreCase("mp4"))
 			{
 				System.out.println(AllUploadingPaths.mp4Path);
-				GenericFunctions.waitWebDriver(3000);
+				GenericFunctions.waitWebDriver(8000);
 				browse.sendKeys(AllUploadingPaths.mp4Path);
 				System.out.println("Uploaded file : "+AllUploadingPaths.mp4Path);
-				GenericFunctions.waitWebDriver(3000);
-				GenericFunctions.waitWebDriver(2500);
+				GenericFunctions.waitWebDriver(8000);
+				
 				System.out.println("MP4 content uploaded sucessfully");
 			}
 			else if(uploadType.equalsIgnoreCase("webm"))
 			{
 			
 				System.out.println(AllUploadingPaths.webmPath);
-				GenericFunctions.waitWebDriver(3000);
+				GenericFunctions.waitWebDriver(8000);
 				browse.sendKeys(AllUploadingPaths.webmPath);
 				System.out.println("Uploaded file : "+AllUploadingPaths.webmPath);
-				GenericFunctions.waitWebDriver(6000);
+				GenericFunctions.waitWebDriver(8000);
 				System.out.println("WEBM content uploaded sucessfully");
 				//GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			}
@@ -566,9 +569,9 @@ public class CreatorUserPageObj extends BaseTest{
 			{
 				GenericFunctions.waitForElementToAppear(createUserPage.enterUrl);
 				createUserPage.enterUrl.sendKeys(UPLOAD_YOUTUBE);
-				GenericFunctions.waitWebDriver(2000);
-				GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.UploadButton);	
-				GenericFunctions.waitWebDriver(1000);
+				GenericFunctions.waitWebDriver(10000);
+				//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.UploadButton);	
+				GenericFunctions.waitWebDriver(8000);
 				action.moveToElement(createUserPage.UploadButton).build().perform();
 				//action.click(createUserPage.UploadButton).build().perform();
 				createUserPage.UploadButton.click();
@@ -578,28 +581,28 @@ public class CreatorUserPageObj extends BaseTest{
 			{
 				
 				System.out.println(AllUploadingPaths.epubPath);
-				GenericFunctions.waitWebDriver(3000);
+				GenericFunctions.waitWebDriver(8000);
 				browse.sendKeys(AllUploadingPaths.epubPath);
 				System.out.println("Uploaded file : "+AllUploadingPaths.epubPath);
-				GenericFunctions.waitWebDriver(2000);
+				GenericFunctions.waitWebDriver(8000);
 				System.out.println("EPUB content uploaded sucessfully");
 			}
 
 			else if(uploadType.equalsIgnoreCase("h5p"))
 			{				
-				GenericFunctions.waitWebDriver(3000);
+				GenericFunctions.waitWebDriver(8000);
 				browse.sendKeys(AllUploadingPaths.h5pPath);
 				System.out.println("Uploaded file : "+AllUploadingPaths.h5pPath);
-				GenericFunctions.waitWebDriver(2000);
+				GenericFunctions.waitWebDriver(8000);
 				System.out.println("H5P content uploaded sucessfully");
 			}
 			else if(uploadType.equalsIgnoreCase("html"))
 			{
 				System.out.println(AllUploadingPaths.htmlPath);
-				GenericFunctions.waitWebDriver(3000);
+				GenericFunctions.waitWebDriver(8000);
 				browse.sendKeys(AllUploadingPaths.htmlPath);
 				System.out.println("Uploaded file : "+AllUploadingPaths.htmlPath);
-				GenericFunctions.waitWebDriver(2000);
+				GenericFunctions.waitWebDriver(8000);
 				System.out.println("HTML content uploaded sucessfully");
 
 			}
@@ -608,10 +611,10 @@ public class CreatorUserPageObj extends BaseTest{
 			{
 
 				System.out.println(AllUploadingPaths.pdfPath);
-				GenericFunctions.waitWebDriver(3000);
+				GenericFunctions.waitWebDriver(8000);
 				browse.sendKeys(AllUploadingPaths.pdfPath);
 				System.out.println("Uploaded file : "+AllUploadingPaths.pdfPath);
-				GenericFunctions.waitWebDriver(2000);
+				GenericFunctions.waitWebDriver(8000);
 				System.out.println("PDF content uploaded sucessfully");
 			}
 			GenericFunctions.waitWebDriver(4500);
@@ -789,7 +792,8 @@ public class CreatorUserPageObj extends BaseTest{
 				createUserPage.reviewComment.get(0).sendKeys(rejectReason);
 				GenericFunctions.waitForElementToAppear(createUserPage.requestChangesButton);
 				GenericFunctions.waitWebDriver(1000);	
-				createUserPage.requestChangesButton.click();
+				executor.executeScript("arguments[0].click();", createUserPage.requestChangesButton);
+				//createUserPage.requestChangesButton.click();
 				GenericFunctions.waitWebDriver(3000);
 				ExtentTestManager.getTest().log(LogStatus.PASS, inputToReject+" is rejected succesfully");
 				System.out.println(inputToReject+" is rejected succesfully");
@@ -808,12 +812,13 @@ public class CreatorUserPageObj extends BaseTest{
 				createUserPage.reviewComments.click();
 				createUserPage.reviewComments.sendKeys(rejectReason);
 				GenericFunctions.waitWebDriver(2000);
-				GenericFunctions.waitForElementToAppear(createUserPage.requestChangesButton1);
-				//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.requestChangesButton1);
+				//GenericFunctions.waitForElementToAppear(createUserPage.requestChangesButton1);
+				GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.requestChangesButton1);
 				//action.moveToElement(createUserPage.requestChangesButton1);
 				//GenericFunctions.clickOnElementUsingJavascript(createUserPage.requestChangesButton1);
+				GenericFunctions.clickOnElementUsingJavascript(createUserPage.requestChangesButton1);
 				GenericFunctions.waitWebDriver(4000);
-				createUserPage.requestChangesButton1.click();
+				//createUserPage.requestChangesButton1.click();
 				GenericFunctions.waitWebDriver(3000);
 				System.out.println(inputToReject+" is rejected succesfully");
 				ExtentTestManager.getTest().log(LogStatus.PASS, inputToReject+" is rejected succesfully");
@@ -867,8 +872,10 @@ public class CreatorUserPageObj extends BaseTest{
 			//updated on 06/09/2018
 			createUserPage.reviewComment.get(1).click();
 			createUserPage.reviewComment.get(1).sendKeys(rejectReason);
-			GenericFunctions.waitWebDriver(700);
-			createUserPage.requestChangesButton.click();
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.requestChangesButton);
+			GenericFunctions.clickOnElementUsingJavascript(createUserPage.requestChangesButton);
+			//createUserPage.requestChangesButton.click();
 			GenericFunctions.waitWebDriver(3000);
 		}
 		catch(Exception e)
@@ -1505,9 +1512,11 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.reviewComment.get(0).click();
 			createUserPage.reviewComment.get(0).sendKeys(rejectReason);
-			GenericFunctions.waitForElementToAppear(createUserPage.requestChangesButton);
 			GenericFunctions.waitWebDriver(2000);
-			createUserPage.requestChangesButton.click();
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.requestChangesButton);
+			executor.executeScript("arguments[0].click();", createUserPage.requestChangesButton);
+			GenericFunctions.waitWebDriver(2000);
+			//createUserPage.requestChangesButton.click();
 			GenericFunctions.waitWebDriver(3000);
 			//GenericFunctions.refreshWebPage();
 			//handlePopupOnLogin();
@@ -2024,7 +2033,8 @@ public class CreatorUserPageObj extends BaseTest{
 			}
 			
 			GenericFunctions.waitWebDriver(2500);
-			createUserPage.popupPublishButton.click();
+			executor.executeAsyncScript("arguments[0].click();", createUserPage.popupPublishButton);
+			//createUserPage.popupPublishButton.click();
 			GenericFunctions.waitWebDriver(3000);
 			
 			//driver.switchTo().defaultContent();
@@ -2303,15 +2313,17 @@ public class CreatorUserPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to publish and search "+source);
 			GenericFunctions.waitWebDriver(3000);	
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
-			GenericFunctions.waitWebDriver(3000);	
-			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.publishCourseButton);
+			GenericFunctions.waitWebDriver(8000);	
+			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.publishCourseButton);
+			GenericFunctions.clickOnElementUsingJavascript(createUserPage.publishCourseButton);
 			createUserPage.publishCourseButton.click();
 			for(int i=0;i<createUserPage.checkbox.size();i++){
 				createUserPage.checkbox.get(i).click();
 			}
 
 			GenericFunctions.waitWebDriver(2500);
-			createUserPage.popupPublishButton.click();
+			executor.executeScript("arguments[0].click();", createUserPage.popupPublishButton);
+			//createUserPage.popupPublishButton.click();
 			GenericFunctions.waitWebDriver(4000);
 			
 			GenericFunctions.waitForElementToAppear(createUserPage.upForReview);
@@ -2827,7 +2839,8 @@ public class CreatorUserPageObj extends BaseTest{
 			System.out.println("Checked all CBs");
 			GenericFunctions.waitWebDriver(2500);	
 			GenericFunctions.waitForElementToAppear(createUserPage.popupPublishButton);
-			createUserPage.popupPublishButton.click();
+			executor.executeScript("arguments[0].click();", createUserPage.popupPublishButton);
+			//createUserPage.popupPublishButton.click();
 			System.out.println(inputToSearch+" Content published sucessfully");
 			ExtentTestManager.getTest().log(LogStatus.PASS,inputToSearch+" Content published sucessfully");
 			GenericFunctions.waitWebDriver(3000);

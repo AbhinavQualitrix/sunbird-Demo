@@ -759,7 +759,7 @@ public class GenericFunctions extends BaseTest
 		{
 			if (element.isEnabled() && element.isDisplayed()) {
 				System.out.println("Clicking on element with using java script click");
-				GenericFunctions.waitForElementToAppear(element);
+				//GenericFunctions.waitForElementToAppear(element);
 				GenericFunctions.waitWebDriver(2000);
 				((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 			} else {

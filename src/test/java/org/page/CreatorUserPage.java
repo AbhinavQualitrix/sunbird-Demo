@@ -779,6 +779,9 @@ public class CreatorUserPage {
 	public WebElement courseName;
 	
 	
+	//Nov 30
+	@FindBy(xpath="//label[contains(.,'Name')]/..//input")
+	public WebElement lessonPlanName;
 }
 
 
