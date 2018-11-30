@@ -1,5 +1,6 @@
 package org.testscripts.regression;
 
+import org.testng.annotations.Test;
 import org.openqa.selenium.support.PageFactory;
 import org.pageobjects.GetPageObj;
 import org.startup.BaseTest;

@@ -1,5 +1,6 @@
 package org.testscripts.regression;
 
+import org.testng.annotations.Test;
 import org.pageobjects.AnnouncementCreationsPageObj;
 import org.pageobjects.CreatorUserPageObj;
 import org.pageobjects.SignUpPageObj;

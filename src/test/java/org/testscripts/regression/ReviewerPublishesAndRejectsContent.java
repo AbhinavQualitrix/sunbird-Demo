@@ -1,5 +1,6 @@
 package org.testscripts.regression;
 
+import org.testng.annotations.Test;
 import org.pageobjects.ContentCreateUploadPageObj;
 import org.pageobjects.CreatorUserPageObj;
 import org.pageobjects.SignUpPageObj;
@@ -12,25 +13,25 @@ public class ReviewerPublishesAndRejectsContent extends BaseTest{
 	public void workspace_showfilter() throws Exception
 	{
 	SignUpPageObj signUpPageObj = new SignUpPageObj();
-	CreatorUserPageObj createUserPageObj = new CreatorUserPageObj();
 	ContentCreateUploadPageObj contentCreateUploadPageObj = new ContentCreateUploadPageObj(); 
 
 	//Step no.1 :Login as reviewer
 	signUpPageObj.userLogin(REVIEWER);
 	
 	//Step no.2 :Navigate to workspace and up for review
-	contentCreateUploadPageObj.navigateToUpForReview1();
+	contentCreateUploadPageObj.navigateToUpForReviewN();
 	
-	//Step no.3 :Loggout
+	//Step no.3 :Logout
 	signUpPageObj.userLogout();
 	
-	//Step no. 3 :Login as creator 
+	//Step no.4 :Login as creator 
 	signUpPageObj.userLogin(CREATOR);
 	
-	//Step no.4 :Navigate to workspace and verify the content published or not
+	//Step no.5 :Navigate to workspace and verify the content published or not
 	contentCreateUploadPageObj.publishedContent();
 	
-	
+	//Step no.6 :Logout
+	signUpPageObj.userLogout();
 	
 
 }

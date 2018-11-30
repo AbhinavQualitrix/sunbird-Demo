@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [ Regression Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="org.generic.TestListener"/>
+  </listeners>
+  <test name="Test(failed)">
+    <classes>
+      <class name="org.testscripts.UploadContentTypeEpubAndVerify">
+        <methods>
+          <include name="uploadContentTypeEpubAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts.UploadContentTypeEpubAndVerify -->
+      <class name="org.testscripts2.UploadContentTypeH5pAndVerify">
+        <methods>
+          <include name="uploadContentH5pAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts2.UploadContentTypeH5pAndVerify -->
+      <class name="org.testscripts.UploadContentTypeHtmlAndVerify">
+        <methods>
+          <include name="uploadContentTypeHtmlAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts.UploadContentTypeHtmlAndVerify -->
+      <class name="org.testscripts.CreateAnnouncementWithAttachment">
+        <methods>
+          <include name="createAnnouncementWithAttachment"/>
+        </methods>
+      </class> <!-- org.testscripts.CreateAnnouncementWithAttachment -->
+      <class name="org.testscripts.UploadHtmlContent">
+        <methods>
+          <include name="uploadHtmlContent"/>
+        </methods>
+      </class> <!-- org.testscripts.UploadHtmlContent -->
+      <class name="org.testscripts.UploadWebmContent">
+        <methods>
+          <include name="uploadWebmContent"/>
+        </methods>
+      </class> <!-- org.testscripts.UploadWebmContent -->
+      <class name="org.testscripts.UpdateBatchAsInvitedMentor">
+        <methods>
+          <include name="updateBatchAsInvitedMentor"/>
+        </methods>
+      </class> <!-- org.testscripts.UpdateBatchAsInvitedMentor -->
+      <class name="org.testscripts2.CreateLessonPlanAndVerify">
+        <methods>
+          <include name="createLessonAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts2.CreateLessonPlanAndVerify -->
+      <class name="org.testscripts.SearchCourseCreateInviteOnlyBatch">
+        <methods>
+          <include name="searchCourseCreateInviteOnlyBatch"/>
+        </methods>
+      </class> <!-- org.testscripts.SearchCourseCreateInviteOnlyBatch -->
+      <class name="org.testscripts.regression.UpForReview_LatestContentInTop_SearchContent_FromSameChannel_ApplyAndResetFilters">
+        <methods>
+          <include name="upForReview_ContentValidation_SearchWithFilter_TC92_93_94_96a_b"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.UpForReview_LatestContentInTop_SearchContent_FromSameChannel_ApplyAndResetFilters -->
+      <class name="org.testscripts.UploadYoutubeContent">
+        <methods>
+          <include name="uploadYoutubeContent"/>
+        </methods>
+      </class> <!-- org.testscripts.UploadYoutubeContent -->
+      <class name="org.testscripts.ConfirmInstructionReceivedInforgotPassword">
+        <methods>
+          <include name="confirmInstructionReceivedInforgotPassword"/>
+        </methods>
+      </class> <!-- org.testscripts.ConfirmInstructionReceivedInforgotPassword -->
+      <class name="org.testscripts.NavigateToAnnouncementDashboard">
+        <methods>
+          <include name="navigateToAnnouncementDashboard"/>
+        </methods>
+      </class> <!-- org.testscripts.NavigateToAnnouncementDashboard -->
+      <class name="org.testscripts.UploadMp4Content">
+        <methods>
+          <include name="uploadMp4Content"/>
+        </methods>
+      </class> <!-- org.testscripts.UploadMp4Content -->
+      <class name="org.testscripts.BookCreateOptionValidation">
+        <methods>
+          <include name="bookCreateOptionValidation"/>
+        </methods>
+      </class> <!-- org.testscripts.BookCreateOptionValidation -->
+      <class name="org.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor">
+        <methods>
+          <include name="consumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
+        </methods>
+      </class> <!-- org.testscripts.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor -->
+      <class name="org.testscripts.SearchInLibraryUsingFilter">
+        <methods>
+          <include name="librarySearchUsingFilter"/>
+        </methods>
+      </class> <!-- org.testscripts.SearchInLibraryUsingFilter -->
+      <class name="org.testscripts2.CreateCourseAndVerify">
+        <methods>
+          <include name="creatorCourseAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts2.CreateCourseAndVerify -->
+      <class name="org.testscripts.regression.CopyContentFromLibraryAndVerify">
+        <methods>
+          <include name="verifyCopyContent_Library"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.CopyContentFromLibraryAndVerify -->
+      <class name="org.testscripts.TopicTree_TC_213">
+        <methods>
+          <include name="verify_That_Topics_Are_DisplayedOn_Meta_Data"/>
+        </methods>
+      </class> <!-- org.testscripts.TopicTree_TC_213 -->
+      <class name="org.testscripts.regression.LatestContentOnTopOfUpForReviewAndSearch">
+        <methods>
+          <include name="latestContentIsOnTopUpForReviewAndSearch"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.LatestContentOnTopOfUpForReviewAndSearch -->
+      <class name="org.testscripts.ResourceCreationAndPublish">
+        <methods>
+          <include name="creatorResourceAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts.ResourceCreationAndPublish -->
+      <class name="org.testscripts.VerifyBookCreator">
+        <methods>
+          <include name="verifyBookCreation"/>
+        </methods>
+      </class> <!-- org.testscripts.VerifyBookCreator -->
+      <class name="org.testscripts.VerifyTheBookAvailableForReview">
+        <methods>
+          <include name="verifyTheBookAvailableForReview"/>
+        </methods>
+      </class> <!-- org.testscripts.VerifyTheBookAvailableForReview -->
+      <class name="org.testscripts2.ConsumeOpenCourseByPublicUser">
+        <methods>
+          <include name="consumeOpenCourseByPublicUser"/>
+        </methods>
+      </class> <!-- org.testscripts2.ConsumeOpenCourseByPublicUser -->
+      <class name="org.testscripts.SearchContentWithFiltersAsReviewer">
+        <methods>
+          <include name="searchContentWithFiltersAsReviewer"/>
+        </methods>
+      </class> <!-- org.testscripts.SearchContentWithFiltersAsReviewer -->
+      <class name="org.testscripts.regression.AccessOnAllPagesAfterLogin">
+        <methods>
+          <include name="verify_PageAccessOnLogin"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.AccessOnAllPagesAfterLogin -->
+      <class name="org.testscripts.CheckForDownloadButtonAvailabilityForUserInProfile">
+        <methods>
+          <include name="checkForDownloadButtonAvailabilityForUserInProfile"/>
+        </methods>
+      </class> <!-- org.testscripts.CheckForDownloadButtonAvailabilityForUserInProfile -->
+      <class name="org.testscripts.ResourceCreation">
+        <methods>
+          <include name="resourceCreation"/>
+        </methods>
+      </class> <!-- org.testscripts.ResourceCreation -->
+      <class name="org.testscripts.regression.RejectTheUploadedContent">
+        <methods>
+          <include name="rejectTheUploadedContent"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.RejectTheUploadedContent -->
+      <class name="org.testscripts.ResendAnnouncementAndVerifyAsReciever">
+        <methods>
+          <include name="resendAnnouncementAndVerifyAsReciever"/>
+        </methods>
+      </class> <!-- org.testscripts.ResendAnnouncementAndVerifyAsReciever -->
+      <class name="org.testscripts.RejectTheContent">
+        <methods>
+          <include name="rejectTheContent"/>
+        </methods>
+      </class> <!-- org.testscripts.RejectTheContent -->
+      <class name="org.testscripts.regression.VerifyUploadContentPopup_UploadAnyContent_CloseButton_DownloadContent">
+        <methods>
+          <include name="verifyUploadAndDownloadContent"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.VerifyUploadContentPopup_UploadAnyContent_CloseButton_DownloadContent -->
+      <class name="org.testscripts.SearchInLibrary">
+        <methods>
+          <include name="librarySearch"/>
+        </methods>
+      </class> <!-- org.testscripts.SearchInLibrary -->
+      <class name="org.testscripts.BookCreation">
+        <methods>
+          <include name="bookCreation"/>
+        </methods>
+      </class> <!-- org.testscripts.BookCreation -->
+      <class name="org.testscripts.AdminCreationAndDownloadCsv">
+        <methods>
+          <include name="adminCreationAndDownloadCsv"/>
+        </methods>
+      </class> <!-- org.testscripts.AdminCreationAndDownloadCsv -->
+      <class name="org.testscripts.SearchCourseUsingFilter">
+        <methods>
+          <include name="searchCourseUsingFilter"/>
+        </methods>
+      </class> <!-- org.testscripts.SearchCourseUsingFilter -->
+      <class name="org.testscripts.regression.SeeTheContentBasedOnAppliedFilter">
+        <methods>
+          <include name="seeTheContentBasedOnAppliedFilter"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.SeeTheContentBasedOnAppliedFilter -->
+      <class name="org.testscripts.ProfileInfoUpdate">
+        <methods>
+          <include name="profileInfoUpdate"/>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
+        </methods>
+      </class> <!-- org.testscripts.ProfileInfoUpdate -->
+      <class name="org.testscripts.SearchOrgsAsAdmin">
+        <methods>
+          <include name="searchOrgsAsAdmin"/>
+        </methods>
+      </class> <!-- org.testscripts.SearchOrgsAsAdmin -->
+      <class name="org.testscripts.regression.CreateResourceByCreatingAFillInThBlanksQuestion">
+        <methods>
+          <include name="createResourceByCreatingFillInTheBlanksQuestion"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.CreateResourceByCreatingAFillInThBlanksQuestion -->
+      <class name="org.testscripts.regression.VerifyTheClosingOfContentEditor">
+        <methods>
+          <include name="contentCreator_CloseEditor"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.VerifyTheClosingOfContentEditor -->
+      <class name="org.testscripts2.UploadContentTypeMp4">
+        <methods>
+          <include name="uploadContentMP4"/>
+        </methods>
+      </class> <!-- org.testscripts2.UploadContentTypeMp4 -->
+      <class name="org.testscripts.regression.VerifyUserNaviagationToContentEditor">
+        <methods>
+          <include name="verifyUserNavigateToContentEditorPage"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.VerifyUserNaviagationToContentEditor -->
+      <class name="org.testscripts.VerifyAppliedFilter">
+        <methods>
+          <include name="verifyAppliedFilter"/>
+        </methods>
+      </class> <!-- org.testscripts.VerifyAppliedFilter -->
+      <class name="org.testscripts.regression.VerifyEditDetailsPopupAndTopicTree">
+        <methods>
+          <include name="verifyWorkspaceEditailsPage_TopicTree"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.VerifyEditDetailsPopupAndTopicTree -->
+      <class name="org.testscripts.regression.CreateResourceByUploadingVideoAndActivityPlugins">
+        <methods>
+          <include name="verifyUploadingVideo_AddingActivity"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.CreateResourceByUploadingVideoAndActivityPlugins -->
+      <class name="org.testscripts.LessonplanCreation">
+        <methods>
+          <include name="lessonplanCreation"/>
+        </methods>
+      </class> <!-- org.testscripts.LessonplanCreation -->
+      <class name="org.testscripts.regression.SearchParticularContentInAllMyContent">
+        <methods>
+          <include name="VerifySortFeatureOptions"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.SearchParticularContentInAllMyContent -->
+      <class name="org.testscripts.CopyContentFromLibraryAndVerify">
+        <methods>
+          <include name="verifyCopyContent_Library"/>
+        </methods>
+      </class> <!-- org.testscripts.CopyContentFromLibraryAndVerify -->
+      <class name="org.testscripts2.UploadContentTypePdfAndVerify">
+        <methods>
+          <include name="uploadContentPdfAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts2.UploadContentTypePdfAndVerify -->
+      <class name="org.testscripts.regression.CreateResourceByAddingAudio">
+        <methods>
+          <include name="resource_VerifyAudioUpload"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.CreateResourceByAddingAudio -->
+      <class name="org.testscripts.regression.VerifyNoAnnouncement_MyAnnouncement_AnnouncementPopup">
+        <methods>
+          <include name="VerifyAnnouncementCreationFields"/>
+          <include name="VerifyAnnouncementMessage"/>
+          <include name="VerifyAnnouncementDetails"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.VerifyNoAnnouncement_MyAnnouncement_AnnouncementPopup -->
+      <class name="org.testscripts.UnlinkDailcode">
+        <methods>
+          <include name="unlinkDailcode"/>
+        </methods>
+      </class> <!-- org.testscripts.UnlinkDailcode -->
+      <class name="org.testscripts.EditAndVerifyTopicTree">
+        <methods>
+          <include name="editAndVerifyTopicTree"/>
+        </methods>
+      </class> <!-- org.testscripts.EditAndVerifyTopicTree -->
+      <class name="org.testscripts.NavigateToMyActivityInDropdown">
+        <methods>
+          <include name="navigateToMyActivityInDropdown"/>
+        </methods>
+      </class> <!-- org.testscripts.NavigateToMyActivityInDropdown -->
+      <class name="org.testscripts.regression.VerifySortOption">
+        <methods>
+          <include name="verifySortFeatureOptions"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.VerifySortOption -->
+      <class name="org.testscripts.CreateCourseAndVerify">
+        <methods>
+          <include name="creatorCourseAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts.CreateCourseAndVerify -->
+      <class name="org.testscripts.UploadContentSaveAndSendForReview">
+        <methods>
+          <include name="uploadContentSaveAndSendForReview"/>
+        </methods>
+      </class> <!-- org.testscripts.UploadContentSaveAndSendForReview -->
+      <class name="org.testscripts.regression.ReviewerPublishesAndRejectsContent">
+        <methods>
+          <include name="workspace_showfilter"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.ReviewerPublishesAndRejectsContent -->
+      <class name="org.testscripts.regression.VerifyMyActivityLinkInProfileDropdown">
+        <methods>
+          <include name="verifyMyactivityLinkInProfileDropdown"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.VerifyMyActivityLinkInProfileDropdown -->
+      <class name="org.testscripts.ResendAnnouncementAndVerifyAnnouncement">
+        <methods>
+          <include name="resendAnnouncementAndVerifyAnnouncement"/>
+        </methods>
+      </class> <!-- org.testscripts.ResendAnnouncementAndVerifyAnnouncement -->
+      <class name="org.testscripts.VerifyTheSorting">
+        <methods>
+          <include name="verifyTheSorting"/>
+        </methods>
+      </class> <!-- org.testscripts.VerifyTheSorting -->
+      <class name="org.testscripts.CreateLessonPlanAndVerify">
+        <methods>
+          <include name="createLessonAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts.CreateLessonPlanAndVerify -->
+      <class name="org.testscripts.UploadContentTypePdfAndVerify">
+        <methods>
+          <include name="uploadContentTypePdfAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts.UploadContentTypePdfAndVerify -->
+      <class name="org.testscripts.regression.SavedContentUnderAllUploads">
+        <methods>
+          <include name="savedContentUnderAllUploads"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.SavedContentUnderAllUploads -->
+      <class name="org.testscripts.CheckInReviewSubmission">
+        <methods>
+          <include name="checkInReviewSubmission"/>
+        </methods>
+      </class> <!-- org.testscripts.CheckInReviewSubmission -->
+      <class name="org.testscripts.LimitedSharingTheContent">
+        <methods>
+          <include name="limitedSharingTheContent"/>
+        </methods>
+      </class> <!-- org.testscripts.LimitedSharingTheContent -->
+      <class name="org.testscripts.regression.SortTheResultInUpForReview">
+        <methods>
+          <include name="workspace_upForReviewSortBy"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.SortTheResultInUpForReview -->
+      <class name="org.testscripts.regression.VerifyEditMetadataPageForCollection">
+        <methods>
+          <include name="workspaceCollection_verifyEditDetailsPage"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.VerifyEditMetadataPageForCollection -->
+      <class name="org.testscripts.UploadH5pContent">
+        <methods>
+          <include name="uploadH5pContent"/>
+        </methods>
+      </class> <!-- org.testscripts.UploadH5pContent -->
+      <class name="org.testscripts.EnrollToCourseInOpenBatch">
+        <methods>
+          <include name="enrollToCourseInOpenBatch"/>
+        </methods>
+      </class> <!-- org.testscripts.EnrollToCourseInOpenBatch -->
+      <class name="org.testscripts.VerifyElementsInAdminDashboard">
+        <methods>
+          <include name="verifyElementsInAdminDashboard"/>
+        </methods>
+      </class> <!-- org.testscripts.VerifyElementsInAdminDashboard -->
+      <class name="org.testscripts.CheckCourseStatAsMentor">
+        <methods>
+          <include name="checkCourseStatAsMentor"/>
+        </methods>
+      </class> <!-- org.testscripts.CheckCourseStatAsMentor -->
+      <class name="org.testscripts.regression.SameUserNameIsNotAllowedWhileSignup">
+        <methods>
+          <include name="verify_SignUpFailure"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.SameUserNameIsNotAllowedWhileSignup -->
+      <class name="org.testscripts.VerifyPublishedBucket">
+        <methods>
+          <include name="verifyPublishedBucket"/>
+        </methods>
+      </class> <!-- org.testscripts.VerifyPublishedBucket -->
+      <class name="org.testscripts.CourseCreation">
+        <methods>
+          <include name="courseCreation"/>
+        </methods>
+      </class> <!-- org.testscripts.CourseCreation -->
+      <class name="org.testscripts.Create_Verify_DeleteAnnouncement">
+        <methods>
+          <include name="create_Verify_DeleteAnnouncement"/>
+        </methods>
+      </class> <!-- org.testscripts.Create_Verify_DeleteAnnouncement -->
+      <class name="org.testscripts.NavigateToMyActivity">
+        <methods>
+          <include name="navigateToMyActivity"/>
+        </methods>
+      </class> <!-- org.testscripts.NavigateToMyActivity -->
+      <class name="org.testscripts.VerifyHomePage">
+        <methods>
+          <include name="verifyHomePage"/>
+        </methods>
+      </class> <!-- org.testscripts.VerifyHomePage -->
+      <class name="org.testscripts.CreateBookAndVerify">
+        <methods>
+          <include name="createBoookAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts.CreateBookAndVerify -->
+      <class name="org.testscripts.regression.NavigateToGetStartedAndExploreSunbird">
+        <methods>
+          <include name="verify_NavigateToGetStarted_ExploreSunbirdPage"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.NavigateToGetStartedAndExploreSunbird -->
+      <class name="org.testscripts.UploadContentTypeH5pAndVerify">
+        <methods>
+          <include name="uploadH5pContentAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts.UploadContentTypeH5pAndVerify -->
+      <class name="org.testscripts.regression.ReviewerRequestChangesTheBook">
+        <methods>
+          <include name="verifyReviewerRequestChnagesTheBook"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.ReviewerRequestChangesTheBook -->
+      <class name="org.testscripts.VerifyTheUploadedContent">
+        <methods>
+          <include name="verifyTheUploadedContent"/>
+        </methods>
+      </class> <!-- org.testscripts.VerifyTheUploadedContent -->
+      <class name="org.testscripts.regression.LimitedSharedContentInLimitedSharingSection">
+        <methods>
+          <include name="workspace_LimitedPublishing"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.LimitedSharedContentInLimitedSharingSection -->
+      <class name="org.testscripts.regression.ReviewAndPublishReceivedContent">
+        <methods>
+          <include name="reviewAndPublishReceivedContent"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.ReviewAndPublishReceivedContent -->
+      <class name="org.testscripts.ResendAnnouncement">
+        <methods>
+          <include name="resendAnnouncement"/>
+        </methods>
+      </class> <!-- org.testscripts.ResendAnnouncement -->
+      <class name="org.testscripts2.SearchCourseCreateInviteOnlyBatch">
+        <methods>
+          <include name="searchCourseCreateInviteOnlyBatch"/>
+        </methods>
+      </class> <!-- org.testscripts2.SearchCourseCreateInviteOnlyBatch -->
+      <class name="org.testscripts.regression.CreateResourceWithContentsPluginsAndVerifyContentEditor">
+        <methods>
+          <include name="createResourceWithContentsPlugins_VerifyContentEditor"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.CreateResourceWithContentsPluginsAndVerifyContentEditor -->
+      <class name="org.testscripts2.UploadContentTypeWebm">
+        <methods>
+          <include name="uploadContentWEBM"/>
+        </methods>
+      </class> <!-- org.testscripts2.UploadContentTypeWebm -->
+      <class name="org.testscripts.VerifySaveContentInAllUploads">
+        <methods>
+          <include name="verifySaveContentInAllUploads"/>
+        </methods>
+      </class> <!-- org.testscripts.VerifySaveContentInAllUploads -->
+      <class name="org.testscripts.regression.CreateResource_PublishAndDeleteFromLimitedPublising">
+        <methods>
+          <include name="characterVerifyInPreviewKeyboard"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.CreateResource_PublishAndDeleteFromLimitedPublising -->
+      <class name="org.testscripts.regression.UploadYoutubeFile">
+        <methods>
+          <include name="library_copyContent"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.UploadYoutubeFile -->
+      <class name="org.testscripts.OpenAnnouncement">
+        <methods>
+          <include name="openAnnouncement"/>
+        </methods>
+      </class> <!-- org.testscripts.OpenAnnouncement -->
+      <class name="org.testscripts.regression.QuestionTemplateFillInTheBlankCustom">
+        <methods>
+          <include name="QuestionTemplateFibCustomKeyboard"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.QuestionTemplateFillInTheBlankCustom -->
+      <class name="org.testscripts.UploadContentTypeMp4AndVerify">
+        <methods>
+          <include name="uploadContentTypeMp4AndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts.UploadContentTypeMp4AndVerify -->
+      <class name="org.testscripts.ConsumeOpenCourseByPublicUser">
+        <methods>
+          <include name="consumeOpenCourseByPublicUser"/>
+        </methods>
+      </class> <!-- org.testscripts.ConsumeOpenCourseByPublicUser -->
+      <class name="org.testscripts.VerifyContentInUpForReview">
+        <methods>
+          <include name="verifyContentInUpForReview"/>
+        </methods>
+      </class> <!-- org.testscripts.VerifyContentInUpForReview -->
+      <class name="org.testscripts.regression.SendForReviewContentUnderReviewSubmission">
+        <methods>
+          <include name="sendForReviewContentUnderReviewSubmission"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.SendForReviewContentUnderReviewSubmission -->
+      <class name="org.testscripts.RootUsersProviderAndExtID">
+        <methods>
+          <include name="rootUsersProviderAndExtID"/>
+        </methods>
+      </class> <!-- org.testscripts.RootUsersProviderAndExtID -->
+      <class name="org.testscripts.regression.VerifyNavigateToGetPage">
+        <methods>
+          <include name="verify_NavigateToGetPage"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.VerifyNavigateToGetPage -->
+      <class name="org.testscripts.LoginAndChangePassword">
+        <methods>
+          <include name="loginAndChangePassword"/>
+        </methods>
+      </class> <!-- org.testscripts.LoginAndChangePassword -->
+      <class name="org.testscripts.CollectionCreation">
+        <methods>
+          <include name="collectionCreation"/>
+        </methods>
+      </class> <!-- org.testscripts.CollectionCreation -->
+      <class name="org.testscripts.CreateBookAndVerifyOnlyBooksPresent">
+        <methods>
+          <include name="createBookAndVerifyOnlyBooksPresent"/>
+        </methods>
+      </class> <!-- org.testscripts.CreateBookAndVerifyOnlyBooksPresent -->
+      <class name="org.testscripts.CheckSuborgMentorInvitingOrgMember">
+        <methods>
+          <include name="suborgMentorInvitingOrgMember"/>
+        </methods>
+      </class> <!-- org.testscripts.CheckSuborgMentorInvitingOrgMember -->
+      <class name="org.testscripts.CreateCollectionAndVerify">
+        <methods>
+          <include name="createCollectionAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts.CreateCollectionAndVerify -->
+      <class name="org.testscripts2.ResourceCreationAndPublish">
+        <methods>
+          <include name="creatorResourceAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts2.ResourceCreationAndPublish -->
+      <class name="org.testscripts.TopicTree_TC_214_TC_215_TC_216_TC_217_TC_218">
+        <methods>
+          <include name="verify_That_Topics_Are_Selected_On_MetaData_Page"/>
+        </methods>
+      </class> <!-- org.testscripts.TopicTree_TC_214_TC_215_TC_216_TC_217_TC_218 -->
+      <class name="org.testscripts.PublishTheContent">
+        <methods>
+          <include name="publishTheContent"/>
+        </methods>
+      </class> <!-- org.testscripts.PublishTheContent -->
+      <class name="org.testscripts.regression.VerifyPropertySection_PreviewSlidesAndFromBegining">
+        <methods>
+          <include name="propertySection_And_PreviewSlides_CreatorTC119_120_121"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.VerifyPropertySection_PreviewSlidesAndFromBegining -->
+      <class name="org.testscripts.VerifyLimitedSharing">
+        <methods>
+          <include name="verifyLimitedSharing"/>
+        </methods>
+      </class> <!-- org.testscripts.VerifyLimitedSharing -->
+      <class name="org.testscripts.CheckForAuthenticUserInMentor">
+        <methods>
+          <include name="checkForAuthenticUserInMentor"/>
+        </methods>
+      </class> <!-- org.testscripts.CheckForAuthenticUserInMentor -->
+      <class name="org.testscripts.SubOrgUsersProviderAndExtId">
+        <methods>
+          <include name="subOrgUsersProviderAndExtId"/>
+        </methods>
+      </class> <!-- org.testscripts.SubOrgUsersProviderAndExtId -->
+      <class name="org.testscripts.VerifycopyContent">
+        <methods>
+          <include name="verifycopyContent"/>
+        </methods>
+      </class> <!-- org.testscripts.VerifycopyContent -->
+      <class name="org.testscripts.CheckAvailabilityOfCourseForInvitedMember">
+        <methods>
+          <include name="checkAvailabilityOfCourseForInvitedMember"/>
+        </methods>
+      </class> <!-- org.testscripts.CheckAvailabilityOfCourseForInvitedMember -->
+      <class name="org.testscripts.SearchCourse">
+        <methods>
+          <include name="searchCourse"/>
+          <include name="openApplication"/>
+        </methods>
+      </class> <!-- org.testscripts.SearchCourse -->
+      <class name="org.testscripts.ConsumeCourseByInvitedMember">
+        <methods>
+          <include name="consumeCourseByInvitedMember"/>
+        </methods>
+      </class> <!-- org.testscripts.ConsumeCourseByInvitedMember -->
+      <class name="org.testscripts.EditContentAndSendForReview">
+        <methods>
+          <include name="editContentAndSendForReview"/>
+        </methods>
+      </class> <!-- org.testscripts.EditContentAndSendForReview -->
+      <class name="org.testscripts2.UploadContentTypeHtmlAndVerify">
+        <methods>
+          <include name="uploadContentHtmlAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts2.UploadContentTypeHtmlAndVerify -->
+      <class name="org.testscripts.regression.VerifyFeaturesOfProfileIconAndWorkspace">
+        <methods>
+          <include name="verifyProfileIcon4Features_workspaceFeatures"/>
+        </methods>
+      </class> <!-- org.testscripts.regression.VerifyFeaturesOfProfileIconAndWorkspace -->
+      <class name="org.testscripts2.UploadContentTypeEpubAndVerify">
+        <methods>
+          <include name="uploadContentEpubAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts2.UploadContentTypeEpubAndVerify -->
+      <class name="org.testscripts2.CreateBookAndVerify">
+        <methods>
+          <include name="createBoookAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts2.CreateBookAndVerify -->
+      <class name="org.testscripts2.UploadContentTypeYoutubeAndVerify">
+        <methods>
+          <include name="uploadContentYoutubeAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts2.UploadContentTypeYoutubeAndVerify -->
+      <class name="org.testscripts.DialCodeLink">
+        <methods>
+          <include name="dialCodeLink"/>
+        </methods>
+      </class> <!-- org.testscripts.DialCodeLink -->
+      <class name="org.testscripts.UploadEpubContent">
+        <methods>
+          <include name="uploadEpubContent"/>
+        </methods>
+      </class> <!-- org.testscripts.UploadEpubContent -->
+      <class name="org.testscripts2.CreateCollectionAndVerify">
+        <methods>
+          <include name="createCollectionAndVerify"/>
+        </methods>
+      </class> <!-- org.testscripts2.CreateCollectionAndVerify -->
+      <class name="org.testscripts.SearchUsers">
+        <methods>
+          <include name="searchUsers"/>
+        </methods>
+      </class> <!-- org.testscripts.SearchUsers -->
+      <class name="org.testscripts.SendTheCourseForReview">
+        <methods>
+          <include name="sendTheCourseForReview"/>
+        </methods>
+      </class> <!-- org.testscripts.SendTheCourseForReview -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [ Regression Suite] -->
