@@ -112,7 +112,8 @@ public class CreatorUserPage {
 	@FindBy(xpath="//div[.='Select Class']")
 	public WebElement clickOnSelectClass;
 
-	@FindBy(xpath="//div[@class='menu transition visible']//following-sibling::div")
+	@FindBy(xpath="//label[contains(.,'CLASS')]/..//div[contains(@class,'item')]")
+	//@FindBy(xpath="//div[@class='menu transition visible']//following-sibling::div")
 	public WebElement selectClass;
 
 	@FindBy(xpath="//label[contains(text(),'SUBJECT')]")
@@ -747,7 +748,8 @@ public class CreatorUserPage {
 	
 	//Nov 28
 	//@FindBy(xpath="//a[.='Done']")
-	@FindBy(xpath="(//a[.='Done'])[1]")
+	//@FindBy(xpath="*//a[.='Done']")
+	@FindBy(xpath="//div[contains(@id,'Selector_defaultTemplate')]//a[(.='Done')]")
 	public WebElement doneButton;
 	
 	//Merge of Nov 27
@@ -760,8 +762,9 @@ public class CreatorUserPage {
 	//@FindBy(xpath="//div[@class='ui button text-part popup-item']")
 	public WebElement sendForReview;
 	
-	//Nov 29
-	@FindBy(xpath="//div[@class='default text']/following::div[@class='item selected']")
+	//Dec 03
+	@FindBy(xpath="//label[contains(.,'MEDIUM')]/..//div[contains(@class,'item')]")
+	//@FindBy(xpath="//div[@class='default text']/following::div[@class='item selected']")
 	public WebElement selectMedium;
 
 

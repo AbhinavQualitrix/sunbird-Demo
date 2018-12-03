@@ -1,79 +1,83 @@
-/**
-* Created by Qualitrix Technologies Pvt Ltd.
-* @author: Ajith Manjunath
-* Date: 06/14/2018
-* Purpose: Create a New Lesson plan and validate it
-*/
-
 package org.testscript;
 
+
 import org.testng.annotations.Test;
 import org.testng.annotations.Test;
+import java.util.List;
+
 import org.generic.GenericFunctions;
+import org.generic.ReadTestDataFromExcel;
+import org.pageobjects.CreateMentorPageObj;
 import org.pageobjects.CreatorUserPageObj;
 import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
+import org.testdata.TestDataForSunbird;
 import org.testng.annotations.Test;
 
-public class LessonplanCreation extends BaseTest
-{
-	@Test(priority=3, groups={"Creator Group"})
-	public void lessonplanCreation() throws Exception
-	{
-		GenericFunctions genericFunctions = new GenericFunctions();
-		
-		//Step1: Login as Creator
-		SignUpPageObj signupObj = new SignUpPageObj();
-		
-		
-		signupObj.userLogin(CREATOR);
+public class LessonplanCreation extends BaseTest {
 
-		//Step 2 and 3: Go to workspace , create a lesson plan
+	@Test
+	public void createLessonAndVerify() throws Exception
+	{
+		List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
+		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
+		SignUpPageObj creatorLogin = new SignUpPageObj();
+		CreateMentorPageObj createMentorPageObj = new CreateMentorPageObj();
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
-		
-		
+		//Step1: Login as Creator
+
+		creatorLogin.userLogin(CREATOR);
+
+		//Step2: Navigate to WorkSpace
+
+		creatorUserPageObj.navigateToWorkspace(LESSONPLAN);
+
+		//Step3: Create new Lesson plan
 		creatorUserPageObj.createLessonPlan();
-		
-		//Step 3a : Save and send lesson plan for review
+
+		//Step4: Save and send resource for review
+
 		creatorUserPageObj.saveAndSendForReviewLesson();
-		
-		//Step 3b : Create A lesson plan again
-		creatorUserPageObj.createLessonPlan();
-		
-		
-		//Step 4: Submit the lesson plan for Review
-		creatorUserPageObj.saveAndSendForReviewLesson();
-		
-		//Logout as Creator
-		signupObj.userLogout();
-		
-		//Step 5:Logout as Reviewer
-		signupObj.userLogin(REVIEWER);
-		
-		//Step 6,7 and 8:Go to Workspace, Publish and 
+		GenericFunctions.refreshWebPage();
+
+		//Step5: Check for course in review submissions 
+		creatorUserPageObj.reviewInSubmissions(LESSONPLAN,objListOFTestDataForSunbird);
+
+		GenericFunctions.waitWebDriver(3000);
+
+		//Step6: Logout as Creator
+		creatorLogin.userLogout();
+
+		//Step7: Login as Reviewer
+		creatorLogin.userLogin(REVIEWER);
+
+		//Step8: Search the course which was submitted for review
 		creatorUserPageObj.goToWorkspace("lessonplan");
-		
+
+
 		GenericFunctions.waitWebDriver(2000);
-		
+
 		//Step 9 : Reject the lesson plan from the existing list
 		creatorUserPageObj.rejectTheContent("LESSONA");
-	
-		//Logout as Reviewer
-		signupObj.userLogout();
-		
+
+		//Step 10: Logout as Reviewer
+		creatorLogin.userLogout();	
+
+
 		//Logout as Creator
-		signupObj.userLogin(CREATOR);
-		
+		creatorLogin.userLogin(CREATOR);
+
 		//Navigate to Workspace and access All My Content
-		genericFunctions.navigateToWorkspaceFeatures(ALL_MY_CONTENT);
-		
+
+		creatorUserPageObj.navigateToWorkspace(ALL_MY_CONTENT);
+
 		//Delete the contents which have created
 		creatorUserPageObj.deleteCreatedItems();
-		
+
 		//Logout as Content Creator
-		signupObj.userLogout();
-		
-		
+		creatorLogin.userLogout();
+
+
 	}
 
 

@@ -48,6 +48,7 @@ public class CreatorUserPageObj extends BaseTest{
 	List <TestDataForSunbird> objListOFTestDataForSunbird1= null ;
 	Actions action = new Actions(driver);
 	JavascriptExecutor executor = (JavascriptExecutor)driver;
+	
 	Random rand=new Random();
 	String lessonNumber;
 	String title="";
@@ -453,14 +454,14 @@ public class CreatorUserPageObj extends BaseTest{
 			List <TestDataForSunbird> objListOFTestDataForSunbird1=null;
 			objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			GenericFunctions.waitWebDriver(2000);
-			navigateToWorkspace(LESSONPLAN);
+			//navigateToWorkspace(LESSONPLAN);
 			//GenericFunctions.waitWebDriver(2000);
 			String myWindowHandle = driver.getWindowHandle();
 			driver.switchTo().window(myWindowHandle);
 			lessonNumber = GenericFunctions.testDataIncrementer("./testData/lessonPlan.txt");
 			//createUserPage.clickOnPopup.click();
 			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.waitForElementToAppear(createUserPage.bookName);
+			GenericFunctions.waitForElementToAppear(createUserPage.lessonPlanName);
 			//createUserPage.bookName.sendKeys(objListOFTestDataForSunbird1.get(3).getCourseName()+lessonNumber);
 			createUserPage.lessonPlanName.sendKeys(objListOFTestDataForSunbird1.get(3).getCourseName()+lessonNumber);
 			System.out.println("Lesson created :"+objListOFTestDataForSunbird1.get(3).getCourseName()+lessonNumber);
@@ -970,7 +971,7 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1500);
 
 			//ADDED ON PART OF MAINTENANCE 06/09/2018
-			GenericFunctions.scrollToElement(createUserPage.selectConcept);
+			/*GenericFunctions.scrollToElement(createUserPage.selectConcept);
 			GenericFunctions.waitForElementToAppear(createUserPage.selectConcept);
 			createUserPage.selectConcept.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.searchConcept);
@@ -979,7 +980,8 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.conceptChooseAll.click();
 
 			createUserPage.conceptDoneButton.click();
-			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitWebDriver(2000);*/
+			
 
 			//--
 
@@ -1765,16 +1767,19 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.contentResourceIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 			createUserPage.selectAppIcon.click();
-			GenericFunctions.waitWebDriver(500);
+			GenericFunctions.waitWebDriver(1500);
 			createUserPage.clickOnSelectCurriculum.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectCurriculum);
 			createUserPage.selectCurriculum.click();
 			createUserPage.clickOnSelectClass.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectClass);
+			GenericFunctions.waitWebDriver(1500);
 			createUserPage.selectClass.click();
+			GenericFunctions.waitWebDriver(1500);
 			GenericFunctions.scrollToElement(createUserPage.clickOnSelectSubject);
 			createUserPage.clickOnSelectSubject.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectSubject);
+			GenericFunctions.waitWebDriver(1500);
 			createUserPage.selectSubject.click();
 			createUserPage.clickOnSelectMedium.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectMedium);
@@ -1782,6 +1787,7 @@ public class CreatorUserPageObj extends BaseTest{
 			//action.click(createUserPage.selectMedium).build().perform();
 			executor.executeScript("arguments[0].click();",createUserPage.selectMedium);
 			//createUserPage.selectMedium.click();
+			
 			/*
 			GenericFunctions.scrollToElement(createUserPage.selectConcept);
 			createUserPage.selectConcept.click();
@@ -1792,13 +1798,18 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.conceptDoneButton.click();
 			GenericFunctions.waitWebDriver(1500);
 			 */
+			
+			
 			GenericFunctions.waitWebDriver(1500);
 			GenericFunctions.waitForElementToAppear(createUserPage.clickOwner);
 			GenericFunctions.scrollToElement(createUserPage.clickOwner);
 			createUserPage.clickOwner.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectOwner);
-			createUserPage.selectOwner.click();
+			createUserPage.selectOwner.click();			
 			GenericFunctions.waitWebDriver(1500);
+			
+			selectTopic();
+			
 			GenericFunctions.waitForElementToAppear(createUserPage.saveButton);
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.saveButton.click();
@@ -2093,6 +2104,7 @@ public class CreatorUserPageObj extends BaseTest{
 	{
 		try
 		{
+			GenericFunctions.waitWebDriver(1000);
 			createUserPage.clickTopic.click();
 			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.waitForElementToAppear(createUserPage.searchTopic);
@@ -2100,16 +2112,22 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createUserPage.selectTopic);
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.selectTopic.click();	
-			GenericFunctions.waitWebDriver(4000);
+			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.doneButton);
+			GenericFunctions.waitWebDriver(2000);
+			createUserPage.doneButton.click();
+			
+			//executor.executeScript("arguments[0].click();", createUserPage.doneButton); 
 			//GenericFunctions.scrollToElement(createUserPage.doneButton);
 			//GenericFunctions.scrollTillEndOfPage();
-			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.doneButton);
-			GenericFunctions.waitWebDriver(2000);
-			executor.executeScript("arguments[0].click();",createUserPage.doneButton);
-			/*action.moveToElement(createUserPage.doneButton).build().perform();
+			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.doneButton);
+			GenericFunctions.waitWebDriver(3000);
+			//createUserPage.doneButton.click();
+			//executor.executeScript("arguments[0].click();",createUserPage.doneButton);
+			//action.moveToElement(createUserPage.doneButton).click().perform();
+			//action.click(createUserPage.doneButton).build().perform();
 			//GenericFunctions.clickOnElementUsingJavascript(createUserPage.doneButton);
-			action.click(createUserPage.doneButton).click().build().perform();
-			 */		
+			//action.click(createUserPage.doneButton).click().build().perform();
+			 	
 			}
 		catch(Exception e)
 		{
@@ -2313,19 +2331,16 @@ public class CreatorUserPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to publish and search "+source);
 			GenericFunctions.waitWebDriver(3000);	
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
-			GenericFunctions.waitWebDriver(8000);	
-			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.publishCourseButton);
-			GenericFunctions.clickOnElementUsingJavascript(createUserPage.publishCourseButton);
+			GenericFunctions.waitWebDriver(2000);	
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.publishCourseButton);
 			createUserPage.publishCourseButton.click();
 			for(int i=0;i<createUserPage.checkbox.size();i++){
 				createUserPage.checkbox.get(i).click();
 			}
-
-			GenericFunctions.waitWebDriver(2500);
-			executor.executeScript("arguments[0].click();", createUserPage.popupPublishButton);
-			//createUserPage.popupPublishButton.click();
-			GenericFunctions.waitWebDriver(4000);
-			
+			GenericFunctions.waitWebDriver(1500);
+			createUserPage.popupPublishButton.click();
+			GenericFunctions.waitWebDriver(3000);	
+			driver.switchTo().defaultContent();
 			GenericFunctions.waitForElementToAppear(createUserPage.upForReview);
 			//if(createUserPage.upForReview.isDisplayed()&&createUserPage.noContentInUpForReview.isDisplayed())
 			

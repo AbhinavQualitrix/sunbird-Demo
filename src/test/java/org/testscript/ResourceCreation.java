@@ -1,10 +1,3 @@
-/**
- * Created by Qualitrix Technologies Pvt Ltd.
- * @author: Ajith Manjunath
- * Date: 06/21/2018
- * Purpose: Create a New Resource and validate it
- */
-
 package org.testscript;
 
 import org.testng.annotations.Test;
@@ -13,45 +6,42 @@ import java.util.List;
 
 import org.generic.GenericFunctions;
 import org.generic.ReadTestDataFromExcel;
+import org.pageobjects.ContentCreationResourcePageObj;
 import org.pageobjects.CreatorUserPageObj;
 import org.pageobjects.SignUpPageObj;
-import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
+import org.startup.BaseTest;
 import org.testng.annotations.Test;
 
-public class ResourceCreation extends BaseTest 
+public class ResourceCreation extends BaseTest
 {
-
-	@Test(priority=11, groups={"Creator Group"})
-	public void resourceCreation() throws Exception
+	@Test
+	public void creatorResourceAndVerify() throws Exception
 	{
-		//MT done
 		List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-		GenericFunctions genereicFunctions = new GenericFunctions();
-
 		SignUpPageObj creatorLogin = new SignUpPageObj();
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
+		ContentCreationResourcePageObj contentReourcePageObj= new ContentCreationResourcePageObj();
+
 
 		//Step1: Login as Creator
 		creatorLogin.userLogin(CREATOR);
 
-		
 		//Step2: Navigate to WorkSpace
 		creatorUserPageObj.navigateToWorkspace(RESOURCE);
 
 		//Step3: Create new Resource
-
 		//creatorUserPageObj.createResource(objListOFTestDataForSunbird);
-		creatorUserPageObj.resourceName();
+		//Enter a unique resource name
+		contentReourcePageObj.resourceName();
 
-		//Step3a: Add Audio for the resource.
-		creatorUserPageObj.addAudio();
+		//Add Question Set, Plugins, Audio, Video
+		contentReourcePageObj.addQuestionsPluginAudioVideo();	
+		
+		//Step4: Save and send resource for review
+		contentReourcePageObj.sendResourceForReview();
 
-		//creatorUserPageObj.saveAndSendResouceForReview();
-		creatorUserPageObj.sendResourceForReview();
-
-	
 		//Step5: Check for course in review submissions 
 		creatorUserPageObj.reviewInSubmissions(RESOURCE,objListOFTestDataForSunbird);
 
@@ -63,33 +53,18 @@ public class ResourceCreation extends BaseTest
 		//Step7: Login as Reviewer
 		creatorLogin.userLogin(REVIEWER);
 
-		
 		//Step8: Search the course which was submitted for review
 		GenericFunctions.waitWebDriver(2000);
+		creatorUserPageObj.searchInUpForReview(RESOURCE,objListOFTestDataForSunbird);
 
-		String resourceToReject = creatorUserPageObj.searchInUpForReview(RESOURCE,objListOFTestDataForSunbird);
-		System.out.println(resourceToReject);
 		//Step 9:publish the resource and search it
 		creatorUserPageObj.resourcePublishAndSearch(objListOFTestDataForSunbird);
 
-		//Step 10:Reject the course, which is already have been reviewed
-		creatorUserPageObj.rejectTheResource();
-
-		//Step 11: Logout as Reviewer
-		creatorLogin.userLogout();
-
-		//Step9: Login as Creator
-		creatorLogin.userLogin(CREATOR);
-	
-		//Step10: Navigate to WorkSpace-All my content
-		genereicFunctions.navigateToWorkspaceFeatures(ALL_MY_CONTENT);
-
-		//Step11: Delete the Created item
-		creatorUserPageObj.deleteCreatedItems();
-
-		//Step12: Logout as Creator
-		creatorLogin.userLogout();
+		//Step 10: Logout as Reviewer
+		creatorLogin.userLogout();		
 
 	}
+
+
 
 }

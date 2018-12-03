@@ -22,6 +22,7 @@ package org.testscript;
 			List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
 			objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			SignUpPageObj creatorLogin = new SignUpPageObj();
+			CreateMentorPageObj createMentorPageObj = new CreateMentorPageObj();
 			CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 			//Step1: Login as Creator
 			
@@ -31,12 +32,12 @@ package org.testscript;
 			
 			creatorUserPageObj.navigateToWorkspace(LESSONPLAN);
 			
-			//Step3: Create new Course
-		     creatorUserPageObj.createCourse(objListOFTestDataForSunbird);
+			//Step3: Create new Lesson plan
+		     creatorUserPageObj.createLessonPlan();
 			
 			//Step4: Save and send resource for review
 			
-			creatorUserPageObj.saveAndSendResouceForReview();
+			creatorUserPageObj.saveAndSendForReviewLesson();
 			GenericFunctions.refreshWebPage();
 				
 			//Step5: Check for course in review submissions 
@@ -51,12 +52,7 @@ package org.testscript;
 			creatorLogin.userLogin(REVIEWER);
 			
 			//Step8: Search the course which was submitted for review
-			GenericFunctions.waitWebDriver(2000);
-			creatorUserPageObj.searchInUpForReview(LESSONPLAN,objListOFTestDataForSunbird);
-			
-			
-			//Step 9:publish the resource and search it
-			//creatorUserPageObj.LessonPlanPublishAndSearch(objListOFTestDataForSunbird);
+			creatorUserPageObj.goToWorkspace("lessonplan");
 			
 			//Step 10: Logout as Reviewer
 			creatorLogin.userLogout();		
@@ -66,8 +62,8 @@ package org.testscript;
 
 			//Step12: Search the course with Name
 			GenericFunctions.waitWebDriver(2000);
-			CreateMentorPageObj createMentorPageObj = new CreateMentorPageObj();
-			//createMentorPageObj.navigateToLibraryAndSearchForLessonPlan();
+			
+			createMentorPageObj.navigateToLibraryAndSearchForLessonPlan();
 
 			//Step 13: Logout as Reviewer
 			creatorLogin.userLogout();		

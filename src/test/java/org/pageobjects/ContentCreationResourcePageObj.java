@@ -1225,30 +1225,42 @@ public class ContentCreationResourcePageObj extends BaseTest
 			createUserPage.contentResourceIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 			createUserPage.selectAppIcon.click();
-			GenericFunctions.waitWebDriver(500);
+			GenericFunctions.waitWebDriver(1000);
 			createUserPage.clickOnSelectCurriculum.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectCurriculum);
 			createUserPage.selectCurriculum.click();
+			GenericFunctions.waitWebDriver(1000);
 			createUserPage.clickOnSelectClass.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectClass);
+			GenericFunctions.waitWebDriver(1000);
+			createUserPage.selectClass.click();
+			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.scrollToElement(createUserPage.clickOnSelectSubject);
 			createUserPage.clickOnSelectSubject.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.selectSubject);
-			createUserPage.selectSubject.click();
+			//GenericFunctions.waitForElementToAppear(createUserPage.selectSubject);
+			GenericFunctions.waitWebDriver(1000);
+			createUserPage.selectSubject.click();	
 			createUserPage.clickOnSelectMedium.click();
 			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.selectMedium);
-			executor.executeScript("arguments[0].click();", createUserPage.selectMedium);
-			//createUserPage.selectMedium.click();
+			
+			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.selectMedium);
+			//executor.executeScript("arguments[0].click();", createUserPage.selectMedium);
+			action.moveToElement(createUserPage.selectMedium).build().perform();
+			GenericFunctions.waitWebDriver(1000);
+			createUserPage.selectMedium.click();
 
-			GenericFunctions.scrollToElement(createUserPage.selectConcept);
+			/*GenericFunctions.scrollToElement(createUserPage.selectConcept);
 			createUserPage.selectConcept.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.searchConcept);
 			createUserPage.searchConcept.sendKeys(objListOFTestDataForSunbird1.get(6).getTitle());
 			GenericFunctions.waitWebDriver(500);
 			createUserPage.conceptChooseAll.click();
 			createUserPage.conceptDoneButton.click();
-			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitWebDriver(1500);*/
+			GenericFunctions.waitWebDriver(1000);
+			
+			
+			
 
 
 			GenericFunctions.waitWebDriver(1000);
@@ -1256,9 +1268,13 @@ public class ContentCreationResourcePageObj extends BaseTest
 			createUserPage.clickOwner.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectOwner);
 			createUserPage.selectOwner.click();
+			
+			createUserPageObj.selectTopic();
+			
 			GenericFunctions.waitWebDriver(1500);
-			GenericFunctions.waitForElementToAppear(createUserPage.saveButton);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.saveButton);
 			createUserPage.saveButton.click();
+			
 			GenericFunctions.waitWebDriver(1500);
 		}
 		catch(Exception e)

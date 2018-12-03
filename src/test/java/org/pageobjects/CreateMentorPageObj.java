@@ -725,7 +725,7 @@ public class CreateMentorPageObj extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate To Library And Search For LessonPlan");
 			GenericFunctions.waitWebDriver(1500);
 			createUserPage.headerLibrary.click();
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitWebDriver(3000);
 			createMentorPage.filterSearch.sendKeys(objListOFTestDataForSunbird.get(3).getCourseName()+GenericFunctions.readFromNotepad("./testData/lessonPlan.txt"));
 			createUserPage.searchIcon.click();
 			GenericFunctions.waitWebDriver(2000);

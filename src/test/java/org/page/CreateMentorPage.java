@@ -79,7 +79,7 @@ public class CreateMentorPage {
 	public WebElement searchDropDown;
 	
 	
-	@FindBy(xpath="//input[@name='filter_search']")
+	@FindBy(xpath="(//input[@name='filter_search'])[2]")
 	public WebElement filterSearch;
 	
 	
