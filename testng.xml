@@ -149,6 +149,7 @@
        <class name="org.testscript.BookCreation"/>-->
      
      
+    	<class name="org.testscript.CheckCourseStatAsMentor" />
     
      
      
@@ -156,15 +157,14 @@
       <!--  <class name="org.testscript.VerifyElementsInAdminDashboard"/>  -->
      <!--  <class name="org.testscript.ResourceCreation"/>
        <class name="org.testscript.CourseCreation"/>
-      <class name="org.testscript.CreateLessonPlanAndVerify"/> -->
-      
-      
-      
+      <class name="org.testscript.CreateLessonPlanAndVerify"/> 
        <class name="org.testscript.CreateBookAndVerify"/>
        <class name="org.testscript.BookCreation"/>
        <class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/>
+        
+       -->
 
-     
+      
    			<!-- Test cases of Admin -->
    			<!-- Test cases of Reviewer -->
    <!--

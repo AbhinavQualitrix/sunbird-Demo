@@ -53,8 +53,6 @@ public class CourseCreation extends BaseTest
 		
 		//Step7: Login as Reviewer
 		creatorLogin.userLogin(REVIEWER);
-
-
 		
 		//Step8: Search the course which was submitted for review
 		creatorUserPageObj.searchInUpForReview(COURSE,objListOFTestDataForSunbird);
@@ -72,7 +70,7 @@ public class CourseCreation extends BaseTest
 		creatorLogin.userLogin(CREATOR);
 
 		//Step11: Navigate to WorkSpace-All my content
-		genereicFunctions.navigateToWorkspaceFeatures(ALL_MY_CONTENT);
+		creatorUserPageObj.navigateToWorkspace(ALL_MY_CONTENT);
 		
 		//Step 12: Delete the Created item
 		creatorUserPageObj.deleteCreatedItems();

@@ -2044,8 +2044,8 @@ public class CreatorUserPageObj extends BaseTest{
 			}
 			
 			GenericFunctions.waitWebDriver(2500);
-			executor.executeAsyncScript("arguments[0].click();", createUserPage.popupPublishButton);
-			//createUserPage.popupPublishButton.click();
+			//executor.executeAsyncScript("arguments[0].click();", createUserPage.popupPublishButton);
+			createUserPage.popupPublishButton.click();
 			GenericFunctions.waitWebDriver(3000);
 			
 			//driver.switchTo().defaultContent();
