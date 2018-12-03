@@ -1515,7 +1515,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			//GenericFunctions.waitForElementToAppear(contentResourcePage.enterTheQuestion);
 			GenericFunctions.WaitForFrameAndSwitchToIt(contentCreationResourcePage.enterQuestionIframe);
 			contentCreationResourcePage.enterTheQuestion.click();
-			contentCreationResourcePage.enterTheQuestion.sendKeys(objListOFTestDataForSunbird1.get(12).getCourseName());
+			contentCreationResourcePage.enterTheQuestion.sendKeys(objListOFTestDataForSunbird1.get(10).getCourseName());
 			GenericFunctions.waitWebDriver(1600);
 			//GenericFunctions.WaitForFrameAndSwitchToIt(contentResourcePage.createQuestionFrame1);
 			//GenericFunctions.scrollToElement(contentResourcePage.selectKeyboard);

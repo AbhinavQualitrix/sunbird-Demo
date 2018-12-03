@@ -368,7 +368,9 @@ public class CreatorUserPage {
 	@FindBy(xpath="//label[.='URL']/following-sibling::div//following-sibling::input")
 	public WebElement enterUrl;
 
-	@FindBy(xpath="//button[.='Upload']")
+	//Dec 03
+	@FindBy(xpath="//label[contains(.,'Upload Content')]/following::button[contains(.,'Upload')]")
+	//@FindBy(xpath="//button[.='Upload']")
 	public WebElement UploadButton;
 
 	@FindBy(xpath="//input[@id='name']")
@@ -769,7 +771,8 @@ public class CreatorUserPage {
 
 
 	//Nov 29
-	@FindBy(xpath="//label[contains(text(),'Title')]//following::input[@placeholder='Enter title for Book']")
+	@FindBy(xpath="//label[contains(.,'Name')]/..//input")
+	//@FindBy(xpath="//label[contains(text(),'Title')]//following::input[@placeholder='Enter title for Book']")
 	public WebElement bookName;
 
 	//input[@placeholder='Enter title for Book'][@name='name']

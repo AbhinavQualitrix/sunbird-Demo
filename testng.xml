@@ -106,7 +106,7 @@
    			
    			
    			<!-- Test cases of Creator
-   			<class name="org.testscript.NavigateToMyActivity"/>  
+   	  <class name="org.testscript.NavigateToMyActivity"/>  
       <class name="org.testscript.UploadEpubContent"/>
       <class name="org.testscript.SearchUsers"/>
       <class name="org.testscript.ProfileInfoUpdate"/>
@@ -145,10 +145,15 @@
       <class name="org.testscript.LessonplanCreation"/>
       <class name="org.testscript.EditContentAndSendForReview"/>
       <class name="org.testscript.VerifyElementsInAdminDashboard"/>  -->
-      <class name="org.testscript.ResourceCreation"/>
+     <!--  <class name="org.testscript.ResourceCreation"/>
        <class name="org.testscript.CourseCreation"/>
-      <class name="org.testscript.CreateLessonPlanAndVerify"/>
-      <class name="org.testscript.CreateCourseAndVerify"/>
+      <class name="org.testscript.CreateLessonPlanAndVerify"/> -->
+      
+      
+      
+       <class name="org.testscript.CreateBookAndVerify"/>
+       <class name="org.testscript.BookCreation"/>
+       <class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/>
      
    			<!-- Test cases of Admin -->
    			<!-- Test cases of Reviewer -->
