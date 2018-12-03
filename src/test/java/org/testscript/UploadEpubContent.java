@@ -27,8 +27,6 @@ public class UploadEpubContent extends BaseTest
 
 		//Step 1:Login as content creator
 		signupObj.userLogin(CREATOR);
-
-
 		
 		//Step 2,3 and 4:Navigate to workspace and upload content type-EPUB
 		creatorUserPageObj.uploadContentMp4(EPUB);
@@ -52,17 +50,17 @@ public class UploadEpubContent extends BaseTest
 		//Logout as Reviewer
 		signupObj.userLogout();
 
-		/*//Step9: Login as Creator
+		//Step9: Login as Creator
 		signupObj.userLogin(CREATOR);
 
 		//Step10: Navigate to WorkSpace-All my content
-		genereicFunctions.navigateToWorkspaceFeatures(ALL_MY_CONTENT);
+		creatorUserPageObj.navigateToWorkspace(ALL_MY_CONTENT);
 
 		//Step11: Delete the Created item
 		creatorUserPageObj.deleteCreatedItems();
 
 		//Step12: Logout as Creator
-		signupObj.userLogout();*/
+		signupObj.userLogout();
 	}
 
 }

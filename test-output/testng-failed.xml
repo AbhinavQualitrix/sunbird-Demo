@@ -6,13 +6,13 @@
   </listeners>
   <test name="Test(failed)">
     <classes>
-      <class name="org.testscript.CheckCourseStatAsMentor">
+      <class name="org.testscript.UploadContentTypePdfAndVerify">
         <methods>
-          <include name="checkCourseStatAsMentor"/>
+          <include name="uploadContentTypePdfAndVerify"/>
           <include name="closeApplication"/>
           <include name="openApplication"/>
         </methods>
-      </class> <!-- org.testscript.CheckCourseStatAsMentor -->
+      </class> <!-- org.testscript.UploadContentTypePdfAndVerify -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [ Regression Suite] -->

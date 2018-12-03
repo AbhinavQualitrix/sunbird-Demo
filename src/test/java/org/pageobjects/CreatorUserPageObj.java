@@ -793,8 +793,8 @@ public class CreatorUserPageObj extends BaseTest{
 				createUserPage.reviewComment.get(0).click();
 				createUserPage.reviewComment.get(0).sendKeys(rejectReason);
 				
-				resizeTheScreen();
-				
+				//resizeTheScreen();
+				//GenericFunctions.scrollTillEndOfPage();
 				GenericFunctions.waitForElementToAppear(createUserPage.requestChangesButton);
 				GenericFunctions.waitWebDriver(1000);	
 				executor.executeScript("arguments[0].click();", createUserPage.requestChangesButton);

@@ -53,7 +53,7 @@ public class UploadContentTypeMp4AndVerify extends BaseTest
 		signupObj.userLogin(CREATOR);
 
 		//Step11: Navigate to WorkSpace-All my content
-		genereicFunctions.navigateToWorkspaceFeatures(ALL_MY_CONTENT);
+		creatorUserPageObj.navigateToWorkspace(ALL_MY_CONTENT);
 
 		//Step12: Delete the Created item
 		creatorUserPageObj.deleteCreatedItems();

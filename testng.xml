@@ -25,7 +25,7 @@
         <class name="org.testscript.SkillEndorsement"/>
         <class name="org.testscript.UpdateProfilePhoto"/>-->
         
-             <!-- Test cases of Smoke Suite 
+             <!-- Test cases of Smoke Suite   -->
        
        <class name="org.testscript.CreateCourseAndVerify"/>
        <class name="org.testscript.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
@@ -36,9 +36,10 @@
        <class name="org.testscript.UploadContentTypeH5pAndVerify"/>
        <class name="org.testscript.UploadContentTypeEpubAndVerify"/>
        <class name="org.testscript.UploadContentTypeHtmlAndVerify"/>
-       <class name="org.testscript.UploadContentTypePdfAndVerify"/> -->
+       <class name="org.testscript.UploadContentTypePdfAndVerify"/>
+      
     
-     
+   
      
                  <!-- Test cases of Mentor -->
           
@@ -55,18 +56,19 @@
 	<class name="org.testscript.NavigateToMyActivityInDropdown" />
 	<class name="org.testscript.SearchCourseCreateInviteOnlyBatch" /> 
      
-          <!-- Test cases of Announcement
+          <!-- Test cases of Announcement -->
           
     <class name="org.testscript.CreateVerifyAndDeleteAnnouncement"/>
     <class name="org.testscript.CreateAnnouncementWithAttachment"/>
     <class name="org.testscript.NavigateToAnnouncementDashboard"/>
-     <class name="org.testscript.CheckAvailabilityOfCourseForInvitedMember"/><class name="org.testscript.ResendAnnouncementAndVerifyAsReciever"/>
+     <class name="org.testscript.CheckAvailabilityOfCourseForInvitedMember"/>
+     <class name="org.testscript.ResendAnnouncementAndVerifyAsReciever"/>
     <class name="org.testscript.ResendAnnouncement"/>
      <class name="org.testscript.OpenAnnouncement"/>
-     <class name="org.testscript.ResendAnnouncementAndVerifyAnnouncement"/>  -->
+     <class name="org.testscript.ResendAnnouncementAndVerifyAnnouncement"/> 
      
    
-   			   <!-- Test cases of Regression p2 
+   			   <!-- Test cases of Regression p2 -->
    			   
    		<class name="org.testscript.regression.VerifySortOption"/>
    		<class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/>
@@ -78,10 +80,10 @@
      <class name="org.testscript.regression.VerifyFeaturesOfProfileIconAndWorkspace"/>
       <class name="org.testscript.regression.SameUserNameIsNotAllowedWhileSignup"/>
       <class name="org.testscript.regression.VerifyNavigateToGetPage"/>
-      <class name="org.testscript.regression.ContentValidationInUpForReviewSearchWithFilter"/>	-->
+      <class name="org.testscript.regression.ContentValidationInUpForReviewSearchWithFilter"/>	
       
        
-    <!--    
+      
       <class name="org.testscript.regression.AccessOnAllPagesAfterLogin"/>
       <class name="org.testscript.regression.VerifyEditDetailsPopupAndTopicTree"/>
       <class name="org.testscript.regression.CreateResourceByAddingAudio"/>
@@ -101,11 +103,11 @@
        <class name="org.testscript.regression.UploadYoutubeFile"/>
       <class name="org.testscript.regression.VerifyUserNaviagationToContentEditor"/>
       <class name="org.testscript.regression.ReviewAndPublishReceivedContent"/>
-      <class name="org.testscript.regression.SearchParticularContentInAllMyContent"/> -->
+      <class name="org.testscript.regression.SearchParticularContentInAllMyContent"/> 
    			
    			
    			
-   			<!-- Test cases of Creator
+   			<!-- Test cases of Creator-->
    	  <class name="org.testscript.NavigateToMyActivity"/>  
       <class name="org.testscript.UploadEpubContent"/>
       <class name="org.testscript.SearchUsers"/>
@@ -146,7 +148,7 @@
       <class name="org.testscript.EditContentAndSendForReview"/>
       <class name="org.testscript.VerifyElementsInAdminDashboard"/>  
       <class name="org.testscript.CreateBookAndVerify"/>
-       <class name="org.testscript.BookCreation"/>-->
+       <class name="org.testscript.BookCreation"/>
      
      
     	
@@ -154,15 +156,15 @@
      
      
 
-      <!--  <class name="org.testscript.VerifyElementsInAdminDashboard"/>  -->
-     <!--  <class name="org.testscript.ResourceCreation"/>
+      
+      <class name="org.testscript.ResourceCreation"/>
        <class name="org.testscript.CourseCreation"/>
       <class name="org.testscript.CreateLessonPlanAndVerify"/> 
        <class name="org.testscript.CreateBookAndVerify"/>
        <class name="org.testscript.BookCreation"/>
        <class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/>
         
-       -->
+ 
 
       
    			<!-- Test cases of Admin -->

@@ -52,7 +52,7 @@ public class UploadContentTypePdfAndVerify extends BaseTest
 		signupObj.userLogin(CREATOR);
 
 		//Step10: Navigate to WorkSpace-All my content
-		genereicFunctions.navigateToWorkspaceFeatures(ALL_MY_CONTENT);
+		creatorUserPageObj.navigateToWorkspace(ALL_MY_CONTENT);
 
 		//Step11: Delete the Created item
 		creatorUserPageObj.deleteCreatedItems();

@@ -1,8 +1,17 @@
+/**
+ * Created by Qualitrix Technologies Pvt Ltd.
+ * @author: Ajith Manjunath
+ * Date: 06/11/2018
+ * Purpose: Create a New Course and validate it
+ */
+
+
 package org.testscript;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.Test;
 import java.util.List;
+
 import org.generic.GenericFunctions;
 import org.generic.ReadTestDataFromExcel;
 import org.pageobjects.CreateMentorPageObj;
@@ -12,67 +21,81 @@ import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.annotations.Test;
 
-public class CreateCourseAndVerify extends BaseTest {
-	
-	@Test
-	public void creatorCourseAndVerify() throws Exception
+public class CreateCourseAndVerify extends BaseTest
+{
+	//MT done
+	@Test(priority=1, groups={"Creator Group"})
+	public void courseCreation() throws Exception
 	{
 		List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-		
-		CreateMentorPageObj createMentorPageObj = new CreateMentorPageObj();
-		
-		//Step1: Login as Creator
-		
+		GenericFunctions genereicFunctions= new GenericFunctions();
 		SignUpPageObj creatorLogin = new SignUpPageObj();
+		CreateMentorPageObj createMentorPageObj= new CreateMentorPageObj();
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
-		
-		
+
+		//Step1: Login as Creator
 		creatorLogin.userLogin(CREATOR);
 		
 		//Step2: Navigate to WorkSpace
 		creatorUserPageObj.navigateToWorkspace(COURSE);
-		
+
 		//Step3: Create new Course
 		creatorUserPageObj.createCourse(objListOFTestDataForSunbird);
-		
-		//Step4: Save and send course for review
-		
+
+		//Step4: Save and Send for Review
 		creatorUserPageObj.saveAndSendCourseForReview(objListOFTestDataForSunbird);
-		
-		GenericFunctions.refreshWebPage();
-			
+
 		//Step5: Check for course in review submissions 
 		creatorUserPageObj.reviewInSubmissions(COURSE,objListOFTestDataForSunbird);
-		
-		GenericFunctions.waitWebDriver(3000);
 
 		//Step6: Logout as Creator
 		creatorLogin.userLogout();
+		 
 		
 		//Step7: Login as Reviewer
 		creatorLogin.userLogin(REVIEWER);
 		
 		//Step8: Search the course which was submitted for review
-		GenericFunctions.waitWebDriver(2000);
 		creatorUserPageObj.searchInUpForReview(COURSE,objListOFTestDataForSunbird);
+
+		//Publish the Course
+		creatorUserPageObj.publishAndSearch(COURSE,objListOFTestDataForSunbird);
+
+		//Step9: Logout as Reviewer
+		creatorLogin.userLogout();
 		
-		//Step 9:publish the resource and search it
-		creatorUserPageObj.resourcePublishAndSearch(objListOFTestDataForSunbird);
-		
-		//Step 10: Logout as Reviewer
-		creatorLogin.userLogout();		
-		
-		//Step11: Login as Public User
+		//Step10: Login as Public User
 		creatorLogin.userLogin(PUBLICUSER1);
-	
-		//Step12: Search the course with Name
+
+		//Step11: Search the course with Name
 		GenericFunctions.waitWebDriver(2000);
-		
+
 		createMentorPageObj.navigateToCourseAndSearchForOpenBatch();
 
-		//Step 13: Logout as Reviewer
-		creatorLogin.userLogout();		
+		//Step 12: Logout as Reviewer
+		creatorLogin.userLogout();	
+		
+		//Step 13: Login as Creator
+		creatorLogin.userLogin(CREATOR);
+
+		//Step14: Navigate to WorkSpace-All my content
+		creatorUserPageObj.navigateToWorkspace(ALL_MY_CONTENT);
+		
+		//Step 15: Delete the Created item
+		creatorUserPageObj.deleteCreatedItems();
+
+		//Step 16: Logout as Creator
+		creatorLogin.userLogout();
+		 
+	
+
+
+
+
+	
+		
+			
 		
 	}
 

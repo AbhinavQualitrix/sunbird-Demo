@@ -52,16 +52,16 @@ public class UploadMp4Content extends BaseTest
 		//Step 9 :Logout as Reviewer
 		signupObj.userLogout();
 
-		/*//Step10: Login as Creator
+		//Step10: Login as Creator
 		signupObj.userLogin(CREATOR);
 
 		//Step11: Navigate to WorkSpace-All my content
-		genereicFunctions.navigateToWorkspaceFeatures(ALL_MY_CONTENT);
+		creatorUserPageObj.navigateToWorkspace(ALL_MY_CONTENT);
 
 		//Step12: Delete the Created item
 		creatorUserPageObj.deleteCreatedItems();
 
 		//Step13: Logout as Creator
-		signupObj.userLogout();*/
+		signupObj.userLogout();
 	}
 }
