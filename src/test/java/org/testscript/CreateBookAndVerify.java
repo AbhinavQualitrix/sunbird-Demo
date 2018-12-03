@@ -38,6 +38,7 @@ package org.testscript;
 			
 			//Step4: Save and send resource for review
 			creatorUserPageObj.saveAndSendBookForReview(objListOFTestDataForSunbird);
+			
 			GenericFunctions.refreshWebPage();
 				
 			//Step5: Check for course in review submissions 
@@ -59,7 +60,7 @@ package org.testscript;
 			creatorLogin.userLogout();
 			
 			//Step11: Login as Public User
-			creatorLogin.userLogin(PUBLICUSERS_S);
+			creatorLogin.userLogin(PUBLICUSER1);
 
 			//Step12: Search the course with Name
 			createMentorPageObj.navigateToLibraryAndSearchForBook();

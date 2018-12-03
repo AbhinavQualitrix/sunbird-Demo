@@ -1658,7 +1658,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 				System.out.println("Custom Keyboard is displayed with only the entered keywords while previewing the question");
 			}
 			/*if(addKeysType.contains("characters"))
-			{
+			{	
 
 				//contentResourcePage.previewKBCharCount.getText();
 				//driver.findElement(By.xpath("//sui-multi-select[@formcontrolname='language']")).click();
@@ -1677,7 +1677,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 				{
 
 
-					Assert.assertTrue(true, "Characters dint matach to Assert");
+					Assert.assertTrue(true, "Characters dint match to Assert");
 					ExtentTestManager.getTest().log(LogStatus.PASS,"Number of characters displayed in the keyboard preview is same as the number of characters while creating the keyboard");
 					ExtentTestManager.getTest().log(LogStatus.PASS,"Characters entered while creating the keyboards are same in the Custom keyboard while previewing");
 					GenericFunctions.waitWebDriver(1100);

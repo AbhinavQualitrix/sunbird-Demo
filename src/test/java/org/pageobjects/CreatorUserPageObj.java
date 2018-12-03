@@ -13,6 +13,7 @@ import org.generic.ExtentTestManager;
 import org.generic.GenericFunctions;
 import org.generic.ReadTestDataFromExcel;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -791,6 +792,9 @@ public class CreatorUserPageObj extends BaseTest{
 				GenericFunctions.waitWebDriver(1000);
 				createUserPage.reviewComment.get(0).click();
 				createUserPage.reviewComment.get(0).sendKeys(rejectReason);
+				
+				resizeTheScreen();
+				
 				GenericFunctions.waitForElementToAppear(createUserPage.requestChangesButton);
 				GenericFunctions.waitWebDriver(1000);	
 				executor.executeScript("arguments[0].click();", createUserPage.requestChangesButton);
@@ -803,6 +807,7 @@ public class CreatorUserPageObj extends BaseTest{
 			else
 			{
 				GenericFunctions.waitWebDriver(2000);
+				
 				GenericFunctions.waitForElementToAppear(createUserPage.clickRequestChangesIcon);
 				createUserPage.clickRequestChangesIcon.click();
 				GenericFunctions.waitWebDriver(3000);
@@ -813,6 +818,7 @@ public class CreatorUserPageObj extends BaseTest{
 				createUserPage.reviewComments.click();
 				createUserPage.reviewComments.sendKeys(rejectReason);
 				GenericFunctions.waitWebDriver(2000);
+				resizeTheScreen();
 				//GenericFunctions.waitForElementToAppear(createUserPage.requestChangesButton1);
 				GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.requestChangesButton1);
 				//action.moveToElement(createUserPage.requestChangesButton1);
@@ -859,6 +865,7 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(3000);
 			createUserPage.searchedContentForPublish.click();
 			GenericFunctions.waitWebDriver(7000);
+		
 			GenericFunctions.waitForElementToAppear(createUserPage.clickRequestChanges);
 			//GenericFunctions.scrollToElement(createUserPage.clickRequestChanges);
 			createUserPage.clickRequestChanges.click();
@@ -874,6 +881,7 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.reviewComment.get(1).click();
 			createUserPage.reviewComment.get(1).sendKeys(rejectReason);
 			GenericFunctions.waitWebDriver(2000);
+			resizeTheScreen();
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.requestChangesButton);
 			GenericFunctions.clickOnElementUsingJavascript(createUserPage.requestChangesButton);
 			//createUserPage.requestChangesButton.click();
@@ -1515,6 +1523,7 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.reviewComment.get(0).click();
 			createUserPage.reviewComment.get(0).sendKeys(rejectReason);
 			GenericFunctions.waitWebDriver(2000);
+			resizeTheScreen();
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.requestChangesButton);
 			executor.executeScript("arguments[0].click();", createUserPage.requestChangesButton);
 			GenericFunctions.waitWebDriver(2000);
@@ -2874,6 +2883,14 @@ public class CreatorUserPageObj extends BaseTest{
 			Assert.fail("Failed to search and publish");
 		}
 
+	}
+	
+	
+	public void resizeTheScreen()
+	{
+		GenericFunctions.waitWebDriver(2000);
+		Dimension d = new Dimension(800,480);
+		driver.manage().window().setSize(d);
 	}
 
 }
