@@ -6,13 +6,20 @@
   </listeners>
   <test name="Test(failed)">
     <classes>
-      <class name="org.testscript.CreateLessonPlanAndVerify">
+      <class name="org.testscript.CreateBookAndVerify">
         <methods>
-          <include name="createLessonAndVerify"/>
+          <include name="createBoookAndVerify"/>
           <include name="closeApplication"/>
           <include name="openApplication"/>
         </methods>
-      </class> <!-- org.testscript.CreateLessonPlanAndVerify -->
+      </class> <!-- org.testscript.CreateBookAndVerify -->
+      <class name="org.testscript.BookCreation">
+        <methods>
+          <include name="bookCreation"/>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
+        </methods>
+      </class> <!-- org.testscript.BookCreation -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [ Regression Suite] -->

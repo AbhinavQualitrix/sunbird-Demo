@@ -59,7 +59,7 @@
                 </li>
                 <li>
                   <a href="#" panel-name="group-_Regression_Suite" class="navigator-link ">
-                    <span>0 groups</span>
+                    <span>1 group</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -102,7 +102,7 @@
                     <div class="method-list-content passed suite-_Regression_Suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-_Regression_Suite" title="org.testscript.CreateLessonPlanAndVerify" class="method navigator-link" hash-for-method="createLessonAndVerify">createLessonAndVerify</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-_Regression_Suite" title="org.testscript.UploadYoutubeContent" class="method navigator-link" hash-for-method="uploadYoutubeContent">uploadYoutubeContent</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-_Regression_Suite -->
@@ -120,14 +120,14 @@
           <div class="suite-_Regression_Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">org.testscript.CreateLessonPlanAndVerify</span>
+              <span class="class-name">org.testscript.UploadYoutubeContent</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="createLessonAndVerify">
-                  </a> <!-- createLessonAndVerify -->
-                  <span class="method-name">createLessonAndVerify</span>
+                  <a name="uploadYoutubeContent">
+                  </a> <!-- uploadYoutubeContent -->
+                  <span class="method-name">uploadYoutubeContent</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -147,7 +147,7 @@
   &lt;/listeners&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;org.testscript.CreateLessonPlanAndVerify&quot;/&gt;
+      &lt;class name=&quot;org.testscript.UploadYoutubeContent&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!--  Regression Suite --&gt;
@@ -171,6 +171,14 @@
             <span class="header-content">Groups for  Regression Suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="test-group">
+              <span class="test-group-name">Creator Group</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">uploadYoutubeContent</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="times-_Regression_Suite" class="panel">
@@ -189,14 +197,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'createLessonAndVerify')
-data.setCell(0, 2, 'org.testscript.CreateLessonPlanAndVerify')
-data.setCell(0, 3, 26328);
+data.setCell(0, 1, 'uploadYoutubeContent')
+data.setCell(0, 2, 'org.testscript.UploadYoutubeContent')
+data.setCell(0, 3, 278378);
 window.suiteTableData['_Regression_Suite']= { tableData: data, tableDiv: 'times-div-_Regression_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 26 seconds</span>
+              <span class="suite-total-time">Total running time: 4 minutes</span>
               <div id="times-div-_Regression_Suite">
               </div> <!-- times-div-_Regression_Suite -->
             </div> <!-- times-div -->
@@ -222,18 +230,18 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">org.testscript.CreateLessonPlanAndVerify</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">org.testscript.UploadYoutubeContent</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">openApplication</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">createLessonAndVerify</span>
-                <span class="method-start">7219 ms</span>
+                <span class="method-name">uploadYoutubeContent</span>
+                <span class="method-start">8157 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">closeApplication</span>
-                <span class="method-start">33552 ms</span>
+                <span class="method-start">286540 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

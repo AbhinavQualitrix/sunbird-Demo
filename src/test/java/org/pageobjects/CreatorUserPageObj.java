@@ -573,9 +573,9 @@ public class CreatorUserPageObj extends BaseTest{
 				GenericFunctions.waitWebDriver(10000);
 				//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.UploadButton);	
 				GenericFunctions.waitWebDriver(8000);
-				action.moveToElement(createUserPage.UploadButton).build().perform();
+				action.moveToElement(createUserPage.UploadButton).click().perform();
 				//action.click(createUserPage.UploadButton).build().perform();
-				createUserPage.UploadButton.click();
+				//createUserPage.UploadButton.click();
 				System.out.println("YOUTUBE content uploaded sucessfully");
 			}
 			else if(uploadType.equalsIgnoreCase("epub"))
@@ -2037,7 +2037,7 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(3000);	
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitWebDriver(3000);	
-			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.publishCourseButton);
+			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.publishCourseButton);
 			createUserPage.publishCourseButton.click();
 			for(int i=0;i<createUserPage.checkbox.size();i++){
 				createUserPage.checkbox.get(i).click();

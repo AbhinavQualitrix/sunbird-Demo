@@ -130,7 +130,7 @@
       <class name="org.testscript.SubOrgUsersProviderAndExtId"/>
       <class name="org.testscript.SearchCourseUsingFilter"/>
       <class name="org.testscript.UploadH5pContent"/>
-      <class name="org.testscript.UploadYoutubeContent"/>
+      
       <class name="org.testscript.AdminCreationAndDownloadCsv"/>
       <class name="org.testscript.CreateBookAndVerifyOnlyBooksPresent"/>
      <class name="org.testscript.SendTheCourseForReview"/>
@@ -141,14 +141,17 @@
     <class name="org.testscript.VerifyTheBookAvailableForReview"/>
       <class name="org.testscript.VerifyHomePage"/>
       <class name="org.testscript.RejectTheContent"/>
-     
+      <class name="org.testscript.UploadYoutubeContent"/>
       <class name="org.testscript.LessonplanCreation"/>
       <class name="org.testscript.EditContentAndSendForReview"/>
-      <class name="org.testscript.VerifyElementsInAdminDashboard"/>  -->
-      <class name="org.testscript.ResourceCreation"/>
-       <class name="org.testscript.CourseCreation"/>
-      <class name="org.testscript.CreateLessonPlanAndVerify"/>
-      <class name="org.testscript.CreateCourseAndVerify"/>
+      <class name="org.testscript.VerifyElementsInAdminDashboard"/>  
+      <class name="org.testscript.CreateBookAndVerify"/>
+       <class name="org.testscript.BookCreation"/>-->
+     
+     
+    
+     
+     
      
    			<!-- Test cases of Admin -->
    			<!-- Test cases of Reviewer -->

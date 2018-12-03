@@ -368,7 +368,7 @@ public class CreatorUserPage {
 	@FindBy(xpath="//label[.='URL']/following-sibling::div//following-sibling::input")
 	public WebElement enterUrl;
 
-	@FindBy(xpath="//button[.='Upload']")
+	@FindBy(xpath="//label[contains(.,'Upload Content')]/following::button[contains(.,'Upload')]")
 	public WebElement UploadButton;
 
 	@FindBy(xpath="//input[@id='name']")
