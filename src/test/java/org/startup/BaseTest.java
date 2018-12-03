@@ -23,8 +23,7 @@ public abstract class BaseTest implements IAutoConst {
 	{
 		System.out.println("Test Execution Started : Opening the browser");
 		driver = new ChromeDriver(); 
-		Dimension d = new Dimension(800,480);
-		driver.manage().window().setSize(d);
+	
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		//driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
