@@ -2,24 +2,27 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2018-12-03T09:56:54Z" name=" Regression Suite" finished-at="2018-12-03T09:57:28Z" duration-ms="33997">
+  <suite started-at="2018-12-03T10:16:56Z" name=" Regression Suite" finished-at="2018-12-03T10:21:43Z" duration-ms="287034">
     <groups>
+      <group name="Creator Group">
+        <method signature="UploadYoutubeContent.uploadYoutubeContent()[pri:6, instance:org.testscript.UploadYoutubeContent@424e1977]" name="uploadYoutubeContent" class="org.testscript.UploadYoutubeContent"/>
+      </group> <!-- Creator Group -->
     </groups>
-    <test started-at="2018-12-03T09:56:54Z" name="Test" finished-at="2018-12-03T09:57:28Z" duration-ms="33997">
-      <class name="org.testscript.CreateLessonPlanAndVerify">
-        <test-method is-config="true" signature="openApplication()[pri:0, instance:org.testscript.CreateLessonPlanAndVerify@424e1977]" started-at="2018-12-03T15:26:54Z" name="openApplication" finished-at="2018-12-03T15:27:01Z" duration-ms="7219" status="PASS">
+    <test started-at="2018-12-03T10:16:56Z" name="Test" finished-at="2018-12-03T10:21:43Z" duration-ms="287034">
+      <class name="org.testscript.UploadYoutubeContent">
+        <test-method is-config="true" signature="openApplication()[pri:0, instance:org.testscript.UploadYoutubeContent@424e1977]" started-at="2018-12-03T15:46:56Z" name="openApplication" finished-at="2018-12-03T15:47:04Z" duration-ms="8157" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openApplication -->
-        <test-method signature="createLessonAndVerify()[pri:0, instance:org.testscript.CreateLessonPlanAndVerify@424e1977]" started-at="2018-12-03T15:27:01Z" name="createLessonAndVerify" finished-at="2018-12-03T15:27:28Z" duration-ms="26328" status="PASS">
+        <test-method signature="uploadYoutubeContent()[pri:6, instance:org.testscript.UploadYoutubeContent@424e1977]" started-at="2018-12-03T15:47:04Z" name="uploadYoutubeContent" finished-at="2018-12-03T15:51:43Z" duration-ms="278378" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createLessonAndVerify -->
-        <test-method is-config="true" signature="closeApplication()[pri:0, instance:org.testscript.CreateLessonPlanAndVerify@424e1977]" started-at="2018-12-03T15:27:28Z" name="closeApplication" finished-at="2018-12-03T15:27:28Z" duration-ms="433" status="PASS">
+        </test-method> <!-- uploadYoutubeContent -->
+        <test-method is-config="true" signature="closeApplication()[pri:0, instance:org.testscript.UploadYoutubeContent@424e1977]" started-at="2018-12-03T15:51:43Z" name="closeApplication" finished-at="2018-12-03T15:51:43Z" duration-ms="482" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeApplication -->
-      </class> <!-- org.testscript.CreateLessonPlanAndVerify -->
+      </class> <!-- org.testscript.UploadYoutubeContent -->
     </test> <!-- Test -->
   </suite> <!--  Regression Suite -->
 </testng-results>
