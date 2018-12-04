@@ -105,8 +105,9 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.selectRecipient);
 			/*action.moveToElement(createAnnouncementPage.selectRecipient).build().perform();
 			action.click().build().perform();*/
-			GenericFunctions.waitWebDriver(3000);
+			GenericFunctions.waitWebDriver(8000);
 			GenericFunctions.waitForElements(createAnnouncementPage.checkLocation);
+			GenericFunctions.waitWebDriver(5000);
 			createAnnouncementPage.checkLocation.get(0).click();
 			createAnnouncementPage.checkLocation.get(1).click();
 			//action.moveToElement(createAnnouncementPage.checkLocation).click().build().perform();

@@ -350,12 +350,12 @@ public class ContentCreateUploadPageObj extends BaseTest
 			GenericFunctions.waitWebDriver(5000);
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitWebDriver(7500);
-			GenericFunctions.waitForElementToAppear(createUserPage.enterUrl);
+			//GenericFunctions.waitForElementToAppear(createUserPage.enterUrl);
 			createUserPage.enterUrl.sendKeys(UPLOAD_YOUTUBE);    
 			GenericFunctions.waitForElementToAppear(contentUploadPage.uploadButtonPop);
 			contentUploadPage.uploadButtonPop.click();
 			GenericFunctions.waitWebDriver(5000);	
-			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentUploadPage.editDetailsLink);
+			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentUploadPage.editDetailsLink);
 			contentUploadPage.editDetailsLink.click();
 			GenericFunctions.waitWebDriver(5000);
 

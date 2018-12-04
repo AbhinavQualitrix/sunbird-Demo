@@ -6,13 +6,38 @@
   </listeners>
   <test name="Test(failed)">
     <classes>
-      <class name="org.testscript.UploadContentTypePdfAndVerify">
+      <class name="org.testscript.regression.VerifyUploadAndDownloadContent">
         <methods>
-          <include name="uploadContentTypePdfAndVerify"/>
           <include name="closeApplication"/>
           <include name="openApplication"/>
         </methods>
-      </class> <!-- org.testscript.UploadContentTypePdfAndVerify -->
+      </class> <!-- org.testscript.regression.VerifyUploadAndDownloadContent -->
+      <class name="org.testscript.regression.ReviewerRequestChangesTheBook">
+        <methods>
+          <include name="verifyReviewerRequestChnagesTheBook"/>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
+        </methods>
+      </class> <!-- org.testscript.regression.ReviewerRequestChangesTheBook -->
+      <class name="org.testscript.BookCreateOptionValidation">
+        <methods>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
+        </methods>
+      </class> <!-- org.testscript.BookCreateOptionValidation -->
+      <class name="org.testscript.VerifyLimitedSharing">
+        <methods>
+          <include name="verifyLimitedSharing"/>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
+        </methods>
+      </class> <!-- org.testscript.VerifyLimitedSharing -->
+      <class name="org.testscript.LessonplanCreation">
+        <methods>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
+        </methods>
+      </class> <!-- org.testscript.LessonplanCreation -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [ Regression Suite] -->
