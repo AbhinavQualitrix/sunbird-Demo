@@ -1112,6 +1112,8 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.drafts.click();
 			String courseToAssert = objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad("./testData/courseNumbers.txt").toString();
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppearOnScreen(createUserPage.getContentInDrafts);
 			if(createUserPage.getContentInDrafts.getText().equalsIgnoreCase(courseToAssert))
 			{
 				//createUserPage.getCourseName.click();
@@ -1121,16 +1123,20 @@ public class CreatorUserPageObj extends BaseTest{
 			{
 				System.out.println(courseToAssert +"Course is not found in Drafts to Edit");
 			}
-			GenericFunctions.waitWebDriver(4000);
+			GenericFunctions.waitWebDriver(6000);
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitWebDriver(7000);
+			GenericFunctions.waitForPageToLoad(createUserPage.addResource);
 			createUserPage.addResource.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.findSelectActivities);
 			GenericFunctions.waitWebDriver(2000);
 			createUserPage.selectExtraResource.click();
+			GenericFunctions.waitWebDriver(2000);
 			createUserPage.proceedButton.click();
+			GenericFunctions.waitForElementToAppear(createUserPage.saveCourse);
 			GenericFunctions.waitWebDriver(2000);
 			createUserPage.saveCourse.click();
+			GenericFunctions.waitForElementToAppear(createUserPage.sendForReview);
 			GenericFunctions.waitWebDriver(3000);
 			createUserPage.sendForReview.click();
 			GenericFunctions.waitWebDriver(3000);
