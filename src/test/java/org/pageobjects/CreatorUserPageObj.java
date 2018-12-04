@@ -824,7 +824,8 @@ public class CreatorUserPageObj extends BaseTest{
 				GenericFunctions.waitWebDriver(2000);
 				resizeTheScreen();
 				//GenericFunctions.waitForElementToAppear(createUserPage.requestChangesButton1);
-				GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.requestChangesButton1);
+				GenericFunctions.waitWebDriver(4000);
+				//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.requestChangesButton1);
 				//action.moveToElement(createUserPage.requestChangesButton1);
 				//GenericFunctions.clickOnElementUsingJavascript(createUserPage.requestChangesButton1);
 				GenericFunctions.clickOnElementUsingJavascript(createUserPage.requestChangesButton1);
