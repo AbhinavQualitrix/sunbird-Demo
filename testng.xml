@@ -171,7 +171,8 @@
          <class name="org.testscript.regression.VerifyUploadAndDownloadContent"/>
          <class name="org.testscript.BookCreateOptionValidation"/>
           <class name="org.testscript.LessonplanCreation"/>
-         
+           <class name="org.testscript.VerifyThatTopicsAreDisplayedOnMetaDataForm"/>
+         <class name="org.testscript.VerifyThatTopicsAreSelectedOnMetaDataPage"/>
    			<!-- Test cases of Admin -->
    			<!-- Test cases of Reviewer -->
    <!--

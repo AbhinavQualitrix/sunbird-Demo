@@ -62,9 +62,9 @@ public class ContentCreateUploadPageObj extends BaseTest
 				String Evalue = contentUploadPage.uploadContentText.getText();			
 				Assert.assertEquals("Upload Content", Evalue);
 			}
-			if(contentUploadPage.uploadButtonPop.isDisplayed())
+			if(contentUploadPage.popupUploadButton.isDisplayed())
 			{
-				String Evalue = contentUploadPage.uploadButtonPop.getText();	
+				String Evalue = contentUploadPage.popupUploadButton.getText();	
 				Assert.assertEquals("Upload", Evalue);	
 			}
 			if(contentUploadPage.closeEditor.isDisplayed())
@@ -88,8 +88,10 @@ public class ContentCreateUploadPageObj extends BaseTest
 				Assert.assertTrue(true);
 			}
 			createUserPage.enterUrl.sendKeys(UPLOAD_YOUTUBE);
-			GenericFunctions.waitForElementToAppear(contentUploadPage.uploadButtonPop);
-			contentUploadPage.uploadButtonPop.click();
+			GenericFunctions.waitWebDriver(5000);
+			//GenericFunctions.waitForElementToAppear(contentUploadPage.popupUploadButton);
+			action.moveToElement(contentUploadPage.popupUploadButton).build().perform();
+			contentUploadPage.popupUploadButton.click();
 			GenericFunctions.waitWebDriver(5000);
 			System.out.println(objListOFTestDataForSunbird1.get(10).getCourseName());
 		}
@@ -123,7 +125,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 			if(createUserPage.closeButton.isDisplayed()){
 				createUserPage.closeButton.click();
 			}
-		
+
 			GenericFunctions.waitWebDriver(2000);
 
 		}
@@ -138,7 +140,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 
 	public void downloadContent()
 	{
-		
+
 	}
 	public void navigateToLibraryAndSearchContent(List<TestDataForSunbird> objListOFTestDataForSunbird12)
 	{
@@ -351,9 +353,11 @@ public class ContentCreateUploadPageObj extends BaseTest
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitWebDriver(7500);
 			GenericFunctions.waitForElementToAppear(createUserPage.enterUrl);
-			createUserPage.enterUrl.sendKeys(UPLOAD_YOUTUBE);    
-			GenericFunctions.waitForElementToAppear(contentUploadPage.uploadButtonPop);
-			contentUploadPage.uploadButtonPop.click();
+			createUserPage.enterUrl.sendKeys(UPLOAD_YOUTUBE);
+			GenericFunctions.waitWebDriver(5000);
+			action.moveToElement(contentUploadPage.popupUploadButton).build().perform();			
+			//GenericFunctions.waitForElementToAppear(contentUploadPage.popupUploadButton);
+			contentUploadPage.popupUploadButton.click();
 			GenericFunctions.waitWebDriver(5000);	
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentUploadPage.editDetailsLink);
 			contentUploadPage.editDetailsLink.click();
@@ -387,15 +391,9 @@ public class ContentCreateUploadPageObj extends BaseTest
 				ExtentTestManager.getTest().log(LogStatus.PASS, "Cancel button is verified and it is displayed");
 			}
 			GenericFunctions.waitWebDriver(5000);
-
-
-
-
-
-
-
-
-		}catch(Exception e)
+			
+		}
+		catch(Exception e)
 		{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Could not display the edit details page");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message:"+e.getLocalizedMessage());
@@ -585,7 +583,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 			createUserPage.limitedSharingArrow.click();
 			GenericFunctions.waitWebDriver(2000);
 			createUserPage.clickLimitedSharing.click();
-			
+
 			GenericFunctions.waitForElementToAppear(createUserPage.limitedPublishing);
 			createUserPage.limitedPublishing.click();
 			if(createUserPage.limitedPublishing.isDisplayed())

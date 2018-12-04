@@ -47,8 +47,8 @@ public class ContentCreateUploadPage
 
 
 	//Dec 04
-	//@FindBy(xpath="//i[contains(@class,'edit icon')]")
-	@FindBy(xpath="//i[@class='edit icon']")
+	@FindBy(xpath="//i[@class='edit icon']/ancestor::span")
+	//@FindBy(xpath="//i[@class='edit icon']")
 	public WebElement editDetailsHeading;
 
 	@FindBy(xpath="//*[@id=\"name\"]/label")
@@ -225,8 +225,10 @@ public class ContentCreateUploadPage
 	@FindBy(xpath="//*[@id=\"ngdialog1\"]/div[2]/div/div[1]/div/div/div/label")
 	public WebElement uploadContentText;
 
-	@FindBy(xpath="//button[.='Upload']")
-	public WebElement uploadButtonPop;
+	//Dec 04
+	@FindBy(xpath="//div[contains(@class,'actions')]/..//button[contains(.,'Upload')]")
+	//@FindBy(xpath="//button[.='Upload']")
+	public WebElement popupUploadButton;
 
 	@FindBy(xpath="//div/app-library-search//app-card/div/div[1]")
 	public WebElement serachedContent;
@@ -237,12 +239,12 @@ public class ContentCreateUploadPage
 	@FindBy(xpath="//div/app-breadcrumbs//span[1]/a")
 	public WebElement homeNavigation;
 
-	@FindBy(xpath="//*[@id=\"content-meta-form\"]//app-icon/div/label")
+	@FindBy(xpath="//*[@id='content-meta-form']//app-icon/div/label")
 	public WebElement appIcon;
 
-	@FindBy(id="closePopUp ")
+	//@FindBy(id="closePopUp")
+	@FindBy(xpath="//button[contains(@id,'close')]")
 	public WebElement cancelButton;
-
 
 	@FindBy(xpath="//*[@id=\"ownedBy\"]/div[1]/div[1]")
 	public WebElement owner;

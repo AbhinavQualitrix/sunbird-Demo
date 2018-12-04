@@ -188,7 +188,7 @@ public class ContentCreationLessonPlanPageObj extends BaseTest
 
 	//tc 240
 
-	public void navigateToWorkspace()
+	public void navigateToUpForReview()
 	{
 		try
 		{
@@ -198,7 +198,10 @@ public class ContentCreationLessonPlanPageObj extends BaseTest
 			createUserPageObj.goToProfilePage();
 			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
 			createUserPage.workSpace.click();
-			contentCreationPage.upForReviewButton.click();
+			
+			GenericFunctions.waitForElementToAppear(createUserPage.upForReview);
+			createUserPage.upForReview.click();
+			//contentCreationPage.upForReviewButton.click();
 
 		}
 		catch(Exception e)
