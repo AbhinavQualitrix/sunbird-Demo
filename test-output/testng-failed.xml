@@ -6,47 +6,62 @@
   </listeners>
   <test name="Test(failed)">
     <classes>
-      <class name="org.testscript.ResendAnnouncementAndVerifyAsReciever">
+      <class name="org.testscript.SearchCourseCreateInviteOnlyBatch">
         <methods>
-          <include name="resendAnnouncementAndVerifyAsReciever"/>
+          <include name="searchCourseCreateInviteOnlyBatch"/>
         </methods>
-      </class> <!-- org.testscript.ResendAnnouncementAndVerifyAsReciever -->
-      <class name="org.testscript.CreateAnnouncementWithAttachment">
+      </class> <!-- org.testscript.SearchCourseCreateInviteOnlyBatch -->
+      <class name="org.testscript.UpdateBatchAsInvitedMentor">
         <methods>
-          <include name="createAnnouncementWithAttachment"/>
+          <include name="updateBatchAsInvitedMentor"/>
         </methods>
-      </class> <!-- org.testscript.CreateAnnouncementWithAttachment -->
-      <class name="org.testscript.NavigateToAnnouncementDashboard">
+      </class> <!-- org.testscript.UpdateBatchAsInvitedMentor -->
+      <class name="org.testscript.CheckForDownloadButtonAvailabilityForUserInProfile">
         <methods>
-          <include name="navigateToAnnouncementDashboard"/>
+          <include name="checkForDownloadButtonAvailabilityForUserInProfile"/>
         </methods>
-      </class> <!-- org.testscript.NavigateToAnnouncementDashboard -->
-      <class name="org.testscript.ResendAnnouncement">
+      </class> <!-- org.testscript.CheckForDownloadButtonAvailabilityForUserInProfile -->
+      <class name="org.testscript.EnrollToCourseInOpenBatch">
         <methods>
-          <include name="resendAnnouncement"/>
+          <include name="enrollToCourseInOpenBatch"/>
+        </methods>
+      </class> <!-- org.testscript.EnrollToCourseInOpenBatch -->
+      <class name="org.testscript.SearchOrgsAsAdmin">
+        <methods>
+          <include name="searchOrgsAsAdmin"/>
           <include name="openApplication"/>
         </methods>
-      </class> <!-- org.testscript.ResendAnnouncement -->
-      <class name="org.testscript.CreateVerifyAndDeleteAnnouncement">
+      </class> <!-- org.testscript.SearchOrgsAsAdmin -->
+      <class name="org.testscript.CheckSuborgMentorInvitingOrgMember">
         <methods>
-          <include name="createVerifyAndDeleteAnnouncement"/>
+          <include name="suborgMentorInvitingOrgMember"/>
         </methods>
-      </class> <!-- org.testscript.CreateVerifyAndDeleteAnnouncement -->
-      <class name="org.testscript.DeleteAnnouncement">
+      </class> <!-- org.testscript.CheckSuborgMentorInvitingOrgMember -->
+      <class name="org.testscript.ConsumeCourseByInvitedMember">
         <methods>
-          <include name="deleteAnnouncement"/>
+          <include name="consumeCourseByInvitedMember"/>
         </methods>
-      </class> <!-- org.testscript.DeleteAnnouncement -->
-      <class name="org.testscript.CheckAvailabilityOfCourseForInvitedMember">
+      </class> <!-- org.testscript.ConsumeCourseByInvitedMember -->
+      <class name="org.testscript.NavigateToMyActivityInDropdown">
         <methods>
-          <include name="checkAvailabilityOfCourseForInvitedMember"/>
+          <include name="navigateToMyActivityInDropdown"/>
         </methods>
-      </class> <!-- org.testscript.CheckAvailabilityOfCourseForInvitedMember -->
-      <class name="org.testscript.OpenAnnouncement">
+      </class> <!-- org.testscript.NavigateToMyActivityInDropdown -->
+      <class name="org.testscript.ConsumeOpenCourseByPublicUser">
         <methods>
-          <include name="openAnnouncement"/>
+          <include name="consumeOpenCourseByPublicUser"/>
         </methods>
-      </class> <!-- org.testscript.OpenAnnouncement -->
+      </class> <!-- org.testscript.ConsumeOpenCourseByPublicUser -->
+      <class name="org.testscript.CheckCourseStatAsMentor">
+        <methods>
+          <include name="checkCourseStatAsMentor"/>
+        </methods>
+      </class> <!-- org.testscript.CheckCourseStatAsMentor -->
+      <class name="org.testscript.CheckForAuthenticUserInMentor">
+        <methods>
+          <include name="checkForAuthenticUserInMentor"/>
+        </methods>
+      </class> <!-- org.testscript.CheckForAuthenticUserInMentor -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [ Regression Suite] -->

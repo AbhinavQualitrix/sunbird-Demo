@@ -4,14 +4,14 @@
 <th>Method name</th>
 <th>Groups</th>
 </tr><tr>
-<td>org.testscript.ResendAnnouncementAndVerifyAsReciever</td>
+<td>org.testscript.NavigateToMyActivityInDropdown</td>
 <td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@Test</td>
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>resendAnnouncementAndVerifyAsReciever</td>
+<td>navigateToMyActivityInDropdown</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@BeforeClass</td>
@@ -34,14 +34,14 @@
 <td align='center' colspan='3'>@AfterClass</td>
 </tr>
 <tr>
-<td>org.testscript.CreateVerifyAndDeleteAnnouncement</td>
+<td>org.testscript.CheckCourseStatAsMentor</td>
 <td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@Test</td>
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>createVerifyAndDeleteAnnouncement</td>
+<td>checkCourseStatAsMentor</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@BeforeClass</td>
@@ -64,14 +64,14 @@
 <td align='center' colspan='3'>@AfterClass</td>
 </tr>
 <tr>
-<td>org.testscript.NavigateToAnnouncementDashboard</td>
+<td>org.testscript.SearchOrgsAsAdmin</td>
 <td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@Test</td>
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>navigateToAnnouncementDashboard</td>
+<td>searchOrgsAsAdmin</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@BeforeClass</td>
@@ -94,14 +94,14 @@
 <td align='center' colspan='3'>@AfterClass</td>
 </tr>
 <tr>
-<td>org.testscript.CreateAnnouncementWithAttachment</td>
+<td>org.testscript.SearchCourseCreateInviteOnlyBatch</td>
 <td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@Test</td>
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>createAnnouncementWithAttachment</td>
+<td>searchCourseCreateInviteOnlyBatch</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@BeforeClass</td>
@@ -124,14 +124,14 @@
 <td align='center' colspan='3'>@AfterClass</td>
 </tr>
 <tr>
-<td>org.testscript.CheckAvailabilityOfCourseForInvitedMember</td>
+<td>org.testscript.UpdateBatchAsInvitedMentor</td>
 <td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@Test</td>
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>checkAvailabilityOfCourseForInvitedMember</td>
+<td>updateBatchAsInvitedMentor</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@BeforeClass</td>
@@ -154,14 +154,14 @@
 <td align='center' colspan='3'>@AfterClass</td>
 </tr>
 <tr>
-<td>org.testscript.OpenAnnouncement</td>
+<td>org.testscript.ConsumeCourseByInvitedMember</td>
 <td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@Test</td>
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>openAnnouncement</td>
+<td>consumeCourseByInvitedMember</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@BeforeClass</td>
@@ -184,14 +184,14 @@
 <td align='center' colspan='3'>@AfterClass</td>
 </tr>
 <tr>
-<td>org.testscript.DeleteAnnouncement</td>
+<td>org.testscript.EnrollToCourseInOpenBatch</td>
 <td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@Test</td>
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>deleteAnnouncement</td>
+<td>enrollToCourseInOpenBatch</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@BeforeClass</td>
@@ -214,14 +214,104 @@
 <td align='center' colspan='3'>@AfterClass</td>
 </tr>
 <tr>
-<td>org.testscript.ResendAnnouncement</td>
+<td>org.testscript.CheckForAuthenticUserInMentor</td>
 <td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@Test</td>
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>resendAnnouncement</td>
+<td>checkForAuthenticUserInMentor</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td align='center' colspan='3'>@BeforeClass</td>
+</tr>
+<tr>
+<td align='center' colspan='3'>@BeforeMethod</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>openApplication</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td align='center' colspan='3'>@AfterMethod</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>closeApplication</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td align='center' colspan='3'>@AfterClass</td>
+</tr>
+<tr>
+<td>org.testscript.CheckSuborgMentorInvitingOrgMember</td>
+<td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr>
+<td align='center' colspan='3'>@Test</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>suborgMentorInvitingOrgMember</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td align='center' colspan='3'>@BeforeClass</td>
+</tr>
+<tr>
+<td align='center' colspan='3'>@BeforeMethod</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>openApplication</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td align='center' colspan='3'>@AfterMethod</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>closeApplication</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td align='center' colspan='3'>@AfterClass</td>
+</tr>
+<tr>
+<td>org.testscript.CheckForDownloadButtonAvailabilityForUserInProfile</td>
+<td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr>
+<td align='center' colspan='3'>@Test</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>checkForDownloadButtonAvailabilityForUserInProfile</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td align='center' colspan='3'>@BeforeClass</td>
+</tr>
+<tr>
+<td align='center' colspan='3'>@BeforeMethod</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>openApplication</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td align='center' colspan='3'>@AfterMethod</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>closeApplication</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td align='center' colspan='3'>@AfterClass</td>
+</tr>
+<tr>
+<td>org.testscript.ConsumeOpenCourseByPublicUser</td>
+<td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr>
+<td align='center' colspan='3'>@Test</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>consumeOpenCourseByPublicUser</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@BeforeClass</td>
