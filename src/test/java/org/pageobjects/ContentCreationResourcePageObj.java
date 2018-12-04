@@ -1628,9 +1628,9 @@ public class ContentCreationResourcePageObj extends BaseTest
 			else if(addKeysType.equalsIgnoreCase("characters"))
 			{
 				contentCreationResourcePage.addKeysTB.clear();
-				inputKeyCharArr = objListOFTestDataForSunbird1.get(12).getTitleDescription().toCharArray();
+				inputKeyCharArr = objListOFTestDataForSunbird1.get(12).getTitle().toCharArray();
 				inputCharArrSize = inputKeyCharArr.length-7;
-				contentCreationResourcePage.addKeysTB.sendKeys(objListOFTestDataForSunbird1.get(11).getTitleDescription());
+				contentCreationResourcePage.addKeysTB.sendKeys(objListOFTestDataForSunbird1.get(11).getTitle());
 
 			}
 			else if(addKeysType.equalsIgnoreCase("alphabets"))
@@ -1806,11 +1806,17 @@ public class ContentCreationResourcePageObj extends BaseTest
 			String validationMsg=driver.switchTo().alert().getText();
 			driver.switchTo().alert().dismiss();
 			GenericFunctions.waitForElementToAppear(createUserPage.saveCourse);
+			GenericFunctions.waitWebDriver(2000);
 			createUserPage.saveCourse.click();
+			GenericFunctions.waitWebDriver(3000);
 			GenericFunctions.waitForElementToAppear(createUserPage.closeContentPopup);
+			GenericFunctions.waitWebDriver(1000);
 			createUserPage.closeContentPopup.click();
+			GenericFunctions.waitWebDriver(3000);
 			GenericFunctions.waitForElementToAppear(createUserPage.editorCloseIcon);
+			GenericFunctions.waitWebDriver(1000);
 			createUserPage.editorCloseIcon.click();
+			GenericFunctions.waitWebDriver(3000);
 			Assert.assertTrue(true);
 			ExtentTestManager.getTest().log(LogStatus.PASS, "validated the message before saving the content, "+validationMsg+" is the Message");
 			//Wait for 2 sec
