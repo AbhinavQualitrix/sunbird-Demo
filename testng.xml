@@ -111,6 +111,7 @@
       <class name="org.testscript.regression.SearchParticularContentInAllMyContent"/> -->
    			
    			
+
    			
    			<!-- Test cases of Creator
    	  <class name="org.testscript.NavigateToMyActivity"/>  
@@ -125,26 +126,47 @@
     
       <class name="org.testscript.VerifyBookCreator"/>
       <class name="org.testscript.LoginAndChangePassword"/>
-      <class name="org.testscript.CollectionCreation"/>
+      <class name="org.testscript.CollectionCreation"/>-->
+
+   		<!-- Test cases of public user 
+   		 <class name="org.testscript.SearchUsers"/>
+      	 <class name="org.testscript.ProfileInfoUpdate"/>
+      	 <class name="org.testscript.SearchCourse"/>	
+      	 <class name="org.testscript.SearchInLibrary"/>		
+   		  <class name="org.testscript.CollectionCreation"/>
+   		        <class name="org.testscript.LoginAndChangePassword"/>
+    <class name="org.testscript.SearchCourseUsingFilter"/>
+
       <class name="org.testscript.ConfirmInstructionReceivedInforgotPassword"/>
-      <class name="org.testscript.UploadMp4Content"/>
- 	 <class name="org.testscript.UnlinkDailcode"/>
-      <class name="org.testscript.UploadWebmContent"/>
-       <class name="org.testscript.BookCreateOptionValidation"/>
+       <class name="org.testscript.VerifyHomePage"/> -->
+   		
+   		
+   		
+ 	 
+ 	 
+   	<!--   <class name="org.testscript.NavigateToMyActivity"/>  
+      <class name="org.testscript.VerifyAppliedFilter"/>
+      
+     
+     <class name="org.testscript.RootUsersProviderAndExtID"/>
+
     
-      <class name="org.testscript.DialCodeLink"/>
+     
     <class name="org.testscript.VerifyPublishedBucket"/>
+
       <class name="org.testscript.SearchCourseUsingFilter"/>
       <class name="org.testscript.UploadH5pContent"/>
       
       <class name="org.testscript.AdminCreationAndDownloadCsv"/>
       <class name="org.testscript.CreateBookAndVerifyOnlyBooksPresent"/>
+
+      <class name="org.testscript.SubOrgUsersProviderAndExtId"/>
+
      <class name="org.testscript.SendTheCourseForReview"/>
     
       <class name="org.testscript.SearchInLibraryUsingFilter"/>
-  
-      
     <class name="org.testscript.VerifyTheBookAvailableForReview"/>
+
       <class name="org.testscript.VerifyHomePage"/>
       <class name="org.testscript.RejectTheContent"/>
       <class name="org.testscript.UploadYoutubeContent"/>
@@ -157,10 +179,16 @@
       <class name="org.testscript.ResourceCreation"/>
        <class name="org.testscript.CourseCreation"/>
       <class name="org.testscript.CreateLessonPlanAndVerify"/> 
+
+   	<class name="org.testscript.RejectTheContent"/>
+   	<class name="org.testscript.CreateBookAndVerify"/>
+	<class name="org.testscript.CreateLessonPlanAndVerify"/> 
+
        <class name="org.testscript.CreateBookAndVerify"/>
-       <class name="org.testscript.BookCreation"/>
+       
        <class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/>-->
         
+
 
 
       <!--  
@@ -174,13 +202,22 @@
           <class name="org.testscript.LessonplanCreation"/>
          <class name="org.testscript.VerifyTheUploadedContent"/> -->
 			
-			<class name="org.testscript.VerifyLimitedSharing"/>
-			<class name="org.testscript.UploadYoutubeContent"/>
+			
 			
    			<!-- Test cases of Admin -->
    			<!-- Test cases of Reviewer -->
    <!-- 
-  <class name="org.testscript.regression.VerifyReviewerRequestChangesTheBook"/>
+  <class name="org.testscript.regression.VerifyReviewerRequestChangesTheBook"/>-->
+
+   			<!-- Test cases of Admin 
+   			<class name="org.testscript.AdminCreationAndDownloadCsv"/>
+   			<class name="org.testscript.VerifyElementsInAdminDashboard"/>  -->
+   			<!-- Test cases of Reviewer -->
+   
+   
+   <!--
+  
+
    <class name="org.testscript.VerifyLimitedSharing"/>
     <class name="org.testscript.regression.VerifyUploadAndDownloadContent"/>
     <class name="org.testscript.PublishTheContent"/>

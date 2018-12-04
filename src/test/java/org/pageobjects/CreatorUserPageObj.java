@@ -747,7 +747,9 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.upForReview.click();
 			
+
 			/*if(inputToReject.equalsIgnoreCase("Course"))
+
 			{
 				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad("./testData/courseNumbers.txt").toString());
 				GenericFunctions.waitWebDriver(3000);
@@ -2469,8 +2471,8 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.startCreating.click();
 			GenericFunctions.waitWebDriver(4000);
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
-			GenericFunctions.waitWebDriver(7500);
-
+			GenericFunctions.waitWebDriver(10000);
+			GenericFunctions.waitForPageToLoad(createUserPage.addResource);
 			GenericFunctions.waitForElementToAppear(createUserPage.addResource);
 			createUserPage.addResource.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.findSelectActivities);
@@ -2911,7 +2913,7 @@ public class CreatorUserPageObj extends BaseTest{
 		GenericFunctions.waitWebDriver(2000);
 		/*Dimension d = new Dimension(800,480);
 		driver.manage().window().setSize(d);*/
-		executor.executeScript("document.body.style.zoom = '0.8';");
+		//executor.executeScript("document.body.style.zoom = '0.8';");
 		//executor.executeScript("document.body.style.zoom = '70%';");
 	}
 
