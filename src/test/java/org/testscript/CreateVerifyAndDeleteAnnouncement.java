@@ -60,6 +60,8 @@ public class CreateVerifyAndDeleteAnnouncement extends BaseTest {
 		// Step4: Logout as Creator
 		GenericFunctions.refreshWebPage();
 		creatorLogin.userLogout();
+		
+		
 
 		/*// Step5: Login as Reciever				
 		creatorLogin.userLogin(REVIEWER);

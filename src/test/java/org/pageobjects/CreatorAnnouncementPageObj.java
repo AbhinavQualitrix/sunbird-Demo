@@ -100,7 +100,7 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			createAnnouncementPage.enterUrl.click();
 			GenericFunctions.waitWebDriver(1000);
-			createAnnouncementPage.enterUrl.sendKeys(objListOFTestDataForSunbird.get(7).getTitleDescription());
+			createAnnouncementPage.enterUrl.sendKeys("https://www.google.com/");
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.selectRecipient);
 			/*action.moveToElement(createAnnouncementPage.selectRecipient).build().perform();
@@ -164,7 +164,7 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			createAnnouncementPage.enterUrl.click();
 			GenericFunctions.waitWebDriver(1000);
-			createAnnouncementPage.enterUrl.sendKeys(objListOFTestDataForSunbird.get(7).getTitleDescription());
+			createAnnouncementPage.enterUrl.sendKeys("https://www.google.com/");
 			GenericFunctions.waitWebDriver(4000);
 			action.moveToElement(createAnnouncementPage.uploadDocument).click().build().perform();
 		
@@ -181,6 +181,7 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			action.click().build().perform();*/
 			GenericFunctions.waitWebDriver(3000);
 			GenericFunctions.waitForElements(createAnnouncementPage.checkLocation);
+			GenericFunctions.waitWebDriver(3000);
 			createAnnouncementPage.checkLocation.get(0).click();
 			createAnnouncementPage.checkLocation.get(1).click();
 			//action.moveToElement(createAnnouncementPage.checkLocation).click().build().perform();
@@ -190,11 +191,12 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.previewAnnouncement);
 			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.previewAnnouncement);
 			//createAnnouncementPage.previewAnnouncement.click();
-			GenericFunctions.waitForElementToAppear(createAnnouncementPage.sendAnnouncement);
-			GenericFunctions.waitWebDriver(2000);
+			//GenericFunctions.waitForElementToAppear(createAnnouncementPage.sendAnnouncement);
+			GenericFunctions.waitWebDriver(3000);
 			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.sendAnnouncement);
 			//createAnnouncementPage.sendAnnouncement.click();
-			GenericFunctions.waitForElementToAppear(createAnnouncementPage.announcementcreatedConfirmation);
+			GenericFunctions.waitWebDriver(3000);
+			//GenericFunctions.waitForElementToAppear(createAnnouncementPage.announcementcreatedConfirmation);
 			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.announcementcreatedConfirmation);
 			//createAnnouncementPage.announcementcreatedConfirmation.click();
 			GenericFunctions.waitWebDriver(2000);
@@ -252,13 +254,14 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 				createAnnouncementPage.deleteAnnouncementButton.click();
 			} else{
 				createAnnouncementPage.nextarrowOnHomePage.click();
-				GenericFunctions.waitWebDriver(1000);
+				GenericFunctions.waitWebDriver(2000);
 				String announcementName1 = createAnnouncementPage.selectAnnouncementName.getText();
 				System.out.println("Deleted Announcement is" +announcementName1);
 				createAnnouncementPage.deleteAnnouncementButton.click();
 			}
 			GenericFunctions.waitWebDriver(1500);
 			createAnnouncementPage.stopCreatingAnnouncementMessageYes.click();
+			GenericFunctions.waitWebDriver(2000);
 		}
 		catch(Exception e)
 		{
@@ -373,23 +376,25 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			//action.moveToElement(createAnnouncementPage.checkLocation).click().build().perform();
 			GenericFunctions.waitWebDriver(2000);
 			
-*/			GenericFunctions.waitWebDriver(2000);
+*/			GenericFunctions.waitWebDriver(6000);
 			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.editRecipients);
 			//createAnnouncementPage.editRecipients.click();
-			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitWebDriver(5000);
 			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.searchForLocation);
 			//createAnnouncementPage.searchForLocation.click();
-			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitWebDriver(4000);
 			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.confirmRecipients);
 			//createAnnouncementPage.confirmRecipients.click();
-			GenericFunctions.waitForElementToAppear(createAnnouncementPage.previewAnnouncement);
+			GenericFunctions.waitWebDriver(3000);
+			//GenericFunctions.waitForElementToAppear(createAnnouncementPage.previewAnnouncement);
 			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.previewAnnouncement);
 			//createAnnouncementPage.previewAnnouncement.click();
-			GenericFunctions.waitForElementToAppear(createAnnouncementPage.sendAnnouncement);
-			GenericFunctions.waitWebDriver(2000);
+			//GenericFunctions.waitForElementToAppear(createAnnouncementPage.sendAnnouncement);
+			GenericFunctions.waitWebDriver(3000);
 			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.sendAnnouncement);
 			//createAnnouncementPage.sendAnnouncement.click();
-			GenericFunctions.waitForElementToAppear(createAnnouncementPage.announcementcreatedConfirmation);
+			GenericFunctions.waitWebDriver(3000);
+			//GenericFunctions.waitForElementToAppear(createAnnouncementPage.announcementcreatedConfirmation);
 			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.announcementcreatedConfirmation);
 			//createAnnouncementPage.announcementcreatedConfirmation.click();
 			String edittedTitle = createAnnouncementPage.resendAnnouncementName.getText();

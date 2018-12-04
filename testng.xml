@@ -63,14 +63,15 @@
      
           <!-- Test cases of Announcement  -->
           
-    <class name="org.testscript.CreateVerifyAndDeleteAnnouncement"/>
-    <class name="org.testscript.CreateAnnouncementWithAttachment"/>
+    
+   <class name="org.testscript.ResendAnnouncement"/>
+     <class name="org.testscript.OpenAnnouncement"/>  
+   <class name="org.testscript.CreateAnnouncementWithAttachment"/>
     <class name="org.testscript.NavigateToAnnouncementDashboard"/>
      <class name="org.testscript.CheckAvailabilityOfCourseForInvitedMember"/>
      <class name="org.testscript.ResendAnnouncementAndVerifyAsReciever"/>
-    <class name="org.testscript.ResendAnnouncement"/>
-     <class name="org.testscript.OpenAnnouncement"/>
-     <class name="org.testscript.ResendAnnouncementAndVerifyAnnouncement"/>
+    <class name="org.testscript.CreateVerifyAndDeleteAnnouncement"/>
+     <class name="org.testscript.DeleteAnnouncement"/>
      
    
    			   <!-- Test cases of Regression p2 

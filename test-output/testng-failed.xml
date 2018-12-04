@@ -6,38 +6,25 @@
   </listeners>
   <test name="Test(failed)">
     <classes>
-      <class name="org.testscript.regression.VerifyUploadAndDownloadContent">
+      <class name="org.testscript.DeleteAnnouncement">
+        <methods>
+          <include name="deleteAnnouncement"/>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
+        </methods>
+      </class> <!-- org.testscript.DeleteAnnouncement -->
+      <class name="org.testscript.CreateVerifyAndDeleteAnnouncement">
         <methods>
           <include name="closeApplication"/>
           <include name="openApplication"/>
         </methods>
-      </class> <!-- org.testscript.regression.VerifyUploadAndDownloadContent -->
-      <class name="org.testscript.regression.ReviewerRequestChangesTheBook">
-        <methods>
-          <include name="verifyReviewerRequestChnagesTheBook"/>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.testscript.regression.ReviewerRequestChangesTheBook -->
-      <class name="org.testscript.BookCreateOptionValidation">
+      </class> <!-- org.testscript.CreateVerifyAndDeleteAnnouncement -->
+      <class name="org.testscript.ResendAnnouncementAndVerifyAsReciever">
         <methods>
           <include name="closeApplication"/>
           <include name="openApplication"/>
         </methods>
-      </class> <!-- org.testscript.BookCreateOptionValidation -->
-      <class name="org.testscript.VerifyLimitedSharing">
-        <methods>
-          <include name="verifyLimitedSharing"/>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.testscript.VerifyLimitedSharing -->
-      <class name="org.testscript.LessonplanCreation">
-        <methods>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.testscript.LessonplanCreation -->
+      </class> <!-- org.testscript.ResendAnnouncementAndVerifyAsReciever -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [ Regression Suite] -->
