@@ -2889,8 +2889,10 @@ public class CreatorUserPageObj extends BaseTest{
 	public void resizeTheScreen()
 	{
 		GenericFunctions.waitWebDriver(2000);
-		Dimension d = new Dimension(800,480);
-		driver.manage().window().setSize(d);
+		/*Dimension d = new Dimension(800,480);
+		driver.manage().window().setSize(d);*/
+		executor.executeScript("document.body.style.zoom = '0.8';");
+		//executor.executeScript("document.body.style.zoom = '70%';");
 	}
 
 }

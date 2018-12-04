@@ -23,6 +23,10 @@ public class ReviewerRequestChangesTheBook  extends BaseTest
 		
 		//3.Go to up for Review
 		contentCreationLessonPlanobj.rejectTheContent();
+		
+		
+		
+		//4.User is again redirected back to up for review section
 		contentCreationLessonPlanobj.verifyReviewerIsRedirectedPage();
 	}
 }

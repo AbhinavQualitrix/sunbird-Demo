@@ -30,23 +30,24 @@ public class VerifyLimitedSharing extends BaseTest {
 		//Step no.2:Click on Workspace
 		createuserpageobj.navigateToWorkspace(UPLOADCONTENT);
 		
-		//Steps no.3:Enter Details in edit details page
+		//Steps no.3:Verify edit details form 
 		contentcreateuploadpageobj.verifyThatEditDetailsPageIsDisplayed();
+		
+		//Step no.4:select dropdowns in edit details form
+		String[] valueArray = contentcreateuploadpageobj.selectValuesFromDropdowns();
+		
+		//Step no.5:verify the selected values in the dropdowns
+		contentcreateuploadpageobj.verifyValuesOfDropdowns(valueArray);
+		
+		//Step no.6:to verify topics selection in topic tree
+		contentcreateuploadpageobj.selectTopicFromTopicTree();
+		
+		//Step no.7:Verify limited sharing the content
+		contentcreateuploadpageobj.verifyLimitedSharingContent();
 		
 		//Step no.4 :Logout as reviewer
 		signupobj.userLogout();
-		
-		
-		
-		
-		
-
-
-
-
-
-
-
+	
 
 	}
 

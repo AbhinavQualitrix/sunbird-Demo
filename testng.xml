@@ -40,7 +40,7 @@
     
      
      
-                 <!-- Test cases of Mentor -->
+                 <!-- Test cases of Mentor 
           
           <class name="org.testscript.SearchOrgsAsAdmin" />
 	<class name="org.testscript.CheckCourseStatAsMentor" />
@@ -53,7 +53,7 @@
 	<class name="org.testscript.ConsumeOpenCourseByPublicUser" />
 	<class name="org.testscript.ConsumeCourseByInvitedMember" />
 	<class name="org.testscript.NavigateToMyActivityInDropdown" />
-	<class name="org.testscript.SearchCourseCreateInviteOnlyBatch" /> 
+	<class name="org.testscript.SearchCourseCreateInviteOnlyBatch" /> -->
      
           <!-- Test cases of Announcement
           
@@ -164,11 +164,11 @@
         
        -->
 
-      
+       <class name="org.testscript.regression.ReviewerRequestChangesTheBook"/>
    			<!-- Test cases of Admin -->
    			<!-- Test cases of Reviewer -->
    <!--
-   <class name="org.testscript.regression.ReviewerRequestChangesTheBook"/>
+  
    <class name="org.testscript.VerifyLimitedSharing"/>
     <class name="org.testscript.regression.VerifyUploadAndDownloadContent"/>
     <class name="org.testscript.PublishTheContent"/>

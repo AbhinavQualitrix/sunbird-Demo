@@ -475,8 +475,9 @@ public class CreatorUserPage {
 	@FindBy(xpath="//img[@class='resourceMetaImage ']")
 	public WebElement selectExtraResource;
 
-	//Elements for Test case 14
-	@FindBy(xpath="//div[@data-content='Send for review']/..//div[@class='ui pointing dropdown icon button']")
+	//Dec 04
+	//@FindBy(xpath="//div[@data-content='Send for review']/..//div[@class='ui pointing dropdown icon button']")
+	@FindBy(xpath="//div[@data-content='Send for review']/..//div[contains(@class,'ui pointing dropdown')]")
 	public WebElement limitedSharingArrow;
 
 	@FindBy(xpath="//div[.=' Limited sharing']")

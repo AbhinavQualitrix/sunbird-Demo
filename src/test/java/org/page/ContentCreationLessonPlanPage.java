@@ -42,11 +42,13 @@ public class ContentCreationLessonPlanPage
 	
 	//tc_238
 
-	@FindBy(xpath="//button[contains(text(),' REQUEST CHANGES ')]")
-	public  WebElement requestChnages;
+	//Dec 04
+	//@FindBy(xpath="//button[contains(text(),' REQUEST CHANGES ')]")
+	@FindBy(xpath="//span[contains(text(),'Request Changes')]")
+	public  WebElement requestChanges;
 	
 	@FindBy(xpath="//label[@class='content-title popup-item ng-binding ng-scope']")
-	public WebElement copiedContentName;
+	public WebElement copiedContentName;	
 	
 	//tc 238
 	@FindBy(xpath="/html/body/sui-modal/sui-dimmer/div/div/div/div[2]/div[2]/div/div/textarea")
