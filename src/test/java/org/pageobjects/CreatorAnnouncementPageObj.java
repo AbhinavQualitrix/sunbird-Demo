@@ -83,7 +83,7 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.enterTitle);
 			createAnnouncementPage.enterTitle.click();
-			String announcementNumber = GenericFunctions.testDataIncrementer("./TestData/announcementNumbers.txt").toString();
+			String announcementNumber = GenericFunctions.testDataIncrementer("./testData/announcementNumbers.txt").toString();
 			announcementName = objListOFTestDataForSunbird.get(7).getCourseName()+announcementNumber;
 			System.out.println(announcementName + announcementNumber);
 			createAnnouncementPage.enterTitle.sendKeys(announcementName + announcementNumber );
@@ -96,11 +96,11 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			createAnnouncementPage.enterDescription.click();
 			createAnnouncementPage.enterDescription.sendKeys(objListOFTestDataForSunbird.get(7).getTitle());
 			GenericFunctions.waitWebDriver(2000);
-			createAnnouncementPage.addUrl.click();
+			/*createAnnouncementPage.addUrl.click();
 			GenericFunctions.waitWebDriver(1000);
 			createAnnouncementPage.enterUrl.click();
 			GenericFunctions.waitWebDriver(1000);
-			createAnnouncementPage.enterUrl.sendKeys("https://www.google.com/");
+			createAnnouncementPage.enterUrl.sendKeys("https://www.google.com/");*/
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.selectRecipient);
 			/*action.moveToElement(createAnnouncementPage.selectRecipient).build().perform();
@@ -160,11 +160,11 @@ public class CreatorAnnouncementPageObj extends BaseTest{
 			createAnnouncementPage.enterDescription.click();
 			createAnnouncementPage.enterDescription.sendKeys(objListOFTestDataForSunbird.get(7).getTitle());
 			GenericFunctions.waitWebDriver(2000);
-			createAnnouncementPage.addUrl.click();
+			/*createAnnouncementPage.addUrl.click();
 			GenericFunctions.waitWebDriver(1000);
 			createAnnouncementPage.enterUrl.click();
 			GenericFunctions.waitWebDriver(1000);
-			createAnnouncementPage.enterUrl.sendKeys("https://www.google.com/");
+			createAnnouncementPage.enterUrl.sendKeys("https://www.google.com/");*/
 			GenericFunctions.waitWebDriver(4000);
 			action.moveToElement(createAnnouncementPage.uploadDocument).click().build().perform();
 		
