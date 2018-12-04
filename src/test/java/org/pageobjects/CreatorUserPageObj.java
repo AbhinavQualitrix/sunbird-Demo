@@ -742,6 +742,7 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.workSpace.click();
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.upForReview.click();
+			
 			if(inputToReject.equalsIgnoreCase("Course"))
 			{
 				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad("./testData/courseNumbers.txt").toString());
