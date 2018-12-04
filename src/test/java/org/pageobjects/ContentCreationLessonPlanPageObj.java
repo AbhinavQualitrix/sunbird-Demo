@@ -227,8 +227,8 @@ public class ContentCreationLessonPlanPageObj extends BaseTest
 			createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird1.get(2).getCourseName());
 			/*GenericFunctions.waitForElementToAppear(contentCreationPage.latestContent);
 			contentCreationPage.latestContent.click();*/
-			
-			GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
+			GenericFunctions.waitWebDriver(6000);
+			//GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
 			createUserPage.searchedContentForPublish.click();
 			GenericFunctions.waitWebDriver(3000);
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
@@ -248,8 +248,10 @@ public class ContentCreationLessonPlanPageObj extends BaseTest
 			html.sendKeys(Keys.chord(Keys.CONTROL, Keys.SUBTRACT));*/
 			executor.executeScript("document.body.style.zoom = '0.8'");
 			GenericFunctions.waitWebDriver(2000);
-			createUserPage.requestChangesButton.click();
-			GenericFunctions.waitForElementToAppear(contentCreationPage.upForReviewButton);
+			GenericFunctions.clickOnElementUsingJavascript(createUserPage.requestChangesButton1);
+			//createUserPage.requestChangesButton1.click();
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(createUserPage.upForReview);
 		}
 		catch(Exception e)
 		{

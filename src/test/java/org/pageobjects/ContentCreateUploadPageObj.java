@@ -354,11 +354,6 @@ public class ContentCreateUploadPageObj extends BaseTest
 			GenericFunctions.waitWebDriver(7500);
 
 			GenericFunctions.waitForElementToAppear(createUserPage.enterUrl);
-			createUserPage.enterUrl.sendKeys(UPLOAD_YOUTUBE);
-			GenericFunctions.waitWebDriver(5000);
-			action.moveToElement(contentUploadPage.popupUploadButton).build().perform();			
-			//GenericFunctions.waitForElementToAppear(contentUploadPage.popupUploadButton);
-			contentUploadPage.popupUploadButton.click();
 
 			//GenericFunctions.waitForElementToAppear(createUserPage.enterUrl);
 			createUserPage.enterUrl.sendKeys(UPLOAD_YOUTUBE);    
@@ -394,7 +389,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 
 				String Evalue = createUserPage.saveButton.getText();
 				Assert.assertEquals("Save", Evalue);
-				ExtentTestManager.getTest().log(LogStatus.PASS, "Cancel button is verified and it is displayed");
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Save button is verified and it is displayed");
 			}
 			GenericFunctions.waitWebDriver(5000);
 			
@@ -409,7 +404,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 
 	public String[] selectValuesFromDropdowns()
 	{
-		String[] valueArray={};
+		String[] valueArray=new String[4];
 		try 
 		{
 
@@ -421,11 +416,11 @@ public class ContentCreateUploadPageObj extends BaseTest
 			contentUploadPage.checkAppIcon.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.searchUploadImage);
 			GenericFunctions.waitWebDriver(1000);
-			createUserPage.searchUploadImage.sendKeys(SEARCH_COURSE_IMAGE);
+			createUserPage.searchUploadImage.sendKeys(SEARCH_CONTENT_IMAGE);
 			GenericFunctions.waitWebDriver(1200);
 			createUserPage.clickImageSearch.click();
 			GenericFunctions.waitWebDriver(5000);
-			contentUploadPage.checkContentIcon.click();
+			contentUploadPage.checkContentIcon.click();	
 
 			GenericFunctions.waitForElementToAppear(createUserPage.selectAppIcon);
 			contentUploadPage.selectAppIcon.click();
@@ -465,16 +460,35 @@ public class ContentCreateUploadPageObj extends BaseTest
 			GenericFunctions.waitForElementToAppearOnScreen(createUserPage.selectMedium);
 			GenericFunctions.waitWebDriver(1200);
 			createUserPage.selectMedium.click();
+			
+		
+			
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.scrollToElement(contentUploadPage.selectedCirriculumText);
+			GenericFunctions.waitWebDriver(2000);	
+			
 			valueArray[0] = contentUploadPage.selectedCirriculumText.getText();
 			valueArray[1]= contentUploadPage.selectedClassText.getText();
 			valueArray[2]=  contentUploadPage.selectedMediumText.getText();
 			valueArray[3]=  contentUploadPage.selectedSubjectText.getText();
+			
+			System.out.println(valueArray[0]+valueArray[1]+valueArray[2]+valueArray[3]);
+			System.out.println("Passed here");
 			GenericFunctions.waitWebDriver(1200);
 
-
-
-
-
+			
+			
+			
+			GenericFunctions.waitForElementToAppearOnScreen(createUserPage.clickOwner);
+			createUserPage.clickOwner.click();
+			GenericFunctions.waitWebDriver(2000);
+			createUserPage.selectOwner.click();
+			
+			GenericFunctions.waitForElementToAppear(createUserPage.saveButton);
+			createUserPage.saveButton.click();
+			
+			GenericFunctions.waitForElementToAppearOnScreen(createUserPage.closeContentPopup);
+			createUserPage.closeContentPopup.click();
 
 		}
 		catch(Exception e)
@@ -487,15 +501,22 @@ public class ContentCreateUploadPageObj extends BaseTest
 
 		//Return the stored values to verify
 		return valueArray;
-	}
+	}	
 
 	public void verifyValuesOfDropdowns(String [] valueArray)
 	{
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is tring to verify values in the dropdown");
-			GenericFunctions.waitForElementToAppear(createUserPage.closeButton);
-			createUserPage.closeButton.click();
+			
+			GenericFunctions.waitWebDriver(2000);
+			/*GenericFunctions.waitForElementToAppearOnScreen(createUserPage.searchedContentForPublish);
+			createUserPage.searchedContentForPublish.click();*/
+			
+			GenericFunctions.waitWebDriver(4000);
+			/*GenericFunctions.waitForElementToAppear(createUserPage.closeButton);
+			createUserPage.closeButton.click();*/
+			
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentUploadPage.editDetailsLink);
 			contentUploadPage.editDetailsLink.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.clickAppIcon);

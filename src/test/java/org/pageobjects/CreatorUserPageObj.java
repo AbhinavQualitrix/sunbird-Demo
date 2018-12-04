@@ -23,6 +23,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.page.ContentCreateUploadPage;
 import org.page.CreateMentorPage;
 import org.page.CreatorUserPage;
 import org.page.PublicUserPage;
@@ -45,6 +46,7 @@ public class CreatorUserPageObj extends BaseTest{
 	CreateMentorPage createMentorPage=PageFactory.initElements(driver, CreateMentorPage.class);
 	SignUpPage signUpPage=PageFactory.initElements(driver, SignUpPage.class);
 	UploadOrgPage uploadOrgPage = PageFactory.initElements(driver, UploadOrgPage.class);
+	ContentCreateUploadPage contentUploadPage = PageFactory.initElements(driver, ContentCreateUploadPage.class);
 	static Logger log = Logger.getLogger(CreatorUserPageObj.class.getName());
 	List <TestDataForSunbird> objListOFTestDataForSunbird1= null ;
 	Actions action = new Actions(driver);
@@ -573,8 +575,10 @@ public class CreatorUserPageObj extends BaseTest{
 				createUserPage.enterUrl.sendKeys(UPLOAD_YOUTUBE);
 				GenericFunctions.waitWebDriver(10000);
 				//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.UploadButton);	
-				GenericFunctions.waitWebDriver(8000);
-				action.moveToElement(createUserPage.UploadButton).click().perform();
+				GenericFunctions.waitWebDriver(4000);
+				GenericFunctions.waitForElementToAppear(contentUploadPage.popupUploadButton);
+				contentUploadPage.popupUploadButton.click();
+				//action.moveToElement(createUserPage.UploadButton).build().perform();
 				//action.click(createUserPage.UploadButton).build().perform();
 				//createUserPage.UploadButton.click();
 				System.out.println("YOUTUBE content uploaded sucessfully");
@@ -2875,17 +2879,19 @@ public class CreatorUserPageObj extends BaseTest{
 				createUserPage.checkbox.get(i).click();
 			}
 			System.out.println("Checked all CBs");
-			GenericFunctions.waitWebDriver(2500);	
+			GenericFunctions.waitWebDriver(2000);	
 			GenericFunctions.waitForElementToAppear(createUserPage.popupPublishButton);
 			executor.executeScript("arguments[0].click();", createUserPage.popupPublishButton);
 			//createUserPage.popupPublishButton.click();
 			System.out.println(inputToSearch+" Content published sucessfully");
 			ExtentTestManager.getTest().log(LogStatus.PASS,inputToSearch+" Content published sucessfully");
-			GenericFunctions.waitWebDriver(3000);
+			GenericFunctions.waitWebDriver(6000);
+			GenericFunctions.refreshWebPage();
+			
 			GenericFunctions.waitForElementToAppear(createUserPage.upForReview);
 			createUserPage.upForReview.click();
 			
-			GenericFunctions.refreshWebPage();
+			
 			////handlePopupOnLogin();
 			GenericFunctions.waitWebDriver(3000);
 		}

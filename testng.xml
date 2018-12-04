@@ -19,12 +19,15 @@
         <class name="org.testscript.CheckUpForReviewAsFlagReviewer"/>
         <class name="org.testscript.UploadSubOrgUsersWithProviderAndExtId"/>
         <class name="org.testscript.UploadRootOrgUsersWithProviderAndExtID"/>
-        <class name="org.testscript.SearchAndDownloadOrgFile"/>
+       <class name="org.testscript.SearchAndDownloadOrgFile"/>
         <class name="org.testscript.UploadRootOrgUsersWithOrgId"/>
         <class name="org.testscript.UploadSubOrgUsersWithOrgId"/>
         <class name="org.testscript.SkillEndorsement"/>
-        <class name="org.testscript.UpdateProfilePhoto"/>-->
+        <class name="org.testscript.UpdateProfilePhoto"/>
+         <class name="org.testscript.SubOrgUsersProviderAndExtId"/>
+         <class name="org.testscript.RootUsersProviderAndExtID"/>-->
         
+     
              <!-- Test cases of Smoke Suite   
        
        <class name="org.testscript.CreateCourseAndVerify"/>
@@ -37,14 +40,7 @@
       <class name="org.testscript.UploadContentTypeEpubAndVerify"/>
        <class name="org.testscript.UploadContentTypeHtmlAndVerify"/>
        <class name="org.testscript.UploadContentTypePdfAndVerify"/> -->
-      
-     <class name="org.testscript.UploadContentTypeHtmlAndVerify"/>
-	 <class name="org.testscript.CreateLessonPlanAndVerify"/>
-    <class name="org.testscript.CreateCollectionAndVerify"/>
-     <class name="org.testscript.CreateVerifyAndDeleteAnnouncement"/>
- <class name="org.testscript.UploadMp4Content"/>
-   
-<class name="org.testscript.CreateBookAndVerify"/>
+
 
                  <!-- Test cases of Mentor 
           
@@ -70,22 +66,19 @@
     <class name="org.testscript.NavigateToAnnouncementDashboard"/>
      <class name="org.testscript.CheckAvailabilityOfCourseForInvitedMember"/>
      <class name="org.testscript.ResendAnnouncementAndVerifyAsReciever"/>
-
     <class name="org.testscript.CreateVerifyAndDeleteAnnouncement"/>
-     <class name="org.testscript.DeleteAnnouncement"/>
-
+    <class name="org.testscript.DeleteAnnouncement"/>
     <class name="org.testscript.ResendAnnouncement"/>
      <class name="org.testscript.OpenAnnouncement"/>-->
     
 
-     
+       
+      
    
    			   <!-- Test cases of Regression p2 
    			   
    		<class name="org.testscript.regression.VerifySortOption"/>
    		<class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/>
-   		<class name="org.testscript.regression.SeeTheContentBasedOnAppliedFilter"/>	
-   		<class name="org.testscript.regression.SortTheResultInUpForReview"/>
       <class name="org.testscript.regression.CreateResourceByUploadingVideoAndActivityPlugins"/>
    		<class name="org.testscript.regression.VerifyTheClosingOfContentEditor"/>
       <class name="org.testscript.regression.CreateResourceWithContentsPluginsAndVerifyContentEditor"/>
@@ -129,7 +122,7 @@
       <class name="org.testscript.SearchInLibrary"/>
       <class name="org.testscript.LimitedSharingTheContent"/>
  	 <class name="org.testscript.UploadHtmlContent"/>
-     <class name="org.testscript.RootUsersProviderAndExtID"/>
+    
       <class name="org.testscript.VerifyBookCreator"/>
       <class name="org.testscript.LoginAndChangePassword"/>
       <class name="org.testscript.CollectionCreation"/>
@@ -141,7 +134,6 @@
     
       <class name="org.testscript.DialCodeLink"/>
     <class name="org.testscript.VerifyPublishedBucket"/>
-      <class name="org.testscript.SubOrgUsersProviderAndExtId"/>
       <class name="org.testscript.SearchCourseUsingFilter"/>
       <class name="org.testscript.UploadH5pContent"/>
       
@@ -161,14 +153,7 @@
       <class name="org.testscript.VerifyElementsInAdminDashboard"/>  
       <class name="org.testscript.CreateBookAndVerify"/>
        <class name="org.testscript.BookCreation"/>
-     
-     
-    	
-    
-     
-     
-
-      
+          
       <class name="org.testscript.ResourceCreation"/>
        <class name="org.testscript.CourseCreation"/>
       <class name="org.testscript.CreateLessonPlanAndVerify"/> 
@@ -176,23 +161,26 @@
        <class name="org.testscript.BookCreation"/>
        <class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/>-->
         
- 
 
-      <!--  <class name="org.testscript.regression.ReviewerRequestChangesTheBook"/>
-        <class name="org.testscript.VerifyLimitedSharing"/>
+
+      <!--  
+        
          <class name="org.testscript.regression.VerifyUploadAndDownloadContent"/>
          <class name="org.testscript.BookCreateOptionValidation"/>
-
+         <class name="org.testscript.regression.VerifyUploadAndDownloadContent"/>
           <class name="org.testscript.LessonplanCreation"/>
            <class name="org.testscript.VerifyThatTopicsAreDisplayedOnMetaDataForm"/>
          <class name="org.testscript.VerifyThatTopicsAreSelectedOnMetaDataPage"/>
           <class name="org.testscript.LessonplanCreation"/>
          <class name="org.testscript.VerifyTheUploadedContent"/> -->
-
+			
+			<class name="org.testscript.VerifyLimitedSharing"/>
+			<class name="org.testscript.UploadYoutubeContent"/>
+			
    			<!-- Test cases of Admin -->
    			<!-- Test cases of Reviewer -->
-   <!--
-  
+   <!-- 
+  <class name="org.testscript.regression.VerifyReviewerRequestChangesTheBook"/>
    <class name="org.testscript.VerifyLimitedSharing"/>
     <class name="org.testscript.regression.VerifyUploadAndDownloadContent"/>
     <class name="org.testscript.PublishTheContent"/>
@@ -208,11 +196,15 @@
     <class name="org.testscript.VerifyTheSorting"/>
      <class name="org.testscript.EditAndVerifyTopicTree"/>
       <class name="org.testscript.CheckInReviewSubmission"/>
-      <class name="org.testscript.VerifycopyContent"/>
-      <class name="org.testscript.regression.CreateResourceByCreatingAFillInThBlanksQuestion"/>
-     -->
-     
+      <class name="org.testscript.VerifycopyContent"/>-->
       
+    
+     
+      <!--
+      <class name="org.testscript.regression.SortTheResultInUpForReview"/>
+       <class name="org.testscript.regression.SeeTheContentBasedOnAppliedFilter"/>	
+       <class name="org.testscript.regression.CreateResourceByCreatingAFillInThBlanksQuestion"/>
+        -->
       
       
     </classes>
