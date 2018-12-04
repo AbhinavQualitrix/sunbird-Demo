@@ -46,7 +46,7 @@ public class UploadHtmlContent  extends BaseTest
 		GenericFunctions.waitWebDriver(2000);
 
 		//Step 8 reject the upload type -HTML	
-		creatorUserPageObj.rejectTheUploads(HTML);
+		creatorUserPageObj.rejectTheUploads("html");
 
 		//Logout as Reviewer
 		signupObj.userLogout();

@@ -45,7 +45,7 @@ public class UploadEpubContent extends BaseTest
 		GenericFunctions.waitWebDriver(2000);
 
 		//Step 8:Reject the upload type -EPUB
-		creatorUserPageObj.rejectTheUploads(EPUB);
+		creatorUserPageObj.rejectTheUploads("epub");
 
 		//Logout as Reviewer
 		signupObj.userLogout();

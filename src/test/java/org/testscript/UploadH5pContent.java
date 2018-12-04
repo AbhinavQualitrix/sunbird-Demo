@@ -45,7 +45,7 @@ public class UploadH5pContent  extends BaseTest
 		GenericFunctions.waitWebDriver(2000);
 		
 		//reject the upload type -H5P
-		creatorUserPageObj.rejectTheUploads(H5P);
+		creatorUserPageObj.rejectTheUploads("h5p");
 		
 		//Logout as Reviewer
 		signupObj.userLogout();

@@ -654,6 +654,10 @@ public class CreatorUserPageObj extends BaseTest{
 			{
 				createUserPage.contentMp4Title.sendKeys(title+"_"+H5P);
 			}
+			else if(uploadType.contains(PDF))
+			{
+				createUserPage.contentMp4Title.sendKeys(title+"_"+PDF);
+			}
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.contentMp4Desc.click();
 			createUserPage.contentMp4Desc.sendKeys(objListOFTestDataForSunbird1.get(4).getCourseDescription());
@@ -2808,6 +2812,10 @@ public class CreatorUserPageObj extends BaseTest{
 			{
 				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird1.get(4).getCourseName()+"_"+GenericFunctions.readFromNotepad("./testData/contentNumbers.txt")+"_"+H5P);
 			}
+			else if(inputToSearch.equalsIgnoreCase(PDF))
+			{
+				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird1.get(4).getCourseName()+"_"+GenericFunctions.readFromNotepad("./testData/contentNumbers.txt")+"_"+PDF);
+			}
 
 			else if(inputToSearch.equalsIgnoreCase(COLLECTION))
 			{
@@ -2843,11 +2851,12 @@ public class CreatorUserPageObj extends BaseTest{
 				GenericFunctions.scrollToElement(createUserPage.clickPublishIcon);
 				createUserPage.clickPublishIcon.click();
 			}
-			else if(inputToSearch.contains("epub")||inputToSearch.contains("webm")||inputToSearch.contains("mp4")||inputToSearch.contains("h5p")||inputToSearch.contains("html")||inputToSearch.contains("youtube"))
+			else if(inputToSearch.contains("epub")||inputToSearch.contains("webm")||inputToSearch.contains("mp4")||inputToSearch.contains("h5p")||inputToSearch.contains("html")||inputToSearch.contains("youtube")||inputToSearch.contains("pdf"))
 			{
 
-				GenericFunctions.waitWebDriver(3000);
-				GenericFunctions.waitForElementToAppear(createUserPage.publishButton);
+				GenericFunctions.waitWebDriver(4000);
+				//GenericFunctions.waitForElementToAppear(createUserPage.publishButton);
+				GenericFunctions.scrollTillEndOfPage();
 				//GenericFunctions.scrollToElement(createUserPage.publishButton);
 				GenericFunctions.waitWebDriver(2500);
 				System.out.println(createUserPage.publishButton.getText());

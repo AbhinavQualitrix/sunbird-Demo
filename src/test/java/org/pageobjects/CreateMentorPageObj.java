@@ -260,6 +260,7 @@ public class CreateMentorPageObj extends BaseTest{
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to search authentic user and edit");
 			GenericFunctions generic = new GenericFunctions();
+			GenericFunctions.waitWebDriver(4000);
 			String personName = createMentorPage.profileNameInUserSearch.getText();
 			System.out.println(personName);
 			GenericFunctions.waitForElementToAppear(createMentorPage.editIconInUserProfileSearch);
@@ -268,7 +269,7 @@ public class CreateMentorPageObj extends BaseTest{
 			{
 				System.out.println("authenticPerson");
 				createMentorPage.editIconInUserProfileSearch.click();
-				GenericFunctions.waitWebDriver(1000);		
+				GenericFunctions.waitWebDriver(3000);		
 				createMentorPage.selectRoleCheckbox.click();
 				GenericFunctions.waitWebDriver(2000);	
 				createMentorPage.updateButtonInUserProfile.click();
@@ -328,11 +329,11 @@ public class CreateMentorPageObj extends BaseTest{
 	{
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to enroll for an open batch");
-			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitWebDriver(6000);
 			createMentorPage.enrollForOpenBatch.click();
-			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitWebDriver(4000);
 			createMentorPage.enrollForCourse.click();
-			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitWebDriver(3000);
 			/*if(createMentorPage.resumeCourse.isDisplayed()==true)
 			{
 				System.out.println("User is already enrolled to the course");
@@ -343,7 +344,7 @@ public class CreateMentorPageObj extends BaseTest{
 				GenericFunctions.waitWebDriver(2000);
 				createMentorPage.enrollForCourse.click();
 			}*/
-			creatorUserPageObj.handlePopupOnLogin();
+			//creatorUserPageObj.handlePopupOnLogin();
 		}
 		catch(Exception e)
 		{
@@ -746,13 +747,13 @@ public class CreateMentorPageObj extends BaseTest{
 		try
 		{
 		ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to view the course stats");
-		GenericFunctions.waitWebDriver(2000);
+		GenericFunctions.waitWebDriver(3000);
 		GenericFunctions.refreshWebPage();
-		GenericFunctions.waitWebDriver(2000);
+		GenericFunctions.waitWebDriver(3000);
 		createMentorPage.viewCourseStat.click();
-		GenericFunctions.waitWebDriver(2000);
+		GenericFunctions.waitWebDriver(3000);
 		createMentorPage.fromBeginning.click();
-		GenericFunctions.waitWebDriver(2000);	
+		GenericFunctions.waitWebDriver(3000);	
 		}
 		catch(Exception e)
 		{
