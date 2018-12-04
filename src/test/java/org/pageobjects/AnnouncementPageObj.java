@@ -84,7 +84,7 @@ public class AnnouncementPageObj extends BaseTest
 			createAnnouncementPage.create_Announcement.click();
 			GenericFunctions.waitWebDriver(5000);
 			createAnnouncementPage.enterTitle.click();
-			String announcementNumber = GenericFunctions.testDataIncrementer(".//TestData//announcementNumbers.txt").toString();
+			String announcementNumber = GenericFunctions.testDataIncrementer("./testData/announcementNumbers.txt").toString();
 			announcementName = objListOFTestDataForSunbird.get(7).getCourseName();
 			System.out.println(announcementName + announcementNumber);
 			createAnnouncementPage.enterTitle.sendKeys(announcementName + announcementNumber );
@@ -174,7 +174,7 @@ public class AnnouncementPageObj extends BaseTest
 			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.waitForElementToAppear(createAnnouncementPage.enterTitle);
 			createAnnouncementPage.enterTitle.click();
-			String announcementNumber = GenericFunctions.testDataIncrementer(".//TestData//announcementNumbers.txt").toString();
+			String announcementNumber = GenericFunctions.testDataIncrementer("./testData/announcementNumbers.txt").toString();
 			announcementName = objListOFTestDataForSunbird.get(7).getCourseName();
 			System.out.println(announcementName + announcementNumber);
 			createAnnouncementPage.enterTitle.sendKeys(announcementName + announcementNumber );
@@ -203,7 +203,9 @@ public class AnnouncementPageObj extends BaseTest
 			GenericFunctions.waitWebDriver(2000);
 			createAnnouncementPage.searchForLocation.sendKeys("Nellore");
 			GenericFunctions.waitWebDriver(1000);
-			createAnnouncementPage.checkLocation.click();
+			createAnnouncementPage.checkLocation.get(0).click();
+			GenericFunctions.waitWebDriver(1000);
+			createAnnouncementPage.checkLocation.get(1).click();
 			GenericFunctions.waitWebDriver(1000);
 			createAnnouncementPage.confirmRecipients.click();
 			GenericFunctions.waitWebDriver(3000);
@@ -247,7 +249,7 @@ public class AnnouncementPageObj extends BaseTest
 			createAnnouncementPage.create_Announcement.click();
 			GenericFunctions.waitWebDriver(1000);
 			//createAnnouncementPage.enterTitle.click();
-			String announcementNumber = GenericFunctions.testDataIncrementer(".//TestData//announcementNumbers.txt").toString();
+			String announcementNumber = GenericFunctions.testDataIncrementer("./testData/announcementNumbers.txt").toString();
 			announcementName = objListOFTestDataForSunbird.get(7).getCourseName();
 			System.out.println(announcementName + announcementNumber);
 			createAnnouncementPage.enterTitle.sendKeys(announcementName + announcementNumber );
@@ -282,7 +284,9 @@ public class AnnouncementPageObj extends BaseTest
 			GenericFunctions.waitWebDriver(1000);
 			createAnnouncementPage.searchForLocation.sendKeys("Nellore");
 			GenericFunctions.waitWebDriver(1000);
-			createAnnouncementPage.checkLocation.click();
+			createAnnouncementPage.checkLocation.get(0).click();
+			GenericFunctions.waitWebDriver(1000);
+			createAnnouncementPage.checkLocation.get(1).click();
 			GenericFunctions.waitWebDriver(1000);
 			createAnnouncementPage.confirmRecipients.click();
 			GenericFunctions.waitWebDriver(1000);

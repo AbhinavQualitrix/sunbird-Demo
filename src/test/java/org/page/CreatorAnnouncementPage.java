@@ -157,4 +157,16 @@ public class CreatorAnnouncementPage {
 	@FindBy(xpath="//button[.=' EDIT RECIPIENTS ']")
 	public WebElement editRecipients;
 
+	
+	// @author Sachin
+	@FindBy(xpath="//input[contains(@formcontrolname,'title')]")
+	public WebElement resendTitle;
+	
+	// @author Sachin
+	@FindBy(xpath="(//td[contains(@tabindex,'0')])[1]")
+	public WebElement editedAnnouncement;
+	
+	// @author Sachin
+	@FindBy(xpath="(//button[contains(@type,'button')])[11]")
+	public WebElement selectRecipients;
 }

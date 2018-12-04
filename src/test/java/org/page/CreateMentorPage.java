@@ -249,4 +249,197 @@ public class CreateMentorPage {
 	
 	@FindBy(xpath="//div[@class='sub-header']")
 	public WebElement getCourseName;
+	
+	
+	//-------------------------------------------
+	
+	
+
+	//@author Sachin
+	// ProfileImage Web Element
+	@FindBy(xpath="//*[@id='dropdown-menu-list-header']/img")
+	public WebElement profileImage; 
+	
+	//@author Sachin
+	// ProfileImage Workspace
+	@FindBy(xpath="(//a[@class='item'][contains(.,'Workspace')])[2]")
+	public WebElement workSpace;
+	
+	
+	//@author Sachin
+	// Course Web Element
+	@FindBy(xpath="/html/body/app-root/app-workspace/div/div[3]/app-create-content/div/div[1]/div/div[1]/div/div")
+	public WebElement course;
+	
+	//@author Sachin
+	//  Web Element ProfileIconClick
+	@FindBy(xpath="//*[@id='dropdown-menu-list-header']/img")
+	public WebElement ProfileIconClick;
+	
+	//@author Sachin
+	//  Web Element workSpace
+	@FindBy(xpath="/html/body/app-root/app-workspace/div/div[3]/app-create-content/div/div[1]/div/div[1]/div/div")
+	public WebElement WorkSpace;
+	
+	//@author Sachin
+	//  Web Element create
+	@FindBy(xpath="/html/body/app-root/div/app-workspace/div/div[2]/app-workspacesidebar/div/a[1]")
+	public WebElement create;
+	
+	
+	//@author Sachin
+	//  Web Element lessonPlan
+	@FindBy(xpath="/html/body/app-root/div/app-workspace/div/div[3]/app-create-content/div/div[2]/div/div[1]/div/div/div/span")
+	public WebElement lessonPlan;
+	
+	//@author Sachin
+	//  Web Element lessonPlanName
+	@FindBy(xpath="/html/body/sui-modal/sui-dimmer/div/div/div/div/form/div/div[1]/app-content-creation-default-template/div/div[1]/div/div/input")		
+	public WebElement lessonPlanName;
+	
+	//@author Sachin
+	//  Web Element upForReview
+	@FindBy(xpath="/html/body/app-root/div/app-workspace/div/div[2]/app-workspacesidebar/div/a[7]")		
+	public WebElement upForReview;
+	
+	
+	//@author Sachin
+	//  Web Element searchPlaceHolder
+	@FindBy(xpath="//*[@id='search-input-container']/div/div/input")		
+	public WebElement searchPlaceHolder;
+	
+	
+			
+	//@author Sachin
+	//  Web Element firstContent
+	@FindBy(xpath="/html/body/app-root/div/app-workspace/div/div[3]/app-up-for-review/table/tbody/tr[1]/td[1]")		
+	public WebElement firstContent;
+			  
+	//*[@id="commonHeader"]/div/div[4]/div/div/div[2]/div[7]
+	
+	//@author Sachin
+	//  Web Element requestChanges
+	@FindBy(xpath="//*[@id='commonHeader']/div/div[4]/div/div/div[2]/div[7]")		
+	public WebElement requestChanges;
+	
+	//@author Sachin
+	// Web Element drafts
+	@FindBy(xpath="/html/body/app-root/div/app-workspace/div/div[2]/app-workspacesidebar/div/a[3]")		
+	public WebElement drafts;
+	
+	
+	//@author Sachin
+	// Web Element firstLessonPlan
+	@FindBy(xpath="/html/body/app-root/div/app-workspace/div/div[3]/app-draft/div[1]/div/div/div[1]/app-card/div/div/div[1]/div")		
+	public WebElement firstLessonPlan;
+	
+	//@author Sachin
+	// Web Element editPopupCloseIcon
+	@FindBy(xpath="//*[@id='meta-modal']/div[1]/div/div/div[2]/i")		
+	public WebElement editPopupCloseIcon;
+	
+	//@author Sachin
+	// Web Element saveButton
+	@FindBy(xpath="//*[@id='saveButton']/i")		
+	public WebElement saveButton;
+	
+	//@author Sachin
+	// Web Element limitedSharingDropdown
+	@FindBy(xpath="//*[@id='reviewButton']/div[2]/i")		
+	public WebElement limitedSharingDropdown;
+			
+	//@author Sachin
+	// Web Element limitedSharing
+	@FindBy(xpath="//*[@id='reviewButton']/div[2]/div/div")		
+	public WebElement limitedSharing;
+	
+	
+	//@author Sachin
+	// Web Element limitedPublishing
+	@FindBy(xpath="/html/body/app-root/div/app-workspace/div/div[2]/app-workspacesidebar/div/a[8]")		
+	public WebElement limitedPublishing;
+	
+	//@author Sachin
+	// Web Element shareIcon
+	@FindBy(xpath="/html/body/app-root/div/app-workspace/div/div[3]/app-limited-published/div[1]/div/div/div/app-card/div/div/div[3]/div[2]/a/span/i")		
+	public WebElement shareIcon;
+	
+	//@author Sachin
+	// Web Element linkToBeCopied
+	@FindBy(xpath="//*[@id='copyLinkData']")		
+	public WebElement linkToBeCopied;
+	
+	//@author Sachin
+	// Web Element limitedPublishingDelete
+	@FindBy(xpath="/html/body/app-root/div/app-workspace/div/div[3]/app-limited-published/div[1]/div/div/div/app-card/div/div/div[3]/div[1]/a/span/i")		
+	public WebElement limitedPublishingDelete;
+		
+	//@author Sachin
+	// Web Element yesPopUp
+	@FindBy(xpath="/html/body/sui-modal/sui-dimmer/div/div/div/div[3]/button[2]")		
+	public WebElement yesPopUp;
+	
+	//@author Sachin
+	// Web Element allMyContent
+	@FindBy(xpath="//a[@href='/workspace/content/allcontent/1']")		
+	public WebElement allMyContent;	
+	
+	//@author Sachin
+	// Web Element nameCopy
+	@FindBy(xpath="/html/body/app-root/div/app-workspace/div/div[3]/app-draft/div[1]/div/div/div/app-card/div/div/div[1]/div")		
+	public WebElement nameCopy;	
+	
+	
+	//@author Sachin
+	// Web Element placeHolderSearch
+	@FindBy(xpath="//*[@id='search-input-container']/div/div/input//*[@id='search-input-container']/div/div/input")		
+	public WebElement placeHolderSearch;	
+	
+
+	//@author Sachin
+	// Web Element searchIcon
+	@FindBy(xpath="//*[@id='search-input-container']/div/div/i")		
+	public WebElement searchIcon;
+	
+	
+	//@author Sachin
+	// Web Element preview
+	@FindBy(xpath="//*[@id='content-list']/div/div/div/div/div[2]/div[4]/i[1]")		
+	public WebElement preview;
+	
+	//@author Sachin
+	// Web Element preview
+	@FindBy(id="(//div[contains(@class,'avatar-content')])[2]")
+	public WebElement dropdown;
+	
+	@FindBy(xpath="(//a[@class='item'][contains(.,'Logout')])[3]")
+	public WebElement logout;
+	
+	@FindBy(xpath="(//a[contains(.,'LOGIN')])[3]")
+	public WebElement Login;
+
+	//@author Sachin
+	@FindBy(xpath="(//div[contains(@class,'meta course')])[1]")
+	public WebElement latestCourse;
+	
+	
+	//@author Sachin
+	@FindBy(xpath="(//i[@class='dropdown icon'])[4]")
+	public WebElement membersinBatchDropDown;
+	
+	//@author Sachin
+	@FindBy(xpath="(//div[contains(@class,'item')])[4]")
+	public WebElement updateMentorInBatch;
+	
+	//@author Sachin
+	@FindBy(xpath="(//i[contains(@class,'dropdown icon')])[5]")
+	public WebElement updateMembersInBatch;
+	
+	
+	//@author Sachin
+	@FindBy(xpath="(//div[@class='content batch-content-meta'])[1]")
+	public WebElement batchContent;
+	
+	@FindBy(xpath="//div[@class='item'][contains(.,'Test BookReviewer (te***************@qualitrix.com)')]")
+	public WebElement testBookReviewerInBatch;
 }

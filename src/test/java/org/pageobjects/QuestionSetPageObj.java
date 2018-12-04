@@ -50,7 +50,7 @@ public class QuestionSetPageObj extends BaseTest{
 				ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create resource with different question sets");
 				GenericFunctions.waitWebDriver(1500);
 				//GenericFunctions.waitForElementToAppear(createUserPage.bookName);
-				String resourceNumber = GenericFunctions.testDataIncrementer(".//testData//resourceNumbers.txt").toString();
+				String resourceNumber = GenericFunctions.testDataIncrementer("./testData/resourceNumbers.txt").toString();
 				createUserPage.bookName.sendKeys(objListOFTestDataForSunbird.get(6).getCourseName()+resourceNumber);
 				 				
 				createUserPage.startCreating.click();

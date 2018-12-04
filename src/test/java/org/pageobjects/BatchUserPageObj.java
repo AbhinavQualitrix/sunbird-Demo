@@ -24,6 +24,7 @@ import org.page.CreatorUserPage;
 import org.page.FlagReviewerPage;
 import org.page.PublicUserPage;
 import org.page.SignUpPage;
+import org.page.UploadOrgPage;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
@@ -59,7 +60,7 @@ public class BatchUserPageObj extends BaseTest
 			GenericFunctions.waitWebDriver(1500);
 			System.out.println(driver.findElement(By.xpath(" //span[contains(text(),'Design Course')]")).getText());
 			GenericFunctions.waitForElementToAppear(createUserPage.courseName);
-			String courseNumber = GenericFunctions.testDataIncrementer(".//testData//courseNumbers.txt").toString();
+			String courseNumber = GenericFunctions.testDataIncrementer("./testData/courseNumbers.txt").toString();
 			createUserPage.courseName.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+courseNumber);
 			createUserPage.courseDescription.sendKeys(objListOFTestDataForSunbird.get(0).getCourseDescription()+courseNumber);	
 			GenericFunctions.waitWebDriver(1500);
@@ -255,7 +256,7 @@ public class BatchUserPageObj extends BaseTest
 			createUserPage.headerProfile.click();*/
 			createUserPage.headerCourse.click();
 			GenericFunctions.waitWebDriver(1000);
-			String courseNumber = GenericFunctions.testDataIncrementer(".//testData//courseNumbers.txt").toString();
+			String courseNumber = GenericFunctions.testDataIncrementer("./testData/courseNumbers.txt").toString();
 			CreateMentorPage.filterSearch.sendKeys(objListOFTestDataForSunbird1.get(0).getTitle()+courseNumber);
 			createUserPage.searchIconUpForReview.click();
 			GenericFunctions.waitWebDriver(2000);
@@ -281,7 +282,7 @@ public class BatchUserPageObj extends BaseTest
 			// GenericFunctions.waitWebDriver(1500);
 			// createUserPage.headerCourse.click();
 			// GenericFunctions.waitWebDriver(1000);
-			// createMentorPage.filterSearch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad(".//batchNumbers.txt").toUpperCase());
+			// createMentorPage.filterSearch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad("./batchNumbers.txt").toUpperCase());
 			// createUserPage.searchIcon.click();
 			// GenericFunctions.waitWebDriver(2000);
 			// createMentorPage.courseImg1.click();
@@ -291,7 +292,7 @@ public class BatchUserPageObj extends BaseTest
 			GenericFunctions.switchToFrame(driver, createMentorPage.batchForm);
 			GenericFunctions.waitWebDriver(1000);
 			createMentorPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
-					+ GenericFunctions.testDataIncrementer(".//TestData//sunbird_data.txt"));
+					+ GenericFunctions.testDataIncrementer("./testData/batchNumbersData.txt"));
 			createMentorPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
 //			createMentorPage.openBatch.click();
 			createMentorPage.startDate.click(); // sendKeys(objListOFTestDataForSunbird.get(8).getTitle());
@@ -356,7 +357,7 @@ public class BatchUserPageObj extends BaseTest
 			createMentorPage.addIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 			createMentorPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
-					+ GenericFunctions.testDataIncrementer(".//TestData//batchNumbers.txt"));
+					+ GenericFunctions.testDataIncrementer("./testData/batchNumbers.txt"));
 			createMentorPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
 
 			createMentorPage.startDate.click();
@@ -415,7 +416,7 @@ public class BatchUserPageObj extends BaseTest
 			createMentorPage.addIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 			createMentorPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
-					+ GenericFunctions.testDataIncrementer(".//TestData//batchNumbers.txt"));
+					+ GenericFunctions.testDataIncrementer("./testData/batchNumbers.txt"));
 			createMentorPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
 
 			createMentorPage.startDate.sendKeys("27 November 2018");
@@ -469,7 +470,7 @@ public class BatchUserPageObj extends BaseTest
 			createMentorPage.addIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 			createMentorPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
-					+ GenericFunctions.testDataIncrementer(".//TestData//batchNumbers.txt"));
+					+ GenericFunctions.testDataIncrementer("./testData/batchNumbers.txt"));
 			createMentorPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
 
 			createMentorPage.startDate.sendKeys("1 January 2019");
@@ -557,7 +558,7 @@ public class BatchUserPageObj extends BaseTest
 			GenericFunctions.switchToFrame(driver, createMentorPage.batchForm);
 			createMentorPage.nameOfBatch.clear();
 			createMentorPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(1).getCourseName()
-					+ GenericFunctions.testDataIncrementer(".//TestData//batchNumbers.txt"));
+					+ GenericFunctions.testDataIncrementer("./testData/batchNumbers.txt"));
 			GenericFunctions.waitWebDriver(1000);
 			createMentorPage.aboutBatch.clear();
 			createMentorPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
@@ -603,7 +604,7 @@ public class BatchUserPageObj extends BaseTest
 			GenericFunctions.switchToFrame(driver, createMentorPage.batchForm);
 			createMentorPage.nameOfBatch.clear();
 			createMentorPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(1).getCourseName()
-					+ GenericFunctions.testDataIncrementer(".//TestData//batchNumbers.txt"));
+					+ GenericFunctions.testDataIncrementer("./testData/batchNumbers.txt"));
 			GenericFunctions.waitWebDriver(1000);
 			createMentorPage.aboutBatch.clear();
 			createMentorPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
