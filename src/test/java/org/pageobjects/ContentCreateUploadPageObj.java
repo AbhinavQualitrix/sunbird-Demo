@@ -1,33 +1,24 @@
 package org.pageobjects;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Random;
+
 import org.apache.log4j.Logger;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.generic.ExtentTestManager;
 import org.generic.GenericFunctions;
 import org.generic.ReadTestDataFromExcel;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.page.ContentCreateUploadPage;
 import org.page.CreateMentorPage;
 import org.page.CreatorUserPage;
 import org.page.PublicUserPage;
 import org.page.SignUpPage;
 import org.page.TopicTreePage;
-import org.page.SignUpPage;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
 
 import com.relevantcodes.extentreports.LogStatus;
 

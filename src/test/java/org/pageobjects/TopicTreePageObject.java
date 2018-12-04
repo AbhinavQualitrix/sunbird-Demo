@@ -4,23 +4,20 @@ import java.util.List;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.Alert;
+import org.generic.ExtentTestManager;
+import org.generic.GenericFunctions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.generic.ExtentTestManager;
-import org.generic.GenericFunctions;
 import org.page.ContentCreateUploadPage;
 import org.page.CreateMentorPage;
 import org.page.CreatorUserPage;
 import org.page.PublicUserPage;
 import org.page.SignUpPage;
-import org.page.SignUpPage;
 import org.page.TopicTreePage;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
 
 import com.relevantcodes.extentreports.LogStatus;
 

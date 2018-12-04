@@ -4,8 +4,6 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import java.awt.Robot;
-import java.awt.Window;
-import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Random;
 
@@ -13,17 +11,12 @@ import org.apache.log4j.Logger;
 import org.generic.AllUploadingPaths;
 import org.generic.ExtentTestManager;
 import org.generic.GenericFunctions;
-import org.generic.GetExcelFileData;
 import org.generic.ReadTestDataFromExcel;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.page.CreatorUserPage;
 import org.page.FlagReviewerPage;

@@ -1,18 +1,14 @@
 package org.pageobjects;
 
-import static org.testng.Assert.assertEquals;
-
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.WebElement;
+import org.generic.ExtentTestManager;
+import org.generic.GenericFunctions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.generic.ExtentTestManager;
-import org.generic.GenericFunctions;
 import org.page.AnnouncementCreationsPage;
 import org.page.ContentCreationResourcePage;
 import org.page.CreateMentorPage;
@@ -22,7 +18,6 @@ import org.page.SignUpPage;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
 
 import com.relevantcodes.extentreports.LogStatus;
 

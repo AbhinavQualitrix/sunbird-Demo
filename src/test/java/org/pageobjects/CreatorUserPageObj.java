@@ -1,19 +1,14 @@
 package org.pageobjects;
 
-import static org.testng.Assert.assertTrue;
-
-import java.lang.reflect.GenericArrayType;
 import java.util.List;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
-import org.apache.poi.util.SystemOutLogger;
 import org.generic.AllUploadingPaths;
 import org.generic.ExtentTestManager;
 import org.generic.GenericFunctions;
 import org.generic.ReadTestDataFromExcel;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -34,8 +29,6 @@ import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
 
 import com.relevantcodes.extentreports.LogStatus;
-
-import freemarker.template.utility.Execute;
 
 public class CreatorUserPageObj extends BaseTest{
 
