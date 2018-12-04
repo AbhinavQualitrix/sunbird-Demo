@@ -291,4 +291,8 @@ public class ContentCreateUploadPage
 	
 	@FindBy(xpath="//input[@name='topic']")
 	public WebElement selectedTopics;
+	
+	@FindBy(xpath="//i[contains(@class,'download icon')]")
+	public WebElement contentDownloadIcon;
+	
 }

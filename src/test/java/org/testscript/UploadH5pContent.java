@@ -45,9 +45,21 @@ public class UploadH5pContent  extends BaseTest
 		GenericFunctions.waitWebDriver(2000);
 		
 		//reject the upload type -H5P
-		creatorUserPageObj.rejectTheUploads(H5P);
+		creatorUserPageObj.rejectTheUploads("h5p");
 		
 		//Logout as Reviewer
+		signupObj.userLogout();
+		
+		//Step10: Login as Creator
+		signupObj.userLogin(CREATOR);
+
+		//Step11: Navigate to WorkSpace-All my content
+		creatorUserPageObj.navigateToWorkspace(ALL_MY_CONTENT);
+
+		//Step12: Delete the Created item
+		creatorUserPageObj.deleteCreatedItems();
+
+		//Step13: Logout as Creator
 		signupObj.userLogout();
 	}
 

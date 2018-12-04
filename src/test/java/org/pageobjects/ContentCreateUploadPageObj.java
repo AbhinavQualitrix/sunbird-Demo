@@ -114,7 +114,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 			GenericFunctions.waitWebDriver(5000);
 			createUserPage.enterUrl.sendKeys(UPLOAD_YOUTUBE);
 			GenericFunctions.waitWebDriver(5000);
-
+			action.moveToElement(createUserPage.UploadButton);
 			createUserPage.UploadButton.click();
 
 			GenericFunctions.waitWebDriver(5000);
@@ -123,12 +123,12 @@ public class ContentCreateUploadPageObj extends BaseTest
 			if(createUserPage.closeButton.isDisplayed()){
 				createUserPage.closeButton.click();
 			}
-			createUserPage.closeButton.click();
+		
 			GenericFunctions.waitWebDriver(2000);
 
-		}catch(Exception e) {
-
-
+		}
+		catch(Exception e)
+		{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to verify the upload content");
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
 			Assert.fail("Could not verify the upload content popup, Exception"+e.getLocalizedMessage());
@@ -136,6 +136,10 @@ public class ContentCreateUploadPageObj extends BaseTest
 
 	}
 
+	public void downloadContent()
+	{
+		
+	}
 	public void navigateToLibraryAndSearchContent(List<TestDataForSunbird> objListOFTestDataForSunbird12)
 	{
 		try	
