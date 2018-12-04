@@ -56,7 +56,6 @@ public class DeleteAnnouncement extends BaseTest{
 		//Step3: click on Delete on particular Announcement	
 		creatorAnnouncementPageObj.deleteAnnouncement();
 
-		creatorAnnouncementPageObj.deleteAnnouncement();
 
 		// Step4: Logout as Creator
 		creatorLogin.userLogout();
