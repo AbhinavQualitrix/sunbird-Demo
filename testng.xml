@@ -76,7 +76,7 @@
 
     <class name="org.testscript.ResendAnnouncement"/>
      <class name="org.testscript.OpenAnnouncement"/>
-     <class name="org.testscript.ResendAnnouncementAndVerifyAnnouncement"/> 
+    
 
      
    

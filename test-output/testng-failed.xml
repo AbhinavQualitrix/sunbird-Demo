@@ -6,25 +6,47 @@
   </listeners>
   <test name="Test(failed)">
     <classes>
+      <class name="org.testscript.ResendAnnouncementAndVerifyAsReciever">
+        <methods>
+          <include name="resendAnnouncementAndVerifyAsReciever"/>
+        </methods>
+      </class> <!-- org.testscript.ResendAnnouncementAndVerifyAsReciever -->
+      <class name="org.testscript.CreateAnnouncementWithAttachment">
+        <methods>
+          <include name="createAnnouncementWithAttachment"/>
+        </methods>
+      </class> <!-- org.testscript.CreateAnnouncementWithAttachment -->
+      <class name="org.testscript.NavigateToAnnouncementDashboard">
+        <methods>
+          <include name="navigateToAnnouncementDashboard"/>
+        </methods>
+      </class> <!-- org.testscript.NavigateToAnnouncementDashboard -->
+      <class name="org.testscript.ResendAnnouncement">
+        <methods>
+          <include name="resendAnnouncement"/>
+          <include name="openApplication"/>
+        </methods>
+      </class> <!-- org.testscript.ResendAnnouncement -->
+      <class name="org.testscript.CreateVerifyAndDeleteAnnouncement">
+        <methods>
+          <include name="createVerifyAndDeleteAnnouncement"/>
+        </methods>
+      </class> <!-- org.testscript.CreateVerifyAndDeleteAnnouncement -->
       <class name="org.testscript.DeleteAnnouncement">
         <methods>
           <include name="deleteAnnouncement"/>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
         </methods>
       </class> <!-- org.testscript.DeleteAnnouncement -->
-      <class name="org.testscript.CreateVerifyAndDeleteAnnouncement">
+      <class name="org.testscript.CheckAvailabilityOfCourseForInvitedMember">
         <methods>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
+          <include name="checkAvailabilityOfCourseForInvitedMember"/>
         </methods>
-      </class> <!-- org.testscript.CreateVerifyAndDeleteAnnouncement -->
-      <class name="org.testscript.ResendAnnouncementAndVerifyAsReciever">
+      </class> <!-- org.testscript.CheckAvailabilityOfCourseForInvitedMember -->
+      <class name="org.testscript.OpenAnnouncement">
         <methods>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
+          <include name="openAnnouncement"/>
         </methods>
-      </class> <!-- org.testscript.ResendAnnouncementAndVerifyAsReciever -->
+      </class> <!-- org.testscript.OpenAnnouncement -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [ Regression Suite] -->
