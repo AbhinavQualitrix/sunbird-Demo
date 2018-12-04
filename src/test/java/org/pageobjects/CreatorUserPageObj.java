@@ -824,7 +824,8 @@ public class CreatorUserPageObj extends BaseTest{
 				GenericFunctions.waitWebDriver(2000);
 				resizeTheScreen();
 				//GenericFunctions.waitForElementToAppear(createUserPage.requestChangesButton1);
-				GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.requestChangesButton1);
+				GenericFunctions.waitWebDriver(4000);
+				//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.requestChangesButton1);
 				//action.moveToElement(createUserPage.requestChangesButton1);
 				//GenericFunctions.clickOnElementUsingJavascript(createUserPage.requestChangesButton1);
 				GenericFunctions.clickOnElementUsingJavascript(createUserPage.requestChangesButton1);
@@ -2898,8 +2899,10 @@ public class CreatorUserPageObj extends BaseTest{
 	public void resizeTheScreen()
 	{
 		GenericFunctions.waitWebDriver(2000);
-		Dimension d = new Dimension(800,480);
-		driver.manage().window().setSize(d);
+		/*Dimension d = new Dimension(800,480);
+		driver.manage().window().setSize(d);*/
+		executor.executeScript("document.body.style.zoom = '0.8';");
+		//executor.executeScript("document.body.style.zoom = '70%';");
 	}
 
 }

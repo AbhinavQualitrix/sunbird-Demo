@@ -1630,7 +1630,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 				contentCreationResourcePage.addKeysTB.clear();
 				inputKeyCharArr = objListOFTestDataForSunbird1.get(12).getTitleDescription().toCharArray();
 				inputCharArrSize = inputKeyCharArr.length-7;
-				contentCreationResourcePage.addKeysTB.sendKeys(objListOFTestDataForSunbird1.get(12).getTitleDescription());
+				contentCreationResourcePage.addKeysTB.sendKeys(objListOFTestDataForSunbird1.get(11).getTitleDescription());
 
 			}
 			else if(addKeysType.equalsIgnoreCase("alphabets"))

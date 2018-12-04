@@ -1,5 +1,7 @@
 package org.pageobjects;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.List;
@@ -35,7 +37,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 	CreatorUserPage createUserPage=PageFactory.initElements(driver, CreatorUserPage.class);
 	PublicUserPage publicUserPage = PageFactory.initElements(driver, PublicUserPage.class);
 	CreateMentorPage createMentorPage=PageFactory.initElements(driver, CreateMentorPage.class);
-	ContentCreateUploadPage contentCreatePage = PageFactory.initElements(driver, ContentCreateUploadPage.class);
+	ContentCreateUploadPage contentUploadPage = PageFactory.initElements(driver, ContentCreateUploadPage.class);
 	CreatorUserPageObj createrUserPageObj = new CreatorUserPageObj();
 	TopicTreePage topicslist = PageFactory.initElements(driver, TopicTreePage.class);
 	SignUpPage signUpPage=PageFactory.initElements(driver, SignUpPage.class);
@@ -51,45 +53,45 @@ public class ContentCreateUploadPageObj extends BaseTest
 	{
 		try 
 		{  
-		objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-		ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to verify the upload content popup display");
-		GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
-		GenericFunctions.waitWebDriver(7500);
-		if( contentCreatePage.uploadContentText.isDisplayed())
-		{
-			String Evalue = contentCreatePage.uploadContentText.getText();			
-			Assert.assertEquals("Upload Content", Evalue);
-		}
-		if(contentCreatePage.uploadButtonPop.isDisplayed())
-		{
-			String Evalue = contentCreatePage.uploadButtonPop.getText();	
-			Assert.assertEquals("Upload", Evalue);	
-		}
-		if(contentCreatePage.closeEditor.isDisplayed())
-		{
-			String Evalue = contentCreatePage.closeEditor.getText();	
-			Assert.assertEquals("Close Editor", Evalue);	
-		}
+			objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to verify the upload content popup display");
+			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
+			GenericFunctions.waitWebDriver(7500);
+			if( contentUploadPage.uploadContentText.isDisplayed())
+			{
+				String Evalue = contentUploadPage.uploadContentText.getText();			
+				Assert.assertEquals("Upload Content", Evalue);
+			}
+			if(contentUploadPage.uploadButtonPop.isDisplayed())
+			{
+				String Evalue = contentUploadPage.uploadButtonPop.getText();	
+				Assert.assertEquals("Upload", Evalue);	
+			}
+			if(contentUploadPage.closeEditor.isDisplayed())
+			{
+				String Evalue = contentUploadPage.closeEditor.getText();	
+				Assert.assertEquals("Close Editor", Evalue);	
+			}
 
 
-		/*GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
+			/*GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitWebDriver(7500);*/
 
-		WebElement browse = contentCreatePage.browseButton;
-		System.out.println(browse.getText());
-		if(browse.isDisplayed()&&createUserPage.enterUrl.isDisplayed())
-		{
+			WebElement browse = contentUploadPage.browseButton;
+			System.out.println(browse.getText());
+			if(browse.isDisplayed()&&createUserPage.enterUrl.isDisplayed())
+			{
 
-			String aurl=driver.getCurrentUrl();
-			System.out.println(aurl);
-			Assert.assertEquals(aurl, eurl,"The given url is not matching with the expected");
-			Assert.assertTrue(true);
-		}
-		createUserPage.enterUrl.sendKeys(UPLOAD_YOUTUBE);
-		GenericFunctions.waitForElementToAppear(contentCreatePage.uploadButtonPop);
-		contentCreatePage.uploadButtonPop.click();
-		GenericFunctions.waitWebDriver(5000);
-		System.out.println(objListOFTestDataForSunbird1.get(10).getCourseName());
+				String aurl=driver.getCurrentUrl();
+				System.out.println(aurl);
+				Assert.assertEquals(aurl, eurl,"The given url is not matching with the expected");
+				Assert.assertTrue(true);
+			}
+			createUserPage.enterUrl.sendKeys(UPLOAD_YOUTUBE);
+			GenericFunctions.waitForElementToAppear(contentUploadPage.uploadButtonPop);
+			contentUploadPage.uploadButtonPop.click();
+			GenericFunctions.waitWebDriver(5000);
+			System.out.println(objListOFTestDataForSunbird1.get(10).getCourseName());
 		}
 		catch(Exception e)
 		{
@@ -103,42 +105,46 @@ public class ContentCreateUploadPageObj extends BaseTest
 		try {
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to  verify the upload content");
 
-			contentCreatePage.saveuploadcontent.click();
+			contentUploadPage.saveuploadcontent.click();
 			GenericFunctions.waitWebDriver(5000);
 			createUserPage.closeButton.click();
 			GenericFunctions.waitWebDriver(5000);
 
-			contentCreatePage.uploadContent.click();
+			contentUploadPage.uploadContent.click();
 			GenericFunctions.waitWebDriver(5000);
 			createUserPage.enterUrl.sendKeys(UPLOAD_YOUTUBE);
 			GenericFunctions.waitWebDriver(5000);
-
+			action.moveToElement(createUserPage.UploadButton);
 			createUserPage.UploadButton.click();
 
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.saveuploadcontent.click();
+			contentUploadPage.saveuploadcontent.click();
 			GenericFunctions.waitWebDriver(5000);
 			if(createUserPage.closeButton.isDisplayed()){
 				createUserPage.closeButton.click();
 			}
-			createUserPage.closeButton.click();
+		
 			GenericFunctions.waitWebDriver(2000);
 
-		}catch(Exception e) {
-
-		
-		ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to verify the upload content");
-		ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
-		Assert.fail("Could not verify the upload content popup, Exception"+e.getLocalizedMessage());
-	}	
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to verify the upload content");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			Assert.fail("Could not verify the upload content popup, Exception"+e.getLocalizedMessage());
+		}	
 
 	}
 
+	public void downloadContent()
+	{
+		
+	}
 	public void navigateToLibraryAndSearchContent(List<TestDataForSunbird> objListOFTestDataForSunbird12)
 	{
 		try	
 		{
-			
+
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate to library and search for the content");	
 
 			objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
@@ -154,20 +160,20 @@ public class ContentCreateUploadPageObj extends BaseTest
 
 			//GenericFunctions.waitForElementToAppear(contentCreatePage.searchContentName);
 
-			GenericFunctions.waitForElementToAppear(contentCreatePage.serachedContent);
-			contentCreatePage.serachedContent.click();
+			GenericFunctions.waitForElementToAppear(contentUploadPage.serachedContent);
+			contentUploadPage.serachedContent.click();
 			GenericFunctions.waitWebDriver(1200);
-			GenericFunctions.scrollToElement(contentCreatePage.homeNavigation);
+			GenericFunctions.scrollToElement(contentUploadPage.homeNavigation);
 			GenericFunctions.waitWebDriver(1200);
-			GenericFunctions.waitForElementToAppear(contentCreatePage.searchContentName);
-			if(contentCreatePage.searchContentName.isDisplayed())
+			GenericFunctions.waitForElementToAppear(contentUploadPage.searchContentName);
+			if(contentUploadPage.searchContentName.isDisplayed())
 			{
-				String Evalue = contentCreatePage.searchContentName.getText();
+				String Evalue = contentUploadPage.searchContentName.getText();
 				Assert.assertEquals(" Automation Content_CN0049_WEBM", Evalue);
 
 			}
-			GenericFunctions.waitForElementToAppear(contentCreatePage.copy);		
-			contentCreatePage.copy.click();			
+			GenericFunctions.waitForElementToAppear(contentUploadPage.copy);		
+			contentUploadPage.copy.click();			
 			GenericFunctions.waitWebDriver(5000);		
 			Assert.assertTrue(true);
 		}
@@ -244,24 +250,6 @@ public class ContentCreateUploadPageObj extends BaseTest
 			GenericFunctions.waitWebDriver(1500);
 			createUserPage.clickAppIcon.click();
 			GenericFunctions.waitWebDriver(3000);
-
-			/*
-				createUserPage.uploadAndUseButton.click();
-				GenericFunctions.waitWebDriver(2000);
-				createUserPage.yesRadioButton.click();
-				GenericFunctions.waitWebDriver(1500);
-				createUserPage.chooseFileButton.click();
-				GenericFunctions.waitWebDriver(1500);
-				String path = System.getProperty("user.dir")+"\\UploadingDocuments\\Upload Document Contents\\"+SEARCH_CONTENT_IMAGE;
-				System.out.println("Uploaded image : "+path);
-				//log.info("Uploaded file name: "+path);
-				GenericFunctions.waitWebDriver(3000);
-				GenericFunctions.uploadFile(path);
-				GenericFunctions.waitWebDriver(2500);
-				createUserPage.uploadAndUseButtonRight.click();
-				GenericFunctions.waitWebDriver(1800);
-			 */
-
 			GenericFunctions.waitForElementToAppear(createUserPage.searchUploadImage);
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.searchUploadImage.sendKeys(SEARCH_CONTENT_IMAGE);
@@ -310,11 +298,11 @@ public class ContentCreateUploadPageObj extends BaseTest
 			//			createUserPage.clickOnSelectSubject.click();
 			//			GenericFunctions.waitForElementToAppear(createUserPage.selectSubject);
 			//			createUserPage.selectSubject.click();
-			action.moveToElement(contentCreatePage.owner).click().perform();			
-			GenericFunctions.scrollToElement(contentCreatePage.owner);
-			contentCreatePage.owner.click();
+			action.moveToElement(contentUploadPage.owner).click().perform();			
+			GenericFunctions.scrollToElement(contentUploadPage.owner);
+			contentUploadPage.owner.click();
 			GenericFunctions.waitWebDriver(1500);
-			contentCreatePage.ownership.click();
+			contentUploadPage.ownership.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.saveButton);
 			createUserPage.saveButton.click();
 			GenericFunctions.waitWebDriver(5000);
@@ -337,9 +325,9 @@ public class ContentCreateUploadPageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to upload MP4");
 			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcoursename");
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
-			GenericFunctions.waitForElementToAppear(contentCreatePage.browseButton);
+			GenericFunctions.waitForElementToAppear(contentUploadPage.browseButton);
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.browseButton.click();
+			contentUploadPage.browseButton.click();
 
 			GenericFunctions.waitWebDriver(5000);
 
@@ -355,209 +343,54 @@ public class ContentCreateUploadPageObj extends BaseTest
 	public void verifyThatEditDetailsPageIsDisplayed()
 	{
 		try {
-			
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to get edit Detail Page is Displaying and Continuation of the test case number 129");
-			//List<TestDataForSunbird>objListOFTestDatForSunbird=null;
+
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to get edit Detail Page is Displaying ");
 			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-			String upload =GenericFunctions.testDataIncrementer("./testData/uploadNumbers.txt");
+
 			GenericFunctions.waitWebDriver(5000);
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitWebDriver(7500);
 			GenericFunctions.waitForElementToAppear(createUserPage.enterUrl);
 			createUserPage.enterUrl.sendKeys(UPLOAD_YOUTUBE);    
-			GenericFunctions.waitForElementToAppear(contentCreatePage.uploadButtonPop);
-			contentCreatePage.uploadButtonPop.click();
-			GenericFunctions.waitWebDriver(5000);							
-			contentCreatePage.editDetailsLink.click();
+			GenericFunctions.waitForElementToAppear(contentUploadPage.uploadButtonPop);
+			contentUploadPage.uploadButtonPop.click();
+			GenericFunctions.waitWebDriver(5000);	
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentUploadPage.editDetailsLink);
+			contentUploadPage.editDetailsLink.click();
 			GenericFunctions.waitWebDriver(5000);
 
-			if(contentCreatePage.editDetailsHeading.isDisplayed())
+			if(contentUploadPage.editDetailsHeading.isDisplayed())
 			{
-				String Evalue = contentCreatePage.editDetailsHeading.getText();
+				String Evalue = contentUploadPage.editDetailsHeading.getText();
 				Assert.assertEquals("Edit Details", Evalue);
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Edit details popup is displayed");
 
 			}
-			if(contentCreatePage.appIcon.isDisplayed())
+			if(contentUploadPage.appIcon.isDisplayed())
 			{
-				String Evalue = contentCreatePage.appIcon.getText();
+				String Evalue = contentUploadPage.appIcon.getText();
 				Assert.assertEquals("App Icon", Evalue);
+				ExtentTestManager.getTest().log(LogStatus.PASS, "App icon is displayed in Edit details form");
 			}
-			if(contentCreatePage.cancelButton.isDisplayed())
+			if(contentUploadPage.cancelButton.isDisplayed())
 			{
-				String Evalue = contentCreatePage.cancelButton.getText();
-				Assert.assertEquals("Cancel", Evalue);	
+				String Evalue = contentUploadPage.cancelButton.getText();
+				Assert.assertEquals("Cancel", Evalue);
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Cancel button is verified and it is displayed");
+
 			}
 			if(createUserPage.saveButton.isDisplayed())
 			{
 
 				String Evalue = createUserPage.saveButton.getText();
 				Assert.assertEquals("Save", Evalue);
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Cancel button is verified and it is displayed");
 			}
-
-
-			System.out.println("The Edit details page is displaying");
 			GenericFunctions.waitWebDriver(5000);
 
 
-			contentCreatePage.checkAppIcon.click();
 
 
-			ExtentTestManager.getTest().log(LogStatus.INFO, "Continuation with the next scenario");
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to see the board,medium,class,subject in the topic page.");
-			/*
-					GenericFunctions.waitWebDriver(2000);
-					createUserPage.uploadAndUseButton.click();
-					GenericFunctions.waitWebDriver(2000);
-					createUserPage.yesRadioButton.click();
-					GenericFunctions.waitWebDriver(1500);
-					createUserPage.chooseFileButton.click();
-					GenericFunctions.waitWebDriver(1500);
-					String path = System.getProperty("user.dir")+"\\UploadingDocuments\\Upload Document Contents\\"+SEARCH_COURSE_IMAGE;
-					System.out.println("Uploaded image : "+path);
-					//log.info("Uploaded file name: "+path);
-					GenericFunctions.waitWebDriver(3000);
-					GenericFunctions.uploadFile(path);
-					GenericFunctions.waitWebDriver(2500);
-					createUserPage.uploadAndUseButtonRight.click();
-			 */
-
-			GenericFunctions.waitForElementToAppear(createUserPage.searchUploadImage);
-			GenericFunctions.waitWebDriver(1000);
-			createUserPage.searchUploadImage.sendKeys(SEARCH_COURSE_IMAGE);
-			GenericFunctions.waitWebDriver(1200);
-			createUserPage.clickImageSearch.click();
-			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.checkContentIcon.click();
-
-			GenericFunctions.waitForElementToAppear(createUserPage.selectAppIcon);
-			contentCreatePage.selectAppIcon.click();
-
-			GenericFunctions.waitWebDriver(2500);
-			GenericFunctions.waitForElementToAppear(contentCreatePage.uploadContentName);
-			contentCreatePage.uploadContentName.clear();
-			GenericFunctions.waitWebDriver(2500);
-			contentCreatePage.uploadContentName.sendKeys(objListOFTestDataForSunbird1.get(0).getCourseDescription()+upload);
-
-
-
-
-
-
-
-			GenericFunctions.waitForElementToAppear(createUserPage.clickOnSelectCurriculum);
-			GenericFunctions.waitWebDriver(5000);
-
-			createUserPage.clickOnSelectCurriculum.click();
-
-			GenericFunctions.waitForElementToAppear(createUserPage.selectCurriculum);			
-			GenericFunctions.waitWebDriver(2000);
-			createUserPage.selectCurriculum.click();
-
-			GenericFunctions.waitForElementToAppear(createUserPage.clickOnSelectClass);
-			createUserPage.clickOnSelectClass.click();
-			GenericFunctions.waitWebDriver(1000);
-			createUserPage.selectClass.click();
-			GenericFunctions.keyTab(driver, createUserPage.selectClass.toString());
-			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.clickOnHeaderSubject);
-			//createUserPage.clickOnHeaderSubject.click();
-			GenericFunctions.waitWebDriver(1200);
-
-			GenericFunctions.scrollToElement(createUserPage.clickOnSelectMedium);
-			GenericFunctions.waitForElementToAppear(createUserPage.clickOnSelectMedium);
-			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.clickOnSelectSubject);
-			createUserPage.clickOnSelectSubject.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.selectSubject);
-			createUserPage.selectSubject.click();
-			GenericFunctions.waitWebDriver(1200);
-
-			createUserPage.clickOnSelectMedium.click();
-			GenericFunctions.waitForElementToAppearOnScreen(createUserPage.selectMedium);
-			GenericFunctions.waitWebDriver(1200);
-			createUserPage.selectMedium.click();
-			GenericFunctions.waitWebDriver(1200);
-			GenericFunctions.waitForElementToAppearOnScreen(contentCreatePage.selectTopicPopup);
-			contentCreatePage.selectTopicPopup.click();
-			GenericFunctions.waitWebDriver(3000);   
-			GenericFunctions.waitForElementToAppearOnScreen(contentCreatePage.selectPolynomials);
-			contentCreatePage.selectPolynomials.click();
-			GenericFunctions.waitForElementToAppearOnScreen(topicslist.doneButton);
-			topicslist.doneButton.click();
-			GenericFunctions.waitWebDriver(3000);
-			GenericFunctions.scrollToElement(contentCreatePage.owner);
-			GenericFunctions.waitForElementToAppear(contentCreatePage.owner);
-			contentCreatePage.owner.click();
-			GenericFunctions.waitForElementToAppear(contentCreatePage.ownership);		
-			contentCreatePage.ownership.click();
-
-
-			/*	contentCreatePage.selectConcept.click();					
-			GenericFunctions.waitWebDriver(1500);
-			contentCreatePage.searchConcept1.sendKeys(objListOFTestDataForSunbird1.get(6).getTitle());
-			GenericFunctions.waitWebDriver(1500);
-			createUserPage.conceptChooseAll.click();
-			GenericFunctions.waitWebDriver(1500);
-			createUserPage.doneButton.click();
-			GenericFunctions.waitWebDriver(1500);
-			contentCreatePage.selectTopic.click();
-			GenericFunctions.waitWebDriver(1500);
-			contentCreatePage.doneButton1.click();
-
-			GenericFunctions.waitWebDriver(1500);*/
-			createUserPage.saveButton.click();
-			GenericFunctions.waitWebDriver(1500);
-			createUserPage.closeButton.click();
-			/*	createUserPage.closeButton.click();
-				//GenericFunctions.switchToFrame(contentCreatePage.closeEditor.iFrame);
-				GenericFunctions.waitForElementToAppear(createUserPage.editorCloseIcon);
-				GenericFunctions.waitWebDriver(5000);
-
-
-				createUserPage.limitedSharingArrow.click();
-				GenericFunctions.waitWebDriver(5000);
-				createUserPage.clickLimitedSharing.click();
-				GenericFunctions.waitWebDriver(5000);
-				GenericFunctions.waitForElementToAppear(contentCreatePage.clickonLimitedPublishing);
-				contentCreatePage.clickonLimitedPublishing.click();
-				GenericFunctions.waitWebDriver(5000);
-
-				contentCreatePage.clickOnShare.click();
-				GenericFunctions.waitWebDriver(5000);
-				GenericFunctions.waitForElementToAppear(contentCreatePage.linkdata);
-
-				GenericFunctions.waitWebDriver(5000);
-				GenericFunctions.uploadFile(A_HOME_URL);
-			 */
-			GenericFunctions.waitWebDriver(1500);
-			GenericFunctions.waitForElementToAppear(createUserPage.sendForReview);
-			createUserPage.sendForReview.click();
-			GenericFunctions.waitWebDriver(5000);
-			createUserPage.saveButton.click();
-			GenericFunctions.waitWebDriver(2500);
-			//				
-			//				String url1=contentCreatePage.linkdata.getText();
-			//				GenericFunctions.waitWebDriver(5000);
-			//				System.out.println(url1);
-			//				
-			//				contentCreatePage.closeShareLink.click();
-			//				GenericFunctions.waitWebDriver(5000);
-			//			
-			//				
-
-			//				driver=new ChromeDriver();
-			//				Thread.sleep(5000);
-			//				driver.get(url1);
-			//			    GenericFunctions.waitWebDriver(5000);
-			//				
-
-
-
-
-
-
-			//				createUserPage.editorCloseIcon.click();
-			//				GenericFunctions.waitWebDriver(5000);
-
-			//GenericFunctions.waitWebDriver(5000);
 
 
 
@@ -570,10 +403,218 @@ public class ContentCreateUploadPageObj extends BaseTest
 		}
 	}
 
+	public String[] selectValuesFromDropdowns()
+	{
+		String[] valueArray={};
+		try 
+		{
+
+			String upload =GenericFunctions.testDataIncrementer("./testData/uploadNumbers.txt");
+			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Continuation with the next scenario");
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to select the BOARD, MEDIUM, CLASS and SUBJECT in the edit details form");
+
+			contentUploadPage.checkAppIcon.click();
+			GenericFunctions.waitForElementToAppear(createUserPage.searchUploadImage);
+			GenericFunctions.waitWebDriver(1000);
+			createUserPage.searchUploadImage.sendKeys(SEARCH_COURSE_IMAGE);
+			GenericFunctions.waitWebDriver(1200);
+			createUserPage.clickImageSearch.click();
+			GenericFunctions.waitWebDriver(5000);
+			contentUploadPage.checkContentIcon.click();
+
+			GenericFunctions.waitForElementToAppear(createUserPage.selectAppIcon);
+			contentUploadPage.selectAppIcon.click();
+
+			GenericFunctions.waitWebDriver(2500);
+			GenericFunctions.waitForElementToAppear(contentUploadPage.uploadContentName);
+			contentUploadPage.uploadContentName.clear();
+			GenericFunctions.waitWebDriver(2500);
+			contentUploadPage.uploadContentName.sendKeys(objListOFTestDataForSunbird1.get(0).getCourseDescription()+upload);
+
+			GenericFunctions.waitForElementToAppear(createUserPage.clickOnSelectCurriculum);
+			GenericFunctions.waitWebDriver(5000);
+
+			createUserPage.clickOnSelectCurriculum.click();
+			GenericFunctions.waitForElementToAppear(createUserPage.selectCurriculum);			
+			GenericFunctions.waitWebDriver(2000);
+			createUserPage.selectCurriculum.click();
+
+			GenericFunctions.waitForElementToAppear(createUserPage.clickOnSelectClass);
+			createUserPage.clickOnSelectClass.click();
+			GenericFunctions.waitWebDriver(1000);
+			createUserPage.selectClass.click();
+
+			GenericFunctions.waitWebDriver(1200);
+
+			GenericFunctions.scrollToElement(createUserPage.clickOnSelectSubject);
+			GenericFunctions.waitForElementToAppear(createUserPage.clickOnSelectSubject);
+
+
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.clickOnSelectSubject);
+			createUserPage.clickOnSelectSubject.click();
+			GenericFunctions.waitForElementToAppear(createUserPage.selectSubject);
+			createUserPage.selectSubject.click();
+			GenericFunctions.waitWebDriver(1200);
+
+			createUserPage.clickOnSelectMedium.click();
+			GenericFunctions.waitForElementToAppearOnScreen(createUserPage.selectMedium);
+			GenericFunctions.waitWebDriver(1200);
+			createUserPage.selectMedium.click();
+			valueArray[0] = contentUploadPage.selectedCirriculumText.getText();
+			valueArray[1]= contentUploadPage.selectedClassText.getText();
+			valueArray[2]=  contentUploadPage.selectedMediumText.getText();
+			valueArray[3]=  contentUploadPage.selectedSubjectText.getText();
+			GenericFunctions.waitWebDriver(1200);
+
+
+
+
+
+
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Could not select values from the dropdowns in edit details from");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message:"+e.getLocalizedMessage());
+			log.error("Could not select values from the dropdowns in edit details from");
+			Assert.fail("Could not select values from the dropdowns in edit details from, Exception"+e.getLocalizedMessage());
+		}
+
+		//Return the stored values to verify
+		return valueArray;
+	}
+
+	public void verifyValuesOfDropdowns(String [] valueArray)
+	{
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is tring to verify values in the dropdown");
+			GenericFunctions.waitForElementToAppear(createUserPage.closeButton);
+			createUserPage.closeButton.click();
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentUploadPage.editDetailsLink);
+			contentUploadPage.editDetailsLink.click();
+			GenericFunctions.waitForElementToAppear(createUserPage.clickAppIcon);
+			if(valueArray[0].equalsIgnoreCase(contentUploadPage.selectedCirriculumText.getText()))
+			{
+				Assert.assertTrue(true);
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Selected Curriculum text has been verified");
+				if(valueArray[1].equalsIgnoreCase(contentUploadPage.selectedClassText.getText()))
+				{
+					Assert.assertTrue(true);
+					ExtentTestManager.getTest().log(LogStatus.PASS, "Selected Class text has been verified");
+					if(valueArray[2].equalsIgnoreCase(contentUploadPage.selectedSubjectText.getText()))
+					{
+						Assert.assertTrue(true);
+						ExtentTestManager.getTest().log(LogStatus.PASS, "Selected Subject text has been verified");
+						if(valueArray[3].equalsIgnoreCase(contentUploadPage.selectedMediumText.getText()))
+						{
+							Assert.assertTrue(true);
+							ExtentTestManager.getTest().log(LogStatus.PASS, "Selected Medium text has been verified");
+						}
+
+					}
+				}
+			}
+
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Could not display the edit details page");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message:"+e.getLocalizedMessage());
+			log.error("Failed to select and verify the dropdown values");
+			Assert.fail("Could not display the edit details page, Exception"+e.getLocalizedMessage());
+		}
+	}
+
+	public void selectTopicFromTopicTree()
+	{
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is tring to verify the topics in topic tree");
+			GenericFunctions.waitWebDriver(1200);
+			GenericFunctions.waitForElementToAppearOnScreen(contentUploadPage.selectTopicPopup);
+			GenericFunctions.scrollToElement(contentUploadPage.selectTopicPopup);
+			contentUploadPage.selectTopicPopup.click();
+			GenericFunctions.waitWebDriver(3000);   
+			GenericFunctions.waitForElementToAppearOnScreen(contentUploadPage.selectPolynomials);
+			contentUploadPage.selectPolynomials.click();
+			GenericFunctions.waitForElementToAppearOnScreen(createUserPage.doneButton);
+			GenericFunctions.waitWebDriver(2000);
+			createUserPage.doneButton.click();
+			GenericFunctions.waitWebDriver(3000);
+
+
+			GenericFunctions.waitForElementToAppearOnScreen(contentUploadPage.selectedTopics);
+			if(contentUploadPage.selectedTopics.isDisplayed())
+			{
+				//Assert.assertEquals(contentUploadPage.selectedTopics.getText(), "topics selected");
+				Assert.assertTrue(true);
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Topics are succesfully selected from the topic tree");
+			}
+
+			GenericFunctions.scrollToElement(contentUploadPage.owner);
+			GenericFunctions.waitForElementToAppear(contentUploadPage.owner);
+			contentUploadPage.owner.click();
+			GenericFunctions.waitForElementToAppear(contentUploadPage.ownership);		
+			contentUploadPage.ownership.click();
+
+			createUserPage.saveButton.click();
+			GenericFunctions.waitForElementToAppear(createUserPage.closeButton);
+			GenericFunctions.waitWebDriver(1500);
+			createUserPage.closeButton.click();
+
+
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Could not select and verify the topic tree");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message:"+e.getLocalizedMessage());
+			log.error("Could not select and verify the topic tree");
+			Assert.fail("Could not select and verify the topic tree, Exception"+e.getLocalizedMessage());
+		}
+	}
+
+	public void verifyLimitedSharingContent()
+	{
+		try
+		{
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to verify limited sharing functionality");
+			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitForElementToAppear(createUserPage.sendForReview);
+			createUserPage.limitedSharingArrow.click();
+			GenericFunctions.waitWebDriver(2000);
+			createUserPage.clickLimitedSharing.click();
+			
+			GenericFunctions.waitForElementToAppear(createUserPage.limitedPublishing);
+			createUserPage.limitedPublishing.click();
+			if(createUserPage.limitedPublishing.isDisplayed())
+			{
+				GenericFunctions.waitWebDriver(2000);
+				action.moveToElement(createUserPage.getContentInDrafts).perform();
+				System.out.println(createUserPage.getContentInDrafts.getText());
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Content is successfullly submitted for limited publishing"+createUserPage.getContentInDrafts.getText()+" is the content name ");
+			}
+			GenericFunctions.waitWebDriver(2000);
+			/*createUserPage.sendForReview.click();
+			GenericFunctions.waitWebDriver(5000);
+			createUserPage.saveButton.click();
+			GenericFunctions.waitWebDriver(2500);*/
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Could not verify limited sharing functionality");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message:"+e.getLocalizedMessage());
+			log.error("Could not verify limited sharing functionality");
+			Assert.fail("Could not verify limited sharing functionality, Exception"+e.getLocalizedMessage());
+		}
+	}
+
+
 	public void allUploadsContent()
 	{
 		try {
-			
+
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to verify the saved upload content in all upload section.");
 			GenericFunctions.waitWebDriver(3000);
 			//			Alert alert = driver.switchTo().alert();
@@ -612,24 +653,24 @@ public class ContentCreateUploadPageObj extends BaseTest
 	public void reviewSubmissionPage()
 	{
 		try {
-			
+
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to see the upload content in review submision page.");
 
 			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			GenericFunctions.waitWebDriver(5000);
-			GenericFunctions.waitForElementToAppear(contentCreatePage.reviewSubmission);
-			contentCreatePage.reviewSubmission.click();
+			GenericFunctions.waitForElementToAppear(contentUploadPage.reviewSubmission);
+			contentUploadPage.reviewSubmission.click();
 			GenericFunctions.waitWebDriver(5000);
 
-			if(contentCreatePage.reviewCardView.isDisplayed())
+			if(contentUploadPage.reviewCardView.isDisplayed())
 			{
-				String Evalue =contentCreatePage.reviewCardView.getText();
+				String Evalue =contentUploadPage.reviewCardView.getText();
 				Assert.assertEquals("CourseA Description", Evalue);
 			}
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.homeNavigation.click();
+			contentUploadPage.homeNavigation.click();
 			GenericFunctions.waitWebDriver(5000);
-			
+
 
 
 		}catch(Exception e)
@@ -646,27 +687,27 @@ public class ContentCreateUploadPageObj extends BaseTest
 	public void navigateToUpForReview()
 	{
 		try {
-			
+
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate to up for review page");
 
 			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 
-			GenericFunctions.waitForElementToAppear(contentCreatePage.workspace);
-			contentCreatePage.workspace.click();
+			GenericFunctions.waitForElementToAppear(contentUploadPage.workspace);
+			contentUploadPage.workspace.click();
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.upforreview.click();
-			GenericFunctions.waitForElementToAppear(contentCreatePage.searchBox);
-			contentCreatePage.searchBox.sendKeys(objListOFTestDataForSunbird1.get(0).getCourseDescription());
+			contentUploadPage.upforreview.click();
+			GenericFunctions.waitForElementToAppear(contentUploadPage.searchBox);
+			contentUploadPage.searchBox.sendKeys(objListOFTestDataForSunbird1.get(0).getCourseDescription());
 
-			if(contentCreatePage.contentupload.isDisplayed())
+			if(contentUploadPage.contentupload.isDisplayed())
 			{
-				String Evalue=contentCreatePage.contentupload.getText();
+				String Evalue=contentUploadPage.contentupload.getText();
 				Assert.assertEquals("CourseA Description", Evalue);
 
 			}
-			contentCreatePage.contentupload.isDisplayed();
+			contentUploadPage.contentupload.isDisplayed();
 			GenericFunctions.waitWebDriver(5000);
-			String uploadcontent=contentCreatePage.contentupload.getText();
+			String uploadcontent=contentUploadPage.contentupload.getText();
 
 			GenericFunctions.waitWebDriver(5000);
 
@@ -693,39 +734,39 @@ public class ContentCreateUploadPageObj extends BaseTest
 
 			GenericFunctions.waitWebDriver(5000);
 
-			contentCreatePage.profileIcon.click();
+			contentUploadPage.profileIcon.click();
 			GenericFunctions.waitWebDriver(5000);
-			GenericFunctions.waitForElementToAppear(contentCreatePage.workspace);
-			contentCreatePage.workspace.click();
+			GenericFunctions.waitForElementToAppear(contentUploadPage.workspace);
+			contentUploadPage.workspace.click();
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.upforreview.click();
+			contentUploadPage.upforreview.click();
 			GenericFunctions.waitWebDriver(5000);
-			GenericFunctions.waitForElementToAppear(contentCreatePage.searchBox);
-			contentCreatePage.searchBox.sendKeys("CourseA DescriptionC053");
+			GenericFunctions.waitForElementToAppear(contentUploadPage.searchBox);
+			contentUploadPage.searchBox.sendKeys("CourseA DescriptionC053");
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.sortBy.click();
+			contentUploadPage.sortBy.click();
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.updatedOn.click();
+			contentUploadPage.updatedOn.click();
 			GenericFunctions.waitWebDriver(5000);
-			String updatedoncontent=contentCreatePage.date.getText();
+			String updatedoncontent=contentUploadPage.date.getText();
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.date.isDisplayed();		
+			contentUploadPage.date.isDisplayed();		
 			System.out.println(updatedoncontent);
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.sortBy.click();
+			contentUploadPage.sortBy.click();
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.createdOn.click();
+			contentUploadPage.createdOn.click();
 			GenericFunctions.waitWebDriver(5000);
-			String updatedoncontent1=contentCreatePage.date.getText();
+			String updatedoncontent1=contentUploadPage.date.getText();
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.date.isDisplayed();		
+			contentUploadPage.date.isDisplayed();		
 			System.out.println(updatedoncontent);
-			contentCreatePage.sortBy.click();
+			contentUploadPage.sortBy.click();
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.nameaz.click();
-			String updatedoncontent2=contentCreatePage.date.getText();
+			contentUploadPage.nameaz.click();
+			String updatedoncontent2=contentUploadPage.date.getText();
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.date.isDisplayed();		
+			contentUploadPage.date.isDisplayed();		
 			System.out.println(updatedoncontent);
 
 
@@ -742,16 +783,16 @@ public class ContentCreateUploadPageObj extends BaseTest
 	public void showFilter(){
 		{
 			try {
-				
+
 				ExtentTestManager.getTest().log(LogStatus.INFO, "The upload content is filtering with based on curriculum,grades,medium,subjects,content types,");
 				objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 				GenericFunctions.waitWebDriver(5000);			
-				GenericFunctions.waitForElementToAppear(contentCreatePage.workspace);
-				contentCreatePage.workspace.click();
+				GenericFunctions.waitForElementToAppear(contentUploadPage.workspace);
+				contentUploadPage.workspace.click();
 				GenericFunctions.waitWebDriver(5000);
-				contentCreatePage.upforreview.click();
+				contentUploadPage.upforreview.click();
 				GenericFunctions.waitWebDriver(5000);
-				contentCreatePage.showfilter.click();
+				contentUploadPage.showfilter.click();
 				GenericFunctions.waitWebDriver(1200);
 				/*contentCreatePage.selectBoard.click();
 				GenericFunctions.waitWebDriver(1200);
@@ -761,25 +802,25 @@ public class ContentCreateUploadPageObj extends BaseTest
 				GenericFunctions.waitWebDriver(1200);
 				contentCreatePage.selectClass9.click();
 				GenericFunctions.waitWebDriver(1200);*/
-				contentCreatePage.selectSubject.click();
+				contentUploadPage.selectSubject.click();
 				GenericFunctions.waitWebDriver(1200);
-				contentCreatePage.selectMathematics.click();
+				contentUploadPage.selectMathematics.click();
 				GenericFunctions.waitWebDriver(1200);
-				contentCreatePage.selectMedium.click();
+				contentUploadPage.selectMedium.click();
 				GenericFunctions.waitWebDriver(1200);
-				contentCreatePage.selectHindi.click();
+				contentUploadPage.selectHindi.click();
 				GenericFunctions.waitWebDriver(1200);
-				contentCreatePage.selectContentType.click();
+				contentUploadPage.selectContentType.click();
 				GenericFunctions.waitWebDriver(1200);
-				contentCreatePage.selectCollection.click();
+				contentUploadPage.selectCollection.click();
 				GenericFunctions.waitWebDriver(1200);
-				GenericFunctions.waitForElementToAppear(contentCreatePage.clickOnApplyButton);
-				contentCreatePage.clickOnApplyButton.click();
+				GenericFunctions.waitForElementToAppear(contentUploadPage.clickOnApplyButton);
+				contentUploadPage.clickOnApplyButton.click();
 				GenericFunctions.waitWebDriver(5000);
 
-				if(contentCreatePage.contentName.isDisplayed())
+				if(contentUploadPage.contentName.isDisplayed())
 				{
-					String Evalue =contentCreatePage.contentName.getText();
+					String Evalue =contentUploadPage.contentName.getText();
 					Assert.assertEquals("Automation Collection_CL0043", Evalue);
 
 				}
@@ -801,20 +842,20 @@ public class ContentCreateUploadPageObj extends BaseTest
 		try {
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to see the upload content in up for review page");
 			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-			GenericFunctions.waitForElementToAppear(contentCreatePage.workspace);
-			contentCreatePage.workspace.click();
+			GenericFunctions.waitForElementToAppear(contentUploadPage.workspace);
+			contentUploadPage.workspace.click();
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.upforreview.click();
+			contentUploadPage.upforreview.click();
 			GenericFunctions.waitWebDriver(5000);
-			GenericFunctions.waitForElementToAppear(contentCreatePage.searchForReview);
-			contentCreatePage.searchForReview.click();
+			GenericFunctions.waitForElementToAppear(contentUploadPage.searchForReview);
+			contentUploadPage.searchForReview.click();
 			GenericFunctions.waitWebDriver(5000);
-			GenericFunctions.waitForElementToAppear(contentCreatePage.searchForReview);
+			GenericFunctions.waitForElementToAppear(contentUploadPage.searchForReview);
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.searchForReview.sendKeys(objListOFTestDataForSunbird1.get(0).getCourseDescription());
+			contentUploadPage.searchForReview.sendKeys(objListOFTestDataForSunbird1.get(0).getCourseDescription());
 
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.contentupload.click();
+			contentUploadPage.contentupload.click();
 			GenericFunctions.waitWebDriver(5000);
 
 			//GenericFunctions.scrollToElement(contentCreatePage.publishButton);
@@ -823,13 +864,13 @@ public class ContentCreateUploadPageObj extends BaseTest
 			//	action.moveToElement(contentCreatePage.publishButton).build().perform();
 
 			Thread.sleep(5000);	
-			contentCreatePage.publishButton.click();
+			contentUploadPage.publishButton.click();
 			GenericFunctions.waitWebDriver(5000);
 			for(int i=0;i<createUserPage.checkbox.size();i++){
 				createUserPage.checkbox.get(i).click();
 			}
-			GenericFunctions.waitForElementToAppear(contentCreatePage.publishButton1);
-			contentCreatePage.publishButton1.click();
+			GenericFunctions.waitForElementToAppear(contentUploadPage.publishButton1);
+			contentUploadPage.publishButton1.click();
 
 			//			GenericFunctions.waitWebDriver(1200);
 			//			GenericFunctions.waitForElementToAppear(contentCreatePage.profileIcon);
@@ -857,14 +898,14 @@ public class ContentCreateUploadPageObj extends BaseTest
 
 			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			GenericFunctions.waitWebDriver(1200);
-			contentCreatePage.profileIcon.click();
+			contentUploadPage.profileIcon.click();
 			GenericFunctions.waitWebDriver(1200);
-			GenericFunctions.waitForElementToAppear(contentCreatePage.workspace);
-			contentCreatePage.workspace1.click();
+			GenericFunctions.waitForElementToAppear(contentUploadPage.workspace);
+			contentUploadPage.workspace1.click();
 			GenericFunctions.waitWebDriver(1200);
-			contentCreatePage.published.click();
+			contentUploadPage.published.click();
 			GenericFunctions.waitWebDriver(1200);
-			contentCreatePage.contentPublished.click();
+			contentUploadPage.contentPublished.click();
 			GenericFunctions.waitWebDriver(5000);
 
 
@@ -885,51 +926,51 @@ public class ContentCreateUploadPageObj extends BaseTest
 	public void requestChanges()
 	{
 		try {
-			
+
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User  is trying to send the request changes for all upload content");
 			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 
-			GenericFunctions.waitForElementToAppear(contentCreatePage.workspace);
-			contentCreatePage.workspace.click();
+			GenericFunctions.waitForElementToAppear(contentUploadPage.workspace);
+			contentUploadPage.workspace.click();
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.upforreview.click();
-			
+			contentUploadPage.upforreview.click();
+
 			GenericFunctions.waitWebDriver(5000);
 
-			contentCreatePage.searchForReview.click();
+			contentUploadPage.searchForReview.click();
 			GenericFunctions.waitWebDriver(5000);
-			GenericFunctions.waitForElementToAppear(contentCreatePage.searchForReview);
+			GenericFunctions.waitForElementToAppear(contentUploadPage.searchForReview);
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.searchForReview.sendKeys(objListOFTestDataForSunbird1.get(0).getCourseDescription());
-			
-			if(contentCreatePage.contentupload.isDisplayed())
+			contentUploadPage.searchForReview.sendKeys(objListOFTestDataForSunbird1.get(0).getCourseDescription());
+
+			if(contentUploadPage.contentupload.isDisplayed())
 			{
-				String Evalue =contentCreatePage.contentupload.getText();
+				String Evalue =contentUploadPage.contentupload.getText();
 				Assert.assertEquals("CourseA Description", Evalue);
 			}
 
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.contentupload.click();
+			contentUploadPage.contentupload.click();
 			GenericFunctions.waitWebDriver(5000);
 
-			
-	       
-			
-			GenericFunctions.waitForElementToAppear(contentCreatePage.requestChangesButton);
-	
-			contentCreatePage.requestChangesButton.click();
+
+
+
+			GenericFunctions.waitForElementToAppear(contentUploadPage.requestChangesButton);
+
+			contentUploadPage.requestChangesButton.click();
 			GenericFunctions.waitWebDriver(5000);
 
-			for(int i=0;i<contentCreatePage.checkbox.size();i++){
-				contentCreatePage.checkbox.get(i).click();
+			for(int i=0;i<contentUploadPage.checkbox.size();i++){
+				contentUploadPage.checkbox.get(i).click();
 			}
 			GenericFunctions.waitWebDriver(5000);
-			GenericFunctions.waitForElementToAppear(contentCreatePage.requestChangesComment);
-			contentCreatePage.requestChangesComment.click();
-			contentCreatePage.requestChangesComment.sendKeys(objListOFTestDataForSunbird1.get(0).getTitle());
+			GenericFunctions.waitForElementToAppear(contentUploadPage.requestChangesComment);
+			contentUploadPage.requestChangesComment.click();
+			contentUploadPage.requestChangesComment.sendKeys(objListOFTestDataForSunbird1.get(0).getTitle());
 			GenericFunctions.waitWebDriver(5000);
 
-			contentCreatePage.requestChangesBlueButton.click();
+			contentUploadPage.requestChangesBlueButton.click();
 			GenericFunctions.waitWebDriver(5000);
 
 
@@ -952,21 +993,21 @@ public class ContentCreateUploadPageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to see the upload content in up for review page");
 
 			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-			contentCreatePage.profileIcon.click();
+			contentUploadPage.profileIcon.click();
 			GenericFunctions.waitWebDriver(5000);
-			GenericFunctions.waitForElementToAppear(contentCreatePage.workspace);
-			contentCreatePage.workspace1.click();
+			GenericFunctions.waitForElementToAppear(contentUploadPage.workspace);
+			contentUploadPage.workspace1.click();
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.allUploads.click();
+			contentUploadPage.allUploads.click();
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.contentPublished.click();
+			contentUploadPage.contentPublished.click();
 
-			GenericFunctions.waitForElementToAppear(contentCreatePage.reviewerSuggestion);
-			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreatePage.reviewerSuggestion);
+			GenericFunctions.waitForElementToAppear(contentUploadPage.reviewerSuggestion);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentUploadPage.reviewerSuggestion);
 			GenericFunctions.waitWebDriver(5000);
-			contentCreatePage.reviewerSuggestion.click();
+			contentUploadPage.reviewerSuggestion.click();
 			GenericFunctions.waitWebDriver(5000);
-			if( contentCreatePage.reviewerSuggestionTitle.isDisplayed())
+			if( contentUploadPage.reviewerSuggestionTitle.isDisplayed())
 			{
 				System.out.println("This test case pass");
 			}

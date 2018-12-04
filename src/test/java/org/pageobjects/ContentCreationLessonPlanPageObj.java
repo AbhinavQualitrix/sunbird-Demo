@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
@@ -36,6 +39,7 @@ public class ContentCreationLessonPlanPageObj extends BaseTest
 	Actions action = new Actions(driver);
 	Random rand=new Random();
 	CreatorUserPageObj createUserPageObj = new CreatorUserPageObj();
+	JavascriptExecutor executor = (JavascriptExecutor)driver;
 
 	public void verifyCreateBookPopup()
 	{
@@ -206,7 +210,6 @@ public class ContentCreationLessonPlanPageObj extends BaseTest
 		}
 	}
 
-	//tc240
 
 	public void rejectTheContent()
 	{
@@ -215,10 +218,35 @@ public class ContentCreationLessonPlanPageObj extends BaseTest
 
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User trying to navigate to reviwer page");
 			objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-
-			contentCreationPage.latestContent.click();
-			contentCreationPage.requestChnages.click();
-			contentCreationPage.commentTextArea.sendKeys("est data");
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(createUserPage.searchForReview);
+			createUserPage.searchForReview.click();
+			createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird1.get(2).getCourseName());
+			/*GenericFunctions.waitForElementToAppear(contentCreationPage.latestContent);
+			contentCreationPage.latestContent.click();*/
+			
+			GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
+			createUserPage.searchedContentForPublish.click();
+			GenericFunctions.waitWebDriver(3000);
+			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
+			GenericFunctions.waitWebDriver(6000);
+			GenericFunctions.waitForElementToAppear(contentCreationPage.requestChanges);
+			contentCreationPage.requestChanges.click();
+			//contentCreationPage.commentTextArea.sendKeys("Test data");
+			GenericFunctions.waitWebDriver(3000);
+			createUserPage.rejectReason1.click();
+			createUserPage.rejectReason2.click();
+			createUserPage.rejectReason3.click();
+			String rejectReason = (REVIEW_COMMENTS[new Random().nextInt(REVIEW_COMMENTS.length)]);
+			createUserPage.reviewComments.click();
+			createUserPage.reviewComments.sendKeys(rejectReason);
+			GenericFunctions.waitWebDriver(2000);
+			/*WebElement html = driver.findElement(By.tagName("html"));
+			html.sendKeys(Keys.chord(Keys.CONTROL, Keys.SUBTRACT));*/
+			executor.executeScript("document.body.style.zoom = '0.8'");
+			GenericFunctions.waitWebDriver(2000);
+			createUserPage.requestChangesButton.click();
+			GenericFunctions.waitForElementToAppear(contentCreationPage.upForReviewButton);
 		}
 		catch(Exception e)
 		{

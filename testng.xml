@@ -39,8 +39,13 @@
        <class name="org.testscript.UploadContentTypePdfAndVerify"/> -->
       
     
-   <class name="org.testscript.UploadContentTypePdfAndVerify"/>
+
+   
      
+
+   
+
+
                  <!-- Test cases of Mentor 
           
           <class name="org.testscript.SearchOrgsAsAdmin" />
@@ -166,11 +171,16 @@
         
  
 
-      
+       <!--  <class name="org.testscript.regression.ReviewerRequestChangesTheBook"/>
+        <class name="org.testscript.VerifyLimitedSharing"/>
+         <class name="org.testscript.regression.VerifyUploadAndDownloadContent"/>
+         <class name="org.testscript.BookCreateOptionValidation"/>
+          <class name="org.testscript.LessonplanCreation"/>-->
+         
    			<!-- Test cases of Admin -->
    			<!-- Test cases of Reviewer -->
    <!--
-   <class name="org.testscript.regression.ReviewerRequestChangesTheBook"/>
+  
    <class name="org.testscript.VerifyLimitedSharing"/>
     <class name="org.testscript.regression.VerifyUploadAndDownloadContent"/>
     <class name="org.testscript.PublishTheContent"/>
