@@ -61,7 +61,7 @@
 	<class name="org.testscript.NavigateToMyActivityInDropdown" />
 	<class name="org.testscript.SearchCourseCreateInviteOnlyBatch" /> -->
      
-          <!-- Test cases of Announcement  -->
+          <!-- Test cases of Announcement  
           
     
    <class name="org.testscript.ResendAnnouncement"/>
@@ -70,8 +70,14 @@
     <class name="org.testscript.NavigateToAnnouncementDashboard"/>
      <class name="org.testscript.CheckAvailabilityOfCourseForInvitedMember"/>
      <class name="org.testscript.ResendAnnouncementAndVerifyAsReciever"/>
+
     <class name="org.testscript.CreateVerifyAndDeleteAnnouncement"/>
      <class name="org.testscript.DeleteAnnouncement"/>
+
+    <class name="org.testscript.ResendAnnouncement"/>
+     <class name="org.testscript.OpenAnnouncement"/>
+     <class name="org.testscript.ResendAnnouncementAndVerifyAnnouncement"/> -->
+
      
    
    			   <!-- Test cases of Regression p2 
@@ -172,12 +178,17 @@
         
  
 
-       <!--  <class name="org.testscript.regression.ReviewerRequestChangesTheBook"/>
+       <class name="org.testscript.regression.ReviewerRequestChangesTheBook"/>
         <class name="org.testscript.VerifyLimitedSharing"/>
          <class name="org.testscript.regression.VerifyUploadAndDownloadContent"/>
          <class name="org.testscript.BookCreateOptionValidation"/>
-          <class name="org.testscript.LessonplanCreation"/>-->
-         
+
+          <class name="org.testscript.LessonplanCreation"/>
+           <class name="org.testscript.VerifyThatTopicsAreDisplayedOnMetaDataForm"/>
+         <class name="org.testscript.VerifyThatTopicsAreSelectedOnMetaDataPage"/>
+          <class name="org.testscript.LessonplanCreation"/>
+         <class name="org.testscript.VerifyTheUploadedContent"/>
+
    			<!-- Test cases of Admin -->
    			<!-- Test cases of Reviewer -->
    <!--

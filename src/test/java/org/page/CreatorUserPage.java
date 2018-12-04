@@ -332,6 +332,7 @@ public class CreatorUserPage {
 	@FindBy(xpath="//h5[.='Usability']/..//input[@class='listItem']")
 	public WebElement rejectReason3;
 
+	//@FindBy(xpath="(//div[@id='checklistModal']/..//button[contains(.,'Request changes')])[2]")
 	@FindBy(xpath="//button[contains(text(),'Request Changes')]")
 	public WebElement requestChangesButton;
 
