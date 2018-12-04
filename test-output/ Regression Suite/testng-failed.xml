@@ -6,38 +6,62 @@
   </listeners>
   <test name="Test(failed)">
     <classes>
-      <class name="org.testscript.regression.VerifyUploadAndDownloadContent">
+      <class name="org.testscript.SearchCourseCreateInviteOnlyBatch">
         <methods>
-          <include name="closeApplication"/>
+          <include name="searchCourseCreateInviteOnlyBatch"/>
+        </methods>
+      </class> <!-- org.testscript.SearchCourseCreateInviteOnlyBatch -->
+      <class name="org.testscript.UpdateBatchAsInvitedMentor">
+        <methods>
+          <include name="updateBatchAsInvitedMentor"/>
+        </methods>
+      </class> <!-- org.testscript.UpdateBatchAsInvitedMentor -->
+      <class name="org.testscript.CheckForDownloadButtonAvailabilityForUserInProfile">
+        <methods>
+          <include name="checkForDownloadButtonAvailabilityForUserInProfile"/>
+        </methods>
+      </class> <!-- org.testscript.CheckForDownloadButtonAvailabilityForUserInProfile -->
+      <class name="org.testscript.EnrollToCourseInOpenBatch">
+        <methods>
+          <include name="enrollToCourseInOpenBatch"/>
+        </methods>
+      </class> <!-- org.testscript.EnrollToCourseInOpenBatch -->
+      <class name="org.testscript.SearchOrgsAsAdmin">
+        <methods>
+          <include name="searchOrgsAsAdmin"/>
           <include name="openApplication"/>
         </methods>
-      </class> <!-- org.testscript.regression.VerifyUploadAndDownloadContent -->
-      <class name="org.testscript.regression.ReviewerRequestChangesTheBook">
+      </class> <!-- org.testscript.SearchOrgsAsAdmin -->
+      <class name="org.testscript.CheckSuborgMentorInvitingOrgMember">
         <methods>
-          <include name="verifyReviewerRequestChnagesTheBook"/>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
+          <include name="suborgMentorInvitingOrgMember"/>
         </methods>
-      </class> <!-- org.testscript.regression.ReviewerRequestChangesTheBook -->
-      <class name="org.testscript.BookCreateOptionValidation">
+      </class> <!-- org.testscript.CheckSuborgMentorInvitingOrgMember -->
+      <class name="org.testscript.ConsumeCourseByInvitedMember">
         <methods>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
+          <include name="consumeCourseByInvitedMember"/>
         </methods>
-      </class> <!-- org.testscript.BookCreateOptionValidation -->
-      <class name="org.testscript.VerifyLimitedSharing">
+      </class> <!-- org.testscript.ConsumeCourseByInvitedMember -->
+      <class name="org.testscript.NavigateToMyActivityInDropdown">
         <methods>
-          <include name="verifyLimitedSharing"/>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
+          <include name="navigateToMyActivityInDropdown"/>
         </methods>
-      </class> <!-- org.testscript.VerifyLimitedSharing -->
-      <class name="org.testscript.LessonplanCreation">
+      </class> <!-- org.testscript.NavigateToMyActivityInDropdown -->
+      <class name="org.testscript.ConsumeOpenCourseByPublicUser">
         <methods>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
+          <include name="consumeOpenCourseByPublicUser"/>
         </methods>
-      </class> <!-- org.testscript.LessonplanCreation -->
+      </class> <!-- org.testscript.ConsumeOpenCourseByPublicUser -->
+      <class name="org.testscript.CheckCourseStatAsMentor">
+        <methods>
+          <include name="checkCourseStatAsMentor"/>
+        </methods>
+      </class> <!-- org.testscript.CheckCourseStatAsMentor -->
+      <class name="org.testscript.CheckForAuthenticUserInMentor">
+        <methods>
+          <include name="checkForAuthenticUserInMentor"/>
+        </methods>
+      </class> <!-- org.testscript.CheckForAuthenticUserInMentor -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [ Regression Suite] -->

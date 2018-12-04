@@ -743,7 +743,9 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.upForReview.click();
 			
-			if(inputToReject.equalsIgnoreCase("Course"))
+
+			/*if(inputToReject.equalsIgnoreCase("Course"))
+
 			{
 				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad("./testData/courseNumbers.txt").toString());
 				GenericFunctions.waitWebDriver(3000);
@@ -835,8 +837,8 @@ public class CreatorUserPageObj extends BaseTest{
 				GenericFunctions.waitWebDriver(3000);
 				System.out.println(inputToReject+" is rejected succesfully");
 				ExtentTestManager.getTest().log(LogStatus.PASS, inputToReject+" is rejected succesfully");
-
-			}
+			 	
+			}*/
 
 		}
 		catch(Exception e)
@@ -866,7 +868,8 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.workSpace.click();
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.upForReview.click();
-			GenericFunctions.waitWebDriver(2000);
+			
+			/*GenericFunctions.waitWebDriver(2000);
 			createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(6).getCourseName()+"R00");
 			GenericFunctions.waitWebDriver(3000);
 			createUserPage.searchedContentForPublish.click();
@@ -891,6 +894,7 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.requestChangesButton);
 			GenericFunctions.clickOnElementUsingJavascript(createUserPage.requestChangesButton);
 			//createUserPage.requestChangesButton.click();
+			 */
 			GenericFunctions.waitWebDriver(3000);
 		}
 		catch(Exception e)
@@ -1483,7 +1487,7 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.upForReview.click();
 
 			//To search for an upload and reject it which is already existing in the list
-			GenericFunctions.waitForElementToAppear(createUserPage.searchForReview);
+			/*GenericFunctions.waitForElementToAppear(createUserPage.searchForReview);
 			if(uploadType.equalsIgnoreCase("epub"))
 			{
 				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(4).getCourseName()+" "+EPUB);
@@ -1540,7 +1544,8 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(3000);
 			System.out.println(uploadType+" rejected succesfully ");
 			ExtentTestManager.getTest().log(LogStatus.PASS, uploadType+" rejected succesfully ");
-		}
+			 */		
+			}
 		catch(Exception e)
 		{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to reject the upload content");
@@ -2462,8 +2467,8 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.startCreating.click();
 			GenericFunctions.waitWebDriver(4000);
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
-			GenericFunctions.waitWebDriver(7500);
-
+			GenericFunctions.waitWebDriver(10000);
+			GenericFunctions.waitForPageToLoad(createUserPage.addResource);
 			GenericFunctions.waitForElementToAppear(createUserPage.addResource);
 			createUserPage.addResource.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.findSelectActivities);
