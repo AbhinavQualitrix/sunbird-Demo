@@ -1184,6 +1184,7 @@ public class CreatorUserPageObj extends BaseTest{
 
 			else if(contentType.equalsIgnoreCase("upload"))
 			{
+				GenericFunctions.waitWebDriver(2000);
 				createUserPage.closeContentPopup.click();
 				GenericFunctions.waitWebDriver(1000);
 			}
