@@ -33,13 +33,13 @@
        <class name="org.testscript.CreateBookAndVerify"/>
        <class name="org.testscript.CreateCollectionAndVerify"/>
        <class name="org.testscript.UploadContentTypeMp4AndVerify"/>
-       <class name="org.testscript.UploadContentTypeH5pAndVerify"/>-->
-      <!--  <class name="org.testscript.UploadContentTypeEpubAndVerify"/>
+       <class name="org.testscript.UploadContentTypeH5pAndVerify"/>
+      <class name="org.testscript.UploadContentTypeEpubAndVerify"/>
        <class name="org.testscript.UploadContentTypeHtmlAndVerify"/>
        <class name="org.testscript.UploadContentTypePdfAndVerify"/> -->
       
     
-   
+   <class name="org.testscript.UploadContentTypePdfAndVerify"/>
      
                  <!-- Test cases of Mentor 
           

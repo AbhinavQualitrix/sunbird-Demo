@@ -6,76 +6,13 @@
   </listeners>
   <test name="Test(failed)">
     <classes>
-      <class name="org.testscript.SearchCourseCreateInviteOnlyBatch">
+      <class name="org.testscript.UploadContentTypePdfAndVerify">
         <methods>
+          <include name="uploadContentTypePdfAndVerify"/>
           <include name="closeApplication"/>
           <include name="openApplication"/>
         </methods>
-      </class> <!-- org.testscript.SearchCourseCreateInviteOnlyBatch -->
-      <class name="org.testscript.UpdateBatchAsInvitedMentor">
-        <methods>
-          <include name="updateBatchAsInvitedMentor"/>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.testscript.UpdateBatchAsInvitedMentor -->
-      <class name="org.testscript.CheckForDownloadButtonAvailabilityForUserInProfile">
-        <methods>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.testscript.CheckForDownloadButtonAvailabilityForUserInProfile -->
-      <class name="org.testscript.SearchOrgsAsAdmin">
-        <methods>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.testscript.SearchOrgsAsAdmin -->
-      <class name="org.testscript.EnrollToCourseInOpenBatch">
-        <methods>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.testscript.EnrollToCourseInOpenBatch -->
-      <class name="org.testscript.CheckSuborgMentorInvitingOrgMember">
-        <methods>
-          <include name="suborgMentorInvitingOrgMember"/>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.testscript.CheckSuborgMentorInvitingOrgMember -->
-      <class name="org.testscript.ConsumeCourseByInvitedMember">
-        <methods>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.testscript.ConsumeCourseByInvitedMember -->
-      <class name="org.testscript.NavigateToMyActivityInDropdown">
-        <methods>
-          <include name="navigateToMyActivityInDropdown"/>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.testscript.NavigateToMyActivityInDropdown -->
-      <class name="org.testscript.ConsumeOpenCourseByPublicUser">
-        <methods>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.testscript.ConsumeOpenCourseByPublicUser -->
-      <class name="org.testscript.CheckForAuthenticUserInMentor">
-        <methods>
-          <include name="checkForAuthenticUserInMentor"/>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.testscript.CheckForAuthenticUserInMentor -->
-      <class name="org.testscript.CheckCourseStatAsMentor">
-        <methods>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.testscript.CheckCourseStatAsMentor -->
+      </class> <!-- org.testscript.UploadContentTypePdfAndVerify -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [ Regression Suite] -->
