@@ -1198,7 +1198,7 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.limitedSharingArrow.click();
 			GenericFunctions.waitWebDriver(500);
 			createUserPage.clickLimitedSharing.click();
-			GenericFunctions.waitWebDriver(3000);
+			GenericFunctions.waitWebDriver(6000);
 		}
 		catch(Exception e)
 		{

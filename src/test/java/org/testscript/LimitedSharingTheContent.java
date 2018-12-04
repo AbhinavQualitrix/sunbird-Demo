@@ -59,7 +59,8 @@ public class LimitedSharingTheContent extends BaseTest
 		
 					
 		//Step 3c:Navigate to workspace to Create a LESSON PLAN
-		//AND
+		creatorUserPageObj.navigateToWorkspace(LESSONPLAN);
+		
 		//Step 3c:Create content type-Lesson plan
 		creatorUserPageObj.createLessonPlan();
 		
