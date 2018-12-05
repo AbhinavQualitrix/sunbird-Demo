@@ -29,7 +29,7 @@ public class VerifyAnnouncementPageContent extends BaseTest
 		AnnouncementCreationsPageObj announcementCreationsPageObj=new AnnouncementCreationsPageObj();
 		
 		//Step1: Login as Creator
-		userLogin.userLogin(ADMIN);
+		userLogin.userLogin(CREATOR);
 		
 		//Step2: Navigate to Announcement dashboard and verify
 		announcementCreationsPageObj.NavigateToAnnouncementDashboard();
@@ -84,7 +84,8 @@ public class VerifyAnnouncementPageContent extends BaseTest
 		
 		//Step 4 : Fetch fields and assert
 		GenericFunctions.FetchFieldsAndAssert(announcementcreationspage.announcementTitle,"TITLE");
-		
+		announcementcreationspage.popupCloseIcon.click();
+		announcementcreationspage.popupCloseIconYes.click();
 		GenericFunctions.refreshWebPage();
 		
 		//Step 4 : Logout as creator

@@ -26,27 +26,7 @@ public class VerifyReviewerRequestChangesTheBook  extends BaseTest
 		SignUpPageObj creatorLogin = new SignUpPageObj();
 		ContentCreationLessonPlanPageObj contentLessonPlanObj= new ContentCreationLessonPlanPageObj();
 		
-		/*//Step1: Login as Creator
 		
-		creatorLogin.userLogin(CREATOR);
-		
-		//Step2: Navigate to WorkSpace
-		
-		creatorUserPageObj.navigateToWorkspace(BOOK);
-		
-		//Step3: Create new book
-		creatorUserPageObj.createBook(objListOFTestDataForSunbird);
-		
-		//Step4: Save and send resource for review
-		creatorUserPageObj.saveAndSendBookForReview(objListOFTestDataForSunbird);
-		
-		GenericFunctions.refreshWebPage();
-			
-		//Step5: Check for course in review submissions 
-		creatorUserPageObj.reviewInSubmissions(BOOK,objListOFTestDataForSunbird);
-
-		//Step6: Logout as Creator
-		creatorLogin.userLogout();*/
 		
 		//1.Login as  reviewer
 		creatorLogin.userLogin(REVIEWER);

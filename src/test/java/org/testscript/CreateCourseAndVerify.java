@@ -25,7 +25,7 @@ public class CreateCourseAndVerify extends BaseTest
 {
 	//MT done
 	@Test(priority=1, groups={"Creator Group"})
-	public void courseCreation() throws Exception
+	public void createCourseAndVerify() throws Exception
 	{
 		List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
@@ -41,7 +41,7 @@ public class CreateCourseAndVerify extends BaseTest
 		creatorUserPageObj.navigateToWorkspace(COURSE);
 
 		//Step3: Create new Course
-		creatorUserPageObj.createCourse(objListOFTestDataForSunbird);
+		creatorUserPageObj.createCourseForOpenBatch(objListOFTestDataForSunbird);
 
 		//Step4: Save and Send for Review
 		creatorUserPageObj.saveAndSendCourseForReview(objListOFTestDataForSunbird);
@@ -57,12 +57,12 @@ public class CreateCourseAndVerify extends BaseTest
 		creatorLogin.userLogin(REVIEWER);
 		
 		//Step8: Search the course which was submitted for review
-		creatorUserPageObj.searchInUpForReview(COURSE,objListOFTestDataForSunbird);
+		creatorUserPageObj.searchInUpForReviewForOpenbatch(COURSE,objListOFTestDataForSunbird);
 
-		//Publish the Course
-		creatorUserPageObj.publishAndSearch(COURSE,objListOFTestDataForSunbird);
+		//Step9:Publish the Course
+		creatorUserPageObj.publishAndSearchForOpenBatch(COURSE,objListOFTestDataForSunbird);
 
-		//Step9: Logout as Reviewer
+		// Logout as Reviewer
 		creatorLogin.userLogout();
 		
 		//Step10: Login as Public User
@@ -70,7 +70,6 @@ public class CreateCourseAndVerify extends BaseTest
 
 		//Step11: Search the course with Name
 		GenericFunctions.waitWebDriver(2000);
-
 		createMentorPageObj.navigateToCourseAndSearchForOpenBatch();
 
 		//Step 12: Logout as Reviewer
