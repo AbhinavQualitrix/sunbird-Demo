@@ -123,7 +123,9 @@ public class ContentCreateUploadPage
 	@FindBy(xpath="//div/div[2]/app-workspacesidebar/div/a[7]")
 	public WebElement upforreview;
 
-	@FindBy(xpath="//div[@class='UpReviewHeader']")
+	//Dec 05
+	@FindBy(xpath="//img[@class='ui tiny image UpReviewTinyImage']/..//div[@class='UpReviewHeader']")
+	//@FindBy(xpath="//div[@class='UpReviewHeader']")
 	public WebElement contentupload;
 
 	@FindBy(xpath="//input[@placeholder='Search content']")
@@ -213,10 +215,10 @@ public class ContentCreateUploadPage
 	@FindBy(xpath="//div/div[2]/app-workspacesidebar/div/a[6]")
 	public WebElement allUploads;
 
-	@FindBy(xpath="//*[@id=\"commonHeader\"]/div/div[4]/div/div/div/div[6]/span")
+	@FindBy(xpath="//*[@id='commonHeader']/div/div[4]/div/div/div/div[6]/span")
 	public WebElement reviewerSuggestion;
 
-	@FindBy(xpath="//span[@class=\"ng-binding\"]")
+	@FindBy(xpath="//span[@class='ng-binding']")
 	public WebElement reviewerSuggestionTitle;
 
 	@FindBy(xpath="//input[@type='file']")

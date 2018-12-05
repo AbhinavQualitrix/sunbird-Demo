@@ -1581,6 +1581,7 @@ public class CreatorUserPageObj extends BaseTest{
 				System.out.println("Only Textbooks are available");
 				ExtentTestManager.getTest().log(LogStatus.PASS, "Only Books are available to the user");
 			}
+			GenericFunctions.waitWebDriver(2000);
 		}
 		catch(Exception e)
 		{

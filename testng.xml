@@ -222,6 +222,7 @@
    
    
    <!-- Test cases of P2, freelancers -->
+   
      <class name="org.testscript.TC_290"/>
       <class name="org.testscript.TC_291"/>
       <class name="org.testscript.TC_294"/>

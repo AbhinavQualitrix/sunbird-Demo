@@ -46,6 +46,9 @@ public class VerifyTheBookAvailableForReview extends BaseTest
 		//Verify only books are there for reviewing
 		creatorUserPageObj.verifyOnlyBooksPresent();
 		
+		//Logout as Book reviewer
+		signupObj.userLogout();
+		
 		//Step 8: Login as Creator
 		signupObj.userLogin(BOOKCREATOR);
 

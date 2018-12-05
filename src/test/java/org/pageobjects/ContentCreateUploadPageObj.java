@@ -958,7 +958,8 @@ public class ContentCreateUploadPageObj extends BaseTest
 			GenericFunctions.waitForElementToAppear(contentUploadPage.searchForReview);
 			GenericFunctions.waitWebDriver(5000);
 			contentUploadPage.searchForReview.sendKeys(objListOFTestDataForSunbird1.get(0).getCourseDescription());
-
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(contentUploadPage.contentupload);
 			if(contentUploadPage.contentupload.isDisplayed())
 			{
 				String Evalue =contentUploadPage.contentupload.getText();

@@ -350,8 +350,9 @@ public class CreatorUserPage {
 	@FindBy(xpath="//input[@class='listItem']")
 	public List<WebElement> checkbox;
 
-	//Nov 9th
-	@FindBy(xpath="//div[@class='sbCard mt-20 mr-30']/div[@class='sub-header']/h4")
+	//Dec 05
+	@FindBy(xpath="//div[contains(@class,'sbCard')]/div[@class='sub-header']/h4")
+	//@FindBy(xpath="//div[@class='sbCard mt-20 mr-30']/div[@class='sub-header']/h4")
 	//@FindBy(xpath="//span[@class='sliderCardHeading text-cencapitalize']")
 	//@FindBy(xpath="//span[@class='sliderCardHeading text-cencapitalize']")
 	public List<WebElement> searchPublishedCourses;
@@ -469,7 +470,9 @@ public class CreatorUserPage {
 	public WebElement reviewComments;
 
 
-	@FindBy(xpath="//div[@class='sbCard mt-20 mr-30']/div[@class='sub-header']/h4")
+	//Dec 05
+	@FindBy(xpath="//div[contains(@class,'sbCard')]/div[@class='sub-header']/h4")
+	//@FindBy(xpath="//div[@class='sbCard mt-20 mr-30']/div[@class='sub-header']/h4")
 	//@FindBy(xpath="//span[@class='sliderCardHeading text-cencapitalize']")
 	public WebElement getCourseName;
 
