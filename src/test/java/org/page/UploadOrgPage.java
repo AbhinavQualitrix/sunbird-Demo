@@ -209,7 +209,7 @@ public class UploadOrgPage {
 	
 	//Nov 25
 	//@FindBy(xpath="(//i[@class='close icon'])")
-	@FindBy(xpath="(//i[@class='close icon'])[2]")
+	@FindBy(xpath="(//i[@class='close icon'])[1]")
 	public WebElement closeThanks;
 	
 	@FindBy(css="#radial-mood-response-rate > svg > g > g.labels.q2")

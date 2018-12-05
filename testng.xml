@@ -25,7 +25,10 @@
         <class name="org.testscript.SkillEndorsement"/>
         <class name="org.testscript.UpdateProfilePhoto"/>
          <class name="org.testscript.SubOrgUsersProviderAndExtId"/>
-         <class name="org.testscript.RootUsersProviderAndExtID"/>-->
+         <class name="org.testscript.RootUsersProviderAndExtID"/>
+           <class name="org.testscript.SubOrgUsersProviderAndExtId"/>
+           <class name="org.testscript.RootUsersProviderAndExtID"/>
+           <class name="org.testscript.VerifyElementsInAdminDashboard"/>  -->
         
      
              <!-- Test cases of Smoke Suite  
@@ -148,7 +151,7 @@
       <class name="org.testscript.VerifyAppliedFilter"/>
       
      
-     <class name="org.testscript.RootUsersProviderAndExtID"/>
+ 
 
     
      
@@ -160,7 +163,7 @@
       <class name="org.testscript.AdminCreationAndDownloadCsv"/>
       <class name="org.testscript.CreateBookAndVerifyOnlyBooksPresent"/>
 
-      <class name="org.testscript.SubOrgUsersProviderAndExtId"/>
+    
 
      <class name="org.testscript.SendTheCourseForReview"/>
     
@@ -172,7 +175,7 @@
       <class name="org.testscript.UploadYoutubeContent"/>
       <class name="org.testscript.LessonplanCreation"/>
       <class name="org.testscript.EditContentAndSendForReview"/>
-      <class name="org.testscript.VerifyElementsInAdminDashboard"/>  
+      
       <class name="org.testscript.CreateBookAndVerify"/>
        <class name="org.testscript.BookCreation"/>
           
@@ -237,8 +240,14 @@
       <class name="org.testscript.TC_205"/>
       <class name="org.testscript.TC_206"/>
       <class name="org.testscript.TC_209"/>
-   
-   
+      <class name="org.testscript.TC_282"/>
+     <class name="org.testscript.TC_283"/>
+       <class name="org.testscript.TC_284"/>
+      <class name="org.testscript.TC_285"/>
+       <class name="org.testscript.TC_286"/>
+       <class name="org.testscript.TC_287"/>
+       <class name="org.testscript.TC_288"/>
+     <class name="org.testscript.TC_289"/>
    
    <!--
   

@@ -568,7 +568,6 @@ public class CreatorUserPageObj extends BaseTest{
 				createUserPage.enterUrl.sendKeys(UPLOAD_YOUTUBE);
 				GenericFunctions.waitWebDriver(10000);
 				//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.UploadButton);	
-				GenericFunctions.waitWebDriver(4000);
 				GenericFunctions.waitForElementToAppear(contentUploadPage.popupUploadButton);
 				contentUploadPage.popupUploadButton.click();
 				//action.moveToElement(createUserPage.UploadButton).build().perform();
