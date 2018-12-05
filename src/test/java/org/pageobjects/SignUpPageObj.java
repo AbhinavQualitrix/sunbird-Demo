@@ -211,6 +211,7 @@ public class SignUpPageObj extends BaseTest
 				objSignUp.signUpLink.click();
 				GenericFunctions.waitForElementToAppear(objSignUp.username);
 				objSignUp.username.sendKeys(objListOFTestDataForSunbird.get(0).getUsername());
+				GenericFunctions.waitWebDriver(2000);
 				objSignUp.password.sendKeys(objListOFTestDataForSunbird.get(0).getPassword());
 				objSignUp.firstName.sendKeys(objListOFTestDataForSunbird.get(0).getFirstName());
 				objSignUp.lastName.sendKeys(objListOFTestDataForSunbird.get(0).getLastName());
@@ -228,9 +229,31 @@ public class SignUpPageObj extends BaseTest
 				generic.selectValueFromDropdown(driver, locDrop, "English");
 				*/
 				objSignUp.languageDropdown.click();
-				GenericFunctions.waitTillTheElementIsVisibleAndClickable(objSignUp.signUpButton);
-				GenericFunctions.waitWebDriver(1000);
-				objSignUp.signUpButton.click();
+				
+				
+				try
+				{
+					
+					GenericFunctions.waitTillTheElementIsVisibleAndClickable(objSignUp.signUpButton);
+					GenericFunctions.waitWebDriver(1000);
+					objSignUp.signUpButton.click();
+					
+					if(objSignUp.alertLabel.size()!=0)
+					{
+						int noOfAlertLabel = objSignUp.alertLabel.size();
+						for(int i=0 ; i<=noOfAlertLabel;i++)
+						{
+							String alertText = objSignUp.alertLabel.get(noOfAlertLabel).getText();
+							System.out.println(alertText);
+							ExtentTestManager.getTest().log(LogStatus.INFO,"Alert text -"+alertText);
+						}
+					}
+				}
+				catch(Exception e)
+				{
+					System.out.println("Exception Message"+e.getLocalizedMessage());
+					ExtentTestManager.getTest().log(LogStatus.INFO,"User credentials is already used for SignUp");
+				}
 			
 		}
 		catch(Exception e)
