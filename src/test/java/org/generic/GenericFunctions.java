@@ -43,7 +43,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.page.CreatorAnnouncementPage;
 import org.page.CreatorUserPage;
+import org.pageobjects.CreatorAnnouncementPageObj;
 import org.pageobjects.CreatorUserPageObj;
 import org.startup.BaseTest;
 import org.generic.ExtentTestManager;
@@ -64,6 +66,8 @@ public class GenericFunctions extends BaseTest
 	CreatorUserPage createUserPage=PageFactory.initElements(driver, CreatorUserPage.class);
 	static CreatorUserPageObj createUserPageObj = new CreatorUserPageObj();
 	static Logger log = Logger.getLogger(GenericFunctions.class.getName());
+	CreatorAnnouncementPageObj creatorAnnouncementPageObj = new CreatorAnnouncementPageObj();
+	CreatorAnnouncementPage creatorAnnouncementPage=PageFactory.initElements(driver, CreatorAnnouncementPage.class);
 
 	/**
 	 * Purpose: selectValueFromDropdown method selects the value from the dropdown list
@@ -741,7 +745,7 @@ public class GenericFunctions extends BaseTest
 			GenericFunctions.waitWebDriver(2000);
 			String Actual=ele.getText();
 			AssertJUnit.assertEquals(Actual,ExpValue);
-
+		
 			ExtentTestManager.getTest().log(LogStatus.PASS,ExpValue+ "Field Verified Succesfully");
 		}
 		catch(Exception e)

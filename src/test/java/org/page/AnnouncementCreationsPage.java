@@ -77,5 +77,11 @@ public class AnnouncementCreationsPage
 
 	@FindBy(xpath="//h4[contains(text(),'Course')]")
 	public WebElement headerCourseTitles;
+	
+	@FindBy(xpath="//i[@class='close icon']")
+	public WebElement popupCloseIcon;
+	
+	@FindBy(xpath="//div[@class='ui primary basic button announcement-button btn-width-34']")
+	public WebElement popupCloseIconYes;
 }
 

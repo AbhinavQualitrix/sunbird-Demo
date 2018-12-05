@@ -25,7 +25,7 @@ public class VerifyReviewerRequestChangesTheBook  extends BaseTest
 		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
 		SignUpPageObj creatorLogin = new SignUpPageObj();
 		ContentCreationLessonPlanPageObj contentLessonPlanObj= new ContentCreationLessonPlanPageObj();
-		
+
 		//Step1: Login as Creator
 		
 		creatorLogin.userLogin(CREATOR);
@@ -42,8 +42,6 @@ public class VerifyReviewerRequestChangesTheBook  extends BaseTest
 		
 		GenericFunctions.refreshWebPage();
 		
-		//Step6: Logout as Creator
-		creatorLogin.userLogout();
 		
 		//1.Login as  reviewer
 		creatorLogin.userLogin(REVIEWER);
