@@ -221,7 +221,7 @@
    
    
    
-   <!-- Test cases of P2, freelancers -->
+   <!-- Test cases of P2, freelancers 
    
      <class name="org.testscript.TC_290"/>
       <class name="org.testscript.TC_291"/>
@@ -248,7 +248,9 @@
        <class name="org.testscript.TC_286"/>
        <class name="org.testscript.TC_287"/>
        <class name="org.testscript.TC_288"/>
-     <class name="org.testscript.TC_289"/>
+     <class name="org.testscript.TC_289"/> -->
+   
+   <class name="org.testscript.VerifyHomePage"/> 
    
    <!--
   

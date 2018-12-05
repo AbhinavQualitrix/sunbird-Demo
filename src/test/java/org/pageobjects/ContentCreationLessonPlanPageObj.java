@@ -226,14 +226,10 @@ public class ContentCreationLessonPlanPageObj extends BaseTest
 			contentCreationPage.latestContent.click();*/
 
 			GenericFunctions.waitWebDriver(6000);
-			//GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
+			GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
 			createUserPage.searchedContentForPublish.click();
 
-			
-			GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
 
-			GenericFunctions.waitWebDriver(3000);
-			action.click(createUserPage.searchedContentForPublish).build().perform();
 			//createUserPage.searchedContentForPublish.click();
 			GenericFunctions.waitWebDriver(6000);
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);

@@ -1012,8 +1012,8 @@ public class ContentCreateUploadPageObj extends BaseTest
 			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			contentUploadPage.profileIcon.click();
 			GenericFunctions.waitWebDriver(5000);
-			GenericFunctions.waitForElementToAppear(contentUploadPage.workspace);
-			contentUploadPage.workspace1.click();
+			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
+			createUserPage.workSpace.click();
 			GenericFunctions.waitWebDriver(5000);
 			contentUploadPage.allUploads.click();
 			GenericFunctions.waitWebDriver(5000);
