@@ -6,13 +6,45 @@
   </listeners>
   <test name="Test(failed)">
     <classes>
+      <class name="org.testscript.VerifyTheBookAvailableForReview">
+        <methods>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
+        </methods>
+      </class> <!-- org.testscript.VerifyTheBookAvailableForReview -->
+      <class name="org.testscript.RejectTheContent">
+        <methods>
+          <include name="rejectTheContent"/>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
+        </methods>
+      </class> <!-- org.testscript.RejectTheContent -->
       <class name="org.testscript.regression.VerifyAnnouncementPageContent">
         <methods>
-          <include name="VerifyAnnouncementDetails"/>
           <include name="closeApplication"/>
           <include name="openApplication"/>
         </methods>
       </class> <!-- org.testscript.regression.VerifyAnnouncementPageContent -->
+      <class name="org.testscript.AdminCreationAndDownloadCsv">
+        <methods>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
+        </methods>
+      </class> <!-- org.testscript.AdminCreationAndDownloadCsv -->
+      <class name="org.testscript.VerifyHomePage">
+        <methods>
+          <include name="verifyHomePage"/>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
+        </methods>
+      </class> <!-- org.testscript.VerifyHomePage -->
+      <class name="org.testscript.regression.VerifyReviewerRequestChangesTheBook">
+        <methods>
+          <include name="verifyReviewerRequestChangesTheBook"/>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
+        </methods>
+      </class> <!-- org.testscript.regression.VerifyReviewerRequestChangesTheBook -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [ Regression Suite] -->

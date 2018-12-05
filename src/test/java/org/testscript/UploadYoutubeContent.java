@@ -31,7 +31,6 @@ public class UploadYoutubeContent extends BaseTest
 		//Step 2,3 and 4:Navigate to workspace and upload content from YouTube link
 		creatorUserPageObj.uploadContentMp4(YOUTUBE);
 
-
 		//Logout as creator
 		signupObj.userLogout();
 

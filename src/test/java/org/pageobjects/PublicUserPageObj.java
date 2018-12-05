@@ -242,9 +242,14 @@ public class PublicUserPageObj extends BaseTest
 			objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 			createUserPage.headerCourse.click();
-
-			GenericFunctions.waitForElementToAppear(createUserPage.searchInput);
+			GenericFunctions.waitWebDriver(2000);
+			
+			GenericFunctions.refreshWebPage();
+			GenericFunctions.waitWebDriver(2000);
+			
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.searchInput);
 			createUserPage.searchInput.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
+			GenericFunctions.waitWebDriver(2000);
 			publicUserPage.filterIcon.click();
 			GenericFunctions.waitWebDriver(1500);
 

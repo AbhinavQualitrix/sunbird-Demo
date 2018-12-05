@@ -568,7 +568,6 @@ public class CreatorUserPageObj extends BaseTest{
 				createUserPage.enterUrl.sendKeys(UPLOAD_YOUTUBE);
 				GenericFunctions.waitWebDriver(10000);
 				//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.UploadButton);	
-				GenericFunctions.waitWebDriver(4000);
 				GenericFunctions.waitForElementToAppear(contentUploadPage.popupUploadButton);
 				contentUploadPage.popupUploadButton.click();
 				//action.moveToElement(createUserPage.UploadButton).build().perform();
@@ -1582,6 +1581,7 @@ public class CreatorUserPageObj extends BaseTest{
 				System.out.println("Only Textbooks are available");
 				ExtentTestManager.getTest().log(LogStatus.PASS, "Only Books are available to the user");
 			}
+			GenericFunctions.waitWebDriver(2000);
 		}
 		catch(Exception e)
 		{

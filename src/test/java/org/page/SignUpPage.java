@@ -1,6 +1,8 @@
 package org.page;
 
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -59,5 +61,8 @@ public class SignUpPage extends BaseTest {
 
 	@FindBy(xpath="//div[@class='iziToast-texts']//strong[@class='iziToast-title slideIn']")
 	public WebElement alertMessage;
+	
+	@FindBy(xpath="//div[contains(@class,'ui pointing red basic label below')]")
+	public List<WebElement> alertLabel;
 }
 

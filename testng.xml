@@ -25,7 +25,12 @@
         <class name="org.testscript.SkillEndorsement"/>
         <class name="org.testscript.UpdateProfilePhoto"/>
          <class name="org.testscript.SubOrgUsersProviderAndExtId"/>
-         <class name="org.testscript.RootUsersProviderAndExtID"/>-->
+         <class name="org.testscript.RootUsersProviderAndExtID"/>
+           <class name="org.testscript.SubOrgUsersProviderAndExtId"/>
+           <class name="org.testscript.RootUsersProviderAndExtID"/>
+           <class name="org.testscript.VerifyElementsInAdminDashboard"/>  
+           <class name="org.testscript.SearchCourseUsingFilter"/>
+            <class name="org.testscript.SearchInLibraryUsingFilter"/>-->
         
      
              <!-- Test cases of Smoke Suite  
@@ -42,6 +47,7 @@
        <class name="org.testscript.UploadContentTypePdfAndVerify"/> --> 
 
 
+
                  <!-- Test cases of Mentor 
           
           <class name="org.testscript.SearchOrgsAsAdmin" />
@@ -55,7 +61,9 @@
 	<class name="org.testscript.ConsumeOpenCourseByPublicUser" />
 	<class name="org.testscript.ConsumeCourseByInvitedMember" />
 	<class name="org.testscript.NavigateToMyActivityInDropdown" />
+
 	<class name="org.testscript.SearchCourseCreateInviteOnlyBatch" /> -->
+
      
           <!-- Test cases of Announcement 
           
@@ -69,13 +77,17 @@
     <class name="org.testscript.CreateVerifyAndDeleteAnnouncement"/>
     <class name="org.testscript.DeleteAnnouncement"/>
     <class name="org.testscript.ResendAnnouncement"/>
+
      <class name="org.testscript.OpenAnnouncement"/>-->
+
     
 
        
       
    
-   			   <!-- Test cases of Regression p2  
+
+   			   <!-- Test cases of Regression p2 
+
    			   
    		<class name="org.testscript.regression.VerifySortOption"/>
    		<class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/>
@@ -108,7 +120,9 @@
        <class name="org.testscript.regression.UploadYoutubeFile"/>
       <class name="org.testscript.regression.VerifyUserNaviagationToContentEditor"/>
       <class name="org.testscript.regression.ReviewAndPublishReceivedContent"/>
+
       <class name="org.testscript.regression.SearchParticularContentInAllMyContent"/>-->
+
    			
    			
 <class name="org.testscript.regression.VerifyAnnouncementPageContent"/>
@@ -128,6 +142,7 @@
       <class name="org.testscript.LoginAndChangePassword"/>
       <class name="org.testscript.CollectionCreation"/>-->
 
+
    		<!-- Test cases of public user 
    		 <class name="org.testscript.SearchUsers"/>
       	 <class name="org.testscript.ProfileInfoUpdate"/>
@@ -135,20 +150,28 @@
       	 <class name="org.testscript.SearchInLibrary"/>		
    		 <class name="org.testscript.CollectionCreation"/>
    		 <class name="org.testscript.LoginAndChangePassword"/>
-         <class name="org.testscript.SearchCourseUsingFilter"/>
+         
 
       <class name="org.testscript.ConfirmInstructionReceivedInforgotPassword"/>
        <class name="org.testscript.VerifyHomePage"/> 
    		
+
    		  <class name="org.testscript.LessonplanCreation"/>-->
    		
  	 
  	 
    	<!--   <class name="org.testscript.NavigateToMyActivity"/>  
+
+   		  <class name="org.testscript.LessonplanCreation"/> -->
+   		
+ 	 
+ 	 
+   	<!--  <class name="org.testscript.NavigateToMyActivity"/>  
+
       <class name="org.testscript.VerifyAppliedFilter"/>
       
      
-     <class name="org.testscript.RootUsersProviderAndExtID"/>
+ 
 
     
      
@@ -160,11 +183,11 @@
       <class name="org.testscript.AdminCreationAndDownloadCsv"/>
       <class name="org.testscript.CreateBookAndVerifyOnlyBooksPresent"/>
 
-      <class name="org.testscript.SubOrgUsersProviderAndExtId"/>
+    
 
      <class name="org.testscript.SendTheCourseForReview"/>
     
-      <class name="org.testscript.SearchInLibraryUsingFilter"/>
+     
     <class name="org.testscript.VerifyTheBookAvailableForReview"/>
 
       <class name="org.testscript.VerifyHomePage"/>
@@ -172,7 +195,7 @@
       <class name="org.testscript.UploadYoutubeContent"/>
       <class name="org.testscript.LessonplanCreation"/>
       <class name="org.testscript.EditContentAndSendForReview"/>
-      <class name="org.testscript.VerifyElementsInAdminDashboard"/>  
+      
       <class name="org.testscript.CreateBookAndVerify"/>
        <class name="org.testscript.BookCreation"/>
           
@@ -187,34 +210,61 @@
        <class name="org.testscript.CreateBookAndVerify"/>
        
        <class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/>-->
-        
 
 
-
-      <!--  
-        
-         <class name="org.testscript.regression.VerifyUploadAndDownloadContent"/>
-         <class name="org.testscript.BookCreateOptionValidation"/>
-         <class name="org.testscript.regression.VerifyUploadAndDownloadContent"/>
-          <class name="org.testscript.LessonplanCreation"/>
-           <class name="org.testscript.VerifyThatTopicsAreDisplayedOnMetaDataForm"/>
-         <class name="org.testscript.VerifyThatTopicsAreSelectedOnMetaDataPage"/>
-          <class name="org.testscript.LessonplanCreation"/>
-         <class name="org.testscript.VerifyTheUploadedContent"/> -->
 			
 			
-			
-   			<!-- Test cases of Admin -->
-   			<!-- Test cases of Reviewer -->
-   <!-- 
-  <class name="org.testscript.regression.VerifyReviewerRequestChangesTheBook"/>-->
 
-   			<!-- Test cases of Admin 
+   
+
+   			<!-- Test cases of Reviewer
+  
+  <class name="org.testscript.regression.VerifyReviewerRequestChangesTheBook"/> -->
+
+   			<!-- Test cases of Admin
    			<class name="org.testscript.AdminCreationAndDownloadCsv"/>
-   			<class name="org.testscript.VerifyElementsInAdminDashboard"/>  -->
+   			<class name="org.testscript.VerifyElementsInAdminDashboard"/>   -->
+   			
+   			
    			<!-- Test cases of Reviewer -->
    
    
+   
+   <!-- Test cases of P2, freelancers 
+   
+     <class name="org.testscript.TC_290"/>
+      <class name="org.testscript.TC_291"/>
+      <class name="org.testscript.TC_294"/>
+      <class name="org.testscript.TC_281"/>
+      <class name="org.testscript.TC_292"/>
+      <class name="org.testscript.TC_293"/>
+      <class name="org.testscript.TC_210"/>
+      <class name="org.testscript.TC_200"/>
+      <class name="org.testscript.TC_186"/>
+      <class name="org.testscript.TC_203"/>
+      <class name="org.testscript.TC_204"/>
+      <class name="org.testscript.TC_201"/>
+      <class name="org.testscript.TC_202"/>
+      <class name="org.testscript.TC_207"/>
+      <class name="org.testscript.TC_208"/>
+      <class name="org.testscript.TC_205"/>
+      <class name="org.testscript.TC_206"/>
+      <class name="org.testscript.TC_209"/>
+      <class name="org.testscript.TC_282"/>
+     <class name="org.testscript.TC_283"/>
+       <class name="org.testscript.TC_284"/>
+      <class name="org.testscript.TC_285"/>
+       <class name="org.testscript.TC_286"/>
+       <class name="org.testscript.TC_287"/>
+       <class name="org.testscript.TC_288"/>
+     <class name="org.testscript.TC_289"/> -->
+
+
+      <class name="org.testscript.VerifyHomePage"/>
+      <class name="org.testscript.RejectTheContent"/>
+		<class name="org.testscript.AdminCreationAndDownloadCsv"/>
+		<class name="org.testscript.regression.VerifyReviewerRequestChangesTheBook"/>
+   <class name="org.testscript.VerifyTheBookAvailableForReview"/>
    <!--
   
 
