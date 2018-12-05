@@ -42,6 +42,7 @@ public class VerifyReviewerRequestChangesTheBook  extends BaseTest
 		
 		GenericFunctions.refreshWebPage();
 		
+		creatorLogin.userLogout();
 		
 		//1.Login as  reviewer
 		creatorLogin.userLogin(REVIEWER);
