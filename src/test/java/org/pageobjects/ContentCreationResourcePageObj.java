@@ -1737,7 +1737,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			contentCreationResourcePage.searchConcepts.sendKeys(objListOFTestDataForSunbird1.get(6).getTitle());
 			GenericFunctions.waitWebDriver(2000);
 			contentCreationResourcePage.conceptChooseAll.click();
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitWebDriver(2000);
 			action.moveToElement(contentCreationResourcePage.conceptDoneButton).build().perform();
 			contentCreationResourcePage.conceptDoneButton.click();
 			GenericFunctions.waitWebDriver(2000);
