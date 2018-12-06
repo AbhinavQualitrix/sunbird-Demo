@@ -7,32 +7,21 @@ import org.apache.log4j.Logger;
 import org.generic.AllUploadingPaths;
 import org.generic.ExtentTestManager;
 import org.generic.GenericFunctions;
-import org.generic.ReadTestDataFromExcel;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.page.ContentCreationResourcePage;
-import org.page.CreateMentorPage;
 import org.page.CreatorUserPage;
-import org.page.PublicUserPage;
-import org.page.SignUpPage;
-import org.page.UploadOrgPage;
+import org.page.QuestionSetPage;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
-
 
 import com.relevantcodes.extentreports.LogStatus;
 
 public class QuestionSetPageObj extends BaseTest{
 	
 	WebDriverWait wait = new WebDriverWait(driver,20);
-	CreatorUserPage createUserPage=PageFactory.initElements(driver, CreatorUserPage.class);
-	PublicUserPage PublicUserPage = PageFactory.initElements(driver, PublicUserPage.class);
-	CreateMentorPage CreateMentorPage=PageFactory.initElements(driver, CreateMentorPage.class);
-	SignUpPage SignUpPage=PageFactory.initElements(driver, SignUpPage.class);
-	UploadOrgPage UploadOrgPage = PageFactory.initElements(driver, UploadOrgPage.class);
-	ContentCreationResourcePage ContentCreationResourcePage = PageFactory.initElements(driver, ContentCreationResourcePage.class);
+	QuestionSetPage QuestionSetPage=PageFactory.initElements(driver, QuestionSetPage.class);
 	static Logger log = Logger.getLogger(CreatorUserPage.class.getName());
 	List <TestDataForSunbird> objListOFTestDataForSunbird1= null ;
 	Actions action = new Actions(driver);
@@ -49,24 +38,24 @@ public class QuestionSetPageObj extends BaseTest{
 				{
 				ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create resource with different question sets");
 				GenericFunctions.waitWebDriver(1500);
-				//GenericFunctions.waitForElementToAppear(createUserPage.bookName);
+				//GenericFunctions.waitForElementToAppear(QuestionSetPage.bookName);
 				String resourceNumber = GenericFunctions.testDataIncrementer("./testData/resourceNumbers.txt").toString();
-				createUserPage.bookName.sendKeys(objListOFTestDataForSunbird.get(6).getCourseName()+resourceNumber);
+				QuestionSetPage.bookName.sendKeys(objListOFTestDataForSunbird.get(6).getCourseName()+resourceNumber);
 				 				
-				createUserPage.startCreating.click();
+				QuestionSetPage.startCreating.click();
 				GenericFunctions.waitWebDriver(5000);
 				
 				driver.switchTo().frame(0);
-				GenericFunctions.waitForElementToAppear(createUserPage.addQuestionSet);
-				createUserPage.addQuestionSet.click(); 	
+				GenericFunctions.waitForElementToAppear(QuestionSetPage.addQuestionSet);
+				QuestionSetPage.addQuestionSet.click(); 	
 				GenericFunctions.waitWebDriver(2000);
 				
-				createUserPage.createQuestion.click();
+				QuestionSetPage.createQuestion.click();
 				
 				
-				if(createUserPage.MTF.isDisplayed())
+				if(QuestionSetPage.MTF.isDisplayed())
 				{
-					createUserPage.MTF.click();
+					QuestionSetPage.MTF.click();
 					GenericFunctions.waitWebDriver(2000);
 					Assert.assertTrue(true," MTF Clicked");
 					System.out.println("MTF got Clicked");
@@ -78,14 +67,14 @@ public class QuestionSetPageObj extends BaseTest{
 					log.info("Not able to Click MTF");
 				}
 
-				createUserPage.Back.click();
+				QuestionSetPage.Back.click();
 				GenericFunctions.waitWebDriver(2000);
 
 				
 				
-				if(createUserPage.MCQ.isDisplayed())
+				if(QuestionSetPage.MCQ.isDisplayed())
 				{
-					createUserPage.MCQ.click();
+					QuestionSetPage.MCQ.click();
 					GenericFunctions.waitWebDriver(2000);
 					Assert.assertTrue(true," MCQ Selected");
 					System.out.println("MCQ got Selected");
@@ -96,14 +85,14 @@ public class QuestionSetPageObj extends BaseTest{
 					log.info("Not ablet to Select MCQ");
 				}
 
-				createUserPage.Back.click();
+				QuestionSetPage.Back.click();
 				GenericFunctions.waitWebDriver(2000);
 
 				
 				
-				if(createUserPage.FTB.isDisplayed())
+				if(QuestionSetPage.FTB.isDisplayed())
 				{
-					createUserPage.FTB.click();
+					QuestionSetPage.FTB.click();
 					GenericFunctions.waitWebDriver(2000);	
 					Assert.assertTrue(true," FTB Selected");
 					System.out.println("FTB got Selected");

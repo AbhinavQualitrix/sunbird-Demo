@@ -167,30 +167,42 @@ public class BatchUserPage {
 	@FindBy(xpath="(//div[@class='content batch-content-meta'])[1]")
 	public WebElement batchContent;
 	
+	@FindBy(xpath="(//input[contains(@id,'keyword')])[2]")
+	public WebElement courseSearch;
 	
+	@FindBy(xpath="//button[contains(.,'VIEW COURSE STATS')]")
+	public WebElement viewCourseStatsButton;
 	
+	@FindBy(xpath="/html/body/app-root/div/app-workspace/div/div[2]/app-workspacesidebar/div/a[7]")		
+	public WebElement upForReview;
 	
+	@FindBy(xpath="//*[@class='UpForReviewListHover cursor-pointer']")
+	public WebElement firtContent;
 	
+	@FindBy(xpath = "//span[contains(.,'Publish')]")
+	public WebElement headerPublish;
 	
+	@FindBy(xpath="//*[@id='main-nav']/div[2]/app-main-menu/div/a[4]")
+	public WebElement Workspace;
 	
+	@FindBy(xpath="//*[@class='ui right floated primary button mouse-pointer']")
+	public WebElement Publish;
 	
+	@FindBy(xpath="//*[@id='review-footer']/div/button[2]")
+	public WebElement publishConfirm;
 	
+	@FindBy(xpath="(//input[@name='filter_search'])[2]")
+	public WebElement filterSearch;
 	
+	@FindBy(xpath = "//i[@class='circular search link icon']")
+	public WebElement searchIconUpForReview;
 	
+	@FindBy(xpath = "(//div[contains(@class,'meta')])[1]")
+	public WebElement searchedCourse;
 	
+	@FindBy(xpath="//a[text() = 'Create Batch']")
+	public WebElement createBatch;
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@FindBy(xpath="//div[@class='item'][contains(.,'Test BookReviewer (te***************@qualitrix.com)')]")
+	public WebElement testBookReviewerInBatch;
 }

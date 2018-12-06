@@ -19,14 +19,16 @@ public class TC_186 extends BaseTest {
 	  
 	  // Login as creator
 	  SignUpPageObj creatorLogin = new SignUpPageObj();
+	  CreatorUserPageObj CreatorUserPageObj = new CreatorUserPageObj();
+	  QuestionSetPageObj questionsetpage = new QuestionSetPageObj();
 	  creatorLogin.userLogin(CREATOR);
 	  
 	  // Navigate to workspace and select resource under create section
-	  CreatorUserPageObj CreatorUserPageObj = new CreatorUserPageObj();
+	  
 	  CreatorUserPageObj.navigateToWorkspace(RESOURCE);
 	  
 	  // Select different questions
-	  QuestionSetPageObj questionsetpage = new QuestionSetPageObj();
+	
 	  questionsetpage.createresource(objListOFTestDataForSunbird);
 	 
 	  

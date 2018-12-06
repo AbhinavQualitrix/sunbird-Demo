@@ -1,6 +1,5 @@
 package org.testscript;
 
-import org.pageobjects.CreatorUserPageObj;
 import org.pageobjects.MentorOrgPageObj;
 import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
@@ -16,7 +15,7 @@ public class TC_289 extends BaseTest{
 	
 	// Preview any course
 	
-	//CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
+	//CreatorUserPageObj creatorUserPage = new CreatorUserPageObj();
 	MentorOrgPageObj MentorOrgPageObj = new MentorOrgPageObj();
 	
 	MentorOrgPageObj.coursePreview();

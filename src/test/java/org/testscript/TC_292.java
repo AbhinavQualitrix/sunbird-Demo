@@ -4,9 +4,7 @@ import java.util.List;
 
 import org.generic.ReadTestDataFromExcel;
 import org.pageobjects.BatchUserPageObj;
-import org.pageobjects.CreateMentorPageObj;
 import org.pageobjects.CreatorUserPageObj;
-import org.pageobjects.FlagReviewerPageObj;
 import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;

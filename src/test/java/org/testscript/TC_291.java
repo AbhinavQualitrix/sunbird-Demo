@@ -1,6 +1,5 @@
 package org.testscript;
 
-import org.pageobjects.CreateMentorPageObj;
 import org.pageobjects.MentorOrgPageObj;
 import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;

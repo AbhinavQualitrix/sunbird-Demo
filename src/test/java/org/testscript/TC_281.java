@@ -3,7 +3,6 @@ package org.testscript;
 import org.openqa.selenium.support.PageFactory;
 import org.page.CreatorUserPage;
 import org.pageobjects.AllMyContentPageObj;
-import org.pageobjects.CreatorUserPageObj;
 import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
 import org.testng.annotations.Test;
