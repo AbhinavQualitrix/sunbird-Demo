@@ -1008,30 +1008,31 @@ public class ContentCreateUploadPageObj extends BaseTest
 	{
 		try {
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to see the upload content in up for review page");
-
 			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-			contentUploadPage.profileIcon.click();
+			//GenericFunctions.waitWebDriver(2000);
+			//contentUploadPage.profileIcon.click();
 			GenericFunctions.waitWebDriver(5000);
-			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
+			//GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
 			createUserPage.workSpace.click();
 			GenericFunctions.waitWebDriver(5000);
 			contentUploadPage.allUploads.click();
 			GenericFunctions.waitWebDriver(5000);
 			contentUploadPage.contentPublished.click();
-
-			GenericFunctions.waitForElementToAppear(contentUploadPage.reviewerSuggestion);
+			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
+			//GenericFunctions.waitForElementToAppear(contentUploadPage.reviewerSuggestion);
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentUploadPage.reviewerSuggestion);
 			GenericFunctions.waitWebDriver(5000);
-			contentUploadPage.reviewerSuggestion.click();
+			GenericFunctions.clickOnElementUsingJavascript(contentUploadPage.reviewerSuggestion);
+			//contentUploadPage.reviewerSuggestion.click();
 			GenericFunctions.waitWebDriver(5000);
 			if( contentUploadPage.reviewerSuggestionTitle.isDisplayed())
 			{
 				System.out.println("This test case pass");
 			}
-
-
-
-
+			contentUploadPage.closeLinkIcon.click();
+			GenericFunctions.waitWebDriver(2000);
+			contentUploadPage.closePageIcon.click();
+			GenericFunctions.waitWebDriver(2000);
 
 		}catch(Exception e)
 		{

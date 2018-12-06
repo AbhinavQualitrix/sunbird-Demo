@@ -6,13 +6,13 @@
   </listeners>
   <test name="Test(failed)">
     <classes>
-      <class name="org.testscript.RejectTheContent">
+      <class name="org.testscript.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor">
         <methods>
-          <include name="rejectTheContent"/>
+          <include name="consumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
           <include name="closeApplication"/>
           <include name="openApplication"/>
         </methods>
-      </class> <!-- org.testscript.RejectTheContent -->
+      </class> <!-- org.testscript.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [ Regression Suite] -->

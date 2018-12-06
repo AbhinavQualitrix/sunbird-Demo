@@ -215,7 +215,7 @@ public class ContentCreateUploadPage
 	@FindBy(xpath="//div/div[2]/app-workspacesidebar/div/a[6]")
 	public WebElement allUploads;
 
-	@FindBy(xpath="//*[@id='commonHeader']/div/div[4]/div/div/div/div[6]/span")
+	@FindBy(xpath="//div[@data-content='Review comments']")
 	public WebElement reviewerSuggestion;
 
 	@FindBy(xpath="//span[@class='ng-binding']")
@@ -256,7 +256,7 @@ public class ContentCreateUploadPage
 	@FindBy(xpath="//div[@class=\"UpReviewHeader\"]")
 	public WebElement contentName;
 
-	@FindBy(xpath="//*[@id=\"dropdown-menu-list-header\"]/ngx-avatar/div/div")
+	@FindBy(xpath="//*[@id='dropdown-menu-list-header']/ngx-avatar/div/div")
 	public WebElement profileIcon;
 
 	@FindBy(xpath="//*[@id=\"dropdown-menu-list-header\"]/div/a[2]")
@@ -298,5 +298,12 @@ public class ContentCreateUploadPage
 	
 	@FindBy(xpath="//i[contains(@class,'download icon')]")
 	public WebElement contentDownloadIcon;
+	
+	
+	@FindBy(xpath="//i[@class='close link icon']")
+	public WebElement closeLinkIcon;
+	
+	@FindBy(xpath="//i[@class='remove icon custom-cursor']")
+	public WebElement closePageIcon;
 	
 }

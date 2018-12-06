@@ -29,7 +29,7 @@ public class RejectTheContent extends BaseTest{
 	//Step no.5:Navigate to workspace then navigate to all uploads 
 	contentcreateuploadpageobj.alluploads();
 	
-	//Step no.6:Logout as reviewer
+	//Step no.6 :Logout as reviewer
 	signupobj.userLogout();
 	
 	

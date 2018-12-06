@@ -149,20 +149,21 @@ public class CreateMentorPageObj extends BaseTest{
 		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 		try{
 
-			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify navigate to Course section, search course and create open batch");
+			ExtentTestManager.getTest().log(LogStatus.INFO, "To verify navigate to Course section, search course ");
 			GenericFunctions.waitWebDriver(4000);
 			GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
 			createUserPage.headerCourse.click();
 			GenericFunctions.waitWebDriver(2000);
 			createUserPage.searchInput.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName() + GenericFunctions.readFromNotepad("./testData/dikshadata.txt"));
 			createUserPage.searchIcon.click();
-			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitWebDriver(5000);
+			GenericFunctions.waitForElementToAppear(createMentorPage.courseImg1);
 			createMentorPage.courseImg1.click();
 			GenericFunctions.waitWebDriver(3000);
 		}
 		catch(Exception e)
 		{
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on navigating to Course section, search course and create batch");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on navigating to Course section, search course ");
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
 			log.error("Exception In the method navigateToCourseAndSearchForOpenBatch"+e.getLocalizedMessage());
 			Assert.fail("Failed on navigating to Course section, search course and create open batch, Exception : "+e.getLocalizedMessage());
@@ -443,7 +444,7 @@ public class CreateMentorPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.switchToFrame(driver, createMentorPage.batchForm);
 			GenericFunctions.waitWebDriver(1000);
-			createMentorPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+ GenericFunctions.readFromNotepad("./testData/courseNumbers.txt"));
+			createMentorPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+ GenericFunctions.readFromNotepad("./testData/dikshadata.txt"));
 			createMentorPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
 			createMentorPage.openBatch.click();
 			GenericFunctions.waitWebDriver(1000);
