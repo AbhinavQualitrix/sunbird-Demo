@@ -285,12 +285,13 @@
      
       
       <class name="org.testscript.TC_340"/>
+<<<<<<< HEAD
       <class name="org.testscript.TC_341"/> -->
     
     
     <!-- Daily Execution -->
     
-    
+ 
     
  
 	<class name="org.testscript.regression.SameUserNameIsNotAllowedWhileSignup"/>
@@ -320,7 +321,7 @@
       <class name="org.testscript.CheckInReviewSubmission"/>
       <class name="org.testscript.VerifycopyContent"/> -->
       
-    
+   
      
       <!--  
       <class name="org.testscript.regression.SortTheResultInUpForReview"/>
