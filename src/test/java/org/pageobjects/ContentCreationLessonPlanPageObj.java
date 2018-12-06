@@ -226,7 +226,7 @@ public class ContentCreationLessonPlanPageObj extends BaseTest
 			contentCreationPage.latestContent.click();*/
 
 			GenericFunctions.waitWebDriver(6000);
-			GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
+			//GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
 			createUserPage.searchedContentForPublish.click();
 
 
@@ -254,12 +254,9 @@ public class ContentCreationLessonPlanPageObj extends BaseTest
 			GenericFunctions.clickOnElementUsingJavascript(createUserPage.requestChangesButton1);
 			//createUserPage.requestChangesButton1.click();
 			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.waitForElementToAppear(createUserPage.upForReview);
-
-			action.moveToElement(createUserPage.requestChangesButton1).build().perform();
-			//createUserPage.requestChangesButton.click();
+			//GenericFunctions.waitForElementToAppear(createUserPage.upForReview);
 			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.waitForElementToAppear(contentCreationPage.upForReviewButton);
+			//GenericFunctions.waitForElementToAppear(contentCreationPage.upForReviewButton);
 
 		}
 		catch(Exception e)

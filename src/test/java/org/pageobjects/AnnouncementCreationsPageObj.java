@@ -48,7 +48,7 @@ public class AnnouncementCreationsPageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Click on Profile Icon Page");
 			GenericFunctions.waitForElementToAppear(announcementcreationspage.profileIcon);
 			announcementcreationspage.profileIcon.click();
-
+			GenericFunctions.waitWebDriver(2000);
 
 
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Click on AnnouncementDashboardMenu In ProfileIcone");
