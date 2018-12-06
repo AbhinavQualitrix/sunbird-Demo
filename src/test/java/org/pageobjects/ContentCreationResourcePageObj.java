@@ -1530,7 +1530,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			System.out.println("Failed to verify create-Fill in the blanks question type "+e.getLocalizedMessage());
 			Assert.fail("Failed to verify create-Fill in the blanks question type "+e.getLocalizedMessage());
 		}
-		ExtentTestManager.getTest().log(LogStatus.INFO,"Completion of Test case 82 of Creator");
+		ExtentTestManager.getTest().log(LogStatus.INFO,"Completion of Test case, continuation with next scenario");
 	}
 
 	public void keyboardTypeEnglishAndDevice()
@@ -1541,19 +1541,20 @@ public class ContentCreationResourcePageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.INFO, "USer is trying to select keyboard type English And Device");
 
 			//To VERIFY THE KEYBOARD TYPE - ENGLISH
-			GenericFunctions.waitWebDriver(1600);
+			action.moveToElement(contentCreationResourcePage.keyboardTypeEnglish).build().perform();
+			GenericFunctions.waitWebDriver(2000);
 			contentCreationResourcePage.keyboardTypeEnglish.click();
 			GenericFunctions.waitWebDriver(1200);
 			contentCreationResourcePage.previewRefreshIcon.click();
 			GenericFunctions.WaitForFrameAndSwitchToIt(contentCreationResourcePage.previewFrameArea);
-			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.previewAnsFiled1);
-			GenericFunctions.waitWebDriver(1200);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.previewAnsFiled1);
+			GenericFunctions.waitWebDriver(4000);				
 			contentCreationResourcePage.previewAnsFiled1.click();
 			GenericFunctions.waitWebDriver(2000);
 			if(contentCreationResourcePage.previewKeyboard.isDisplayed()&&contentCreationResourcePage.keyboardLetterA.isDisplayed())
 			{
 				Assert.assertTrue(true);
-				ExtentTestManager.getTest().log(LogStatus.INFO,"Keyboard is displayed on previewing the question and Keyboard type as 'English'");
+				ExtentTestManager.getTest().log(LogStatus.PASS,"Keyboard is displayed on previewing the question when Keyboard type is - English");
 				System.out.println("Keyboard is displayed on previewing the question and Keyboard type as 'English'");
 			}
 			else 
@@ -1563,21 +1564,21 @@ public class ContentCreationResourcePageObj extends BaseTest
 
 			//TO VERIFY KEYBOARD TYPE-DEVICE
 			driver.switchTo().parentFrame();
-			GenericFunctions.waitWebDriver(1200);
+			GenericFunctions.waitWebDriver(2000);
 			action.moveToElement(contentCreationResourcePage.selectKeyboard).build().perform();
 			action.click(contentCreationResourcePage.selectKeyboard).build().perform();
-			GenericFunctions.waitWebDriver(600);
+			GenericFunctions.waitWebDriver(1000);
 			contentCreationResourcePage.keyboardTypeDevice.click();
-			GenericFunctions.waitWebDriver(1200);
+			GenericFunctions.waitWebDriver(2000);
 			contentCreationResourcePage.previewRefreshIcon.click();
 			GenericFunctions.WaitForFrameAndSwitchToIt(contentCreationResourcePage.previewFrameArea);
-			GenericFunctions.waitWebDriver(1200);
-			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.previewAnsFiled1);
-			GenericFunctions.waitWebDriver(1200);
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.previewAnsFiled1);
+			GenericFunctions.waitWebDriver(2000);
 			contentCreationResourcePage.previewAnsFiled1.click();
-			contentCreationResourcePage.previewAnsFiled1.sendKeys("Test 1");
+			contentCreationResourcePage.previewAnsFiled1.sendKeys("Test A");
 			Assert.assertTrue(true);
-			ExtentTestManager.getTest().log(LogStatus.INFO,"Keyboard is not displayed while previewing the quesiton and Keyboard type as 'Device'");
+			ExtentTestManager.getTest().log(LogStatus.INFO,"Keyboard is not displayed while previewing the question and Keyboard type as -Device");
 		}
 		catch(Exception e)
 		{
@@ -1620,7 +1621,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 				contentCreationResourcePage.addKeysTB.clear();
 				inputKeyCharArr = objListOFTestDataForSunbird1.get(12).getTitle().toCharArray();
 				inputCharArrSize = inputKeyCharArr.length-7;
-				contentCreationResourcePage.addKeysTB.sendKeys(objListOFTestDataForSunbird1.get(11).getTitle());
+				contentCreationResourcePage.addKeysTB.sendKeys(objListOFTestDataForSunbird1.get(12).getTitle());
 
 			}
 			else if(addKeysType.equalsIgnoreCase("alphabets"))
@@ -1633,18 +1634,18 @@ public class ContentCreationResourcePageObj extends BaseTest
 				contentCreationResourcePage.addKeysTB.clear();
 				contentCreationResourcePage.addKeysTB.sendKeys(objListOFTestDataForSunbird1.get(13).getCourseName());
 			}
-			GenericFunctions.waitWebDriver(1200);
+			GenericFunctions.waitWebDriver(2000);
 			contentCreationResourcePage.previewRefreshIcon.click();
 			GenericFunctions.WaitForFrameAndSwitchToIt(contentCreationResourcePage.previewFrameArea);
-			GenericFunctions.waitWebDriver(1200); 	
+			GenericFunctions.waitWebDriver(2000); 	
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.previewAnsFiled1);
-			GenericFunctions.waitWebDriver(1300);
+			GenericFunctions.waitWebDriver(2000);
 			contentCreationResourcePage.previewAnsFiled1.click();
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitWebDriver(2000);
 			if(contentCreationResourcePage.previewKeyboard.isDisplayed()&&contentCreationResourcePage.keyboardLetterA.isDisplayed())
 			{
 				Assert.assertTrue(true);
-				ExtentTestManager.getTest().log(LogStatus.INFO,"Custom Keyboard is displayed with only the entered keywords while previewing the question");
+				ExtentTestManager.getTest().log(LogStatus.PASS,"Custom Keyboard is displayed with only the entered keywords while previewing the question");
 				System.out.println("Custom Keyboard is displayed with only the entered keywords while previewing the question");
 			}
 			/*if(addKeysType.contains("characters"))
@@ -1714,14 +1715,17 @@ public class ContentCreationResourcePageObj extends BaseTest
 			contentCreationResourcePage.selectLevel.click();
 			GenericFunctions.waitWebDriver(1300);
 			contentCreationResourcePage.clickGrade.click();
+			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.selectGrade);
 			contentCreationResourcePage.selectGrade.click();
-			GenericFunctions.waitWebDriver(1300);
+			GenericFunctions.waitWebDriver(1000);
 			contentCreationResourcePage.clickSubject.click();
+			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.selectSubject);
 			contentCreationResourcePage.selectSubject.click();
 			GenericFunctions.waitWebDriver(1000);
 			contentCreationResourcePage.clickBoard.click();
+			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.selectBoard);
 			contentCreationResourcePage.selectBoard.click();
 			GenericFunctions.waitWebDriver(700);
@@ -1733,9 +1737,11 @@ public class ContentCreationResourcePageObj extends BaseTest
 			contentCreationResourcePage.searchConcepts.sendKeys(objListOFTestDataForSunbird1.get(6).getTitle());
 			GenericFunctions.waitWebDriver(2000);
 			contentCreationResourcePage.conceptChooseAll.click();
-			GenericFunctions.waitWebDriver(500);
+			GenericFunctions.waitWebDriver(1000);
+			action.moveToElement(contentCreationResourcePage.conceptDoneButton).build().perform();
 			contentCreationResourcePage.conceptDoneButton.click();
 			GenericFunctions.waitWebDriver(2000);
+			action.moveToElement(contentCreationResourcePage.QueSubmitButton).build().perform();
 			contentCreationResourcePage.QueSubmitButton.click();
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.pickQuestion);
 			if(contentCreationResourcePage.pickQuestion.isDisplayed())

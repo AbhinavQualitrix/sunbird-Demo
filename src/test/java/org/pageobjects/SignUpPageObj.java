@@ -247,6 +247,12 @@ public class SignUpPageObj extends BaseTest
 							System.out.println(alertText);
 							ExtentTestManager.getTest().log(LogStatus.INFO,"Alert text -"+alertText);
 						}
+					} 
+					else
+					{
+						Assert.assertTrue(true);
+						System.out.println("No error on filling the fields on SignUp");
+						ExtentTestManager.getTest().log(LogStatus.INFO,"No error on filling the fields on SignUp");
 					}
 				}
 				catch(Exception e)
@@ -270,8 +276,11 @@ public class SignUpPageObj extends BaseTest
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Verifying whether the currently creating data has existed or not");		
+			GenericFunctions.waitForElementToAppear(objSignUp.alertMessage);
+			action.moveToElement(objSignUp.alertMessage).build().perform();
 			objSignUp.alertMessage.click();
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Alert Message: "+objSignUp.alertMessage.getText());
+			ExtentTestManager.getTest().log(LogStatus.PASS, "Checked for the alert message, and verified same user cannot signup again");
 			System.out.println(objSignUp.alertMessage.getText());
 		}
 		catch(Exception e)

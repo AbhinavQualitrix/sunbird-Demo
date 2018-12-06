@@ -228,7 +228,7 @@
    
      
 
-   <!-- Test cases of P2, freelancers -->
+   <!-- Test cases of P2, freelancers 
    
      <class name="org.testscript.TC_186"/>
     
@@ -285,14 +285,21 @@
      
       
       <class name="org.testscript.TC_340"/>
-      <class name="org.testscript.TC_341"/>
+      <class name="org.testscript.TC_341"/> -->
+    
+    
+    <!-- Daily Execution -->
+    
+    
     
  
-
-   
-      
-
-
+	<class name="org.testscript.regression.SameUserNameIsNotAllowedWhileSignup"/>
+    <class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/>
+	<class name="org.testscript.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
+	<class name="org.testscript.UpdateBatchAsInvitedMentor" />
+	<class name="org.testscript.NavigateToMyActivityInDropdown" />
+	
+	
    <!--
   <class name="org.testscript.RejectTheContent"/>
 
