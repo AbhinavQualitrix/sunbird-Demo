@@ -1,30 +1,20 @@
 package org.pageobjects;
 
-import static org.testng.Assert.assertEquals;
 
 import java.awt.Robot;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javax.security.auth.login.FailedLoginException;
-
-import org.apache.poi.util.SystemOutLogger;
+import org.apache.log4j.Logger;
 import org.generic.ExtentTestManager;
 import org.generic.GenericFunctions;
 import org.generic.ReadTestDataFromExcel;
 import org.openqa.selenium.By;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
-import org.page.ContentCreateUploadPage;
-import org.page.CreateMentorPage;
 import org.page.CreatorAnnouncementPage;
-import org.page.CreatorUserPage;
-import org.page.FlagReviewerPage;
-import org.page.PublicUserPage;
+import org.page.MentorOrgPage;
 import org.page.UploadOrgPage;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
@@ -34,79 +24,79 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class MentorOrgPageObj extends BaseTest
 {   
-	CreateMentorPage createMentorPage = PageFactory.initElements(driver, CreateMentorPage.class);
-	CreateMentorPage CreateMentorPage=PageFactory.initElements(driver, CreateMentorPage.class);
-	CreatorUserPage createUserPage=PageFactory.initElements(driver, CreatorUserPage.class);
-	FlagReviewerPage flagReviewerpage = PageFactory.initElements(driver, FlagReviewerPage.class);
-	PublicUserPage publicUserPage = PageFactory.initElements(driver, PublicUserPage.class);
-	CreatorUserPage creatorPage = PageFactory.initElements(driver, CreatorUserPage.class);
+	MentorOrgPage mentorOrgPage = PageFactory.initElements(driver, MentorOrgPage.class);
+//	mentorOrgPage mentorOrgPage=PageFactory.initElements(driver, mentorOrgPage.class);
+//	CreatorUserPageObj mentorOrgPage=PageFactory.initElements(driver, CreatorUserPageObj.class);
+//	MentorOrgPageObjObjects mentorOrgPage = PageFactory.initElements(driver, MentorOrgPageObjObjects.class);
+//	PublicUserPageObj publicUserPageObj = PageFactory.initElements(driver, PublicUserPageObj.class);
+//	CreatorUserPageObj mentorOrgPage = PageFactory.initElements(driver, CreatorUserPageObj.class);
 	List <TestDataForSunbird> objListOFTestDataForSunbird1= null ;
 	Random rand = new Random();
 	Actions action = new Actions(driver);
 	JavascriptExecutor js = (JavascriptExecutor)driver;
-	static Logger log = Logger.getLogger(MentorOrgPageObj.class.getName());
+	static Logger log = Logger.getLogger(CreatorAnnouncementPage.class.getName());
 	List<TestDataForSunbird> objListOFTestDataForSunbird = null;
 
-	// @author Sachin
-	public void coursePreview()throws Exception{
-		try
-		{	
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to open the course");
-			GenericFunctions.waitForElementToAppear(createUserPage.headerCourse);
-			createUserPage.headerCourse.click();
-			GenericFunctions.waitWebDriver(2000);
-
-			createUserPage.course.click();
-			Assert.assertTrue(true, "User is able to preview the content successfully");
-			log.info("User is able to preview the content successfully");
-			System.out.println("User is able to preview the content successfully");
-			GenericFunctions.waitWebDriver(4000);
-		}
-		catch(Exception e)
-		{				
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "User is trying to open the course");
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message: "+e.getLocalizedMessage());
-			Assert.fail("User is trying to open the course");
-		}
-
-	}	
-
+ 	// @author Sachin
+ 	public void coursePreview()throws Exception{
+	try
+ 	{	
+	ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to open the course");
+	GenericFunctions.waitForElementToAppear(mentorOrgPage.headerCourse);
+	mentorOrgPage.headerCourse.click();
+	GenericFunctions.waitWebDriver(2000);
+		
+	mentorOrgPage.course.click();
+	Assert.assertTrue(true, "User is able to preview the content successfully");
+	log.info("User is able to preview the content successfully");
+	System.out.println("User is able to preview the content successfully");
+	GenericFunctions.waitWebDriver(4000);
+	}
+	catch(Exception e)
+	{				
+		ExtentTestManager.getTest().log(LogStatus.FAIL, "User is trying to open the course");
+		ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message: "+e.getLocalizedMessage());
+		Assert.fail("User is trying to open the course");
+	}
+ 	
+ }	
+	
 	public void createCourse(List <TestDataForSunbird> objListOFTestDataForSunbird) throws InterruptedException
 	{
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create course");
 			GenericFunctions.waitWebDriver(1500);
 			System.out.println(driver.findElement(By.xpath(" //span[contains(text(),'Design Course')]")).getText());
-			GenericFunctions.waitForElementToAppear(createUserPage.courseName);
+			GenericFunctions.waitForElementToAppear(mentorOrgPage.courseName);
 			String courseNumber = GenericFunctions.testDataIncrementer("./testData/courseNumbers.txt").toString();
-			createUserPage.courseName.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+courseNumber);
-			createUserPage.courseDescription.sendKeys(objListOFTestDataForSunbird.get(0).getCourseDescription()+courseNumber);	
+			mentorOrgPage.courseName.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+courseNumber);
+			mentorOrgPage.courseDescription.sendKeys(objListOFTestDataForSunbird.get(0).getCourseDescription()+courseNumber);	
 			GenericFunctions.waitWebDriver(1500);
-			createUserPage.startCreating.click();
+			mentorOrgPage.startCreating.click();
 			/*GenericFunctions.refreshWebPage();
 			GenericFunctions.waitWebDriver(1500);*/
 			GenericFunctions.waitWebDriver(4500);
-			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
+			GenericFunctions.WaitForFrameAndSwitchToIt(mentorOrgPage.iFrame);
 			GenericFunctions.waitWebDriver(6500);
-			GenericFunctions.waitForElementToAppear(createUserPage.newChild);
-			System.out.println("Creating - "+createUserPage.newChild.getText());
+			GenericFunctions.waitForElementToAppear(mentorOrgPage.newChild);
+			System.out.println("Creating - "+mentorOrgPage.newChild.getText());
 			GenericFunctions.waitWebDriver(3000);
-			action.moveToElement(createUserPage.newChild).click().perform();
-			//action.moveToElement(createUserPage.newChild).click().release();
+			action.moveToElement(mentorOrgPage.newChild).click().perform();
+			//action.moveToElement(mentorOrgPage.newChild).click().release();
 			GenericFunctions.waitWebDriver(1500);
-			createUserPage.titleName.click();
-			createUserPage.titleName.clear();
-			createUserPage.titleName.sendKeys(objListOFTestDataForSunbird.get(0).getTitle()+courseNumber);
-			createUserPage.titleDescription.sendKeys(objListOFTestDataForSunbird.get(0).getTitleDescription()+courseNumber);
+			mentorOrgPage.titleName.click();
+			mentorOrgPage.titleName.clear();
+			mentorOrgPage.titleName.sendKeys(objListOFTestDataForSunbird.get(0).getTitle()+courseNumber);
+			mentorOrgPage.titleDescription.sendKeys(objListOFTestDataForSunbird.get(0).getTitleDescription()+courseNumber);
 			GenericFunctions.waitWebDriver(1500);
-			createUserPage.addResource.click();
+			mentorOrgPage.addResource.click();
 
 			//added on 17 Aug 2018
 			//driver.switchTo().frame(0);
-			GenericFunctions.waitForElementToAppear(createUserPage.selectResource);
-			createUserPage.selectResource.click();
+			GenericFunctions.waitForElementToAppear(mentorOrgPage.selectResource);
+			mentorOrgPage.selectResource.click();
 			GenericFunctions.waitWebDriver(500);
-			createUserPage.proceedButton.click();
+			mentorOrgPage.proceedButton.click();
 			GenericFunctions.waitWebDriver(2000);
 
 
@@ -121,66 +111,66 @@ public class MentorOrgPageObj extends BaseTest
 
 		}
 	}
-
-
+	
+	
 	public void saveAndSendCourseForReview(List <TestDataForSunbird> objListOFTestDataForSunbird)throws Exception{
 
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to save and send course for review");
-			GenericFunctions.waitForElementToAppear(createUserPage.saveCourse);
-			createUserPage.saveCourse.click();
+			GenericFunctions.waitForElementToAppear(mentorOrgPage.saveCourse);
+			mentorOrgPage.saveCourse.click();
 			GenericFunctions.waitWebDriver(2000);
-			createUserPage.sendForReview.click();
+			mentorOrgPage.sendForReview.click();
 			GenericFunctions.waitWebDriver(1500);
-			createUserPage.clickAppIcon.click();
+			mentorOrgPage.clickAppIcon.click();
 			GenericFunctions.waitWebDriver(3000);	
-			GenericFunctions.waitForElementToAppear(createUserPage.checkContentIcon);
-			createUserPage.checkContentIcon.click();
+			GenericFunctions.waitForElementToAppear(mentorOrgPage.checkContentIcon);
+			mentorOrgPage.checkContentIcon.click();
 			GenericFunctions.waitWebDriver(1000);
-			createUserPage.selectAppIcon.click();
+			mentorOrgPage.selectAppIcon.click();
 			GenericFunctions.waitWebDriver(1000);
-
-			GenericFunctions.waitForElementToAppear(createUserPage.clickOnSelectCurriculum);
-			createUserPage.clickOnSelectCurriculum.click();
+			
+			GenericFunctions.waitForElementToAppear(mentorOrgPage.clickOnSelectCurriculum);
+			mentorOrgPage.clickOnSelectCurriculum.click();
 			GenericFunctions.waitWebDriver(1000);
-			createUserPage.selectCurriculum.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.clickOnSelectClass);
-			createUserPage.clickOnSelectClass.click();
+			mentorOrgPage.selectCurriculum.click();
+			GenericFunctions.waitForElementToAppear(mentorOrgPage.clickOnSelectClass);
+			mentorOrgPage.clickOnSelectClass.click();
 			GenericFunctions.waitWebDriver(1000); 
-			createUserPage.selectClass.click();
+			mentorOrgPage.selectClass.click();
 			GenericFunctions.waitWebDriver(1000); 
-			createUserPage.clickOnSelectClass.click();//      
-
-			//GenericFunctions.keyTab(driver, createUserPage.selectClass.toString());
-			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.clickOnHeaderSubject);
-			//createUserPage.clickOnHeaderSubject.click();
+			mentorOrgPage.clickOnSelectClass.click();//      
+			
+			//GenericFunctions.keyTab(driver, mentorOrgPage.selectClass.toString());
+			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(mentorOrgPage.clickOnHeaderSubject);
+			//mentorOrgPage.clickOnHeaderSubject.click();
 			GenericFunctions.waitWebDriver(5000);
-			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.clickOnSelectSubject);
-			//GenericFunctions.scrollToElement(createUserPage.clickOnSelectMedium);
-			//			GenericFunctions.waitWebDriver(2000);
-			//			createUserPage.clickOnSelectSubject.click();
-			//			GenericFunctions.waitForElementToAppear(createUserPage.selectSubject);
-			//			createUserPage.selectMathematics.click();
-			//			GenericFunctions.waitWebDriver(1500);
-			GenericFunctions.scrollToElement(createUserPage.clickOnSelectMedium);
+			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(mentorOrgPage.clickOnSelectSubject);
+			//GenericFunctions.scrollToElement(mentorOrgPage.clickOnSelectMedium);
+//			GenericFunctions.waitWebDriver(2000);
+//			mentorOrgPage.clickOnSelectSubject.click();
+//			GenericFunctions.waitForElementToAppear(mentorOrgPage.selectSubject);
+//			mentorOrgPage.selectMathematics.click();
+//			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.scrollToElement(mentorOrgPage.clickOnSelectMedium);
 			GenericFunctions.waitWebDriver(5000);
-			createUserPage.clickOnSelectMedium.click();
-			GenericFunctions.waitForElementToAppearOnScreen(createUserPage.selectMedium);
-			createUserPage.selectMedium.click();
+			mentorOrgPage.clickOnSelectMedium.click();
+			GenericFunctions.waitForElementToAppearOnScreen(mentorOrgPage.selectMedium);
+			mentorOrgPage.selectMedium.click();
 			GenericFunctions.waitWebDriver(1500);
-			GenericFunctions.scrollToElement(createUserPage.clickOwner);
-			GenericFunctions.waitForElementToAppear(createUserPage.clickOwner);
-			createUserPage.clickOwner.click();
+			GenericFunctions.scrollToElement(mentorOrgPage.clickOwner);
+			GenericFunctions.waitForElementToAppear(mentorOrgPage.clickOwner);
+			mentorOrgPage.clickOwner.click();
 			GenericFunctions.waitWebDriver(1500);
-			createUserPage.selectOwner.click();
+			mentorOrgPage.selectOwner.click();
 			GenericFunctions.waitWebDriver(1500);
-
-
-			createUserPage.saveButton.click();
+			
+			
+			mentorOrgPage.saveButton.click();
 			GenericFunctions.waitWebDriver(1500);
-
-
+		
+			
 		}
 		catch(Exception e)
 		{
@@ -192,15 +182,15 @@ public class MentorOrgPageObj extends BaseTest
 		}
 
 	}
-
-
+	
+	
 	public void userLogout()throws Exception{
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to logout from the application");
 			UploadOrgPage orgUploadPage=PageFactory.initElements(driver, UploadOrgPage.class);
 			GenericFunctions.waitForElementToAppear(orgUploadPage.dropdown);
 			orgUploadPage.dropdown.click();
-
+			
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(orgUploadPage.logout);
 			orgUploadPage.logout.click();
 			GenericFunctions.waitWebDriver(2000);
@@ -215,55 +205,55 @@ public class MentorOrgPageObj extends BaseTest
 		}
 
 	}
-
-
-
-	public void publishCourse() throws Exception
-	{
-		try 
+	
+	
+    
+    public void publishCourse() throws Exception
+    {
+    try 
+    {
+		ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to publish the course");
+//  	GenericFunctions.waitForElementToAppear(mentorOrgPage.closePopUp);
+//		mentorOrgPage.closePopUp.click();
+//		GenericFunctions.waitWebDriver(1500);	
+//    	GenericFunctions.waitForElementToAppear(mentorOrgPage.Workspace);
+    	GenericFunctions.waitWebDriver(500);
+    	mentorOrgPage.Workspace.click();
+		GenericFunctions.waitForElementToAppear(mentorOrgPage.upForReview);
+		GenericFunctions.waitWebDriver(2000);
+		mentorOrgPage.upForReview.click();
+		GenericFunctions.waitForElementToAppear(mentorOrgPage.firtContent);
+		String courseContent = mentorOrgPage.firtContent.getText();
+		System.out.println(courseContent);
+		GenericFunctions.waitWebDriver(2000);
+		mentorOrgPage.firtContent.click();
+		GenericFunctions.WaitForFrameAndSwitchToIt(mentorOrgPage.iFrame);
+		GenericFunctions.waitWebDriver(2000);
+		GenericFunctions.scrollToElement(mentorOrgPage.headerPublish);
+		GenericFunctions.waitWebDriver(4000);
+		if(mentorOrgPage.headerPublish.isDisplayed())
 		{
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to publish the course");
-			//  	GenericFunctions.waitForElementToAppear(createUserPage.closePopUp);
-			//		createUserPage.closePopUp.click();
-			//		GenericFunctions.waitWebDriver(1500);	
-			//    	GenericFunctions.waitForElementToAppear(flagReviewerpage.Workspace);
-			GenericFunctions.waitWebDriver(500);
-			flagReviewerpage.Workspace.click();
-			GenericFunctions.waitForElementToAppear(flagReviewerpage.upForReview);
-			GenericFunctions.waitWebDriver(2000);
-			flagReviewerpage.upForReview.click();
-			GenericFunctions.waitForElementToAppear(flagReviewerpage.firtContent);
-			String courseContent = flagReviewerpage.firtContent.getText();
-			System.out.println(courseContent);
-			GenericFunctions.waitWebDriver(2000);
-			flagReviewerpage.firtContent.click();
-			GenericFunctions.WaitForFrameAndSwitchToIt(creatorPage.iFrame);
-			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.scrollToElement(flagReviewerpage.headerPublish);
-			GenericFunctions.waitWebDriver(4000);
-			if(flagReviewerpage.headerPublish.isDisplayed())
-			{
-				flagReviewerpage.headerPublish.click();
-			}
-			else if(flagReviewerpage.Publish.isDisplayed())
-			{
-				flagReviewerpage.Publish.click();
-			}
-
-			GenericFunctions.waitForElementToAppear(flagReviewerpage.publishConfirm);
-			flagReviewerpage.publishConfirm.click();			
+		mentorOrgPage.headerPublish.click();
 		}
-		catch(Exception e) 
+		else if(mentorOrgPage.Publish.isDisplayed())
 		{
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on publishing the course");
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message: " + e.getLocalizedMessage());
-			log.error("Exception In the method publishCourse" + e.getLocalizedMessage());
-			Assert.fail("Failed on publishing te course, Exception : " + e.getLocalizedMessage());
-
+			mentorOrgPage.Publish.click();
 		}
+		
+		GenericFunctions.waitForElementToAppear(mentorOrgPage.publishConfirm);
+		mentorOrgPage.publishConfirm.click();			
+    }
+    catch(Exception e) 
+    {
+		ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on publishing the course");
+		ExtentTestManager.getTest().log(LogStatus.FAIL, "Exception Message: " + e.getLocalizedMessage());
+		log.error("Exception In the method publishCourse" + e.getLocalizedMessage());
+		Assert.fail("Failed on publishing te course, Exception : " + e.getLocalizedMessage());
+
 	}
-
-
+   }
+	
+    
 	public void navigateToCourseSearchAndCreateBatch()
 	{
 		try
@@ -271,18 +261,18 @@ public class MentorOrgPageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate to search a coursea and create a batch");
 			List <TestDataForSunbird> objListOFTestDataForSunbird1=null;
 			objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-			/*createUserPage.dropDown.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.headerProfile);
-			createUserPage.headerProfile.click();*/
-			createUserPage.headerCourse.click();
+			/*mentorOrgPage.dropDown.click();
+			GenericFunctions.waitForElementToAppear(mentorOrgPage.headerProfile);
+			mentorOrgPage.headerProfile.click();*/
+			mentorOrgPage.headerCourse.click();
 			GenericFunctions.waitWebDriver(1000);
 			String courseNumber = GenericFunctions.testDataIncrementer("./testData/courseNumbers.txt").toString();
-			CreateMentorPage.filterSearch.sendKeys(objListOFTestDataForSunbird1.get(0).getTitle()+courseNumber);
-			createUserPage.searchIconUpForReview.click();
+			mentorOrgPage.filterSearch.sendKeys(objListOFTestDataForSunbird1.get(0).getTitle()+courseNumber);
+			mentorOrgPage.searchIconUpForReview.click();
 			GenericFunctions.waitWebDriver(2000);
-			CreateMentorPage.searchedCourse.click();
+			mentorOrgPage.searchedCourse.click();
 			GenericFunctions.waitWebDriver(1000);
-			CreateMentorPage.createBatch.click();
+			mentorOrgPage.createBatch.click();
 		}
 		catch(Exception e)
 		{
@@ -294,40 +284,40 @@ public class MentorOrgPageObj extends BaseTest
 		}
 
 	}
-
-
+	
+	
 	public void createOpenBatch() throws InterruptedException, Exception {
 
 		try {
 			// GenericFunctions.waitWebDriver(1500);
-			// createUserPage.headerCourse.click();
+			// mentorOrgPage.headerCourse.click();
 			// GenericFunctions.waitWebDriver(1000);
-			// createMentorPage.filterSearch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad("./batchNumbers.txt").toUpperCase());
-			// createUserPage.searchIcon.click();
+			// mentorOrgPage.filterSearch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad(".//batchNumbers.txt").toUpperCase());
+			// mentorOrgPage.searchIcon.click();
 			// GenericFunctions.waitWebDriver(2000);
-			// createMentorPage.courseImg1.click();
+			// mentorOrgPage.courseImg1.click();
 			// GenericFunctions.waitWebDriver(3000);
-			createMentorPage.addIcon.click();
+			mentorOrgPage.addIcon.click();
 			GenericFunctions.waitWebDriver(1000);
-			GenericFunctions.switchToFrame(driver, createMentorPage.batchForm);
+			GenericFunctions.switchToFrame(driver, mentorOrgPage.batchForm);
 			GenericFunctions.waitWebDriver(1000);
-			createMentorPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
+			mentorOrgPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
 					+ GenericFunctions.testDataIncrementer("./testData/sunbird_data.txt"));
-			createMentorPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
-			//			createMentorPage.openBatch.click();
-			createMentorPage.startDate.click(); // sendKeys(objListOFTestDataForSunbird.get(8).getTitle());
+			mentorOrgPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
+//			mentorOrgPage.openBatch.click();
+			mentorOrgPage.startDate.click(); // sendKeys(objListOFTestDataForSunbird.get(8).getTitle());
 			GenericFunctions.waitWebDriver(1000);
-			createMentorPage.startDateCalendar.click(); // sendKeys(objListOFTestDataForSunbird.get(8).getTitle());
-			createMentorPage.endDate.sendKeys(objListOFTestDataForSunbird.get(8).getTitleDescription());
+			mentorOrgPage.startDateCalendar.click(); // sendKeys(objListOFTestDataForSunbird.get(8).getTitle());
+			mentorOrgPage.endDate.sendKeys(objListOFTestDataForSunbird.get(8).getTitleDescription());
 			GenericFunctions.waitWebDriver(3000);
-			createMentorPage.mentorsInBatch.click();
-			createMentorPage.suborgMentor2InBatch.click();
+			mentorOrgPage.mentorsInBatch.click();
+			mentorOrgPage.suborgMentor2InBatch.click();
 			GenericFunctions.waitWebDriver(1500);			
-			createMentorPage.membersInBatch.click();
+			mentorOrgPage.membersInBatch.click();
 			GenericFunctions.waitWebDriver(1500);
-			createMentorPage.testBookReviewerInBatch.click();
+			mentorOrgPage.testBookReviewerInBatch.click();
 			GenericFunctions.waitWebDriver(1500);
-
+			
 			// GenericFunctions.waitWebDriver(1000);
 			// for(int i=1;i<=7;i++)
 			// {
@@ -341,8 +331,8 @@ public class MentorOrgPageObj extends BaseTest
 			// robot.keyRelease(KeyEvent.VK_ENTER);
 			// GenericFunctions.waitWebDriver(3000);
 
-			createMentorPage.buttonCreate.click();
-			// createMentorPage.successfulMessage.click();
+			mentorOrgPage.buttonCreate.click();
+			// mentorOrgPage.successfulMessage.click();
 			System.out.println("Batch Created");
 			Assert.assertTrue(true, "Batch created successfully");
 			log.info("Batch created successfully");
@@ -355,51 +345,51 @@ public class MentorOrgPageObj extends BaseTest
 
 		}
 	}
-
-
-
-	// @author Sachin
+	
+	
+    
+    // @author Sachin
 	public void createInviteBatch() throws InterruptedException, Exception {
 		Robot robot = new Robot();
-		objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-
+	    objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
+								
 		try {
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create invite only batch for a course");
-			GenericFunctions.waitForElementToAppear(createUserPage.closePopUp);
-			createUserPage.closePopUp.click();
+		ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create invite only batch for a course");
+			GenericFunctions.waitForElementToAppear(mentorOrgPage.closePopUp);
+			mentorOrgPage.closePopUp.click();
 			GenericFunctions.waitWebDriver(1500);
-			createUserPage.headerCourse.click();
+			mentorOrgPage.headerCourse.click();
 			GenericFunctions.waitWebDriver(4000);
-			GenericFunctions.waitForElementToAppear(createMentorPage.latestCourse);
-			createMentorPage.latestCourse.click();
+			GenericFunctions.waitForElementToAppear(mentorOrgPage.latestCourse);
+			mentorOrgPage.latestCourse.click();
 			GenericFunctions.waitWebDriver(3000);
-			createMentorPage.addIcon.click();
+			mentorOrgPage.addIcon.click();
 			GenericFunctions.waitWebDriver(2000);
-			createMentorPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
+			mentorOrgPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
 					+ GenericFunctions.testDataIncrementer("./testData/batchNumbers.txt"));
-			createMentorPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
+			mentorOrgPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
 
-			createMentorPage.startDate.click();
+			mentorOrgPage.startDate.click();
 			GenericFunctions.waitWebDriver(1000);
-			createMentorPage.startDateCalendar.click();
+			mentorOrgPage.startDateCalendar.click();
 			GenericFunctions.waitWebDriver(1000);
-			createMentorPage.endDate.sendKeys(objListOFTestDataForSunbird.get(8).getTitleDescription());
-
-			createMentorPage.mentorsInBatch.click();
+			mentorOrgPage.endDate.sendKeys(objListOFTestDataForSunbird.get(8).getTitleDescription());
+			
+			mentorOrgPage.mentorsInBatch.click();
 			GenericFunctions.waitWebDriver(1000);				
-			createMentorPage.suborgMentor2InBatch.click();
-			createMentorPage.mentorsInBatch.click();
-
+			mentorOrgPage.suborgMentor2InBatch.click();
+			mentorOrgPage.mentorsInBatch.click();
+			
 			GenericFunctions.waitWebDriver(1000);								
-			createMentorPage.mentorDropdown.click();
-			createMentorPage.membersInBatch.click();
-			createMentorPage.mentorDropdown.click();
+			mentorOrgPage.mentorDropdown.click();
+			mentorOrgPage.membersInBatch.click();
+			mentorOrgPage.mentorDropdown.click();
 			GenericFunctions.waitWebDriver(1500);	
-
-			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createMentorPage.buttonCreate);
-			createMentorPage.buttonCreate.click();
+			
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(mentorOrgPage.buttonCreate);
+			mentorOrgPage.buttonCreate.click();
 			GenericFunctions.waitWebDriver(4000);
-			//createMentorPage.successfulMessage.click();
+			//mentorOrgPage.successfulMessage.click();
 			System.out.println("Batch Created");
 			Assert.assertTrue(true,"BAtch created successfully and invited members are auto invited to the course");
 			System.out.println("BAtch created successfully and invited members are auto invited to the course");
@@ -410,9 +400,9 @@ public class MentorOrgPageObj extends BaseTest
 			log.error("Exception In the method createInviteOnlyBatch" + e.getMessage());
 			Assert.fail("Failed to create invite only batch, Exception" + e.getLocalizedMessage());
 		}
-
+		
 
 	}
-
-
-} 
+	
+	
+	} 

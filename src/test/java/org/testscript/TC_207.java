@@ -1,6 +1,5 @@
 package org.testscript;
 
-import org.pageobjects.FlagReviewerPageObj;
 import org.pageobjects.SignUpPageObj;
 import org.pageobjects.UpForReviewPageObj;
 import org.startup.BaseTest;

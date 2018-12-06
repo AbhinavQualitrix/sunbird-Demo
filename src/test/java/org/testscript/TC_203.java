@@ -2,7 +2,6 @@ package org.testscript;
 
 import org.generic.GenericFunctions;
 import org.pageobjects.LessonPlanPageObj;
-import org.pageobjects.PublicUserPageObj;
 import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
 import org.testng.annotations.Test;

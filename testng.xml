@@ -230,37 +230,64 @@
    
    
    
-   <!-- Test cases of P2, freelancers 
-   
-     <class name="org.testscript.TC_290"/>
-      <class name="org.testscript.TC_291"/>
-      <class name="org.testscript.TC_294"/>
-      <class name="org.testscript.TC_281"/>
-      <class name="org.testscript.TC_292"/>
-      <class name="org.testscript.TC_293"/>
-      <class name="org.testscript.TC_210"/>
+   <!-- Test cases of P2, freelancers    -->
+  
+  	 <class name="org.testscript.TC_186"/>
+     
       <class name="org.testscript.TC_200"/>
-      <class name="org.testscript.TC_186"/>
-      <class name="org.testscript.TC_203"/>
-      <class name="org.testscript.TC_204"/>
-      <class name="org.testscript.TC_201"/>
-      <class name="org.testscript.TC_202"/>
-      <class name="org.testscript.TC_207"/>
-      <class name="org.testscript.TC_208"/>
-      <class name="org.testscript.TC_205"/>
-      <class name="org.testscript.TC_206"/>
-      <class name="org.testscript.TC_209"/>
-      <class name="org.testscript.TC_282"/>
-     <class name="org.testscript.TC_283"/>
-       <class name="org.testscript.TC_284"/>
-      <class name="org.testscript.TC_285"/>
-       <class name="org.testscript.TC_286"/>
+       <class name="org.testscript.TC_201"/>
+       <class name="org.testscript.TC_202"/>
+       <class name="org.testscript.TC_203"/>
+       <class name="org.testscript.TC_204"/>
+       <class name="org.testscript.TC_205"/>
+       <class name="org.testscript.TC_206"/>
+       <class name="org.testscript.TC_207"/>
+       <class name="org.testscript.TC_208"/>
+       <class name="org.testscript.TC_209"/>
+      <class name="org.testscript.TC_210"/>
+     
+      <class name="org.testscript.TC_281"/>
+        <class name="org.testscript.TC_282"/>
+        <class name="org.testscript.TC_283"/> 
+        <class name="org.testscript.TC_284"/>
+        <class name="org.testscript.TC_285"/> 
+        <class name="org.testscript.TC_286"/>  
        <class name="org.testscript.TC_287"/>
        <class name="org.testscript.TC_288"/>
-     <class name="org.testscript.TC_289"/> -->
-
-   
-   <class name="org.testscript.VerifyHomePage"/> 
+       <class name="org.testscript.TC_289"/>     
+      <class name="org.testscript.TC_290"/>
+      
+      <class name="org.testscript.TC_291"/>
+	  <class name="org.testscript.TC_292"/>
+      <class name="org.testscript.TC_293"/>
+      <class name="org.testscript.TC_294"/>
+      <class name="org.testscript.TC_295"/>
+ 	  <class name="org.testscript.TC_296"/>
+      <class name="org.testscript.TC_297"/>
+      <class name="org.testscript.TC_298"/>
+      <class name="org.testscript.TC_299"/>
+      <class name="org.testscript.TC_300"/>
+      
+       <class name="org.testscript.TC_301"/>
+      <class name="org.testscript.TC_302"/>      
+      <class name="org.testscript.TC_303"/>
+     <class name="org.testscript.TC_304"/>      
+      <class name="org.testscript.TC_305"/>      
+      <class name="org.testscript.TC_306"/>
+       <class name="org.testscript.TC_308"/> 
+      <class name="org.testscript.TC_310"/>
+      <class name="org.testscript.TC_318"/>
+      <class name="org.testscript.TC_339"/>
+     
+      <class name="org.testscript.TC_337"/>
+      <class name="org.testscript.TC_338"/>
+    
+     
+      
+      <class name="org.testscript.TC_340"/>
+      <class name="org.testscript.TC_341"/>
+    
+ 
    
 
 

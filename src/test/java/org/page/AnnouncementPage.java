@@ -83,29 +83,8 @@ public class AnnouncementPage
 	@FindBy(xpath="//label[contains(.,'Nellore')]")
 	public WebElement checkLocation;
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@FindBy(xpath="//span[contains(.,'CREATE ANNOUNCEMENT')]")
+	public WebElement create_Announcement;
 	
 	
 	

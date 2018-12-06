@@ -5,19 +5,20 @@ import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
 import org.testng.annotations.Test;
 
-public class TC_293 extends BaseTest{
+public class TC_301 extends BaseTest{
 	@Test
-	public void TC_293_rootOrg() throws Exception {
+	public void TC_301_rootOrg() throws Exception {
 		
 		  // Login as Mentor
 	      SignUpPageObj mentorLogin = new SignUpPageObj();
 	      mentorLogin.userLogin(MENTOR);
 		
 	      // Create Invite Only Batch
-		// CreateMentorPageObj CreateMentorPageObj = new CreateMentorPageObj();
 	      BatchUserPageObj BatchUserPageObj = new BatchUserPageObj();
-	      BatchUserPageObj.createInviteBatch();
+	      BatchUserPageObj.navigateToWorkspaceAndSelectBatches("Upcoming Batches");
 		
-		
+		  // Update Upcoming Batch		
+	      BatchUserPageObj.navigateToCourseSearchAndUpdate();
+		  
 	}
 }

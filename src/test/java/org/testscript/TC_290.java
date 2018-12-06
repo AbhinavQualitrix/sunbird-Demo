@@ -3,9 +3,7 @@ package org.testscript;
 import java.util.List;
 
 import org.generic.ReadTestDataFromExcel;
-import org.pageobjects.CreateMentorPageObj;
 import org.pageobjects.CreatorUserPageObj;
-import org.pageobjects.FlagReviewerPageObj;
 import org.pageobjects.MentorOrgPageObj;
 import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;

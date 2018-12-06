@@ -991,8 +991,8 @@ public class ContentCreateUploadPageObj extends BaseTest
 			GenericFunctions.waitWebDriver(5000);
 
 
-
-
+			GenericFunctions.refreshWebPage();
+			GenericFunctions.waitWebDriver(2000);
 
 
 		}catch(Exception e)

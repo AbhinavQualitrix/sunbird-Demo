@@ -160,5 +160,29 @@ public class MentorOrgPage
 	@FindBy(xpath="(//i[@class='dropdown icon'])[5]")
 	public WebElement mentorDropdown;
 	
+	@FindBy(xpath="(//a[@class='item'][contains(.,'Workspace')])[2]")
+	public WebElement workSpace;
+	
+	@FindBy(xpath="//*[@id='main-nav']/div[2]/app-main-menu/div/a[4]")
+	public WebElement Workspace;
+	
+	@FindBy(xpath = "//div[@class='publicmenusection ui secondary vertical menu']//a[7]")
+	public WebElement upForReview;
+	
+	@FindBy(xpath="//*[@class='UpForReviewListHover cursor-pointer']")
+	public WebElement firtContent;
+	
+	@FindBy(xpath = "//span[contains(.,'Publish')]")
+	public WebElement headerPublish;
+	
+	@FindBy(xpath="//*[@class='ui right floated primary button mouse-pointer']")
+	public WebElement Publish;
+	
+	@FindBy(xpath="//*[@id='review-footer']/div/button[2]")
+	public WebElement publishConfirm;
+	
+	@FindBy(xpath="//label[contains(text(),'NAME OF BATCH')]")
+	public WebElement batchForm;
+	
 	
 }

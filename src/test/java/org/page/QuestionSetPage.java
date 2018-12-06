@@ -11,9 +11,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class QuestionSetPage {
+public class QuestionSetPage
+{
 	WebDriver driver;
-	CreatorUserPage QuestionSetPage=PageFactory.initElements(driver, CreatorUserPage.class);
+	//CreatorUserPage QuestionSetPage=PageFactory.initElements(driver, CreatorUserPage.class);
 
 	public  QuestionSetPage(WebDriver driver)
 	{ 
@@ -54,6 +55,37 @@ public class QuestionSetPage {
 	// Web Element FIB
 	@FindBy(xpath = "//*[@id='templatsCards']/div/div[3]/div[3]/div/div")
 	public WebElement FIB;
+	
+	@FindBy(xpath="//input[@placeholder='Name']")
+	public WebElement bookName;
+	
+	@FindBy(xpath = "//*[@id='templatsCards']/div/div[3]/div[3]/div/div")
+	public WebElement FTB;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }
