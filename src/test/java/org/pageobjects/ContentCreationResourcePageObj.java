@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.commons.lang3.SystemUtils;
 import org.apache.log4j.Logger;
 import org.generic.AllUploadingPaths;
 import org.generic.ExtentTestManager;
@@ -1070,7 +1071,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			//objListOFTestDataForSunbird1= ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to verify and search contents in the Up for Review Bucket");
 
-			//Test casse 92
+			//Test case 92
 			GenericFunctions.waitForElementToAppear(createUserPage.closeIcon);
 			createUserPage.closeIcon.click();
 			GenericFunctions.waitWebDriver(1000);
@@ -1079,8 +1080,9 @@ public class ContentCreationResourcePageObj extends BaseTest
 			GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
 			String latestContent=createUserPage.searchedContentForPublish.getText();
 			ExtentTestManager.getTest().log(LogStatus.INFO, latestContent+" is the Latest content is displayed in the top of List");
-
+			ExtentTestManager.getTest().log(LogStatus.PASS, "Latest content is displayed in the top of List");
 			//Test case 93 
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.upForReview);
 			createUserPage.upForReview.click();
 			createUserPage.searchForReview.sendKeys(latestContent);
 			GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
@@ -1088,7 +1090,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			if(createUserPage.searchedContentForPublish.isDisplayed())
 			{
 				Assert.assertTrue(true);
-				ExtentTestManager.getTest().log(LogStatus.INFO, "User is getting the results upon searching for the content");
+				ExtentTestManager.getTest().log(LogStatus.PASS, "User is getting the results upon searching for the content");
 
 			}
 
@@ -1097,14 +1099,14 @@ public class ContentCreationResourcePageObj extends BaseTest
 			createUserPage.searchForReview.click();
 			createUserPage.searchForReview.clear();
 			//createUserPage.searchForReview.sendKeys(latestContent);
-			String [] otherChannelContent={"KS","Checking Bugs"};
+			String [] otherChannelContent={"CODE1","Checking Bugs","CODE2","CODE3","CODE4"};
 			createUserPage.searchForReview.sendKeys(otherChannelContent[rand.nextInt(otherChannelContent.length)]);
 			GenericFunctions.waitWebDriver(3000);
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.noResultText);
 			if(contentCreationResourcePage.noResultText.isDisplayed())
 			{
 				Assert.assertTrue(true);
-				ExtentTestManager.getTest().log(LogStatus.INFO, "User is not getting the results for searching different Org contents");
+				ExtentTestManager.getTest().log(LogStatus.PASS, "User is not getting the results for searching the contents from different Orgs");
 			}
 		}
 		catch(Exception e)
@@ -1130,14 +1132,15 @@ public class ContentCreationResourcePageObj extends BaseTest
 			//Board
 			GenericFunctions.waitForElementToAppear(createUserPage.clickFilterBoard);
 			createUserPage.clickFilterBoard.click();
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitWebDriver(2000);
 			contentCreationResourcePage.selectFilterBoard.click();
 			//GenericFunctions.waitWebDriver(1000);
 			//Grade(class)
 			GenericFunctions.waitForElements(createUserPage.clickBookGrade);
-			createUserPage.clickBookGrade.get(1).click();
-			GenericFunctions.waitWebDriver(1000);
+			createUserPage.clickBookGrade.get(0).click();
+			GenericFunctions.waitWebDriver(2000);
 			contentCreationResourcePage.selectFilterGrade.click();
+			contentCreationResourcePage.selectFilterGrade1.click();
 			//Subject
 			GenericFunctions.waitForElementToAppear(createUserPage.clickFilterSubject);
 			createUserPage.clickFilterSubject.click();
@@ -1148,6 +1151,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			createUserPage.clickFilterMedium.click();
 			GenericFunctions.waitWebDriver(1000);
 			String MediumText=contentCreationResourcePage.selectFilterMedium.getText();
+			System.out.println(MediumText);
 			contentCreationResourcePage.selectFilterMedium.click();
 			//Content type
 			GenericFunctions.waitForElementToAppear(createUserPage.clickContentType);
@@ -1164,7 +1168,8 @@ public class ContentCreationResourcePageObj extends BaseTest
 			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.verifyFilterMedium);
 			GenericFunctions.scrollToElement(contentCreationResourcePage.verifyFilterMedium);
-			String compMediumText=contentCreationResourcePage.verifyFilterMedium.getText();
+			String compMediumText=contentCreationResourcePage.verifyFilterMedium.getText().trim();
+			System.out.println(compMediumText);
 			GenericFunctions.waitWebDriver(1000);
 			if(MediumText.equalsIgnoreCase(compMediumText))
 			{
@@ -1176,18 +1181,8 @@ public class ContentCreationResourcePageObj extends BaseTest
 			GenericFunctions.scrollToElement(contentCreationResourcePage.contentCloseIcon);
 			contentCreationResourcePage.contentCloseIcon.click();
 
-			//Test case 96-b
-			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.showFilters);
-			contentCreationResourcePage.showFilters.click();
-			GenericFunctions.waitWebDriver(1000);
-			contentCreationResourcePage.filterResetButton.click();
-			GenericFunctions.waitWebDriver(500);
-			contentCreationResourcePage.showFilters.click();
-			GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
-			String loadedTopContent=createUserPage.searchedContentForPublish.getText();
-			GenericFunctions.waitWebDriver(3000);
-			ExtentTestManager.getTest().log(LogStatus.INFO, "On Resetting all the filters contents are loaded sucessfully, "+loadedTopContent+" is the latest content at the Top of the list");
-			ExtentTestManager.getTest().log(LogStatus.INFO, "Completed Test cases 92, 93, 94, 96 a & b");
+			
+			
 		}
 		catch(Exception e)
 		{
@@ -1195,6 +1190,37 @@ public class ContentCreationResourcePageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
 			System.out.println("Failed to create new question set for resource "+e.getLocalizedMessage());
 			Assert.fail("Failed to create new question set for resource "+e.getLocalizedMessage());
+		}
+	}
+	
+	public void resetAppliedFilters()
+	{
+		try
+		{
+			//Test case 96-b
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to Reset the applied filters");			
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.showFilters);
+			contentCreationResourcePage.showFilters.click();
+			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.filterResetButton);;
+			contentCreationResourcePage.filterResetButton.click();
+			GenericFunctions.waitWebDriver(2000);
+			contentCreationResourcePage.showFilters.click();
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(createUserPage.searchedContentForPublish);
+			String loadedTopContent=createUserPage.searchedContentForPublish.getText();
+			Assert.assertTrue(true);
+			GenericFunctions.waitWebDriver(3000);
+			ExtentTestManager.getTest().log(LogStatus.PASS, "On Resetting all the filters contents are loaded sucessfully, "+loadedTopContent+" is the latest content at the Top of the list");
+			ExtentTestManager.getTest().log(LogStatus.INFO, "Completed Test cases 92, 93, 94, 96 a & b");
+		}
+		catch(Exception e)
+		{
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to reset the applied filters");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
+			System.out.println("Failed to reset the applied filters "+e.getLocalizedMessage());
+			Assert.fail("Failed to reset the applied filters "+e.getLocalizedMessage());
 		}
 	}
 
@@ -1371,8 +1397,11 @@ public class ContentCreationResourcePageObj extends BaseTest
 			objListOFTestDataForSunbird1= ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Continuation with the next test case");
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to Add activity Plugins");
-			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addActivity);
+			GenericFunctions.refreshWebPage();
+			GenericFunctions.waitWebDriver(4000);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.addActivity);
+			//GenericFunctions.waitForElementToAppearOnScreen(contentCreationResourcePage.addActivity);
+			action.moveToElement(contentCreationResourcePage.addActivity).build().perform();
 			GenericFunctions.clickOnElementUsingJavascript(contentCreationResourcePage.addActivity);
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.searchActivity);
 			contentCreationResourcePage.searchActivity.click();
@@ -1393,6 +1422,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			GenericFunctions.waitForElementToAppear(createUserPage.saveCourse);
 			createUserPage.saveCourse.click();
 			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(createUserPage.closeContentPopup);
 			createUserPage.closeContentPopup.click();
 			//createUserPage.editorCloseIcon.click();
 
@@ -1404,6 +1434,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			Boolean confirmPopup = contentCreationResourcePage.previewPopup.isDisplayed();
 			while(confirmPopup==true)
 			{
+				GenericFunctions.captureScreenshotOnValidation();
 				ExtentTestManager.getTest().log(LogStatus.PASS, "User is able to preview the added activity/plugins");
 				Assert.assertTrue(true);
 				break;
@@ -1411,8 +1442,10 @@ public class ContentCreationResourcePageObj extends BaseTest
 
 			driver.switchTo().defaultContent();
 			GenericFunctions.refreshWebPage();
-			GenericFunctions.waitForElementToAppear(createUserPage.editorCloseIcon);
+			GenericFunctions.waitWebDriver(4000);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.editorCloseIcon);
 			createUserPage.editorCloseIcon.click();
+			GenericFunctions.waitWebDriver(4000);
 
 		}
 
@@ -1971,7 +2004,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			if(contentCreationResourcePage.addAudio.isEnabled())
 			{
 				Assert.assertTrue(true);
-				ExtentTestManager.getTest().log(LogStatus.INFO, "User is sucessfully navigated to the metadata/plugins page of resource");
+				ExtentTestManager.getTest().log(LogStatus.INFO, "User sucessfully navigated to the metadata/plugins page of resource");
 			}
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to upload an audio for resource");
 			GenericFunctions.waitWebDriver(1500);

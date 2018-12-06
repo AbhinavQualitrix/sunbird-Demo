@@ -4,7 +4,7 @@
 <listeners>
 		<listener class-name="org.generic.TestListener"></listener>
 	</listeners>
-  <test thread-count="5" name="Test">
+  <test thread-count="2" name="Test" parallel="tests">
     <classes>
     <!-- Test Cases for skipped functionality -->
     
@@ -101,7 +101,7 @@
        
       
       <class name="org.testscript.regression.AccessOnAllPagesAfterLogin"/>
-      <class name="org.testscript.regression.VerifyEditDetailsPopupAndTopicTree"/>
+      
       <class name="org.testscript.regression.CreateResourceByAddingAudio"/>
       <class name="org.testscript.regression.VerifyEditMetadataPageForCollection"/>
       <class name="org.testscript.regression.VerifyAnnouncementPageContent"/>
@@ -294,12 +294,10 @@
  
     
  
-	<class name="org.testscript.regression.SameUserNameIsNotAllowedWhileSignup"/>
-    <class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/>
-	<class name="org.testscript.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
 	<class name="org.testscript.UpdateBatchAsInvitedMentor" />
-	<class name="org.testscript.NavigateToMyActivityInDropdown" />
-	
+	<class name="org.testscript.regression.CreateResourceByUploadingVideoAndActivityPlugins"/>
+	<class name="org.testscript.regression.ContentValidationInUpForReviewSearchWithFilter"/>
+	<class name="org.testscript.regression.AccessOnAllPagesAfterLogin"/>
 	
    <!--
   <class name="org.testscript.RejectTheContent"/>
@@ -320,6 +318,11 @@
      <class name="org.testscript.EditAndVerifyTopicTree"/>
       <class name="org.testscript.CheckInReviewSubmission"/>
       <class name="org.testscript.VerifycopyContent"/> -->
+      
+      
+      <!-- Old Test cases from member -removed
+      <class name="org.testscript.regression.VerifyEditDetailsPopupAndTopicTree"/>
+       -->
       
    
      

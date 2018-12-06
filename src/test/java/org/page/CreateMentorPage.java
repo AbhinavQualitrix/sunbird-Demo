@@ -247,7 +247,7 @@ public class CreateMentorPage {
 	@FindBy(xpath="(//input[@id='mentorSelList']/following::div/div/div[contains(.,'content reviewer')])[2]")
 	public WebElement selectMembersInBatch;
 	
-	@FindBy(xpath="//div[@class='sub-header']")
+	@FindBy(xpath="//div[@class='sub-header']/h4")
 	public WebElement getCourseName;
 	
 	

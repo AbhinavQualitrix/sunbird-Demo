@@ -693,7 +693,7 @@ public class CreatorUserPage {
 
 
 	//Nov 24
-	@FindBy(xpath="(//sui-multi-select[@id='board'])[2]")
+	@FindBy(xpath="(//sui-multi-select[@id='board'])[1]")
 	//@FindBy(xpath="//sui-multi-select[@id='board']")
 	public WebElement clickFilterBoard;
 

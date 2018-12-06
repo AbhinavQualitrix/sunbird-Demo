@@ -185,6 +185,7 @@ public class CreateMentorPageObj extends BaseTest{
 			createUserPage.headerCourse.click();
 			GenericFunctions.waitWebDriver(1000);
 			createUserPage.searchInput.sendKeys(courseName1);
+			System.out.println(courseName1);
 			createUserPage.searchIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 			createMentorPage.courseImg1.click();
@@ -195,7 +196,7 @@ public class CreateMentorPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(1000);
 			createMentorPage.nameOfBatch.clear();
 			createMentorPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(1).getCourseName()+ GenericFunctions.testDataIncrementer("./testData/batchName.txt")+"Edited");
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitWebDriver(2000);
 			createMentorPage.updateBatch.click();
 			ExtentTestManager.getTest().log(LogStatus.PASS, "The course "+courseName1+" is searched sucessfully and updated it");
 		}
@@ -373,6 +374,7 @@ public class CreateMentorPageObj extends BaseTest{
 			createUserPage.searchInput.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName() + GenericFunctions.readFromNotepad("./testData/courseNumbers.txt").toUpperCase());
 			createUserPage.searchIcon.click();
 			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(createMentorPage.getCourseName);
 			savedCourseName=createMentorPage.getCourseName.getText();
 			System.out.println(savedCourseName);
 			GenericFunctions.waitWebDriver(2000);

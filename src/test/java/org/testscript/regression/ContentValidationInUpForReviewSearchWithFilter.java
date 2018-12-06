@@ -26,8 +26,11 @@ public class ContentValidationInUpForReviewSearchWithFilter extends BaseTest
 		//Click on Up for review and search and verify contents 
 		contentReourcePageObj.validateUpForReivew();
 
-		//Click on Up for review verify contents based Applied and Reset filters
+		//Click on Up for review verify contents based Applied
 		contentReourcePageObj.contentFilterApply_Reset();
+		
+		//Verify the Resetting of applied filters and the contents
+		contentReourcePageObj.resetAppliedFilters();
 		
 		//Logout as Reviewer
 		userLogin.userLogout();

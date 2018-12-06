@@ -451,7 +451,8 @@ public class ContentCreationResourcePage
 
 
 	//Added for Test case 94
-	@FindBy(className="no-result-text")
+	//@FindBy(className="no-result-text")
+	@FindBy(xpath="//div[contains(@class,'no-result-search-text')]")
 	public WebElement noResultText;
 
 	//Added for Test 96
@@ -461,7 +462,12 @@ public class ContentCreationResourcePage
 	@FindBy(xpath="//sui-multi-select[@id='gradeLevel']//sui-select-option[@class='item selected']")
 	public WebElement selectFilterGrade;
 
-	@FindBy(xpath="//sui-multi-select[@id='subject']//sui-select-option[@class='item selected']")
+	//Dec 06 
+	@FindBy(xpath="//sui-multi-select[@id='gradeLevel']//sui-select-option")
+	public WebElement selectFilterGrade1;
+	
+	//Dec 06
+	@FindBy(xpath="//sui-multi-select[@id='subject']/.//sui-select-option[@class='item selected']")
 	public WebElement selectFilterSubject;
 
 	@FindBy(xpath="//sui-multi-select[@id='contentType']//span[.='Resource']")
@@ -470,7 +476,9 @@ public class ContentCreationResourcePage
 	@FindBy(xpath="(//sui-multi-select[@id='medium']//sui-select-option[@class='item selected']//span)[2]")
 	public WebElement selectFilterMedium;
 
-	@FindBy(xpath="(//div[@class='nine wide column']//div)[3]")
+	//Dec 06
+	@FindBy(xpath="//div[@class='content content-detail' and contains(.,'Medium')]/following::div[@class='content']")
+	//@FindBy(xpath="(//div[@class='nine wide column']//div)[3]")
 	public WebElement verifyFilterMedium;
 
 	@FindBy(xpath="//i[@class='ui remove icon']")
