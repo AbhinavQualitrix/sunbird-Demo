@@ -228,7 +228,7 @@
    
      
 
-   <!-- Test cases of P2, freelancers -->
+   <!-- Test cases of P2, freelancers 
    
      <class name="org.testscript.TC_186"/>
     
@@ -285,7 +285,7 @@
      
       
       <class name="org.testscript.TC_340"/>
-      <class name="org.testscript.TC_341"/>
+      <class name="org.testscript.TC_341"/>-->
     
  
 
@@ -313,7 +313,7 @@
       <class name="org.testscript.CheckInReviewSubmission"/>
       <class name="org.testscript.VerifycopyContent"/> -->
       
-    
+   
      
       <!--  
       <class name="org.testscript.regression.SortTheResultInUpForReview"/>

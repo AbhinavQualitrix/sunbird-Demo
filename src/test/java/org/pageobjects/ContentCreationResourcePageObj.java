@@ -1372,17 +1372,17 @@ public class ContentCreationResourcePageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Continuation with the next test case");
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to Add activity Plugins");
 			GenericFunctions.waitWebDriver(2000);
-			action.moveToElement(contentCreationResourcePage.addActivity).build().perform();
-			//GenericFunctions.waitForElementToAppear(contentResourcePage.addActivity);
-			action.click(contentCreationResourcePage.addActivity).build().perform();
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addActivity);
+			GenericFunctions.clickOnElementUsingJavascript(contentCreationResourcePage.addActivity);
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.searchActivity);
 			contentCreationResourcePage.searchActivity.click();
-			contentCreationResourcePage.searchActivity.sendKeys(objListOFTestDataForSunbird1.get(11).getTitle());
-			GenericFunctions.waitWebDriver(650);
-			contentCreationResourcePage.clickCategory.click();
-			GenericFunctions.waitWebDriver(500);
-			contentCreationResourcePage.selectCategory.click();
-			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.selectActivity);
+			contentCreationResourcePage.searchActivity.sendKeys(objListOFTestDataForSunbird1.get(11).getTitleDescription());
+			GenericFunctions.waitWebDriver(2000);
+			/*contentCreationResourcePage.clickCategory.click();
+			GenericFunctions.waitWebDriver(2000);
+			contentCreationResourcePage.selectCategory.click();*/
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addActivityBtn);
 			contentCreationResourcePage.addActivityBtn.click();
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.clickAddedActivity);
 			contentCreationResourcePage.clickAddedActivity.click();
@@ -1392,7 +1392,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 
 			GenericFunctions.waitForElementToAppear(createUserPage.saveCourse);
 			createUserPage.saveCourse.click();
-			GenericFunctions.waitWebDriver(600);
+			GenericFunctions.waitWebDriver(2000);
 			createUserPage.closeContentPopup.click();
 			//createUserPage.editorCloseIcon.click();
 
@@ -1400,7 +1400,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			contentCreationResourcePage.previewIcon.click();
 			//GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.previewPopup);
-			GenericFunctions.waitWebDriver(1600);
+			GenericFunctions.waitWebDriver(2000);
 			Boolean confirmPopup = contentCreationResourcePage.previewPopup.isDisplayed();
 			while(confirmPopup==true)
 			{
