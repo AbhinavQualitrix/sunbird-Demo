@@ -314,7 +314,7 @@
        
       <class name="org.testscript.regression.SortTheResultInUpForReview"/>
        <class name="org.testscript.regression.SeeTheContentBasedOnAppliedFilter"/>	
-       <class name="org.testscript.regression.CreateResourceByCreatingAFillInThBlanksQuestion"/>
+       
       
      <!-- Old Test cases from member -removed
       <class name="org.testscript.regression.VerifyEditDetailsPopupAndTopicTree"/>
