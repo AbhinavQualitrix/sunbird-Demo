@@ -1176,12 +1176,11 @@ public class ContentCreationResourcePageObj extends BaseTest
 				Assert.assertTrue(true);
 				ExtentTestManager.getTest().log(LogStatus.INFO, "Results are satisfying the given search filter criteria, and filters are same in the content");
 			}
-			GenericFunctions.scrollToElement(createUserPage.headerLibrary);
+			//GenericFunctions.scrollToElement(createUserPage.headerLibrary);
+			GenericFunctions.waitWebDriver(4000);
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.contentCloseIcon);
-			GenericFunctions.scrollToElement(contentCreationResourcePage.contentCloseIcon);
-			contentCreationResourcePage.contentCloseIcon.click();
-
-			
+			//GenericFunctions.scrollToElement(contentCreationResourcePage.contentCloseIcon);
+			contentCreationResourcePage.contentCloseIcon.click();			
 			
 		}
 		catch(Exception e)
@@ -1201,6 +1200,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to Reset the applied filters");			
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.showFilters);
+			GenericFunctions.waitWebDriver(1000);
 			contentCreationResourcePage.showFilters.click();
 			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.filterResetButton);;
@@ -1374,7 +1374,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 				}
 
 				GenericFunctions.refreshWebPage();
-				GenericFunctions.waitWebDriver(2000);
+				GenericFunctions.waitWebDriver(4000);
 				//contentResourcePage.randomClickElement.click();
 				//driver.switchTo().defaultContent();
 				//GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
@@ -2004,10 +2004,10 @@ public class ContentCreationResourcePageObj extends BaseTest
 			if(contentCreationResourcePage.addAudio.isEnabled())
 			{
 				Assert.assertTrue(true);
-				ExtentTestManager.getTest().log(LogStatus.INFO, "User sucessfully navigated to the metadata/plugins page of resource");
+				ExtentTestManager.getTest().log(LogStatus.PASS, "User sucessfully navigated to the metadata/plugins page of resource");
 			}
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to upload an audio for resource");
-			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitWebDriver(2000);
 			
 			contentCreationResourcePage.addAudio.click();
 			GenericFunctions.waitWebDriver(1000);
@@ -2022,10 +2022,10 @@ public class ContentCreationResourcePageObj extends BaseTest
 			GenericFunctions.waitWebDriver(2000);
 			action.click(contentCreationResourcePage.yesRadioButton).build().perform();
 			//contentCreationResourcePage.yesRadioButton.click();
-			
+			GenericFunctions.waitWebDriver(2000);
 			contentCreationResourcePage.audioUploadIcon.click();
 			GenericFunctions.waitWebDriver(3000);
-			action.moveToElement(contentCreationResourcePage.btnChooseFile).build().perform();
+			//action.moveToElement(contentCreationResourcePage.btnChooseFile).build().perform();
 			contentCreationResourcePage.btnChooseFile.click();
 			String path=AllUploadingPaths.audioPath;
 			GenericFunctions.uploadFile(path);
@@ -2034,7 +2034,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			
 			//contentCreationResourcePage.rightBtnAvailable.click();
 			
-			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.btnUploadAndUse);
 			contentCreationResourcePage.btnUploadAndUse.click();
 			

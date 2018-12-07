@@ -194,7 +194,9 @@ public class ContentCreateUploadPage
 	@FindBy(xpath="//input[@class='listItem']")
 	public List<WebElement> checkbox;
 
-	@FindBy(xpath="/html/body/sui-modal/sui-dimmer/div/div/div/div[3]/div")
+	
+	//@FindBy(xpath="/html/body/sui-modal/sui-dimmer/div/div/div/div[3]/div")
+	@FindBy(xpath="/html/body/sui-modal/sui-dimmer/div/div/div/div[3]/div/button[2]")
 	public WebElement publishButton1;
 
 	@FindBy(xpath="//div/div[2]/app-workspacesidebar/div/a[5]")
@@ -305,5 +307,8 @@ public class ContentCreateUploadPage
 	
 	@FindBy(xpath="//i[@class='remove icon custom-cursor']")
 	public WebElement closePageIcon;
+	
+	@FindBy(xpath="//span[contains(@class,'sliderCardHeading')]")
+	public WebElement contentInPublished;
 	
 }

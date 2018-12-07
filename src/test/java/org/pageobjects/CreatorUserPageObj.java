@@ -2235,11 +2235,12 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(3000);
 			createUserPage.searchUploadImage.sendKeys(SEARCH_COURSE_IMAGE);
 			createUserPage.clickImageSearch.click();
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitWebDriver(4000);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.checkContentIcon);
 			createUserPage.checkContentIcon.click();
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitWebDriver(3000);
 			createUserPage.selectAppIcon.click();
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitWebDriver(2000);
 
 			GenericFunctions.waitForElementToAppear(createUserPage.clickOnSelectCurriculum);
 			createUserPage.clickOnSelectCurriculum.click();

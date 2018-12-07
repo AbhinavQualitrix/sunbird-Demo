@@ -7,10 +7,10 @@ import org.pageobjects.SignUpPageObj;
 import org.startup.BaseTest;
 import org.testng.annotations.Test;
 
-public class ReviewerPublishesAndRejectsContent extends BaseTest{
+public class VerifyPublishedContentInPublishedBucket extends BaseTest{
 	//TC140_TC_143
 	@Test
-	public void workspace_showfilter() throws Exception
+	public void verifyPublishedContentInPublishedBucket() throws Exception
 	{
 	SignUpPageObj signUpPageObj = new SignUpPageObj();
 	ContentCreateUploadPageObj contentCreateUploadPageObj = new ContentCreateUploadPageObj(); 

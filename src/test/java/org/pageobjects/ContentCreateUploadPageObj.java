@@ -865,26 +865,29 @@ public class ContentCreateUploadPageObj extends BaseTest
 			GenericFunctions.waitWebDriver(5000);
 			GenericFunctions.waitForElementToAppear(contentUploadPage.searchForReview);
 			contentUploadPage.searchForReview.click();
-			GenericFunctions.waitWebDriver(5000);
-			GenericFunctions.waitForElementToAppear(contentUploadPage.searchForReview);
+			/*GenericFunctions.waitWebDriver(5000);
+			GenericFunctions.waitForElementToAppear(contentUploadPage.searchForReview);*/
 			GenericFunctions.waitWebDriver(5000);
 			contentUploadPage.searchForReview.sendKeys(objListOFTestDataForSunbird1.get(0).getCourseDescription());
 
 			GenericFunctions.waitWebDriver(5000);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentUploadPage.contentupload);
 			contentUploadPage.contentupload.click();
 			GenericFunctions.waitWebDriver(5000);
 
 			//GenericFunctions.scrollToElement(contentCreatePage.publishButton);
-
 			//GenericFunctions.waitForElementToAppear(contentCreatePage.publishButton);
-			//	action.moveToElement(contentCreatePage.publishButton).build().perform();
-
-			Thread.sleep(5000);	
+			//action.moveToElement(contentCreatePage.publishButton).build().perform();
+			
+			
 			contentUploadPage.publishButton.click();
 			GenericFunctions.waitWebDriver(5000);
-			for(int i=0;i<createUserPage.checkbox.size();i++){
+			for(int i=0;i<createUserPage.checkbox.size();i++)
+			{
+				GenericFunctions.waitWebDriver(500);
 				createUserPage.checkbox.get(i).click();
 			}
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(contentUploadPage.publishButton1);
 			contentUploadPage.publishButton1.click();
 
@@ -910,22 +913,29 @@ public class ContentCreateUploadPageObj extends BaseTest
 	{
 		try {
 
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to publish the content");
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to verify the published content in Published Bucket");
 
 			objListOFTestDataForSunbird1=ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-			GenericFunctions.waitWebDriver(1200);
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppearOnScreen(contentUploadPage.profileIcon);
 			contentUploadPage.profileIcon.click();
-			GenericFunctions.waitWebDriver(1200);
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(contentUploadPage.workspace);
 			contentUploadPage.workspace1.click();
-			GenericFunctions.waitWebDriver(1200);
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(contentUploadPage.published);
 			contentUploadPage.published.click();
-			GenericFunctions.waitWebDriver(1200);
-			contentUploadPage.contentPublished.click();
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitForElementToAppear(contentUploadPage.contentInPublished);
+			contentUploadPage.contentInPublished.getText();
+			System.out.println(contentUploadPage.contentInPublished.getText());
+			if(contentUploadPage.contentInPublished.getText().contains("Description"))
+			{
+				Assert.assertTrue(true);
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Published Content is verified in published bucket");
+			}
+			
 			GenericFunctions.waitWebDriver(5000);
-
-
-
 
 
 		}

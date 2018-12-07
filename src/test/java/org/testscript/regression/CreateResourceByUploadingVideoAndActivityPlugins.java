@@ -41,9 +41,29 @@ public class CreateResourceByUploadingVideoAndActivityPlugins extends BaseTest
 		//Verify Video Uploading files
 		contentReourcePageObj.uploadVideoFiles();
 		
-		//Verify the user is able create resource by adding activity plugins
-		contentReourcePageObj.addActivityPlugins();
 		
+		
+	}
+	
+	@Test
+	public void verifyAddingActivityFunctionality() throws Exception
+	{
+		SignUpPageObj userLogin = new SignUpPageObj();
+		CreatorUserPageObj creatorUserPageObj = new CreatorUserPageObj();
+		ContentCreationResourcePageObj contentReourcePageObj= new ContentCreationResourcePageObj();
+				
+				//Login as Content creator
+				userLogin.userLogin(CREATOR);
+
+				//Navigate to workspace to create Resource
+				creatorUserPageObj.navigateToWorkspace(RESOURCE);
+
+				//Enter a unique resource name
+				contentReourcePageObj.resourceName();
+				
+				//Verify the user is able create resource by adding activity plugins
+				contentReourcePageObj.addActivityPlugins();
+				
 	}
 
 }
