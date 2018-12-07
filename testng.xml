@@ -5,7 +5,7 @@
 		<listener class-name="org.generic.TestListener"></listener>
 		<listener class-name="org.generic.RetryListener"></listener>
 	</listeners>
-  <test thread-count="2" name="Test" parallel="classes">
+  <test thread-count="2" name="Test" >
     <classes>
     <!-- Test Cases for skipped functionality -->
     

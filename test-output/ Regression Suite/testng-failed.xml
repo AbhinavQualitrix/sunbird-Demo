@@ -3,8 +3,9 @@
 <suite name="Failed suite [ Regression Suite]" guice-stage="DEVELOPMENT">
   <listeners>
     <listener class-name="org.generic.TestListener"/>
+    <listener class-name="org.generic.RetryListener"/>
   </listeners>
-  <test parallel="tests" name="Test(failed)">
+  <test name="Test(failed)">
     <classes>
       <class name="org.testscript.TC_202">
         <methods>
@@ -21,21 +22,21 @@
           <include name="TC_288_allMyContent"/>
         </methods>
       </class> <!-- org.testscript.TC_288 -->
-      <class name="org.testscript.regression.ReviewAndPublishReceivedContent">
+      <class name="org.testscript.regression.VerifyUserNaviagationToContentEditor">
         <methods>
-          <include name="reviewAndPublishReceivedContent"/>
+          <include name="verifyUserNavigateToContentEditorPage"/>
         </methods>
-      </class> <!-- org.testscript.regression.ReviewAndPublishReceivedContent -->
-      <class name="org.testscript.ResendAnnouncement">
+      </class> <!-- org.testscript.regression.VerifyUserNaviagationToContentEditor -->
+      <class name="org.testscript.SearchCourseCreateInviteOnlyBatch">
         <methods>
-          <include name="resendAnnouncement"/>
+          <include name="searchCourseCreateInviteOnlyBatch"/>
         </methods>
-      </class> <!-- org.testscript.ResendAnnouncement -->
-      <class name="org.testscript.ProfileInfoUpdate">
+      </class> <!-- org.testscript.SearchCourseCreateInviteOnlyBatch -->
+      <class name="org.testscript.SearchUsers">
         <methods>
-          <include name="profileInfoUpdate"/>
+          <include name="searchUsers"/>
         </methods>
-      </class> <!-- org.testscript.ProfileInfoUpdate -->
+      </class> <!-- org.testscript.SearchUsers -->
       <class name="org.testscript.TC_296">
         <methods>
           <include name="TC_296_rootOrg"/>
@@ -46,46 +47,46 @@
           <include name="TC_286_allMyContent"/>
         </methods>
       </class> <!-- org.testscript.TC_286 -->
-      <class name="org.testscript.LessonplanCreation">
+      <class name="org.testscript.VerifyHomePage">
         <methods>
-          <include name="createLessonAndVerify"/>
+          <include name="verifyHomePage"/>
         </methods>
-      </class> <!-- org.testscript.LessonplanCreation -->
+      </class> <!-- org.testscript.VerifyHomePage -->
+      <class name="org.testscript.regression.CreateResourceWithContentsPluginsAndVerifyContentEditor">
+        <methods>
+          <include name="createResourceWithContentsPlugins_VerifyContentEditor"/>
+        </methods>
+      </class> <!-- org.testscript.regression.CreateResourceWithContentsPluginsAndVerifyContentEditor -->
       <class name="org.testscript.EditContentAndSendForReview">
         <methods>
           <include name="editContentAndSendForReview"/>
         </methods>
       </class> <!-- org.testscript.EditContentAndSendForReview -->
-      <class name="org.testscript.regression.VerifyFeaturesOfProfileIconAndWorkspace">
+      <class name="org.testscript.regression.RejectTheUploadedContent">
         <methods>
-          <include name="verifyProfileIcon4Features_workspaceFeatures"/>
+          <include name="rejectTheUploadedContent"/>
         </methods>
-      </class> <!-- org.testscript.regression.VerifyFeaturesOfProfileIconAndWorkspace -->
+      </class> <!-- org.testscript.regression.RejectTheUploadedContent -->
+      <class name="org.testscript.UploadEpubContent">
+        <methods>
+          <include name="uploadEpubContent"/>
+        </methods>
+      </class> <!-- org.testscript.UploadEpubContent -->
       <class name="org.testscript.regression.LimitedSharedContentInLimitedSharingSection">
         <methods>
           <include name="workspace_LimitedPublishing"/>
         </methods>
       </class> <!-- org.testscript.regression.LimitedSharedContentInLimitedSharingSection -->
-      <class name="org.testscript.SearchUsers">
-        <methods>
-          <include name="searchUsers"/>
-        </methods>
-      </class> <!-- org.testscript.SearchUsers -->
-      <class name="org.testscript.regression.VerifyMyActivityLinkInProfileDropdown">
-        <methods>
-          <include name="verifyMyactivityLinkInProfileDropdown"/>
-        </methods>
-      </class> <!-- org.testscript.regression.VerifyMyActivityLinkInProfileDropdown -->
       <class name="org.testscript.CopyContentFromLibraryAndVerify">
         <methods>
           <include name="verifyCopyContent_Library"/>
         </methods>
       </class> <!-- org.testscript.CopyContentFromLibraryAndVerify -->
-      <class name="org.testscript.UploadHtmlContent">
+      <class name="org.testscript.LimitedSharingTheContent">
         <methods>
-          <include name="uploadHtmlContent"/>
+          <include name="limitedSharingTheContent"/>
         </methods>
-      </class> <!-- org.testscript.UploadHtmlContent -->
+      </class> <!-- org.testscript.LimitedSharingTheContent -->
       <class name="org.testscript.TC_281">
         <methods>
           <include name="TC_281_allMyContent"/>
@@ -111,31 +112,31 @@
           <include name="TC_290_openBatchCreation"/>
         </methods>
       </class> <!-- org.testscript.TC_290 -->
-      <class name="org.testscript.SearchOrgsAsAdmin">
+      <class name="org.testscript.UploadContentTypePdfAndVerify">
         <methods>
-          <include name="searchOrgsAsAdmin"/>
+          <include name="uploadContentTypePdfAndVerify"/>
         </methods>
-      </class> <!-- org.testscript.SearchOrgsAsAdmin -->
+      </class> <!-- org.testscript.UploadContentTypePdfAndVerify -->
       <class name="org.testscript.TC_210">
         <methods>
           <include name="TC_210_upForReview"/>
         </methods>
       </class> <!-- org.testscript.TC_210 -->
+      <class name="org.testscript.ConfirmInstructionReceivedInforgotPassword">
+        <methods>
+          <include name="confirmInstructionReceivedInforgotPassword"/>
+        </methods>
+      </class> <!-- org.testscript.ConfirmInstructionReceivedInforgotPassword -->
       <class name="org.testscript.UploadContentSaveAndSendForReview">
         <methods>
           <include name="uploadContentSaveAndSendForReview"/>
         </methods>
       </class> <!-- org.testscript.UploadContentSaveAndSendForReview -->
-      <class name="org.testscript.VerifyHomePage">
+      <class name="org.testscript.regression.SameUserNameIsNotAllowedWhileSignup">
         <methods>
-          <include name="verifyHomePage"/>
+          <include name="verify_SignUpFailure"/>
         </methods>
-      </class> <!-- org.testscript.VerifyHomePage -->
-      <class name="org.testscript.regression.VerifyNavigateToGetPage">
-        <methods>
-          <include name="verify_NavigateToGetPage"/>
-        </methods>
-      </class> <!-- org.testscript.regression.VerifyNavigateToGetPage -->
+      </class> <!-- org.testscript.regression.SameUserNameIsNotAllowedWhileSignup -->
       <class name="org.testscript.TC_294">
         <methods>
           <include name="TC_294_rootOrg"/>
@@ -151,16 +152,16 @@
           <include name="questionSetPlugin"/>
         </methods>
       </class> <!-- org.testscript.TC_186 -->
-      <class name="org.testscript.CreateAnnouncementWithAttachment">
+      <class name="org.testscript.OpenAnnouncement">
         <methods>
-          <include name="createAnnouncementWithAttachment"/>
+          <include name="openAnnouncement"/>
         </methods>
-      </class> <!-- org.testscript.CreateAnnouncementWithAttachment -->
-      <class name="org.testscript.regression.SearchParticularContentInAllMyContent">
+      </class> <!-- org.testscript.OpenAnnouncement -->
+      <class name="org.testscript.regression.ReviewAndPublishReceivedContent">
         <methods>
-          <include name="VerifySortFeatureOptions"/>
+          <include name="reviewAndPublishReceivedContent"/>
         </methods>
-      </class> <!-- org.testscript.regression.SearchParticularContentInAllMyContent -->
+      </class> <!-- org.testscript.regression.ReviewAndPublishReceivedContent -->
       <class name="org.testscript.TC_287">
         <methods>
           <include name="TC_287_allMyContent"/>
@@ -171,26 +172,26 @@
           <include name="verifyElementsInAdminDashboard"/>
         </methods>
       </class> <!-- org.testscript.VerifyElementsInAdminDashboard -->
-      <class name="org.testscript.LimitedSharingTheContent">
+      <class name="org.testscript.SearchInLibrary">
         <methods>
-          <include name="limitedSharingTheContent"/>
+          <include name="librarySearch"/>
         </methods>
-      </class> <!-- org.testscript.LimitedSharingTheContent -->
+      </class> <!-- org.testscript.SearchInLibrary -->
       <class name="org.testscript.TC_302">
         <methods>
           <include name="TC_302_rootOrg"/>
         </methods>
       </class> <!-- org.testscript.TC_302 -->
-      <class name="org.testscript.regression.VerifyPropertySectionAndPreviewSlides">
+      <class name="org.testscript.regression.LatestContentOnTopOfUpForReviewAndSearch">
         <methods>
-          <include name="verifyPropertySectionAndPreviewSlides"/>
+          <include name="latestContentIsOnTopUpForReviewAndSearch"/>
         </methods>
-      </class> <!-- org.testscript.regression.VerifyPropertySectionAndPreviewSlides -->
-      <class name="org.testscript.CheckCourseStatAsMentor">
+      </class> <!-- org.testscript.regression.LatestContentOnTopOfUpForReviewAndSearch -->
+      <class name="org.testscript.SearchOrgsAsAdmin">
         <methods>
-          <include name="checkCourseStatAsMentor"/>
+          <include name="searchOrgsAsAdmin"/>
         </methods>
-      </class> <!-- org.testscript.CheckCourseStatAsMentor -->
+      </class> <!-- org.testscript.SearchOrgsAsAdmin -->
       <class name="org.testscript.TC_282">
         <methods>
           <include name="TC_282_allMyContent"/>
@@ -206,91 +207,93 @@
           <include name="rejectTheContent"/>
         </methods>
       </class> <!-- org.testscript.RejectTheContent -->
-      <class name="org.testscript.EnrollToCourseInOpenBatch">
+      <class name="org.testscript.CheckForDownloadButtonAvailabilityForUserInProfile">
         <methods>
-          <include name="enrollToCourseInOpenBatch"/>
+          <include name="checkForDownloadButtonAvailabilityForUserInProfile"/>
         </methods>
-      </class> <!-- org.testscript.EnrollToCourseInOpenBatch -->
+      </class> <!-- org.testscript.CheckForDownloadButtonAvailabilityForUserInProfile -->
+      <class name="org.testscript.CreateCollectionAndVerify">
+        <methods>
+          <include name="createCollectionAndVerify"/>
+        </methods>
+      </class> <!-- org.testscript.CreateCollectionAndVerify -->
       <class name="org.testscript.TC_203">
         <methods>
           <include name="TC_203_lessonPlan"/>
         </methods>
       </class> <!-- org.testscript.TC_203 -->
-      <class name="org.testscript.UploadContentTypeMp4AndVerify">
-        <methods>
-          <include name="uploadContentTypeMp4AndVerify"/>
-        </methods>
-      </class> <!-- org.testscript.UploadContentTypeMp4AndVerify -->
-      <class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom">
-        <methods>
-          <include name="QuestionTemplateFibCustomKeyboard"/>
-        </methods>
-      </class> <!-- org.testscript.regression.QuestionTemplateFillInTheBlankCustom -->
-      <class name="org.testscript.SearchInLibrary">
-        <methods>
-          <include name="librarySearch"/>
-        </methods>
-      </class> <!-- org.testscript.SearchInLibrary -->
-      <class name="org.testscript.regression.CreateResourceByAddingAudio">
-        <methods>
-          <include name="resource_VerifyAudioUpload"/>
-        </methods>
-      </class> <!-- org.testscript.regression.CreateResourceByAddingAudio -->
-      <class name="org.testscript.TC_310">
-        <methods>
-          <include name="TC_310_rootOrg"/>
-        </methods>
-      </class> <!-- org.testscript.TC_310 -->
-      <class name="org.testscript.UploadContentTypeHtmlAndVerify">
-        <methods>
-          <include name="uploadContentTypeHtmlAndVerify"/>
-        </methods>
-      </class> <!-- org.testscript.UploadContentTypeHtmlAndVerify -->
-      <class name="org.testscript.NavigateToMyActivity">
-        <methods>
-          <include name="navigateToMyActivity"/>
-        </methods>
-      </class> <!-- org.testscript.NavigateToMyActivity -->
-      <class name="org.testscript.ResendAnnouncementAndVerifyAsReciever">
-        <methods>
-          <include name="resendAnnouncementAndVerifyAsReciever"/>
-        </methods>
-      </class> <!-- org.testscript.ResendAnnouncementAndVerifyAsReciever -->
-      <class name="org.testscript.regression.ReviewerPublishesAndRejectsContent">
-        <methods>
-          <include name="workspace_showfilter"/>
-        </methods>
-      </class> <!-- org.testscript.regression.ReviewerPublishesAndRejectsContent -->
-      <class name="org.testscript.TC_304">
-        <methods>
-          <include name="TC_304_rootOrg"/>
-        </methods>
-      </class> <!-- org.testscript.TC_304 -->
-      <class name="org.testscript.CheckForAuthenticUserInMentor">
-        <methods>
-          <include name="checkForAuthenticUserInMentor"/>
-        </methods>
-      </class> <!-- org.testscript.CheckForAuthenticUserInMentor -->
-      <class name="org.testscript.UpdateBatchAsInvitedMentor">
-        <methods>
-          <include name="updateBatchAsInvitedMentor"/>
-        </methods>
-      </class> <!-- org.testscript.UpdateBatchAsInvitedMentor -->
-      <class name="org.testscript.UploadEpubContent">
-        <methods>
-          <include name="uploadEpubContent"/>
-        </methods>
-      </class> <!-- org.testscript.UploadEpubContent -->
       <class name="org.testscript.VerifyAppliedFilter">
         <methods>
           <include name="verifyAppliedFilter"/>
         </methods>
       </class> <!-- org.testscript.VerifyAppliedFilter -->
-      <class name="org.testscript.regression.CreateResourcePublishAndDeleteFromLimitedPublising">
+      <class name="org.testscript.regression.VerifySortOption">
         <methods>
-          <include name="characterVerificationInPreviewKeyboard"/>
+          <include name="verifySortFeatureOptions"/>
         </methods>
-      </class> <!-- org.testscript.regression.CreateResourcePublishAndDeleteFromLimitedPublising -->
+      </class> <!-- org.testscript.regression.VerifySortOption -->
+      <class name="org.testscript.regression.AccessOnAllPagesAfterLogin">
+        <methods>
+          <include name="verify_PageAccessOnLogin"/>
+        </methods>
+      </class> <!-- org.testscript.regression.AccessOnAllPagesAfterLogin -->
+      <class name="org.testscript.TC_310">
+        <methods>
+          <include name="TC_310_rootOrg"/>
+        </methods>
+      </class> <!-- org.testscript.TC_310 -->
+      <class name="org.testscript.UploadContentTypeEpubAndVerify">
+        <methods>
+          <include name="uploadContentTypeEpubAndVerify"/>
+        </methods>
+      </class> <!-- org.testscript.UploadContentTypeEpubAndVerify -->
+      <class name="org.testscript.regression.SearchParticularContentInAllMyContent">
+        <methods>
+          <include name="VerifySortFeatureOptions"/>
+        </methods>
+      </class> <!-- org.testscript.regression.SearchParticularContentInAllMyContent -->
+      <class name="org.testscript.CheckAvailabilityOfCourseForInvitedMember">
+        <methods>
+          <include name="checkAvailabilityOfCourseForInvitedMember"/>
+        </methods>
+      </class> <!-- org.testscript.CheckAvailabilityOfCourseForInvitedMember -->
+      <class name="org.testscript.TC_304">
+        <methods>
+          <include name="TC_304_rootOrg"/>
+        </methods>
+      </class> <!-- org.testscript.TC_304 -->
+      <class name="org.testscript.regression.VerifyAnnouncementPageContent">
+        <methods>
+          <include name="VerifyAnnouncementDetails"/>
+          <include name="verifyAnnouncementMessage"/>
+          <include name="VerifyAnnouncementCreationFields"/>
+        </methods>
+      </class> <!-- org.testscript.regression.VerifyAnnouncementPageContent -->
+      <class name="org.testscript.CheckForAuthenticUserInMentor">
+        <methods>
+          <include name="checkForAuthenticUserInMentor"/>
+        </methods>
+      </class> <!-- org.testscript.CheckForAuthenticUserInMentor -->
+      <class name="org.testscript.EnrollToCourseInOpenBatch">
+        <methods>
+          <include name="enrollToCourseInOpenBatch"/>
+        </methods>
+      </class> <!-- org.testscript.EnrollToCourseInOpenBatch -->
+      <class name="org.testscript.NavigateToMyActivity">
+        <methods>
+          <include name="navigateToMyActivity"/>
+        </methods>
+      </class> <!-- org.testscript.NavigateToMyActivity -->
+      <class name="org.testscript.SearchCourse">
+        <methods>
+          <include name="searchCourse"/>
+        </methods>
+      </class> <!-- org.testscript.SearchCourse -->
+      <class name="org.testscript.regression.CopyContentFromLibraryAndVerify">
+        <methods>
+          <include name="verifyCopyContent_Library"/>
+        </methods>
+      </class> <!-- org.testscript.regression.CopyContentFromLibraryAndVerify -->
       <class name="org.testscript.TC_340">
         <methods>
           <include name="TC_340_announcement_feature"/>
@@ -306,12 +309,11 @@
           <include name="TC_207_upForReview"/>
         </methods>
       </class> <!-- org.testscript.TC_207 -->
-      <class name="org.testscript.CreateCollectionAndVerify">
+      <class name="org.testscript.CreateBookAndVerify">
         <methods>
-          <include name="createCollectionAndVerify"/>
-          <include name="openApplication"/>
+          <include name="createBoookAndVerify"/>
         </methods>
-      </class> <!-- org.testscript.CreateCollectionAndVerify -->
+      </class> <!-- org.testscript.CreateBookAndVerify -->
       <class name="org.testscript.VerifyThatTopicsAreSelectedOnMetaDataPage">
         <methods>
           <include name="verifyThatTopicsAreSelectedOnMetaDataPage"/>
@@ -322,16 +324,16 @@
           <include name="courseCreation"/>
         </methods>
       </class> <!-- org.testscript.CourseCreation -->
-      <class name="org.testscript.regression.SameUserNameIsNotAllowedWhileSignup">
+      <class name="org.testscript.regression.VerifyFeaturesOfProfileIconAndWorkspace">
         <methods>
-          <include name="verify_SignUpFailure"/>
+          <include name="verifyProfileIcon4Features_workspaceFeatures"/>
         </methods>
-      </class> <!-- org.testscript.regression.SameUserNameIsNotAllowedWhileSignup -->
-      <class name="org.testscript.CollectionCreation">
+      </class> <!-- org.testscript.regression.VerifyFeaturesOfProfileIconAndWorkspace -->
+      <class name="org.testscript.LoginAndChangePassword">
         <methods>
-          <include name="collectionCreation"/>
+          <include name="loginAndChangePassword"/>
         </methods>
-      </class> <!-- org.testscript.CollectionCreation -->
+      </class> <!-- org.testscript.LoginAndChangePassword -->
       <class name="org.testscript.TC_209">
         <methods>
           <include name="TC_209_upForReview"/>
@@ -352,61 +354,61 @@
           <include name="TC_284_allMyContent"/>
         </methods>
       </class> <!-- org.testscript.TC_284 -->
-      <class name="org.testscript.NavigateToAnnouncementDashboard">
+      <class name="org.testscript.CreateAnnouncementWithAttachment">
         <methods>
-          <include name="navigateToAnnouncementDashboard"/>
+          <include name="createAnnouncementWithAttachment"/>
         </methods>
-      </class> <!-- org.testscript.NavigateToAnnouncementDashboard -->
+      </class> <!-- org.testscript.CreateAnnouncementWithAttachment -->
       <class name="org.testscript.TC_283">
         <methods>
           <include name="TC_283_allMyContent"/>
         </methods>
       </class> <!-- org.testscript.TC_283 -->
-      <class name="org.testscript.regression.UploadYoutubeFile">
+      <class name="org.testscript.regression.CreateResourcePublishAndDeleteFromLimitedPublising">
         <methods>
-          <include name="library_copyContent"/>
+          <include name="characterVerificationInPreviewKeyboard"/>
         </methods>
-      </class> <!-- org.testscript.regression.UploadYoutubeFile -->
-      <class name="org.testscript.CheckAvailabilityOfCourseForInvitedMember">
+      </class> <!-- org.testscript.regression.CreateResourcePublishAndDeleteFromLimitedPublising -->
+      <class name="org.testscript.CheckCourseStatAsMentor">
         <methods>
-          <include name="checkAvailabilityOfCourseForInvitedMember"/>
+          <include name="checkCourseStatAsMentor"/>
         </methods>
-      </class> <!-- org.testscript.CheckAvailabilityOfCourseForInvitedMember -->
-      <class name="org.testscript.CheckForDownloadButtonAvailabilityForUserInProfile">
+      </class> <!-- org.testscript.CheckCourseStatAsMentor -->
+      <class name="org.testscript.NavigateToAnnouncementDashboard">
         <methods>
-          <include name="checkForDownloadButtonAvailabilityForUserInProfile"/>
+          <include name="navigateToAnnouncementDashboard"/>
         </methods>
-      </class> <!-- org.testscript.CheckForDownloadButtonAvailabilityForUserInProfile -->
+      </class> <!-- org.testscript.NavigateToAnnouncementDashboard -->
       <class name="org.testscript.TC_291">
         <methods>
           <include name="TC_291_rootOrg"/>
         </methods>
       </class> <!-- org.testscript.TC_291 -->
-      <class name="org.testscript.SearchCourse">
+      <class name="org.testscript.ProfileInfoUpdate">
         <methods>
-          <include name="searchCourse"/>
+          <include name="profileInfoUpdate"/>
         </methods>
-      </class> <!-- org.testscript.SearchCourse -->
+      </class> <!-- org.testscript.ProfileInfoUpdate -->
       <class name="org.testscript.UploadYoutubeContent">
         <methods>
           <include name="uploadYoutubeContent"/>
         </methods>
       </class> <!-- org.testscript.UploadYoutubeContent -->
-      <class name="org.testscript.UploadContentTypePdfAndVerify">
+      <class name="org.testscript.UploadContentTypeHtmlAndVerify">
         <methods>
-          <include name="uploadContentTypePdfAndVerify"/>
+          <include name="uploadContentTypeHtmlAndVerify"/>
         </methods>
-      </class> <!-- org.testscript.UploadContentTypePdfAndVerify -->
+      </class> <!-- org.testscript.UploadContentTypeHtmlAndVerify -->
       <class name="org.testscript.TC_337">
         <methods>
           <include name="TC_337_announcement_feature"/>
         </methods>
       </class> <!-- org.testscript.TC_337 -->
-      <class name="org.testscript.UploadContentTypeEpubAndVerify">
+      <class name="org.testscript.UploadContentTypeH5pAndVerify">
         <methods>
-          <include name="uploadContentTypeEpubAndVerify"/>
+          <include name="uploadH5pContentAndVerify"/>
         </methods>
-      </class> <!-- org.testscript.UploadContentTypeEpubAndVerify -->
+      </class> <!-- org.testscript.UploadContentTypeH5pAndVerify -->
       <class name="org.testscript.VerifySaveContentInAllUploads">
         <methods>
           <include name="verifySaveContentInAllUploads"/>
@@ -417,31 +419,26 @@
           <include name="workspace_upForReviewSortBy"/>
         </methods>
       </class> <!-- org.testscript.regression.SortTheResultInUpForReview -->
-      <class name="org.testscript.regression.AccessOnAllPagesAfterLogin">
+      <class name="org.testscript.regression.ContentValidationInUpForReviewSearchWithFilter">
         <methods>
-          <include name="verify_PageAccessOnLogin"/>
+          <include name="contentValidationInUpForReviewSearchWithFilter"/>
         </methods>
-      </class> <!-- org.testscript.regression.AccessOnAllPagesAfterLogin -->
-      <class name="org.testscript.SearchCourseUsingFilter">
+      </class> <!-- org.testscript.regression.ContentValidationInUpForReviewSearchWithFilter -->
+      <class name="org.testscript.VerifyPublishedBucket">
         <methods>
-          <include name="searchCourseUsingFilter"/>
+          <include name="verifyPublishedBucket"/>
         </methods>
-      </class> <!-- org.testscript.SearchCourseUsingFilter -->
-      <class name="org.testscript.SearchCourseCreateInviteOnlyBatch">
+      </class> <!-- org.testscript.VerifyPublishedBucket -->
+      <class name="org.testscript.NavigateToMyActivityInDropdown">
         <methods>
-          <include name="searchCourseCreateInviteOnlyBatch"/>
+          <include name="navigateToMyActivityInDropdown"/>
         </methods>
-      </class> <!-- org.testscript.SearchCourseCreateInviteOnlyBatch -->
+      </class> <!-- org.testscript.NavigateToMyActivityInDropdown -->
       <class name="org.testscript.TC_303">
         <methods>
           <include name="TC_303_rootOrg"/>
         </methods>
       </class> <!-- org.testscript.TC_303 -->
-      <class name="org.testscript.CreateCourseAndVerify">
-        <methods>
-          <include name="createCourseAndVerify"/>
-        </methods>
-      </class> <!-- org.testscript.CreateCourseAndVerify -->
       <class name="org.testscript.TC_301">
         <methods>
           <include name="TC_301_rootOrg"/>
@@ -452,26 +449,26 @@
           <include name="TC_292_openBatchCreation"/>
         </methods>
       </class> <!-- org.testscript.TC_292 -->
-      <class name="org.testscript.ConfirmInstructionReceivedInforgotPassword">
+      <class name="org.testscript.CollectionCreation">
         <methods>
-          <include name="confirmInstructionReceivedInforgotPassword"/>
+          <include name="collectionCreation"/>
         </methods>
-      </class> <!-- org.testscript.ConfirmInstructionReceivedInforgotPassword -->
+      </class> <!-- org.testscript.CollectionCreation -->
+      <class name="org.testscript.ConsumeOpenCourseByPublicUser">
+        <methods>
+          <include name="consumeOpenCourseByPublicUser"/>
+        </methods>
+      </class> <!-- org.testscript.ConsumeOpenCourseByPublicUser -->
       <class name="org.testscript.ConsumeCourseByInvitedMember">
         <methods>
           <include name="consumeCourseByInvitedMember"/>
         </methods>
       </class> <!-- org.testscript.ConsumeCourseByInvitedMember -->
-      <class name="org.testscript.NavigateToMyActivityInDropdown">
+      <class name="org.testscript.regression.NavigateToGetStartedAndExploreSunbird">
         <methods>
-          <include name="navigateToMyActivityInDropdown"/>
+          <include name="verify_NavigateToGetStarted_ExploreSunbirdPage"/>
         </methods>
-      </class> <!-- org.testscript.NavigateToMyActivityInDropdown -->
-      <class name="org.testscript.regression.SendForReviewContentUnderReviewSubmission">
-        <methods>
-          <include name="sendForReviewContentUnderReviewSubmission"/>
-        </methods>
-      </class> <!-- org.testscript.regression.SendForReviewContentUnderReviewSubmission -->
+      </class> <!-- org.testscript.regression.NavigateToGetStartedAndExploreSunbird -->
       <class name="org.testscript.TC_201">
         <methods>
           <include name="TC_201_memberSearchInBatch"/>
@@ -492,31 +489,31 @@
           <include name="editAndVerifyTopicTree"/>
         </methods>
       </class> <!-- org.testscript.EditAndVerifyTopicTree -->
-      <class name="org.testscript.VerifyBookCreator">
+      <class name="org.testscript.UploadHtmlContent">
         <methods>
-          <include name="verifyBookCreation"/>
+          <include name="uploadHtmlContent"/>
         </methods>
-      </class> <!-- org.testscript.VerifyBookCreator -->
-      <class name="org.testscript.regression.CreateResourceWithContentsPluginsAndVerifyContentEditor">
+      </class> <!-- org.testscript.UploadHtmlContent -->
+      <class name="org.testscript.regression.VerifyTheClosingOfContentEditor">
         <methods>
-          <include name="createResourceWithContentsPlugins_VerifyContentEditor"/>
+          <include name="contentCreator_CloseEditor"/>
         </methods>
-      </class> <!-- org.testscript.regression.CreateResourceWithContentsPluginsAndVerifyContentEditor -->
-      <class name="org.testscript.ConsumeOpenCourseByPublicUser">
+      </class> <!-- org.testscript.regression.VerifyTheClosingOfContentEditor -->
+      <class name="org.testscript.CheckSuborgMentorInvitingOrgMember">
         <methods>
-          <include name="consumeOpenCourseByPublicUser"/>
+          <include name="suborgMentorInvitingOrgMember"/>
         </methods>
-      </class> <!-- org.testscript.ConsumeOpenCourseByPublicUser -->
-      <class name="org.testscript.regression.CreateResourceByUploadingVideoAndActivityPlugins">
+      </class> <!-- org.testscript.CheckSuborgMentorInvitingOrgMember -->
+      <class name="org.testscript.CreateVerifyAndDeleteAnnouncement">
         <methods>
-          <include name="verifyUploadingVideo_AddingActivity"/>
+          <include name="createVerifyAndDeleteAnnouncement"/>
         </methods>
-      </class> <!-- org.testscript.regression.CreateResourceByUploadingVideoAndActivityPlugins -->
-      <class name="org.testscript.DeleteAnnouncement">
+      </class> <!-- org.testscript.CreateVerifyAndDeleteAnnouncement -->
+      <class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom">
         <methods>
-          <include name="deleteAnnouncement"/>
+          <include name="QuestionTemplateFibCustomKeyboard"/>
         </methods>
-      </class> <!-- org.testscript.DeleteAnnouncement -->
+      </class> <!-- org.testscript.regression.QuestionTemplateFillInTheBlankCustom -->
       <class name="org.testscript.VerifyThatTopicsAreDisplayedOnMetaDataForm">
         <methods>
           <include name="verifyThatTopicsAreDisplayedOnMetaDataForm"/>
@@ -537,75 +534,61 @@
           <include name="TC_341_announcement_feature"/>
         </methods>
       </class> <!-- org.testscript.TC_341 -->
-      <class name="org.testscript.CheckSuborgMentorInvitingOrgMember">
-        <methods>
-          <include name="suborgMentorInvitingOrgMember"/>
-        </methods>
-      </class> <!-- org.testscript.CheckSuborgMentorInvitingOrgMember -->
       <class name="org.testscript.TC_306">
         <methods>
           <include name="TC_306_rootOrg"/>
         </methods>
       </class> <!-- org.testscript.TC_306 -->
+      <class name="org.testscript.UpdateBatchAsInvitedMentor">
+        <methods>
+          <include name="updateBatchAsInvitedMentor"/>
+        </methods>
+      </class> <!-- org.testscript.UpdateBatchAsInvitedMentor -->
       <class name="org.testscript.regression.SavedContentUnderAllUploads">
         <methods>
           <include name="savedContentUnderAllUploads"/>
         </methods>
       </class> <!-- org.testscript.regression.SavedContentUnderAllUploads -->
-      <class name="org.testscript.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor">
-        <methods>
-          <include name="consumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- org.testscript.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor -->
       <class name="org.testscript.CheckInReviewSubmission">
         <methods>
           <include name="checkInReviewSubmission"/>
         </methods>
       </class> <!-- org.testscript.CheckInReviewSubmission -->
-      <class name="org.testscript.regression.LatestContentOnTopOfUpForReviewAndSearch">
-        <methods>
-          <include name="latestContentIsOnTopUpForReviewAndSearch"/>
-        </methods>
-      </class> <!-- org.testscript.regression.LatestContentOnTopOfUpForReviewAndSearch -->
       <class name="org.testscript.SendTheCourseForReview">
         <methods>
           <include name="sendTheCourseForReview"/>
         </methods>
       </class> <!-- org.testscript.SendTheCourseForReview -->
+      <class name="org.testscript.regression.VerifyMyActivityLinkInProfileDropdown">
+        <methods>
+          <include name="verifyMyactivityLinkInProfileDropdown"/>
+        </methods>
+      </class> <!-- org.testscript.regression.VerifyMyActivityLinkInProfileDropdown -->
       <class name="org.testscript.ResourceCreation">
         <methods>
           <include name="creatorResourceAndVerify"/>
         </methods>
       </class> <!-- org.testscript.ResourceCreation -->
-      <class name="org.testscript.regression.VerifySortOption">
+      <class name="org.testscript.DeleteAnnouncement">
         <methods>
-          <include name="verifySortFeatureOptions"/>
+          <include name="deleteAnnouncement"/>
         </methods>
-      </class> <!-- org.testscript.regression.VerifySortOption -->
-      <class name="org.testscript.regression.SeeTheContentBasedOnAppliedFilter">
+      </class> <!-- org.testscript.DeleteAnnouncement -->
+      <class name="org.testscript.regression.CreateResourceByAddingAudio">
         <methods>
-          <include name="seeTheContentBasedOnAppliedFilter"/>
+          <include name="resource_VerifyAudioUpload"/>
         </methods>
-      </class> <!-- org.testscript.regression.SeeTheContentBasedOnAppliedFilter -->
+      </class> <!-- org.testscript.regression.CreateResourceByAddingAudio -->
       <class name="org.testscript.regression.VerifyEditMetadataPageForCollection">
         <methods>
           <include name="workspaceCollection_verifyEditDetailsPage"/>
         </methods>
       </class> <!-- org.testscript.regression.VerifyEditMetadataPageForCollection -->
-      <class name="org.testscript.regression.VerifyAnnouncementPageContent">
+      <class name="org.testscript.regression.VerifyPublishedContentInPublishedBucket">
         <methods>
-          <include name="VerifyAnnouncementDetails"/>
-          <include name="verifyAnnouncementMessage"/>
-          <include name="VerifyAnnouncementCreationFields"/>
+          <include name="verifyPublishedContentInPublishedBucket"/>
         </methods>
-      </class> <!-- org.testscript.regression.VerifyAnnouncementPageContent -->
-      <class name="org.testscript.regression.NavigateToGetStartedAndExploreSunbird">
-        <methods>
-          <include name="verify_NavigateToGetStarted_ExploreSunbirdPage"/>
-        </methods>
-      </class> <!-- org.testscript.regression.NavigateToGetStartedAndExploreSunbird -->
+      </class> <!-- org.testscript.regression.VerifyPublishedContentInPublishedBucket -->
       <class name="org.testscript.PublishTheContent">
         <methods>
           <include name="publishTheContent"/>
@@ -621,11 +604,11 @@
           <include name="TC_300_rootOrg"/>
         </methods>
       </class> <!-- org.testscript.TC_300 -->
-      <class name="org.testscript.VerifyPublishedBucket">
+      <class name="org.testscript.LessonplanCreation">
         <methods>
-          <include name="verifyPublishedBucket"/>
+          <include name="createLessonAndVerify"/>
         </methods>
-      </class> <!-- org.testscript.VerifyPublishedBucket -->
+      </class> <!-- org.testscript.LessonplanCreation -->
       <class name="org.testscript.TC_295">
         <methods>
           <include name="TC_295_rootOrg"/>
@@ -636,11 +619,11 @@
           <include name="uploadH5pContent"/>
         </methods>
       </class> <!-- org.testscript.UploadH5pContent -->
-      <class name="org.testscript.regression.CopyContentFromLibraryAndVerify">
+      <class name="org.testscript.regression.VerifyPropertySectionAndPreviewSlides">
         <methods>
-          <include name="verifyCopyContent_Library"/>
+          <include name="verifyPropertySectionAndPreviewSlides"/>
         </methods>
-      </class> <!-- org.testscript.regression.CopyContentFromLibraryAndVerify -->
+      </class> <!-- org.testscript.regression.VerifyPropertySectionAndPreviewSlides -->
       <class name="org.testscript.TC_289">
         <methods>
           <include name="TC_289_Mentor"/>
@@ -651,16 +634,16 @@
           <include name="verifyTheSorting"/>
         </methods>
       </class> <!-- org.testscript.VerifyTheSorting -->
-      <class name="org.testscript.regression.RejectTheUploadedContent">
+      <class name="org.testscript.regression.SendForReviewContentUnderReviewSubmission">
         <methods>
-          <include name="rejectTheUploadedContent"/>
+          <include name="sendForReviewContentUnderReviewSubmission"/>
         </methods>
-      </class> <!-- org.testscript.regression.RejectTheUploadedContent -->
-      <class name="org.testscript.CreateVerifyAndDeleteAnnouncement">
+      </class> <!-- org.testscript.regression.SendForReviewContentUnderReviewSubmission -->
+      <class name="org.testscript.ResendAnnouncementAndVerifyAsReciever">
         <methods>
-          <include name="createVerifyAndDeleteAnnouncement"/>
+          <include name="resendAnnouncementAndVerifyAsReciever"/>
         </methods>
-      </class> <!-- org.testscript.CreateVerifyAndDeleteAnnouncement -->
+      </class> <!-- org.testscript.ResendAnnouncementAndVerifyAsReciever -->
       <class name="org.testscript.VerifyTheUploadedContent">
         <methods>
           <include name="verifyTheUploadedContent"/>
@@ -671,11 +654,11 @@
           <include name="verifyTheBookAvailableForReview"/>
         </methods>
       </class> <!-- org.testscript.VerifyTheBookAvailableForReview -->
-      <class name="org.testscript.OpenAnnouncement">
+      <class name="org.testscript.ResendAnnouncement">
         <methods>
-          <include name="openAnnouncement"/>
+          <include name="resendAnnouncement"/>
         </methods>
-      </class> <!-- org.testscript.OpenAnnouncement -->
+      </class> <!-- org.testscript.ResendAnnouncement -->
       <class name="org.testscript.VerifyContentInUpForReview">
         <methods>
           <include name="verifyContentInUpForReview"/>
@@ -686,11 +669,16 @@
           <include name="TC_200_memberSearchInBatch"/>
         </methods>
       </class> <!-- org.testscript.TC_200 -->
-      <class name="org.testscript.UploadContentTypeH5pAndVerify">
+      <class name="org.testscript.UploadContentTypeMp4AndVerify">
         <methods>
-          <include name="uploadH5pContentAndVerify"/>
+          <include name="uploadContentTypeMp4AndVerify"/>
         </methods>
-      </class> <!-- org.testscript.UploadContentTypeH5pAndVerify -->
+      </class> <!-- org.testscript.UploadContentTypeMp4AndVerify -->
+      <class name="org.testscript.CreateCourseAndVerify">
+        <methods>
+          <include name="createCourseAndVerify"/>
+        </methods>
+      </class> <!-- org.testscript.CreateCourseAndVerify -->
       <class name="org.testscript.TC_205">
         <methods>
           <include name="TC_205_lessonPlan"/>
@@ -701,21 +689,22 @@
           <include name="TC_318_announcement_feature"/>
         </methods>
       </class> <!-- org.testscript.TC_318 -->
-      <class name="org.testscript.regression.VerifyTheClosingOfContentEditor">
+      <class name="org.testscript.regression.CreateResourceByUploadingVideoAndActivityPlugins">
         <methods>
-          <include name="contentCreator_CloseEditor"/>
+          <include name="verifyAddingActivityFunctionality"/>
+          <include name="verifyUploadingVideo_AddingActivity"/>
         </methods>
-      </class> <!-- org.testscript.regression.VerifyTheClosingOfContentEditor -->
-      <class name="org.testscript.regression.ContentValidationInUpForReviewSearchWithFilter">
+      </class> <!-- org.testscript.regression.CreateResourceByUploadingVideoAndActivityPlugins -->
+      <class name="org.testscript.regression.VerifyNavigateToGetPage">
         <methods>
-          <include name="contentValidationInUpForReviewSearchWithFilter"/>
+          <include name="verify_NavigateToGetPage"/>
         </methods>
-      </class> <!-- org.testscript.regression.ContentValidationInUpForReviewSearchWithFilter -->
-      <class name="org.testscript.regression.VerifyUserNaviagationToContentEditor">
+      </class> <!-- org.testscript.regression.VerifyNavigateToGetPage -->
+      <class name="org.testscript.regression.UploadYoutubeFile">
         <methods>
-          <include name="verifyUserNavigateToContentEditorPage"/>
+          <include name="library_copyContent"/>
         </methods>
-      </class> <!-- org.testscript.regression.VerifyUserNaviagationToContentEditor -->
+      </class> <!-- org.testscript.regression.UploadYoutubeFile -->
       <class name="org.testscript.TC_305">
         <methods>
           <include name="TC_305_rootOrg"/>
@@ -726,26 +715,28 @@
           <include name="adminCreationAndDownloadCsv"/>
         </methods>
       </class> <!-- org.testscript.AdminCreationAndDownloadCsv -->
-      <class name="org.testscript.LoginAndChangePassword">
+      <class name="org.testscript.VerifyBookCreator">
         <methods>
-          <include name="loginAndChangePassword"/>
+          <include name="verifyBookCreation"/>
         </methods>
-      </class> <!-- org.testscript.LoginAndChangePassword -->
-      <class name="org.testscript.CreateLessonPlanAndVerify">
+      </class> <!-- org.testscript.VerifyBookCreator -->
+      <class name="org.testscript.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor">
         <methods>
-          <include name="createLessonAndVerify"/>
+          <include name="consumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
         </methods>
-      </class> <!-- org.testscript.CreateLessonPlanAndVerify -->
-      <class name="org.testscript.CreateBookAndVerify">
-        <methods>
-          <include name="createBoookAndVerify"/>
-        </methods>
-      </class> <!-- org.testscript.CreateBookAndVerify -->
+      </class> <!-- org.testscript.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor -->
       <class name="org.testscript.CreateBookAndVerifyOnlyBooksPresent">
         <methods>
           <include name="createBookAndVerifyOnlyBooksPresent"/>
         </methods>
       </class> <!-- org.testscript.CreateBookAndVerifyOnlyBooksPresent -->
+      <class name="org.testscript.CreateLessonPlanAndVerify">
+        <methods>
+          <include name="createLessonAndVerify"/>
+        </methods>
+      </class> <!-- org.testscript.CreateLessonPlanAndVerify -->
       <class name="org.testscript.VerifyLimitedSharing">
         <methods>
           <include name="verifyLimitedSharing"/>
