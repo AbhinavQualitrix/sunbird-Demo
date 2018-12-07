@@ -65,7 +65,7 @@
 	<class name="org.testscript.SearchCourseCreateInviteOnlyBatch" /> 
 
      
-          <!-- Test cases of Announcement
+          <!-- Test cases of Announcement -->
           
     
    <class name="org.testscript.ResendAnnouncement"/>
@@ -78,7 +78,7 @@
     <class name="org.testscript.DeleteAnnouncement"/>
     <class name="org.testscript.ResendAnnouncement"/>
 
-     <class name="org.testscript.OpenAnnouncement"/> --> 
+     <class name="org.testscript.OpenAnnouncement"/> 
 
     
 
