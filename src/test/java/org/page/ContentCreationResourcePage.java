@@ -286,10 +286,13 @@ public class ContentCreationResourcePage
 	@FindBy(xpath="//div[@class='iziModal-content']")
 	public WebElement randomClickElement;
 
+	//@FindBy(xpath="//*[@id='activitybrowser']")
+	//@FindBy(xpath="//div[@class='ui icon menu']/..//a[@data-content='Add Activity']")
 	@FindBy(xpath="//a[@data-content='Add Activity']")
 	public WebElement addActivity;
 
-	@FindBy(xpath="//input[@placeholder='Search activity']")
+	@FindBy(xpath="//button[contains(.,'Search')]")
+	//@FindBy(xpath="//input[@placeholder='Search activity']")
 	public WebElement searchActivity;
 
 	@FindBy(xpath="//div//label[contains(text(),'Category')]/..//i")

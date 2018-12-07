@@ -34,7 +34,7 @@
             <class name="org.testscript.SearchInLibraryUsingFilter"/> -->
         
      
-             <!-- Test cases of Smoke Suite  -->
+             <!-- Test cases of Smoke Suite    -->
        
        <class name="org.testscript.CreateCourseAndVerify"/>
        <class name="org.testscript.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
@@ -45,11 +45,11 @@
        <class name="org.testscript.UploadContentTypeH5pAndVerify"/>
       <class name="org.testscript.UploadContentTypeEpubAndVerify"/>
        <class name="org.testscript.UploadContentTypeHtmlAndVerify"/>
-       <class name="org.testscript.UploadContentTypePdfAndVerify"/>  
+       <class name="org.testscript.UploadContentTypePdfAndVerify"/>
 
 
 
-                 <!-- Test cases of Mentor -->
+                 <!-- Test cases of Mentor   -->
           
           <class name="org.testscript.SearchOrgsAsAdmin" />
 	<class name="org.testscript.CheckCourseStatAsMentor" />
@@ -66,7 +66,7 @@
 	<class name="org.testscript.SearchCourseCreateInviteOnlyBatch" />  
 
      
-          <!-- Test cases of Announcement -->
+          <!-- Test cases of Announcement   -->
           
     
    <class name="org.testscript.ResendAnnouncement"/>
@@ -87,7 +87,7 @@
       
    
 
-   			 <!--   Test cases of Regression p2  -->
+   			 <!--   Test cases of Regression p2   -->
    			   
    		<class name="org.testscript.regression.VerifySortOption"/>
    		<class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/>
@@ -121,7 +121,7 @@
       <class name="org.testscript.regression.VerifyUserNaviagationToContentEditor"/>
       <class name="org.testscript.regression.ReviewAndPublishReceivedContent"/>
 
-      <class name="org.testscript.regression.SearchParticularContentInAllMyContent"/>  
+      <class name="org.testscript.regression.SearchParticularContentInAllMyContent"/> 
 
    			
    			
@@ -151,8 +151,7 @@
    		 <class name="org.testscript.CollectionCreation"/>
    		 <class name="org.testscript.LoginAndChangePassword"/>
       	 <class name="org.testscript.ConfirmInstructionReceivedInforgotPassword"/>
-       	 <class name="org.testscript.VerifyHomePage"/> 
-   		
+       	 <class name="org.testscript.VerifyHomePage"/>    		
 
    		 <class name="org.testscript.LessonplanCreation"/>  
    		  
@@ -194,8 +193,6 @@
 	<class name="org.testscript.CreateLessonPlanAndVerify"/> 
 
        <class name="org.testscript.CreateBookAndVerify"/>
-       
-       <class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/> 
 
 
 			
@@ -207,7 +204,7 @@
   
   <class name="org.testscript.regression.VerifyReviewerRequestChangesTheBook"/>  
 
-   			<!-- Test cases of Admin  -->
+   			<!-- Test cases of Admin -->
    			<class name="org.testscript.AdminCreationAndDownloadCsv"/>
    			<class name="org.testscript.VerifyElementsInAdminDashboard"/>   
    			
@@ -278,15 +275,10 @@
       <class name="org.testscript.TC_341"/>  
     
     
-    <!-- Daily Execution
-   <class name="org.testscript.regression.CreateResourceByAddingAudio" /> 
-	<class name="org.testscript.regression.CreateResourceByUploadingVideoAndActivityPlugins"/>
-	<class name="org.testscript.UpdateBatchAsInvitedMentor" /> 
-<class name="org.testscript.regression.ContentValidationInUpForReviewSearchWithFilter"/>
-<class name="org.testscript.regression.VerifyPublishedContentInPublishedBucket"/> 		  -->														
+													
 	
    
-  <class name="org.testscript.RejectTheContent"/>
+  	<class name="org.testscript.RejectTheContent"/>
    <class name="org.testscript.VerifyLimitedSharing"/>
     <class name="org.testscript.regression.VerifyUploadAndDownloadContent"/>
     <class name="org.testscript.PublishTheContent"/>

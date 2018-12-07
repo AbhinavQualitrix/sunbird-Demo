@@ -1177,10 +1177,11 @@ public class ContentCreationResourcePageObj extends BaseTest
 				ExtentTestManager.getTest().log(LogStatus.INFO, "Results are satisfying the given search filter criteria, and filters are same in the content");
 			}
 			//GenericFunctions.scrollToElement(createUserPage.headerLibrary);
+			driver.navigate().back();
 			GenericFunctions.waitWebDriver(4000);
-			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.contentCloseIcon);
+			/*	GenericFunctions.waitForElementToAppear(contentCreationResourcePage.contentCloseIcon);
 			//GenericFunctions.scrollToElement(contentCreationResourcePage.contentCloseIcon);
-			contentCreationResourcePage.contentCloseIcon.click();			
+			contentCreationResourcePage.contentCloseIcon.click();	*/		
 			
 		}
 		catch(Exception e)
@@ -1202,7 +1203,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.showFilters);
 			GenericFunctions.waitWebDriver(1000);
 			contentCreationResourcePage.showFilters.click();
-			GenericFunctions.waitWebDriver(1000);
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.filterResetButton);;
 			contentCreationResourcePage.filterResetButton.click();
 			GenericFunctions.waitWebDriver(2000);
@@ -1397,36 +1398,49 @@ public class ContentCreationResourcePageObj extends BaseTest
 			objListOFTestDataForSunbird1= ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Continuation with the next test case");
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to Add activity Plugins");
-			GenericFunctions.refreshWebPage();
-			GenericFunctions.waitWebDriver(4000);
-			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.addActivity);
-			//GenericFunctions.waitForElementToAppearOnScreen(contentCreationResourcePage.addActivity);
-			action.moveToElement(contentCreationResourcePage.addActivity).build().perform();
+			GenericFunctions.waitWebDriver(4000);			
+			/*GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
+			GenericFunctions.waitWebDriver(4000);*/
+			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addActivity);
+			System.out.println(contentCreationResourcePage.addActivity.getText());
 			GenericFunctions.clickOnElementUsingJavascript(contentCreationResourcePage.addActivity);
-			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.searchActivity);
+			/*action.moveToElement(contentCreationResourcePage.addActivity).build().perform();
+			
+			action.click(contentCreationResourcePage.addActivity).build().perform();*/
+			GenericFunctions.waitWebDriver(2000);
+			
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.searchActivity);
 			contentCreationResourcePage.searchActivity.click();
 			contentCreationResourcePage.searchActivity.sendKeys(objListOFTestDataForSunbird1.get(11).getTitleDescription());
-			GenericFunctions.waitWebDriver(2000);
+			
+			action.moveToElement(contentCreationResourcePage.searchActivity).build().perform();
+			contentCreationResourcePage.searchActivity.click();
+			
+			GenericFunctions.waitWebDriver(4000);
 			/*contentCreationResourcePage.clickCategory.click();
 			GenericFunctions.waitWebDriver(2000);
 			contentCreationResourcePage.selectCategory.click();*/
-			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addActivityBtn);
+	
+			GenericFunctions.waitForElementToAppearOnScreen(contentCreationResourcePage.addActivityBtn);
 			contentCreationResourcePage.addActivityBtn.click();
-			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.clickAddedActivity);
+			GenericFunctions.waitWebDriver(3000);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.clickAddedActivity);
 			contentCreationResourcePage.clickAddedActivity.click();
-			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.addActivityPopupBtn);
-			GenericFunctions.waitWebDriver(2500);
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.addActivityPopupBtn);
+			GenericFunctions.waitWebDriver(3000);
 			contentCreationResourcePage.addActivityPopupBtn.click();
 
-			GenericFunctions.waitForElementToAppear(createUserPage.saveCourse);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.saveCourse);
+			GenericFunctions.waitWebDriver(2000);
 			createUserPage.saveCourse.click();
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(createUserPage.closeContentPopup);
 			createUserPage.closeContentPopup.click();
 			//createUserPage.editorCloseIcon.click();
 
-			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.previewIcon);
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.previewIcon);
 			contentCreationResourcePage.previewIcon.click();
 			//GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.previewPopup);
@@ -2028,6 +2042,8 @@ public class ContentCreationResourcePageObj extends BaseTest
 			//action.moveToElement(contentCreationResourcePage.btnChooseFile).build().perform();
 			contentCreationResourcePage.btnChooseFile.click();
 			String path=AllUploadingPaths.audioPath;
+			
+			
 			GenericFunctions.uploadFile(path);
 			
 			//String secondpath = "./UploadingDocuments/Uploading audios/"+AUDIO_UPLOAD;  
@@ -2043,6 +2059,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			String alertExpectedMessage = "Audio successfully uploaded";			
 			Assert.assertEquals(alertActualMessage, alertExpectedMessage);
 			Assert.assertTrue(true);
+			GenericFunctions.waitWebDriver(7000);
 			action.moveToElement(contentCreationResourcePage.verifyAudioName).build().perform();
 			String uploadedAudioName = contentCreationResourcePage.verifyAudioName.getText();
 			if(AUDIO_UPLOAD.contains(uploadedAudioName))
