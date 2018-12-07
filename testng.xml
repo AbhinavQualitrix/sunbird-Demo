@@ -3,9 +3,9 @@
 <suite name=" Regression Suite">
 <listeners>
 		<listener class-name="org.generic.TestListener"></listener>
-		<listener class-name="org.generic.RetryListener"></listener>
+		<!-- <listener class-name="org.generic.RetryListener"></listener> -->
 	</listeners>
-  <test thread-count="2" name="Test" >
+  <test thread-count="1" name="Test" >
     <classes>
     <!-- Test Cases for skipped functionality -->
     
@@ -45,11 +45,11 @@
        <class name="org.testscript.UploadContentTypeH5pAndVerify"/>
       <class name="org.testscript.UploadContentTypeEpubAndVerify"/>
        <class name="org.testscript.UploadContentTypeHtmlAndVerify"/>
-       <class name="org.testscript.UploadContentTypePdfAndVerify"/> 
+       <class name="org.testscript.UploadContentTypePdfAndVerify"/>  
 
 
 
-                 <!-- Test cases of Mentor  -->
+                 <!-- Test cases of Mentor -->
           
           <class name="org.testscript.SearchOrgsAsAdmin" />
 	<class name="org.testscript.CheckCourseStatAsMentor" />
@@ -63,7 +63,7 @@
 	<class name="org.testscript.ConsumeCourseByInvitedMember" />
 	<class name="org.testscript.NavigateToMyActivityInDropdown" />
 
-	<class name="org.testscript.SearchCourseCreateInviteOnlyBatch" /> 
+	<class name="org.testscript.SearchCourseCreateInviteOnlyBatch" />  
 
      
           <!-- Test cases of Announcement -->
@@ -79,7 +79,7 @@
     <class name="org.testscript.DeleteAnnouncement"/>
     <class name="org.testscript.ResendAnnouncement"/>
 
-     <class name="org.testscript.OpenAnnouncement"/> 
+     <class name="org.testscript.OpenAnnouncement"/>  
 
     
 
@@ -121,7 +121,7 @@
       <class name="org.testscript.regression.VerifyUserNaviagationToContentEditor"/>
       <class name="org.testscript.regression.ReviewAndPublishReceivedContent"/>
 
-      <class name="org.testscript.regression.SearchParticularContentInAllMyContent"/> 
+      <class name="org.testscript.regression.SearchParticularContentInAllMyContent"/>  
 
    			
    			
@@ -140,7 +140,7 @@
     
       <class name="org.testscript.VerifyBookCreator"/>
       <class name="org.testscript.LoginAndChangePassword"/>
-      <class name="org.testscript.CollectionCreation"/> 
+      <class name="org.testscript.CollectionCreation"/>  
 
 
    		<!-- Test cases of public user -->
@@ -154,7 +154,7 @@
        	 <class name="org.testscript.VerifyHomePage"/> 
    		
 
-   		 <class name="org.testscript.LessonplanCreation"/> 
+   		 <class name="org.testscript.LessonplanCreation"/>  
    		  
    		
       
@@ -195,7 +195,7 @@
 
        <class name="org.testscript.CreateBookAndVerify"/>
        
-       <class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/>
+       <class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/> 
 
 
 			
@@ -205,11 +205,11 @@
 
    			<!-- Test cases of Reviewer  -->
   
-  <class name="org.testscript.regression.VerifyReviewerRequestChangesTheBook"/>
+  <class name="org.testscript.regression.VerifyReviewerRequestChangesTheBook"/>  
 
    			<!-- Test cases of Admin  -->
    			<class name="org.testscript.AdminCreationAndDownloadCsv"/>
-   			<class name="org.testscript.VerifyElementsInAdminDashboard"/>  
+   			<class name="org.testscript.VerifyElementsInAdminDashboard"/>   
    			
 
    
@@ -275,7 +275,7 @@
       
       <class name="org.testscript.TC_340"/>
 
-      <class name="org.testscript.TC_341"/> 
+      <class name="org.testscript.TC_341"/>  
     
     
     <!-- Daily Execution
@@ -283,7 +283,7 @@
 	<class name="org.testscript.regression.CreateResourceByUploadingVideoAndActivityPlugins"/>
 	<class name="org.testscript.UpdateBatchAsInvitedMentor" /> 
 <class name="org.testscript.regression.ContentValidationInUpForReviewSearchWithFilter"/>
-<class name="org.testscript.regression.VerifyPublishedContentInPublishedBucket"/>  -->																
+<class name="org.testscript.regression.VerifyPublishedContentInPublishedBucket"/> 		  -->														
 	
    
   <class name="org.testscript.RejectTheContent"/>
@@ -305,9 +305,7 @@
       <class name="org.testscript.VerifycopyContent"/>
        
       <class name="org.testscript.regression.SortTheResultInUpForReview"/>
-
-       	
-      <!--  <class name="org.testscript.regression.CreateResourceByCreatingAFillInThBlanksQuestion"/> --> 
+ 
 
      <!-- Old Test cases from member -removed
      <class name="org.testscript.regression.SeeTheContentBasedOnAppliedFilter"/>
