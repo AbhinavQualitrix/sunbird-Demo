@@ -30,7 +30,7 @@ public class CreateMentorPage {
 	@FindBy(xpath="(//input[@formcontrolname='enrollmentType'])[2]")
 	public WebElement openBatch;
 	
-	@FindBy(xpath="//button[text()='Enroll	']")
+	@FindBy(xpath="//button[contains(.,'Enroll')]")
 	public WebElement enrollForOpenBatch;
 	
 	@FindBy(xpath="//span[text()='ENROLL TO COURSE']")

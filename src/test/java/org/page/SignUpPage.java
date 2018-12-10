@@ -60,7 +60,7 @@ public class SignUpPage extends BaseTest {
 	
 
 	@FindBy(xpath="//div[@class='iziToast-texts']//strong[@class='iziToast-title slideIn']")
-	public WebElement alertMessage;
+	public List<WebElement> alertMessage;
 	
 	@FindBy(xpath="//div[contains(@class,'ui pointing red basic label below')]")
 	public List<WebElement> alertLabel;

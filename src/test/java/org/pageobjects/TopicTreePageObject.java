@@ -4,20 +4,23 @@ import java.util.List;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
-import org.generic.ExtentTestManager;
-import org.generic.GenericFunctions;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.generic.ExtentTestManager;
+import org.generic.GenericFunctions;
 import org.page.ContentCreateUploadPage;
 import org.page.CreateMentorPage;
 import org.page.CreatorUserPage;
 import org.page.PublicUserPage;
 import org.page.SignUpPage;
+import org.page.SignUpPage;
 import org.page.TopicTreePage;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -40,7 +43,7 @@ public class TopicTreePageObject extends BaseTest{
 	{
 		try
 		{   
-			
+			SoftAssert softAssert = new SoftAssert();
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create a book and trying to verify the topic tree popup");
 			GenericFunctions.waitWebDriver(1500);
 			GenericFunctions.waitForElementToAppear(createUserPage.bookName);
@@ -104,7 +107,7 @@ public class TopicTreePageObject extends BaseTest{
 
 			{
 				String Evalue=topicslist.topicHeader.getText();
-				Assert.assertEquals("Topic",Evalue);				
+				softAssert.assertEquals("Topic",Evalue);				
 				//softAssert.assertAll();
 
 			}
@@ -113,7 +116,7 @@ public class TopicTreePageObject extends BaseTest{
 			if(topicslist.cancelButton.isDisplayed())
 			{
 				String Evalue=topicslist.cancelButton.getText();
-				Assert.assertEquals("Cancel",Evalue);	
+				softAssert.assertEquals("Cancel",Evalue);	
 
 			}
 			ExtentTestManager.getTest().log(LogStatus.PASS, "Cancel Button  is displaying");
@@ -121,7 +124,7 @@ public class TopicTreePageObject extends BaseTest{
 			if(topicslist.doneButton.isDisplayed())
 			{
 				String Evalue=topicslist.doneButton.getText();
-				Assert.assertEquals("Done",Evalue);	
+				softAssert.assertEquals("Done",Evalue);	
 
 			}
 
@@ -139,8 +142,7 @@ public class TopicTreePageObject extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on creating book and topic tree is not displayed ");
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
 			System.out.println("Failed to create a book");
-			Assert.fail("Failed on creating book and topic tree is not displayed , Exception"+e.getLocalizedMessage());
-
+			Assert.fail("Failed to display topic header,topic,cancel button,done button");
 		}
 
 	}
@@ -207,7 +209,7 @@ public class TopicTreePageObject extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to create Book");
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
 			System.out.println("Failed to create a book");
-			Assert.fail("Failed to create Book , Exception"+e.getLocalizedMessage());
+			Assert.fail("Failed on ");
 		}
 	}
 
@@ -215,7 +217,7 @@ public class TopicTreePageObject extends BaseTest{
 	{
 		try {
 
-			
+			SoftAssert softAssert = new SoftAssert();
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to click the topic tree list fro TOC");
 
 			GenericFunctions.waitForElementToAppear(topicslist.selectTopic);
@@ -228,7 +230,7 @@ public class TopicTreePageObject extends BaseTest{
 
 			{
 				String Evalue = topicslist.selectVedicMathematices.getText();
-				Assert.assertEquals("Vedic Mathematics", Evalue);
+				softAssert.assertEquals("Vedic Mathematics", Evalue);
 			}
 			topicslist.selectVedicMathematices.click();	
 			GenericFunctions.waitForElementToAppear(topicslist.selectNumberSystem);
@@ -236,7 +238,7 @@ public class TopicTreePageObject extends BaseTest{
 
 			{
 				String Evalue = topicslist.selectNumberSystem.getText();
-				Assert.assertEquals("Number System", Evalue);
+				softAssert.assertEquals("Number System", Evalue);
 			}
 
 			topicslist.selectNumberSystem.click();
@@ -281,15 +283,15 @@ public class TopicTreePageObject extends BaseTest{
 
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to select topic from topic tree");
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
-			System.out.println("Failed to select topic from topic tree");
-			Assert.fail("Failed to select topic from topic tree , Exception"+e.getLocalizedMessage());
+			System.out.println("Failed to create a book");
+			Assert.fail("Failed on ");
 		}
 	}
 
 	public void searchForTopic(List<TestDataForSunbird>objListOFTestDataForSunbird)
 	{
 		try {
-			
+			SoftAssert softAssert = new SoftAssert();
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to remove all topics");
 
 			//	String bookNumber = GenericFunctions.testDataIncrementer(".//TestData//bookNumbers.txt").toString();
@@ -304,10 +306,13 @@ public class TopicTreePageObject extends BaseTest{
 			topicslist.searchTopic.sendKeys(objListOFTestDataForSunbird.get(6).getTitle());
 			GenericFunctions.waitWebDriver(5000);
 			
+		
+
+
 			if(topicslist.chooseAll.isDisplayed())
 			{
 				String Evalue = topicslist.chooseAll.getText();
-				Assert.assertEquals(" Choose All", Evalue);
+				softAssert.assertEquals(" Choose All", Evalue);
 
 			}
 			GenericFunctions.waitForElementToAppear(topicslist.chooseAll);
@@ -315,7 +320,7 @@ public class TopicTreePageObject extends BaseTest{
 			if(topicslist.chooseAll.isDisplayed())
 			{
 				String Evalue = topicslist.removeAll.getText();
-				Assert.assertEquals(" Remove All", Evalue);
+				softAssert.assertEquals(" Remove All", Evalue);
 
 			}
 
@@ -332,14 +337,14 @@ public class TopicTreePageObject extends BaseTest{
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on seraching the topic in topic tree");
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
 			System.out.println("Failed to create a book");
-			Assert.fail("Failed on seraching the topic in topic tree, Exception"+e.getLocalizedMessage());
+			Assert.fail("Failed on serching the topic in the topic tree");
 		}
 	}
 	
 	public void searchForTopicClickOnDoneButton(List<TestDataForSunbird>objListOFTestDataForSunbird)
 	{
 		try {
-			
+			SoftAssert softAssert = new SoftAssert();
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to select all topic from list");
 			GenericFunctions.refreshWebPage();
 			GenericFunctions.waitWebDriver(2000);		
@@ -366,19 +371,23 @@ public class TopicTreePageObject extends BaseTest{
 			if(topicslist.resultsOnTopicSeacrh.isDisplayed())
 			{
 				String Evalue =topicslist.resultsOnTopicSeacrh.getText();
-				Assert.assertEquals("Polynomials", Evalue);
+				softAssert.assertEquals("Polynomials", Evalue);
 			}
 			topicslist.chooseAll.click();
 			GenericFunctions.waitWebDriver(3000);
 			topicslist.doneButton.click();
 			GenericFunctions.waitWebDriver(3000);
 			
+			
+			
+
+			
 		}catch(Exception e)
 		{
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on selecting all topic from list");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed on seraching the topic in topic tree");
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Exception Message: "+e.getLocalizedMessage());
 			System.out.println("Failed to create a book");
-			Assert.fail("Failed on selecting all topic from list, Exception"+e.getLocalizedMessage());
+			Assert.fail("Failed on serching the topic in the topic tree");
 		}
 }
 	}

@@ -156,7 +156,7 @@ public class LessonPlanPage
 	
 	//@author sachin
 	// Web element editDetailsRajasthan
-	@FindBy(xpath = "(//div[contains(.,'State (Rajasthan)')])[14]")
+	@FindBy(xpath = "//div[contains(.,'State (Rajasthan)')]")
 	public WebElement editDetailsRajasthan;
 	
 	//@author sachin
@@ -171,7 +171,7 @@ public class LessonPlanPage
 	
 	//@author sachin
 	// Web element editDetailsSubject
-	@FindBy(xpath="(//div[contains(.,'Select Subject')])[13]")
+	@FindBy(xpath="//div[contains(.,'Select Subject')]")
 	public WebElement editDetailsSubject;
 	
 	//@author sachin
@@ -394,7 +394,9 @@ public class LessonPlanPage
 	// Web element sendSave
 	@FindBy(xpath="(//span[contains(@class,'sliderCardHeading text-cencapitalize')])[1]")
 	public WebElement FirstContentInReviewSubmissions;		
-			
+	
+	@FindBy(xpath = "//i[contains(@class,'close icon')]")
+	public WebElement closePopUp;
 			
 	
 }

@@ -21,10 +21,10 @@ public class CopyContentFromLibraryAndVerify extends BaseTest
 		userLogin.userLogin(CREATOR);
 		
 		//Step 2.Navigate to library and search the content
-		contentReourcePageObj.navigateToLibraryAndSearchContent(RESOURCE);
+		contentReourcePageObj.navigateToLibraryAndSearchContent(COLLECTION);
 		
 		//Step 3.Copy the content and validate it in drafts
-		contentReourcePageObj.copyContentAndValidate(RESOURCE);
+		contentReourcePageObj.copyContentAndValidate(COLLECTION);
 		
 		//Step 4.Logout as content creator
 		userLogin.userLogout();

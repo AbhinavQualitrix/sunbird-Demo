@@ -11,10 +11,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class QuestionSetPage
-{
+public class QuestionSetPage {
 	WebDriver driver;
-	//CreatorUserPage QuestionSetPage=PageFactory.initElements(driver, CreatorUserPage.class);
+	CreatorUserPage QuestionSetPage=PageFactory.initElements(driver, CreatorUserPage.class);
 
 	public  QuestionSetPage(WebDriver driver)
 	{ 

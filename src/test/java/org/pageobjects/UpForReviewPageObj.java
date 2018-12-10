@@ -1,17 +1,28 @@
 package org.pageobjects;
 
+import static org.testng.Assert.assertEquals;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.security.auth.login.FailedLoginException;
+
+import org.apache.poi.util.SystemOutLogger;
+import org.openqa.selenium.By;
 import org.apache.log4j.Logger;
-import org.generic.ExtentTestManager;
-import org.generic.GenericFunctions;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.page.ContentCreateUploadPage;
 import org.page.CreatorAnnouncementPage;
+import org.page.CreatorUserPage;
 import org.page.PublicUserPage;
 import org.page.UpForReviewPage;
+import org.generic.ExtentTestManager;
+import org.generic.GenericFunctions;
+import org.generic.ReadTestDataFromExcel;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
@@ -20,7 +31,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class UpForReviewPageObj extends BaseTest
 {
-	UpForReviewPage upForReviewPage=PageFactory.initElements(driver, UpForReviewPage.class);
+	UpForReviewPage upforRevobj=PageFactory.initElements(driver, UpForReviewPage.class);
 	PublicUserPage publicUserPage = PageFactory.initElements(driver, PublicUserPage.class);
 	List <TestDataForSunbird> objListOFTestDataForSunbird1= null ;
 	Random rand = new Random();
@@ -35,14 +46,14 @@ public class UpForReviewPageObj extends BaseTest
 			try
 			{
 				ExtentTestManager.getTest().log(LogStatus.INFO, "Reviewer is Verifying that the latest content is displaying in top ");
-//				GenericFunctions.waitForElementToAppear(upForReviewPage.closePopUp);
-//				upForReviewPage.closePopUp.click();
+//				GenericFunctions.waitForElementToAppear(upforRevobj.closePopUp);
+//				upforRevobj.closePopUp.click();
 //				GenericFunctions.waitWebDriver(1500);
-				GenericFunctions.waitForElementToAppear(upForReviewPage.Workspace);
-				upForReviewPage.Workspace.click();
+				GenericFunctions.waitForElementToAppear(upforRevobj.Workspace);
+				upforRevobj.Workspace.click();
 				GenericFunctions.waitWebDriver(2000);
-				GenericFunctions.waitForElementToAppear(upForReviewPage.upForReview);
-				upForReviewPage.upForReview.click();
+				GenericFunctions.waitForElementToAppear(upforRevobj.upForReview);
+				upforRevobj.upForReview.click();
 				GenericFunctions.waitWebDriver(2000);
 
 			}
@@ -62,28 +73,40 @@ public class UpForReviewPageObj extends BaseTest
 		try
 		{	
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Reviewer is trying to search the content");
-//			GenericFunctions.waitForElementToAppear(upForReviewPage.closePopUp);
-//			upForReviewPage.closePopUp.click();
-			GenericFunctions.waitWebDriver(1500);
-			GenericFunctions.waitForElementToAppear(upForReviewPage.Workspace);
-			upForReviewPage.Workspace.click();
+				try{
+				if(upforRevobj.closePopUp.isDisplayed())
+				{
+				upforRevobj.closePopUp.click();
+				GenericFunctions.waitWebDriver(2000);
+				GenericFunctions.waitForElementToAppear(upforRevobj.Workspace);	
+				upforRevobj.Workspace.click();
+				}
+				}
+				catch(Exception e)
+				{
+				GenericFunctions.waitForElementToAppear(upforRevobj.Workspace);	
+				upforRevobj.Workspace.click();
+				GenericFunctions.waitWebDriver(4000);	
+				}
+			GenericFunctions.waitForElementToAppear(upforRevobj.upForReview);
+			upforRevobj.upForReview.click();				
 			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.waitForElementToAppear(upForReviewPage.upForReview);
-			upForReviewPage.upForReview.click();				
-			GenericFunctions.waitWebDriver(2000);
-			if(upForReviewPage.ContentName.isDisplayed())
+			try
 			{
-			String title = upForReviewPage.ContentName.getText();			
-			upForReviewPage.searchContent.click();
-			GenericFunctions.waitWebDriver(2000);
-			upForReviewPage.searchContent.sendKeys(title);
-			GenericFunctions.waitWebDriver(5000);
-			GenericFunctions.waitWebDriver(2000);
-			Assert.assertTrue(true,"Latest content is displayed at the top ");
-			System.out.println("Latest content is displayed at the top ");
-			log.info("Latest content is displayed at the top ");
+				if(upforRevobj.ContentName.isDisplayed())
+				{
+				String title = upforRevobj.ContentName.getText();			
+				upforRevobj.searchContent.click();
+				GenericFunctions.waitWebDriver(2000);
+				upforRevobj.searchContent.sendKeys(title);
+				GenericFunctions.waitWebDriver(5000);
+				GenericFunctions.waitWebDriver(2000);
+				Assert.assertTrue(true,"Latest content is displayed at the top ");
+				System.out.println("Latest content is displayed at the top ");
+				log.info("Latest content is displayed at the top ");
+				}
 			}
-			else
+			catch(Exception e)
 			{
 				System.out.println("No content is present");
 			}
@@ -103,37 +126,48 @@ public class UpForReviewPageObj extends BaseTest
     public void UpForReviewSortBy() throws Exception{	  			  			  			  		
 		try{				
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to verify the sortBy filters");
-			GenericFunctions.waitForElementToAppear(upForReviewPage.closePopUp);
-			upForReviewPage.closePopUp.click();
-			GenericFunctions.waitWebDriver(1500);
-			GenericFunctions.waitForElementToAppear(upForReviewPage.Workspace);
-			upForReviewPage.Workspace.click();
+			GenericFunctions.waitForElementToAppear(upforRevobj.closePopUp);
+				try{
+				if(upforRevobj.closePopUp.isDisplayed())
+				{
+				upforRevobj.closePopUp.click();
+				GenericFunctions.waitWebDriver(2000);
+				GenericFunctions.waitForElementToAppear(upforRevobj.Workspace);	
+				upforRevobj.Workspace.click();
+				}
+				}
+				catch(Exception e)
+				{
+				GenericFunctions.waitForElementToAppear(upforRevobj.Workspace);	
+				upforRevobj.Workspace.click();
+				GenericFunctions.waitWebDriver(4000);	
+				}    
 			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.waitForElementToAppear(upForReviewPage.upForReview);
-			upForReviewPage.upForReview.click();				
+			GenericFunctions.waitForElementToAppear(upforRevobj.upForReview);
+			upforRevobj.upForReview.click();				
 			GenericFunctions.waitWebDriver(2000);
-			upForReviewPage.searchContent.click();
+			upforRevobj.searchContent.click();
 			GenericFunctions.waitWebDriver(2000);
-			upForReviewPage.searchContent.sendKeys("COURSEAC0243");
+			upforRevobj.searchContent.sendKeys("COURSEAC0243");
 			GenericFunctions.waitWebDriver(5000);	
-			upForReviewPage.sortBy.click();
+			upforRevobj.sortBy.click();
 			GenericFunctions.waitWebDriver(2000);
-			upForReviewPage.updatedOn.click();
+			upforRevobj.updatedOn.click();
 			GenericFunctions.waitWebDriver(4000);
 			GenericFunctions.waitWebDriver(2000);
 			Assert.assertTrue(true,"Contents are displayed based on the dates updated");
 			System.out.println("Contents are displayed based on the dates updated");
 			log.info("Contents are displayed based on the dates updated");
-			upForReviewPage.sortBy.click();
+			upforRevobj.sortBy.click();
 			GenericFunctions.waitWebDriver(4000);
-			upForReviewPage.createdOn.click();
+			upforRevobj.createdOn.click();
 			Assert.assertTrue(true,"Contents are displayed based on the dates created on ");
 			System.out.println("Contents are displayed based on the dates created on ");
 			log.info("Contents are displayed based on the dates created on ");
 			GenericFunctions.waitWebDriver(4000);
-			upForReviewPage.sortBy.click();
+			upforRevobj.sortBy.click();
 			GenericFunctions.waitWebDriver(2000);
-			upForReviewPage.nameAtoZ.click();
+			upforRevobj.nameAtoZ.click();
 			Assert.assertTrue(true,"Contents are displayed based on the dates created on ");
 			System.out.println("Contents are displayed based on the dates created on ");
 			log.info("Contents are displayed based on the dates created on ");
@@ -154,41 +188,41 @@ public class UpForReviewPageObj extends BaseTest
 	public void showFilters(){
 		try{
 		ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to select various filters");		GenericFunctions.waitWebDriver(2000);
-		upForReviewPage.filterIcon.click();
+		upforRevobj.filterIcon.click();
 		GenericFunctions.waitWebDriver(2000);
-		upForReviewPage.clickFilterBoard.click();
+		upforRevobj.clickFilterBoard.click();
 		GenericFunctions.waitWebDriver(500);
-		upForReviewPage.selectRajasthanBoard.click();
+		upforRevobj.selectRajasthanBoard.click();
 		GenericFunctions.waitWebDriver(500);
-		upForReviewPage.clickFilterBoard.click();
+		upforRevobj.clickFilterBoard.click();
 		GenericFunctions.waitWebDriver(1000);
-		upForReviewPage.clickFilterClass.click();
+		upforRevobj.clickFilterClass.click();
 		GenericFunctions.waitWebDriver(500);
-		upForReviewPage.selectClass9.click();
+		upforRevobj.selectClass9.click();
 		GenericFunctions.waitWebDriver(500);
-		upForReviewPage.clickFilterClass.click();
+		upforRevobj.clickFilterClass.click();
 		GenericFunctions.waitWebDriver(1000);
-		upForReviewPage.clickFilterSubject.click();
+		upforRevobj.clickFilterSubject.click();
 		GenericFunctions.waitWebDriver(500);
-		upForReviewPage.selectMathematics.click();
+		upforRevobj.selectMathematics.click();
 		GenericFunctions.waitWebDriver(500);
-		upForReviewPage.clickFilterSubject.click();
+		upforRevobj.clickFilterSubject.click();
 		GenericFunctions.waitWebDriver(1000);
-		upForReviewPage.clickFilterMedium.click();
+		upforRevobj.clickFilterMedium.click();
 		GenericFunctions.waitWebDriver(500);
-		upForReviewPage.selectFilterMedium.click();
+		upforRevobj.selectFilterMedium.click();
 		GenericFunctions.waitWebDriver(500);
-//		upForReviewPage.clickFilterMedium.click();
+//		upforRevobj.clickFilterMedium.click();
 //		GenericFunctions.waitWebDriver(1000);
-		upForReviewPage.clickContentType.click();
+		upforRevobj.clickContentType.click();
 		GenericFunctions.waitWebDriver(500);
-		upForReviewPage.selectContentType.click();
+		upforRevobj.selectContentType.click();
 		GenericFunctions.waitWebDriver(500);
-		upForReviewPage.clickContentType.click();
+		upforRevobj.clickContentType.click();
 		GenericFunctions.waitWebDriver(500);
-		upForReviewPage.applyButton.click();
+		upforRevobj.applyButton.click();
 		GenericFunctions.waitWebDriver(5000);	
-		if(upForReviewPage.applyButton.isDisplayed())
+		if(upforRevobj.applyButton.isDisplayed())
 		{
 			GenericFunctions.waitWebDriver(2000);
 			Assert.assertTrue(true,"User is able to fetch the content based on the filters");
@@ -215,48 +249,48 @@ public class UpForReviewPageObj extends BaseTest
     try 
     {
 		ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to publish the course");
-//  	GenericFunctions.waitForElementToAppear(upForReviewPage.closePopUp);
-//		upForReviewPage.closePopUp.click();
+//  	GenericFunctions.waitForElementToAppear(upforRevobj.closePopUp);
+//		upforRevobj.closePopUp.click();
 //		GenericFunctions.waitWebDriver(1500);	
-//    	GenericFunctions.waitForElementToAppear(upForReviewPage.Workspace);
+//    	GenericFunctions.waitForElementToAppear(upforRevobj.Workspace);
     	GenericFunctions.waitWebDriver(500);
-    	upForReviewPage.Workspace.click();
-		GenericFunctions.waitForElementToAppear(upForReviewPage.upForReview);
+    	upforRevobj.Workspace.click();
+		GenericFunctions.waitForElementToAppear(upforRevobj.upForReview);
 		GenericFunctions.waitWebDriver(2000);
-		upForReviewPage.upForReview.click();
-		GenericFunctions.waitForElementToAppear(upForReviewPage.firtContent);
-		String courseContent = upForReviewPage.firtContent.getText();
+		upforRevobj.upForReview.click();
+		GenericFunctions.waitForElementToAppear(upforRevobj.firtContent);
+		String courseContent = upforRevobj.firtContent.getText();
 		System.out.println(courseContent);
 		GenericFunctions.waitWebDriver(2000);
-		upForReviewPage.firtContent.click();
+		upforRevobj.firtContent.click();
 
 		GenericFunctions.waitWebDriver(2000);
 		Assert.assertTrue(true,"User is able to review the content");
 		System.out.println("User is able to review the content");
 		log.info("User is able to review the content");
 			
-		GenericFunctions.WaitForFrameAndSwitchToIt(upForReviewPage.iFrame);
+		GenericFunctions.WaitForFrameAndSwitchToIt(upforRevobj.iFrame);
 		GenericFunctions.waitWebDriver(2000);
-		GenericFunctions.scrollToElement(upForReviewPage.headerPublish);
+		GenericFunctions.scrollToElement(upforRevobj.headerPublish);
 		GenericFunctions.waitWebDriver(4000);
 		
-		if(upForReviewPage.headerPublish.isDisplayed())
+		if(upforRevobj.headerPublish.isDisplayed())
 		{
-		upForReviewPage.headerPublish.click();
+		upforRevobj.headerPublish.click();
 		Assert.assertTrue(true,"Content is successfully displayed with Description, content info along with REQUEST CHANGE and PUBLISH button");
 		System.out.println("Content is successfully displayed with Description, content info along with REQUEST CHANGE and PUBLISH button");
 		log.info("Content is successfully displayed with Description, content info along with REQUEST CHANGE and PUBLISH button");
 		}
-		else if(upForReviewPage.Publish.isDisplayed())
+		else if(upforRevobj.Publish.isDisplayed())
 		{
-			upForReviewPage.Publish.click();
+			upforRevobj.Publish.click();
 			Assert.assertTrue(true,"Content is successfully displayed with Description, content info along with REQUEST CHANGE and PUBLISH button");
 			System.out.println("Content is successfully displayed with Description, content info along with REQUEST CHANGE and PUBLISH button");
 			log.info("Content is successfully displayed with Description, content info along with REQUEST CHANGE and PUBLISH button");
 		}
 		
-		GenericFunctions.waitForElementToAppear(upForReviewPage.publishConfirm);
-		upForReviewPage.publishConfirm.click();	
+		GenericFunctions.waitForElementToAppear(upforRevobj.publishConfirm);
+		upforRevobj.publishConfirm.click();	
 		Assert.assertTrue(true,"Mandatory field validation is available");
 		System.out.println("Mandatory field validation is available");
 		log.info("Mandatory field validation is available");
