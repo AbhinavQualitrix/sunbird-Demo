@@ -740,7 +740,7 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.upForReview.click();
 
 
-			/*if(inputToReject.equalsIgnoreCase("Course"))
+			if(inputToReject.equalsIgnoreCase("Course"))
 
 			{
 				createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad("./testData/courseNumbers.txt").toString());
@@ -834,7 +834,7 @@ public class CreatorUserPageObj extends BaseTest{
 				System.out.println(inputToReject+" is rejected succesfully");
 				ExtentTestManager.getTest().log(LogStatus.PASS, inputToReject+" is rejected succesfully");
 
-			}*/
+			}
 
 		}
 		catch(Exception e)
@@ -1131,7 +1131,9 @@ public class CreatorUserPageObj extends BaseTest{
 			{
 				System.out.println("Could not get the same content in Drafts");
 			}
-			
+			GenericFunctions.refreshWebPage();
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.getContentInDrafts);
 			createUserPage.getContentInDrafts.click();
 			GenericFunctions.waitWebDriver(6000);
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
