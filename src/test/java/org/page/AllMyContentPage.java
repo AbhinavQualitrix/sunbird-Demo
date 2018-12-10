@@ -111,9 +111,13 @@ public class AllMyContentPage
 	@FindBy(xpath="//button[.='Yes']")
 	public WebElement yesButtonPopup ;
 	
+	// @author Sachin
+	// Web Element  closePopUp 
+	@FindBy(xpath = "//i[contains(@class,'close icon')]")
+	public WebElement closePopUp;
 	
-	
-	
+	@FindBy(xpath="//*[@id='main-nav']/div[2]/app-main-menu/div/a[4]")
+	public WebElement Workspace;
 	
 	
 	

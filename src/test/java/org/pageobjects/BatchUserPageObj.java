@@ -1,21 +1,29 @@
 package org.pageobjects;
 
+import static org.testng.Assert.assertEquals;
+
 import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
-import org.generic.ExtentTestManager;
-import org.generic.GenericFunctions;
-import org.generic.ReadTestDataFromExcel;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.page.BatchUserPage;
+import org.page.ContentCreateUploadPage;
 import org.page.CreatorUserPage;
+import org.page.PublicUserPage;
 import org.page.SignUpPage;
 import org.page.UploadOrgPage;
+import org.generic.ExtentTestManager;
+import org.generic.GenericFunctions;
+import org.generic.ReadTestDataFromExcel;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
@@ -25,17 +33,17 @@ import com.relevantcodes.extentreports.LogStatus;
 public class BatchUserPageObj extends BaseTest
 {
 	WebDriverWait wait = new WebDriverWait(driver,20);
-	BatchUserPage batchUserPage = PageFactory.initElements(driver, BatchUserPage.class);
-//	CreatorUserPageObj batchUserPage = PageFactory.initElements(driver, CreatorUserPageObj.class);
-//	batchUserPage batchUserPage=PageFactory.initElements(driver, batchUserPage.class);
-//	CreatorUserPageObj batchUserPage=PageFactory.initElements(driver, CreatorUserPageObj.class);
-//	BatchUserPageObjObjects batchUserPage = PageFactory.initElements(driver, BatchUserPageObjObjects.class);
-//	PublicUserPageObj publicUserPageObj = PageFactory.initElements(driver, PublicUserPageObj.class);
-//	batchUserPage batchUserPage=PageFactory.initElements(driver, batchUserPage.class);
-//	ContentCreateUploadPageObj contentCreatePage = PageFactory.initElements(driver, ContentCreateUploadPageObj.class);
+	BatchUserPage BatchUserPageObj = PageFactory.initElements(driver, BatchUserPage.class);
+//	CreatorUserPage BatchUserPageObj = PageFactory.initElements(driver, CreatorUserPage.class);
+//	BatchUserPageObj BatchUserPageObj=PageFactory.initElements(driver, BatchUserPageObj.class);
+//	CreatorUserPage BatchUserPageObj=PageFactory.initElements(driver, CreatorUserPage.class);
+//	BatchUserPageObjObjects BatchUserPageObj = PageFactory.initElements(driver, BatchUserPageObjObjects.class);
+//	PublicUserPage publicUserPage = PageFactory.initElements(driver, PublicUserPage.class);
+//	BatchUserPageObj BatchUserPageObj=PageFactory.initElements(driver, BatchUserPageObj.class);
+//	ContentCreateUploadPage contentCreatePage = PageFactory.initElements(driver, ContentCreateUploadPage.class);
 	CreatorUserPageObj createrUserPageObj = new CreatorUserPageObj();
 	SignUpPage signUpPage=PageFactory.initElements(driver, SignUpPage.class);
-	static Logger log = Logger.getLogger(CreatorUserPage.class.getName());
+	static Logger log = Logger.getLogger(CreatorUserPageObj.class.getName());
 	List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
 	
 	Actions action = new Actions(driver);
@@ -51,36 +59,36 @@ public class BatchUserPageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create course");
 			GenericFunctions.waitWebDriver(1500);
 			System.out.println(driver.findElement(By.xpath(" //span[contains(text(),'Design Course')]")).getText());
-			GenericFunctions.waitForElementToAppear(batchUserPage.courseName);
-			String courseNumber = GenericFunctions.testDataIncrementer("./testData/courseNumbers.txt").toString();
-			batchUserPage.courseName.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+courseNumber);
-			batchUserPage.courseDescription.sendKeys(objListOFTestDataForSunbird.get(0).getCourseDescription()+courseNumber);	
+			GenericFunctions.waitForElementToAppear(BatchUserPageObj.courseName);
+			String courseNumber = GenericFunctions.testDataIncrementer(".//testData//courseNumbers.txt").toString();
+			BatchUserPageObj.courseName.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+courseNumber);
+			BatchUserPageObj.courseDescription.sendKeys(objListOFTestDataForSunbird.get(0).getCourseDescription()+courseNumber);	
 			GenericFunctions.waitWebDriver(1500);
-			batchUserPage.startCreating.click();
+			BatchUserPageObj.startCreating.click();
 			/*GenericFunctions.refreshWebPage();
 			GenericFunctions.waitWebDriver(1500);*/
 			GenericFunctions.waitWebDriver(4500);
-			GenericFunctions.WaitForFrameAndSwitchToIt(batchUserPage.iFrame);
+			GenericFunctions.WaitForFrameAndSwitchToIt(BatchUserPageObj.iFrame);
 			GenericFunctions.waitWebDriver(6500);
-			GenericFunctions.waitForElementToAppear(batchUserPage.newChild);
-			System.out.println("Creating - "+batchUserPage.newChild.getText());
+			GenericFunctions.waitForElementToAppear(BatchUserPageObj.newChild);
+			System.out.println("Creating - "+BatchUserPageObj.newChild.getText());
 			GenericFunctions.waitWebDriver(3000);
-			action.moveToElement(batchUserPage.newChild).click().perform();
-			//action.moveToElement(batchUserPage.newChild).click().release();
+			action.moveToElement(BatchUserPageObj.newChild).click().perform();
+			//action.moveToElement(BatchUserPageObj.newChild).click().release();
 			GenericFunctions.waitWebDriver(1500);
-			batchUserPage.titleName.click();
-			batchUserPage.titleName.clear();
-			batchUserPage.titleName.sendKeys(objListOFTestDataForSunbird.get(0).getTitle()+courseNumber);
-			batchUserPage.titleDescription.sendKeys(objListOFTestDataForSunbird.get(0).getTitleDescription()+courseNumber);
+			BatchUserPageObj.titleName.click();
+			BatchUserPageObj.titleName.clear();
+			BatchUserPageObj.titleName.sendKeys(objListOFTestDataForSunbird.get(0).getTitle()+courseNumber);
+			BatchUserPageObj.titleDescription.sendKeys(objListOFTestDataForSunbird.get(0).getTitleDescription()+courseNumber);
 			GenericFunctions.waitWebDriver(1500);
-			batchUserPage.addResource.click();
+			BatchUserPageObj.addResource.click();
 
 			//added on 17 Aug 2018
 			//driver.switchTo().frame(0);
-			GenericFunctions.waitForElementToAppear(batchUserPage.selectResource);
-			batchUserPage.selectResource.click();
+			GenericFunctions.waitForElementToAppear(BatchUserPageObj.selectResource);
+			BatchUserPageObj.selectResource.click();
 			GenericFunctions.waitWebDriver(500);
-			batchUserPage.proceedButton.click();
+			BatchUserPageObj.proceedButton.click();
 			GenericFunctions.waitWebDriver(2000);
 
 
@@ -102,56 +110,56 @@ public class BatchUserPageObj extends BaseTest
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to save and send course for review");
-			GenericFunctions.waitForElementToAppear(batchUserPage.saveCourse);
-			batchUserPage.saveCourse.click();
+			GenericFunctions.waitForElementToAppear(BatchUserPageObj.saveCourse);
+			BatchUserPageObj.saveCourse.click();
 			GenericFunctions.waitWebDriver(2000);
-			batchUserPage.sendForReview.click();
+			BatchUserPageObj.sendForReview.click();
 			GenericFunctions.waitWebDriver(1500);
-			batchUserPage.clickAppIcon.click();
+			BatchUserPageObj.clickAppIcon.click();
 			GenericFunctions.waitWebDriver(3000);	
-			GenericFunctions.waitForElementToAppear(batchUserPage.checkContentIcon);
-			batchUserPage.checkContentIcon.click();
+			GenericFunctions.waitForElementToAppear(BatchUserPageObj.checkContentIcon);
+			BatchUserPageObj.checkContentIcon.click();
 			GenericFunctions.waitWebDriver(1000);
-			batchUserPage.selectAppIcon.click();
+			BatchUserPageObj.selectAppIcon.click();
 			GenericFunctions.waitWebDriver(1000);
 			
-			GenericFunctions.waitForElementToAppear(batchUserPage.clickOnSelectCurriculum);
-			batchUserPage.clickOnSelectCurriculum.click();
+			GenericFunctions.waitForElementToAppear(BatchUserPageObj.clickOnSelectCurriculum);
+			BatchUserPageObj.clickOnSelectCurriculum.click();
 			GenericFunctions.waitWebDriver(1000);
-			batchUserPage.selectCurriculum.click();
-			GenericFunctions.waitForElementToAppear(batchUserPage.clickOnSelectClass);
-			batchUserPage.clickOnSelectClass.click();
+			BatchUserPageObj.selectCurriculum.click();
+			GenericFunctions.waitForElementToAppear(BatchUserPageObj.clickOnSelectClass);
+			BatchUserPageObj.clickOnSelectClass.click();
 			GenericFunctions.waitWebDriver(1000); 
-			batchUserPage.selectClass.click();
+			BatchUserPageObj.selectClass.click();
 			GenericFunctions.waitWebDriver(1000); 
-			batchUserPage.clickOnSelectClass.click();//      
+			BatchUserPageObj.clickOnSelectClass.click();//      
 			
-			//GenericFunctions.keyTab(driver, batchUserPage.selectClass.toString());
-			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(batchUserPage.clickOnHeaderSubject);
-			//batchUserPage.clickOnHeaderSubject.click();
+			//GenericFunctions.keyTab(driver, BatchUserPageObj.selectClass.toString());
+			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(BatchUserPageObj.clickOnHeaderSubject);
+			//BatchUserPageObj.clickOnHeaderSubject.click();
 			GenericFunctions.waitWebDriver(5000);
-			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(batchUserPage.clickOnSelectSubject);
-			//GenericFunctions.scrollToElement(batchUserPage.clickOnSelectMedium);
+			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(BatchUserPageObj.clickOnSelectSubject);
+			//GenericFunctions.scrollToElement(BatchUserPageObj.clickOnSelectMedium);
 //			GenericFunctions.waitWebDriver(2000);
-//			batchUserPage.clickOnSelectSubject.click();
-//			GenericFunctions.waitForElementToAppear(batchUserPage.selectSubject);
-//			batchUserPage.selectMathematics.click();
+//			BatchUserPageObj.clickOnSelectSubject.click();
+//			GenericFunctions.waitForElementToAppear(BatchUserPageObj.selectSubject);
+//			BatchUserPageObj.selectMathematics.click();
 //			GenericFunctions.waitWebDriver(1500);
-			GenericFunctions.scrollToElement(batchUserPage.clickOnSelectMedium);
+			GenericFunctions.scrollToElement(BatchUserPageObj.clickOnSelectMedium);
 			GenericFunctions.waitWebDriver(5000);
-			batchUserPage.clickOnSelectMedium.click();
-			GenericFunctions.waitForElementToAppearOnScreen(batchUserPage.selectMedium);
-			batchUserPage.selectMedium.click();
+			BatchUserPageObj.clickOnSelectMedium.click();
+			GenericFunctions.waitForElementToAppearOnScreen(BatchUserPageObj.selectMedium);
+			BatchUserPageObj.selectMedium.click();
 			GenericFunctions.waitWebDriver(1500);
-			GenericFunctions.scrollToElement(batchUserPage.clickOwner);
-			GenericFunctions.waitForElementToAppear(batchUserPage.clickOwner);
-			batchUserPage.clickOwner.click();
+			GenericFunctions.scrollToElement(BatchUserPageObj.clickOwner);
+			GenericFunctions.waitForElementToAppear(BatchUserPageObj.clickOwner);
+			BatchUserPageObj.clickOwner.click();
 			GenericFunctions.waitWebDriver(1500);
-			batchUserPage.selectOwner.click();
+			BatchUserPageObj.selectOwner.click();
 			GenericFunctions.waitWebDriver(1500);
 			
 			
-			batchUserPage.saveButton.click();
+			BatchUserPageObj.saveButton.click();
 			GenericFunctions.waitWebDriver(1500);
 		
 			
@@ -196,35 +204,35 @@ public class BatchUserPageObj extends BaseTest
     try 
     {
 		ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to publish the course");
-//  	GenericFunctions.waitForElementToAppear(batchUserPage.closePopUp);
-//		batchUserPage.closePopUp.click();
+//  	GenericFunctions.waitForElementToAppear(BatchUserPageObj.closePopUp);
+//		BatchUserPageObj.closePopUp.click();
 //		GenericFunctions.waitWebDriver(1500);	
-//    	GenericFunctions.waitForElementToAppear(batchUserPage.Workspace);
+//    	GenericFunctions.waitForElementToAppear(BatchUserPageObj.Workspace);
     	GenericFunctions.waitWebDriver(500);
-    	batchUserPage.Workspace.click();
-		GenericFunctions.waitForElementToAppear(batchUserPage.upForReview);
+    	BatchUserPageObj.Workspace.click();
+		GenericFunctions.waitForElementToAppear(BatchUserPageObj.upForReview);
 		GenericFunctions.waitWebDriver(2000);
-		batchUserPage.upForReview.click();
-		GenericFunctions.waitForElementToAppear(batchUserPage.firtContent);
-		String courseContent = batchUserPage.firtContent.getText();
+		BatchUserPageObj.upForReview.click();
+		GenericFunctions.waitForElementToAppear(BatchUserPageObj.firtContent);
+		String courseContent = BatchUserPageObj.firtContent.getText();
 		System.out.println(courseContent);
 		GenericFunctions.waitWebDriver(2000);
-		batchUserPage.firtContent.click();
-		GenericFunctions.WaitForFrameAndSwitchToIt(batchUserPage.iFrame);
+		BatchUserPageObj.firtContent.click();
+		GenericFunctions.WaitForFrameAndSwitchToIt(BatchUserPageObj.iFrame);
 		GenericFunctions.waitWebDriver(2000);
-		GenericFunctions.scrollToElement(batchUserPage.headerPublish);
+		GenericFunctions.scrollToElement(BatchUserPageObj.headerPublish);
 		GenericFunctions.waitWebDriver(4000);
-		if(batchUserPage.headerPublish.isDisplayed())
+		if(BatchUserPageObj.headerPublish.isDisplayed())
 		{
-		batchUserPage.headerPublish.click();
+		BatchUserPageObj.headerPublish.click();
 		}
-		else if(batchUserPage.Publish.isDisplayed())
+		else if(BatchUserPageObj.Publish.isDisplayed())
 		{
-			batchUserPage.Publish.click();
+			BatchUserPageObj.Publish.click();
 		}
 		
-		GenericFunctions.waitForElementToAppear(batchUserPage.publishConfirm);
-		batchUserPage.publishConfirm.click();			
+		GenericFunctions.waitForElementToAppear(BatchUserPageObj.publishConfirm);
+		BatchUserPageObj.publishConfirm.click();			
     }
     catch(Exception e) 
     {
@@ -243,18 +251,18 @@ public class BatchUserPageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate to search a coursea and create a batch");
 			List <TestDataForSunbird> objListOFTestDataForSunbird1=null;
 			objListOFTestDataForSunbird1 = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-			/*batchUserPage.dropDown.click();
-			GenericFunctions.waitForElementToAppear(batchUserPage.headerProfile);
-			batchUserPage.headerProfile.click();*/
-			batchUserPage.headerCourse.click();
+			/*BatchUserPageObj.dropDown.click();
+			GenericFunctions.waitForElementToAppear(BatchUserPageObj.headerProfile);
+			BatchUserPageObj.headerProfile.click();*/
+			BatchUserPageObj.headerCourse.click();
 			GenericFunctions.waitWebDriver(1000);
-			String courseNumber = GenericFunctions.testDataIncrementer("./testData/courseNumbers.txt").toString();
-			batchUserPage.filterSearch.sendKeys(objListOFTestDataForSunbird1.get(0).getTitle()+courseNumber);
-			batchUserPage.searchIconUpForReview.click();
+			String courseNumber = GenericFunctions.testDataIncrementer(".//testData//courseNumbers.txt").toString();
+			BatchUserPageObj.filterSearch.sendKeys(objListOFTestDataForSunbird1.get(0).getTitle()+courseNumber);
+			BatchUserPageObj.searchIconUpForReview.click();
 			GenericFunctions.waitWebDriver(2000);
-			batchUserPage.searchedCourse.click();
+			BatchUserPageObj.searchedCourse.click();
 			GenericFunctions.waitWebDriver(1000);
-			batchUserPage.createBatch.click();
+			BatchUserPageObj.createBatch.click();
 		}
 		catch(Exception e)
 		{
@@ -272,32 +280,32 @@ public class BatchUserPageObj extends BaseTest
 
 		try {
 			// GenericFunctions.waitWebDriver(1500);
-			// batchUserPage.headerCourse.click();
+			// BatchUserPageObj.headerCourse.click();
 			// GenericFunctions.waitWebDriver(1000);
-			// batchUserPage.filterSearch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad(".//batchNumbers.txt").toUpperCase());
-			// batchUserPage.searchIcon.click();
+			// BatchUserPageObj.filterSearch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad(".//batchNumbers.txt").toUpperCase());
+			// BatchUserPageObj.searchIcon.click();
 			// GenericFunctions.waitWebDriver(2000);
-			// batchUserPage.courseImg1.click();
+			// BatchUserPageObj.courseImg1.click();
 			// GenericFunctions.waitWebDriver(3000);
-			batchUserPage.addIcon.click();
+			BatchUserPageObj.addIcon.click();
 			GenericFunctions.waitWebDriver(1000);
-			GenericFunctions.switchToFrame(driver, batchUserPage.batchForm);
+			GenericFunctions.switchToFrame(driver, BatchUserPageObj.batchForm);
 			GenericFunctions.waitWebDriver(1000);
-			batchUserPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
-					+ GenericFunctions.testDataIncrementer("./testData/sunbird_data.txt"));
-			batchUserPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
-//			batchUserPage.openBatch.click();
-			batchUserPage.startDate.click(); // sendKeys(objListOFTestDataForSunbird.get(8).getTitle());
+			BatchUserPageObj.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
+					+ GenericFunctions.testDataIncrementer(".//TestData//sunbird_data.txt"));
+			BatchUserPageObj.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
+//			BatchUserPageObj.openBatch.click();
+			BatchUserPageObj.startDate.click(); // sendKeys(objListOFTestDataForSunbird.get(8).getTitle());
 			GenericFunctions.waitWebDriver(1000);
-			batchUserPage.startDateCalendar.click(); // sendKeys(objListOFTestDataForSunbird.get(8).getTitle());
-			batchUserPage.endDate.sendKeys(objListOFTestDataForSunbird.get(8).getTitleDescription());
+			BatchUserPageObj.startDateCalendar.click(); // sendKeys(objListOFTestDataForSunbird.get(8).getTitle());
+			BatchUserPageObj.endDate.sendKeys(objListOFTestDataForSunbird.get(8).getTitleDescription());
 			GenericFunctions.waitWebDriver(3000);
-			batchUserPage.mentorsInBatch.click();
-			batchUserPage.suborgMentor2InBatch.click();
+			BatchUserPageObj.mentorsInBatch.click();
+			BatchUserPageObj.suborgMentor2InBatch.click();
 			GenericFunctions.waitWebDriver(1500);			
-			batchUserPage.membersInBatch.click();
+			BatchUserPageObj.membersInBatch.click();
 			GenericFunctions.waitWebDriver(1500);
-			batchUserPage.testBookReviewerInBatch.click();
+			BatchUserPageObj.testBookReviewerInBatch.click();
 			GenericFunctions.waitWebDriver(1500);
 			
 			// GenericFunctions.waitWebDriver(1000);
@@ -313,8 +321,8 @@ public class BatchUserPageObj extends BaseTest
 			// robot.keyRelease(KeyEvent.VK_ENTER);
 			// GenericFunctions.waitWebDriver(3000);
 
-			batchUserPage.buttonCreate.click();
-			// batchUserPage.successfulMessage.click();
+			BatchUserPageObj.buttonCreate.click();
+			// BatchUserPageObj.successfulMessage.click();
 			System.out.println("Batch Created");
 
 		} catch (Exception e) {
@@ -333,46 +341,52 @@ public class BatchUserPageObj extends BaseTest
 								
 		try {
 		ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create invite only batch for a course");
-			//GenericFunctions.waitForElementToAppear(batchUserPage.closePopUp);
-//		if(batchUserPage.closePopUp.isDisplayed())
-//		{
-//		  batchUserPage.closePopUp.click();
-//		}
-		//else
-		//{
+		
+		try{
+		if(BatchUserPageObj.closePopUp.isDisplayed())
+		{
+			BatchUserPageObj.closePopUp.click();
 			GenericFunctions.waitWebDriver(1500);
-			batchUserPage.headerCourse.click();
+			BatchUserPageObj.headerCourse.click();
 			GenericFunctions.waitWebDriver(4000);
-			GenericFunctions.waitForElementToAppear(batchUserPage.latestCourse);
-			batchUserPage.latestCourse.click();
+		}
+		}
+		catch(Exception e)
+		{
+			GenericFunctions.waitWebDriver(1500);
+			BatchUserPageObj.headerCourse.click();
+		}
+			GenericFunctions.waitWebDriver(4000);
+			GenericFunctions.waitForElementToAppear(BatchUserPageObj.latestCourse);
+			BatchUserPageObj.latestCourse.click();
 			GenericFunctions.waitWebDriver(3000);
-			batchUserPage.addIcon.click();
+			BatchUserPageObj.addIcon.click();
 			GenericFunctions.waitWebDriver(2000);
-			batchUserPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
-					+ GenericFunctions.testDataIncrementer("./testData/batchNumbers.txt"));
-			batchUserPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
+			BatchUserPageObj.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
+					+ GenericFunctions.testDataIncrementer(".//TestData//batchNumbers.txt"));
+			BatchUserPageObj.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
 
-			batchUserPage.startDate.click();
+			BatchUserPageObj.startDate.click();
 			GenericFunctions.waitWebDriver(1000);
-			batchUserPage.startDateCalendar.click();
+			BatchUserPageObj.startDateCalendar.click();
 			GenericFunctions.waitWebDriver(1000);
-			batchUserPage.endDate.sendKeys(objListOFTestDataForSunbird.get(8).getTitleDescription());
+			BatchUserPageObj.endDate.sendKeys(objListOFTestDataForSunbird.get(8).getTitleDescription());
 			
-			batchUserPage.mentorsInBatch.click();
+			BatchUserPageObj.mentorsInBatch.click();
 			GenericFunctions.waitWebDriver(1000);				
-			batchUserPage.suborgMentor2InBatch.click();
-			batchUserPage.mentorsInBatch.click();
+			BatchUserPageObj.suborgMentor2InBatch.click();
+			BatchUserPageObj.mentorsInBatch.click();
 			
 			GenericFunctions.waitWebDriver(1000);								
-			batchUserPage.mentorDropdown.click();
-			batchUserPage.membersInBatch.click();
-			batchUserPage.mentorDropdown.click();
+			BatchUserPageObj.mentorDropdown.click();
+			BatchUserPageObj.membersInBatch.click();
+			BatchUserPageObj.mentorDropdown.click();
 			GenericFunctions.waitWebDriver(1500);	
 			
-			GenericFunctions.waitTillTheElementIsVisibleAndClickable(batchUserPage.buttonCreate);
-			batchUserPage.buttonCreate.click();
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(BatchUserPageObj.buttonCreate);
+			BatchUserPageObj.buttonCreate.click();
 			GenericFunctions.waitWebDriver(4000);
-			//batchUserPage.successfulMessage.click();
+			//BatchUserPageObj.successfulMessage.click();
 			System.out.println("Batch Created");
 			Assert.assertTrue(true,"Batch created successfully and able to add mentor & mentor from root org and sub org");
 			log.info("Batch created successfully and able to add mentor & mentor from root org and sub org");
@@ -401,39 +415,39 @@ public class BatchUserPageObj extends BaseTest
 								
 		try {
 		ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create invite only batch with start date as current date");
-			GenericFunctions.waitForElementToAppear(batchUserPage.closePopUp);
-			batchUserPage.closePopUp.click();
+			GenericFunctions.waitForElementToAppear(BatchUserPageObj.closePopUp);
+			BatchUserPageObj.closePopUp.click();
 			GenericFunctions.waitWebDriver(1500);
-			batchUserPage.headerCourse.click();
+			BatchUserPageObj.headerCourse.click();
 			GenericFunctions.waitWebDriver(4000);
-			GenericFunctions.waitForElementToAppear(batchUserPage.latestCourse);
-			batchUserPage.latestCourse.click();
+			GenericFunctions.waitForElementToAppear(BatchUserPageObj.latestCourse);
+			BatchUserPageObj.latestCourse.click();
 			GenericFunctions.waitWebDriver(3000);
-			batchUserPage.addIcon.click();
+			BatchUserPageObj.addIcon.click();
 			GenericFunctions.waitWebDriver(2000);
-			batchUserPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
-					+ GenericFunctions.testDataIncrementer("./testData/batchNumbers.txt"));
-			batchUserPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
+			BatchUserPageObj.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
+					+ GenericFunctions.testDataIncrementer(".//TestData//batchNumbers.txt"));
+			BatchUserPageObj.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
 
-			batchUserPage.startDate.sendKeys("27 November 2018");
+			BatchUserPageObj.startDate.sendKeys("27 November 2018");
 			GenericFunctions.waitWebDriver(1000);
 
 			GenericFunctions.waitWebDriver(1000);
-			batchUserPage.endDate.sendKeys(objListOFTestDataForSunbird.get(8).getTitleDescription());
+			BatchUserPageObj.endDate.sendKeys(objListOFTestDataForSunbird.get(8).getTitleDescription());
 			
-			batchUserPage.mentorsInBatch.click();
+			BatchUserPageObj.mentorsInBatch.click();
 			GenericFunctions.waitWebDriver(1000);				
-			batchUserPage.suborgMentor2InBatch.click();
-			batchUserPage.mentorsInBatch.click();
+			BatchUserPageObj.suborgMentor2InBatch.click();
+			BatchUserPageObj.mentorsInBatch.click();
 			
 			GenericFunctions.waitWebDriver(1000);								
-			batchUserPage.mentorDropdown.click();
-			batchUserPage.membersInBatch.click();
-			batchUserPage.mentorDropdown.click();
+			BatchUserPageObj.mentorDropdown.click();
+			BatchUserPageObj.membersInBatch.click();
+			BatchUserPageObj.mentorDropdown.click();
 			GenericFunctions.waitWebDriver(4000);	
-			GenericFunctions.waitTillTheElementIsVisibleAndClickable(batchUserPage.buttonCreate);
-			batchUserPage.buttonCreate.click();
-			//batchUserPage.successfulMessage.click();
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(BatchUserPageObj.buttonCreate);
+			BatchUserPageObj.buttonCreate.click();
+			//BatchUserPageObj.successfulMessage.click();
 			System.out.println("Batch Created");
 			Assert.assertTrue(true,"User is trying to create invite only batch with start date as current date");
 			log.info("User is trying to create invite only batch with start date as current date");
@@ -458,39 +472,39 @@ public class BatchUserPageObj extends BaseTest
 		try {
 		ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create upcoming batch with future start date");
 			
-			GenericFunctions.waitForElementToAppear(batchUserPage.closePopUp);
-			batchUserPage.closePopUp.click();
+			GenericFunctions.waitForElementToAppear(BatchUserPageObj.closePopUp);
+			BatchUserPageObj.closePopUp.click();
 			GenericFunctions.waitWebDriver(1500);
-			batchUserPage.headerCourse.click();
+			BatchUserPageObj.headerCourse.click();
 			GenericFunctions.waitWebDriver(4000);
-			GenericFunctions.waitForElementToAppear(batchUserPage.latestCourse);
-			batchUserPage.latestCourse.click();
+			GenericFunctions.waitForElementToAppear(BatchUserPageObj.latestCourse);
+			BatchUserPageObj.latestCourse.click();
 			GenericFunctions.waitWebDriver(3000);
-			batchUserPage.addIcon.click();
+			BatchUserPageObj.addIcon.click();
 			GenericFunctions.waitWebDriver(2000);
-			batchUserPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
-					+ GenericFunctions.testDataIncrementer("./testData/batchNumbers.txt"));
-			batchUserPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
+			BatchUserPageObj.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
+					+ GenericFunctions.testDataIncrementer(".//TestData//batchNumbers.txt"));
+			BatchUserPageObj.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
 
-			batchUserPage.startDate.sendKeys("1 January 2019");
+			BatchUserPageObj.startDate.sendKeys("1 January 2019");
 			GenericFunctions.waitWebDriver(1000);
 
 			GenericFunctions.waitWebDriver(1000);
-			batchUserPage.endDate.sendKeys("1 June 2019");
+			BatchUserPageObj.endDate.sendKeys("1 June 2019");
 			
-			batchUserPage.mentorsInBatch.click();
+			BatchUserPageObj.mentorsInBatch.click();
 			GenericFunctions.waitWebDriver(1000);				
-			batchUserPage.suborgMentor2InBatch.click();
-			batchUserPage.mentorsInBatch.click();
+			BatchUserPageObj.suborgMentor2InBatch.click();
+			BatchUserPageObj.mentorsInBatch.click();
 			
 			GenericFunctions.waitWebDriver(1000);								
-			batchUserPage.mentorDropdown.click();
-			batchUserPage.membersInBatch.click();
-			batchUserPage.mentorDropdown.click();
+			BatchUserPageObj.mentorDropdown.click();
+			BatchUserPageObj.membersInBatch.click();
+			BatchUserPageObj.mentorDropdown.click();
 			GenericFunctions.waitWebDriver(4000);	
-			GenericFunctions.waitTillTheElementIsVisibleAndClickable(batchUserPage.buttonCreate);
-			batchUserPage.buttonCreate.click();
-			//batchUserPage.successfulMessage.click();
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(BatchUserPageObj.buttonCreate);
+			BatchUserPageObj.buttonCreate.click();
+			//BatchUserPageObj.successfulMessage.click();
 			System.out.println("Batch Created");
 			Assert.assertTrue(true,"User is trying to create upcoming batch with future start date");
 			log.info("User is trying to create upcoming batch with future start date");
@@ -512,28 +526,28 @@ public class BatchUserPageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.INFO,
 					"User is trying to navigate to Worskpace and select batch " + batchType);
 
-			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(batchUserPage.workSpace);
-			GenericFunctions.waitForElementToAppear(batchUserPage.closePopUp);
-			batchUserPage.closePopUp.click();
+			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(BatchUserPageObj.workSpace);
+			GenericFunctions.waitForElementToAppear(BatchUserPageObj.closePopUp);
+			BatchUserPageObj.closePopUp.click();
 			GenericFunctions.waitWebDriver(1500);
-			batchUserPage.workSpace.click();	
+			BatchUserPageObj.workSpace.click();	
 			GenericFunctions.waitWebDriver(1000);
-			batchUserPage.courseBatches.click();
+			BatchUserPageObj.courseBatches.click();
 			GenericFunctions.waitWebDriver(1000);
-			batchUserPage.batchesDropDown.click();
+			BatchUserPageObj.batchesDropDown.click();
 			GenericFunctions.waitWebDriver(1500);
 			if (batchType.equalsIgnoreCase("Ongoing Batches")) {
-				GenericFunctions.waitForElementToAppear(batchUserPage.ongoingBatches);
-				batchUserPage.ongoingBatches.click();
+				GenericFunctions.waitForElementToAppear(BatchUserPageObj.ongoingBatches);
+				BatchUserPageObj.ongoingBatches.click();
 				GenericFunctions.waitWebDriver(1500);
 				System.out.println("Ongoing batches");
 			} else if (batchType.equalsIgnoreCase("Upcoming Batches")) {
 				GenericFunctions.waitWebDriver(1000);
-				batchUserPage.upcomingBatches.click();
+				BatchUserPageObj.upcomingBatches.click();
 				System.out.println("upcoming batches");
 			} else if (batchType.equalsIgnoreCase("Previous Batches")) {
 				GenericFunctions.waitWebDriver(1000);
-				batchUserPage.previousBatches.click();
+				BatchUserPageObj.previousBatches.click();
 				GenericFunctions.waitWebDriver(5000);
 				System.out.println("Previous batches");
 			}
@@ -555,31 +569,31 @@ public class BatchUserPageObj extends BaseTest
 					"To verify update the batch");
 			GenericFunctions.waitWebDriver(1500);
 
-			batchUserPage.courseImg1.click();
+			BatchUserPageObj.courseImg1.click();
 			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.switchToFrame(driver, batchUserPage.batchForm);
-			batchUserPage.nameOfBatch.clear();
-			batchUserPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(1).getCourseName()
-					+ GenericFunctions.testDataIncrementer("./testData/batchNumbers.txt"));
+			GenericFunctions.switchToFrame(driver, BatchUserPageObj.batchForm);
+			BatchUserPageObj.nameOfBatch.clear();
+			BatchUserPageObj.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(1).getCourseName()
+					+ GenericFunctions.testDataIncrementer(".//TestData//batchNumbers.txt"));
 			GenericFunctions.waitWebDriver(1000);
-			batchUserPage.aboutBatch.clear();
-			batchUserPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
-//			batchUserPage.openBatch.click();
+			BatchUserPageObj.aboutBatch.clear();
+			BatchUserPageObj.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
+//			BatchUserPageObj.openBatch.click();
 			GenericFunctions.waitWebDriver(1000);
-			batchUserPage.endDate.clear();
-			batchUserPage.endDate.sendKeys("30 September 2019");
+			BatchUserPageObj.endDate.clear();
+			BatchUserPageObj.endDate.sendKeys("30 September 2019");
 			GenericFunctions.waitWebDriver(3000);
-//			batchUserPage.mentorsInBatch.click();
-//			batchUserPage.updateMentorInBatch.click();
+//			BatchUserPageObj.mentorsInBatch.click();
+//			BatchUserPageObj.updateMentorInBatch.click();
 //			GenericFunctions.waitWebDriver(1000);
-//			batchUserPage.mentorsInBatch.click();
+//			BatchUserPageObj.mentorsInBatch.click();
 //			
-//			batchUserPage.updateMembersInBatch.click();
-//			batchUserPage.membersInBatch.click();
+//			BatchUserPageObj.updateMembersInBatch.click();
+//			BatchUserPageObj.membersInBatch.click();
 //			GenericFunctions.waitWebDriver(1500);
-//			batchUserPage.updateMembersInBatch.click();
+//			BatchUserPageObj.updateMembersInBatch.click();
 //			GenericFunctions.waitWebDriver(1500);						
-			batchUserPage.updateBatch.click();
+			BatchUserPageObj.updateBatch.click();
 			GenericFunctions.waitWebDriver(4000);
 		} catch (Exception e) {
 			ExtentTestManager.getTest().log(LogStatus.FAIL,
@@ -601,31 +615,31 @@ public class BatchUserPageObj extends BaseTest
 			ExtentTestManager.getTest().log(LogStatus.INFO,"To verify updation of the upcoming batch");
 			GenericFunctions.waitWebDriver(1500);
 
-			batchUserPage.courseImg1.click();
+			BatchUserPageObj.courseImg1.click();
 			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.switchToFrame(driver, batchUserPage.batchForm);
-			batchUserPage.nameOfBatch.clear();
-			batchUserPage.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(1).getCourseName()
-					+ GenericFunctions.testDataIncrementer("./testData/batchNumbers.txt"));
+			GenericFunctions.switchToFrame(driver, BatchUserPageObj.batchForm);
+			BatchUserPageObj.nameOfBatch.clear();
+			BatchUserPageObj.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(1).getCourseName()
+					+ GenericFunctions.testDataIncrementer(".//TestData//batchNumbers.txt"));
 			GenericFunctions.waitWebDriver(1000);
-			batchUserPage.aboutBatch.clear();
-			batchUserPage.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
-//			batchUserPage.openBatch.click();
+			BatchUserPageObj.aboutBatch.clear();
+			BatchUserPageObj.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
+//			BatchUserPageObj.openBatch.click();
 			GenericFunctions.waitWebDriver(1000);
-			batchUserPage.endDate.clear();
-			batchUserPage.endDate.sendKeys("30 September 2019");
+			BatchUserPageObj.endDate.clear();
+			BatchUserPageObj.endDate.sendKeys("30 September 2019");
 			GenericFunctions.waitWebDriver(3000);
-			batchUserPage.mentorsInBatch.click();
-			batchUserPage.updateMentorInBatch.click();
+			BatchUserPageObj.mentorsInBatch.click();
+			BatchUserPageObj.updateMentorInBatch.click();
 			GenericFunctions.waitWebDriver(1000);
-			batchUserPage.mentorsInBatch.click();
+			BatchUserPageObj.mentorsInBatch.click();
 			
-			batchUserPage.updateMembersInBatch.click();
-			batchUserPage.membersInBatch.click();
+			BatchUserPageObj.updateMembersInBatch.click();
+			BatchUserPageObj.membersInBatch.click();
 			GenericFunctions.waitWebDriver(1500);
-			batchUserPage.updateMembersInBatch.click();
+			BatchUserPageObj.updateMembersInBatch.click();
 			GenericFunctions.waitWebDriver(1500);						
-			batchUserPage.updateBatch.click();
+			BatchUserPageObj.updateBatch.click();
 			GenericFunctions.waitWebDriver(4000);
 		} catch (Exception e) {
 			ExtentTestManager.getTest().log(LogStatus.FAIL,"Failed on updating the upcoming batch");
@@ -640,13 +654,13 @@ public class BatchUserPageObj extends BaseTest
 	public void verifyCreatedBatch() throws InterruptedException, Exception {									
 	try {
 		ExtentTestManager.getTest().log(LogStatus.INFO, "Verifying the Created Batch");
-		batchUserPage.workSpace.click();	
+		BatchUserPageObj.workSpace.click();	
 		GenericFunctions.waitWebDriver(1000);
-		batchUserPage.courseBatches.click();
+		BatchUserPageObj.courseBatches.click();
 		GenericFunctions.waitWebDriver(1000);
-		batchUserPage.batchesDropDown.click();
+		BatchUserPageObj.batchesDropDown.click();
 		GenericFunctions.waitWebDriver(1500);
-		String content = batchUserPage.batchContent.getText();
+		String content = BatchUserPageObj.batchContent.getText();
 		System.out.println(content);
 		 String newLine = System.getProperty("line.separator");
 		 //System.out.println("line 1" + newLine + "line2");
@@ -673,9 +687,9 @@ public class BatchUserPageObj extends BaseTest
 	try {
 		ExtentTestManager.getTest().log(LogStatus.INFO, "Verifying the Created Batch");
 		GenericFunctions.waitWebDriver(1500);
-		batchUserPage.headerCourse.click();
+		BatchUserPageObj.headerCourse.click();
 		GenericFunctions.waitWebDriver(1500);
-            if(batchUserPage.viewCourseStatsButton.isDisplayed())
+            if(BatchUserPageObj.viewCourseStatsButton.isDisplayed())
             {
             	Assert.assertTrue(true,"Invited mentor can see the course on his dashboard");
             	log.info("Invited mentor can see the course on his dashboard");

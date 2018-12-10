@@ -127,8 +127,8 @@ public class GetPageObj extends BaseTest{
 			try
 			{
 				//GenericFunctions.assertIfElementExists1(driver, XPATH, signUpPage.alertMessage);
-				GenericFunctions.waitForElementToAppear(signUpPage.alertMessage);
-				String alertText = signUpPage.alertMessage.getText();
+				GenericFunctions.waitForElementToAppear(signUpPage.alertMessage.get(0));
+				String alertText = signUpPage.alertMessage.get(0).getText();
 				GenericFunctions.waitWebDriver(1500);
 				System.out.println("Searched dial code in not available and "+alertText);						
 			}

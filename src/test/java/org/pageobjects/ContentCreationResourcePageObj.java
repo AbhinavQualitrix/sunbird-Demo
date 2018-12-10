@@ -239,8 +239,8 @@ public class ContentCreationResourcePageObj extends BaseTest
 				if(contentCreationResourcePage.showFilters.isDisplayed())
 				{
 					GenericFunctions.waitWebDriver(2000);
-				
-					
+
+
 					contentCreationResourcePage.showFilters.click();
 					GenericFunctions.waitForElementToAppear(contentCreationResourcePage.filterApplyButton);
 					if(contentCreationResourcePage.filterApplyButton.isDisplayed()&&contentCreationResourcePage.filterResetButton.isDisplayed())
@@ -395,18 +395,19 @@ public class ContentCreationResourcePageObj extends BaseTest
 			catch(Exception e)
 			{
 				ExtentTestManager.getTest().log(LogStatus.FAIL, "No Error while copying the content");
-				
+
 			}
-			
-				
-			GenericFunctions.refreshWebPage();
-			GenericFunctions.waitWebDriver(2000);
+
+
+			//GenericFunctions.refreshWebPage();
+			GenericFunctions.waitWebDriver(6000);
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitWebDriver(6500);
-			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.copiedContentName);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.copiedContentName);
 			String aBookname=contentCreationResourcePage.copiedContentName.getText();
 			System.out.println(aBookname);
-			if(aBookname.contains(searchedBookName))
+			String currentEditorUrl=driver.getCurrentUrl();
+			if(aBookname.contains(searchedBookName)&&currentEditorUrl.contains("Collection/draft"))
 			{
 				ExtentTestManager.getTest().log(LogStatus.PASS, "Content is copied sucessfully");
 				System.out.println(aBookname+" Content copied succesfully");
@@ -580,7 +581,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 		contentCreationResourcePage.checkContentIcon.click();
 		GenericFunctions.waitWebDriver(2000);
 		createUserPage.selectAppIcon.click();
-		GenericFunctions.waitWebDriver(500);
+		GenericFunctions.waitWebDriver(1000);
 	}
 
 	public void addSlides_Image_Text(int noOfSlides,int testCaseName)
@@ -617,7 +618,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			GenericFunctions.waitWebDriver(1000);
 			contentCreationResourcePage.propertiesSection.click();
 			GenericFunctions.captureScreenshotOnValidation();
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is able to view property section-completed Test case "+"testCaseName");
+			ExtentTestManager.getTest().log(LogStatus.PASS, "User is able to view property section-completed Test case "+"testCaseName");
 			contentCreationResourcePage.clickNextSlide.click();
 
 		}
@@ -694,17 +695,21 @@ public class ContentCreationResourcePageObj extends BaseTest
 				{
 					//contentResourcePage.contentPreiviewCompleteScreen.getText();
 					Assert.assertTrue(true);
-					ExtentTestManager.getTest().log(LogStatus.INFO, "User completed previewing of all the slides(10) from Begining - Completed Test case 120 and 121");
+					ExtentTestManager.getTest().log(LogStatus.PASS, "User completed previewing of all the slides(10) from Beginning - Completed Test case 120 and 121");
 
 					GenericFunctions.captureScreenshotOnValidation();
 				}
 
 			}
 			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.refreshWebPage();
-			GenericFunctions.waitForElementToAppear(createUserPage.editorCloseIcon);
-			createUserPage.editorCloseIcon.click();
-			GenericFunctions.waitWebDriver(2000);
+			//driver.get("https://staging.open-sunbird.org/workspace");
+			driver.navigate().to("https://staging.open-sunbird.org/workspace");
+			//driver.switchTo().defaultContent();
+			//GenericFunctions.refreshWebPage();
+
+			/*GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.editorCloseIcon);
+			createUserPage.editorCloseIcon.click();*/
+			GenericFunctions.waitWebDriver(4000);
 		}
 		catch(Exception e)
 		{
@@ -1181,7 +1186,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.contentCloseIcon);
 			//GenericFunctions.scrollToElement(contentCreationResourcePage.contentCloseIcon);
 			contentCreationResourcePage.contentCloseIcon.click();			
-			
+
 		}
 		catch(Exception e)
 		{
@@ -1191,7 +1196,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			Assert.fail("Failed to create new question set for resource "+e.getLocalizedMessage());
 		}
 	}
-	
+
 	public void resetAppliedFilters()
 	{
 		try
@@ -1258,7 +1263,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			createUserPage.selectSubject.click();	
 			createUserPage.clickOnSelectMedium.click();
 			GenericFunctions.waitWebDriver(2000);
-			
+
 			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.selectMedium);
 			//executor.executeScript("arguments[0].click();", createUserPage.selectMedium);
 			action.moveToElement(createUserPage.selectMedium).build().perform();
@@ -1274,9 +1279,9 @@ public class ContentCreationResourcePageObj extends BaseTest
 			createUserPage.conceptDoneButton.click();
 			GenericFunctions.waitWebDriver(1500);*/
 			GenericFunctions.waitWebDriver(1000);
-			
-			
-			
+
+
+
 
 
 			GenericFunctions.waitWebDriver(1000);
@@ -1284,13 +1289,13 @@ public class ContentCreationResourcePageObj extends BaseTest
 			createUserPage.clickOwner.click();
 			GenericFunctions.waitForElementToAppear(createUserPage.selectOwner);
 			createUserPage.selectOwner.click();
-			
+
 			createUserPageObj.selectTopic();
-			
+
 			GenericFunctions.waitWebDriver(1500);
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.saveButton);
 			createUserPage.saveButton.click();
-			
+
 			GenericFunctions.waitWebDriver(1500);
 		}
 		catch(Exception e)
@@ -1308,7 +1313,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 	{
 		try
 		{
-			
+
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying create new resource by giving an Unique Resource name");
 			System.out.println("Passed here");
 			objListOFTestDataForSunbird1= ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
@@ -1825,26 +1830,37 @@ public class ContentCreationResourcePageObj extends BaseTest
 	}
 	public void verifyCloseContentEditor()
 	{
+		String validationMsg="";
 		try
 		{
 			//objListOFTestDataForSunbird1= ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to verify that content editor can be closed");
 			GenericFunctions.waitForElementToAppear(createUserPage.editorCloseIcon);
 			createUserPage.editorCloseIcon.click();
-			GenericFunctions.waitWebDriver(1500);
-			String validationMsg=driver.switchTo().alert().getText();
-			driver.switchTo().alert().dismiss();
-			GenericFunctions.waitForElementToAppear(createUserPage.saveCourse);
 			GenericFunctions.waitWebDriver(2000);
-			createUserPage.saveCourse.click();
-			GenericFunctions.waitWebDriver(3000);
-			GenericFunctions.waitForElementToAppear(createUserPage.closeContentPopup);
-			GenericFunctions.waitWebDriver(1000);
-			createUserPage.closeContentPopup.click();
-			GenericFunctions.waitWebDriver(3000);
-			GenericFunctions.waitForElementToAppear(createUserPage.editorCloseIcon);
-			GenericFunctions.waitWebDriver(1000);
-			createUserPage.editorCloseIcon.click();
+
+			try
+			{
+
+
+				validationMsg=driver.switchTo().alert().getText();
+				driver.switchTo().alert().dismiss();
+				GenericFunctions.waitForElementToAppear(createUserPage.saveCourse);
+				GenericFunctions.waitWebDriver(2000);
+				createUserPage.saveCourse.click();
+				GenericFunctions.waitWebDriver(3000);
+				GenericFunctions.waitForElementToAppear(createUserPage.closeContentPopup);
+				GenericFunctions.waitWebDriver(1000);
+				createUserPage.closeContentPopup.click();
+				GenericFunctions.waitWebDriver(3000);
+				GenericFunctions.waitForElementToAppear(createUserPage.editorCloseIcon);
+				GenericFunctions.waitWebDriver(1000);
+				createUserPage.editorCloseIcon.click();
+			}
+			catch(Exception e)
+			{
+				System.out.println("Could not check for the Alert message");
+			}
 			GenericFunctions.waitWebDriver(3000);
 			Assert.assertTrue(true);
 			ExtentTestManager.getTest().log(LogStatus.PASS, "validated the message before saving the content, "+validationMsg+" is the Message");
@@ -1994,7 +2010,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 		}
 		return metadataPageDetails;
 	}
-	
+
 	public void uploadAudioForEveryone() throws InterruptedException
 	{
 		try
@@ -2008,15 +2024,15 @@ public class ContentCreationResourcePageObj extends BaseTest
 			}
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to upload an audio for resource");
 			GenericFunctions.waitWebDriver(2000);
-			
+
 			contentCreationResourcePage.addAudio.click();
 			GenericFunctions.waitWebDriver(1000);
-			
+
 			/*GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.clickAllAudio);
 			contentCreationResourcePage.clickAllAudio.click();
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.selectAudio_AllAudio);
 			contentCreationResourcePage.selectAudio_AllAudio.click();*/
-			
+
 			GenericFunctions.waitForElementToAppear(contentCreationResourcePage.btnUploadRecord);
 			contentCreationResourcePage.btnUploadRecord.click();
 			GenericFunctions.waitWebDriver(2000);
@@ -2029,15 +2045,15 @@ public class ContentCreationResourcePageObj extends BaseTest
 			contentCreationResourcePage.btnChooseFile.click();
 			String path=AllUploadingPaths.audioPath;
 			GenericFunctions.uploadFile(path);
-			
+
 			//String secondpath = "./UploadingDocuments/Uploading audios/"+AUDIO_UPLOAD;  
-			
+
 			//contentCreationResourcePage.rightBtnAvailable.click();
-			
+
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(contentCreationResourcePage.btnUploadAndUse);
 			contentCreationResourcePage.btnUploadAndUse.click();
-			
+
 			GenericFunctions.waitForElementToAppear	(contentCreationResourcePage.alertMessage);
 			String alertActualMessage = contentCreationResourcePage.alertMessage.getText();						
 			String alertExpectedMessage = "Audio successfully uploaded";			
@@ -2049,7 +2065,7 @@ public class ContentCreationResourcePageObj extends BaseTest
 			{
 				Assert.assertTrue(true);
 				ExtentTestManager.getTest().log(LogStatus.PASS, "Audio is uploaded sucesssfully to the resource");
-			
+
 			}GenericFunctions.waitWebDriver(3000);
 			System.out.println(alertActualMessage);
 			createUserPage.saveCourse.click();

@@ -1,17 +1,36 @@
 package org.pageobjects;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
+import java.awt.Robot;
+import java.awt.Window;
+import java.awt.event.KeyEvent;
+import java.lang.reflect.GenericSignatureFormatError;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.page.CreatorUserPage;
+import org.page.FlagReviewerPage;
+import org.page.LessonPlanPage;
+import org.page.PublicUserPage;
+import org.page.UploadOrgPage;
 import org.generic.ExtentTestManager;
 import org.generic.GenericFunctions;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.page.LessonPlanPage;
+import org.generic.GetExcelFileData;
+import org.generic.ReadTestDataFromExcel;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
@@ -23,8 +42,8 @@ public class LessonPlanPageObj extends BaseTest
 
 {
 			WebDriverWait wait = new WebDriverWait(driver,20);
-			LessonPlanPage lessonPlanPage=PageFactory.initElements(driver, LessonPlanPage.class);
-			static Logger log = Logger.getLogger(LessonPlanPageObj.class.getName());
+			LessonPlanPage LessonPlanPageObj=PageFactory.initElements(driver, LessonPlanPage.class);
+			static Logger log = Logger.getLogger(UploadOrgPage.class.getName());
 			List <TestDataForSunbird> objListOFTestDataForSunbird= null ;
 			GenericFunctions genereicFunction = new GenericFunctions();
 			Actions action = new Actions(driver);
@@ -38,51 +57,55 @@ public class LessonPlanPageObj extends BaseTest
 				{	
 				ExtentTestManager.getTest().log(LogStatus.INFO, "To search Lesson Plan in Library and copy it");
 				
-	//				GenericFunctions.waitForElementToAppear(createUserPage.closePopUp);	
-	//				createUserPage.closePopUp.click();
-	//				GenericFunctions.waitWebDriver(2000);
-					GenericFunctions.refreshWebPage();
-					GenericFunctions.waitForElementToAppear(lessonPlanPage.headerLibrary);	
-					lessonPlanPage.headerLibrary.click();
-					GenericFunctions.waitWebDriver(4000);
-					GenericFunctions.waitForElementToAppear(lessonPlanPage.mainSearch);				
-					lessonPlanPage.mainSearch.sendKeys("Lesson Plan");
+						try{
+						if(LessonPlanPageObj.closePopUp.isDisplayed())
+						{
+						LessonPlanPageObj.closePopUp.click();
+						GenericFunctions.waitWebDriver(2000);
+						GenericFunctions.waitForElementToAppear(LessonPlanPageObj.headerLibrary);	
+						LessonPlanPageObj.headerLibrary.click();
+						}
+						}
+						catch(Exception e)
+						{
+						GenericFunctions.waitForElementToAppear(LessonPlanPageObj.headerLibrary);	
+						LessonPlanPageObj.headerLibrary.click();
+						GenericFunctions.waitWebDriver(4000);	
+						}
+
+					GenericFunctions.waitForElementToAppear(LessonPlanPageObj.mainSearch);				
+					LessonPlanPageObj.mainSearch.sendKeys("Lesson Plan");
 					GenericFunctions.waitWebDriver(2000);
-					GenericFunctions.waitForElementToAppear(lessonPlanPage.mainSearchIcon);		
-					lessonPlanPage.mainSearchIcon.click();
+					GenericFunctions.waitForElementToAppear(LessonPlanPageObj.mainSearchIcon);		
+					LessonPlanPageObj.mainSearchIcon.click();
 					GenericFunctions.waitWebDriver(2000);
-					GenericFunctions.waitForElementToAppear(lessonPlanPage.lessonPlan);				
-					lessonPlanPage.lessonPlan.click();
+					GenericFunctions.waitForElementToAppear(LessonPlanPageObj.lessonPlan);				
+					LessonPlanPageObj.lessonPlan.click();
 					GenericFunctions.waitWebDriver(2000);
-					GenericFunctions.waitForElementToAppear(lessonPlanPage.copyLessonPlan);				
-					lessonPlanPage.copyLessonPlan.click();
+					GenericFunctions.waitForElementToAppear(LessonPlanPageObj.copyLessonPlan);				
+					LessonPlanPageObj.copyLessonPlan.click();
 					GenericFunctions.waitWebDriver(4000);
 					Assert.assertTrue(true);
 					System.out.println("Lesson Plan Copied");
-					if(lessonPlanPage.copyLessonPlan.isDisplayed())
-					{
-						lessonPlanPage.copyLessonPlan.click();
-						GenericFunctions.waitWebDriver(2000);
-						Assert.assertTrue(true," Lesson Plan Copied Successfully");
-						System.out.println("Lesson Plan Copied Successfully");
-						log.info(" Lesson Plan Copied Successfully");
-					}
-					else
-					{
-						System.out.println("Lesson Plan Could not be copied");
-						log.info("Lesson Plan Could not be copied");
-					}
+					LessonPlanPageObj.copyLessonPlan.click();
+					GenericFunctions.waitWebDriver(2000);
+					Assert.assertTrue(true," Lesson Plan Copied Successfully");
+					System.out.println("Lesson Plan Copied Successfully");
+					log.info(" Lesson Plan Copied Successfully");
 					
-					GenericFunctions.waitForElementToAppear(lessonPlanPage.editDetails);	
+
 					
-					if(lessonPlanPage.editDetails.isDisplayed())
+					GenericFunctions.waitForElementToAppear(LessonPlanPageObj.editDetails);	
+					try{
+					if(LessonPlanPageObj.editDetails.isDisplayed())
 					{
 						Assert.assertTrue(true,"On copy icon click user is redirected to collection editor with newly copied content in edit mode successfully");
 						System.out.println("On copy icon click user is redirected to collection editor with newly copied content in edit mode successfully");
 						log.info("On copy icon click user is redirected to collection editor with newly copied content in edit mode successfully");
 					}
+					}
 					
-				else
+				catch(Exception e)
 					{
 						System.out.println("Either User is NOT REDIRECTED properly or NOT in EDIT mode");
 						log.info("Either User is NOT REDIRECTED properly or NOT in EDIT mode");
@@ -109,11 +132,22 @@ public class LessonPlanPageObj extends BaseTest
 				{	
 				GenericFunctions.refreshWebPage();
 				ExtentTestManager.getTest().log(LogStatus.INFO, "To verify navigating to workspace");
-	//			GenericFunctions.waitForElementToAppear(lessonPlanPage.closePopUp);
-	//			lessonPlanPage.closePopUp.click();
-				GenericFunctions.waitWebDriver(2000);
-				lessonPlanPage.workSpace.click();
-				GenericFunctions.waitWebDriver(2000);
+					try{
+					if(LessonPlanPageObj.closePopUp.isDisplayed())
+					{
+					LessonPlanPageObj.closePopUp.click();
+					GenericFunctions.waitWebDriver(2000);
+					GenericFunctions.waitForElementToAppear(LessonPlanPageObj.headerLibrary);	
+					LessonPlanPageObj.workSpace.click();
+					}
+					}
+					catch(Exception e)
+					{
+					GenericFunctions.waitForElementToAppear(LessonPlanPageObj.headerLibrary);	
+					LessonPlanPageObj.workSpace.click();
+					GenericFunctions.waitWebDriver(4000);	
+					}
+					
 					
 				}
 				catch (Exception e) 
@@ -131,14 +165,14 @@ public class LessonPlanPageObj extends BaseTest
 				
 				try{
 					ExtentTestManager.getTest().log(LogStatus.INFO, "To verify navigating to workspace");
-					lessonPlanPage.LessonPlan.click();
+					LessonPlanPageObj.LessonPlan.click();
 					GenericFunctions.waitWebDriver(2000);
 					
 					String LessonPlanTitle = "TestAutomationqwerty";
-					lessonPlanPage.LessonPlanNamePlaceHolder.click();
-					lessonPlanPage.LessonPlanNamePlaceHolder.sendKeys(LessonPlanTitle);				
+					LessonPlanPageObj.LessonPlanNamePlaceHolder.click();
+					LessonPlanPageObj.LessonPlanNamePlaceHolder.sendKeys(LessonPlanTitle);				
 					GenericFunctions.waitWebDriver(1000);					
-					lessonPlanPage.startCreatingButton.click();
+					LessonPlanPageObj.startCreatingButton.click();
 					GenericFunctions.waitWebDriver(2000);
 				    }
 				  catch(Exception e)
@@ -158,32 +192,32 @@ public class LessonPlanPageObj extends BaseTest
 						ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create 3 child nodes");
 						driver.switchTo().frame(0);
 						// Creating 1st child node
-						GenericFunctions.waitForElementToAppearOnScreen(lessonPlanPage.newChildButton);
-						lessonPlanPage.newChildButton.click();
+						GenericFunctions.waitForElementToAppearOnScreen(LessonPlanPageObj.newChildButton);
+						LessonPlanPageObj.newChildButton.click();
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.childUnitTitle.click();
-						lessonPlanPage.childUnitTitle.clear();
+						LessonPlanPageObj.childUnitTitle.click();
+						LessonPlanPageObj.childUnitTitle.clear();
 						GenericFunctions.waitWebDriver(1000);
 						
-						lessonPlanPage.childUnitTitle.sendKeys("AutomationTitle1");
+						LessonPlanPageObj.childUnitTitle.sendKeys("AutomationTitle1");
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.descriptionPlaceHolder.sendKeys("Description1");
+						LessonPlanPageObj.descriptionPlaceHolder.sendKeys("Description1");
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.addNotesPlaceHolder.click();
-						lessonPlanPage.addNotesPlaceHolder.sendKeys("Notes1");
+						LessonPlanPageObj.addNotesPlaceHolder.click();
+						LessonPlanPageObj.addNotesPlaceHolder.sendKeys("Notes1");
 						
-						lessonPlanPage.addResource.click();
+						LessonPlanPageObj.addResource.click();
 						GenericFunctions.waitWebDriver(1000);
 						
-						lessonPlanPage.latestResourceCheckbox.click();
+						LessonPlanPageObj.latestResourceCheckbox.click();
 						GenericFunctions.waitWebDriver(1000);
 						
-						if(lessonPlanPage.proceedButton.isDisplayed())
+						if(LessonPlanPageObj.proceedButton.isDisplayed())
 						{
-							lessonPlanPage.proceedButton.click();
+							LessonPlanPageObj.proceedButton.click();
 							GenericFunctions.waitWebDriver(2000);
 							Assert.assertTrue(true,"User is able to create the first child node successfully");
 							System.out.println("User is able to create the first child node successfully");
@@ -199,32 +233,32 @@ public class LessonPlanPageObj extends BaseTest
 						
 						// Creating 2nd child node					
 						
-						lessonPlanPage.newChildButton.click();
+						LessonPlanPageObj.newChildButton.click();
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.childUnitTitle.click();
-						lessonPlanPage.childUnitTitle.clear();
+						LessonPlanPageObj.childUnitTitle.click();
+						LessonPlanPageObj.childUnitTitle.clear();
 						GenericFunctions.waitWebDriver(1000);
 						
-						lessonPlanPage.childUnitTitle.sendKeys("AutomationTitle2");
+						LessonPlanPageObj.childUnitTitle.sendKeys("AutomationTitle2");
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.descriptionPlaceHolder.click();
-						lessonPlanPage.descriptionPlaceHolder.sendKeys("Description2");
+						LessonPlanPageObj.descriptionPlaceHolder.click();
+						LessonPlanPageObj.descriptionPlaceHolder.sendKeys("Description2");
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.addNotesPlaceHolder.click();
-						lessonPlanPage.addNotesPlaceHolder.sendKeys("Notes2");
+						LessonPlanPageObj.addNotesPlaceHolder.click();
+						LessonPlanPageObj.addNotesPlaceHolder.sendKeys("Notes2");
 						
-						lessonPlanPage.addResource.click();
+						LessonPlanPageObj.addResource.click();
 						GenericFunctions.waitWebDriver(1000);
 						
-						lessonPlanPage.latestResourceCheckbox.click();
+						LessonPlanPageObj.latestResourceCheckbox.click();
 						GenericFunctions.waitWebDriver(1000);
 						
-						if(lessonPlanPage.proceedButton.isDisplayed())
+						if(LessonPlanPageObj.proceedButton.isDisplayed())
 						{
-							lessonPlanPage.proceedButton.click();
+							LessonPlanPageObj.proceedButton.click();
 							GenericFunctions.waitWebDriver(2000);
 							Assert.assertTrue(true,"User is able to create the second child node successfully");
 							System.out.println("User is able to create the second child node successfully");
@@ -240,32 +274,32 @@ public class LessonPlanPageObj extends BaseTest
 						
 						// Creating 3d child node					
 						
-						lessonPlanPage.newChildButton.click();
+						LessonPlanPageObj.newChildButton.click();
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.childUnitTitle.click();
-						lessonPlanPage.childUnitTitle.clear();
+						LessonPlanPageObj.childUnitTitle.click();
+						LessonPlanPageObj.childUnitTitle.clear();
 						GenericFunctions.waitWebDriver(1000);
 						
-						lessonPlanPage.childUnitTitle.sendKeys("AutomationTitle3");
+						LessonPlanPageObj.childUnitTitle.sendKeys("AutomationTitle3");
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.descriptionPlaceHolder.click();
-						lessonPlanPage.descriptionPlaceHolder.sendKeys("Description3");
+						LessonPlanPageObj.descriptionPlaceHolder.click();
+						LessonPlanPageObj.descriptionPlaceHolder.sendKeys("Description3");
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.addNotesPlaceHolder.click();
-						lessonPlanPage.addNotesPlaceHolder.sendKeys("Notes3");
+						LessonPlanPageObj.addNotesPlaceHolder.click();
+						LessonPlanPageObj.addNotesPlaceHolder.sendKeys("Notes3");
 						
-						lessonPlanPage.addResource.click();
+						LessonPlanPageObj.addResource.click();
 						GenericFunctions.waitWebDriver(1000);
 						
-						lessonPlanPage.latestResourceCheckbox.click();
+						LessonPlanPageObj.latestResourceCheckbox.click();
 						GenericFunctions.waitWebDriver(1000);
 						
-						if(lessonPlanPage.proceedButton.isDisplayed())
+						if(LessonPlanPageObj.proceedButton.isDisplayed())
 						{
-							lessonPlanPage.proceedButton.click();
+							LessonPlanPageObj.proceedButton.click();
 							GenericFunctions.waitWebDriver(2000);
 							Assert.assertTrue(true,"User is able to create the third child node successfully");
 							System.out.println("User is able to create the third child node successfully");
@@ -297,66 +331,66 @@ public class LessonPlanPageObj extends BaseTest
 					ExtentTestManager.getTest().log(LogStatus.INFO, "To verify creating a lesson plan with three resources");
 					// Creating 1st child node
 					driver.switchTo().frame(0);
-					GenericFunctions.waitForElementToAppearOnScreen(lessonPlanPage.newChildButton);
-					lessonPlanPage.newChildButton.click();
+					GenericFunctions.waitForElementToAppearOnScreen(LessonPlanPageObj.newChildButton);
+					LessonPlanPageObj.newChildButton.click();
 					GenericFunctions.waitWebDriver(2000);
 					
-					lessonPlanPage.childUnitTitle.click();
-					lessonPlanPage.childUnitTitle.clear();
+					LessonPlanPageObj.childUnitTitle.click();
+					LessonPlanPageObj.childUnitTitle.clear();
 					GenericFunctions.waitWebDriver(1000);
 					
-					lessonPlanPage.childUnitTitle.sendKeys("AutomationTitle1");
+					LessonPlanPageObj.childUnitTitle.sendKeys("AutomationTitle1");
 					GenericFunctions.waitWebDriver(2000);
 					
-					lessonPlanPage.descriptionPlaceHolder.click();
-					lessonPlanPage.descriptionPlaceHolder.sendKeys("Description1");
+					LessonPlanPageObj.descriptionPlaceHolder.click();
+					LessonPlanPageObj.descriptionPlaceHolder.sendKeys("Description1");
 					GenericFunctions.waitWebDriver(2000);
 					
-					lessonPlanPage.addNotesPlaceHolder.click();
-					lessonPlanPage.addNotesPlaceHolder.sendKeys("Notes1");
+					LessonPlanPageObj.addNotesPlaceHolder.click();
+					LessonPlanPageObj.addNotesPlaceHolder.sendKeys("Notes1");
 					
-					lessonPlanPage.addResource.click();
+					LessonPlanPageObj.addResource.click();
 					GenericFunctions.waitWebDriver(1000);
 					
-					lessonPlanPage.latestResourceCheckbox.click();
+					LessonPlanPageObj.latestResourceCheckbox.click();
 					GenericFunctions.waitWebDriver(1000);
 										
-					lessonPlanPage.secondResourceCheckbox.click();
+					LessonPlanPageObj.secondResourceCheckbox.click();
 					GenericFunctions.waitWebDriver(1000);
 					
-					lessonPlanPage.thirdResourceCheckbox.click();
+					LessonPlanPageObj.thirdResourceCheckbox.click();
 					GenericFunctions.waitWebDriver(1000);					
 					
-					lessonPlanPage.proceedButton.click();
+					LessonPlanPageObj.proceedButton.click();
 					GenericFunctions.waitWebDriver(2000);
 					
-					lessonPlanPage.firstResourcePreview.click();
+					LessonPlanPageObj.firstResourcePreview.click();
 					GenericFunctions.waitWebDriver(2000);
-					if(lessonPlanPage.contentPreview.isDisplayed())
+					if(LessonPlanPageObj.contentPreview.isDisplayed())
 					{
 					Assert.assertTrue(true,"User is able to successfully preview the lesson plan before sending it to review");
 					System.out.println("User is able to successfully preview the lesson plan before sending it to review");
 					log.info("User is able to successfully preview the lesson plan before sending it to review");
 					}
 					
-					lessonPlanPage.lessonPlanTitle.click();
+					LessonPlanPageObj.lessonPlanTitle.click();
 					GenericFunctions.waitWebDriver(2000);
-					lessonPlanPage.secondResourceDelete.click();
+					LessonPlanPageObj.secondResourceDelete.click();
 					GenericFunctions.waitWebDriver(2000);
 					
-					lessonPlanPage.confirmDelete.click();
+					LessonPlanPageObj.confirmDelete.click();
 					GenericFunctions.waitWebDriver(2000);
 					Assert.assertTrue(true,"User is able to successfully remove resource from the lesson plan");
 					System.out.println("User is able to successfully remove resource from the lesson plan");
 					log.info("User is able to successfully remove resource from the lesson plan");
 					
-					lessonPlanPage.secondResourceDelete.click();
+					LessonPlanPageObj.secondResourceDelete.click();
 					GenericFunctions.waitWebDriver(2000);
 					Assert.assertTrue(true,"Resource stays in the lessonplan when No selected on the confirmation pop up");
 					System.out.println("Resource stays in the lessonplan when No selected on the confirmation pop up");
 					log.info("Resource stays in the lessonplan when No selected on the confirmation pop up");
 					
-					lessonPlanPage.closeDialog.click();
+					LessonPlanPageObj.closeDialog.click();
 					GenericFunctions.waitWebDriver(2000);	
 				   }
 				  catch(Exception e)
@@ -374,77 +408,77 @@ public class LessonPlanPageObj extends BaseTest
 				
 			 try {  
 				    ExtentTestManager.getTest().log(LogStatus.INFO, "To verify editing the lesson plan details and save");
-					lessonPlanPage.editDetails.click();
+					LessonPlanPageObj.editDetails.click();
 					GenericFunctions.waitWebDriver(1000);	
 					//driver.switchTo().frame(0);
-					lessonPlanPage.editDetailsTitle.click();
-					lessonPlanPage.editDetailsTitle.clear();
-					lessonPlanPage.editDetailsTitle.sendKeys("AUTOMATION123");
+					LessonPlanPageObj.editDetailsTitle.click();
+					LessonPlanPageObj.editDetailsTitle.clear();
+					LessonPlanPageObj.editDetailsTitle.sendKeys("AUTOMATION123");
 					GenericFunctions.waitWebDriver(1000);
 					
-					lessonPlanPage.editDetailsDescription.click();
-					lessonPlanPage.editDetailsDescription.clear();
-					lessonPlanPage.editDetailsDescription.sendKeys("Description1");
+					LessonPlanPageObj.editDetailsDescription.click();
+					LessonPlanPageObj.editDetailsDescription.clear();
+					LessonPlanPageObj.editDetailsDescription.sendKeys("Description1");
 					GenericFunctions.waitWebDriver(1000);
 					
-					lessonPlanPage.editDetailsKeyword.click();
-					lessonPlanPage.editDetailsKeyword.sendKeys("Keyword1");
+					LessonPlanPageObj.editDetailsKeyword.click();
+					LessonPlanPageObj.editDetailsKeyword.sendKeys("Keyword1");
 					GenericFunctions.waitWebDriver(1000);					
 					
-					GenericFunctions.waitTillTheElementIsVisibleAndClickable(lessonPlanPage.editDetailsCurriculum);
-					lessonPlanPage.editDetailsCurriculum.click();
+					GenericFunctions.waitTillTheElementIsVisibleAndClickable(LessonPlanPageObj.editDetailsCurriculum);
+					LessonPlanPageObj.editDetailsCurriculum.click();
 					GenericFunctions.waitWebDriver(2000);					
-					GenericFunctions.waitTillTheElementIsVisibleAndClickable(lessonPlanPage.editDetailsRajasthan);
-					lessonPlanPage.editDetailsRajasthan.isSelected();
+					GenericFunctions.waitTillTheElementIsVisibleAndClickable(LessonPlanPageObj.editDetailsRajasthan);
+					LessonPlanPageObj.editDetailsRajasthan.isSelected();
 					GenericFunctions.waitWebDriver(2000);
 					
-					GenericFunctions.waitTillTheElementIsVisibleAndClickable(lessonPlanPage.editDetailsClass);
-					lessonPlanPage.editDetailsClass.click();
+					GenericFunctions.waitTillTheElementIsVisibleAndClickable(LessonPlanPageObj.editDetailsClass);
+					LessonPlanPageObj.editDetailsClass.click();
 					GenericFunctions.waitWebDriver(1000);
-					GenericFunctions.waitTillTheElementIsVisibleAndClickable(lessonPlanPage.editDetailsClass10);
-					lessonPlanPage.editDetailsClass10.click();
-					GenericFunctions.waitWebDriver(1000);
-					
-					GenericFunctions.waitTillTheElementIsVisibleAndClickable(lessonPlanPage.editDetailsSubject);
-					lessonPlanPage.editDetailsSubject.click();
-					GenericFunctions.waitWebDriver(1000);
-					GenericFunctions.waitTillTheElementIsVisibleAndClickable(lessonPlanPage.editDetailsMathematics);
-					lessonPlanPage.editDetailsMathematics.click();
+					GenericFunctions.waitTillTheElementIsVisibleAndClickable(LessonPlanPageObj.editDetailsClass10);
+					LessonPlanPageObj.editDetailsClass10.click();
 					GenericFunctions.waitWebDriver(1000);
 					
-					GenericFunctions.waitTillTheElementIsVisibleAndClickable(lessonPlanPage.editDetailsMedium);
-					lessonPlanPage.editDetailsMedium.click();
+					GenericFunctions.waitTillTheElementIsVisibleAndClickable(LessonPlanPageObj.editDetailsSubject);
+					LessonPlanPageObj.editDetailsSubject.click();
 					GenericFunctions.waitWebDriver(1000);
-					GenericFunctions.waitTillTheElementIsVisibleAndClickable(lessonPlanPage.editDetailsHindi);
-					lessonPlanPage.editDetailsHindi.click();
+					GenericFunctions.waitTillTheElementIsVisibleAndClickable(LessonPlanPageObj.editDetailsMathematics);
+					LessonPlanPageObj.editDetailsMathematics.click();
 					GenericFunctions.waitWebDriver(1000);
 					
-					GenericFunctions.waitTillTheElementIsVisibleAndClickable(lessonPlanPage.editDetailsAudience);
-					lessonPlanPage.editDetailsAudience.click();
+					GenericFunctions.waitTillTheElementIsVisibleAndClickable(LessonPlanPageObj.editDetailsMedium);
+					LessonPlanPageObj.editDetailsMedium.click();
+					GenericFunctions.waitWebDriver(1000);
+					GenericFunctions.waitTillTheElementIsVisibleAndClickable(LessonPlanPageObj.editDetailsHindi);
+					LessonPlanPageObj.editDetailsHindi.click();
+					GenericFunctions.waitWebDriver(1000);
+					
+					GenericFunctions.waitTillTheElementIsVisibleAndClickable(LessonPlanPageObj.editDetailsAudience);
+					LessonPlanPageObj.editDetailsAudience.click();
 					GenericFunctions.waitWebDriver(1000);					
-					GenericFunctions.waitTillTheElementIsVisibleAndClickable(lessonPlanPage.editDetailsInstructor);
-					lessonPlanPage.editDetailsInstructor.click();
+					GenericFunctions.waitTillTheElementIsVisibleAndClickable(LessonPlanPageObj.editDetailsInstructor);
+					LessonPlanPageObj.editDetailsInstructor.click();
 					GenericFunctions.waitWebDriver(1000);
 					
-					GenericFunctions.waitTillTheElementIsVisibleAndClickable(lessonPlanPage.editDetailsOwner);
-					GenericFunctions.scrollToElement(lessonPlanPage.editDetailsOwner);
-					lessonPlanPage.editDetailsOwner.click();
+					GenericFunctions.waitTillTheElementIsVisibleAndClickable(LessonPlanPageObj.editDetailsOwner);
+					GenericFunctions.scrollToElement(LessonPlanPageObj.editDetailsOwner);
+					LessonPlanPageObj.editDetailsOwner.click();
 					GenericFunctions.waitWebDriver(2000);
-					GenericFunctions.waitTillTheElementIsVisibleAndClickable(lessonPlanPage.editDetailsTestAutoOrg);
-					lessonPlanPage.editDetailsTestAutoOrg.click();
+					GenericFunctions.waitTillTheElementIsVisibleAndClickable(LessonPlanPageObj.editDetailsTestAutoOrg);
+					LessonPlanPageObj.editDetailsTestAutoOrg.click();
 					GenericFunctions.waitWebDriver(1000);
 					
-					lessonPlanPage.editDetailsSave.click();
+					LessonPlanPageObj.editDetailsSave.click();
 					GenericFunctions.waitWebDriver(1000);	
 					Assert.assertTrue(true,"User is able to successfully edit the lesson plan before sending it for review");
 					System.out.println("User is able to successfully edit the lesson plan before sending it for review");
 					log.info("User is able to successfully edit the lesson plan before sending it for review");
 					GenericFunctions.waitWebDriver(2000);
 					
-					lessonPlanPage.saveClose.click();
+					LessonPlanPageObj.saveClose.click();
 					GenericFunctions.waitWebDriver(1000);
 					
-					lessonPlanPage.editDetails.click();
+					LessonPlanPageObj.editDetails.click();
 					Assert.assertTrue(true,"User is able to see the updated data on clicking EDIT DETAILS for the second time");
 					System.out.println("User is able to see the updated data on clicking EDIT DETAILS for the second time");
 					log.info("User is able to see the updated data on clicking EDIT DETAILS for the second time");
@@ -469,39 +503,39 @@ public class LessonPlanPageObj extends BaseTest
 				
 				 try {  
 					    ExtentTestManager.getTest().log(LogStatus.INFO, "To verify deleting the created lesson plan");
-						lessonPlanPage.save.click();
+						LessonPlanPageObj.save.click();
 						GenericFunctions.waitWebDriver(2000);
-						GenericFunctions.waitTillTheElementIsVisibleAndClickable(lessonPlanPage.limitedShareDropdown);
-						lessonPlanPage.limitedShareDropdown.click();
+						GenericFunctions.waitTillTheElementIsVisibleAndClickable(LessonPlanPageObj.limitedShareDropdown);
+						LessonPlanPageObj.limitedShareDropdown.click();
 						GenericFunctions.waitWebDriver(1000);
-						GenericFunctions.waitTillTheElementIsVisibleAndClickable(lessonPlanPage.limitedSharing);
-						lessonPlanPage.limitedSharing.click();
+						GenericFunctions.waitTillTheElementIsVisibleAndClickable(LessonPlanPageObj.limitedSharing);
+						LessonPlanPageObj.limitedSharing.click();
 						GenericFunctions.waitWebDriver(2000);
-						lessonPlanPage.limitedPublishingSection.click();
+						LessonPlanPageObj.limitedPublishingSection.click();
 						GenericFunctions.waitWebDriver(2000);
-						String publishedContentTitle = lessonPlanPage.publishedContentTitle.getText();
+						String publishedContentTitle = LessonPlanPageObj.publishedContentTitle.getText();
 						if(publishedContentTitle.equals("AutomationTitle1"))
 						{
-						GenericFunctions.waitTillTheElementIsVisibleAndClickable(lessonPlanPage.shareIcon);
-						lessonPlanPage.shareIcon.click();
+						GenericFunctions.waitTillTheElementIsVisibleAndClickable(LessonPlanPageObj.shareIcon);
+						LessonPlanPageObj.shareIcon.click();
 						Assert.assertTrue(true,"Lesson plan is displayed under limited publishing section successfully");
 						System.out.println("Lesson plan is displayed under limited publishing section successfully");
 						log.info("Lesson plan is displayed under limited publishing section successfully");
 						
 						GenericFunctions.waitWebDriver(2000);
-						lessonPlanPage.copyLink.click();
+						LessonPlanPageObj.copyLink.click();
 						GenericFunctions.waitWebDriver(2000);
-						lessonPlanPage.closeSharePopup.click();
+						LessonPlanPageObj.closeSharePopup.click();
 						Assert.assertTrue(true,"Share popup is correctly displayed");
 						System.out.println("Share popup is correctly displayed");
 						log.info("Share popup is correctly displayed");
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.lessonPlanTrash.click();
+						LessonPlanPageObj.lessonPlanTrash.click();
 						GenericFunctions.waitWebDriver(2000);
-						String deletesLessonPlan = lessonPlanPage.nameOfLessonPlan.getText();
+						String deletesLessonPlan = LessonPlanPageObj.nameOfLessonPlan.getText();
 						GenericFunctions.waitWebDriver(2000);
-						lessonPlanPage.deleteConfirmYes.click();
+						LessonPlanPageObj.deleteConfirmYes.click();
 						GenericFunctions.waitWebDriver(2000);
 						
 						
@@ -527,12 +561,12 @@ public class LessonPlanPageObj extends BaseTest
 						log.info("Content is accessible from the link shared");
 						
 						
-						lessonPlanPage.workSpace.click();
+						LessonPlanPageObj.workSpace.click();
 						GenericFunctions.waitWebDriver(2000);
-						lessonPlanPage.allMyContent.click();
+						LessonPlanPageObj.allMyContent.click();
 						GenericFunctions.waitWebDriver(2000);
-						lessonPlanPage.searchContent.click();
-						lessonPlanPage.searchContent.sendKeys(deletesLessonPlan);
+						LessonPlanPageObj.searchContent.click();
+						LessonPlanPageObj.searchContent.sendKeys(deletesLessonPlan);
 						GenericFunctions.waitWebDriver(2000);
 						Assert.assertTrue(true,"Content is successfully removed from the AllMyContent Section");
 						System.out.println("Content is successfully removed from the AllMyContent Section");
@@ -556,72 +590,72 @@ public class LessonPlanPageObj extends BaseTest
 				
 					 try{
 						ExtentTestManager.getTest().log(LogStatus.INFO, "To verify saving and sending the Lesson Plan for review");
-						lessonPlanPage.save.click();
+						LessonPlanPageObj.save.click();
 						GenericFunctions.waitWebDriver(5000);
-						GenericFunctions.waitTillTheElementIsVisibleAndClickable(lessonPlanPage.sendForReview);
-						lessonPlanPage.sendForReview.click();
+						GenericFunctions.waitTillTheElementIsVisibleAndClickable(LessonPlanPageObj.sendForReview);
+						LessonPlanPageObj.sendForReview.click();
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.sendaddImage.click();
+						LessonPlanPageObj.sendaddImage.click();
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.sendThumbnail1.click();
+						LessonPlanPageObj.sendThumbnail1.click();
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.sendSelect.click();
+						LessonPlanPageObj.sendSelect.click();
 						GenericFunctions.waitWebDriver(2000);					
 						
-						lessonPlanPage.sendEditDetailsTitle.click();
-						lessonPlanPage.sendEditDetailsTitle.clear();
-						lessonPlanPage.sendEditDetailsTitle.sendKeys("AutoTitle");
+						LessonPlanPageObj.sendEditDetailsTitle.click();
+						LessonPlanPageObj.sendEditDetailsTitle.clear();
+						LessonPlanPageObj.sendEditDetailsTitle.sendKeys("AutoTitle");
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.sendEditDetailsDescription.click();
-						lessonPlanPage.sendEditDetailsDescription.clear();
-						lessonPlanPage.sendEditDetailsDescription.sendKeys("AutoDescription");
+						LessonPlanPageObj.sendEditDetailsDescription.click();
+						LessonPlanPageObj.sendEditDetailsDescription.clear();
+						LessonPlanPageObj.sendEditDetailsDescription.sendKeys("AutoDescription");
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.sendKeywords.click();
-						lessonPlanPage.sendKeywords.sendKeys("AutoKeyword");
+						LessonPlanPageObj.sendKeywords.click();
+						LessonPlanPageObj.sendKeywords.sendKeys("AutoKeyword");
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.sendCurriculum.click();
+						LessonPlanPageObj.sendCurriculum.click();
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.sendRajasthan.click();
+						LessonPlanPageObj.sendRajasthan.click();
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.sendClass.click();
+						LessonPlanPageObj.sendClass.click();
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.sendClass10.click();
+						LessonPlanPageObj.sendClass10.click();
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.sendSubject.click();
+						LessonPlanPageObj.sendSubject.click();
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.sendScience.click();
+						LessonPlanPageObj.sendScience.click();
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.sendMedium.click();
+						LessonPlanPageObj.sendMedium.click();
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.sendEnglish.click();
+						LessonPlanPageObj.sendEnglish.click();
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.sendAudience.click();
+						LessonPlanPageObj.sendAudience.click();
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.sendInstructor.click();
+						LessonPlanPageObj.sendInstructor.click();
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.sendOwner.click();
+						LessonPlanPageObj.sendOwner.click();
 						GenericFunctions.waitWebDriver(2000);
 						
-						lessonPlanPage.sendTestContentcreator.click();
+						LessonPlanPageObj.sendTestContentcreator.click();
 						GenericFunctions.waitWebDriver(2000);
 	
-						lessonPlanPage.sendSave.click();
+						LessonPlanPageObj.sendSave.click();
 						GenericFunctions.waitWebDriver(2000);
 					    }	
 					 catch(Exception e)
@@ -642,31 +676,31 @@ public class LessonPlanPageObj extends BaseTest
 				ExtentTestManager.getTest().log(LogStatus.INFO, "To verify creating a lesson plan");
 				// Creating 1st child node
 				driver.switchTo().frame(0);
-				GenericFunctions.waitForElementToAppearOnScreen(lessonPlanPage.newChildButton);
-				lessonPlanPage.newChildButton.click();
+				GenericFunctions.waitForElementToAppearOnScreen(LessonPlanPageObj.newChildButton);
+				LessonPlanPageObj.newChildButton.click();
 				GenericFunctions.waitWebDriver(2000);
 				
-				lessonPlanPage.childUnitTitle.click();
-				lessonPlanPage.childUnitTitle.clear();
+				LessonPlanPageObj.childUnitTitle.click();
+				LessonPlanPageObj.childUnitTitle.clear();
 				GenericFunctions.waitWebDriver(1000);
 				
-				lessonPlanPage.childUnitTitle.sendKeys("AutomationTitle1");
+				LessonPlanPageObj.childUnitTitle.sendKeys("AutomationTitle1");
 				GenericFunctions.waitWebDriver(2000);
 				
-				lessonPlanPage.descriptionPlaceHolder.click();
-				lessonPlanPage.descriptionPlaceHolder.sendKeys("Description1");
+				LessonPlanPageObj.descriptionPlaceHolder.click();
+				LessonPlanPageObj.descriptionPlaceHolder.sendKeys("Description1");
 				GenericFunctions.waitWebDriver(2000);
 				
-				lessonPlanPage.addNotesPlaceHolder.click();
-				lessonPlanPage.addNotesPlaceHolder.sendKeys("Notes1");
+				LessonPlanPageObj.addNotesPlaceHolder.click();
+				LessonPlanPageObj.addNotesPlaceHolder.sendKeys("Notes1");
 				
-				lessonPlanPage.addResource.click();
+				LessonPlanPageObj.addResource.click();
 				GenericFunctions.waitWebDriver(1000);
 				
-				lessonPlanPage.latestResourceCheckbox.click();
+				LessonPlanPageObj.latestResourceCheckbox.click();
 				GenericFunctions.waitWebDriver(1000);
 				
-				lessonPlanPage.proceedButton.click();
+				LessonPlanPageObj.proceedButton.click();
 				Assert.assertTrue(true,"User is able to successfully create a child  node");
 				System.out.println("User is able to successfully create a child  node");
 				log.info("User is able to successfully create a child  node");

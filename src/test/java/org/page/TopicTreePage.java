@@ -69,7 +69,7 @@ public class  TopicTreePage
 	@FindBy(xpath="//a[@class=\"ui button close cancel\"]")
 	public WebElement cancelButton;
 
-	@FindBy(xpath="//a[contains(@class,'button accept')]")
+	@FindBy(xpath="//a[@class=\"ui blue button accept\"]")
 	public WebElement doneButton;
 	
 	@FindBy(xpath="//*[@id=\"topicSelector_unitTopicSelector\"]/div[1]")
@@ -103,8 +103,6 @@ public class  TopicTreePage
 	//Nov 28
 	@FindBy(xpath="//strong[@class='search-query']")
 	public WebElement resultsOnTopicSeacrh;
-	
-	
 	
 }
 

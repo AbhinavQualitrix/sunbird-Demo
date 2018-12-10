@@ -4,24 +4,31 @@ import java.util.List;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
-import org.generic.AllUploadingPaths;
-import org.generic.ExtentTestManager;
-import org.generic.GenericFunctions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.page.ContentCreationResourcePage;
+import org.page.CreateMentorPage;
 import org.page.CreatorUserPage;
+import org.page.PublicUserPage;
 import org.page.QuestionSetPage;
+import org.page.SignUpPage;
+import org.page.UploadOrgPage;
+import org.generic.AllUploadingPaths;
+import org.generic.ExtentTestManager;
+import org.generic.GenericFunctions;
+import org.generic.ReadTestDataFromExcel;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
+
 
 import com.relevantcodes.extentreports.LogStatus;
 
 public class QuestionSetPageObj extends BaseTest{
 	
 	WebDriverWait wait = new WebDriverWait(driver,20);
-	QuestionSetPage QuestionSetPage=PageFactory.initElements(driver, QuestionSetPage.class);
+	QuestionSetPage QuestionSetPageObj=PageFactory.initElements(driver, QuestionSetPage.class);
 	static Logger log = Logger.getLogger(CreatorUserPage.class.getName());
 	List <TestDataForSunbird> objListOFTestDataForSunbird1= null ;
 	Actions action = new Actions(driver);
@@ -38,24 +45,24 @@ public class QuestionSetPageObj extends BaseTest{
 				{
 				ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create resource with different question sets");
 				GenericFunctions.waitWebDriver(1500);
-				//GenericFunctions.waitForElementToAppear(QuestionSetPage.bookName);
-				String resourceNumber = GenericFunctions.testDataIncrementer("./testData/resourceNumbers.txt").toString();
-				QuestionSetPage.bookName.sendKeys(objListOFTestDataForSunbird.get(6).getCourseName()+resourceNumber);
+				//GenericFunctions.waitForElementToAppear(QuestionSetPageObj.bookName);
+				String resourceNumber = GenericFunctions.testDataIncrementer(".//testData//resourceNumbers.txt").toString();
+				QuestionSetPageObj.bookName.sendKeys(objListOFTestDataForSunbird.get(6).getCourseName()+resourceNumber);
 				 				
-				QuestionSetPage.startCreating.click();
+				QuestionSetPageObj.startCreating.click();
 				GenericFunctions.waitWebDriver(5000);
 				
 				driver.switchTo().frame(0);
-				GenericFunctions.waitForElementToAppear(QuestionSetPage.addQuestionSet);
-				QuestionSetPage.addQuestionSet.click(); 	
+				GenericFunctions.waitForElementToAppear(QuestionSetPageObj.addQuestionSet);
+				QuestionSetPageObj.addQuestionSet.click(); 	
 				GenericFunctions.waitWebDriver(2000);
 				
-				QuestionSetPage.createQuestion.click();
+				QuestionSetPageObj.createQuestion.click();
 				
 				
-				if(QuestionSetPage.MTF.isDisplayed())
+				if(QuestionSetPageObj.MTF.isDisplayed())
 				{
-					QuestionSetPage.MTF.click();
+					QuestionSetPageObj.MTF.click();
 					GenericFunctions.waitWebDriver(2000);
 					Assert.assertTrue(true," MTF Clicked");
 					System.out.println("MTF got Clicked");
@@ -67,14 +74,14 @@ public class QuestionSetPageObj extends BaseTest{
 					log.info("Not able to Click MTF");
 				}
 
-				QuestionSetPage.Back.click();
+				QuestionSetPageObj.Back.click();
 				GenericFunctions.waitWebDriver(2000);
 
 				
 				
-				if(QuestionSetPage.MCQ.isDisplayed())
+				if(QuestionSetPageObj.MCQ.isDisplayed())
 				{
-					QuestionSetPage.MCQ.click();
+					QuestionSetPageObj.MCQ.click();
 					GenericFunctions.waitWebDriver(2000);
 					Assert.assertTrue(true," MCQ Selected");
 					System.out.println("MCQ got Selected");
@@ -85,14 +92,14 @@ public class QuestionSetPageObj extends BaseTest{
 					log.info("Not ablet to Select MCQ");
 				}
 
-				QuestionSetPage.Back.click();
+				QuestionSetPageObj.Back.click();
 				GenericFunctions.waitWebDriver(2000);
 
 				
 				
-				if(QuestionSetPage.FTB.isDisplayed())
+				if(QuestionSetPageObj.FTB.isDisplayed())
 				{
-					QuestionSetPage.FTB.click();
+					QuestionSetPageObj.FTB.click();
 					GenericFunctions.waitWebDriver(2000);	
 					Assert.assertTrue(true," FTB Selected");
 					System.out.println("FTB got Selected");

@@ -15,7 +15,7 @@ import org.page.CreateMentorPage;
 import org.page.CreatorUserPage;
 import org.page.PublicUserPage;
 import org.page.SignUpPage;
-import org.page.TopicTreePage;
+//import org.page.TopicTreePage;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
@@ -30,7 +30,7 @@ public class ContentCreateUploadPageObj extends BaseTest
 	CreateMentorPage createMentorPage=PageFactory.initElements(driver, CreateMentorPage.class);
 	ContentCreateUploadPage contentUploadPage = PageFactory.initElements(driver, ContentCreateUploadPage.class);
 	CreatorUserPageObj createrUserPageObj = new CreatorUserPageObj();
-	TopicTreePage topicslist = PageFactory.initElements(driver, TopicTreePage.class);
+	//TopicTreePage topicslist = PageFactory.initElements(driver, TopicTreePage.class);
 	SignUpPage signUpPage=PageFactory.initElements(driver, SignUpPage.class);
 	static Logger log = Logger.getLogger(CreatorUserPageObj.class.getName());
 	List <TestDataForSunbird> objListOFTestDataForSunbird1= null ;

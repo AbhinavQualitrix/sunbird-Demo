@@ -30,8 +30,9 @@ public class UploadOrgPage {
 	@FindBy(name="login")
 	public WebElement clickLogin1;
 
-	//OCT 10
-	@FindBy(xpath="(//*[@id='dropdown-menu-list-header'])[2]")
+	//DEC 10
+	@FindBy(xpath="(//div[contains(@class,'dropdown right top pointing')])[2]")
+	//@FindBy(xpath="(//*[@id='dropdown-menu-list-header'])[2]")
 	//@FindBy(id="dropdown-menu-list-header")
 	public WebElement dropdown;
 
@@ -219,8 +220,9 @@ public class UploadOrgPage {
 	@FindBy(xpath="//*[@id='radial-mood-response-rate']/svg")
 	public WebElement radial;
 	
-	//Nov 28th
-	@FindBy(xpath="(//div[@class='item headerDropdownProfile'])[2]/following::a[contains(.,'Logout')]")
+	//Dec 10
+	@FindBy(xpath="(//div[contains(@class,'dropdown right top pointing')])[2]/..//a[contains(.,'Logout')]")
+	//@FindBy(xpath="(//div[@class='item headerDropdownProfile'])[2]/following::a[contains(.,'Logout')]")
 	//@FindBy(xpath="(//div[@id='dropdown-menu-list-header'])[2]//a[.='Logout']")
 	//@FindBy(xpath="//a[.='Logout']")
 	//@FindBy(xpath="//div[@id='dropdown-menu-list-header']//a[.='Logout']")
