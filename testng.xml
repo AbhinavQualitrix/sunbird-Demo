@@ -36,7 +36,7 @@
         
      
 
-             <!-- Test cases of Smoke Suite    
+             <!-- Test cases of Smoke Suite     -->
        <class name="org.testscript.CreateCourseAndVerify"/>
        <class name="org.testscript.ConsumeOpenCourseByPublicUserAndCheckCourseStatAsMentor"/>
        <class name="org.testscript.CreateLessonPlanAndVerify"/>
@@ -47,12 +47,12 @@
       <class name="org.testscript.UploadContentTypeEpubAndVerify"/>
        <class name="org.testscript.UploadContentTypeHtmlAndVerify"/>
 
-       <class name="org.testscript.UploadContentTypePdfAndVerify"/>  -->
+       <class name="org.testscript.UploadContentTypePdfAndVerify"/> 
 
 
 
 
-                 <!-- Test cases of Mentor   
+                 <!-- Test cases of Mentor    -->
           
           <class name="org.testscript.SearchOrgsAsAdmin" />
 	<class name="org.testscript.CheckCourseStatAsMentor" />
@@ -66,14 +66,14 @@
 	<class name="org.testscript.ConsumeCourseByInvitedMember" />
 	<class name="org.testscript.NavigateToMyActivityInDropdown" />
 
-	<class name="org.testscript.SearchCourseCreateInviteOnlyBatch" />  -->
+	<class name="org.testscript.SearchCourseCreateInviteOnlyBatch" /> 
 
      
    
 
 
      
-          <!-- Test cases of Announcement   
+          <!-- Test cases of Announcement    -->
           
     
    <class name="org.testscript.ResendAnnouncement"/>
@@ -85,11 +85,11 @@
     <class name="org.testscript.CreateVerifyAndDeleteAnnouncement"/>
     <class name="org.testscript.DeleteAnnouncement"/>
     <class name="org.testscript.ResendAnnouncement"/>
-     <class name="org.testscript.OpenAnnouncement"/>  -->
+     <class name="org.testscript.OpenAnnouncement"/>  
 
 
 
-   			 <!--   Test cases of Regression p2   
+   			   <!-- Test cases of Regression p2    -->
 
    		<class name="org.testscript.regression.VerifySortOption"/>
    		<class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/>
@@ -123,13 +123,13 @@
       <class name="org.testscript.regression.VerifyUserNaviagationToContentEditor"/>
       <class name="org.testscript.regression.ReviewAndPublishReceivedContent"/>
 
-      <class name="org.testscript.regression.SearchParticularContentInAllMyContent"/>  -->
+      <class name="org.testscript.regression.SearchParticularContentInAllMyContent"/> 
 
    			
    			
 
    			
-   			<!-- Test cases of Creator 
+   			<!-- Test cases of Creator  -->
    	  <class name="org.testscript.NavigateToMyActivity"/>  
       <class name="org.testscript.UploadEpubContent"/>
       <class name="org.testscript.SearchUsers"/>
@@ -143,13 +143,13 @@
       <class name="org.testscript.VerifyBookCreator"/>
       <class name="org.testscript.LoginAndChangePassword"/>
 
-      <class name="org.testscript.CollectionCreation"/> -->
+      <class name="org.testscript.CollectionCreation"/>
 
       
 
 
 
-   		<!-- Test cases of public user 
+   		<!-- Test cases of public user  -->
    		 <class name="org.testscript.SearchUsers"/>
       	 <class name="org.testscript.ProfileInfoUpdate"/>
       	 <class name="org.testscript.SearchCourse"/>	
@@ -158,9 +158,9 @@
    		 <class name="org.testscript.LoginAndChangePassword"/>
       	 <class name="org.testscript.ConfirmInstructionReceivedInforgotPassword"/>
 
-       	 <class name="org.testscript.VerifyHomePage"/>  -->
+       	 <class name="org.testscript.VerifyHomePage"/> 
    		
-<!-- 
+
     <class name="org.testscript.LessonplanCreation"/>      
 
        	 <class name="org.testscript.VerifyHomePage"/>    		
@@ -203,7 +203,7 @@
        <class name="org.testscript.CreateBookAndVerify"/>
 
        
-       <class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/>  -->
+       <class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/> 
 
 
 
@@ -212,14 +212,14 @@
 
    
 
-   			<!-- Test cases of Reviewer  
+   			<!-- Test cases of Reviewer   -->
   
 
-  <class name="org.testscript.regression.VerifyReviewerRequestChangesTheBook"/> -->
+  <class name="org.testscript.regression.VerifyReviewerRequestChangesTheBook"/> 
 
-   			<!-- Test cases of Admin    
+   			<!-- Test cases of Admin     -->
    			<class name="org.testscript.AdminCreationAndDownloadCsv"/>
-   			<class name="org.testscript.VerifyElementsInAdminDashboard"/> -->
+   			<class name="org.testscript.VerifyElementsInAdminDashboard"/>
 
    			
 
@@ -227,7 +227,7 @@
    
      
 
-   <!-- Test cases of P2, freelancers  
+   <!-- Test cases of P2, freelancers   -->
    
      <class name="org.testscript.TC_186"/>
    
@@ -282,22 +282,23 @@
     
       <class name="org.testscript.TC_340"/>
 
-      <class name="org.testscript.TC_341"/> -->
+      <class name="org.testscript.TC_341"/>
     
     
- 
-   <class name="org.testscript.regression.SameUserNameIsNotAllowedWhileSignup" /> 
-   <class name="org.testscript.EditContentAndSendForReview"/>
+
    
    
 	   <!-- Daily Execution
+	    
+   <class name="org.testscript.regression.SameUserNameIsNotAllowedWhileSignup" /> 
+   <class name="org.testscript.EditContentAndSendForReview"/>
 	<class name="org.testscript.UpdateBatchAsInvitedMentor" /> 
 <class name="org.testscript.regression.ContentValidationInUpForReviewSearchWithFilter"/>
 <class name="org.testscript.regression.VerifyPublishedContentInPublishedBucket"/>  -->																
 	
 	
 	
- <!--   
+   
   <class name="org.testscript.RejectTheContent"/>
     
 										
@@ -319,7 +320,7 @@
       <class name="org.testscript.CheckInReviewSubmission"/>
       <class name="org.testscript.VerifycopyContent"/>
        
-      <class name="org.testscript.regression.SortTheResultInUpForReview"/> -->
+      <class name="org.testscript.regression.SortTheResultInUpForReview"/>
 
 
      <!-- Old Test cases from member -removed

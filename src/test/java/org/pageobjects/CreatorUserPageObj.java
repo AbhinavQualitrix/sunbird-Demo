@@ -1105,16 +1105,17 @@ public class CreatorUserPageObj extends BaseTest{
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
 			createUserPage.workSpace.click();
-			GenericFunctions.waitWebDriver(2000);
+						
 			createUserPage.drafts.click();
+			GenericFunctions.refreshWebPage();
+			GenericFunctions.waitWebDriver(2000);
 			String courseToAssert = objListOFTestDataForSunbird.get(0).getCourseName()+GenericFunctions.readFromNotepad("./testData/courseNumbers.txt").toString();
 
-			System.out.println("Course read :"+courseToAssert);
-			System.out.println("Course Found on Drafts :"+createUserPage.getContentInDrafts.getText());
+			System.out.println("Course read :"+courseToAssert);			
 			
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppearOnScreen(createUserPage.getContentInDrafts);
-
+			System.out.println("Course Found on Drafts :"+createUserPage.getContentInDrafts.getText());
 			try
 			{
 				if(createUserPage.getContentInDrafts.getText().equalsIgnoreCase(courseToAssert))
@@ -1130,11 +1131,13 @@ public class CreatorUserPageObj extends BaseTest{
 			catch(Exception e)
 			{
 				System.out.println("Could not get the same content in Drafts");
+				GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.getContentInDrafts);
+				createUserPage.getContentInDrafts.click();
 			}
-			GenericFunctions.refreshWebPage();
+	
 			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.getContentInDrafts);
-			createUserPage.getContentInDrafts.click();
+			/*GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.getContentInDrafts);
+			createUserPage.getContentInDrafts.click();*/
 			GenericFunctions.waitWebDriver(6000);
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
 			GenericFunctions.waitWebDriver(7000);
