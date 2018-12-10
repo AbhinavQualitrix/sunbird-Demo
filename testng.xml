@@ -88,18 +88,9 @@
      <class name="org.testscript.OpenAnnouncement"/>  -->
 
 
-    
-
-       
-      
-   
-
-
- 
 
    			 <!--   Test cases of Regression p2   
 
-   			   
    		<class name="org.testscript.regression.VerifySortOption"/>
    		<class name="org.testscript.regression.QuestionTemplateFillInTheBlankCustom"/>
       <class name="org.testscript.regression.CreateResourceByUploadingVideoAndActivityPlugins"/>

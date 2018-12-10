@@ -70,7 +70,7 @@ public class MentorOrgPageObj extends BaseTest
 			GenericFunctions.waitWebDriver(1500);
 			System.out.println(driver.findElement(By.xpath(" //span[contains(text(),'Design Course')]")).getText());
 			GenericFunctions.waitForElementToAppear(MentorOrgPageObj.courseName);
-			String courseNumber = GenericFunctions.testDataIncrementer(".//testData//courseNumbers.txt").toString();
+			String courseNumber = GenericFunctions.testDataIncrementer("./testData/courseNumbers.txt").toString();
 			MentorOrgPageObj.courseName.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+courseNumber);
 			MentorOrgPageObj.courseDescription.sendKeys(objListOFTestDataForSunbird.get(0).getCourseDescription()+courseNumber);	
 			GenericFunctions.waitWebDriver(1500);
@@ -263,7 +263,7 @@ public class MentorOrgPageObj extends BaseTest
 			MentorOrgPageObj.headerProfile.click();*/
 			MentorOrgPageObj.headerCourse.click();
 			GenericFunctions.waitWebDriver(1000);
-			String courseNumber = GenericFunctions.testDataIncrementer(".//testData//courseNumbers.txt").toString();
+			String courseNumber = GenericFunctions.testDataIncrementer("./testData/courseNumbers.txt").toString();
 			MentorOrgPageObj.filterSearch.sendKeys(objListOFTestDataForSunbird1.get(0).getTitle()+courseNumber);
 			MentorOrgPageObj.searchIconUpForReview.click();
 			GenericFunctions.waitWebDriver(2000);
@@ -299,7 +299,7 @@ public class MentorOrgPageObj extends BaseTest
 			GenericFunctions.switchToFrame(driver, MentorOrgPageObj.batchForm);
 			GenericFunctions.waitWebDriver(1000);
 			MentorOrgPageObj.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
-					+ GenericFunctions.testDataIncrementer(".//TestData//sunbird_data.txt"));
+					+ GenericFunctions.testDataIncrementer("./testData/sunbird_data.txt"));
 			MentorOrgPageObj.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
 			//			MentorOrgPageObj.openBatch.click();
 			MentorOrgPageObj.startDate.click(); // sendKeys(objListOFTestDataForSunbird.get(8).getTitle());
@@ -375,7 +375,7 @@ public class MentorOrgPageObj extends BaseTest
 			MentorOrgPageObj.addIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 			MentorOrgPageObj.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
-					+ GenericFunctions.testDataIncrementer(".//TestData//batchNumbers.txt"));
+					+ GenericFunctions.testDataIncrementer("./testData/batchNumbers.txt"));
 			MentorOrgPageObj.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
 
 			MentorOrgPageObj.startDate.click();
@@ -393,7 +393,7 @@ public class MentorOrgPageObj extends BaseTest
 			MentorOrgPageObj.mentorDropdown.click();
 			MentorOrgPageObj.membersInBatch.click();
 			MentorOrgPageObj.mentorDropdown.click();
-			GenericFunctions.waitWebDriver(1500);	
+			GenericFunctions.waitWebDriver(2000);	
 
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(MentorOrgPageObj.buttonCreate);
 			MentorOrgPageObj.buttonCreate.click();

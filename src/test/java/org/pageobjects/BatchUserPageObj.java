@@ -60,7 +60,7 @@ public class BatchUserPageObj extends BaseTest
 			GenericFunctions.waitWebDriver(1500);
 			System.out.println(driver.findElement(By.xpath(" //span[contains(text(),'Design Course')]")).getText());
 			GenericFunctions.waitForElementToAppear(BatchUserPageObj.courseName);
-			String courseNumber = GenericFunctions.testDataIncrementer(".//testData//courseNumbers.txt").toString();
+			String courseNumber = GenericFunctions.testDataIncrementer("./testData/courseNumbers.txt").toString();
 			BatchUserPageObj.courseName.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()+courseNumber);
 			BatchUserPageObj.courseDescription.sendKeys(objListOFTestDataForSunbird.get(0).getCourseDescription()+courseNumber);	
 			GenericFunctions.waitWebDriver(1500);
@@ -256,7 +256,7 @@ public class BatchUserPageObj extends BaseTest
 			BatchUserPageObj.headerProfile.click();*/
 			BatchUserPageObj.headerCourse.click();
 			GenericFunctions.waitWebDriver(1000);
-			String courseNumber = GenericFunctions.testDataIncrementer(".//testData//courseNumbers.txt").toString();
+			String courseNumber = GenericFunctions.testDataIncrementer("./testData/courseNumbers.txt").toString();
 			BatchUserPageObj.filterSearch.sendKeys(objListOFTestDataForSunbird1.get(0).getTitle()+courseNumber);
 			BatchUserPageObj.searchIconUpForReview.click();
 			GenericFunctions.waitWebDriver(2000);
@@ -292,7 +292,7 @@ public class BatchUserPageObj extends BaseTest
 			GenericFunctions.switchToFrame(driver, BatchUserPageObj.batchForm);
 			GenericFunctions.waitWebDriver(1000);
 			BatchUserPageObj.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
-					+ GenericFunctions.testDataIncrementer(".//TestData//sunbird_data.txt"));
+					+ GenericFunctions.testDataIncrementer("./testData/sunbird_data.txt"));
 			BatchUserPageObj.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
 //			BatchUserPageObj.openBatch.click();
 			BatchUserPageObj.startDate.click(); // sendKeys(objListOFTestDataForSunbird.get(8).getTitle());
@@ -366,7 +366,7 @@ public class BatchUserPageObj extends BaseTest
 			BatchUserPageObj.addIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 			BatchUserPageObj.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
-					+ GenericFunctions.testDataIncrementer(".//TestData//batchNumbers.txt"));
+					+ GenericFunctions.testDataIncrementer("./testData/batchNumbers.txt"));
 			BatchUserPageObj.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
 
 			BatchUserPageObj.startDate.click();
@@ -384,12 +384,12 @@ public class BatchUserPageObj extends BaseTest
 			BatchUserPageObj.mentorDropdown.click();
 			BatchUserPageObj.membersInBatch.click();
 			BatchUserPageObj.mentorDropdown.click();
-			GenericFunctions.waitWebDriver(1500);	
+			GenericFunctions.waitWebDriver(3000);	
 			
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(BatchUserPageObj.buttonCreate);
 			BatchUserPageObj.buttonCreate.click();
+			
 			GenericFunctions.waitWebDriver(4000);
-			//BatchUserPageObj.successfulMessage.click();
 			System.out.println("Batch Created");
 			Assert.assertTrue(true,"Batch created successfully and able to add mentor & mentor from root org and sub org");
 			log.info("Batch created successfully and able to add mentor & mentor from root org and sub org");
@@ -418,8 +418,6 @@ public class BatchUserPageObj extends BaseTest
 								
 		try {
 		ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create invite only batch with start date as current date");
-			/*GenericFunctions.waitForElementToAppear(BatchUserPageObj.closePopUp);
-			BatchUserPageObj.closePopUp.click();*/
 			GenericFunctions.waitWebDriver(3500);
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(BatchUserPageObj.headerCourse);
 			BatchUserPageObj.headerCourse.click();
@@ -430,7 +428,7 @@ public class BatchUserPageObj extends BaseTest
 			BatchUserPageObj.addIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 			BatchUserPageObj.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
-					+ GenericFunctions.testDataIncrementer(".//TestData//batchNumbers.txt"));
+					+ GenericFunctions.testDataIncrementer("./testData/batchNumbers.txt"));
 			BatchUserPageObj.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
 
 			BatchUserPageObj.startDate.sendKeys("27 November 2018");
@@ -488,7 +486,7 @@ public class BatchUserPageObj extends BaseTest
 			BatchUserPageObj.addIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 			BatchUserPageObj.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName()
-					+ GenericFunctions.testDataIncrementer(".//TestData//batchNumbers.txt"));
+					+ GenericFunctions.testDataIncrementer("./testData/batchNumbers.txt"));
 			BatchUserPageObj.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
 
 			BatchUserPageObj.startDate.sendKeys("1 January 2019");
@@ -580,7 +578,7 @@ public class BatchUserPageObj extends BaseTest
 			GenericFunctions.switchToFrame(driver, BatchUserPageObj.batchForm);
 			BatchUserPageObj.nameOfBatch.clear();
 			BatchUserPageObj.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(1).getCourseName()
-					+ GenericFunctions.testDataIncrementer(".//TestData//batchNumbers.txt"));
+					+ GenericFunctions.testDataIncrementer("./testData/batchNumbers.txt"));
 			GenericFunctions.waitWebDriver(1000);
 			BatchUserPageObj.aboutBatch.clear();
 			BatchUserPageObj.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());
@@ -626,7 +624,7 @@ public class BatchUserPageObj extends BaseTest
 			GenericFunctions.switchToFrame(driver, BatchUserPageObj.batchForm);
 			BatchUserPageObj.nameOfBatch.clear();
 			BatchUserPageObj.nameOfBatch.sendKeys(objListOFTestDataForSunbird.get(1).getCourseName()
-					+ GenericFunctions.testDataIncrementer(".//TestData//batchNumbers.txt"));
+					+ GenericFunctions.testDataIncrementer("./testData/batchNumbers.txt"));
 			GenericFunctions.waitWebDriver(1000);
 			BatchUserPageObj.aboutBatch.clear();
 			BatchUserPageObj.aboutBatch.sendKeys(objListOFTestDataForSunbird.get(0).getCourseName());

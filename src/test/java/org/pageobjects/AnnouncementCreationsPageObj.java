@@ -33,7 +33,7 @@ public class AnnouncementCreationsPageObj extends BaseTest
 	CreateMentorPage createMentorPage=PageFactory.initElements(driver, CreateMentorPage.class);
 	SignUpPage signUpPage=PageFactory.initElements(driver, SignUpPage.class);
 	ContentCreationResourcePage contentResourcePage =PageFactory.initElements(driver,ContentCreationResourcePage.class);
-	static Logger log = Logger.getLogger(CreatorUserPageObj.class.getName());
+	static Logger log = Logger.getLogger(CreatorUserPageObj.class.getName()); 
 	List <TestDataForSunbird> objListOFTestDataForSunbird1= null ;
 	Actions action = new Actions(driver);
 	Random rand=new Random();	
@@ -42,8 +42,10 @@ public class AnnouncementCreationsPageObj extends BaseTest
 
 
 
+
 	public void NavigateToAnnouncementDashboard()
 	{
+	
 		try
 		{
 			GenericFunctions.waitWebDriver(3000);

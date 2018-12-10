@@ -55,9 +55,7 @@ public class AnnouncementPageObj extends BaseTest
 	{
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate to announcement dashboard in drop down menu");
-			/*GenericFunctions.waitForElementToAppear(AnnouncementPageObj.closePopUp);
-			AnnouncementPageObj.closePopUp.click();*/
-			GenericFunctions.waitTillTheElementIsVisibleAndClickable(AnnouncementPageObj.closePopUp);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(AnnouncementPageObj.profileIconDropdown);
 			GenericFunctions.waitWebDriver(2000);
 			AnnouncementPageObj.profileIconDropdown.click();
 			GenericFunctions.waitWebDriver(1000);
@@ -85,7 +83,7 @@ public class AnnouncementPageObj extends BaseTest
 			AnnouncementPageObj.create_Announcement.click();
 			GenericFunctions.waitWebDriver(5000);
 			AnnouncementPageObj.enterTitle.click();
-			String announcementNumber = GenericFunctions.testDataIncrementer(".//TestData//announcementNumbers.txt").toString();
+			String announcementNumber = GenericFunctions.testDataIncrementer("./testData/announcementNumbers.txt").toString();
 			announcementName = objListOFTestDataForSunbird.get(7).getCourseName();
 			System.out.println(announcementName + announcementNumber);
 			AnnouncementPageObj.enterTitle.sendKeys(announcementName + announcementNumber );
@@ -180,7 +178,7 @@ public class AnnouncementPageObj extends BaseTest
 			GenericFunctions.waitWebDriver(1000);
 			GenericFunctions.waitForElementToAppear(AnnouncementPageObj.enterTitle);
 			AnnouncementPageObj.enterTitle.click();
-			String announcementNumber = GenericFunctions.testDataIncrementer(".//TestData//announcementNumbers.txt").toString();
+			String announcementNumber = GenericFunctions.testDataIncrementer("./testData/announcementNumbers.txt").toString();
 			announcementName = objListOFTestDataForSunbird.get(7).getCourseName();
 			System.out.println(announcementName + announcementNumber);
 			AnnouncementPageObj.enterTitle.sendKeys(announcementName + announcementNumber );
