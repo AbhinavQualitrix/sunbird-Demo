@@ -200,8 +200,9 @@ public class SignUpPageObj extends BaseTest
 	}
 
 
-	public void singleSignUpUser() throws InterruptedException
+	public String singleSignUpUser() throws InterruptedException
 	{
+		String alerttext="";
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Single User is trying to Sign up to the application");
@@ -239,7 +240,12 @@ public class SignUpPageObj extends BaseTest
 				GenericFunctions.waitWebDriver(1000);
 				action.moveToElement(objSignUp.signUpButton);
 				objSignUp.signUpButton.click();
-
+				GenericFunctions.waitWebDriver(500);
+				GenericFunctions.captureScreenshotOnValidation();
+				action.moveToElement(objSignUp.alertMessage.get(0)).build().perform();	
+				alerttext=objSignUp.alertMessage.get(0).getText();
+				ExtentTestManager.getTest().log(LogStatus.PASS,"Verified the message upon same user signup"+alerttext);
+				System.out.println(alerttext);
 				if(objSignUp.alertLabel.size()!=0)
 				{
 					int noOfAlertLabel = objSignUp.alertLabel.size();
@@ -271,6 +277,7 @@ public class SignUpPageObj extends BaseTest
 			Assert.fail("Failed on sign up to the application"+e.getLocalizedMessage());
 		}
 
+		return alerttext;
 	}
 
 	public void checkUserDataExists() throws InterruptedException

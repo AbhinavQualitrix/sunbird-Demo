@@ -145,7 +145,7 @@
 
       <class name="org.testscript.CollectionCreation"/> -->
 
-      <class name="org.testscript.CollectionCreation"/>  
+      
 
 
 
@@ -227,7 +227,7 @@
    
      
 
-   <!-- Test cases of P2, freelancers  -->
+   <!-- Test cases of P2, freelancers  
    
      <class name="org.testscript.TC_186"/>
    
@@ -282,14 +282,14 @@
     
       <class name="org.testscript.TC_340"/>
 
-      <class name="org.testscript.TC_341"/> 
+      <class name="org.testscript.TC_341"/> -->
     
     
-    <!-- Daily Execution
-   <class name="org.testscript.regression.CopyContentFromLibraryAndVerify" /> 
-   <class name="org.testscript.regression.VerifyTheClosingOfContentEditor"/>
+ 
+   <class name="org.testscript.regression.SameUserNameIsNotAllowedWhileSignup" /> 
    
-	
+   
+	   <!-- Daily Execution
 	<class name="org.testscript.UpdateBatchAsInvitedMentor" /> 
 <class name="org.testscript.regression.ContentValidationInUpForReviewSearchWithFilter"/>
 <class name="org.testscript.regression.VerifyPublishedContentInPublishedBucket"/>  -->																
