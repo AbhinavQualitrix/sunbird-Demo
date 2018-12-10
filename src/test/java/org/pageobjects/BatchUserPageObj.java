@@ -513,8 +513,8 @@ public class BatchUserPageObj extends BaseTest
 					"User is trying to navigate to Worskpace and select batch " + batchType);
 
 			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(batchUserPage.workSpace);
-			GenericFunctions.waitForElementToAppear(batchUserPage.closePopUp);
-			batchUserPage.closePopUp.click();
+			/*GenericFunctions.waitForElementToAppear(batchUserPage.closePopUp);
+			batchUserPage.closePopUp.click();*/
 			GenericFunctions.waitWebDriver(1500);
 			batchUserPage.workSpace.click();	
 			GenericFunctions.waitWebDriver(1000);
