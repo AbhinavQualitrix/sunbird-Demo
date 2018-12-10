@@ -62,7 +62,7 @@ public class CreateResourceByUploadingVideoAndActivityPlugins extends BaseTest
 				contentReourcePageObj.resourceName();
 				
 				//Verify the user is able create resource by adding activity plugins
-				contentReourcePageObj.addActivityPlugins();
+				//contentReourcePageObj.addActivityPlugins();
 				
 	}
 

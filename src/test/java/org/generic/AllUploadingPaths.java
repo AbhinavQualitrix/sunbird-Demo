@@ -33,5 +33,6 @@ public class AllUploadingPaths implements IAutoConst
 	 public static String subOrgUserPath = System.getProperty("user.dir")+"/uploadingDocuments/"+UPLOAD_USERS_SUB_ORG;
 	 public static String profilePicturePath = System.getProperty("user.dir")+"/uploadingDocuments/upload Document Contents/"+UPLOAD_PROFILE_PIC;
 	 public static String audioPath = System.getProperty("user.dir")+"/uploadingDocuments/uploading audios/"+AUDIO_UPLOAD;
+	 
 	 public static String attachmentImagePath = System.getProperty("user.dir")+"/uploadingDocuments/upload Document Contents/"+IMAGE;
 }

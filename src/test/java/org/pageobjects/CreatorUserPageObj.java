@@ -866,7 +866,7 @@ public class CreatorUserPageObj extends BaseTest{
 			createUserPage.upForReview.click();
 			
 			/*GenericFunctions.waitWebDriver(2000);
-			createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(6).getCourseName()+"R00");
+			createUserPage.searchForReview.sendKeys(objListOFTestDataForSunbird.get(6).getCourseName()+"R0");
 			GenericFunctions.waitWebDriver(3000);
 			createUserPage.searchedContentForPublish.click();
 			GenericFunctions.waitWebDriver(7000);

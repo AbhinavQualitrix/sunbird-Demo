@@ -1022,10 +1022,11 @@ public class ContentCreateUploadPageObj extends BaseTest
 			//GenericFunctions.waitWebDriver(2000);
 			//contentUploadPage.profileIcon.click();
 			GenericFunctions.waitWebDriver(5000);
-			//GenericFunctions.waitForElementToAppear(createUserPage.workSpace);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.workSpace);
 			createUserPage.workSpace.click();
 			GenericFunctions.waitWebDriver(5000);
-			contentUploadPage.allUploads.click();
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(createUserPage.allUploads);
+			createUserPage.allUploads.click();
 			GenericFunctions.waitWebDriver(5000);
 			contentUploadPage.contentPublished.click();
 			GenericFunctions.WaitForFrameAndSwitchToIt(createUserPage.iFrame);
