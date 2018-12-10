@@ -208,7 +208,7 @@ public class BatchUserPageObj extends BaseTest
 //		BatchUserPageObj.closePopUp.click();
 //		GenericFunctions.waitWebDriver(1500);	
 //    	GenericFunctions.waitForElementToAppear(BatchUserPageObj.Workspace);
-    	GenericFunctions.waitWebDriver(500);
+    	GenericFunctions.waitWebDriver(1500);
     	BatchUserPageObj.Workspace.click();
 		GenericFunctions.waitForElementToAppear(BatchUserPageObj.upForReview);
 		GenericFunctions.waitWebDriver(2000);
@@ -342,7 +342,7 @@ public class BatchUserPageObj extends BaseTest
 		try {
 		ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create invite only batch for a course");
 		
-		try{
+		/*try{
 		if(BatchUserPageObj.closePopUp.isDisplayed())
 		{
 			BatchUserPageObj.closePopUp.click();
@@ -355,7 +355,10 @@ public class BatchUserPageObj extends BaseTest
 		{
 			GenericFunctions.waitWebDriver(1500);
 			BatchUserPageObj.headerCourse.click();
-		}
+		}*/
+		GenericFunctions.waitWebDriver(1500);
+		GenericFunctions.waitTillTheElementIsVisibleAndClickable(BatchUserPageObj.headerCourse);
+		BatchUserPageObj.headerCourse.click();
 			GenericFunctions.waitWebDriver(4000);
 			GenericFunctions.waitForElementToAppear(BatchUserPageObj.latestCourse);
 			BatchUserPageObj.latestCourse.click();
@@ -415,9 +418,10 @@ public class BatchUserPageObj extends BaseTest
 								
 		try {
 		ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create invite only batch with start date as current date");
-			GenericFunctions.waitForElementToAppear(BatchUserPageObj.closePopUp);
-			BatchUserPageObj.closePopUp.click();
-			GenericFunctions.waitWebDriver(1500);
+			/*GenericFunctions.waitForElementToAppear(BatchUserPageObj.closePopUp);
+			BatchUserPageObj.closePopUp.click();*/
+			GenericFunctions.waitWebDriver(3500);
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(BatchUserPageObj.headerCourse);
 			BatchUserPageObj.headerCourse.click();
 			GenericFunctions.waitWebDriver(4000);
 			GenericFunctions.waitForElementToAppear(BatchUserPageObj.latestCourse);
@@ -472,9 +476,10 @@ public class BatchUserPageObj extends BaseTest
 		try {
 		ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create upcoming batch with future start date");
 			
-			GenericFunctions.waitForElementToAppear(BatchUserPageObj.closePopUp);
-			BatchUserPageObj.closePopUp.click();
-			GenericFunctions.waitWebDriver(1500);
+			/*GenericFunctions.waitForElementToAppear(BatchUserPageObj.closePopUp);
+			BatchUserPageObj.closePopUp.click();*/
+		GenericFunctions.waitForElementToAppear(BatchUserPageObj.headerCourse);
+			GenericFunctions.waitWebDriver(2000);
 			BatchUserPageObj.headerCourse.click();
 			GenericFunctions.waitWebDriver(4000);
 			GenericFunctions.waitForElementToAppear(BatchUserPageObj.latestCourse);
@@ -527,8 +532,9 @@ public class BatchUserPageObj extends BaseTest
 					"User is trying to navigate to Worskpace and select batch " + batchType);
 
 			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(BatchUserPageObj.workSpace);
-			GenericFunctions.waitForElementToAppear(BatchUserPageObj.closePopUp);
-			BatchUserPageObj.closePopUp.click();
+			/*GenericFunctions.waitForElementToAppear(BatchUserPageObj.closePopUp);
+			BatchUserPageObj.closePopUp.click();*/
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(BatchUserPageObj.workSpace);
 			GenericFunctions.waitWebDriver(1500);
 			BatchUserPageObj.workSpace.click();	
 			GenericFunctions.waitWebDriver(1000);

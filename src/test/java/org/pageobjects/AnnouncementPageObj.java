@@ -43,6 +43,7 @@ public class AnnouncementPageObj extends BaseTest
 	//private static final String IMAGE = null;
 		WebDriverWait wait = new WebDriverWait(driver,20);
 		AnnouncementPage AnnouncementPageObj=PageFactory.initElements(driver, AnnouncementPage.class);
+		CreatorAnnouncementPage createAnnouncementPage=PageFactory.initElements(driver, CreatorAnnouncementPage.class);
 		SignUpPage signUpPage=PageFactory.initElements(driver, SignUpPage.class);
 		static Logger log = Logger.getLogger(CreatorAnnouncementPage.class.getName());
 		Actions action = new Actions(driver);
@@ -54,9 +55,10 @@ public class AnnouncementPageObj extends BaseTest
 	{
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to navigate to announcement dashboard in drop down menu");
-			GenericFunctions.waitForElementToAppear(AnnouncementPageObj.closePopUp);
-			AnnouncementPageObj.closePopUp.click();
-			GenericFunctions.waitWebDriver(1500);
+			/*GenericFunctions.waitForElementToAppear(AnnouncementPageObj.closePopUp);
+			AnnouncementPageObj.closePopUp.click();*/
+			GenericFunctions.waitTillTheElementIsVisibleAndClickable(AnnouncementPageObj.closePopUp);
+			GenericFunctions.waitWebDriver(2000);
 			AnnouncementPageObj.profileIconDropdown.click();
 			GenericFunctions.waitWebDriver(1000);
 			AnnouncementPageObj.announcement_Dashboard.click();	
@@ -246,60 +248,54 @@ public class AnnouncementPageObj extends BaseTest
 
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create an announcement");
-			Robot robot = new Robot();
 			objListOFTestDataForSunbird = ReadTestDataFromExcel.getTestDataForSunbird("testdatasheetcourse");
-			GenericFunctions.waitWebDriver(1500);
-			AnnouncementPageObj.create_Announcement.click();
+			GenericFunctions.waitForElementToAppear(createAnnouncementPage.create_Announcement);
+			createAnnouncementPage.create_Announcement.click();
 			GenericFunctions.waitWebDriver(1000);
-			//AnnouncementPageObj.enterTitle.click();
-			String announcementNumber = GenericFunctions.testDataIncrementer(".//TestData//announcementNumbers.txt").toString();
-			announcementName = objListOFTestDataForSunbird.get(7).getCourseName();
+			GenericFunctions.waitForElementToAppear(createAnnouncementPage.enterTitle);
+			createAnnouncementPage.enterTitle.click();
+			String announcementNumber = GenericFunctions.testDataIncrementer("./testData/announcementNumbers.txt").toString();
+			announcementName = objListOFTestDataForSunbird.get(7).getCourseName()+announcementNumber;
 			System.out.println(announcementName + announcementNumber);
-			AnnouncementPageObj.enterTitle.sendKeys(announcementName + announcementNumber );
+			createAnnouncementPage.enterTitle.sendKeys(announcementName + announcementNumber );
+			createAnnouncementPage.enterOrg.click();
+			createAnnouncementPage.enterOrg.sendKeys(objListOFTestDataForSunbird.get(7).getCourseDescription());
+			createAnnouncementPage.announcementType.click();
 			GenericFunctions.waitWebDriver(1000);
-			AnnouncementPageObj.enterOrg.click();
-			AnnouncementPageObj.enterOrg.sendKeys(objListOFTestDataForSunbird.get(7).getCourseDescription());
+			createAnnouncementPage.announcementTypeOrder.click();
 			GenericFunctions.waitWebDriver(1000);
-			AnnouncementPageObj.announcementType.click();
-			GenericFunctions.waitWebDriver(1000);
-			AnnouncementPageObj.announcementTypeCircular.click();
-			GenericFunctions.waitWebDriver(1000);
-			AnnouncementPageObj.enterDescription.click();
-			AnnouncementPageObj.enterDescription.sendKeys(objListOFTestDataForSunbird.get(7).getTitle());
+			createAnnouncementPage.enterDescription.click();
+			createAnnouncementPage.enterDescription.sendKeys(objListOFTestDataForSunbird.get(7).getTitle());
 			GenericFunctions.waitWebDriver(2000);
-			AnnouncementPageObj.addUrl.click();
+			/*createAnnouncementPage.addUrl.click();
 			GenericFunctions.waitWebDriver(1000);
-			AnnouncementPageObj.enterUrl.click();
+			createAnnouncementPage.enterUrl.click();
 			GenericFunctions.waitWebDriver(1000);
-			AnnouncementPageObj.enterUrl.sendKeys(objListOFTestDataForSunbird.get(7).getTitleDescription());
-			GenericFunctions.waitWebDriver(1000);
-			for(int i=1;i<=3;i++)
-			{
-				robot.keyPress(KeyEvent.VK_TAB);
-				robot.keyRelease(KeyEvent.VK_TAB);
-			}
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);
+			createAnnouncementPage.enterUrl.sendKeys("https://www.google.com/");*/
 			GenericFunctions.waitWebDriver(2000);
-			System.out.println("Button clicked");
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.selectRecipient);
+			/*action.moveToElement(createAnnouncementPage.selectRecipient).build().perform();
+			action.click().build().perform();*/
+			GenericFunctions.waitWebDriver(8000);
+			GenericFunctions.waitForElements(createAnnouncementPage.checkLocation);
+			GenericFunctions.waitWebDriver(5000);
+			createAnnouncementPage.checkLocation.get(0).click();
+			createAnnouncementPage.checkLocation.get(1).click();
+			//action.moveToElement(createAnnouncementPage.checkLocation).click().build().perform();
 			GenericFunctions.waitWebDriver(2000);
-			AnnouncementPageObj.searchForLocation.click();
-			GenericFunctions.waitWebDriver(1000);
-			AnnouncementPageObj.searchForLocation.sendKeys("Nellore");
-			GenericFunctions.waitWebDriver(1000);
-			AnnouncementPageObj.checkLocation.click();
-			GenericFunctions.waitWebDriver(1000);
-			AnnouncementPageObj.confirmRecipients.click();
-			GenericFunctions.waitWebDriver(1000);
-			AnnouncementPageObj.previewAnnouncement.click();
-			GenericFunctions.waitWebDriver(1000);
-			AnnouncementPageObj.sendAnnouncement.click();
-			GenericFunctions.waitWebDriver(1000);
-			AnnouncementPageObj.announcementcreatedConfirmation.click();
-			GenericFunctions.waitWebDriver(1000);
-			Assert.assertTrue(true,"After confirming, the announcement popup closed successfully");
-			log.info("After confirming, the announcement popup closed successfully");
-			System.out.println("After confirming, the announcement popup closed successfully");
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.confirmRecipients);
+			//createAnnouncementPage.confirmRecipients.click();
+			GenericFunctions.waitForElementToAppear(createAnnouncementPage.previewAnnouncement);
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.previewAnnouncement);
+			//createAnnouncementPage.previewAnnouncement.click();
+			GenericFunctions.waitForElementToAppear(createAnnouncementPage.sendAnnouncement);
+			GenericFunctions.waitWebDriver(2000);
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.sendAnnouncement);
+			//createAnnouncementPage.sendAnnouncement.click();
+			GenericFunctions.waitForElementToAppear(createAnnouncementPage.announcementcreatedConfirmation);
+			GenericFunctions.clickOnElementUsingJavascript(createAnnouncementPage.announcementcreatedConfirmation);
+			//createAnnouncementPage.announcementcreatedConfirmation.click();
+			GenericFunctions.waitWebDriver(2000);
 		}
 		catch(Exception e)
 		{
