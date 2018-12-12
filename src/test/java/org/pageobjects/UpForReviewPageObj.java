@@ -9,6 +9,9 @@ import java.util.Random;
 import javax.security.auth.login.FailedLoginException;
 
 import org.apache.poi.util.SystemOutLogger;
+import org.generic.ExtentTestManager;
+import org.generic.GenericFunctions;
+import org.generic.ReadTestDataFromExcel;
 import org.openqa.selenium.By;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
@@ -20,9 +23,6 @@ import org.page.CreatorAnnouncementPage;
 import org.page.CreatorUserPage;
 import org.page.PublicUserPage;
 import org.page.UpForReviewPage;
-import org.generic.ExtentTestManager;
-import org.generic.GenericFunctions;
-import org.generic.ReadTestDataFromExcel;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
@@ -73,40 +73,28 @@ public class UpForReviewPageObj extends BaseTest
 		try
 		{	
 			ExtentTestManager.getTest().log(LogStatus.INFO, "Reviewer is trying to search the content");
-				try{
-				if(upforRevobj.closePopUp.isDisplayed())
-				{
-				upforRevobj.closePopUp.click();
-				GenericFunctions.waitWebDriver(2000);
-				GenericFunctions.waitForElementToAppear(upforRevobj.Workspace);	
-				upforRevobj.Workspace.click();
-				}
-				}
-				catch(Exception e)
-				{
-				GenericFunctions.waitForElementToAppear(upforRevobj.Workspace);	
-				upforRevobj.Workspace.click();
-				GenericFunctions.waitWebDriver(4000);	
-				}
+//			GenericFunctions.waitForElementToAppear(upforRevobj.closePopUp);
+//			upforRevobj.closePopUp.click();
+			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitForElementToAppear(upforRevobj.Workspace);
+			upforRevobj.Workspace.click();
+			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(upforRevobj.upForReview);
 			upforRevobj.upForReview.click();				
 			GenericFunctions.waitWebDriver(2000);
-			try
+			if(upforRevobj.ContentName.isDisplayed())
 			{
-				if(upforRevobj.ContentName.isDisplayed())
-				{
-				String title = upforRevobj.ContentName.getText();			
-				upforRevobj.searchContent.click();
-				GenericFunctions.waitWebDriver(2000);
-				upforRevobj.searchContent.sendKeys(title);
-				GenericFunctions.waitWebDriver(5000);
-				GenericFunctions.waitWebDriver(2000);
-				Assert.assertTrue(true,"Latest content is displayed at the top ");
-				System.out.println("Latest content is displayed at the top ");
-				log.info("Latest content is displayed at the top ");
-				}
+			String title = upforRevobj.ContentName.getText();			
+			upforRevobj.searchContent.click();
+			GenericFunctions.waitWebDriver(2000);
+			upforRevobj.searchContent.sendKeys(title);
+			GenericFunctions.waitWebDriver(5000);
+			GenericFunctions.waitWebDriver(2000);
+			Assert.assertTrue(true,"Latest content is displayed at the top ");
+			System.out.println("Latest content is displayed at the top ");
+			log.info("Latest content is displayed at the top ");
 			}
-			catch(Exception e)
+			else
 			{
 				System.out.println("No content is present");
 			}
@@ -126,22 +114,11 @@ public class UpForReviewPageObj extends BaseTest
     public void UpForReviewSortBy() throws Exception{	  			  			  			  		
 		try{				
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to verify the sortBy filters");
-			GenericFunctions.waitForElementToAppear(upforRevobj.closePopUp);
-				try{
-				if(upforRevobj.closePopUp.isDisplayed())
-				{
-				upforRevobj.closePopUp.click();
-				GenericFunctions.waitWebDriver(2000);
-				GenericFunctions.waitForElementToAppear(upforRevobj.Workspace);	
-				upforRevobj.Workspace.click();
-				}
-				}
-				catch(Exception e)
-				{
-				GenericFunctions.waitForElementToAppear(upforRevobj.Workspace);	
-				upforRevobj.Workspace.click();
-				GenericFunctions.waitWebDriver(4000);	
-				}    
+			
+			//upforRevobj.closePopUp.click();
+			GenericFunctions.waitWebDriver(1500);
+			GenericFunctions.waitForElementToAppear(upforRevobj.Workspace);
+			upforRevobj.Workspace.click();
 			GenericFunctions.waitWebDriver(2000);
 			GenericFunctions.waitForElementToAppear(upforRevobj.upForReview);
 			upforRevobj.upForReview.click();				

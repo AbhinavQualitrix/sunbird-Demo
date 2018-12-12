@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
+import org.generic.ExtentTestManager;
+import org.generic.GenericFunctions;
+import org.generic.ReadTestDataFromExcel;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -20,10 +23,7 @@ import org.page.ContentCreateUploadPage;
 import org.page.CreateMentorPage;
 import org.page.CreatorUserPage;
 import org.page.PublicUserPage;
-import org.page.SignUpPage;
-import org.generic.ExtentTestManager;
-import org.generic.GenericFunctions;
-import org.generic.ReadTestDataFromExcel;
+//import org.page.SignUpObjects;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
@@ -33,9 +33,9 @@ import com.relevantcodes.extentreports.LogStatus;
 public class AllMyContentPageObj extends BaseTest
 {
 	WebDriverWait wait = new WebDriverWait(driver,20);
-	AllMyContentPage AllMyContentPagePObj=PageFactory.initElements(driver, AllMyContentPage.class);
+	AllMyContentPage allMyContentPagePObj=PageFactory.initElements(driver, AllMyContentPage.class);
 
-	static Logger log = Logger.getLogger(CreatorUserPageObj.class.getName());
+	static Logger log = Logger.getLogger(CreatorUserPage.class.getName());
 	List <TestDataForSunbird> objListOFTestDataForSunbird1= null ;
 	Actions action = new Actions(driver);
 	Random rand=new Random();
@@ -48,23 +48,23 @@ public class AllMyContentPageObj extends BaseTest
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to  select modified on and created on option in the dropdown");
-			GenericFunctions.waitForElementToAppear(AllMyContentPagePObj.allMyContent);
-			AllMyContentPagePObj.allMyContent.click();
+			GenericFunctions.waitForElementToAppear(allMyContentPagePObj.allMyContent);
+			allMyContentPagePObj.allMyContent.click();
 			GenericFunctions.waitWebDriver(2000);
 
-			AllMyContentPagePObj.sortByDropdown.click();
+			allMyContentPagePObj.sortByDropdown.click();
 			GenericFunctions.waitWebDriver(2000);
 
-			AllMyContentPagePObj.modifiedOnDropdown.click();
+			allMyContentPagePObj.modifiedOnDropdown.click();
 			GenericFunctions.waitWebDriver(2000);
 			Assert.assertTrue(true,"COntent displayed based on the modified date");
 			System.out.println("COntent displayed based on the modified date");
 			log.info("COntent displayed based on the modified date");
 
-			AllMyContentPagePObj.sortByDropdown.click();
+			allMyContentPagePObj.sortByDropdown.click();
 			GenericFunctions.waitWebDriver(2000);
 
-			AllMyContentPagePObj.createdOnDropdown.click();
+			allMyContentPagePObj.createdOnDropdown.click();
 			GenericFunctions.waitWebDriver(2000);
 			Assert.assertTrue(true,"COntent displayed based on the date createdOn");
 			System.out.println("COntent displayed based on the date createdOn ");
@@ -85,11 +85,11 @@ public class AllMyContentPageObj extends BaseTest
 	public void clickAllMyContent()throws Exception{
 		try{	
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to click on all my content and then filter icon");
-			GenericFunctions.waitForElementToAppear(AllMyContentPagePObj.allMyContent);
-			AllMyContentPagePObj.allMyContent.click();
+			GenericFunctions.waitForElementToAppear(allMyContentPagePObj.allMyContent);
+			allMyContentPagePObj.allMyContent.click();
 			GenericFunctions.waitWebDriver(2000);
 
-			AllMyContentPagePObj.filterIcon.click();				
+			allMyContentPagePObj.filterIcon.click();				
 			GenericFunctions.waitWebDriver(2000);				
 		}
 		catch(Exception e)
@@ -107,75 +107,75 @@ public class AllMyContentPageObj extends BaseTest
 
 		try{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to delete content by status");
-			GenericFunctions.waitForElementToAppear(AllMyContentPagePObj.selectStatus);
-			AllMyContentPagePObj.selectStatus.click();
+			GenericFunctions.waitForElementToAppear(allMyContentPagePObj.selectStatus);
+			allMyContentPagePObj.selectStatus.click();
 			if(statusContent.equalsIgnoreCase("DRAFT")){
-				AllMyContentPagePObj.draftSelect.click();
+				allMyContentPagePObj.draftSelect.click();
 				GenericFunctions.waitWebDriver(2000);
 			}
 			else if(statusContent.equalsIgnoreCase("FLAGDRAFT")){
-				AllMyContentPagePObj.flagDraftSelect.click();
+				allMyContentPagePObj.flagDraftSelect.click();
 				GenericFunctions.waitWebDriver(2000);
 			}
 			else if(statusContent.equalsIgnoreCase("REVIEW")){
-				AllMyContentPagePObj.reviewSelect.click();
+				allMyContentPagePObj.reviewSelect.click();
 				GenericFunctions.waitWebDriver(2000);
 			}
 			else if(statusContent.equalsIgnoreCase("PROCESSING")){
-				AllMyContentPagePObj.processingSelect.click();
+				allMyContentPagePObj.processingSelect.click();
 				GenericFunctions.waitWebDriver(2000);
 			}
 			else if(statusContent.equalsIgnoreCase("LIVE")){
-				AllMyContentPagePObj.liveSelect.click();
+				allMyContentPagePObj.liveSelect.click();
 				GenericFunctions.waitWebDriver(2000);
 			}
 			else if(statusContent.equalsIgnoreCase("UNLISTED")){
-				AllMyContentPagePObj.unlistedSelect.click();
+				allMyContentPagePObj.unlistedSelect.click();
 				GenericFunctions.waitWebDriver(2000);
 			}
 			else if(statusContent.equalsIgnoreCase("FLAGREVIEW")){
-				AllMyContentPagePObj.flagReviewSelect.click();
+				allMyContentPagePObj.flagReviewSelect.click();
 				GenericFunctions.waitWebDriver(2000);
 			} 
-			AllMyContentPagePObj.applyButton.click();
+			allMyContentPagePObj.applyButton.click();
 			GenericFunctions.waitWebDriver(2000);
 
-			AllMyContentPagePObj.filterIcon.click();
+			allMyContentPagePObj.filterIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 
 			try{
 				if(driver.findElement(By.xpath("(//div[contains(@class,'UpReviewHeader')])[1]")).isDisplayed() ){
-					String contentType = AllMyContentPagePObj.firstDraft.getText();
-					AllMyContentPagePObj.deleteButton.click();					
+					String contentType = allMyContentPagePObj.firstDraft.getText();
+					allMyContentPagePObj.deleteButton.click();					
 					GenericFunctions.waitWebDriver(2000);		
 
-					AllMyContentPagePObj.confirmYesToPopup.click();
+					allMyContentPagePObj.confirmYesToPopup.click();
 					GenericFunctions.waitWebDriver(2000);
 					Assert.assertTrue(true,"Content got deleted successfully");
 					System.out.println("Content got deleted successfully");
 					log.info("Content got deleted successfully");
 
-					AllMyContentPagePObj.searchContent.click();
-					AllMyContentPagePObj.searchContent.sendKeys(contentType);
+					allMyContentPagePObj.searchContent.click();
+					allMyContentPagePObj.searchContent.sendKeys(contentType);
 					Assert.assertTrue(true,"Deleted content is not available in search result");
 					System.out.println("Deleted content is not available in search result");
 					log.info("Deleted content is not available in search result");
 					GenericFunctions.waitWebDriver(4000);
 
-					AllMyContentPagePObj.filterIcon.click();
+					allMyContentPagePObj.filterIcon.click();
 					GenericFunctions.waitWebDriver(2000);
 
-					AllMyContentPagePObj.resetFilter.click();
+					allMyContentPagePObj.resetFilter.click();
 
 				}
 			}
 
 			catch(Exception e){
 
-				AllMyContentPagePObj.filterIcon.click();
+				allMyContentPagePObj.filterIcon.click();
 				GenericFunctions.waitWebDriver(2000);
 
-				AllMyContentPagePObj.resetFilter.click();
+				allMyContentPagePObj.resetFilter.click();
 				GenericFunctions.waitWebDriver(2000);			
 			}	
 		}
@@ -195,7 +195,7 @@ public class AllMyContentPageObj extends BaseTest
 		try
 		{	
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to click on all my content");
-			AllMyContentPagePObj.allMyContent.click();
+			allMyContentPagePObj.allMyContent.click();
 			GenericFunctions.waitWebDriver(2000);
 
 		}
@@ -214,67 +214,67 @@ public class AllMyContentPageObj extends BaseTest
 		try
 		{
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to delete content by status");
-			GenericFunctions.waitForElementToAppear(AllMyContentPagePObj.searchContent);				
+			GenericFunctions.waitForElementToAppear(allMyContentPagePObj.searchContent);				
 			if(PublishedContent.equalsIgnoreCase("COURSE")){
-				AllMyContentPagePObj.searchContent.sendKeys("COURSE");
-				AllMyContentPagePObj.searchIconUpForReview.click();
+				allMyContentPagePObj.searchContent.sendKeys("COURSE");
+				allMyContentPagePObj.searchIconUpForReview.click();
 				GenericFunctions.waitWebDriver(4000);
 			}
 			else if(PublishedContent.equalsIgnoreCase("COLLECTION")){
-				AllMyContentPagePObj.searchContent.sendKeys("COLLECTION");
-				AllMyContentPagePObj.searchIconUpForReview.click();
+				allMyContentPagePObj.searchContent.sendKeys("COLLECTION");
+				allMyContentPagePObj.searchIconUpForReview.click();
 				GenericFunctions.waitWebDriver(2000);
 			}
 			else if(PublishedContent.equalsIgnoreCase("LESSON PLAN")){
-				AllMyContentPagePObj.searchContent.sendKeys("LESSON PLAN");
-				AllMyContentPagePObj.searchIconUpForReview.click();
+				allMyContentPagePObj.searchContent.sendKeys("LESSON PLAN");
+				allMyContentPagePObj.searchIconUpForReview.click();
 				GenericFunctions.waitWebDriver(2000);
 			}
 			else if(PublishedContent.equalsIgnoreCase("RESOURCES")){
-				AllMyContentPagePObj.searchContent.sendKeys("RESOURCES");
-				AllMyContentPagePObj.searchIconUpForReview.click();
+				allMyContentPagePObj.searchContent.sendKeys("RESOURCES");
+				allMyContentPagePObj.searchIconUpForReview.click();
 				GenericFunctions.waitWebDriver(2000);
 			}
 			else if(PublishedContent.equalsIgnoreCase("BOOK")){
-				AllMyContentPagePObj.searchContent.sendKeys("BOOK");
-				AllMyContentPagePObj.searchIconUpForReview.click();
+				allMyContentPagePObj.searchContent.sendKeys("BOOK");
+				allMyContentPagePObj.searchIconUpForReview.click();
 				GenericFunctions.waitWebDriver(2000);
 			}
 			else if(PublishedContent.equalsIgnoreCase("UPLOADED CONTENT")){
-				AllMyContentPagePObj.searchContent.sendKeys("UPLOADED CONTENT");
-				AllMyContentPagePObj.searchIconUpForReview.click();
+				allMyContentPagePObj.searchContent.sendKeys("UPLOADED CONTENT");
+				allMyContentPagePObj.searchIconUpForReview.click();
 				GenericFunctions.waitWebDriver(2000);
 			} 
 
-			AllMyContentPagePObj.filterIcon.click();
+			allMyContentPagePObj.filterIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 
-			AllMyContentPagePObj.selectStatus.click();
+			allMyContentPagePObj.selectStatus.click();
 			GenericFunctions.waitWebDriver(2000);
 
-			AllMyContentPagePObj.liveSelect.click();
+			allMyContentPagePObj.liveSelect.click();
 			GenericFunctions.waitWebDriver(2000);
 
-			AllMyContentPagePObj.applyButton.click();
+			allMyContentPagePObj.applyButton.click();
 			GenericFunctions.waitWebDriver(2000);	
 
-			AllMyContentPagePObj.filterIcon.click();
+			allMyContentPagePObj.filterIcon.click();
 			GenericFunctions.waitWebDriver(2000);
 
 			try{
-				if(AllMyContentPagePObj.firstDraft.isDisplayed())
+				if(allMyContentPagePObj.firstDraft.isDisplayed())
 				{
-					String deletedContent = AllMyContentPagePObj.firstDraft.getText();
-					AllMyContentPagePObj.deleteButton.click();
+					String deletedContent = allMyContentPagePObj.firstDraft.getText();
+					allMyContentPagePObj.deleteButton.click();
 					GenericFunctions.waitWebDriver(2000);
 
-					AllMyContentPagePObj.yesButtonPopup.click();
+					allMyContentPagePObj.yesButtonPopup.click();
 					Assert.assertTrue(true, "User is able to delete the content successfully");
 					System.out.println("User is able to delete the content successfully");
 					System.out.println("User is able to delete the content successfully");
 					GenericFunctions.waitWebDriver(2000);
 
-					AllMyContentPagePObj.searchContent.sendKeys(deletedContent);
+					allMyContentPagePObj.searchContent.sendKeys(deletedContent);
 					Assert.assertTrue(true, "Deleted content not available in search result");
 					System.out.println("Deleted content not available in search result");
 					System.out.println("Deleted content not available in search result");
@@ -298,27 +298,10 @@ public class AllMyContentPageObj extends BaseTest
 	public void clickWorkspace()throws Exception{
 		try
 		{	
-			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to click on workspace");	
-
-			/*try{
-				if(AllMyContentPagePObj.closePopUp.isDisplayed())
-				{
-					AllMyContentPagePObj.closePopUp.click();
-					GenericFunctions.waitWebDriver(2000);
-					GenericFunctions.waitForElementToAppear(AllMyContentPagePObj.Workspace);	
-					AllMyContentPagePObj.Workspace.click();
-				}
-			}
-			catch(Exception e)
-			{
-				GenericFunctions.waitForElementToAppear(AllMyContentPagePObj.Workspace);	
-				AllMyContentPagePObj.Workspace.click();
-				GenericFunctions.waitWebDriver(4000);	
-			}*/
-
-			GenericFunctions.waitWebDriver(2000);
-			GenericFunctions.waitTillTheElementIsVisibleAndClickable(AllMyContentPagePObj.Workspace);	
-			AllMyContentPagePObj.Workspace.click();
+			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to click on all workspace");	
+			GenericFunctions.waitForElementToAppear(allMyContentPagePObj.workSpace);
+			allMyContentPagePObj.workSpace.click();
+			GenericFunctions.waitWebDriver(2000);				
 		}
 		catch(Exception e)
 		{

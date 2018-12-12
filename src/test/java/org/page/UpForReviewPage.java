@@ -142,9 +142,19 @@ public class UpForReviewPage
 	@FindBy(tagName="//td[@class='UpForReviewStatusOrange'][contains(.,'Review')]")
 	public WebElement Review;
 	
-	@FindBy(xpath = "(//a[contains(.,'Library')])[2]")
-	public WebElement headerLibrary;
 	
 	
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -77,21 +77,17 @@ public class MentorOrgPage
 	@FindBy(xpath="//div[@class='item selected']")
 	public WebElement selectCurriculum;
 	
-	@FindBy(xpath="(//input[contains(@class,'search')])[2]")         // 
+	@FindBy(xpath="//*[@id='gradeLevel']/div[1]")         // 
 	public WebElement clickOnSelectClass;
 	
 	@FindBy(xpath="//*[@id='gradeLevel']/div[1]/div[2]/div[2]")
 	public WebElement selectClass;
 	
-	@FindBy(xpath="//div[@class='column'][contains(.,'Edit Details')]")
-	public WebElement EditDetails;
 	
-	
-	
-	@FindBy(xpath="(//i[contains(@class,'dropdown icon')])[11]")
+	@FindBy(xpath="//div[.='Select Medium']")
 	public WebElement clickOnSelectMedium;
 	
-	@FindBy(xpath="(//div[contains(.,'English')])[21]")
+	@FindBy(xpath="//div[.='Select Medium']/following::div[@class='item selected']")
 	public WebElement selectMedium;
 	
 	@FindBy(xpath="(//input[contains(@class,'search')])[6]")
@@ -158,7 +154,7 @@ public class MentorOrgPage
 	@FindBy(xpath = "//i[contains(@class,'close icon')]")
 	public WebElement closePopUp;
 	
-	@FindBy(xpath="(//div[contains(@class,'meta course')])[1]")
+	@FindBy(xpath="(//div[contains(@class,'medium ellipsis mt-3')])[1]")
 	public WebElement latestCourse;
 	
 	@FindBy(xpath="(//i[@class='dropdown icon'])[5]")

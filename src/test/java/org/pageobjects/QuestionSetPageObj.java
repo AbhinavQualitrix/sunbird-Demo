@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
+import org.generic.AllUploadingPaths;
+import org.generic.ExtentTestManager;
+import org.generic.GenericFunctions;
+import org.generic.ReadTestDataFromExcel;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,12 +16,8 @@ import org.page.CreateMentorPage;
 import org.page.CreatorUserPage;
 import org.page.PublicUserPage;
 import org.page.QuestionSetPage;
-import org.page.SignUpPage;
+
 import org.page.UploadOrgPage;
-import org.generic.AllUploadingPaths;
-import org.generic.ExtentTestManager;
-import org.generic.GenericFunctions;
-import org.generic.ReadTestDataFromExcel;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
@@ -46,7 +46,7 @@ public class QuestionSetPageObj extends BaseTest{
 				ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create resource with different question sets");
 				GenericFunctions.waitWebDriver(1500);
 				//GenericFunctions.waitForElementToAppear(QuestionSetPageObj.bookName);
-				String resourceNumber = GenericFunctions.testDataIncrementer(".//testData//resourceNumbers.txt").toString();
+				String resourceNumber = GenericFunctions.testDataIncrementer("./testData/resourceNumbers.txt").toString();
 				QuestionSetPageObj.bookName.sendKeys(objListOFTestDataForSunbird.get(6).getCourseName()+resourceNumber);
 				 				
 				QuestionSetPageObj.startCreating.click();

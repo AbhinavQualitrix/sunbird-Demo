@@ -8,16 +8,15 @@ import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
-import org.page.CreatorAnnouncementPage;
-import org.page.MentorOrgPage;
-import org.page.UploadOrgPage;
 import org.generic.ExtentTestManager;
 import org.generic.GenericFunctions;
 import org.generic.ReadTestDataFromExcel;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
+import org.page.CreatorAnnouncementPage;
+import org.page.MentorOrgPage;
+import org.page.UploadOrgPage;
 import org.startup.BaseTest;
 import org.testdata.TestDataForSunbird;
 import org.testng.Assert;
@@ -28,10 +27,10 @@ public class MentorOrgPageObj extends BaseTest
 {   
 	MentorOrgPage MentorOrgPageObj = PageFactory.initElements(driver, MentorOrgPage.class);
 	//	MentorOrgPageObj MentorOrgPageObj=PageFactory.initElements(driver, MentorOrgPageObj.class);
-	//	CreatorUserPage MentorOrgPageObj=PageFactory.initElements(driver, CreatorUserPage.class);
+	//	CreatorUserPageObj MentorOrgPageObj=PageFactory.initElements(driver, CreatorUserPageObj.class);
 	//	MentorOrgPageObjObjects MentorOrgPageObj = PageFactory.initElements(driver, MentorOrgPageObjObjects.class);
-	//	PublicUserPage publicUserPage = PageFactory.initElements(driver, PublicUserPage.class);
-	//	CreatorUserPage MentorOrgPageObj = PageFactory.initElements(driver, CreatorUserPage.class);
+	//	PublicUserPageObj publicUserPageObj = PageFactory.initElements(driver, PublicUserPageObj.class);
+	//	CreatorUserPageObj MentorOrgPageObj = PageFactory.initElements(driver, CreatorUserPageObj.class);
 	List <TestDataForSunbird> objListOFTestDataForSunbird1= null ;
 	Random rand = new Random();
 	Actions action = new Actions(driver);
@@ -115,8 +114,7 @@ public class MentorOrgPageObj extends BaseTest
 	}
 
 
-	public void saveAndSendCourseForReview(List <TestDataForSunbird> objListOFTestDataForSunbird)throws Exception
-	{
+	public void saveAndSendCourseForReview(List <TestDataForSunbird> objListOFTestDataForSunbird)throws Exception{
 
 		try
 		{
@@ -134,28 +132,34 @@ public class MentorOrgPageObj extends BaseTest
 			MentorOrgPageObj.selectAppIcon.click();
 			GenericFunctions.waitWebDriver(1000);
 
-			//			GenericFunctions.waitForElementToAppear(MentorOrgPageObj.clickOnSelectCurriculum);
-			//			MentorOrgPageObj.clickOnSelectCurriculum.click();
-			//			GenericFunctions.waitWebDriver(1000);
-			//			MentorOrgPageObj.selectCurriculum.click();
-			//			GenericFunctions.waitWebDriver(1000);
-			Select curriculum = new Select(driver.findElement(By.className("dropdown icon[0]")));
-			curriculum.selectByVisibleText("CBSE");
-
+			GenericFunctions.waitForElementToAppear(MentorOrgPageObj.clickOnSelectCurriculum);
+			MentorOrgPageObj.clickOnSelectCurriculum.click();
+			GenericFunctions.waitWebDriver(1000);
+			MentorOrgPageObj.selectCurriculum.click();
 			GenericFunctions.waitForElementToAppear(MentorOrgPageObj.clickOnSelectClass);
 			MentorOrgPageObj.clickOnSelectClass.click();
 			GenericFunctions.waitWebDriver(1000); 
 			MentorOrgPageObj.selectClass.click();
 			GenericFunctions.waitWebDriver(1000); 
-			MentorOrgPageObj.EditDetails.click();//      
+			MentorOrgPageObj.clickOnSelectClass.click();//      
 
+			//GenericFunctions.keyTab(driver, MentorOrgPageObj.selectClass.toString());
+			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(MentorOrgPageObj.clickOnHeaderSubject);
+			//MentorOrgPageObj.clickOnHeaderSubject.click();
+			GenericFunctions.waitWebDriver(5000);
+			//GenericFunctions.waitTillTheElementIsVisibleAndClickable(MentorOrgPageObj.clickOnSelectSubject);
+			//GenericFunctions.scrollToElement(MentorOrgPageObj.clickOnSelectMedium);
+			//			GenericFunctions.waitWebDriver(2000);
+			//			MentorOrgPageObj.clickOnSelectSubject.click();
+			//			GenericFunctions.waitForElementToAppear(MentorOrgPageObj.selectSubject);
+			//			MentorOrgPageObj.selectMathematics.click();
+			//			GenericFunctions.waitWebDriver(1500);
 			GenericFunctions.scrollToElement(MentorOrgPageObj.clickOnSelectMedium);
 			GenericFunctions.waitWebDriver(5000);
 			MentorOrgPageObj.clickOnSelectMedium.click();
 			GenericFunctions.waitForElementToAppearOnScreen(MentorOrgPageObj.selectMedium);
 			MentorOrgPageObj.selectMedium.click();
 			GenericFunctions.waitWebDriver(1500);
-
 			GenericFunctions.scrollToElement(MentorOrgPageObj.clickOwner);
 			GenericFunctions.waitForElementToAppear(MentorOrgPageObj.clickOwner);
 			MentorOrgPageObj.clickOwner.click();
@@ -352,21 +356,9 @@ public class MentorOrgPageObj extends BaseTest
 
 		try {
 			ExtentTestManager.getTest().log(LogStatus.INFO, "User is trying to create invite only batch for a course");
-			/*try{
-				if(MentorOrgPageObj.closePopUp.isDisplayed())
-				{
-					MentorOrgPageObj.closePopUp.click();
-					GenericFunctions.waitWebDriver(1500);
-					MentorOrgPageObj.headerCourse.click();
-					GenericFunctions.waitWebDriver(4000);
-				}
-			}
-			catch(Exception e)
-			{
-				MentorOrgPageObj.headerCourse.click();
-				GenericFunctions.waitWebDriver(4000);
-			}*/
-			GenericFunctions.waitTillTheElementIsVisibleAndClickable(MentorOrgPageObj.headerCourse);
+			GenericFunctions.waitForElementToAppear(MentorOrgPageObj.headerCourse);
+			//MentorOrgPageObj.closePopUp.click();
+			GenericFunctions.waitWebDriver(1500);
 			MentorOrgPageObj.headerCourse.click();
 			GenericFunctions.waitWebDriver(4000);
 			GenericFunctions.waitForElementToAppear(MentorOrgPageObj.latestCourse);
@@ -393,7 +385,7 @@ public class MentorOrgPageObj extends BaseTest
 			MentorOrgPageObj.mentorDropdown.click();
 			MentorOrgPageObj.membersInBatch.click();
 			MentorOrgPageObj.mentorDropdown.click();
-			GenericFunctions.waitWebDriver(2000);	
+			GenericFunctions.waitWebDriver(1500);	
 
 			GenericFunctions.waitTillTheElementIsVisibleAndClickable(MentorOrgPageObj.buttonCreate);
 			MentorOrgPageObj.buttonCreate.click();

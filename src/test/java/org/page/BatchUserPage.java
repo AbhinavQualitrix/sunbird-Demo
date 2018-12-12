@@ -95,7 +95,7 @@ public class BatchUserPage {
 	@FindBy(xpath="(//a[contains(.,'Courses')])[2]")
 	public WebElement headerCourse;
 	
-	@FindBy(xpath="(//div[contains(@class,'meta course')])[1]")
+	@FindBy(xpath="(//div[contains(@class,'medium ellipsis mt-3')])[1]")
 	public WebElement latestCourse;
 	
 	@FindBy(xpath="//i[@class='add icon']")
